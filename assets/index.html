@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>machine_v1 · 问题树可视化</title>
+<style>
+  :root{--bg:#0e1116;--panel:#171c24;--panel2:#1e2530;--ink:#e8edf4;--dim:#93a1b3;--line:#2a3340;
+        --ok:#34d399;--bad:#f87171;--open:#fbbf24;--wait:#60a5fa;--chip:#243140;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.6 "Segoe UI","Microsoft YaHei",sans-serif}
+  header{padding:18px 26px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#131926,#0e1116)}
+  header h1{margin:0 0 4px;font-size:20px;letter-spacing:.5px}
+  header p{margin:0;color:var(--dim)}
+  .wrap{display:grid;grid-template-columns:300px 1fr;gap:0;min-height:100vh}
+  aside{padding:18px;border-right:1px solid var(--line);background:var(--panel)}
+  main{padding:20px 26px}
+  h2{font-size:15px;margin:6px 0 12px;color:#cfe0f5;text-transform:none;letter-spacing:1px}
+  .motif{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .chip{display:inline-block;padding:5px 10px;border-radius:8px;background:var(--chip);border:1px solid #35475c;font-size:13px}
+  .chip b{color:#9ecbff}
+  .chip small{color:var(--dim)}
+  .legend span{display:inline-block;margin-right:12px;color:var(--dim)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+  .root{margin:14px 0;padding:12px 14px;background:var(--panel2);border:1px solid var(--line);border-radius:10px}
+  .root .rt{font-weight:600}
+  .tree{list-style:none;margin:10px 0 0 6px;padding-left:18px;border-left:1px dashed #3b4859}
+  .tree li{margin:8px 0;position:relative}
+  .edge{color:var(--dim);font-size:12px}
+  details{border:1px solid var(--line);border-radius:8px;background:#141a22;padding:8px 12px}
+  details[open]{background:#161d27}
+  summary{cursor:pointer;display:flex;gap:10px;align-items:center}
+  .pid{font-weight:700;color:#9ecbff;min-width:34px}
+  .stmt{flex:1}
+  .badge{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap}
+  .b-ok{background:rgba(52,211,153,.15);color:var(--ok);border:1px solid var(--ok)}
+  .b-open{background:rgba(251,191,36,.12);color:var(--open);border:1px solid var(--open)}
+  .b-false{background:rgba(248,113,113,.12);color:var(--bad);border:1px solid var(--bad)}
+  .b-wait{background:rgba(96,165,250,.12);color:var(--wait);border:1px solid var(--wait)}
+  .tag{font-size:11px;color:var(--dim)}
+  .flow{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .box{border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:12px;background:#10151c;color:#c9d6e6}
+  .arrow{color:var(--dim)}
+  .kv{margin:8px 0 0;padding:0;list-style:none;font-size:12px;color:var(--dim)}
+  .kv b{color:#b9c9dd}
+  pre{background:#0b0f15;border:1px solid var(--line);border-radius:6px;padding:8px;font-size:12px;overflow:auto;color:#a7f3d0}
+  .seed{color:#ffd9a0}
+  .fine{color:#8fa2b5;font-size:12px;margin:2px 0 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>machine_v1 · 问题树可视化（母题组合出处链）</h1>
+  <p>每个问题都带着出生证明：由哪几个母题、套哪条组合模板、绑定什么参数、判定过程留了什么证据——不是一段凭空文字。</p>
+  <div class="legend" style="margin-top:8px">
+    <span><i class="dot" style="background:var(--ok)"></i>真(证/构造)</span>
+    <span><i class="dot" style="background:var(--bad)"></i>假(反例)</span>
+    <span><i class="dot" style="background:var(--open)"></i>悬置(开放/著名)</span>
+    <span><i class="dot" style="background:var(--wait)"></i>待实验/待评审</span>
+  </div>
+</header>
+<div class="wrap">
+  <aside>
+    <h2>母题库 v0.2 总览</h2>
+    <div id="registry"></div>
+    <h2>数学核心（本次实际组合使用的母题）</h2>
+    <div id="motifs"></div>
+    <h2>判定与诚实层</h2>
+    <div class="fine">真 = 构造/验证到上限；悬置 = 开放，命中著名问题如实标注；未命中已知库 = “惊喜候选·需查证”，不冒充新。</div>
+  </aside>
+  <main>
+    <h2>数学域 · 母题树生长出来的问题</h2>
+    <div id="tree"></div>
+    <h2>美学域 · 日常疑问 → 可测研究问题（待人类/实验判定）</h2>
+    <div id="aesthetics"></div>
+  </main>
+</div>
+<script src="data.js"></script>
+<script>
+const D = window.DATA;
+const ST = { "真": ["真(定理, 含配方证明)","真(程序验证到上限)","真(存在, 例证)","真(已知定理, 机器验证)","真(构造证明)","真(程序验证+配方证明: n%6==0:9+(n-9); n≡4:25+(n-25); n≡2:35+(n-35))"],
+             "悬置": ["悬置(开放)","悬置(开放, 著名)"],
+             "待": ["待实验/待评审"] };
+function badgeOf(p){
+  const s = p.status;
+  if (s.indexOf("真")===0) return '<span class="badge b-ok">真</span>';
+  if (s.indexOf("悬置")===0) return '<span class="badge b-open">悬置</span>';
+  if (s.indexOf("假")===0) return '<span class="badge b-false">假</span>';
+  return '<span class="badge b-wait">待实验/评审</span>';
+}
+function motifChips(list){
+  return list.map(m=>`<span class="chip">◆ <b>${m}</b></span>`).join("");
+}
+function judgeBlock(j){
+  const rows = [];
+  for (const k in j){ let v = j[k];
+    if (Array.isArray(v)) v = v.join(", ");
+    if (v === null || v === undefined) v = "";
+    rows.push(`<li><b>${k}</b>: ${v}</li>`);
+  }
+  return `<ul class="kv">${rows.join("")}</ul>`;
+}
+function problemCard(p){
+  return `<details open>
+    <summary>
+      <span class="pid">${p.id||""}</span>
+      <span class="stmt">${p.statement}</span>
+      ${badgeOf(p)}
+    </summary>
+    <div class="fine seed">日常疑问：${p.seed}</div>
+    <div class="flow">
+      <span class="box">组成·母题</span>${p.motifs.map(m=>`<span class="box"><b>${m}</b></span>`).join("")}
+      <span class="arrow">→</span><span class="box">${p.template||""}</span>
+      <span class="arrow">→</span><span class="box">判定：${(p.judge&&p.judge.method)||""}</span>
+    </div>
+    ${p.judge?judgeBlock(p.judge):""}
+    <div class="fine">状态：${p.status} ｜ 诚实标记：${p.tag||""}</div>
+  </details>`;
+}
+function buildTree(rootId){
+  const children = new Map();
+  for (const p of D.problems){
+    const parent = (p.tree&&p.tree.parent)||"";
+    if(!children.has(parent)) children.set(parent, []);
+    children.get(parent).push(p);
+  }
+  function liOf(p){
+    const kids = children.get(p.id)||[];
+    const edgeTxt = p.tree&&p.tree.edge?`<div class="edge">↑ ${p.tree.edge}</div>`:"";
+    return `<li>
+      ${problemCard(p)}
+      ${edgeTxt}
+      ${kids.length?`<ul class="tree">${kids.map(liOf).join("")}</ul>`:""}
+    </li>`;
+  }
+  const root = D.roots.find(r=>r.id===rootId);
+  const topKids = (children.get(rootId)||[]).map(liOf).join("");
+  return `<div class="root">
+    <div class="rt">🌳 ${root.label}</div>
+    <div class="fine seed">种子疑问：${root.seed} ｜ 母题：${root.motifs.join(" × ")}</div>
+    ${topKids?`<ul class="tree">${topKids}</ul>`:""}
+  </div>`;
+}
+document.getElementById("registry").innerHTML =
+  `<div style="margin-bottom:10px"><div class="fine">登记总数：<b style="color:#9ecbff">${D.registry.total}</b> 个母题（数学核心 <b style="color:#9ecbff">${D.registry.math_core}</b> 已可实例化；其余为全域登记，待逐域接通判定器）</div>
+   <div class="motif">${D.registry.domains.map(d=>`<span class="chip">${d.domain} <small>· ${d.count}</small></span>`).join("")}</div></div>`;
+document.getElementById("motifs").innerHTML =
+  `<div class="motif">${D.motifs_math.filter(m=>m.used>0).map(m=>`<span class="chip" title="${m.note}"><b>${m.name}</b> <small>· ${m.type} · 用${m.used}次</small></span>`).join("")}</div>
+   <div class="fine">对象类/规则/映射一旦组合进模板，就产出候选命题；判定器随即接手（本页 25 道数学题=22 个母题的真实组合产物）。</div>`;
+document.getElementById("tree").innerHTML = D.roots.map(r=>buildTree(r.id)).join("");
+const aRoots = [];
+const seenRoots = [];
+for (const a of D.aesthetics){
+  aRoots.push(`<li>${problemCard({id:a.id, statement:a.question, seed:a.seed, motifs:a.motifs.split("×").map(s=>s.trim()), template:"母题对(美学) × 实验模板", judge:{自变量:a.iv,因变量:a.dv,实验:a.design,预测:a.predict,判官:a.judge}, status:a.status, tag:a.novelty})}</li>`);
+}
+document.getElementById("aesthetics").innerHTML = `<div class="root"><div class="rt">🎨 日常审美疑问 → 可测研究问题</div><ul class="tree">${aRoots.join("")}</ul></div>`;
+</script>
+</body>
+</html>
