@@ -87,3 +87,6 @@
 
 ## R13 张力x缺口映射
 - 产出: tension_gap_map.md(10条); web核验: 1检索级未见(弱), 9已知/邻近
+
+## R14 P-A.A3 物化: 言意x熵率 -> 子命题1已知+子命题2前问题(模型建模)
+- docs/tension_formal_yanyi.md
