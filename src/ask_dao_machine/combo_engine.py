@@ -12,29 +12,53 @@ ROOT = TreeRoot("R_combo", "组合纪录实验室: 受限字符串/游走 的计
                 ["连续整数串", "组合计数", "递推映射", "母题组合/迁移"],
                 "换一个约束/步集, 计数族怎么变? 哪些是种子表外?")
 
-# ---- 本地种子表: name -> (比率常数, 前缀) ----
+# ---- 本地种子表(扩充): name -> (比率常数或None, 前缀) ----
 SEEDS = {
     "Fibonacci": (1.618034, [1, 2, 3, 5, 8, 13, 21, 34]),
     "Pell": (2.414214, [1, 2, 5, 12, 29, 70]),
     "Padovan": (1.324718, [1, 1, 1, 2, 2, 3, 4, 5]),
     "Tribonacci": (1.839286, [1, 1, 2, 4, 7, 13, 24]),
     "powers_of_2": (2.0, [1, 2, 4, 8, 16, 32, 64]),
-    "Catalan": (4.0, [1, 2, 5, 14, 42, 132]),      # 每2项比值(步长配对)
-    "central_binomial": (4.0, [1, 2, 6, 20, 70, 252]),  # C(2n,n) 偶步长
-    "central_trinomial": (3.0, [1, 3, 7, 19, 51, 141]), # 每步比值~3
+    "Catalan": (4.0, [1, 2, 5, 14, 42, 132]),
+    "central_binomial": (4.0, [2, 6, 20, 70, 252]),      # C(2n,n), 去零后的偶长子列
+    "central_trinomial": (3.0, [1, 3, 7, 19, 51, 141]),
+    # ---- 扩充: 可公式生成的经典序列(前缀匹配用) ----
+    "Lucas": (None, [1, 3, 4, 7, 11, 18, 29, 47]),
+    "Jacobsthal": (2.0, [1, 1, 3, 5, 11, 21, 43]),       # (2^n-(-1)^n)/3
+    "Bell": (None, [1, 2, 5, 15, 52, 203]),
+    "derangements": (None, [1, 2, 9, 44, 265, 1854]),
+    "Motzkin": (3.0, [1, 2, 4, 9, 21, 51, 127]),
+    "Schroder": (5.828427, [1, 2, 6, 22, 90, 394]),      # 大Schroder(每步比->3+2√2≈5.828)
+    "perrin": (1.324718, [3, 0, 2, 3, 2, 5, 5, 7]),
 }
 
-# ---- 计数工具 ----
+def _nonzero_seq(counts):
+    return [v for v in counts if v > 0]
+
+def classify(counts, paired=False):
+    """按去零子列的生长率/前缀对表 -> ('known', name) or ('R', None)"""
+    nz = _nonzero_seq(counts)
+    if len(nz) < 3 or not nz[-1]:
+        return ("R", None)
+    ratio = nz[-1] / nz[-2]
+    for name, (sr, pref) in SEEDS.items():
+        pref = [p for p in pref if p > 0]
+        if pref and nz[: len(pref)] == pref[: len(nz)]:
+            return ("known", name)
+        if sr and abs(ratio - sr) < 0.02:
+            return ("known", name)
+    return ("R", None)
+
+
 def counts_avoid_word(nmax, word):
     """二元串(长度1..nmax)禁连续子串 word 的个数 DP"""
-    w = word
-    aut = build_automaton(w)
+    aut = build_automaton(word)
     c = []
-    cur = [0] * len(aut)
+    cur = [0] * (len(word))
     cur[0] = 1
     for n in range(1, nmax + 1):
-        nxt = [0] * len(aut)
-        for s in range(len(aut)):
+        nxt = [0] * len(word)
+        for s in range(len(word)):
             if cur[s]:
                 for b in "01":
                     t = aut[s][b]
@@ -93,22 +117,6 @@ def counts_walk(nmax, steps):
         cur = nxt
         c.append(cur.get(0, 0))
     return c
-
-def classify(counts, paired=False):
-    """按生长率/前缀对表 -> ('known', seedname) or ('R', None)"""
-    if len(counts) < 6 or not counts[-1]:
-        return ("R", None)
-    last = counts[-1]; prev = counts[-2]
-    ratio = last / prev if prev else 0
-    if paired:
-        idx = len(counts) - 1
-        # 用隔项比
-        if idx >= 2 and counts[idx - 2]:
-            ratio = last / counts[idx - 2]
-    for name, (sr, pref) in SEEDS.items():
-        if abs(ratio - sr) < 0.002 or counts[: min(6, len(pref))] == pref[: min(6, len(counts))]:
-            return ("known", name)
-    return ("R", None)
 
 
 def run(nmax: int = 40):
