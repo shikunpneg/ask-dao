@@ -64,3 +64,34 @@ def record_result(problems_path: Path, id_: str, status: str,
             break
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     return path
+
+
+def record_result_by_ids(problems_path: Path, ids: List[str], status: str,
+                         sources: List[str], note: str = "") -> int:
+    """同族结论回写整批 id。"""
+    path = Path(problems_path)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    n = 0
+    for p in data["problems"]:
+        if p.get("id") in set(ids):
+            p["literature"] = {"status": status, "sources": sources, "note": note}
+            n += 1
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    return n
+
+
+def pending_families(problems_path: Path) -> List[dict]:
+    """records 型惊喜候选按(类A,类B)去重, 供按族检索。"""
+    data = json.loads(Path(problems_path).read_text(encoding="utf-8"))
+    fam = {}
+    for p in data["problems"]:
+        if "惊喜" not in p.get("honesty", ""):
+            continue
+        if "literature" in p:
+            continue
+        b = p.get("binds", {})
+        key = (b.get("类A", ""), b.get("类B", ""))
+        if key == ("", ""):
+            key = (p["id"], "")
+        fam.setdefault(key, []).append(p["id"])
+    return [{"family": k, "ids": v, "statement": None} for k, v in fam.items()]
