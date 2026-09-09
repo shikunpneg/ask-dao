@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Dict, List
 
 from . import (math_engine, aesthetics_engine, records_engine, fusion_engine,
-               lang_info_engine, combo_engine)
+               lang_info_engine, combo_engine, direction_engine)
 from .model import ProblemSet
 from .registry import Registry
 
@@ -23,6 +23,7 @@ class ProblemMaker:
             "fusion": self._run_fusion,
             "ling": self._run_ling,
             "combo": self._run_combo,
+            "direction": self._run_direction,
             "aesthetics": aesthetics_engine.run,
         }
 
@@ -48,6 +49,10 @@ class ProblemMaker:
         setattr(ps, "combo_stat", stat)
         setattr(ps, "r_count", r)
         return ps
+
+    def _run_direction(self, limits: dict = None):
+        limits = limits or {}
+        return direction_engine.run(N=limits.get("N", 400000), gapN=limits.get("gapN", 200000))
 
     def list_domains(self) -> List[str]:
         return sorted(self.engines.keys())
