@@ -22,3 +22,6 @@
 - problems_math.json: 25题 | 状态{'真': 16, '假': 1, '悬置': 8, '待实验': 0} | 裁判{'N0': 13, 'N1': 10, 'N2': 2, 'N3': 0, '无': 0}
 - problems_records.json: 28题 | 状态{'真': 26, '假': 1, '悬置': 1, '待实验': 0} | 裁判{'N0': 5, 'N1': 23, 'N2': 0, 'N3': 0, '无': 0}
 - grown_motifs: {'confirmed': 13, 'needs_extend': 7, 'hypothesis': 1}
+## 参照系上线
+- OEIS stripped.gz 离线索引(399061序列) 反查命中: 禁0101->A118870, 禁0000/maxrun4->A275544 (禁010 前缀未直接命中, 疑为起始项偏移, 待核)
+- 结论: R 需重释为 OEIS 级未见; 数据文件不入库, 用 tools/oeis_check.py 需先下载 stripped.gz 到 data/
