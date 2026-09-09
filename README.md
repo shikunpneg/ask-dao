@@ -57,3 +57,12 @@ src/ask_dao_machine/
 - ä¸‹ä¸€ä»¶ï¼šregistry å…¶ä½™ 54 ä¸ªæ¯é¢˜é€åŸŸæ¥é€šåˆ¤å®šå™¨ï¼ˆç‰©ç†å¯¹ç§°Ã—å®ˆæ’æœ€å…ˆï¼‰ï¼›æ›´å¤šæ•°å­¦æ¨¡æ¿æ‰©å¤§æƒŠå–œå€™é€‰ç‡
 
 ï¼ˆä»“åº“ï¼šhttps://github.com/shikunpeng/ask-dao-machine â€”â€” æ¨é€å‰è¯·å…ˆåœ¨æœ¬æœºé…ç½® git å‡­è¯ï¼‰
+
+
+## ÒıÇæÓë¹¤¾ßÈ«¾°(½ØÖÁ v0.17)
+- ÒıÇæ: math(25) records(28) combo(23) fusion(4) ling(3) direction(4) break(¼ÍÂ¼¸´ºË) sparse(²ÎÊı×å)
+- ¹¤¾ß: oeis_check/sweep(OEISÀëÏßË÷Òı39.9Íò) | big_score(µ±ÎñH1-H10) | tension_detector(v0/v1ÕÅÁ¦) |
+  method3_gen_tension(ÕÅÁ¦×¢ÈëÉú³É) | cross_explore(METHOD3¹ÜÏß) | iterate(µü´ú»·) | make_ledger | humanities_math/sig
+- ÎÄµµ: MASTER_PLAN / METHODOLOGY3 / PLAN_TENSION_DETECTOR / BIG_PROBLEMS / MOTIF_DEFINITION /
+  DESIGN / EXPLORATION_REPORT / EXECUTION_LOG(ÖğÂÖ¼ÇÂ¼) / novelty_ledger(Ì¨ÕË)
+- ĞÂÔö: ÕÅÁ¦Ì½²âÆ÷(ĞÂ·½Ïò) - ÓïÁÏ: _text ÓïÁÏ¿â(ÖĞÎ÷ÕÜÑ§Ê·/ÊÖ²á/Òë´Ô)
