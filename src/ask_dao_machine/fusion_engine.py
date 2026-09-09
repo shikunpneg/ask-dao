@@ -33,19 +33,22 @@ def run(N: int = 1000000, gapN: int = 300000):
         cnt = [0] * m
         tot = 0
         for p in primes:
-            if p == m:
-                continue
+            if p <= m:
+                continue  # 小质数(<m)不进统计, 避免 p mod m 覆盖小类
             cnt[p % m] += 1
             tot += 1
         if tot == 0:
             continue
+        # 只在互素余类(与 m 互质)内评估均匀性
+        cop = [r for r in range(m) if math.gcd(r, m) == 1]
+        expect = tot / len(cop)
         H = 0.0
-        for c in cnt:
-            if c:
-                q = c / tot
-                H -= q * math.log(q)
-        maxdev = max(abs(c - tot / m) for c in cnt)
-        devs.append((m, round(H, 3), round(maxdev, 1), maxdev / (tot / m)))
+        for r in cop:
+            c = cnt[r]
+            q = c / tot
+            H -= q * math.log(q)
+        maxdev = max(abs(cnt[r] - expect) for r in cop)
+        devs.append((m, round(H, 3), round(maxdev, 1), round(maxdev / expect, 3)))
     m_big = max(devs, key=lambda x: x[2])
     add("F1", "用'信息熵'看质数: 质数在模 m 的余数分布有多接近均匀?",
         ["质数", "信息-熵/均匀性"], "跨域模板F1: 信息度量 × 质数余数分布",
