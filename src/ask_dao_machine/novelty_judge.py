@@ -38,6 +38,10 @@ def judge(record: dict, retrieval: dict = None) -> dict:
     tpl = record.get("template", "")
     stmt = record.get("statement", "")
     if "惊喜" in hon or "需查证" in hon or "未见" in hon:
+        # DP/枚举计数序列: 经典组合枚举族 -> 大概率已知(回避/游程/游走分类学); 种子表外≠文献外
+        if "DP精确" in st or "DP" in tpl or "精确计数" in stmt:
+            return {"verdict": "N1 枚举计数序列(回避/游程/游走族经典, 大概率已有OEIS条目)",
+                    "rule": KNOWN_PATTERNS["已证定理复核"], "confidence": 0.8, "human_needed": False}
         # 覆盖型两数和: LLM 结构推理 -> 大概率 N1(除非模类/奇偶阻塞, 已有记录表明未阻塞)
         if any(k in tpl for k in ("两数和", "两项和", "覆盖扫描")) or \
            ("可写成" in stmt and "+" in stmt and "偶数" in stmt):
