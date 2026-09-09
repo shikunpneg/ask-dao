@@ -6,7 +6,8 @@ import time
 from pathlib import Path
 from typing import Dict, List
 
-from . import math_engine, aesthetics_engine, records_engine, fusion_engine, lang_info_engine
+from . import (math_engine, aesthetics_engine, records_engine, fusion_engine,
+               lang_info_engine, combo_engine)
 from .model import ProblemSet
 from .registry import Registry
 
@@ -21,6 +22,7 @@ class ProblemMaker:
             "records": self._run_records,
             "fusion": self._run_fusion,
             "ling": self._run_ling,
+            "combo": self._run_combo,
             "aesthetics": aesthetics_engine.run,
         }
 
@@ -39,6 +41,14 @@ class ProblemMaker:
     def _run_ling(self, limits: dict = None):
         return lang_info_engine.run()
 
+    def _run_combo(self, limits: dict = None):
+        limits = limits or {}
+        root, recs, stat, r = combo_engine.run(nmax=limits.get("nmax", 40))
+        ps = ProblemSet("combo", [root], recs)
+        setattr(ps, "combo_stat", stat)
+        setattr(ps, "r_count", r)
+        return ps
+
     def list_domains(self) -> List[str]:
         return sorted(self.engines.keys())
 
@@ -46,8 +56,13 @@ class ProblemMaker:
         if domain not in self.engines:
             raise KeyError(f"未知域: {domain}; 可用: {self.list_domains()}")
         t0 = time.time()
-        roots, records = self.engines[domain](limits)
-        ps = ProblemSet(domain=domain, roots=roots, problems=records)
+        val = self.engines[domain](limits)
+        if isinstance(val, ProblemSet):
+            ps = val
+        else:
+            roots, records = val
+            ps = ProblemSet(domain=domain, roots=roots, problems=records)
+        ps.domain = domain
         setattr(ps, "elapsed", round(time.time() - t0, 2))
         return ps
 
