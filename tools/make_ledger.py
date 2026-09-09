@@ -11,7 +11,7 @@ DEMO = HERE / "out/demo"
 
 def collect():
     rows = []
-    for f in sorted((DEMO / "problems_*.json").glob("problems_*.json")):
+    for f in sorted(DEMO.glob("problems_*.json")):
         d = json.loads(f.read_text(encoding="utf-8"))
         nc = {"N0": 0, "N1": 0, "N2": 0, "N3": 0, "无": 0}
         st = {"真": 0, "假": 0, "悬置": 0, "待实验": 0}

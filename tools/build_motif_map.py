@@ -196,6 +196,13 @@ def main():
     all_templates = dict(L3_TEMPLATES)
     for dom, d in EXTRA_TEMPLATES.items():
         all_templates.setdefault(dom, {}).update(d)
+    # 兜底: L3 清单里的每个方向都必须有模板(缺则补通用模板)
+    for dom, dirs in L3_DIRECTIONS.items():
+        for dr in dirs:
+            if dr not in all_templates.get(dom, {}):
+                all_templates.setdefault(dom, {})[dr] = [
+                    f"{dr}: 对象族 X 的'该方向'纪录/反例? (载体待挂)",
+                    f"{dr}: 该方向的极值/首例/阈值的结构刻画?"]
     out = {"L3_directions": L3_DIRECTIONS,
            "L3_templates": all_templates,
            "L2_ops": L2_OPS, "L1_objects": L1_OBJECTS,
@@ -205,8 +212,9 @@ def main():
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     n_l3 = sum(len(v) for v in L3_DIRECTIONS.values())
-    n_tpl = sum(len(d) for d in all_templates.values())
-    print({"L3_directions_total": n_l3, "directions_with_templates": n_tpl,
+    covered = sum(1 for dom, dirs in L3_DIRECTIONS.items()
+                  for dr in dirs if dr in all_templates.get(dom, {}))
+    print({"L3_directions_total": n_l3, "directions_with_templates": covered,
            "L2": len(L2_OPS), "L1": len(L1_OBJECTS), "L0": len(L0_STRUCT),
            "L4": len(L3_DIRECTIONS), "TOTAL_base_units": n_l3 + len(L2_OPS) + len(L1_OBJECTS) + len(L0_STRUCT)})
 
