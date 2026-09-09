@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 from typing import Dict, List
 
-from . import math_engine, aesthetics_engine
+from . import math_engine, aesthetics_engine, records_engine
 from .model import ProblemSet
 from .registry import Registry
 
@@ -16,11 +16,19 @@ class ProblemMaker:
 
     def __init__(self, registry: Registry = None):
         self.registry = registry or Registry.bundled()
-        self.engines = {"math": self._run_math, "aesthetics": aesthetics_engine.run}
+        self.engines = {
+            "math": self._run_math,
+            "records": self._run_records,
+            "aesthetics": aesthetics_engine.run,
+        }
 
     def _run_math(self, limits: dict = None):
         limits = limits or {}
         return math_engine.run(N=limits.get("N", 300000), M=limits.get("M", 500000))
+
+    def _run_records(self, limits: dict = None):
+        limits = limits or {}
+        return records_engine.run(N=limits.get("N", 80000), SCAN=limits.get("SCAN", 40000))
 
     def list_domains(self) -> List[str]:
         return sorted(self.engines.keys())
