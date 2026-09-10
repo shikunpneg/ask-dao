@@ -1,0 +1,1088 @@
+[
+ {
+  "candidate": "回文数_b3 + 奇合数",
+  "exceptions": 17,
+  "density": 0.0017,
+  "machine_desc": {
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14,
+     570
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 570,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.09,
+   "null_mean": 184.7
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b5 + 奇合数",
+  "exceptions": 7,
+  "density": 0.0007,
+  "machine_desc": {
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14,
+     32,
+     44
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 44,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.03,
+   "null_mean": 208.4
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b5 + 素数",
+  "exceptions": 4,
+  "density": 0.0004,
+  "machine_desc": {
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     66,
+     418,
+     1266
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 1266,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.01,
+   "null_mean": 436.1
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "Harshad数 + 回文数_b2",
+  "exceptions": 3,
+  "density": 0.0003,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     296,
+     1094,
+     1864
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": 1864,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.06,
+   "null_mean": 53.7
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "半素数 + 回文数_b2",
+  "exceptions": 3,
+  "density": 0.0003,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 8,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.1639,
+   "ratio": 2.31,
+   "null_mean": 1.3
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b16 + 回文数_b7",
+  "exceptions": 2,
+  "density": 0.0002,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     912,
+     1776
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 18)",
+    "class_size": 8889,
+    "coverage": 0.445
+   },
+   "small_bound": 1776,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.0,
+   "null_mean": 723.5
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "半素数 + 回文数_b16",
+  "exceptions": 1,
+  "density": 0.0001,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": []
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 3)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 4,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.4754,
+   "ratio": 0.95,
+   "null_mean": 1.1
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b16 + 回文数_b3",
+  "exceptions": 122,
+  "density": 0.0122,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.14,
+   "null_mean": 849.5
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b3 + 回文数_b7",
+  "exceptions": 69,
+  "density": 0.0069,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.13,
+   "null_mean": 527.8
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b3 + 素数",
+  "exceptions": 68,
+  "density": 0.0068,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.19,
+   "null_mean": 363.2
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b5 + 回文数_b7",
+  "exceptions": 66,
+  "density": 0.0066,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.1,
+   "null_mean": 642.9
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "三角数 + 素数",
+  "exceptions": 41,
+  "density": 0.0041,
+  "machine_desc": {
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": []
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.15,
+   "null_mean": 273.8
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "Harshad数 + 三角数",
+  "exceptions": 38,
+  "density": 0.0038,
+  "machine_desc": {
+   "class_fit": {
+    "class": "≡2(mod 3)",
+    "outside": [
+     754,
+     1474
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 12)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.0328,
+   "ratio": 1.75,
+   "null_mean": 21.7
+  },
+  "J1_known": "未确定",
+  "J2_mechanism": "机器已给出: 例外 ⊆ ≡2(mod 3) ∪ {754, 1474}(38 个)。**结构基本解释。**",
+  "J4_verdict": "N1 可推",
+  "J5_human_needed": false
+ },
+ {
+  "candidate": "奇合数 + 立方数",
+  "exceptions": 18,
+  "density": 0.0018,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 128,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.0164,
+   "ratio": 2.47,
+   "null_mean": 7.3
+  },
+  "J1_known": "未确定",
+  "J2_mechanism": "机器已给出: 例外 < 128(18 个全在小界内)。**结构已解释(小界)。**",
+  "J4_verdict": "N1 可推",
+  "J5_human_needed": false
+ },
+ {
+  "candidate": "奇合数 + 完美幂",
+  "exceptions": 15,
+  "density": 0.0015,
+  "machine_desc": {
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     10,
+     20
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 68,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.0164,
+   "ratio": 2.99,
+   "null_mean": 5.0
+  },
+  "J1_known": "未确定",
+  "J2_mechanism": "机器已给出: 例外 ⊆ 无数字0(15 个)。**结构已解释。**",
+  "J4_verdict": "N1 可推",
+  "J5_human_needed": false
+ },
+ {
+  "candidate": "三角数 + 奇合数",
+  "exceptions": 14,
+  "density": 0.0014,
+  "machine_desc": {
+   "class_fit": {
+    "class": "≡2(mod 3)",
+    "outside": [
+     4,
+     6
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 662,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.09,
+   "null_mean": 156.0
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "半素数 + 奇合数",
+  "exceptions": 13,
+  "density": 0.0013,
+  "machine_desc": {
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     10,
+     20
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 38,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.0492,
+   "ratio": 1.82,
+   "null_mean": 7.2
+  },
+  "J1_known": "未确定",
+  "J2_mechanism": "机器已给出: 例外 ⊆ 无数字0(13 个)。**结构已解释。**",
+  "J4_verdict": "N1 可推",
+  "J5_human_needed": false
+ },
+ {
+  "candidate": "奇合数 + 平方数",
+  "exceptions": 11,
+  "density": 0.0011,
+  "machine_desc": {
+   "class_fit": {
+    "class": "≡2(mod 3)",
+    "outside": [
+     4,
+     6,
+     12
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 398,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.0164,
+   "ratio": 8.68,
+   "null_mean": 1.3
+  },
+  "J1_known": "未确定",
+  "J2_mechanism": "机器已给出: 例外 ⊆ ≡2(mod 3)(11 个中 11 个)。**结构已被解释。**",
+  "J4_verdict": "N1 可推",
+  "J5_human_needed": false
+ },
+ {
+  "candidate": "半素数 + 数位只含1和2",
+  "exceptions": 10,
+  "density": 0.001,
+  "machine_desc": {
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     14,
+     110
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.9672,
+   "ratio": 0.52,
+   "null_mean": 19.4
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "半素数 + 斐波那契",
+  "exceptions": 10,
+  "density": 0.001,
+  "machine_desc": {
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     1600,
+     2680
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.9836,
+   "ratio": 0.55,
+   "null_mean": 18.2
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "五边形数 + 半素数",
+  "exceptions": 8,
+  "density": 0.0008,
+  "machine_desc": {
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     64
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 110,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.03,
+   "null_mean": 266.6
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "半素数 + 完美幂",
+  "exceptions": 8,
+  "density": 0.0008,
+  "machine_desc": {
+   "class_fit": {
+    "class": "QR(mod 12)",
+    "outside": [
+     6,
+     32,
+     56
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 108,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.7049,
+   "ratio": 0.79,
+   "null_mean": 10.1
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "Harshad数 + 完美幂",
+  "exceptions": 7,
+  "density": 0.0007,
+  "machine_desc": {
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": []
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 8)",
+    "class_size": 2500,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.9836,
+   "ratio": 0.32,
+   "null_mean": 21.6
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "半素数 + 平方数",
+  "exceptions": 7,
+  "density": 0.0007,
+  "machine_desc": {
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     28,
+     32
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 108,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.7541,
+   "ratio": 0.7,
+   "null_mean": 9.9
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "奇合数 + 数位只含1和2",
+  "exceptions": 7,
+  "density": 0.0007,
+  "machine_desc": {
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 24,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.0328,
+   "ratio": 4.2,
+   "null_mean": 1.7
+  },
+  "J1_known": "未确定",
+  "J2_mechanism": "机器已给出: 例外 ⊆ Harshad数(7 个)。**结构已解释。**",
+  "J4_verdict": "N1 可推",
+  "J5_human_needed": false
+ },
+ {
+  "candidate": "2的幂 + 无数字0",
+  "exceptions": 4,
+  "density": 0.0004,
+  "machine_desc": {
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     11096,
+     11098,
+     11102
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.0,
+   "null_mean": 820.3
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "奇合数 + 素数",
+  "exceptions": 4,
+  "density": 0.0004,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6,
+     10
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 10,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.0164,
+   "ratio": 15.0,
+   "null_mean": 0.3
+  },
+  "J1_known": "未确定 —— 检索未单独做",
+  "J2_mechanism": "机器已验证: 例外 ⊆ Harshad数(4 个中 4 个)。若例外全是 Harshad 数, 则结构已被解释(非开放)。**须回灌机器确认**。",
+  "J4_verdict": "N1 可推(结构可被机器原语解释)",
+  "J5_human_needed": false
+ },
+ {
+  "candidate": "完美幂 + 素数",
+  "exceptions": 3,
+  "density": 0.0003,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     24
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": 24,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.01,
+   "null_mean": 321.7
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "Harshad数 + 五边形数",
+  "exceptions": 2,
+  "density": 0.0002,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     108,
+     306
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 8)",
+    "class_size": 2500,
+    "coverage": 0.125
+   },
+   "small_bound": 306,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.03,
+   "null_mean": 61.0
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "半素数 + 素数",
+  "exceptions": 2,
+  "density": 0.0002,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     10
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 3)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 10,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.4918,
+   "ratio": 1.09,
+   "null_mean": 1.8
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "Harshad数 + 素数",
+  "exceptions": 1,
+  "density": 0.0001,
+  "machine_desc": {
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     126
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 12)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 126,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.05,
+   "null_mean": 19.1
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b10 + 回文数_b7",
+  "exceptions": 154,
+  "density": 0.0154,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.14,
+   "null_mean": 1082.9
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "Harshad数 + 数位只含1和2",
+  "exceptions": 128,
+  "density": 0.0128,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.4262,
+   "ratio": 1.03,
+   "null_mean": 123.7
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "Harshad数 + 平方数",
+  "exceptions": 120,
+  "density": 0.012,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "QR(mod 18)",
+    "class_size": 8889,
+    "coverage": 0.445
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.0164,
+   "ratio": 3.04,
+   "null_mean": 39.5
+  },
+  "J1_known": "未确定 —— 仅一次检索(giving 空结果), 不足以称'文献沉默'",
+  "J2_mechanism": "**R32 漏掉的关键一问**。答案: 例外**避开 QR(mod 18)**(模 18 二次剩余, 覆盖扫描空间 44.5%) —— 用机器原语即可描述。R32 之所以判'无法描述', 是因为类库缺'避开型'原语与二次剩余类。**结构已部分解释。**",
+  "J4_verdict": "**撤回**(原 N2/G1 均不成立)",
+  "J5_human_needed": false
+ },
+ {
+  "candidate": "半素数 + 立方数",
+  "exceptions": 105,
+  "density": 0.0105,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 0.5082,
+   "ratio": 1.0,
+   "null_mean": 104.7
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b10 + 回文数_b16",
+  "exceptions": 103,
+  "density": 0.0103,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.22,
+   "null_mean": 465.9
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "回文数_b10 + 回文数_b2",
+  "exceptions": 98,
+  "density": 0.0098,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.19,
+   "null_mean": 529.0
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "五边形数 + 素数",
+  "exceptions": 64,
+  "density": 0.0064,
+  "machine_desc": {
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.12,
+   "null_mean": 536.7
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ },
+ {
+  "candidate": "平方数 + 素数",
+  "exceptions": 54,
+  "density": 0.0054,
+  "machine_desc": {
+   "class_fit": {
+    "class": "QR(mod 18)",
+    "outside": []
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null
+  },
+  "J3_significance": {
+   "p": 1.0,
+   "ratio": 0.13,
+   "null_mean": 408.8
+  },
+  "J1_known": "**未裁判**",
+  "J2_mechanism": null,
+  "J4_verdict": "**未裁判**",
+  "J5_human_needed": null
+ }
+]
