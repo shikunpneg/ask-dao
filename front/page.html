@@ -9,24 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --silver-1:#f6f8fc;
-    --silver-2:#e9edf5;
-    --silver-3:#d9e0ec;
-    --silver-4:#c6cfdf;
-    --silver-5:#b0bcd0;
-    --ink-deep:#08080a;
-    --ink-mid:#1a1c24;
     --gold:#a8894f;
     --text-main:#1a1d24;
     --text-sub:#4a5268;
     --text-dim:#7a8399;
-    --border:rgba(30,40,60,0.12);
   }
-
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--silver-2);
+    background:#e9edf5;
     color:var(--text-main);
     font-family:'Noto Serif SC',serif;
     overflow-x:hidden;
@@ -39,46 +30,32 @@
     height:100vh;
     min-height:680px;
     overflow:hidden;
-    /* 银白金属湖泊的基础质感 */
-    background:
-      radial-gradient(ellipse 120% 90% at 15% 10%, rgba(255,255,255,1), transparent 50%),
-      radial-gradient(ellipse 80% 70% at 85% 85%, rgba(190,208,232,0.85), transparent 55%),
-      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(220,232,248,0.6), transparent 70%),
-      linear-gradient(170deg, #f8fafd 0%, #eef2f9 22%, #dde4ef 48%, #e8eef7 72%, #f4f7fb 100%);
+    background:#dde3ee;
   }
-
-  /* 水面 canvas —— 动态反光与涟漪 */
   #waterCanvas{
     position:absolute;inset:0;
     width:100%;height:100%;
-    pointer-events:none;
+    display:block;
   }
 
-  /* 墨字 canvas —— 粒子化的道 */
-  #inkCanvas{
-    position:absolute;inset:0;
-    width:100%;height:100%;
-    pointer-events:none;
-  }
-
-  /* 首屏底部 */
   .scroll-hint{
     position:absolute;
     bottom:36px;left:50%;
     transform:translateX(-50%);
     display:flex;flex-direction:column;align-items:center;gap:10px;
-    color:var(--text-dim);
+    color:rgba(60,75,100,0.55);
     font-size:11px;
     letter-spacing:.5em;
     text-indent:.5em;
     animation:breathe 3.4s ease-in-out infinite;
     z-index:6;
+    pointer-events:none;
   }
   .scroll-hint span{writing-mode:vertical-rl;letter-spacing:.3em;}
   .scroll-hint::after{
     content:'';
     width:1px;height:44px;
-    background:linear-gradient(to bottom, var(--text-sub), transparent);
+    background:linear-gradient(to bottom, rgba(60,75,100,0.5), transparent);
   }
   @keyframes breathe{
     0%,100%{opacity:.35;transform:translateX(-50%) translateY(0);}
@@ -87,7 +64,6 @@
 
   /* ==================== 通用 ==================== */
   section{position:relative;padding:140px 8vw;}
-
   .section-label{
     font-size:12px;letter-spacing:.5em;
     color:var(--gold);text-transform:uppercase;
@@ -98,46 +74,40 @@
   }
   .section-label.visible{opacity:1;transform:translateY(0);}
 
-  /* ==================== 一生二 ==================== */
   .genesis{
     min-height:100vh;
     display:flex;flex-direction:column;
     justify-content:center;align-items:center;
     text-align:center;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,255,255,0.9), transparent 70%),
-      linear-gradient(180deg,#eef2f8, #f5f7fb);
+    background:linear-gradient(180deg,#eef2f8, #f5f7fb);
     gap:16px;
   }
   .genesis-line{
     font-family:'Ma Shan Zheng',serif;
     font-size:clamp(28px,5.5vw,64px);
-    color:var(--ink-deep);
+    color:#08080a;
     letter-spacing:.14em;
     opacity:0;
     transform:translateY(36px) scale(.95);
     transition:all 1.2s cubic-bezier(.22,.61,.36,1);
-    text-shadow:0 2px 24px rgba(30,40,60,0.06);
   }
   .genesis-line.visible{opacity:1;transform:translateY(0) scale(1);}
   .genesis-line .num{color:var(--gold);font-size:.8em;}
   .genesis-divider{
     width:1px;height:0;
-    background:linear-gradient(to bottom,transparent,var(--text-sub),transparent);
+    background:linear-gradient(to bottom,transparent,#4a5268,transparent);
     transition:height 1.5s ease;
     margin:6px 0;opacity:.35;
   }
   .genesis-divider.visible{height:64px;}
 
-  /* ==================== 系统结构 ==================== */
   .structure{background:linear-gradient(180deg,#f5f7fb, #eef2f8);}
   .structure h2{
     font-size:clamp(22px,3vw,36px);
     font-weight:500;letter-spacing:.08em;
-    margin-bottom:70px;color:var(--ink-deep);
+    margin-bottom:70px;color:#08080a;
   }
   .structure h2 em{font-style:normal;color:var(--gold);}
-
   .struct-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -160,41 +130,18 @@
   .struct-card::before{
     content:'';position:absolute;top:0;left:0;
     width:100%;height:2px;
-    background:linear-gradient(90deg,transparent,var(--text-sub),transparent);
+    background:linear-gradient(90deg,transparent,#4a5268,transparent);
     opacity:0;transition:opacity .5s;
   }
   .struct-card:hover::before{opacity:.5;}
-  .struct-num{
-    font-size:13px;color:var(--gold);
-    letter-spacing:.3em;margin-bottom:22px;font-weight:500;
-  }
-  .struct-title{
-    font-size:20px;font-weight:600;
-    margin-bottom:16px;color:var(--ink-deep);
-    letter-spacing:.04em;
-  }
-  .struct-desc{
-    font-size:14px;line-height:2;
-    color:var(--text-sub);font-weight:300;
-  }
+  .struct-num{font-size:13px;color:var(--gold);letter-spacing:.3em;margin-bottom:22px;font-weight:500;}
+  .struct-title{font-size:20px;font-weight:600;margin-bottom:16px;color:#08080a;letter-spacing:.04em;}
+  .struct-desc{font-size:14px;line-height:2;color:var(--text-sub);font-weight:300;}
 
-  /* ==================== ModelScope ==================== */
   .models{background:#eef2f8;}
-  .models h2{
-    font-size:clamp(22px,3vw,36px);
-    font-weight:500;letter-spacing:.08em;
-    margin-bottom:20px;color:var(--ink-deep);
-  }
-  .models .sub{
-    color:var(--text-sub);font-size:15px;
-    font-weight:300;margin-bottom:64px;
-    max-width:560px;line-height:1.9;
-  }
-  .model-list{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-    gap:20px;
-  }
+  .models h2{font-size:clamp(22px,3vw,36px);font-weight:500;letter-spacing:.08em;margin-bottom:20px;color:#08080a;}
+  .models .sub{color:var(--text-sub);font-size:15px;font-weight:300;margin-bottom:64px;max-width:560px;line-height:1.9;}
+  .model-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
   .model-card{
     display:block;text-decoration:none;color:inherit;
     padding:36px 30px;
@@ -205,112 +152,36 @@
     opacity:0;transform:translateY(26px);
   }
   .model-card.visible{opacity:1;transform:translateY(0);}
-  .model-card:hover{
-    border-color:rgba(30,40,60,0.28);
-    transform:translateY(-4px);
-    box-shadow:0 24px 56px -24px rgba(30,50,90,0.24);
-  }
-  .model-card .tag{
-    display:inline-block;font-size:11px;
-    letter-spacing:.2em;color:var(--gold);
-    border:1px solid rgba(168,137,79,0.4);
-    padding:4px 10px;margin-bottom:20px;
-  }
-  .model-card .name{
-    font-size:18px;font-weight:600;
-    color:var(--ink-deep);margin-bottom:12px;
-    letter-spacing:.03em;
-  }
-  .model-card .path{
-    font-size:12px;color:var(--text-dim);
-    font-family:monospace;letter-spacing:.02em;
-    word-break:break-all;
-  }
-  .model-card .arrow{
-    position:absolute;right:28px;bottom:28px;
-    color:var(--text-sub);font-size:18px;
-    opacity:.35;transition:all .4s;
-  }
+  .model-card:hover{border-color:rgba(30,40,60,0.28);transform:translateY(-4px);box-shadow:0 24px 56px -24px rgba(30,50,90,0.24);}
+  .model-card .tag{display:inline-block;font-size:11px;letter-spacing:.2em;color:var(--gold);border:1px solid rgba(168,137,79,0.4);padding:4px 10px;margin-bottom:20px;}
+  .model-card .name{font-size:18px;font-weight:600;color:#08080a;margin-bottom:12px;letter-spacing:.03em;}
+  .model-card .path{font-size:12px;color:var(--text-dim);font-family:monospace;letter-spacing:.02em;word-break:break-all;}
+  .model-card .arrow{position:absolute;right:28px;bottom:28px;color:var(--text-sub);font-size:18px;opacity:.35;transition:all .4s;}
   .model-card:hover .arrow{opacity:1;transform:translate(4px,-4px);}
 
-  /* ==================== 新问题 ==================== */
   .questions{background:linear-gradient(180deg,#eef2f8, #f5f7fb);}
-  .questions h2{
-    font-size:clamp(22px,3vw,36px);
-    font-weight:500;letter-spacing:.08em;
-    margin-bottom:64px;color:var(--ink-deep);
-  }
-  .question-item{
-    display:flex;gap:32px;
-    padding:40px 0;
-    border-bottom:1px solid rgba(30,40,60,0.1);
-    opacity:0;transform:translateY(24px);
-    transition:all .8s cubic-bezier(.22,.61,.36,1);
-  }
+  .questions h2{font-size:clamp(22px,3vw,36px);font-weight:500;letter-spacing:.08em;margin-bottom:64px;color:#08080a;}
+  .question-item{display:flex;gap:32px;padding:40px 0;border-bottom:1px solid rgba(30,40,60,0.1);opacity:0;transform:translateY(24px);transition:all .8s cubic-bezier(.22,.61,.36,1);}
   .question-item.visible{opacity:1;transform:translateY(0);}
   .question-item:first-of-type{border-top:1px solid rgba(30,40,60,0.1);}
-  .q-index{
-    font-size:13px;color:var(--gold);
-    letter-spacing:.2em;min-width:52px;
-    padding-top:4px;font-weight:500;
-  }
+  .q-index{font-size:13px;color:var(--gold);letter-spacing:.2em;min-width:52px;padding-top:4px;font-weight:500;}
   .q-body{flex:1;}
-  .q-title{
-    font-size:18px;font-weight:600;
-    color:var(--ink-deep);margin-bottom:12px;
-    letter-spacing:.03em;line-height:1.6;
-  }
-  .q-desc{
-    font-size:14px;line-height:2;
-    color:var(--text-sub);font-weight:300;
-  }
+  .q-title{font-size:18px;font-weight:600;color:#08080a;margin-bottom:12px;letter-spacing:.03em;line-height:1.6;}
+  .q-desc{font-size:14px;line-height:2;color:var(--text-sub);font-weight:300;}
 
-  /* ==================== 页脚 ==================== */
-  .footer{
-    background:#e6ebf3;
-    padding:120px 8vw 70px;
-    border-top:1px solid rgba(30,40,60,0.1);
-  }
-  .dev-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:60px;margin-bottom:90px;
-  }
-  .dev-block h3{
-    font-size:13px;letter-spacing:.4em;
-    color:var(--gold);margin-bottom:28px;font-weight:600;
-  }
-  .dev-block p{
-    font-size:14px;line-height:2.1;
-    color:var(--text-sub);font-weight:300;
-  }
-  .dev-block a{
-    color:var(--ink-mid);text-decoration:none;
-    border-bottom:1px solid rgba(30,40,60,0.25);
-    transition:all .3s;padding-bottom:2px;
-  }
-  .dev-block a:hover{color:var(--ink-deep);border-color:var(--ink-deep);}
-  .dev-names{
-    display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:4px;
-  }
-  .dev-names span{font-size:14px;color:var(--ink-mid);font-weight:400;}
-  .footer-bottom{
-    display:flex;justify-content:space-between;
-    align-items:center;flex-wrap:wrap;gap:20px;
-    padding-top:40px;
-    border-top:1px solid rgba(30,40,60,0.08);
-    font-size:12px;color:var(--text-dim);letter-spacing:.1em;
-  }
-  .footer-bottom .dao-mark{
-    font-family:'Ma Shan Zheng',serif;
-    font-size:26px;color:var(--ink-deep);
-    letter-spacing:.1em;opacity:.85;
-  }
+  .footer{background:#e6ebf3;padding:120px 8vw 70px;border-top:1px solid rgba(30,40,60,0.1);}
+  .dev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:60px;margin-bottom:90px;}
+  .dev-block h3{font-size:13px;letter-spacing:.4em;color:var(--gold);margin-bottom:28px;font-weight:600;}
+  .dev-block p{font-size:14px;line-height:2.1;color:var(--text-sub);font-weight:300;}
+  .dev-block a{color:#1a1c24;text-decoration:none;border-bottom:1px solid rgba(30,40,60,0.25);transition:all .3s;padding-bottom:2px;}
+  .dev-block a:hover{color:#08080a;border-color:#08080a;}
+  .dev-names{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:4px;}
+  .dev-names span{font-size:14px;color:#1a1c24;font-weight:400;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-top:40px;border-top:1px solid rgba(30,40,60,0.08);font-size:12px;color:var(--text-dim);letter-spacing:.1em;}
+  .footer-bottom .dao-mark{font-family:'Ma Shan Zheng',serif;font-size:26px;color:#08080a;letter-spacing:.1em;opacity:.85;}
 
-  /* ==================== 响应式 ==================== */
   @media(max-width:768px){
     section{padding:100px 7vw;}
-    .genesis-line{letter-spacing:.1em;}
     .question-item{gap:18px;}
     .q-index{min-width:38px;}
     .footer{padding:90px 7vw 50px;}
@@ -319,10 +190,9 @@
 </head>
 <body>
 
-<!-- ==================== 首屏：道 · 银白湖泊 ==================== -->
+<!-- ==================== 首屏：道 · 银白湖面 ==================== -->
 <section class="hero" id="hero">
   <canvas id="waterCanvas"></canvas>
-  <canvas id="inkCanvas"></canvas>
   <div class="scroll-hint">
     <span>向下问道</span>
   </div>
@@ -489,297 +359,342 @@
 
 <script>
 /* ==================================================================
-   粒子化的「道」 + 银白金属湖泊
+   平静银白湖面 + 真实涟漪 + 粒子化「道」
    ================================================================== */
 (function(){
   'use strict';
 
-  /* ---------- 基础变量 ---------- */
   const hero = document.getElementById('hero');
-  const waterCanvas = document.getElementById('waterCanvas');
-  const inkCanvas = document.getElementById('inkCanvas');
-  const waterCtx = waterCanvas.getContext('2d');
-  const inkCtx = inkCanvas.getContext('2d');
+  const canvas = document.getElementById('waterCanvas');
+  const ctx = canvas.getContext('2d', { alpha: false });
 
   let W = 0, H = 0;
-  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let dpr = Math.min(window.devicePixelRatio || 1, 1.6);
 
-  /* 鼠标状态 */
+  /* 鼠标 */
   let mouseX = -9999, mouseY = -9999;
   let mouseActive = false;
-  let smoothMouseX = -9999, smoothMouseY = -9999;
+  let smoothX = -9999, smoothY = -9999;
 
   /* 时间 */
-  let time = 0;
+  let t0 = performance.now();
 
-  /* ---------- 预渲染粒子圆点 ---------- */
-  const dotCanvas = document.createElement('canvas');
-  dotCanvas.width = 24;
-  dotCanvas.height = 24;
-  (function(){
-    const c = dotCanvas.getContext('2d');
-    const g = c.createRadialGradient(12, 12, 0, 12, 12, 12);
-    g.addColorStop(0,   'rgba(0,0,0,1)');
-    g.addColorStop(0.35,'rgba(0,0,0,0.95)');
-    g.addColorStop(0.7, 'rgba(0,0,0,0.5)');
-    g.addColorStop(1,   'rgba(0,0,0,0)');
-    c.fillStyle = g;
-    c.fillRect(0, 0, 24, 24);
-  })();
+  /* ================================================================
+     一、预生成湖面噪声纹理（模拟真实水面的微纹理）
+     ================================================================ */
+  let noiseCanvas = null;
+  const NOISE_SIZE = 512;
 
-  /* ---------- 水面涟漪 ---------- */
-  const ripples = [];
+  function buildNoise(){
+    noiseCanvas = document.createElement('canvas');
+    noiseCanvas.width = NOISE_SIZE;
+    noiseCanvas.height = NOISE_SIZE;
+    const nc = noiseCanvas.getContext('2d');
+    const img = nc.createImageData(NOISE_SIZE, NOISE_SIZE);
+    const data = img.data;
 
-  function addRipple(x, y, strength){
-    if(ripples.length > 14) return;
-    ripples.push({
-      x, y,
-      radius: 2,
-      maxRadius: 160 + Math.random() * 220,
-      alpha: strength || 0.55,
-      speed: 1.6 + Math.random() * 1.2,
-      width: 0.8 + Math.random() * 1.2
-    });
+    for(let i = 0; i < data.length; i += 4){
+      // 多层随机，模拟水面的细微明暗
+      const v = 200 + Math.random() * 55;
+      data[i]     = v;
+      data[i + 1] = v + 4;
+      data[i + 2] = v + 12;
+      data[i + 3] = 255;
+    }
+    nc.putImageData(img, 0, 0);
   }
 
-  /* ---------- 粒子系统 ---------- */
+  /* ================================================================
+     二、预渲染「道」字 → 采样为粒子
+     ================================================================ */
   const particles = [];
-  let particleBaseScale = 1;
-  let particleBaseCX = 0;
-  let particleBaseCY = 0;
+  const dotSprite = document.createElement('canvas');
 
-  /* 在离屏画布上绘制「道」，采样像素生成粒子 */
+  function buildDotSprite(){
+    dotSprite.width = 26;
+    dotSprite.height = 26;
+    const c = dotSprite.getContext('2d');
+    const g = c.createRadialGradient(13, 13, 0, 13, 13, 13);
+    g.addColorStop(0,    'rgba(5,5,8,1)');
+    g.addColorStop(0.30, 'rgba(10,10,14,0.96)');
+    g.addColorStop(0.60, 'rgba(20,22,30,0.55)');
+    g.addColorStop(1,    'rgba(30,34,45,0)');
+    c.fillStyle = g;
+    c.fillRect(0, 0, 26, 26);
+  }
+
   function buildParticles(){
-    // 离屏画布：尺寸与「道」的逻辑尺寸一致
-    const offSize = 420;
     const off = document.createElement('canvas');
-    off.width = offSize;
-    off.height = offSize;
+    off.width = 440;
+    off.height = 440;
     const octx = off.getContext('2d');
 
-    octx.clearRect(0, 0, offSize, offSize);
+    octx.clearRect(0, 0, 440, 440);
     octx.textAlign = 'center';
     octx.textBaseline = 'middle';
 
-    // 多层绘制，让笔画更粗壮，更接近毛笔的厚度
-    octx.font = '900 300px "Ma Shan Zheng", "STKaiti", "KaiTi", "Noto Serif SC", serif';
+    // 用书法字体「道」字 —— Ma Shan Zheng 是最接近毛笔字的网页字体
+    const font = '900 300px "Ma Shan Zheng","STKaiti","KaiTi","Noto Serif SC",serif';
+
+    // 多层绘制让笔画饱满（模拟毛笔中锋）
+    octx.font = font;
     octx.fillStyle = '#000';
-    octx.fillText('道', offSize / 2, offSize / 2);
+    octx.fillText('道', 220, 220);
 
-    octx.font = '900 300px "Ma Shan Zheng", "STKaiti", "KaiTi", "Noto Serif SC", serif';
+    // 外扩一圈，加粗笔画
+    octx.font = font;
     octx.strokeStyle = '#000';
-    octx.lineWidth = 6;
-    octx.strokeText('道', offSize / 2, offSize / 2);
+    octx.lineWidth = 7;
+    octx.strokeText('道', 220, 220);
+    octx.lineWidth = 4;
+    octx.strokeText('道', 220, 220);
 
-    octx.font = '900 300px "Ma Shan Zheng", "STKaiti", "KaiTi", "Noto Serif SC", serif';
-    octx.lineWidth = 3;
-    octx.strokeText('道', offSize / 2, offSize / 2);
-
-    // 采样
     let data;
     try{
-      data = octx.getImageData(0, 0, offSize, offSize).data;
-    }catch(e){
-      return;
-    }
+      data = octx.getImageData(0, 0, 440, 440).data;
+    }catch(e){ return; }
 
     particles.length = 0;
 
     const step = 3;
-    const baseCX = W / 2;
-    const baseCY = H / 2;
-    const displayScale = Math.min(W * 0.5, H * 0.52, 420) / offSize;
+    const cx = W / 2;
+    const cy = H / 2;
+    const scale = Math.min(W * 0.52, H * 0.56, 430) / 440;
 
-    particleBaseScale = displayScale;
-    particleBaseCX = baseCX;
-    particleBaseCY = baseCY;
-
-    for(let y = 0; y < offSize; y += step){
-      for(let x = 0; x < offSize; x += step){
-        const idx = (y * offSize + x) * 4;
-        const a = data[idx + 3];
+    for(let y = 0; y < 440; y += step){
+      for(let x = 0; x < 440; x += step){
+        const a = data[(y * 440 + x) * 4 + 3];
         if(a > 80){
-          // 屏幕坐标
-          const jitter = step * 0.5;
-          const sx = baseCX + (x + (Math.random() - 0.5) * jitter - offSize / 2) * displayScale;
-          const sy = baseCY + (y + (Math.random() - 0.5) * jitter - offSize / 2) * displayScale;
+          const jx = (Math.random() - 0.5) * step;
+          const jy = (Math.random() - 0.5) * step;
+          const sx = cx + (x + jx - 220) * scale;
+          const sy = cy + (y + jy - 220) * scale;
 
-          // 跳过过于靠边的
-          if(sx < -50 || sx > W + 50 || sy < -50 || sy > H + 50) continue;
+          if(sx < -40 || sx > W + 40 || sy < -40 || sy > H + 40) continue;
 
           particles.push({
-            ox: sx, oy: sy,          // 原位
-            x: sx, y: sy,            // 当前位置
-            vx: 0, vy: 0,            // 速度
-            size: 1.6 + Math.random() * 1.6,  // 基础尺寸
-            alpha: 0.55 + Math.random() * 0.45, // 基础透明度
-            stiffness: 0.022 + Math.random() * 0.018,
-            damping: 0.90 + Math.random() * 0.06
+            ox: sx, oy: sy,
+            x: sx, y: sy,
+            vx: 0, vy: 0,
+            size: 1.5 + Math.random() * 1.8,
+            alpha: 0.6 + Math.random() * 0.4,
+            stiffness: 0.020 + Math.random() * 0.016,
+            damping: 0.905 + Math.random() * 0.05,
+            // 每粒子的独立相位，用于微抖动
+            phase: Math.random() * Math.PI * 2
           });
         }
       }
     }
   }
 
-  /* ---------- 尺寸 ---------- */
-  function resize(){
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = hero.clientWidth;
-    H = hero.clientHeight;
+  /* ================================================================
+     三、涟漪系统 —— 真实湖面涟漪
+     ================================================================ */
+  const ripples = [];
 
-    waterCanvas.width = W * dpr;
-    waterCanvas.height = H * dpr;
-    waterCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    inkCanvas.width = W * dpr;
-    inkCanvas.height = H * dpr;
-    inkCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    buildParticles();
+  function addRipple(x, y, strength){
+    if(ripples.length > 16) return;
+    ripples.push({
+      x, y,
+      r: 3,
+      maxR: 180 + Math.random() * 260,
+      alpha: strength || 0.6,
+      speed: 1.4 + Math.random() * 1.0,
+      // 每个涟漪的初始相位，用于打破完美的圆
+      seed: Math.random() * 1000
+    });
   }
 
+  /* ================================================================
+     四、尺寸
+     ================================================================ */
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 1.6);
+    W = hero.clientWidth;
+    H = hero.clientHeight;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildParticles();
+    buildNoise();
+  }
+
+  let resizeTimer;
   window.addEventListener('resize', ()=>{
-    clearTimeout(window.__resizeTimer);
-    window.__resizeTimer = setTimeout(resize, 180);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 180);
   });
 
-
   /* ================================================================
-     水 面 渲 染
+     五、渲染
      ================================================================ */
-  function renderWater(dt){
-    waterCtx.clearRect(0, 0, W, H);
+  function renderWater(now){
+    const t = (now - t0) * 0.001;
 
-    const t = time * 0.001;
+    /* --- 1. 底色：银白 → 浅银灰 的垂直渐变 --- */
+    const baseGrad = ctx.createLinearGradient(0, 0, 0, H);
+    baseGrad.addColorStop(0,    '#f2f5fa');
+    baseGrad.addColorStop(0.25, '#e6ecf5');
+    baseGrad.addColorStop(0.55, '#d5deec');
+    baseGrad.addColorStop(0.80, '#c8d3e4');
+    baseGrad.addColorStop(1,    '#dae2ee');
+    ctx.fillStyle = baseGrad;
+    ctx.fillRect(0, 0, W, H);
 
-    /* --- 1. 流动的液态金属光带 --- */
-    waterCtx.globalCompositeOperation = 'soft-light';
+    /* --- 2. 噪声微纹理（模拟水面细密颗粒） --- */
+    if(noiseCanvas){
+      const pat = ctx.createPattern(noiseCanvas, 'repeat');
+      ctx.globalAlpha = 0.06;
+      ctx.globalCompositeOperation = 'overlay';
+      ctx.fillStyle = pat;
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalAlpha = 1;
+    }
 
-    for(let i = 0; i < 7; i++){
-      const phase = t * (0.6 + i * 0.15) + i * 1.7;
-      const x1 = W * (0.15 + 0.7 * (0.5 + 0.5 * Math.sin(phase)));
-      const y1 = H * (0.1 + 0.8 * (0.5 + 0.5 * Math.cos(phase * 0.73)));
-      const x2 = W * (0.15 + 0.7 * (0.5 + 0.5 * Math.cos(phase * 0.91)));
-      const y2 = H * (0.1 + 0.8 * (0.5 + 0.5 * Math.sin(phase * 0.67)));
+    /* --- 3. 流动的银白反光带（水面的天空倒影） --- */
+    ctx.globalCompositeOperation = 'soft-light';
 
-      const g = waterCtx.createLinearGradient(x1, y1, x2, y2);
-      const a = 0.35 + 0.25 * Math.sin(phase * 1.3);
+    for(let i = 0; i < 5; i++){
+      const phase = t * (0.22 + i * 0.07) + i * 2.3;
+      const y1 = H * (0.08 + 0.84 * (0.5 + 0.5 * Math.sin(phase * 0.51)));
+      const y2 = H * (0.08 + 0.84 * (0.5 + 0.5 * Math.cos(phase * 0.43 + 1.2)));
+      const x1 = W * (0.0 + 0.4 * (0.5 + 0.5 * Math.sin(phase * 0.37)));
+      const x2 = W * (0.6 + 0.4 * (0.5 + 0.5 * Math.cos(phase * 0.29)));
+
+      const g = ctx.createLinearGradient(x1, y1, x2, y2);
+      const a = 0.30 + 0.15 * Math.sin(phase * 0.9);
       g.addColorStop(0,    'rgba(255,255,255,0)');
-      g.addColorStop(0.22, `rgba(255,255,255,${a})`);
-      g.addColorStop(0.45, 'rgba(200,215,240,0.12)');
-      g.addColorStop(0.62, `rgba(255,255,255,${a * 0.8})`);
-      g.addColorStop(0.85, 'rgba(180,200,230,0.08)');
+      g.addColorStop(0.18, `rgba(255,255,255,${a})`);
+      g.addColorStop(0.38, 'rgba(235,242,252,0.10)');
+      g.addColorStop(0.52, `rgba(255,255,255,${a * 0.85})`);
+      g.addColorStop(0.72, 'rgba(210,222,242,0.08)');
       g.addColorStop(1,    'rgba(255,255,255,0)');
 
-      waterCtx.fillStyle = g;
-      waterCtx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
     }
 
-    /* --- 2. 细密的焦散纹理 --- */
-    waterCtx.globalCompositeOperation = 'overlay';
-    waterCtx.globalAlpha = 0.5;
+    /* --- 4. 斜向的光带（模拟阳光在水面的拉长反射） --- */
+    ctx.globalCompositeOperation = 'screen';
+    ctx.globalAlpha = 0.35;
 
-    for(let i = 0; i < 3; i++){
-      const phase = t * 0.4 + i * 2.1;
-      const offsetX = Math.sin(phase) * 60;
-      const offsetY = Math.cos(phase * 0.8) * 40;
+    for(let i = 0; i < 4; i++){
+      const phase = t * 0.15 + i * 1.9;
+      const cx = W * (0.3 + 0.4 * (0.5 + 0.5 * Math.sin(phase)));
+      const cy = H * (0.2 + 0.6 * (0.5 + 0.5 * Math.cos(phase * 0.7)));
 
-      const g = waterCtx.createRadialGradient(
-        W * 0.5 + offsetX, H * 0.5 + offsetY, 0,
-        W * 0.5 + offsetX, H * 0.5 + offsetY, Math.max(W, H) * 0.7
-      );
-      g.addColorStop(0,    'rgba(255,255,255,0.18)');
-      g.addColorStop(0.3,  'rgba(220,232,248,0.06)');
-      g.addColorStop(0.6,  'rgba(255,255,255,0.12)');
-      g.addColorStop(1,    'rgba(200,215,235,0)');
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.65);
+      g.addColorStop(0,   'rgba(255,255,255,0.45)');
+      g.addColorStop(0.2, 'rgba(255,255,255,0.18)');
+      g.addColorStop(0.5, 'rgba(255,255,255,0.05)');
+      g.addColorStop(1,   'rgba(255,255,255,0)');
 
-      waterCtx.fillStyle = g;
-      waterCtx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
     }
-    waterCtx.globalAlpha = 1;
+    ctx.globalAlpha = 1;
 
-    /* --- 3. 鼠标镜面高光 --- */
+    /* --- 5. 鼠标位置的高光（镜面反射） --- */
     if(mouseActive){
-      smoothMouseX += (mouseX - smoothMouseX) * 0.12;
-      smoothMouseY += (mouseY - smoothMouseY) * 0.12;
+      smoothX += (mouseX - smoothX) * 0.10;
+      smoothY += (mouseY - smoothY) * 0.10;
 
-      waterCtx.globalCompositeOperation = 'screen';
+      ctx.globalCompositeOperation = 'screen';
 
-      const g = waterCtx.createRadialGradient(
-        smoothMouseX, smoothMouseY, 0,
-        smoothMouseX, smoothMouseY, 380
-      );
-      g.addColorStop(0,    'rgba(255,255,255,0.55)');
-      g.addColorStop(0.12, 'rgba(255,255,255,0.28)');
-      g.addColorStop(0.35, 'rgba(240,248,255,0.08)');
+      // 大范围柔光
+      let g = ctx.createRadialGradient(smoothX, smoothY, 0, smoothX, smoothY, 420);
+      g.addColorStop(0,    'rgba(255,255,255,0.38)');
+      g.addColorStop(0.10, 'rgba(255,255,255,0.18)');
+      g.addColorStop(0.35, 'rgba(240,248,255,0.06)');
       g.addColorStop(0.7,  'rgba(230,240,255,0.02)');
       g.addColorStop(1,    'rgba(255,255,255,0)');
-
-      waterCtx.fillStyle = g;
-      waterCtx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
 
       // 高光核心
-      const g2 = waterCtx.createRadialGradient(
-        smoothMouseX, smoothMouseY, 0,
-        smoothMouseX, smoothMouseY, 120
-      );
-      g2.addColorStop(0,   'rgba(255,255,255,0.7)');
-      g2.addColorStop(0.4, 'rgba(255,255,255,0.2)');
-      g2.addColorStop(1,   'rgba(255,255,255,0)');
-      waterCtx.fillStyle = g2;
-      waterCtx.fillRect(0, 0, W, H);
+      g = ctx.createRadialGradient(smoothX, smoothY, 0, smoothX, smoothY, 90);
+      g.addColorStop(0,   'rgba(255,255,255,0.55)');
+      g.addColorStop(0.5, 'rgba(255,255,255,0.12)');
+      g.addColorStop(1,   'rgba(255,255,255,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
     }
 
-    /* --- 4. 涟漪 --- */
-    waterCtx.globalCompositeOperation = 'overlay';
+    /* --- 6. 涟漪（真实水波：同心圆环，边缘亮暗交替） --- */
+    ctx.globalCompositeOperation = 'overlay';
 
     for(let i = ripples.length - 1; i >= 0; i--){
-      const r = ripples[i];
-      r.radius += r.speed;
-      r.alpha *= 0.975;
+      const rp = ripples[i];
+      rp.r += rp.speed;
+      rp.alpha *= 0.974;
 
-      if(r.alpha < 0.005 || r.radius > r.maxRadius){
+      if(rp.alpha < 0.006 || rp.r > rp.maxR){
         ripples.splice(i, 1);
         continue;
       }
 
-      const inner = Math.max(0, r.radius - r.width * 3);
-      const outer = r.radius + r.width * 3;
+      const R = rp.r;
 
-      const g = waterCtx.createRadialGradient(r.x, r.y, inner, r.x, r.y, outer);
-      g.addColorStop(0,    'rgba(255,255,255,0)');
-      g.addColorStop(0.35, `rgba(255,255,255,${r.alpha * 0.7})`);
-      g.addColorStop(0.5,  `rgba(255,255,255,${r.alpha * 0.9})`);
-      g.addColorStop(0.65, `rgba(160,185,220,${r.alpha * 0.5})`);
-      g.addColorStop(1,    'rgba(255,255,255,0)');
+      // 真实涟漪有多个同心环：主环 + 内环 + 外环
+      // 每个环用渐变描边，模拟波峰与波谷
 
-      waterCtx.fillStyle = g;
-      waterCtx.beginPath();
-      waterCtx.arc(r.x, r.y, outer, 0, Math.PI * 2);
-      waterCtx.fill();
+      // 主波峰
+      const inner1 = Math.max(0, R - 4);
+      const outer1 = R + 4;
+      const g1 = ctx.createRadialGradient(rp.x, rp.y, inner1, rp.x, rp.y, outer1);
+      g1.addColorStop(0,    'rgba(255,255,255,0)');
+      g1.addColorStop(0.35, `rgba(255,255,255,${rp.alpha * 0.7})`);
+      g1.addColorStop(0.5,  `rgba(255,255,255,${rp.alpha * 0.95})`);
+      g1.addColorStop(0.65, `rgba(180,200,235,${rp.alpha * 0.5})`);
+      g1.addColorStop(1,    'rgba(255,255,255,0)');
+      ctx.fillStyle = g1;
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, outer1, 0, Math.PI * 2);
+      ctx.fill();
 
-      // 内圈高光
-      if(r.radius > 18){
-        waterCtx.beginPath();
-        waterCtx.arc(r.x, r.y, r.radius * 0.72, 0, Math.PI * 2);
-        waterCtx.strokeStyle = `rgba(255,255,255,${r.alpha * 0.35})`;
-        waterCtx.lineWidth = 0.8;
-        waterCtx.stroke();
+      // 内层波谷（暗环，增强立体感）
+      if(R > 16){
+        const inner2 = R * 0.70 - 3;
+        const outer2 = R * 0.70 + 3;
+        const g2 = ctx.createRadialGradient(rp.x, rp.y, inner2, rp.x, rp.y, outer2);
+        g2.addColorStop(0,    'rgba(140,160,195,0)');
+        g2.addColorStop(0.45, `rgba(140,160,195,${rp.alpha * 0.35})`);
+        g2.addColorStop(0.55, `rgba(120,140,175,${rp.alpha * 0.45})`);
+        g2.addColorStop(1,    'rgba(140,160,195,0)');
+        ctx.fillStyle = g2;
+        ctx.beginPath();
+        ctx.arc(rp.x, rp.y, outer2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // 最外圈微弱光环
+      if(R > 36){
+        const inner3 = R * 0.92;
+        const outer3 = R * 0.98;
+        const g3 = ctx.createRadialGradient(rp.x, rp.y, inner3, rp.x, rp.y, outer3);
+        g3.addColorStop(0,    'rgba(255,255,255,0)');
+        g3.addColorStop(0.5,  `rgba(255,255,255,${rp.alpha * 0.25})`);
+        g3.addColorStop(1,    'rgba(255,255,255,0)');
+        ctx.fillStyle = g3;
+        ctx.beginPath();
+        ctx.arc(rp.x, rp.y, outer3, 0, Math.PI * 2);
+        ctx.fill();
       }
     }
 
-    waterCtx.globalCompositeOperation = 'source-over';
+    ctx.globalCompositeOperation = 'source-over';
   }
 
 
   /* ================================================================
-     粒 子 更 新 与 绘 制
+     六、粒子更新与绘制（道字散开 / 回聚）
      ================================================================ */
-  const REPEL_RADIUS = 260;   // 鼠标排斥半径
-  const REPEL_FORCE = 16;     // 排斥强度
+  const REPEL_RADIUS = 240;
+  const REPEL_FORCE = 14;
 
-  function updateAndDrawParticles(){
-    inkCtx.clearRect(0, 0, W, H);
+  function updateAndDrawParticles(now){
+    const t = (now - t0) * 0.001;
 
     /* --- 更新 --- */
     for(let i = 0; i < particles.length; i++){
@@ -792,11 +707,9 @@
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if(dist < REPEL_RADIUS && dist > 0.5){
-          const force = Math.pow(1 - dist / REPEL_RADIUS, 2) * REPEL_FORCE;
-          const nx = dx / dist;
-          const ny = dy / dist;
-          p.vx += nx * force;
-          p.vy += ny * force;
+          const force = Math.pow(1 - dist / REPEL_RADIUS, 2.2) * REPEL_FORCE;
+          p.vx += (dx / dist) * force;
+          p.vy += (dy / dist) * force;
         }
       }
 
@@ -808,14 +721,16 @@
       p.vx *= p.damping;
       p.vy *= p.damping;
 
-      /* 位置 */
+      /* 位置更新 */
       p.x += p.vx;
       p.y += p.vy;
+
+      /* 微小呼吸抖动（让字有生命感） */
+      p.x += Math.sin(t * 0.6 + p.phase) * 0.08;
+      p.y += Math.cos(t * 0.5 + p.phase) * 0.08;
     }
 
     /* --- 绘制 --- */
-    inkCtx.globalCompositeOperation = 'source-over';
-
     for(let i = 0; i < particles.length; i++){
       const p = particles[i];
 
@@ -824,68 +739,57 @@
       const dy = p.y - p.oy;
       const disp = Math.sqrt(dx * dx + dy * dy);
 
-      // 散开程度 0~1
-      const scatter = Math.min(disp / 70, 1);
+      // 散开程度
+      const scatter = Math.min(disp / 80, 1);
 
-      // 动态尺寸：散开时变大（墨扩散）
-      const size = p.size * (1 + scatter * 3.2);
+      // 散开时：尺寸变大（墨扩散），透明度降低
+      const size = p.size * (1 + scatter * 3.8);
+      const alpha = p.alpha * (1 - scatter * 0.6);
 
-      // 动态透明度：散开时变淡
-      const alpha = p.alpha * (1 - scatter * 0.55);
+      if(alpha < 0.015) continue;
 
-      if(alpha < 0.02) continue;
-
-      inkCtx.globalAlpha = alpha;
-      inkCtx.drawImage(
-        dotCanvas,
+      ctx.globalAlpha = alpha;
+      ctx.drawImage(
+        dotSprite,
         p.x - size, p.y - size,
         size * 2, size * 2
       );
     }
-
-    inkCtx.globalAlpha = 1;
+    ctx.globalAlpha = 1;
   }
 
 
   /* ================================================================
-     主 循 环
+     七、主循环
      ================================================================ */
-  let lastTime = performance.now();
-
   function loop(now){
-    const dt = Math.min(now - lastTime, 50);
-    lastTime = now;
-    time += dt;
-
-    renderWater(dt);
-    updateAndDrawParticles();
-
+    renderWater(now);
+    updateAndDrawParticles(now);
     requestAnimationFrame(loop);
   }
 
 
   /* ================================================================
-     鼠 标 事 件
+     八、鼠标事件
      ================================================================ */
   hero.addEventListener('mousemove', (e)=>{
     const rect = hero.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // 平滑
     if(!mouseActive){
-      smoothMouseX = x;
-      smoothMouseY = y;
+      smoothX = x;
+      smoothY = y;
     }
     mouseX = x;
     mouseY = y;
     mouseActive = true;
 
-    // 生成水波涟漪（节流）
+    // 生成涟漪（节流，保证连续感）
     const now = performance.now();
-    if(!hero.__lastRipple || now - hero.__lastRipple > 55){
-      addRipple(x, y, 0.5 + Math.random() * 0.3);
-      hero.__lastRipple = now;
+    if(!hero.__lastR || now - hero.__lastR > 55){
+      addRipple(x, y, 0.45 + Math.random() * 0.3);
+      hero.__lastR = now;
     }
   });
 
@@ -894,10 +798,7 @@
     mouseX = -9999;
     mouseY = -9999;
   });
-
-  hero.addEventListener('mouseenter', ()=>{
-    mouseActive = true;
-  });
+  hero.addEventListener('mouseenter', ()=>{ mouseActive = true; });
 
   hero.addEventListener('click', (e)=>{
     const rect = hero.getBoundingClientRect();
@@ -905,12 +806,12 @@
     const y = e.clientY - rect.top;
 
     // 强涟漪
-    addRipple(x, y, 0.85);
+    addRipple(x, y, 0.9);
     for(let i = 0; i < 4; i++){
       setTimeout(()=>{
         addRipple(
-          x + (Math.random() - 0.5) * 50,
-          y + (Math.random() - 0.5) * 50,
+          x + (Math.random() - 0.5) * 60,
+          y + (Math.random() - 0.5) * 60,
           0.4
         );
       }, i * 80);
@@ -919,7 +820,7 @@
 
 
   /* ================================================================
-     滚 动 渐 现
+     九、滚动渐现
      ================================================================ */
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -938,23 +839,24 @@
 
 
   /* ================================================================
-     初 始 化
+     十、初始化
      ================================================================ */
+  buildDotSprite();
   resize();
   requestAnimationFrame(loop);
 
-  // 页面加载后，在道字周围生成一圈初始涟漪，建立“水在呼吸”的感觉
+  // 开场涟漪：让湖面先“活”起来
   setTimeout(()=>{
     for(let i = 0; i < 5; i++){
       setTimeout(()=>{
         addRipple(
-          W * 0.5 + (Math.random() - 0.5) * 200,
-          H * 0.5 + (Math.random() - 0.5) * 200,
-          0.25
+          W * 0.5 + (Math.random() - 0.5) * 240,
+          H * 0.5 + (Math.random() - 0.5) * 240,
+          0.28
         );
-      }, i * 300);
+      }, i * 350);
     }
-  }, 500);
+  }, 600);
 
 })();
 </script>

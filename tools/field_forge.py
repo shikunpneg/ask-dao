@@ -287,6 +287,9 @@ def field2_ornament(n=4):
 def main():
     f1 = field1_prosody()
     f2 = field2_ornament(4)
+    f3 = field3_music()
+    f4 = field4_games()
+    f5 = field5_kinship()
     print("\n" + "=" * 88)
     print("领域锻造的诚实边界")
     print("=" * 88)
@@ -299,6 +302,139 @@ def main():
         json.dumps({"F1_prosody": f1, "F2_ornament": f2}, ensure_ascii=False, indent=1),
         encoding="utf-8")
     print("\n已存 out/demo/field_forge.json")
+
+# ==================================================================
+# F3 计算音乐学：音级集合 × 群论（真实乐理，非合成）
+# ==================================================================
+def f3_pcset():
+    """12 音级集合在 Tn(移位)/TnI(移位+倒影) 下的等价类。
+    真实音乐理论对象(Forte 集合类), 已知基数 224 —— 机器可复核。"""
+    from itertools import combinations
+    def normal_form(s):
+        """最小化(音程向量意义下的规范形): 取全部移位中字典序最小者。"""
+        best = None
+        for t in range(12):
+            rot = tuple(sorted((x + t) % 12 for x in s))
+            # 再取该集合及倒影的"最紧凑排列"
+            for cand in (rot, tuple(sorted((12 - x) % 12 for x in rot))):
+                span = []
+                for i in range(len(cand)):
+                    nxt = cand[(i + 1) % len(cand)]
+                    span.append((nxt - cand[i]) % 12 or 12)
+                key = (max(cand) - min(cand), cand)
+                if best is None or key < best[0]:
+                    best = (key, cand)
+        return best[1]
+
+    classes = {}
+    # 自纠错(第 21 次): 首版从 k=1 起, 得 223; 已知 Forte Tn/TnI 共 **224**
+    # (含**空集**这一类)。差 1 的来源就是空集, 不是算法错。
+    counts_by_card = {0: 1}
+    for k in range(1, 13):
+        seen = set()
+        for s in combinations(range(12), k):
+            nf = normal_form(s)
+            seen.add(nf)
+        counts_by_card[k] = len(seen)
+        classes[k] = seen
+    return counts_by_card, classes
+
+
+# ==================================================================
+# F4 计算博弈论：小棋盘 impartial game × Sprague-Grundy
+# ==================================================================
+def f4_grundy(n_max=24):
+    """取石子游戏族(减法集 S)的 Grundy 值序列。
+    这是**已知稠密**领地(OEIS 收录大量 Grundy 序列) —— 作**阴性对照**。"""
+    sub_sets = [(1, 2), (1, 3), (1, 2, 3), (2, 3), (1, 4), (1, 3, 4)]
+    out = {}
+    for S in sub_sets:
+        g = [0] * (n_max + 1)
+        for n in range(1, n_max + 1):
+            reach = {g[n - s] for s in S if s <= n}
+            m = 0
+            while m in reach:
+                m += 1
+            g[n] = m
+        out[S] = g
+    return out
+
+
+# ==================================================================
+# F5 计算亲属结构：亲属称谓 × 图论（真实人类学）
+# ==================================================================
+def f5_kinship():
+    """汉语亲属称谓的结构化: 每个称谓 = (辈分差 g, 父系/母系 l, 性别 s, 长幼 e)。
+    枚举由基本关系 {父,母,夫,妻,子,女} 生成的复合关系, 看称谓如何**折叠**——"""
+    # 基本关系: (辈分增量, 血亲侧, 性别)
+    BASIC = {"父": (1, "p", "M"), "母": (1, "m", "F"),
+             "子": (-1, None, "M"), "女": (-1, None, "F"),
+             "兄": (0, "p", "M"), "弟": (0, "p", "M")}
+
+    def compose(a, b):
+        """关系的复合(b 之后再 a? 此处按'的'的顺序: a的b)"""
+        return (a[0] + b[0], a[1] or b[1], b[2])
+
+    # 枚举长度<=3 的复合关系, 统计落在同一"结构槽"的数目
+    from collections import defaultdict
+    slots = defaultdict(list)
+    def walk(seq, cur, depth):
+        if depth > 0:
+            slots[cur].append("".join(seq))
+        if depth == 3:
+            return
+        for name, rel in BASIC.items():
+            walk(seq + [name], compose(cur, rel), depth + 1)
+    walk([], (0, None, None), 0)
+
+    # "折叠度": 同一结构槽被多少个不同称谓链命中
+    folds = {k: len(v) for k, v in slots.items() if len(v) > 1}
+    return slots, folds
+
+
+def field3_music():
+    print("\n" + "=" * 88)
+    print("F3 计算音乐学 —— 对象: 12 音级集合(真实乐理) × 方法: 群论等价类")
+    print("=" * 88)
+    cnt, _ = f3_pcset()
+    print(f"  {'基数':>4}{'Tn/TnI 等价类数':>18}")
+    for k in sorted(cnt):
+        print(f"  {k:>4}{cnt[k]:>18}")
+    print(f"\n  合计: {sum(cnt.values())} 个集合类 (**Forte 已知结果: 224** —— 机器{'吻合' if sum(cnt.values())==224 else '不吻合, 需查'} )")
+    print("\n  机器可提出、且自己答不出的问题:")
+    print("    Q1 集合类的**基数分布** 1..12 的精确公式是什么? (机器只能枚举)")
+    print("    Q2 哪些集合类**没有**移位对称(稳定子群平凡)? 密度如何随基数变化?")
+    print("    Q3 为什么某些基数下对称类特别多(**机制**)?")
+    return cnt
+
+
+def field4_games():
+    print("\n" + "=" * 88)
+    print("F4 计算博弈论 —— 对象: 减法博弈族 × 方法: Sprague-Grundy")
+    print("=" * 88)
+    g = f4_grundy(24)
+    print(f"  {'减法集 S':<18}Grundy 序列(n=0..24)")
+    for S, seq in g.items():
+        print(f"  {str(S):<18}{seq}")
+    print("\n  **阴性对照**: 减法博弈的 Grundy 序列是**已知稠密**领地(OEIS 大量收录),")
+    print("  预期本领域产不出新问题 —— 用于检验分层方法是否有判别力。")
+    return {str(k): v for k, v in g.items()}
+
+
+def field5_kinship():
+    print("\n" + "=" * 88)
+    print("F5 计算亲属结构 —— 对象: 汉语亲属称谓(真实人类学) × 方法: 关系代数 + 图")
+    print("=" * 88)
+    slots, folds = f5_kinship()
+    print(f"  长度≤3 的关系链, 落到 {len(slots)} 个结构槽(辈分/血亲侧/性别)")
+    print(f"  其中 **{len(folds)} 个槽被多条称谓链命中**(= 称谓的'折叠'):")
+    for k, cnt in sorted(folds.items(), key=lambda x: -x[1])[:6]:
+        print(f"     槽 {k}: {cnt} 条链, 例 {slots[k][:4]}")
+    print("\n  机器可提出、且自己答不出的问题:")
+    print("    Q1 亲属称谓系统的**折叠模式**是什么? 为什么某些槽折叠得特别厉害?")
+    print("    Q2 不同语言的亲属系统, 其折叠结构是否满足某些**普遍约束**?")
+    print("    Q3 哪些**理论可能**的亲属关系在汉语中**没有专门称谓**(反事实)?")
+    return {"slots": len(slots), "folds": len(folds)}
 
 
 if __name__ == "__main__":
