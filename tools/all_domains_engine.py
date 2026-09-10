@@ -53,15 +53,17 @@ def _chain_lengths(step_fn, start, max_steps=50):
 
 
 def _collatz_like_seq(n, k=3):
-    """类 Collatz: 若可被k整除则/k, 否则×k+1; 返回 (首次到达1步数, 轨道最大值)。"""
+    """类 Collatz: 若可被k整除则/k, 否则×k+1; 返回 (收敛到1步数, 或 -1 若发散/循环)。"""
     steps = 0
     x = n
-    peak = x
-    while x != 1 and steps < 10000:
+    seen = set()
+    while x != 1 and steps < 10000 and x not in seen:
+        seen.add(x)
         x = x // k if x % k == 0 else k * x + 1
-        peak = max(peak, x)
         steps += 1
-    return steps, peak
+    if x == 1:
+        return steps
+    return -1  # 发散/进入循环, 不算"收敛序列"
 
 
 def _sigma(n):
@@ -92,7 +94,7 @@ def worker_domain(args):
 
 
 def _math(param):
-    """数学: 跨进制 + 多边形 + 函数泛化"""
+    """数学: 跨进制 + 多边形 + 函数泛化 + Collatz类 + 模迭代"""
     b, k, k2 = param
     out = []
     # 跨进制: 回文(b)+素数
@@ -118,6 +120,32 @@ def _math(param):
     found = [n for n in range(2, 100000) if _sigma(n) == k2 * n]
     out.append({"domain": "数学", "statement": f"σ(n)={k2}n 的解: {found}",
                 "evidence": {"found": found}, "judge_route": "枚举"})
+    # Collatz 类链长序列(只保留收敛到1的; 发散记为-1并从序列中剔除)
+    collatz = [_collatz_like_seq(n, k) for n in range(2, 40)]
+    collatz = [s for s in collatz if s >= 0]
+    out.append({"domain": "数学", "statement": f"类Collatz(k={k})收敛链长序列: {collatz[:10]}...",
+                "evidence": {"seq": collatz, "k": k}, "judge_route": "迭代枚举"})
+    # 模迭代 x^2+c mod m 最长环(随 m)
+    c = k % 5 + 1
+    best = []
+    for m in range(3, 30):
+        seen = {}
+        maxlen = 0
+        for x0 in range(m):
+            x = x0
+            chain = {}
+            steps = 0
+            while x not in chain and x not in seen:
+                chain[x] = steps
+                x = (x * x + c) % m
+                steps += 1
+            if x in chain:
+                maxlen = max(maxlen, steps - chain[x])
+            for kk_, v in chain.items():
+                seen[kk_] = v
+        best.append(maxlen)
+    out.append({"domain": "数学", "statement": f"x^2+{c} mod m 最长环随m: {best[:12]}",
+                "evidence": {"seq": best}, "judge_route": "迭代枚举"})
     return out
 
 
