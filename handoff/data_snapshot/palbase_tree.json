@@ -1,0 +1,1042 @@
+{
+ "recs": [
+  {
+   "id": "CX_pal3_char",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 3) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "非周期(疑似无限/稠密)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 3) + 素数 (例外有限) 的例外集恰好 68 个, 最大者 12388(前几个 [78, 88, 100, 118, 142, 146]), 之后恒成立。**是什么刻画了这批小例外**?",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     78,
+     88,
+     100,
+     118,
+     142,
+     146,
+     148,
+     266,
+     268,
+     298
+    ],
+    "count": 68,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": 12388,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {
+     "ext_range": [
+      5000002,
+      9999996
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出小例外集的精确刻画并证明, 或指出刻画不存在的理由",
+    "params": {
+     "进制": 3
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 78,
+       "perm": 62
+      }
+     }
+    }
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "3",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 3) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 3) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 非周期(疑似无限/稠密)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=3, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal4_holds",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 4) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "无例外(区间内)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 4) + 素数 (例外有限) —— 机器扫遍 [4,5000000] 未发现任何例外。这个猜想是**定理**吗? (机器只能验证到上界, 证不了)",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [],
+    "count": 0,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": null,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {},
+    "settleable_by_machine": false,
+    "crit": "证明该猜想恒成立, 或给出扫描上界之外的第一个反例",
+    "params": {
+     "进制": 4
+    },
+    "reductions": {}
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "4",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 4) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 4) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 无例外(区间内)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=4, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal5_char",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 5) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "有限稀疏"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 5) + 素数 (例外有限) 的例外集恰好 4 个, 最大者 1266(前几个 [66, 418, 448, 1266]), 之后恒成立。**是什么刻画了这批小例外**?",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     66,
+     418,
+     448,
+     1266
+    ],
+    "count": 4,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": 1266,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {
+     "ext_range": [
+      5000002,
+      9999996
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出小例外集的精确刻画并证明, 或指出刻画不存在的理由",
+    "params": {
+     "进制": 5
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 66,
+       "perm": 86
+      }
+     }
+    }
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "5",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 5) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 5) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 有限稀疏",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=5, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal6_holds",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 6) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "无例外(区间内)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 6) + 素数 (例外有限) —— 机器扫遍 [4,5000000] 未发现任何例外。这个猜想是**定理**吗? (机器只能验证到上界, 证不了)",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [],
+    "count": 0,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": null,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {},
+    "settleable_by_machine": false,
+    "crit": "证明该猜想恒成立, 或给出扫描上界之外的第一个反例",
+    "params": {
+     "进制": 6
+    },
+    "reductions": {}
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "6",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 6) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 6) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 无例外(区间内)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=6, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal7_holds",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 7) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "无例外(区间内)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 7) + 素数 (例外有限) —— 机器扫遍 [4,5000000] 未发现任何例外。这个猜想是**定理**吗? (机器只能验证到上界, 证不了)",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [],
+    "count": 0,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": null,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {},
+    "settleable_by_machine": false,
+    "crit": "证明该猜想恒成立, 或给出扫描上界之外的第一个反例",
+    "params": {
+     "进制": 7
+    },
+    "reductions": {}
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "7",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 7) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 7) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 无例外(区间内)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=7, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal8_holds",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 8) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "无例外(区间内)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 8) + 素数 (例外有限) —— 机器扫遍 [4,5000000] 未发现任何例外。这个猜想是**定理**吗? (机器只能验证到上界, 证不了)",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [],
+    "count": 0,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": null,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {},
+    "settleable_by_machine": false,
+    "crit": "证明该猜想恒成立, 或给出扫描上界之外的第一个反例",
+    "params": {
+     "进制": 8
+    },
+    "reductions": {}
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "8",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 8) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 8) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 无例外(区间内)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=8, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal9_char",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 9) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "有限稀疏"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 9) + 素数 (例外有限) 的例外集恰好 1 个, 最大者 124(前几个 [124]), 之后恒成立。**是什么刻画了这批小例外**?",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     124
+    ],
+    "count": 1,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": 124,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {
+     "ext_range": [
+      5000002,
+      9999996
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出小例外集的精确刻画并证明, 或指出刻画不存在的理由",
+    "params": {
+     "进制": 9
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 124,
+       "perm": 604
+      }
+     }
+    }
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "9",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 9) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 9) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 有限稀疏",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=9, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal10_holds",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 10) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "无例外(区间内)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 10) + 素数 (例外有限) —— 机器扫遍 [4,5000000] 未发现任何例外。这个猜想是**定理**吗? (机器只能验证到上界, 证不了)",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [],
+    "count": 0,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": null,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {},
+    "settleable_by_machine": false,
+    "crit": "证明该猜想恒成立, 或给出扫描上界之外的第一个反例",
+    "params": {
+     "进制": 10
+    },
+    "reductions": {}
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "10",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 10) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 10) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 无例外(区间内)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=10, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal11_char",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 11) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "有限稀疏"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 11) + 素数 (例外有限) 的例外集恰好 1 个, 最大者 126(前几个 [126]), 之后恒成立。**是什么刻画了这批小例外**?",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     126
+    ],
+    "count": 1,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": 126,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {
+     "ext_range": [
+      5000002,
+      9999996
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出小例外集的精确刻画并证明, 或指出刻画不存在的理由",
+    "params": {
+     "进制": 11
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 126,
+       "perm": 56
+      }
+     }
+    }
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "11",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 11) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 11) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 有限稀疏",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=11, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal12_holds",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 12) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "无例外(区间内)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 12) + 素数 (例外有限) —— 机器扫遍 [4,5000000] 未发现任何例外。这个猜想是**定理**吗? (机器只能验证到上界, 证不了)",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [],
+    "count": 0,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": null,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {},
+    "settleable_by_machine": false,
+    "crit": "证明该猜想恒成立, 或给出扫描上界之外的第一个反例",
+    "params": {
+     "进制": 12
+    },
+    "reductions": {}
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "12",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 12) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 12) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 无例外(区间内)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=12, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal13_char",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 13) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "有限稀疏",
+    "置换归约"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 13) + 素数 (例外有限) 的例外集恰好 1 个, 最大者 126(前几个 [126]), 之后恒成立。**是什么刻画了这批小例外**?\n  [机器归约] 例外集只依赖**数位多重集**(进制 13) => 问题空间从 [4,5000000] 的 2499999 个数 归约为数位多重集(partitions(len, b-1) 量级) —— 归约后该问题的答案应只依赖数位多重集。",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     126
+    ],
+    "count": 1,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": 126,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {
+     "ext_range": [
+      5000002,
+      9999996
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出小例外集的精确刻画并证明, 或指出刻画不存在的理由",
+    "params": {
+     "进制": 13
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": true,
+      "tested": 27862,
+      "reduction": "例外集只依赖**数位多重集**(进制 13) => 问题空间从 [4,5000000] 的 2499999 个数 归约为数位多重集(partitions(len, b-1) 量级)",
+      "reduces_to": "digit_multiset"
+     }
+    }
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "13",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 13) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 13) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 有限稀疏 × 置换归约",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=13, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal14_char",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 14) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "有限稀疏"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 14) + 素数 (例外有限) 的例外集恰好 1 个, 最大者 540(前几个 [540]), 之后恒成立。**是什么刻画了这批小例外**?",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     540
+    ],
+    "count": 1,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": 540,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {
+     "ext_range": [
+      5000002,
+      9999996
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出小例外集的精确刻画并证明, 或指出刻画不存在的理由",
+    "params": {
+     "进制": 14
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 540,
+       "perm": 1996
+      }
+     }
+    }
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "14",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 14) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 14) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 有限稀疏",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=14, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal15_holds",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 15) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "无例外(区间内)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 15) + 素数 (例外有限) —— 机器扫遍 [4,5000000] 未发现任何例外。这个猜想是**定理**吗? (机器只能验证到上界, 证不了)",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [],
+    "count": 0,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": null,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {},
+    "settleable_by_machine": false,
+    "crit": "证明该猜想恒成立, 或给出扫描上界之外的第一个反例",
+    "params": {
+     "进制": 15
+    },
+    "reductions": {}
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "15",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 15) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 15) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 无例外(区间内)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=15, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  },
+  {
+   "id": "CX_pal16_holds",
+   "domain": "数学",
+   "seed": "机器扫出「每个 n = 回文数(base 16) + 素数 (例外有限)」的例外集后, 反例自身的结构成了新问题",
+   "motifs": [
+    "回文数",
+    "素数",
+    "跨进制",
+    "无例外(区间内)"
+   ],
+   "template": "反例驱动(回文数+素数跨进制)",
+   "statement": "每个 n = 回文数(base 16) + 素数 (例外有限) —— 机器扫遍 [4,5000000] 未发现任何例外。这个猜想是**定理**吗? (机器只能验证到上界, 证不了)",
+   "judgement": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [],
+    "count": 0,
+    "period": null,
+    "residues": null,
+    "class_fit": null,
+    "small_bound": null,
+    "scan": [
+     4,
+     5000000
+    ],
+    "probe": {},
+    "settleable_by_machine": false,
+    "crit": "证明该猜想恒成立, 或给出扫描上界之外的第一个反例",
+    "params": {
+     "进制": 16
+    },
+    "reductions": {}
+   },
+   "status": "开放(机器无法结算)",
+   "honesty": "机器提出·未结算(需证明或反例)",
+   "binds": {
+    "进制": "16",
+    "扫描": "4..5000000"
+   },
+   "tree": {
+    "parent": "R_palbase_tree",
+    "edge": "每个 n = 回文数(base 16) + 素数 (例外有限)"
+   },
+   "provenance": [
+    "从 R_palbase_tree 生长: 每个 n = 回文数(base 16) + 素数 (例外有限)",
+    "母题组合: 回文数 × 素数 × 跨进制 × 无例外(区间内)",
+    "模板: 反例驱动(回文数+素数跨进制)",
+    "参数: 进制=16, 扫描=4..5000000",
+    "判定(反例集结构拟合(机器枚举)): 开放(机器无法结算)"
+   ]
+  }
+ ],
+ "report": {
+  "territory": "palbase_tree",
+  "family": "回文数+素数跨进制",
+  "literature": "回文数(b)+素数 覆盖; base-10 是 MO 公开问题",
+  "specs": [
+   {
+    "spec": "pal3",
+    "claim": "每个 n = 回文数(base 3) + 素数 (例外有限)",
+    "n": 68,
+    "density": 0.0,
+    "kind": "非周期(疑似无限/稠密)",
+    "last": 12388,
+    "at_boundary": false,
+    "class_fit": null,
+    "small_bound": 12388,
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 78,
+       "perm": 62
+      }
+     }
+    },
+    "probe_extends": false,
+    "n_beyond": 0,
+    "verdict": "产出 1 个开放问题 [含归约]"
+   },
+   {
+    "spec": "pal4",
+    "claim": "每个 n = 回文数(base 4) + 素数 (例外有限)",
+    "n": 0,
+    "density": 0.0,
+    "kind": "无例外(区间内)",
+    "verdict": "无例外 -> 产出 1 个开放问题(是否定理)"
+   },
+   {
+    "spec": "pal5",
+    "claim": "每个 n = 回文数(base 5) + 素数 (例外有限)",
+    "n": 4,
+    "density": 0.0,
+    "kind": "有限稀疏",
+    "last": 1266,
+    "at_boundary": false,
+    "class_fit": null,
+    "small_bound": 1266,
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 66,
+       "perm": 86
+      }
+     }
+    },
+    "probe_extends": false,
+    "n_beyond": 0,
+    "verdict": "产出 1 个开放问题 [含归约]"
+   },
+   {
+    "spec": "pal6",
+    "claim": "每个 n = 回文数(base 6) + 素数 (例外有限)",
+    "n": 0,
+    "density": 0.0,
+    "kind": "无例外(区间内)",
+    "verdict": "无例外 -> 产出 1 个开放问题(是否定理)"
+   },
+   {
+    "spec": "pal7",
+    "claim": "每个 n = 回文数(base 7) + 素数 (例外有限)",
+    "n": 0,
+    "density": 0.0,
+    "kind": "无例外(区间内)",
+    "verdict": "无例外 -> 产出 1 个开放问题(是否定理)"
+   },
+   {
+    "spec": "pal8",
+    "claim": "每个 n = 回文数(base 8) + 素数 (例外有限)",
+    "n": 0,
+    "density": 0.0,
+    "kind": "无例外(区间内)",
+    "verdict": "无例外 -> 产出 1 个开放问题(是否定理)"
+   },
+   {
+    "spec": "pal9",
+    "claim": "每个 n = 回文数(base 9) + 素数 (例外有限)",
+    "n": 1,
+    "density": 0.0,
+    "kind": "有限稀疏",
+    "last": 124,
+    "at_boundary": false,
+    "class_fit": null,
+    "small_bound": 124,
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 124,
+       "perm": 604
+      }
+     }
+    },
+    "probe_extends": false,
+    "n_beyond": 0,
+    "verdict": "产出 1 个开放问题 [含归约]"
+   },
+   {
+    "spec": "pal10",
+    "claim": "每个 n = 回文数(base 10) + 素数 (例外有限)",
+    "n": 0,
+    "density": 0.0,
+    "kind": "无例外(区间内)",
+    "verdict": "无例外 -> 产出 1 个开放问题(是否定理)"
+   },
+   {
+    "spec": "pal11",
+    "claim": "每个 n = 回文数(base 11) + 素数 (例外有限)",
+    "n": 1,
+    "density": 0.0,
+    "kind": "有限稀疏",
+    "last": 126,
+    "at_boundary": false,
+    "class_fit": null,
+    "small_bound": 126,
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 126,
+       "perm": 56
+      }
+     }
+    },
+    "probe_extends": false,
+    "n_beyond": 0,
+    "verdict": "产出 1 个开放问题 [含归约]"
+   },
+   {
+    "spec": "pal12",
+    "claim": "每个 n = 回文数(base 12) + 素数 (例外有限)",
+    "n": 0,
+    "density": 0.0,
+    "kind": "无例外(区间内)",
+    "verdict": "无例外 -> 产出 1 个开放问题(是否定理)"
+   },
+   {
+    "spec": "pal13",
+    "claim": "每个 n = 回文数(base 13) + 素数 (例外有限)",
+    "n": 1,
+    "density": 0.0,
+    "kind": "有限稀疏",
+    "last": 126,
+    "at_boundary": false,
+    "class_fit": null,
+    "small_bound": 126,
+    "reductions": {
+     "perm_invariance": {
+      "invariant": true,
+      "tested": 27862,
+      "reduction": "例外集只依赖**数位多重集**(进制 13) => 问题空间从 [4,5000000] 的 2499999 个数 归约为数位多重集(partitions(len, b-1) 量级)",
+      "reduces_to": "digit_multiset"
+     }
+    },
+    "probe_extends": false,
+    "n_beyond": 0,
+    "verdict": "产出 1 个开放问题 [含归约]"
+   },
+   {
+    "spec": "pal14",
+    "claim": "每个 n = 回文数(base 14) + 素数 (例外有限)",
+    "n": 1,
+    "density": 0.0,
+    "kind": "有限稀疏",
+    "last": 540,
+    "at_boundary": false,
+    "class_fit": null,
+    "small_bound": 540,
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 540,
+       "perm": 1996
+      }
+     }
+    },
+    "probe_extends": false,
+    "n_beyond": 0,
+    "verdict": "产出 1 个开放问题 [含归约]"
+   },
+   {
+    "spec": "pal15",
+    "claim": "每个 n = 回文数(base 15) + 素数 (例外有限)",
+    "n": 0,
+    "density": 0.0,
+    "kind": "无例外(区间内)",
+    "verdict": "无例外 -> 产出 1 个开放问题(是否定理)"
+   },
+   {
+    "spec": "pal16",
+    "claim": "每个 n = 回文数(base 16) + 素数 (例外有限)",
+    "n": 0,
+    "density": 0.0,
+    "kind": "无例外(区间内)",
+    "verdict": "无例外 -> 产出 1 个开放问题(是否定理)"
+   }
+  ]
+ }
+}
