@@ -30,7 +30,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "贴边界(未知)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "rejected(出现新例外 [5000001, 5000003, 5000005, 5000007])"
   },
   {
    "id": "Q_b3",
@@ -58,7 +59,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "open(例外多/仍在冒)"
   },
   {
    "id": "Q_b4",
@@ -79,7 +81,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(例外汇合: [35, 255, 515, 1855, 4345], N0->N1 无新)"
   },
   {
    "id": "Q_b5",
@@ -99,7 +102,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(例外汇合: [66, 418, 448, 1266], N0->N1 无新)"
   },
   {
    "id": "Q_b6",
@@ -116,7 +120,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(例外汇合: [1855], N0->N1 无新)"
   },
   {
    "id": "Q_b7",
@@ -131,7 +136,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
   },
   {
    "id": "Q_b8",
@@ -146,7 +152,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
   },
   {
    "id": "Q_b9",
@@ -163,7 +170,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(例外汇合: [124], N0->N1 无新)"
   },
   {
    "id": "Q_b10",
@@ -178,7 +186,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
   },
   {
    "id": "Q_b11",
@@ -195,7 +204,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(例外汇合: [126], N0->N1 无新)"
   },
   {
    "id": "Q_b12",
@@ -210,7 +220,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
   },
   {
    "id": "Q_b13",
@@ -227,7 +238,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(例外汇合: [126], N0->N1 无新)"
   },
   {
    "id": "Q_b14",
@@ -244,7 +256,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(例外汇合: [540], N0->N1 无新)"
   },
   {
    "id": "Q_b15",
@@ -259,7 +272,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
   },
   {
    "id": "Q_b16",
@@ -276,7 +290,8 @@
    },
    "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
    "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2"
+   "layer": "L0/L2",
+   "harness_verdict": "confirmed(例外汇合: [539], N0->N1 无新)"
   },
   {
    "id": "CX_质数_三角数_char",
