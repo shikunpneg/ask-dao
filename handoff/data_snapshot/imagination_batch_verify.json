@@ -1,0 +1,3766 @@
+{
+ "grounded": [
+  {
+   "term": "认知测度",
+   "a": "认知",
+   "b": "测度",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 510,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "认知拓扑",
+   "a": "认知",
+   "b": "拓扑",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 510,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "认知同调",
+   "a": "认知",
+   "b": "同调",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 510,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "认知熵",
+   "a": "认知",
+   "b": "熵",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 510,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "认知演化",
+   "a": "认知",
+   "b": "演化",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 510,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "认知选择",
+   "a": "认知",
+   "b": "选择",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 510,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "认知催化",
+   "a": "认知",
+   "b": "催化",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 510,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "认知平衡",
+   "a": "认知",
+   "b": "平衡",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 510,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "认知压缩",
+   "a": "认知",
+   "b": "压缩",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 510,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "认知反馈",
+   "a": "认知",
+   "b": "反馈",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 510,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "认知工业化",
+   "a": "认知",
+   "b": "工业化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 510,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "认知标准化",
+   "a": "认知",
+   "b": "标准化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 510,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "认知自动化",
+   "a": "认知",
+   "b": "自动化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 510,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "认知模块化",
+   "a": "认知",
+   "b": "模块化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 510,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "认知优化",
+   "a": "认知",
+   "b": "优化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 510,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "认知分配",
+   "a": "认知",
+   "b": "分配",
+   "a_domain": "心理",
+   "b_domain": "经济",
+   "a_refs": 510,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "认知可判定",
+   "a": "认知",
+   "b": "可判定",
+   "a_domain": "心理",
+   "b_domain": "逻辑",
+   "a_refs": 510,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "意识测度",
+   "a": "意识",
+   "b": "测度",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 249,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "意识拓扑",
+   "a": "意识",
+   "b": "拓扑",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 249,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "意识同调",
+   "a": "意识",
+   "b": "同调",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 249,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "意识熵",
+   "a": "意识",
+   "b": "熵",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 249,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "意识演化",
+   "a": "意识",
+   "b": "演化",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 249,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "意识选择",
+   "a": "意识",
+   "b": "选择",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 249,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "意识催化",
+   "a": "意识",
+   "b": "催化",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 249,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "意识平衡",
+   "a": "意识",
+   "b": "平衡",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 249,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "意识编码",
+   "a": "意识",
+   "b": "编码",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 249,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "意识压缩",
+   "a": "意识",
+   "b": "压缩",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 249,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "意识反馈",
+   "a": "意识",
+   "b": "反馈",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 249,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "意识工业化",
+   "a": "意识",
+   "b": "工业化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 249,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "意识标准化",
+   "a": "意识",
+   "b": "标准化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 249,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "意识自动化",
+   "a": "意识",
+   "b": "自动化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 249,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "意识模块化",
+   "a": "意识",
+   "b": "模块化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 249,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "意识优化",
+   "a": "意识",
+   "b": "优化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 249,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "意识分配",
+   "a": "意识",
+   "b": "分配",
+   "a_domain": "心理",
+   "b_domain": "经济",
+   "a_refs": 249,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "意识可判定",
+   "a": "意识",
+   "b": "可判定",
+   "a_domain": "心理",
+   "b_domain": "逻辑",
+   "a_refs": 249,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "记忆测度",
+   "a": "记忆",
+   "b": "测度",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 114,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "记忆拓扑",
+   "a": "记忆",
+   "b": "拓扑",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 114,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "记忆同调",
+   "a": "记忆",
+   "b": "同调",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 114,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "记忆熵",
+   "a": "记忆",
+   "b": "熵",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 114,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "记忆演化",
+   "a": "记忆",
+   "b": "演化",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 114,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "记忆选择",
+   "a": "记忆",
+   "b": "选择",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 114,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "记忆催化",
+   "a": "记忆",
+   "b": "催化",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 114,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "记忆平衡",
+   "a": "记忆",
+   "b": "平衡",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 114,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "记忆编码",
+   "a": "记忆",
+   "b": "编码",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 114,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "记忆反馈",
+   "a": "记忆",
+   "b": "反馈",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 114,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "记忆工业化",
+   "a": "记忆",
+   "b": "工业化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 114,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "记忆标准化",
+   "a": "记忆",
+   "b": "标准化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 114,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "记忆自动化",
+   "a": "记忆",
+   "b": "自动化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 114,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "记忆模块化",
+   "a": "记忆",
+   "b": "模块化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 114,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "记忆优化",
+   "a": "记忆",
+   "b": "优化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 114,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "记忆分配",
+   "a": "记忆",
+   "b": "分配",
+   "a_domain": "心理",
+   "b_domain": "经济",
+   "a_refs": 114,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "记忆可判定",
+   "a": "记忆",
+   "b": "可判定",
+   "a_domain": "心理",
+   "b_domain": "逻辑",
+   "a_refs": 114,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "情绪测度",
+   "a": "情绪",
+   "b": "测度",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 70,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "情绪拓扑",
+   "a": "情绪",
+   "b": "拓扑",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 70,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "情绪同调",
+   "a": "情绪",
+   "b": "同调",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 70,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "情绪熵",
+   "a": "情绪",
+   "b": "熵",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 70,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "情绪演化",
+   "a": "情绪",
+   "b": "演化",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 70,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "情绪选择",
+   "a": "情绪",
+   "b": "选择",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 70,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "情绪催化",
+   "a": "情绪",
+   "b": "催化",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 70,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "情绪平衡",
+   "a": "情绪",
+   "b": "平衡",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 70,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "情绪编码",
+   "a": "情绪",
+   "b": "编码",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 70,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "情绪压缩",
+   "a": "情绪",
+   "b": "压缩",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 70,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "情绪反馈",
+   "a": "情绪",
+   "b": "反馈",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 70,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "情绪工业化",
+   "a": "情绪",
+   "b": "工业化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 70,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "情绪标准化",
+   "a": "情绪",
+   "b": "标准化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 70,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "情绪自动化",
+   "a": "情绪",
+   "b": "自动化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 70,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "情绪模块化",
+   "a": "情绪",
+   "b": "模块化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 70,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "情绪优化",
+   "a": "情绪",
+   "b": "优化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 70,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "情绪分配",
+   "a": "情绪",
+   "b": "分配",
+   "a_domain": "心理",
+   "b_domain": "经济",
+   "a_refs": 70,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "情绪可判定",
+   "a": "情绪",
+   "b": "可判定",
+   "a_domain": "心理",
+   "b_domain": "逻辑",
+   "a_refs": 70,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "动机测度",
+   "a": "动机",
+   "b": "测度",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 181,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "动机拓扑",
+   "a": "动机",
+   "b": "拓扑",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 181,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "动机同调",
+   "a": "动机",
+   "b": "同调",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 181,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "动机熵",
+   "a": "动机",
+   "b": "熵",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 181,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "动机演化",
+   "a": "动机",
+   "b": "演化",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 181,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "动机选择",
+   "a": "动机",
+   "b": "选择",
+   "a_domain": "心理",
+   "b_domain": "生物",
+   "a_refs": 181,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "动机催化",
+   "a": "动机",
+   "b": "催化",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 181,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "动机平衡",
+   "a": "动机",
+   "b": "平衡",
+   "a_domain": "心理",
+   "b_domain": "化学",
+   "a_refs": 181,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "动机编码",
+   "a": "动机",
+   "b": "编码",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 181,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "动机压缩",
+   "a": "动机",
+   "b": "压缩",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 181,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "动机反馈",
+   "a": "动机",
+   "b": "反馈",
+   "a_domain": "心理",
+   "b_domain": "信息",
+   "a_refs": 181,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "动机工业化",
+   "a": "动机",
+   "b": "工业化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 181,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "动机标准化",
+   "a": "动机",
+   "b": "标准化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 181,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "动机自动化",
+   "a": "动机",
+   "b": "自动化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 181,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "动机模块化",
+   "a": "动机",
+   "b": "模块化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 181,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "动机优化",
+   "a": "动机",
+   "b": "优化",
+   "a_domain": "心理",
+   "b_domain": "工程",
+   "a_refs": 181,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "动机分配",
+   "a": "动机",
+   "b": "分配",
+   "a_domain": "心理",
+   "b_domain": "经济",
+   "a_refs": 181,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "动机可判定",
+   "a": "动机",
+   "b": "可判定",
+   "a_domain": "心理",
+   "b_domain": "逻辑",
+   "a_refs": 181,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "语义测度",
+   "a": "语义",
+   "b": "测度",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 226,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "语义拓扑",
+   "a": "语义",
+   "b": "拓扑",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 226,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "语义同调",
+   "a": "语义",
+   "b": "同调",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 226,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "语义熵",
+   "a": "语义",
+   "b": "熵",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 226,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "语义演化",
+   "a": "语义",
+   "b": "演化",
+   "a_domain": "语言",
+   "b_domain": "生物",
+   "a_refs": 226,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "语义选择",
+   "a": "语义",
+   "b": "选择",
+   "a_domain": "语言",
+   "b_domain": "生物",
+   "a_refs": 226,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "语义催化",
+   "a": "语义",
+   "b": "催化",
+   "a_domain": "语言",
+   "b_domain": "化学",
+   "a_refs": 226,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "语义平衡",
+   "a": "语义",
+   "b": "平衡",
+   "a_domain": "语言",
+   "b_domain": "化学",
+   "a_refs": 226,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "语义编码",
+   "a": "语义",
+   "b": "编码",
+   "a_domain": "语言",
+   "b_domain": "信息",
+   "a_refs": 226,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "语义压缩",
+   "a": "语义",
+   "b": "压缩",
+   "a_domain": "语言",
+   "b_domain": "信息",
+   "a_refs": 226,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "语义反馈",
+   "a": "语义",
+   "b": "反馈",
+   "a_domain": "语言",
+   "b_domain": "信息",
+   "a_refs": 226,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "语义工业化",
+   "a": "语义",
+   "b": "工业化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 226,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "语义标准化",
+   "a": "语义",
+   "b": "标准化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 226,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "语义自动化",
+   "a": "语义",
+   "b": "自动化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 226,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "语义模块化",
+   "a": "语义",
+   "b": "模块化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 226,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "语义优化",
+   "a": "语义",
+   "b": "优化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 226,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "语义分配",
+   "a": "语义",
+   "b": "分配",
+   "a_domain": "语言",
+   "b_domain": "经济",
+   "a_refs": 226,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "语义可判定",
+   "a": "语义",
+   "b": "可判定",
+   "a_domain": "语言",
+   "b_domain": "逻辑",
+   "a_refs": 226,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "话语测度",
+   "a": "话语",
+   "b": "测度",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 75,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "话语拓扑",
+   "a": "话语",
+   "b": "拓扑",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 75,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "话语同调",
+   "a": "话语",
+   "b": "同调",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 75,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "话语熵",
+   "a": "话语",
+   "b": "熵",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 75,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "话语演化",
+   "a": "话语",
+   "b": "演化",
+   "a_domain": "语言",
+   "b_domain": "生物",
+   "a_refs": 75,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "话语选择",
+   "a": "话语",
+   "b": "选择",
+   "a_domain": "语言",
+   "b_domain": "生物",
+   "a_refs": 75,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "话语催化",
+   "a": "话语",
+   "b": "催化",
+   "a_domain": "语言",
+   "b_domain": "化学",
+   "a_refs": 75,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "话语平衡",
+   "a": "话语",
+   "b": "平衡",
+   "a_domain": "语言",
+   "b_domain": "化学",
+   "a_refs": 75,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "话语编码",
+   "a": "话语",
+   "b": "编码",
+   "a_domain": "语言",
+   "b_domain": "信息",
+   "a_refs": 75,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "话语压缩",
+   "a": "话语",
+   "b": "压缩",
+   "a_domain": "语言",
+   "b_domain": "信息",
+   "a_refs": 75,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "话语反馈",
+   "a": "话语",
+   "b": "反馈",
+   "a_domain": "语言",
+   "b_domain": "信息",
+   "a_refs": 75,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "话语工业化",
+   "a": "话语",
+   "b": "工业化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 75,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "话语标准化",
+   "a": "话语",
+   "b": "标准化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 75,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "话语自动化",
+   "a": "话语",
+   "b": "自动化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 75,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "话语模块化",
+   "a": "话语",
+   "b": "模块化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 75,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "话语优化",
+   "a": "话语",
+   "b": "优化",
+   "a_domain": "语言",
+   "b_domain": "工程",
+   "a_refs": 75,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "话语分配",
+   "a": "话语",
+   "b": "分配",
+   "a_domain": "语言",
+   "b_domain": "经济",
+   "a_refs": 75,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "话语可判定",
+   "a": "话语",
+   "b": "可判定",
+   "a_domain": "语言",
+   "b_domain": "逻辑",
+   "a_refs": 75,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "资本测度",
+   "a": "资本",
+   "b": "测度",
+   "a_domain": "经济",
+   "b_domain": "数学",
+   "a_refs": 11,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "资本拓扑",
+   "a": "资本",
+   "b": "拓扑",
+   "a_domain": "经济",
+   "b_domain": "数学",
+   "a_refs": 11,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "资本同调",
+   "a": "资本",
+   "b": "同调",
+   "a_domain": "经济",
+   "b_domain": "数学",
+   "a_refs": 11,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "资本熵",
+   "a": "资本",
+   "b": "熵",
+   "a_domain": "经济",
+   "b_domain": "数学",
+   "a_refs": 11,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "资本演化",
+   "a": "资本",
+   "b": "演化",
+   "a_domain": "经济",
+   "b_domain": "生物",
+   "a_refs": 11,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "资本选择",
+   "a": "资本",
+   "b": "选择",
+   "a_domain": "经济",
+   "b_domain": "生物",
+   "a_refs": 11,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "资本催化",
+   "a": "资本",
+   "b": "催化",
+   "a_domain": "经济",
+   "b_domain": "化学",
+   "a_refs": 11,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "资本平衡",
+   "a": "资本",
+   "b": "平衡",
+   "a_domain": "经济",
+   "b_domain": "化学",
+   "a_refs": 11,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "资本编码",
+   "a": "资本",
+   "b": "编码",
+   "a_domain": "经济",
+   "b_domain": "信息",
+   "a_refs": 11,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "资本压缩",
+   "a": "资本",
+   "b": "压缩",
+   "a_domain": "经济",
+   "b_domain": "信息",
+   "a_refs": 11,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "资本工业化",
+   "a": "资本",
+   "b": "工业化",
+   "a_domain": "经济",
+   "b_domain": "工程",
+   "a_refs": 11,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "资本标准化",
+   "a": "资本",
+   "b": "标准化",
+   "a_domain": "经济",
+   "b_domain": "工程",
+   "a_refs": 11,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "资本自动化",
+   "a": "资本",
+   "b": "自动化",
+   "a_domain": "经济",
+   "b_domain": "工程",
+   "a_refs": 11,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "资本模块化",
+   "a": "资本",
+   "b": "模块化",
+   "a_domain": "经济",
+   "b_domain": "工程",
+   "a_refs": 11,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "资本优化",
+   "a": "资本",
+   "b": "优化",
+   "a_domain": "经济",
+   "b_domain": "工程",
+   "a_refs": 11,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "资本分配",
+   "a": "资本",
+   "b": "分配",
+   "a_domain": "经济",
+   "b_domain": "经济",
+   "a_refs": 11,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "资本可判定",
+   "a": "资本",
+   "b": "可判定",
+   "a_domain": "经济",
+   "b_domain": "逻辑",
+   "a_refs": 11,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "形式测度",
+   "a": "形式",
+   "b": "测度",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 1100,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "形式拓扑",
+   "a": "形式",
+   "b": "拓扑",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 1100,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "形式同调",
+   "a": "形式",
+   "b": "同调",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 1100,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "形式熵",
+   "a": "形式",
+   "b": "熵",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 1100,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "形式演化",
+   "a": "形式",
+   "b": "演化",
+   "a_domain": "艺术",
+   "b_domain": "生物",
+   "a_refs": 1100,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "形式选择",
+   "a": "形式",
+   "b": "选择",
+   "a_domain": "艺术",
+   "b_domain": "生物",
+   "a_refs": 1100,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "形式催化",
+   "a": "形式",
+   "b": "催化",
+   "a_domain": "艺术",
+   "b_domain": "化学",
+   "a_refs": 1100,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "形式平衡",
+   "a": "形式",
+   "b": "平衡",
+   "a_domain": "艺术",
+   "b_domain": "化学",
+   "a_refs": 1100,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "形式编码",
+   "a": "形式",
+   "b": "编码",
+   "a_domain": "艺术",
+   "b_domain": "信息",
+   "a_refs": 1100,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "形式压缩",
+   "a": "形式",
+   "b": "压缩",
+   "a_domain": "艺术",
+   "b_domain": "信息",
+   "a_refs": 1100,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "形式反馈",
+   "a": "形式",
+   "b": "反馈",
+   "a_domain": "艺术",
+   "b_domain": "信息",
+   "a_refs": 1100,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "形式工业化",
+   "a": "形式",
+   "b": "工业化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 1100,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "形式标准化",
+   "a": "形式",
+   "b": "标准化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 1100,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "形式自动化",
+   "a": "形式",
+   "b": "自动化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 1100,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "形式模块化",
+   "a": "形式",
+   "b": "模块化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 1100,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "形式优化",
+   "a": "形式",
+   "b": "优化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 1100,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "形式分配",
+   "a": "形式",
+   "b": "分配",
+   "a_domain": "艺术",
+   "b_domain": "经济",
+   "a_refs": 1100,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "形式可判定",
+   "a": "形式",
+   "b": "可判定",
+   "a_domain": "艺术",
+   "b_domain": "逻辑",
+   "a_refs": 1100,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "风格测度",
+   "a": "风格",
+   "b": "测度",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 29,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "风格拓扑",
+   "a": "风格",
+   "b": "拓扑",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 29,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "风格同调",
+   "a": "风格",
+   "b": "同调",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 29,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "风格熵",
+   "a": "风格",
+   "b": "熵",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 29,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "风格演化",
+   "a": "风格",
+   "b": "演化",
+   "a_domain": "艺术",
+   "b_domain": "生物",
+   "a_refs": 29,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "风格选择",
+   "a": "风格",
+   "b": "选择",
+   "a_domain": "艺术",
+   "b_domain": "生物",
+   "a_refs": 29,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "风格催化",
+   "a": "风格",
+   "b": "催化",
+   "a_domain": "艺术",
+   "b_domain": "化学",
+   "a_refs": 29,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "风格平衡",
+   "a": "风格",
+   "b": "平衡",
+   "a_domain": "艺术",
+   "b_domain": "化学",
+   "a_refs": 29,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "风格编码",
+   "a": "风格",
+   "b": "编码",
+   "a_domain": "艺术",
+   "b_domain": "信息",
+   "a_refs": 29,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "风格压缩",
+   "a": "风格",
+   "b": "压缩",
+   "a_domain": "艺术",
+   "b_domain": "信息",
+   "a_refs": 29,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "风格反馈",
+   "a": "风格",
+   "b": "反馈",
+   "a_domain": "艺术",
+   "b_domain": "信息",
+   "a_refs": 29,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "风格工业化",
+   "a": "风格",
+   "b": "工业化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 29,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "风格标准化",
+   "a": "风格",
+   "b": "标准化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 29,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "风格自动化",
+   "a": "风格",
+   "b": "自动化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 29,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "风格模块化",
+   "a": "风格",
+   "b": "模块化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 29,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "风格优化",
+   "a": "风格",
+   "b": "优化",
+   "a_domain": "艺术",
+   "b_domain": "工程",
+   "a_refs": 29,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "风格分配",
+   "a": "风格",
+   "b": "分配",
+   "a_domain": "艺术",
+   "b_domain": "经济",
+   "a_refs": 29,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "风格可判定",
+   "a": "风格",
+   "b": "可判定",
+   "a_domain": "艺术",
+   "b_domain": "逻辑",
+   "a_refs": 29,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "责任测度",
+   "a": "责任",
+   "b": "测度",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 38,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "责任拓扑",
+   "a": "责任",
+   "b": "拓扑",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 38,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "责任同调",
+   "a": "责任",
+   "b": "同调",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 38,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "责任熵",
+   "a": "责任",
+   "b": "熵",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 38,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "责任演化",
+   "a": "责任",
+   "b": "演化",
+   "a_domain": "伦理",
+   "b_domain": "生物",
+   "a_refs": 38,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "责任选择",
+   "a": "责任",
+   "b": "选择",
+   "a_domain": "伦理",
+   "b_domain": "生物",
+   "a_refs": 38,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "责任催化",
+   "a": "责任",
+   "b": "催化",
+   "a_domain": "伦理",
+   "b_domain": "化学",
+   "a_refs": 38,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "责任平衡",
+   "a": "责任",
+   "b": "平衡",
+   "a_domain": "伦理",
+   "b_domain": "化学",
+   "a_refs": 38,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "责任编码",
+   "a": "责任",
+   "b": "编码",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 38,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "责任压缩",
+   "a": "责任",
+   "b": "压缩",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 38,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "责任反馈",
+   "a": "责任",
+   "b": "反馈",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 38,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "责任工业化",
+   "a": "责任",
+   "b": "工业化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 38,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "责任标准化",
+   "a": "责任",
+   "b": "标准化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 38,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "责任自动化",
+   "a": "责任",
+   "b": "自动化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 38,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "责任模块化",
+   "a": "责任",
+   "b": "模块化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 38,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "责任优化",
+   "a": "责任",
+   "b": "优化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 38,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "责任分配",
+   "a": "责任",
+   "b": "分配",
+   "a_domain": "伦理",
+   "b_domain": "经济",
+   "a_refs": 38,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "责任可判定",
+   "a": "责任",
+   "b": "可判定",
+   "a_domain": "伦理",
+   "b_domain": "逻辑",
+   "a_refs": 38,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "价值测度",
+   "a": "价值",
+   "b": "测度",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 205,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "价值拓扑",
+   "a": "价值",
+   "b": "拓扑",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 205,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "价值同调",
+   "a": "价值",
+   "b": "同调",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 205,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "价值熵",
+   "a": "价值",
+   "b": "熵",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 205,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "价值演化",
+   "a": "价值",
+   "b": "演化",
+   "a_domain": "伦理",
+   "b_domain": "生物",
+   "a_refs": 205,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "价值选择",
+   "a": "价值",
+   "b": "选择",
+   "a_domain": "伦理",
+   "b_domain": "生物",
+   "a_refs": 205,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "价值催化",
+   "a": "价值",
+   "b": "催化",
+   "a_domain": "伦理",
+   "b_domain": "化学",
+   "a_refs": 205,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "价值平衡",
+   "a": "价值",
+   "b": "平衡",
+   "a_domain": "伦理",
+   "b_domain": "化学",
+   "a_refs": 205,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "价值编码",
+   "a": "价值",
+   "b": "编码",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 205,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "价值压缩",
+   "a": "价值",
+   "b": "压缩",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 205,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "价值反馈",
+   "a": "价值",
+   "b": "反馈",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 205,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "价值工业化",
+   "a": "价值",
+   "b": "工业化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 205,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "价值标准化",
+   "a": "价值",
+   "b": "标准化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 205,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "价值自动化",
+   "a": "价值",
+   "b": "自动化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 205,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "价值模块化",
+   "a": "价值",
+   "b": "模块化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 205,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "价值优化",
+   "a": "价值",
+   "b": "优化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 205,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "价值分配",
+   "a": "价值",
+   "b": "分配",
+   "a_domain": "伦理",
+   "b_domain": "经济",
+   "a_refs": 205,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "价值可判定",
+   "a": "价值",
+   "b": "可判定",
+   "a_domain": "伦理",
+   "b_domain": "逻辑",
+   "a_refs": 205,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "善测度",
+   "a": "善",
+   "b": "测度",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 144,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "善拓扑",
+   "a": "善",
+   "b": "拓扑",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 144,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "善同调",
+   "a": "善",
+   "b": "同调",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 144,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "善熵",
+   "a": "善",
+   "b": "熵",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 144,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "善演化",
+   "a": "善",
+   "b": "演化",
+   "a_domain": "伦理",
+   "b_domain": "生物",
+   "a_refs": 144,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "善选择",
+   "a": "善",
+   "b": "选择",
+   "a_domain": "伦理",
+   "b_domain": "生物",
+   "a_refs": 144,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "善催化",
+   "a": "善",
+   "b": "催化",
+   "a_domain": "伦理",
+   "b_domain": "化学",
+   "a_refs": 144,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "善平衡",
+   "a": "善",
+   "b": "平衡",
+   "a_domain": "伦理",
+   "b_domain": "化学",
+   "a_refs": 144,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "善编码",
+   "a": "善",
+   "b": "编码",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 144,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "善压缩",
+   "a": "善",
+   "b": "压缩",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 144,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "善反馈",
+   "a": "善",
+   "b": "反馈",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 144,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "善工业化",
+   "a": "善",
+   "b": "工业化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 144,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "善标准化",
+   "a": "善",
+   "b": "标准化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 144,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "善自动化",
+   "a": "善",
+   "b": "自动化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 144,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "善模块化",
+   "a": "善",
+   "b": "模块化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 144,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "善优化",
+   "a": "善",
+   "b": "优化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 144,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "善分配",
+   "a": "善",
+   "b": "分配",
+   "a_domain": "伦理",
+   "b_domain": "经济",
+   "a_refs": 144,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "善可判定",
+   "a": "善",
+   "b": "可判定",
+   "a_domain": "伦理",
+   "b_domain": "逻辑",
+   "a_refs": 144,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "正义拓扑",
+   "a": "正义",
+   "b": "拓扑",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 15,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "正义同调",
+   "a": "正义",
+   "b": "同调",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 15,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "正义熵",
+   "a": "正义",
+   "b": "熵",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 15,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "正义演化",
+   "a": "正义",
+   "b": "演化",
+   "a_domain": "伦理",
+   "b_domain": "生物",
+   "a_refs": 15,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "正义选择",
+   "a": "正义",
+   "b": "选择",
+   "a_domain": "伦理",
+   "b_domain": "生物",
+   "a_refs": 15,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "正义催化",
+   "a": "正义",
+   "b": "催化",
+   "a_domain": "伦理",
+   "b_domain": "化学",
+   "a_refs": 15,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "正义平衡",
+   "a": "正义",
+   "b": "平衡",
+   "a_domain": "伦理",
+   "b_domain": "化学",
+   "a_refs": 15,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "正义编码",
+   "a": "正义",
+   "b": "编码",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 15,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "正义压缩",
+   "a": "正义",
+   "b": "压缩",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 15,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "正义反馈",
+   "a": "正义",
+   "b": "反馈",
+   "a_domain": "伦理",
+   "b_domain": "信息",
+   "a_refs": 15,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "正义工业化",
+   "a": "正义",
+   "b": "工业化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 15,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "正义标准化",
+   "a": "正义",
+   "b": "标准化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 15,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "正义自动化",
+   "a": "正义",
+   "b": "自动化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 15,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "正义模块化",
+   "a": "正义",
+   "b": "模块化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 15,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "正义优化",
+   "a": "正义",
+   "b": "优化",
+   "a_domain": "伦理",
+   "b_domain": "工程",
+   "a_refs": 15,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "正义分配",
+   "a": "正义",
+   "b": "分配",
+   "a_domain": "伦理",
+   "b_domain": "经济",
+   "a_refs": 15,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "正义可判定",
+   "a": "正义",
+   "b": "可判定",
+   "a_domain": "伦理",
+   "b_domain": "逻辑",
+   "a_refs": 15,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "本体测度",
+   "a": "本体",
+   "b": "测度",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 142,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "本体拓扑",
+   "a": "本体",
+   "b": "拓扑",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 142,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "本体同调",
+   "a": "本体",
+   "b": "同调",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 142,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "本体熵",
+   "a": "本体",
+   "b": "熵",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 142,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "本体演化",
+   "a": "本体",
+   "b": "演化",
+   "a_domain": "哲学",
+   "b_domain": "生物",
+   "a_refs": 142,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "本体选择",
+   "a": "本体",
+   "b": "选择",
+   "a_domain": "哲学",
+   "b_domain": "生物",
+   "a_refs": 142,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "本体催化",
+   "a": "本体",
+   "b": "催化",
+   "a_domain": "哲学",
+   "b_domain": "化学",
+   "a_refs": 142,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "本体平衡",
+   "a": "本体",
+   "b": "平衡",
+   "a_domain": "哲学",
+   "b_domain": "化学",
+   "a_refs": 142,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "本体编码",
+   "a": "本体",
+   "b": "编码",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 142,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "本体压缩",
+   "a": "本体",
+   "b": "压缩",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 142,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "本体反馈",
+   "a": "本体",
+   "b": "反馈",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 142,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "本体工业化",
+   "a": "本体",
+   "b": "工业化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 142,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "本体标准化",
+   "a": "本体",
+   "b": "标准化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 142,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "本体自动化",
+   "a": "本体",
+   "b": "自动化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 142,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "本体模块化",
+   "a": "本体",
+   "b": "模块化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 142,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "本体优化",
+   "a": "本体",
+   "b": "优化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 142,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "本体分配",
+   "a": "本体",
+   "b": "分配",
+   "a_domain": "哲学",
+   "b_domain": "经济",
+   "a_refs": 142,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "本体可判定",
+   "a": "本体",
+   "b": "可判定",
+   "a_domain": "哲学",
+   "b_domain": "逻辑",
+   "a_refs": 142,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "现象测度",
+   "a": "现象",
+   "b": "测度",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 355,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "现象拓扑",
+   "a": "现象",
+   "b": "拓扑",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 355,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "现象同调",
+   "a": "现象",
+   "b": "同调",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 355,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "现象熵",
+   "a": "现象",
+   "b": "熵",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 355,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "现象演化",
+   "a": "现象",
+   "b": "演化",
+   "a_domain": "哲学",
+   "b_domain": "生物",
+   "a_refs": 355,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "现象选择",
+   "a": "现象",
+   "b": "选择",
+   "a_domain": "哲学",
+   "b_domain": "生物",
+   "a_refs": 355,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "现象催化",
+   "a": "现象",
+   "b": "催化",
+   "a_domain": "哲学",
+   "b_domain": "化学",
+   "a_refs": 355,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "现象平衡",
+   "a": "现象",
+   "b": "平衡",
+   "a_domain": "哲学",
+   "b_domain": "化学",
+   "a_refs": 355,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "现象编码",
+   "a": "现象",
+   "b": "编码",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 355,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "现象压缩",
+   "a": "现象",
+   "b": "压缩",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 355,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "现象反馈",
+   "a": "现象",
+   "b": "反馈",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 355,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "现象工业化",
+   "a": "现象",
+   "b": "工业化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 355,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "现象标准化",
+   "a": "现象",
+   "b": "标准化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 355,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "现象自动化",
+   "a": "现象",
+   "b": "自动化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 355,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "现象模块化",
+   "a": "现象",
+   "b": "模块化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 355,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "现象优化",
+   "a": "现象",
+   "b": "优化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 355,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "现象分配",
+   "a": "现象",
+   "b": "分配",
+   "a_domain": "哲学",
+   "b_domain": "经济",
+   "a_refs": 355,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "现象可判定",
+   "a": "现象",
+   "b": "可判定",
+   "a_domain": "哲学",
+   "b_domain": "逻辑",
+   "a_refs": 355,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "本质测度",
+   "a": "本质",
+   "b": "测度",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 449,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "本质拓扑",
+   "a": "本质",
+   "b": "拓扑",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 449,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "本质同调",
+   "a": "本质",
+   "b": "同调",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 449,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "本质熵",
+   "a": "本质",
+   "b": "熵",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 449,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "本质演化",
+   "a": "本质",
+   "b": "演化",
+   "a_domain": "哲学",
+   "b_domain": "生物",
+   "a_refs": 449,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "本质选择",
+   "a": "本质",
+   "b": "选择",
+   "a_domain": "哲学",
+   "b_domain": "生物",
+   "a_refs": 449,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "本质催化",
+   "a": "本质",
+   "b": "催化",
+   "a_domain": "哲学",
+   "b_domain": "化学",
+   "a_refs": 449,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "本质平衡",
+   "a": "本质",
+   "b": "平衡",
+   "a_domain": "哲学",
+   "b_domain": "化学",
+   "a_refs": 449,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "本质编码",
+   "a": "本质",
+   "b": "编码",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 449,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "本质压缩",
+   "a": "本质",
+   "b": "压缩",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 449,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "本质反馈",
+   "a": "本质",
+   "b": "反馈",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 449,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "本质工业化",
+   "a": "本质",
+   "b": "工业化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 449,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "本质标准化",
+   "a": "本质",
+   "b": "标准化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 449,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "本质自动化",
+   "a": "本质",
+   "b": "自动化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 449,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "本质模块化",
+   "a": "本质",
+   "b": "模块化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 449,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "本质优化",
+   "a": "本质",
+   "b": "优化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 449,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "本质分配",
+   "a": "本质",
+   "b": "分配",
+   "a_domain": "哲学",
+   "b_domain": "经济",
+   "a_refs": 449,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "本质可判定",
+   "a": "本质",
+   "b": "可判定",
+   "a_domain": "哲学",
+   "b_domain": "逻辑",
+   "a_refs": 449,
+   "b_refs": 20,
+   "grounded": true
+  },
+  {
+   "term": "自由测度",
+   "a": "自由",
+   "b": "测度",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 139,
+   "b_refs": 11,
+   "grounded": true
+  },
+  {
+   "term": "自由拓扑",
+   "a": "自由",
+   "b": "拓扑",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 139,
+   "b_refs": 84,
+   "grounded": true
+  },
+  {
+   "term": "自由同调",
+   "a": "自由",
+   "b": "同调",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 139,
+   "b_refs": 8,
+   "grounded": true
+  },
+  {
+   "term": "自由熵",
+   "a": "自由",
+   "b": "熵",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 139,
+   "b_refs": 24,
+   "grounded": true
+  },
+  {
+   "term": "自由演化",
+   "a": "自由",
+   "b": "演化",
+   "a_domain": "哲学",
+   "b_domain": "生物",
+   "a_refs": 139,
+   "b_refs": 72,
+   "grounded": true
+  },
+  {
+   "term": "自由选择",
+   "a": "自由",
+   "b": "选择",
+   "a_domain": "哲学",
+   "b_domain": "生物",
+   "a_refs": 139,
+   "b_refs": 677,
+   "grounded": true
+  },
+  {
+   "term": "自由催化",
+   "a": "自由",
+   "b": "催化",
+   "a_domain": "哲学",
+   "b_domain": "化学",
+   "a_refs": 139,
+   "b_refs": 73,
+   "grounded": true
+  },
+  {
+   "term": "自由平衡",
+   "a": "自由",
+   "b": "平衡",
+   "a_domain": "哲学",
+   "b_domain": "化学",
+   "a_refs": 139,
+   "b_refs": 169,
+   "grounded": true
+  },
+  {
+   "term": "自由编码",
+   "a": "自由",
+   "b": "编码",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 139,
+   "b_refs": 88,
+   "grounded": true
+  },
+  {
+   "term": "自由压缩",
+   "a": "自由",
+   "b": "压缩",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 139,
+   "b_refs": 39,
+   "grounded": true
+  },
+  {
+   "term": "自由反馈",
+   "a": "自由",
+   "b": "反馈",
+   "a_domain": "哲学",
+   "b_domain": "信息",
+   "a_refs": 139,
+   "b_refs": 37,
+   "grounded": true
+  },
+  {
+   "term": "自由工业化",
+   "a": "自由",
+   "b": "工业化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 139,
+   "b_refs": 15,
+   "grounded": true
+  },
+  {
+   "term": "自由标准化",
+   "a": "自由",
+   "b": "标准化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 139,
+   "b_refs": 9,
+   "grounded": true
+  },
+  {
+   "term": "自由自动化",
+   "a": "自由",
+   "b": "自动化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 139,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "自由模块化",
+   "a": "自由",
+   "b": "模块化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 139,
+   "b_refs": 3,
+   "grounded": true
+  },
+  {
+   "term": "自由优化",
+   "a": "自由",
+   "b": "优化",
+   "a_domain": "哲学",
+   "b_domain": "工程",
+   "a_refs": 139,
+   "b_refs": 13,
+   "grounded": true
+  },
+  {
+   "term": "自由分配",
+   "a": "自由",
+   "b": "分配",
+   "a_domain": "哲学",
+   "b_domain": "经济",
+   "a_refs": 139,
+   "b_refs": 38,
+   "grounded": true
+  },
+  {
+   "term": "自由可判定",
+   "a": "自由",
+   "b": "可判定",
+   "a_domain": "哲学",
+   "b_domain": "逻辑",
+   "a_refs": 139,
+   "b_refs": 20,
+   "grounded": true
+  }
+ ],
+ "ungrounded": [
+  {
+   "term": "认知极值",
+   "a": "认知",
+   "b": "极值",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 510,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "意识极值",
+   "a": "意识",
+   "b": "极值",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 249,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "记忆极值",
+   "a": "记忆",
+   "b": "极值",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 114,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "情绪极值",
+   "a": "情绪",
+   "b": "极值",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 70,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "动机极值",
+   "a": "动机",
+   "b": "极值",
+   "a_domain": "心理",
+   "b_domain": "数学",
+   "a_refs": 181,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "语义极值",
+   "a": "语义",
+   "b": "极值",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 226,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "话语极值",
+   "a": "话语",
+   "b": "极值",
+   "a_domain": "语言",
+   "b_domain": "数学",
+   "a_refs": 75,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "资本极值",
+   "a": "资本",
+   "b": "极值",
+   "a_domain": "经济",
+   "b_domain": "数学",
+   "a_refs": 11,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "和声测度",
+   "a": "和声",
+   "b": "测度",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 2,
+   "b_refs": 11,
+   "grounded": false
+  },
+  {
+   "term": "和声拓扑",
+   "a": "和声",
+   "b": "拓扑",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 2,
+   "b_refs": 84,
+   "grounded": false
+  },
+  {
+   "term": "和声同调",
+   "a": "和声",
+   "b": "同调",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 2,
+   "b_refs": 8,
+   "grounded": false
+  },
+  {
+   "term": "和声熵",
+   "a": "和声",
+   "b": "熵",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 2,
+   "b_refs": 24,
+   "grounded": false
+  },
+  {
+   "term": "和声极值",
+   "a": "和声",
+   "b": "极值",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 2,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "和声演化",
+   "a": "和声",
+   "b": "演化",
+   "a_domain": "音乐",
+   "b_domain": "生物",
+   "a_refs": 2,
+   "b_refs": 72,
+   "grounded": false
+  },
+  {
+   "term": "和声选择",
+   "a": "和声",
+   "b": "选择",
+   "a_domain": "音乐",
+   "b_domain": "生物",
+   "a_refs": 2,
+   "b_refs": 677,
+   "grounded": false
+  },
+  {
+   "term": "和声催化",
+   "a": "和声",
+   "b": "催化",
+   "a_domain": "音乐",
+   "b_domain": "化学",
+   "a_refs": 2,
+   "b_refs": 73,
+   "grounded": false
+  },
+  {
+   "term": "和声平衡",
+   "a": "和声",
+   "b": "平衡",
+   "a_domain": "音乐",
+   "b_domain": "化学",
+   "a_refs": 2,
+   "b_refs": 169,
+   "grounded": false
+  },
+  {
+   "term": "和声编码",
+   "a": "和声",
+   "b": "编码",
+   "a_domain": "音乐",
+   "b_domain": "信息",
+   "a_refs": 2,
+   "b_refs": 88,
+   "grounded": false
+  },
+  {
+   "term": "和声压缩",
+   "a": "和声",
+   "b": "压缩",
+   "a_domain": "音乐",
+   "b_domain": "信息",
+   "a_refs": 2,
+   "b_refs": 39,
+   "grounded": false
+  },
+  {
+   "term": "和声反馈",
+   "a": "和声",
+   "b": "反馈",
+   "a_domain": "音乐",
+   "b_domain": "信息",
+   "a_refs": 2,
+   "b_refs": 37,
+   "grounded": false
+  },
+  {
+   "term": "和声工业化",
+   "a": "和声",
+   "b": "工业化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 2,
+   "b_refs": 15,
+   "grounded": false
+  },
+  {
+   "term": "和声标准化",
+   "a": "和声",
+   "b": "标准化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 2,
+   "b_refs": 9,
+   "grounded": false
+  },
+  {
+   "term": "和声自动化",
+   "a": "和声",
+   "b": "自动化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 2,
+   "b_refs": 13,
+   "grounded": false
+  },
+  {
+   "term": "和声模块化",
+   "a": "和声",
+   "b": "模块化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 2,
+   "b_refs": 3,
+   "grounded": false
+  },
+  {
+   "term": "和声优化",
+   "a": "和声",
+   "b": "优化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 2,
+   "b_refs": 13,
+   "grounded": false
+  },
+  {
+   "term": "和声分配",
+   "a": "和声",
+   "b": "分配",
+   "a_domain": "音乐",
+   "b_domain": "经济",
+   "a_refs": 2,
+   "b_refs": 38,
+   "grounded": false
+  },
+  {
+   "term": "和声可判定",
+   "a": "和声",
+   "b": "可判定",
+   "a_domain": "音乐",
+   "b_domain": "逻辑",
+   "a_refs": 2,
+   "b_refs": 20,
+   "grounded": false
+  },
+  {
+   "term": "旋律测度",
+   "a": "旋律",
+   "b": "测度",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 0,
+   "b_refs": 11,
+   "grounded": false
+  },
+  {
+   "term": "旋律拓扑",
+   "a": "旋律",
+   "b": "拓扑",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 0,
+   "b_refs": 84,
+   "grounded": false
+  },
+  {
+   "term": "旋律同调",
+   "a": "旋律",
+   "b": "同调",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 0,
+   "b_refs": 8,
+   "grounded": false
+  },
+  {
+   "term": "旋律熵",
+   "a": "旋律",
+   "b": "熵",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 0,
+   "b_refs": 24,
+   "grounded": false
+  },
+  {
+   "term": "旋律极值",
+   "a": "旋律",
+   "b": "极值",
+   "a_domain": "音乐",
+   "b_domain": "数学",
+   "a_refs": 0,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "旋律演化",
+   "a": "旋律",
+   "b": "演化",
+   "a_domain": "音乐",
+   "b_domain": "生物",
+   "a_refs": 0,
+   "b_refs": 72,
+   "grounded": false
+  },
+  {
+   "term": "旋律选择",
+   "a": "旋律",
+   "b": "选择",
+   "a_domain": "音乐",
+   "b_domain": "生物",
+   "a_refs": 0,
+   "b_refs": 677,
+   "grounded": false
+  },
+  {
+   "term": "旋律催化",
+   "a": "旋律",
+   "b": "催化",
+   "a_domain": "音乐",
+   "b_domain": "化学",
+   "a_refs": 0,
+   "b_refs": 73,
+   "grounded": false
+  },
+  {
+   "term": "旋律平衡",
+   "a": "旋律",
+   "b": "平衡",
+   "a_domain": "音乐",
+   "b_domain": "化学",
+   "a_refs": 0,
+   "b_refs": 169,
+   "grounded": false
+  },
+  {
+   "term": "旋律编码",
+   "a": "旋律",
+   "b": "编码",
+   "a_domain": "音乐",
+   "b_domain": "信息",
+   "a_refs": 0,
+   "b_refs": 88,
+   "grounded": false
+  },
+  {
+   "term": "旋律压缩",
+   "a": "旋律",
+   "b": "压缩",
+   "a_domain": "音乐",
+   "b_domain": "信息",
+   "a_refs": 0,
+   "b_refs": 39,
+   "grounded": false
+  },
+  {
+   "term": "旋律反馈",
+   "a": "旋律",
+   "b": "反馈",
+   "a_domain": "音乐",
+   "b_domain": "信息",
+   "a_refs": 0,
+   "b_refs": 37,
+   "grounded": false
+  },
+  {
+   "term": "旋律工业化",
+   "a": "旋律",
+   "b": "工业化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 0,
+   "b_refs": 15,
+   "grounded": false
+  },
+  {
+   "term": "旋律标准化",
+   "a": "旋律",
+   "b": "标准化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 0,
+   "b_refs": 9,
+   "grounded": false
+  },
+  {
+   "term": "旋律自动化",
+   "a": "旋律",
+   "b": "自动化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 0,
+   "b_refs": 13,
+   "grounded": false
+  },
+  {
+   "term": "旋律模块化",
+   "a": "旋律",
+   "b": "模块化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 0,
+   "b_refs": 3,
+   "grounded": false
+  },
+  {
+   "term": "旋律优化",
+   "a": "旋律",
+   "b": "优化",
+   "a_domain": "音乐",
+   "b_domain": "工程",
+   "a_refs": 0,
+   "b_refs": 13,
+   "grounded": false
+  },
+  {
+   "term": "旋律分配",
+   "a": "旋律",
+   "b": "分配",
+   "a_domain": "音乐",
+   "b_domain": "经济",
+   "a_refs": 0,
+   "b_refs": 38,
+   "grounded": false
+  },
+  {
+   "term": "旋律可判定",
+   "a": "旋律",
+   "b": "可判定",
+   "a_domain": "音乐",
+   "b_domain": "逻辑",
+   "a_refs": 0,
+   "b_refs": 20,
+   "grounded": false
+  },
+  {
+   "term": "形式极值",
+   "a": "形式",
+   "b": "极值",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 1100,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "风格极值",
+   "a": "风格",
+   "b": "极值",
+   "a_domain": "艺术",
+   "b_domain": "数学",
+   "a_refs": 29,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "责任极值",
+   "a": "责任",
+   "b": "极值",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 38,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "价值极值",
+   "a": "价值",
+   "b": "极值",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 205,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "善极值",
+   "a": "善",
+   "b": "极值",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 144,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "正义极值",
+   "a": "正义",
+   "b": "极值",
+   "a_domain": "伦理",
+   "b_domain": "数学",
+   "a_refs": 15,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "本体极值",
+   "a": "本体",
+   "b": "极值",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 142,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "现象极值",
+   "a": "现象",
+   "b": "极值",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 355,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "本质极值",
+   "a": "本质",
+   "b": "极值",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 449,
+   "b_refs": 1,
+   "grounded": false
+  },
+  {
+   "term": "自由极值",
+   "a": "自由",
+   "b": "极值",
+   "a_domain": "哲学",
+   "b_domain": "数学",
+   "a_refs": 139,
+   "b_refs": 1,
+   "grounded": false
+  }
+ ]
+}
