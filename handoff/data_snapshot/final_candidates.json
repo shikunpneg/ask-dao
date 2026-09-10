@@ -1,0 +1,1104 @@
+{
+ "input": 57,
+ "dup_removed": 18,
+ "candidates": [
+  {
+   "A": "回文数_b16",
+   "B": "回文数_b3",
+   "n": 122,
+   "density": 0.0122,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    298,
+    358,
+    388,
+    400,
+    436,
+    438,
+    470,
+    512
+   ],
+   "score": 3,
+   "why": [
+    "机器无法描述例外集",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b3",
+   "B": "回文数_b7",
+   "n": 69,
+   "density": 0.0069,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    38,
+    546,
+    618,
+    718,
+    782,
+    846,
+    854,
+    910
+   ],
+   "score": 3,
+   "why": [
+    "机器无法描述例外集",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b3",
+   "B": "素数",
+   "n": 68,
+   "density": 0.0068,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    78,
+    88,
+    100,
+    118,
+    142,
+    146,
+    148,
+    266
+   ],
+   "score": 3,
+   "why": [
+    "机器无法描述例外集",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b5",
+   "B": "回文数_b7",
+   "n": 66,
+   "density": 0.0066,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    800,
+    1322,
+    1418,
+    2760,
+    3312,
+    3560,
+    3588,
+    3662
+   ],
+   "score": 3,
+   "why": [
+    "机器无法描述例外集",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "三角数",
+   "n": 38,
+   "density": 0.0038,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    104,
+    152,
+    164,
+    182,
+    242,
+    368,
+    404,
+    464
+   ],
+   "score": 3,
+   "why": [
+    "机器无法描述例外集",
+    "例外稀疏(0.380%)"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "数位只含1和2",
+   "n": 10,
+   "density": 0.001,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    14,
+    82,
+    100,
+    110,
+    192,
+    642,
+    652
+   ],
+   "score": 3,
+   "why": [
+    "机器无法描述例外集",
+    "例外稀疏(0.100%)"
+   ]
+  },
+  {
+   "A": "回文数_b10",
+   "B": "回文数_b7",
+   "n": 154,
+   "density": 0.0154,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    1252,
+    1302,
+    1312,
+    1338,
+    1348,
+    1352,
+    1358,
+    1362
+   ],
+   "score": 2,
+   "why": [
+    "机器无法描述例外集"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "数位只含1和2",
+   "n": 128,
+   "density": 0.0128,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    68,
+    78,
+    80,
+    88,
+    90,
+    98,
+    100,
+    108
+   ],
+   "score": 2,
+   "why": [
+    "机器无法描述例外集"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "平方数",
+   "n": 120,
+   "density": 0.012,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    62,
+    80,
+    92,
+    98,
+    132,
+    222,
+    242,
+    278
+   ],
+   "score": 2,
+   "why": [
+    "机器无法描述例外集"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "立方数",
+   "n": 105,
+   "density": 0.0105,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    20,
+    24,
+    28,
+    32,
+    38
+   ],
+   "score": 2,
+   "why": [
+    "机器无法描述例外集"
+   ]
+  },
+  {
+   "A": "回文数_b10",
+   "B": "回文数_b16",
+   "n": 103,
+   "density": 0.0103,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    11804,
+    12288,
+    12304,
+    12352,
+    12354,
+    12370,
+    12384,
+    12752
+   ],
+   "score": 2,
+   "why": [
+    "机器无法描述例外集"
+   ]
+  },
+  {
+   "A": "回文数_b10",
+   "B": "回文数_b2",
+   "n": 98,
+   "density": 0.0098,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    292,
+    2952,
+    3434,
+    3578,
+    3622,
+    3704,
+    4350,
+    4552
+   ],
+   "score": 2,
+   "why": [
+    "机器无法描述例外集"
+   ]
+  },
+  {
+   "A": "五边形数",
+   "B": "素数",
+   "n": 64,
+   "density": 0.0064,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    26,
+    50,
+    86,
+    100,
+    116,
+    126,
+    210,
+    222
+   ],
+   "score": 2,
+   "why": [
+    "机器无法描述例外集"
+   ]
+  },
+  {
+   "A": "平方数",
+   "B": "素数",
+   "n": 54,
+   "density": 0.0054,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    10,
+    34,
+    58,
+    64,
+    130,
+    196,
+    214,
+    226
+   ],
+   "score": 2,
+   "why": [
+    "机器无法描述例外集"
+   ]
+  },
+  {
+   "A": "回文数_b3",
+   "B": "奇合数",
+   "n": 17,
+   "density": 0.0017,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14,
+     570
+    ]
+   },
+   "small_bound": 570,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    14,
+    18,
+    20,
+    24
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.170%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b5",
+   "B": "奇合数",
+   "n": 7,
+   "density": 0.0007,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14,
+     32,
+     44
+    ]
+   },
+   "small_bound": 44,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    14,
+    20,
+    32,
+    44
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.070%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b5",
+   "B": "素数",
+   "n": 4,
+   "density": 0.0004,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     66,
+     418,
+     1266
+    ]
+   },
+   "small_bound": 1266,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    66,
+    418,
+    448,
+    1266
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.040%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "回文数_b2",
+   "n": 3,
+   "density": 0.0003,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     296,
+     1094,
+     1864
+    ]
+   },
+   "small_bound": 1864,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    296,
+    1094,
+    1864
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.030%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "回文数_b2",
+   "n": 3,
+   "density": 0.0003,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6
+    ]
+   },
+   "small_bound": 8,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.030%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b16",
+   "B": "回文数_b7",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     912,
+     1776
+    ]
+   },
+   "small_bound": 1776,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    912,
+    1776
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.020%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "回文数_b16",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": []
+   },
+   "small_bound": 4,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "三角数",
+   "B": "素数",
+   "n": 41,
+   "density": 0.0041,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "三角数",
+    "outside": [
+     216
+    ]
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    36,
+    210,
+    216,
+    406,
+    528,
+    630,
+    780,
+    990
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.410%)"
+   ]
+  },
+  {
+   "A": "奇合数",
+   "B": "立方数",
+   "n": 18,
+   "density": 0.0018,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "small_bound": 128,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    14,
+    18,
+    20,
+    24
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.180%)"
+   ]
+  },
+  {
+   "A": "奇合数",
+   "B": "完美幂",
+   "n": 15,
+   "density": 0.0015,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     10,
+     20
+    ]
+   },
+   "small_bound": 68,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    20
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.150%)"
+   ]
+  },
+  {
+   "A": "三角数",
+   "B": "奇合数",
+   "n": 14,
+   "density": 0.0014,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     20
+    ]
+   },
+   "small_bound": 662,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    14,
+    20,
+    32,
+    44,
+    62
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.140%)"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "奇合数",
+   "n": 13,
+   "density": 0.0013,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     10,
+     20
+    ]
+   },
+   "small_bound": 38,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    20
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.130%)"
+   ]
+  },
+  {
+   "A": "奇合数",
+   "B": "平方数",
+   "n": 11,
+   "density": 0.0011,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     20
+    ]
+   },
+   "small_bound": 398,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    14,
+    20,
+    32,
+    38
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.110%)"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "斐波那契",
+   "n": 10,
+   "density": 0.001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     1600,
+     2680
+    ]
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    32,
+    194,
+    246,
+    1600,
+    1614,
+    2680,
+    11138
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.100%)"
+   ]
+  },
+  {
+   "A": "五边形数",
+   "B": "半素数",
+   "n": 8,
+   "density": 0.0008,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     64
+    ]
+   },
+   "small_bound": 110,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    24,
+    42,
+    64,
+    110
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.080%)"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "完美幂",
+   "n": 8,
+   "density": 0.0008,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     108
+    ]
+   },
+   "small_bound": 108,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    16,
+    28,
+    32,
+    56,
+    72,
+    108
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.080%)"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "完美幂",
+   "n": 7,
+   "density": 0.0007,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     390
+    ]
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    390,
+    822,
+    3666,
+    6618,
+    8718,
+    12162
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.070%)"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "平方数",
+   "n": 7,
+   "density": 0.0007,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     28,
+     32
+    ]
+   },
+   "small_bound": 108,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    12,
+    28,
+    32,
+    72,
+    108
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.070%)"
+   ]
+  },
+  {
+   "A": "奇合数",
+   "B": "数位只含1和2",
+   "n": 7,
+   "density": 0.0007,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14
+    ]
+   },
+   "small_bound": 24,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    14,
+    18,
+    24
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.070%)"
+   ]
+  },
+  {
+   "A": "2的幂",
+   "B": "无数字0",
+   "n": 4,
+   "density": 0.0004,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     11096,
+     11098,
+     11102
+    ]
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    11096,
+    11098,
+    11100,
+    11102
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.040%)"
+   ]
+  },
+  {
+   "A": "奇合数",
+   "B": "素数",
+   "n": 4,
+   "density": 0.0004,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6,
+     10
+    ]
+   },
+   "small_bound": 10,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.040%)"
+   ]
+  },
+  {
+   "A": "完美幂",
+   "B": "素数",
+   "n": 3,
+   "density": 0.0003,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     24
+    ]
+   },
+   "small_bound": 24,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    8,
+    24
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.030%)"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "五边形数",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     108,
+     306
+    ]
+   },
+   "small_bound": 306,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    108,
+    306
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.020%)"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "素数",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     10
+    ]
+   },
+   "small_bound": 10,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    4,
+    10
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.020%)"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "素数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     126
+    ]
+   },
+   "small_bound": 126,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    126
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.010%)"
+   ]
+  }
+ ]
+}

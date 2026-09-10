@@ -1,0 +1,797 @@
+[
+ {
+  "A": "Harshad数",
+  "B": "三角数",
+  "|A|": 2954,
+  "|B|": 199,
+  "n_scanned": 9999,
+  "observed": 38,
+  "predicted": 0.0,
+  "excess": 30450307.3,
+  "observed_density": 0.0038,
+  "predicted_density": 0.0,
+  "examples": [
+   104,
+   152,
+   164,
+   182,
+   242,
+   368,
+   404,
+   464
+  ]
+ },
+ {
+  "A": "Harshad数",
+  "B": "完美幂",
+  "|A|": 2954,
+  "|B|": 171,
+  "n_scanned": 9999,
+  "observed": 7,
+  "predicted": 0.0,
+  "excess": 280809.5,
+  "observed_density": 0.0007,
+  "predicted_density": 0.0,
+  "examples": [
+   4,
+   390,
+   822,
+   3666,
+   6618,
+   8718,
+   12162
+  ]
+ },
+ {
+  "A": "Harshad数",
+  "B": "平方数",
+  "|A|": 2954,
+  "|B|": 141,
+  "n_scanned": 9999,
+  "observed": 120,
+  "predicted": 0.0,
+  "excess": 120749.8,
+  "observed_density": 0.012,
+  "predicted_density": 1e-07,
+  "examples": [
+   62,
+   80,
+   92,
+   98,
+   132,
+   222,
+   242,
+   278
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "回文数_b16",
+  "|A|": 5081,
+  "|B|": 332,
+  "n_scanned": 9999,
+  "observed": 1,
+  "predicted": 0.0,
+  "excess": 21290.0,
+  "observed_density": 0.0001,
+  "predicted_density": 0.0,
+  "examples": [
+   4
+  ]
+ },
+ {
+  "A": "Harshad数",
+  "B": "五边形数",
+  "|A|": 2954,
+  "|B|": 115,
+  "n_scanned": 9999,
+  "observed": 2,
+  "predicted": 0.02,
+  "excess": 100.7,
+  "observed_density": 0.0002,
+  "predicted_density": 1.99e-06,
+  "examples": [
+   108,
+   306
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "完美幂",
+  "|A|": 5081,
+  "|B|": 171,
+  "n_scanned": 9999,
+  "observed": 8,
+  "predicted": 0.26,
+  "excess": 31.2,
+  "observed_density": 0.0008,
+  "predicted_density": 2.564e-05,
+  "examples": [
+   4,
+   6,
+   16,
+   28,
+   32,
+   56,
+   72,
+   108
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "平方数",
+  "|A|": 5081,
+  "|B|": 141,
+  "n_scanned": 9999,
+  "observed": 7,
+  "predicted": 1.83,
+  "excess": 3.8,
+  "observed_density": 0.0007,
+  "predicted_density": 0.00018324,
+  "examples": [
+   4,
+   6,
+   12,
+   28,
+   32,
+   72,
+   108
+  ]
+ },
+ {
+  "A": "回文数_b3",
+  "B": "回文数_b7",
+  "|A|": 323,
+  "|B|": 400,
+  "n_scanned": 9999,
+  "observed": 69,
+  "predicted": 21.9,
+  "excess": 3.2,
+  "observed_density": 0.0069,
+  "predicted_density": 0.00219006,
+  "examples": [
+   38,
+   546,
+   618,
+   718,
+   782,
+   846,
+   854,
+   910
+  ]
+ },
+ {
+  "A": "Harshad数",
+  "B": "数位只含1和2",
+  "|A|": 2954,
+  "|B|": 46,
+  "n_scanned": 9999,
+  "observed": 128,
+  "predicted": 50.01,
+  "excess": 2.6,
+  "observed_density": 0.0128,
+  "predicted_density": 0.00500179,
+  "examples": [
+   68,
+   78,
+   80,
+   88,
+   90,
+   98,
+   100,
+   108
+  ]
+ },
+ {
+  "A": "2的幂",
+  "B": "无数字0",
+  "|A|": 15,
+  "|B|": 13941,
+  "n_scanned": 9999,
+  "observed": 4,
+  "predicted": 1.71,
+  "excess": 2.3,
+  "observed_density": 0.0004,
+  "predicted_density": 0.00017061,
+  "examples": [
+   11096,
+   11098,
+   11100,
+   11102
+  ]
+ },
+ {
+  "A": "回文数_b5",
+  "B": "回文数_b7",
+  "|A|": 283,
+  "|B|": 400,
+  "n_scanned": 9999,
+  "observed": 66,
+  "predicted": 39.19,
+  "excess": 1.7,
+  "observed_density": 0.0066,
+  "predicted_density": 0.00391943,
+  "examples": [
+   800,
+   1322,
+   1418,
+   2760,
+   3312,
+   3560,
+   3588,
+   3662
+  ]
+ },
+ {
+  "A": "五边形数",
+  "B": "半素数",
+  "|A|": 115,
+  "|B|": 5081,
+  "n_scanned": 9999,
+  "observed": 8,
+  "predicted": 9.06,
+  "excess": 0.9,
+  "observed_density": 0.0008,
+  "predicted_density": 0.00090579,
+  "examples": [
+   4,
+   6,
+   8,
+   12,
+   24,
+   42,
+   64,
+   110
+  ]
+ },
+ {
+  "A": "回文数_b16",
+  "B": "回文数_b3",
+  "|A|": 332,
+  "|B|": 323,
+  "n_scanned": 9999,
+  "observed": 122,
+  "predicted": 229.13,
+  "excess": 0.5,
+  "observed_density": 0.0122,
+  "predicted_density": 0.02291519,
+  "examples": [
+   298,
+   358,
+   388,
+   400,
+   436,
+   438,
+   470,
+   512
+  ]
+ },
+ {
+  "A": "回文数_b10",
+  "B": "回文数_b7",
+  "|A|": 298,
+  "|B|": 400,
+  "n_scanned": 9999,
+  "observed": 154,
+  "predicted": 1078.57,
+  "excess": 0.1,
+  "observed_density": 0.0154,
+  "predicted_density": 0.10786818,
+  "examples": [
+   1252,
+   1302,
+   1312,
+   1338,
+   1348,
+   1352,
+   1358,
+   1362
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "立方数",
+  "|A|": 5081,
+  "|B|": 27,
+  "n_scanned": 9999,
+  "observed": 105,
+  "predicted": 2022.77,
+  "excess": 0.1,
+  "observed_density": 0.0105,
+  "predicted_density": 0.20229675,
+  "examples": [
+   4,
+   6,
+   8,
+   20,
+   24,
+   28,
+   32,
+   38
+  ]
+ },
+ {
+  "A": "回文数_b3",
+  "B": "素数",
+  "|A|": 323,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 68,
+  "predicted": 9759.88,
+  "excess": 0.0,
+  "observed_density": 0.0068,
+  "predicted_density": 0.97608575,
+  "examples": [
+   78,
+   88,
+   100,
+   118,
+   142,
+   146,
+   148,
+   266
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "数位只含1和2",
+  "|A|": 5081,
+  "|B|": 46,
+  "n_scanned": 9999,
+  "observed": 10,
+  "predicted": 591.69,
+  "excess": 0.0,
+  "observed_density": 0.001,
+  "predicted_density": 0.05917445,
+  "examples": [
+   4,
+   14,
+   82,
+   100,
+   110,
+   192,
+   642,
+   652
+  ]
+ },
+ {
+  "A": "回文数_b10",
+  "B": "回文数_b16",
+  "|A|": 298,
+  "|B|": 332,
+  "n_scanned": 9999,
+  "observed": 103,
+  "predicted": 2533.02,
+  "excess": 0.0,
+  "observed_density": 0.0103,
+  "predicted_density": 0.25332688,
+  "examples": [
+   11804,
+   12288,
+   12304,
+   12352,
+   12354,
+   12370,
+   12384,
+   12752
+  ]
+ },
+ {
+  "A": "回文数_b10",
+  "B": "回文数_b2",
+  "|A|": 298,
+  "|B|": 282,
+  "n_scanned": 9999,
+  "observed": 98,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0098,
+  "predicted_density": 1.0,
+  "examples": [
+   292,
+   2952,
+   3434,
+   3578,
+   3622,
+   3704,
+   4350,
+   4552
+  ]
+ },
+ {
+  "A": "五边形数",
+  "B": "素数",
+  "|A|": 115,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 64,
+  "predicted": 9942.16,
+  "excess": 0.0,
+  "observed_density": 0.0064,
+  "predicted_density": 0.99431508,
+  "examples": [
+   26,
+   50,
+   86,
+   100,
+   116,
+   126,
+   210,
+   222
+  ]
+ },
+ {
+  "A": "平方数",
+  "B": "素数",
+  "|A|": 141,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 54,
+  "predicted": 9929.24,
+  "excess": 0.0,
+  "observed_density": 0.0054,
+  "predicted_density": 0.99302305,
+  "examples": [
+   10,
+   34,
+   58,
+   64,
+   130,
+   196,
+   214,
+   226
+  ]
+ },
+ {
+  "A": "回文数_b3",
+  "B": "奇合数",
+  "|A|": 323,
+  "|B|": 7738,
+  "n_scanned": 9999,
+  "observed": 17,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0017,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   12,
+   14,
+   18,
+   20,
+   24
+  ]
+ },
+ {
+  "A": "回文数_b5",
+  "B": "奇合数",
+  "|A|": 283,
+  "|B|": 7738,
+  "n_scanned": 9999,
+  "observed": 7,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0007,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   14,
+   20,
+   32,
+   44
+  ]
+ },
+ {
+  "A": "回文数_b5",
+  "B": "素数",
+  "|A|": 283,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 4,
+  "predicted": 9782.36,
+  "excess": 0.0,
+  "observed_density": 0.0004,
+  "predicted_density": 0.97833378,
+  "examples": [
+   66,
+   418,
+   448,
+   1266
+  ]
+ },
+ {
+  "A": "Harshad数",
+  "B": "回文数_b2",
+  "|A|": 2954,
+  "|B|": 282,
+  "n_scanned": 9999,
+  "observed": 3,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0003,
+  "predicted_density": 1.0,
+  "examples": [
+   296,
+   1094,
+   1864
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "回文数_b2",
+  "|A|": 5081,
+  "|B|": 282,
+  "n_scanned": 9999,
+  "observed": 3,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0003,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8
+  ]
+ },
+ {
+  "A": "回文数_b16",
+  "B": "回文数_b7",
+  "|A|": 332,
+  "|B|": 400,
+  "n_scanned": 9999,
+  "observed": 2,
+  "predicted": 192.99,
+  "excess": 0.0,
+  "observed_density": 0.0002,
+  "predicted_density": 0.01930117,
+  "examples": [
+   912,
+   1776
+  ]
+ },
+ {
+  "A": "三角数",
+  "B": "素数",
+  "|A|": 199,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 41,
+  "predicted": 9900.48,
+  "excess": 0.0,
+  "observed_density": 0.0041,
+  "predicted_density": 0.99014688,
+  "examples": [
+   36,
+   210,
+   216,
+   406,
+   528,
+   630,
+   780,
+   990
+  ]
+ },
+ {
+  "A": "奇合数",
+  "B": "立方数",
+  "|A|": 7738,
+  "|B|": 27,
+  "n_scanned": 9999,
+  "observed": 18,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0018,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   12,
+   14,
+   18,
+   20,
+   24
+  ]
+ },
+ {
+  "A": "奇合数",
+  "B": "完美幂",
+  "|A|": 7738,
+  "|B|": 171,
+  "n_scanned": 9999,
+  "observed": 15,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0015,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   10,
+   12,
+   14,
+   16,
+   20
+  ]
+ },
+ {
+  "A": "三角数",
+  "B": "奇合数",
+  "|A|": 199,
+  "|B|": 7738,
+  "n_scanned": 9999,
+  "observed": 14,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0014,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   14,
+   20,
+   32,
+   44,
+   62
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "奇合数",
+  "|A|": 5081,
+  "|B|": 7738,
+  "n_scanned": 9999,
+  "observed": 13,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0013,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   10,
+   12,
+   14,
+   16,
+   20
+  ]
+ },
+ {
+  "A": "奇合数",
+  "B": "平方数",
+  "|A|": 7738,
+  "|B|": 141,
+  "n_scanned": 9999,
+  "observed": 11,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0011,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   12,
+   14,
+   20,
+   32,
+   38
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "斐波那契",
+  "|A|": 5081,
+  "|B|": 21,
+  "n_scanned": 9999,
+  "observed": 10,
+  "predicted": 4229.2,
+  "excess": 0.0,
+  "observed_density": 0.001,
+  "predicted_density": 0.42296236,
+  "examples": [
+   4,
+   32,
+   194,
+   246,
+   1600,
+   1614,
+   2680,
+   11138
+  ]
+ },
+ {
+  "A": "奇合数",
+  "B": "数位只含1和2",
+  "|A|": 7738,
+  "|B|": 46,
+  "n_scanned": 9999,
+  "observed": 7,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0007,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   12,
+   14,
+   18,
+   24
+  ]
+ },
+ {
+  "A": "奇合数",
+  "B": "素数",
+  "|A|": 7738,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 4,
+  "predicted": 9999.0,
+  "excess": 0.0,
+  "observed_density": 0.0004,
+  "predicted_density": 1.0,
+  "examples": [
+   4,
+   6,
+   8,
+   10
+  ]
+ },
+ {
+  "A": "完美幂",
+  "B": "素数",
+  "|A|": 171,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 3,
+  "predicted": 9913.36,
+  "excess": 0.0,
+  "observed_density": 0.0003,
+  "predicted_density": 0.99143517,
+  "examples": [
+   4,
+   8,
+   24
+  ]
+ },
+ {
+  "A": "半素数",
+  "B": "素数",
+  "|A|": 5081,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 2,
+  "predicted": 8842.42,
+  "excess": 0.0,
+  "observed_density": 0.0002,
+  "predicted_density": 0.88433035,
+  "examples": [
+   4,
+   10
+  ]
+ },
+ {
+  "A": "Harshad数",
+  "B": "素数",
+  "|A|": 2954,
+  "|B|": 2262,
+  "n_scanned": 9999,
+  "observed": 1,
+  "predicted": 7941.79,
+  "excess": 0.0,
+  "observed_density": 0.0001,
+  "predicted_density": 0.79425869,
+  "examples": [
+   126
+  ]
+ }
+]
