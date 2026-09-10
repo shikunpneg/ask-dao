@@ -1477,3 +1477,27 @@ MO #250504(base-10"回文+素数")是公开问题, 但抓取受限(用 R38 已�
   (a) FunSearch 风格: 让程序搜索尝试证明/找反例
   (b) 真文献门: MathOverflow/arXiv 检索"palindrome prime sum base"
   (c) 单例外进制推 3e7 收尾(收益小)
+
+## R54 感知/经验模块(用户: 视觉先不做, 先网页爬虫获取信息)
+
+### 54.1 用户最新指令
+"视觉可以先不做, 可以先去网页随机爬虫获取信息"
+=> 先做网页经验模块(随机抓取 -> 日常疑问 -> 科学问题), 视觉模块保留但非当前重点。
+
+### 54.2 视觉模块 tools/perception_module.py(最小闭环, 已跑通)
+skimage 内置图(grass/checkerboard/astronaut/coffee/brick/coins/binary_blobs) ->
+提取结构特征(密度/对称H/V/局部熵/边界密度) -> 触发模板(对称/高熵/密边界/极端占空) ->
+日常疑问 -> 科学问题。产出 2 条(grass 高熵/密边界), 并入 manifest(总数 35)。
+
+### 54.3 网页经验模块 tools/web_experience.py(用户指定, 已跑通)
+urllib 抓 6 个公开页(黑洞/演化/量子力学/意识/arXiv/人工智能):
+  - 黑洞: "How big can a black hole grow?"
+  - 演化: "Why are there so many insect species?" / "How many species are there on Earth?"
+  - 意识: "How can I know that others have minds?"(他人心智问题)
+  - 量子: "What is quantum mechanics?" + 因果陈述转疑问
+=> 网页随机抓取 -> 日常/科学疑问 的链路成立。
+
+### 54.4 下一步
+- 把网页疑问用 grammar 框架精确定型(接问题生成器)
+- 扩大信息源(arXiv 摘要/新闻/科普), 积累经验库
+- 判定路由细化 -> 交 AI4S harness

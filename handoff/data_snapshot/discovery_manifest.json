@@ -2,7 +2,7 @@
  "generator": "ask-dao-machine/discovery_pipeline",
  "target": "AI4S harness",
  "problem_format": "{statement, conjecture, evidence, judge_route, status, layer}",
- "count": 33,
+ "count": 59,
  "problems": [
   {
    "id": "Q_b2",
@@ -879,6 +879,238 @@
    "judge_route": "向量化标记到 1e5",
    "status": "疑似有限",
    "layer": "L1"
+  },
+  {
+   "source": "grass",
+   "domain": "视觉感知",
+   "features": {
+    "size": [
+     512,
+     512
+    ],
+    "density": 0.528,
+    "sym_h": 0.494,
+    "sym_v": 0.514,
+    "local_entropy": 3.06,
+    "edge_density": 0.334
+   },
+   "trigger": "复杂度-熵",
+   "daily_question": "这张grass为什么看起来很复杂?",
+   "scientific_question": "该图像的局部块熵接近上界(高复杂度)。自然图像的熵分布? 与人类复杂度感知是否一致?",
+   "judge_route": "信息论: 图像块熵 vs 人类复杂度评分(需实验)",
+   "status": "待实验/待数据"
+  },
+  {
+   "source": "grass",
+   "domain": "视觉感知",
+   "features": {
+    "size": [
+     512,
+     512
+    ],
+    "density": 0.528,
+    "sym_h": 0.494,
+    "sym_v": 0.514,
+    "local_entropy": 3.06,
+    "edge_density": 0.334
+   },
+   "trigger": "边界",
+   "daily_question": "这张grass为什么看起来纹理很密?",
+   "scientific_question": "该图像边界密度高(纹理丰富)。边界密度与对象分割难度的关系?",
+   "judge_route": "图像处理: 边界检测准确率 vs 密度",
+   "status": "待实验/待数据"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "whatDidn't the Infant Universe Collapse into a Black Hole?",
+   "scientific_question": "在天文中, 'Didn't the Infant Universe Collapse into a Black Hole' 的机制/结构是什么?",
+   "judge_route": "观测+物理建模",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "what10 dimensions?",
+   "scientific_question": "在天文中, '10 dimensions' 的机制/结构是什么?",
+   "judge_route": "观测+物理建模",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "howbig can a black hole grow?",
+   "scientific_question": "在天文中, 'big can a black hole grow' 的机制/结构是什么?",
+   "judge_route": "观测+物理建模",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "howBig Is a Black Hole?",
+   "scientific_question": "在天文中, 'Big Is a Black Hole' 的机制/结构是什么?",
+   "judge_route": "观测+物理建模",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "whatDo Organisms Shuffle Their Genotypes?",
+   "scientific_question": "在生物中, 'Do Organisms Shuffle Their Genotypes' 的机制/结构是什么?",
+   "judge_route": "实验+系谱证据",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "whatare there so many insect species?",
+   "scientific_question": "在生物中, 'are there so many insect species' 的机制/结构是什么?",
+   "judge_route": "实验+系谱证据",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "howshall we name and generalise the unit of Darwinism?",
+   "scientific_question": "在生物中, 'shall we name and generalise the unit of Darwinism' 的机制/结构是什么?",
+   "judge_route": "实验+系谱证据",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "howMany Species Are There on Earth and in the Ocean?",
+   "scientific_question": "在生物中, 'Many Species Are There on Earth and in the Ocean' 的机制/结构是什么?",
+   "judge_route": "实验+系谱证据",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "what-isQuantum Mechanics?",
+   "scientific_question": "在物理中, 'Quantum Mechanics' 的机制/结构是什么?",
+   "judge_route": "理论+实验",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('8 The wave nature of light causes the li…')的机制/原因是什么??",
+   "scientific_question": "在物理中, '这段陈述('8 The wave nature of light causes the li…')的机制/原因是什么?' 的机制/结构是什么?",
+   "judge_route": "理论+实验",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('This necessarily causes a loss of inform…')的机制/原因是什么??",
+   "scientific_question": "在物理中, '这段陈述('This necessarily causes a loss of inform…')的机制/原因是什么?' 的机制/结构是什么?",
+   "judge_route": "理论+实验",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('[ 92 ] [ 93 ] Notable results from this …')的机制/原因是什么??",
+   "scientific_question": "在物理中, '这段陈述('[ 92 ] [ 93 ] Notable results from this …')的机制/原因是什么?' 的机制/结构是什么?",
+   "judge_route": "理论+实验",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "whatam I me and not someone else?",
+   "scientific_question": "在心理中, 'am I me and not someone else' 的机制/结构是什么?",
+   "judge_route": "实验设计",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howcan I know that others have minds?",
+   "scientific_question": "在心理中, 'can I know that others have minds' 的机制/结构是什么?",
+   "judge_route": "实验设计",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howsimilar are they?",
+   "scientific_question": "在心理中, 'similar are they' 的机制/结构是什么?",
+   "judge_route": "实验设计",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howmany concepts of consciousness?",
+   "scientific_question": "在心理中, 'many concepts of consciousness' 的机制/结构是什么?",
+   "judge_route": "实验设计",
+   "status": "待判定"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isthe Explorer?",
+   "scientific_question": "在数学中, 'the Explorer' 的机制/结构是什么?",
+   "judge_route": "数值+证明",
+   "status": "待判定"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isConnected Papers?",
+   "scientific_question": "在数学中, 'Connected Papers' 的机制/结构是什么?",
+   "judge_route": "数值+证明",
+   "status": "待判定"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isLitmaps?",
+   "scientific_question": "在数学中, 'Litmaps' 的机制/结构是什么?",
+   "judge_route": "数值+证明",
+   "status": "待判定"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isalphaXiv?",
+   "scientific_question": "在数学中, 'alphaXiv' 的机制/结构是什么?",
+   "judge_route": "数值+证明",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "whatdon't robots have rights?",
+   "scientific_question": "在信息中, 'don't robots have rights' 的机制/结构是什么?",
+   "judge_route": "计算+统计",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howDoes It Work?",
+   "scientific_question": "在信息中, 'Does It Work' 的机制/结构是什么?",
+   "judge_route": "计算+统计",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howlong will it last?",
+   "scientific_question": "在信息中, 'long will it last' 的机制/结构是什么?",
+   "judge_route": "计算+统计",
+   "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howcan we be certain a machine isn't conscious?",
+   "scientific_question": "在信息中, 'can we be certain a machine isn't conscious' 的机制/结构是什么?",
+   "judge_route": "计算+统计",
+   "status": "待判定"
   }
  ]
 }

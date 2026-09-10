@@ -1,0 +1,42 @@
+[
+ {
+  "source": "grass",
+  "domain": "视觉感知",
+  "features": {
+   "size": [
+    512,
+    512
+   ],
+   "density": 0.528,
+   "sym_h": 0.494,
+   "sym_v": 0.514,
+   "local_entropy": 3.06,
+   "edge_density": 0.334
+  },
+  "trigger": "复杂度-熵",
+  "daily_question": "这张grass为什么看起来很复杂?",
+  "scientific_question": "该图像的局部块熵接近上界(高复杂度)。自然图像的熵分布? 与人类复杂度感知是否一致?",
+  "judge_route": "信息论: 图像块熵 vs 人类复杂度评分(需实验)",
+  "status": "待实验/待数据"
+ },
+ {
+  "source": "grass",
+  "domain": "视觉感知",
+  "features": {
+   "size": [
+    512,
+    512
+   ],
+   "density": 0.528,
+   "sym_h": 0.494,
+   "sym_v": 0.514,
+   "local_entropy": 3.06,
+   "edge_density": 0.334
+  },
+  "trigger": "边界",
+  "daily_question": "这张grass为什么看起来纹理很密?",
+  "scientific_question": "该图像边界密度高(纹理丰富)。边界密度与对象分割难度的关系?",
+  "judge_route": "图像处理: 边界检测准确率 vs 密度",
+  "status": "待实验/待数据"
+ }
+]
