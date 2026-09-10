@@ -171,13 +171,28 @@ def questions_from(a, b, info, lo, hi, pr):
     return qs
 
 
-def run(N: int = 80000, lo: int = 6, hi: int = 40000):
+def run(N: int = 80000, lo: int = 6, hi: int = 40000, max_exc_density: float = 0.05):
+    """max_exc_density: 例外稠密阈值(诚实守卫, R26 新增)。
+
+    实测教训: 加性数论里"质数+平方数"例外仅 0.38%(所以 Hardy-Littlewood 敢猜它成立);
+    而"回文数+平方数"例外高达 24.7% —— 那不是"待刻画的例外集", 是**猜想本身就是假的**。
+    稠密例外时问"什么刻画了例外集"是坏问题(1/5 的 n 都是例外, 无结构可言)。
+    -> 本守卫会**回溯纠正** R25 对 回文数+平方数 的 N2 判断。
+    """
     cls = _classes(N)
     recs, report = [], []
     for a, b in CONJECTURES:
         F = scan(cls, a, b, lo, hi)
+        scanned = len(range(lo, hi + 1, 2))
+        dens = len(F) / max(scanned, 1)
         if not F:
-            report.append({"pair": [a, b], "verdict": "无例外(猜想在区间内成立, 无可问)"})
+            report.append({"pair": [a, b], "n": 0, "density": 0.0,
+                           "verdict": "无例外(猜想在区间内成立, 无可问)"})
+            continue
+        if dens > max_exc_density:
+            report.append({"pair": [a, b], "n": len(F), "density": round(dens, 4),
+                           "verdict": f"**猜想被否证**(例外占 {dens:.1%} > {max_exc_density:.0%}); "
+                                      f"例外集非特殊对象, 不产出问题(诚实守卫)"})
             continue
         info = classify(F, lo, hi)
         info["examples"] = F[:10]
@@ -198,7 +213,7 @@ def run(N: int = 80000, lo: int = 6, hi: int = 40000):
                 status=UNRESOLVED, honesty="机器提出·未结算(需证明或反例)",
                 binds={"类A": a, "类B": b, "扫描": f"{lo}..{hi}"},
                 tree={"parent": ROOT.id, "edge": f"{a}+{b} 例外集"}))
-        report.append({"pair": [a, b], "n": info["n"], "kind": info["kind"],
+        report.append({"pair": [a, b], "n": info["n"], "density": round(dens, 4), "kind": info["kind"],
                        "period": info.get("period"), "last": info["last"],
                        "at_boundary": info["at_boundary"],
                        "probe_extends": pr["extends"], "n_beyond": pr["n_beyond"],
@@ -209,13 +224,14 @@ def run(N: int = 80000, lo: int = 6, hi: int = 40000):
 def main():
     roots, recs, report = run()
     print(f"反例驱动生成: {len(recs)} 个**开放问题**(机器无法结算)\n")
-    print(f"{'猜想':<14}{'例外数':>6}  {'类型':<18}{'贴边界':>6}{'延伸有新例外':>12}  产出")
+    print(f"{'猜想':<14}{'例外数':>6}{'密度':>8}  {'类型':<18}{'贴边界':>6}  产出")
     for r in report:
-        if "n" not in r:
-            print(f"{r['pair'][0]}+{r['pair'][1]:<8} {r['verdict']}")
+        if "kind" not in r:
+            print(f"{r['pair'][0]}+{r['pair'][1]:<8}{r['n']:>6}{r.get('density',0):>8.2%}  "
+                  f"{'—':<18}{'—':>6}  {r['verdict']}")
             continue
-        print(f"{r['pair'][0]}+{r['pair'][1]:<8}{r['n']:>6}  {r['kind']:<18}"
-              f"{str(r['at_boundary']):>6}{str(r['probe_extends']):>12}  {r['verdict']}")
+        print(f"{r['pair'][0]}+{r['pair'][1]:<8}{r['n']:>6}{r['density']:>8.2%}  {r['kind']:<18}"
+              f"{str(r['at_boundary']):>6}  {r['verdict']}")
     print("\n== 开放问题原文 ==")
     for p in recs:
         print(f"\n[{p.id}]\n  {p.statement}")

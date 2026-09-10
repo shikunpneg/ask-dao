@@ -117,6 +117,44 @@ JUDGMENTS = {
 }
 
 
+# ---- R26: 领地·进制依赖结构(Phase 1 首个稀疏领地) ----
+JUDGMENTS.update({
+    "CX_dig10_回文数_素数_holds": {
+        "verdict": "N0o **已知·未解**(机器独立重发现一个公认开放问题)",
+        "literature": "MathOverflow #250504 'Is every integer greater than 1 the sum of a "
+                      "palindrome and a prime?' —— 明确状态为**既未证明也未否证**。"
+                      "相邻已知结果: Helfgott(三素数)、Cilleruelo-Luca(每个整数=三个回文数之和)",
+        "finding": "机器扫 [4,20000] 未发现任何例外, 于是问'这是定理吗?' —— "
+                   "文献确认该二项版本(palindrome + prime)**是未解问题**。"
+                   "机器在无文献输入下独立造出了一个**公认开放问题**(而非重发现定理)。"
+                   "注: MO 讨论提到 9999/999999… 可能是反例候选; 机器在 [4,20000] 内对 9999 "
+                   "找到了表示, 与'未发现例外'一致。",
+        "machine_matched": True,
+    },
+    "CX_dig3_回文数_素数_char": {
+        "verdict": "N2 检索未见(**非'新'**)",
+        "literature": "检索 'palindrome + prime base b' 返回**空结果**; base-3 变体未见专门文献",
+        "finding": "机器例外集 68 个(占 0.3%), 最大 12388; 分布极不均: [0,5000) 有 41 个, "
+                   "[5000,10000) 有 0 个, [10000,15000) 仅 2 个。机器**未能**给出刻画。"
+                   "检索为空 —— 但这只说明 base-3 少人做, **不等于新**。",
+        "machine_matched": None,
+    },
+    "CX_dig3_回文数_素数_finite": {
+        "verdict": "N2 检索未见(**非'新'**)",
+        "literature": "同上, 检索空",
+        "finding": "机器延伸到 39996 又见 2628 个新例外 -> 例外集几乎确定无限, 但机器不能证明。",
+        "machine_matched": None,
+    },
+    "CX_dig3_回文数_素数_density": {
+        "verdict": "N2 检索未见(**非'新'**)",
+        "literature": "同上, 检索空",
+        "finding": "机器问密度极限; base-3 例外密度极低(0.0005)且尾部多个窗口为 0, "
+                   "机器未能给出稳定极限(前沿=无进展)。",
+        "machine_matched": None,
+    },
+})
+
+
 def load(path=None):
     p = Path(path) if path else HERE / "out/demo/problem_gate.json"
     data = json.loads(p.read_text(encoding="utf-8"))

@@ -27,8 +27,20 @@ class ProblemMaker:
             "direction": self._run_direction,
             "sparse": self._run_sparse,
             "counterex": self._run_counterex,
+            "digit_base": self._run_digit_base,
             "aesthetics": aesthetics_engine.run,
         }
+
+    def _run_digit_base(self, limits: dict = None):
+        """领地·进制依赖结构(LONG_PLAN_V2 Phase 1 首个稀疏领地)。"""
+        from .territories import get as _get
+        from .territory_engine import run_territory
+        limits = limits or {}
+        lo, hi = limits.get("lo", 4), limits.get("hi", 20000)
+        roots, records, report = run_territory(_get("digit_base"), lo, hi)
+        ps = ProblemSet("digit_base", roots, records)
+        setattr(ps, "territory_report", report)
+        return ps
 
     def _run_counterex(self, limits: dict = None):
         """反例驱动: 唯一产出'机器自己答不出的问题'的引擎(status=开放)。"""
