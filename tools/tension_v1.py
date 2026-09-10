@@ -52,3 +52,50 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# ---- 科学史 M 模式启发: 张力候选 -> 大问题潜质分级 (R45) ----
+def m_pattern(para):
+    """用科学史 M 模式判断这个张力有没有大问题潜质。"""
+    M = []
+    if re.search(r"矛盾|不一致|不相容|冲突|悖论", para):
+        M.append("M6 悖论")
+    if re.search(r"异常|反例|不符合|例外|无法解释|不能说明", para):
+        M.append("M2 异常")
+    if re.search(r"统一|同源|合并|综合|会通|调和|贯通", para):
+        M.append("M1 统一")
+    if re.search(r"反对|批判|否定|驳斥|推翻", para):
+        M.append("M3 公设被挑战")
+    if not M:
+        M.append("M0 无模式(普通分歧)")
+    return M
+
+
+def main_with_M():
+    out = json.loads(Path("out/demo/tensions_v1.json").read_text(encoding="utf-8"))
+    for o in out:
+        o["M"] = m_pattern(o["excerpt"])
+    big = [o for o in out if any(m != "M0 无模式(普通分歧)" for m in o["M"])]
+    print("=" * 100)
+    print("张力候选 × 科学史 M 模式 —— 大问题潜质分级")
+    print("=" * 100)
+    print(f"  张力总数: {len(out)}  带 M 模式(有潜质): {len(big)}")
+    from collections import Counter
+    mc = Counter(m for o in out for m in o["M"] if m != "M0")
+    print(f"  M 模式分布: {dict(mc)}")
+    print("\n  == 带 M 模式(大问题潜质)的张力候选 ==")
+    for o in big[:10]:
+        print(f"  [{','.join(o['M'])}] {o['topic']} @p{o['para']}")
+        print(f"       {o['excerpt'][:90]}")
+    print("\n诚实: M 模式是关键词启发; 命中 = 该张力带'异常/悖论/统一'信号, 需人工语义复核。")
+    Path("out/demo/tensions_m.json").write_text(json.dumps(out, ensure_ascii=False, indent=1),
+                                                encoding="utf-8")
+    print("已存 out/demo/tensions_m.json")
+
+
+if __name__ == "__main__":
+    import sys
+    if "--M" in sys.argv:
+        main_with_M()
+    else:
+        main()
