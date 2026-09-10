@@ -43,23 +43,30 @@ ROUTE = {
 }
 
 
-def fetch_arxiv(topic, n=20):
-    """arXiv API: 按主题取最新论文标题+摘要。"""
+def fetch_arxiv(topic, n=40, retries=3):
+    """arXiv API: 按主题取最新论文标题+摘要(带重试)。"""
     url = ("http://export.arxiv.org/api/query?" +
            urllib.parse.urlencode({"search_query": f"cat:{topic}",
                                    "sortBy": "submittedDate", "sortOrder": "descending",
                                    "max_results": n}))
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        xml = r.read().decode("utf-8", errors="ignore")
-    ns = {"a": "http://www.w3.org/2005/Atom"}
-    root = ET.fromstring(xml)
-    out = []
-    for e in root.findall("a:entry", ns):
-        title = (e.findtext("a:title", "", ns) or "").replace("\n", " ").strip()
-        summ = (e.findtext("a:summary", "", ns) or "").replace("\n", " ").strip()
-        out.append({"title": title, "abstract": summ})
-    return out
+    last = None
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                xml = r.read().decode("utf-8", errors="ignore")
+            ns = {"a": "http://www.w3.org/2005/Atom"}
+            root = ET.fromstring(xml)
+            out = []
+            for e in root.findall("a:entry", ns):
+                title = (e.findtext("a:title", "", ns) or "").replace("\n", " ").strip()
+                summ = (e.findtext("a:summary", "", ns) or "").replace("\n", " ").strip()
+                out.append({"title": title, "abstract": summ})
+            return out
+        except Exception as e:
+            last = e
+            time.sleep(3 * (attempt + 1))
+    raise last
 
 
 def mine_paper(p, topic, dom):

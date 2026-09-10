@@ -20,6 +20,26 @@
   "status": "待判定"
  },
  {
+  "source": "arxiv:cs.AI",
+  "domain": "人工智能",
+  "title": "Active Adaptation, Not Static Defense: Temporal Dynamics of Preventative Steerin",
+  "open_signal": "remains unclear",
+  "context": "ation time, yet the mechanism behind its lasting protection remains unclear. Analyzing its temporal optimization dynamics, we find that",
+  "scientific_question": "[人工智能] 论文「Active Adaptation, Not Static Defense: T」提及的开放点: 'ation time, yet the mechanism behind its lasting protection ' — 该问题的精确刻画与解法?",
+  "judge_route": "实验/基准",
+  "status": "待判定"
+ },
+ {
+  "source": "arxiv:cs.AI",
+  "domain": "人工智能",
+  "title": "OntologyAligner: Ontology-Aligned Retrieval and Hierarchy-Guided Large Language ",
+  "open_signal": "remains challenging",
+  "context": "tent integration and analysis of biomedical data. This task remains challenging because lexical variation and subtle distinctions among hie",
+  "scientific_question": "[人工智能] 论文「OntologyAligner: Ontology-Aligned Retrie」提及的开放点: 'tent integration and analysis of biomedical data. This task ' — 该问题的精确刻画与解法?",
+  "judge_route": "实验/基准",
+  "status": "待判定"
+ },
+ {
   "source": "arxiv:astro-ph",
   "domain": "天文",
   "title": "Origin of Europa and the Galilean Satellites",
@@ -27,6 +47,26 @@
   "context": "d as gas inflow to Jupiter ended. We conclude by discussing open issues and implications for Europa's conditions of formation.",
   "scientific_question": "[天文] 论文「Origin of Europa and the Galilean Satell」提及的开放点: 'd as gas inflow to Jupiter ended. We conclude by discussing ' — 该问题的精确刻画与解法?",
   "judge_route": "观测",
+  "status": "待判定"
+ },
+ {
+  "source": "arxiv:cs.LG",
+  "domain": "机器学习",
+  "title": "A Dominant Diffuse Phase in the Sparse Autoencoder Phase Diagram",
+  "open_signal": "open problem",
+  "context": "se distinct features to be absorbed or merged. The MAIS-O43 open problem proposes a controlled experiment to characterize when recov",
+  "scientific_question": "[机器学习] 论文「A Dominant Diffuse Phase in the Sparse A」提及的开放点: 'se distinct features to be absorbed or merged. The MAIS-O43 ' — 该问题的精确刻画与解法?",
+  "judge_route": "实验+理论",
+  "status": "待判定"
+ },
+ {
+  "source": "arxiv:cs.LG",
+  "domain": "机器学习",
+  "title": "Active Adaptation, Not Static Defense: Temporal Dynamics of Preventative Steerin",
+  "open_signal": "remains unclear",
+  "context": "ation time, yet the mechanism behind its lasting protection remains unclear. Analyzing its temporal optimization dynamics, we find that",
+  "scientific_question": "[机器学习] 论文「Active Adaptation, Not Static Defense: T」提及的开放点: 'ation time, yet the mechanism behind its lasting protection ' — 该问题的精确刻画与解法?",
+  "judge_route": "实验+理论",
   "status": "待判定"
  }
 ]

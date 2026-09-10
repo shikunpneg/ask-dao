@@ -2,7 +2,7 @@
  "generator": "ask-dao-machine/discovery_pipeline",
  "target": "AI4S harness",
  "problem_format": "{statement, conjecture, evidence, judge_route, status, layer}",
- "count": 75,
+ "count": 82,
  "problems": [
   {
    "source": "https://en.wikipedia.org/wiki/Black_hole",
@@ -900,6 +900,83 @@
    "judge_route": "观测",
    "status": "待判定",
    "id": "ARX_2"
+  },
+  {
+   "source": "arxiv:cs.AI",
+   "domain": "人工智能",
+   "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+   "open_signal": "remains challenging",
+   "context": "world, yet translating this intelligence into robot control remains challenging. We present Show-Harness, an Embodied Harness that enables",
+   "scientific_question": "[人工智能] 论文「Show-Harness: Just a VLM Agent Can Play 」提及的开放点: 'world, yet translating this intelligence into robot control ' — 该问题的精确刻画与解法?",
+   "judge_route": "实验/基准",
+   "status": "待判定",
+   "id": "ARX_3"
+  },
+  {
+   "source": "arxiv:cs.AI",
+   "domain": "人工智能",
+   "title": "Emergency Department Revisit Quality Review Screening: Exploring Human Decision-",
+   "open_signal": "Further research",
+   "context": "next steps for improving screening with LLMs like ChatGPT. Further research is warranted to validate this preliminary work's finding th",
+   "scientific_question": "[人工智能] 论文「Emergency Department Revisit Quality Rev」提及的开放点: 'next steps for improving screening with LLMs like ChatGPT. F' — 该问题的精确刻画与解法?",
+   "judge_route": "实验/基准",
+   "status": "待判定",
+   "id": "ARX_4"
+  },
+  {
+   "source": "arxiv:cs.AI",
+   "domain": "人工智能",
+   "title": "Active Adaptation, Not Static Defense: Temporal Dynamics of Preventative Steerin",
+   "open_signal": "remains unclear",
+   "context": "ation time, yet the mechanism behind its lasting protection remains unclear. Analyzing its temporal optimization dynamics, we find that",
+   "scientific_question": "[人工智能] 论文「Active Adaptation, Not Static Defense: T」提及的开放点: 'ation time, yet the mechanism behind its lasting protection ' — 该问题的精确刻画与解法?",
+   "judge_route": "实验/基准",
+   "status": "待判定",
+   "id": "ARX_5"
+  },
+  {
+   "source": "arxiv:cs.AI",
+   "domain": "人工智能",
+   "title": "OntologyAligner: Ontology-Aligned Retrieval and Hierarchy-Guided Large Language ",
+   "open_signal": "remains challenging",
+   "context": "tent integration and analysis of biomedical data. This task remains challenging because lexical variation and subtle distinctions among hie",
+   "scientific_question": "[人工智能] 论文「OntologyAligner: Ontology-Aligned Retrie」提及的开放点: 'tent integration and analysis of biomedical data. This task ' — 该问题的精确刻画与解法?",
+   "judge_route": "实验/基准",
+   "status": "待判定",
+   "id": "ARX_6"
+  },
+  {
+   "source": "arxiv:astro-ph",
+   "domain": "天文",
+   "title": "Origin of Europa and the Galilean Satellites",
+   "open_signal": "open issue",
+   "context": "d as gas inflow to Jupiter ended. We conclude by discussing open issues and implications for Europa's conditions of formation.",
+   "scientific_question": "[天文] 论文「Origin of Europa and the Galilean Satell」提及的开放点: 'd as gas inflow to Jupiter ended. We conclude by discussing ' — 该问题的精确刻画与解法?",
+   "judge_route": "观测",
+   "status": "待判定",
+   "id": "ARX_7"
+  },
+  {
+   "source": "arxiv:cs.LG",
+   "domain": "机器学习",
+   "title": "A Dominant Diffuse Phase in the Sparse Autoencoder Phase Diagram",
+   "open_signal": "open problem",
+   "context": "se distinct features to be absorbed or merged. The MAIS-O43 open problem proposes a controlled experiment to characterize when recov",
+   "scientific_question": "[机器学习] 论文「A Dominant Diffuse Phase in the Sparse A」提及的开放点: 'se distinct features to be absorbed or merged. The MAIS-O43 ' — 该问题的精确刻画与解法?",
+   "judge_route": "实验+理论",
+   "status": "待判定",
+   "id": "ARX_8"
+  },
+  {
+   "source": "arxiv:cs.LG",
+   "domain": "机器学习",
+   "title": "Active Adaptation, Not Static Defense: Temporal Dynamics of Preventative Steerin",
+   "open_signal": "remains unclear",
+   "context": "ation time, yet the mechanism behind its lasting protection remains unclear. Analyzing its temporal optimization dynamics, we find that",
+   "scientific_question": "[机器学习] 论文「Active Adaptation, Not Static Defense: T」提及的开放点: 'ation time, yet the mechanism behind its lasting protection ' — 该问题的精确刻画与解法?",
+   "judge_route": "实验+理论",
+   "status": "待判定",
+   "id": "ARX_9"
   }
  ]
 }
