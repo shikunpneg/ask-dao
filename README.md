@@ -180,8 +180,8 @@ python tools/run_paths.py problem --input daily --q "为什么黑洞会蒸发?"
 ```
 
 ```bash
-# 可视化
-python tools/build_paths_viz.py     # → out/demo/viz/paths.html
+# 可视化（问题树 + 概念树 + 概念论证）
+python tools/build_paths_viz.py     # → docs/viz/paths.html
 ```
 
 ---
