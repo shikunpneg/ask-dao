@@ -13,6 +13,7 @@
   4. 问: 它指向什么可判问题?
 """
 import json
+import multiprocessing as mp
 from itertools import product
 from pathlib import Path
 
@@ -108,7 +109,7 @@ WORDS = {
 def understand(a, b, da, db):
     """认真理解 a×b: 想出一个独立自洽的'如果它是真的'诠释。"""
     essence_a, essence_b = WORDS[a], WORDS[b]
-    # 三种真实机制(不是模板, 是三种'合'的方式)
+    # 六种真实机制(不是模板, 是六种'合'的方式; 穷尽合的方式)
     mech = []
     # M1: b 是作用于 a 的操作(改造)
     mech.append(
@@ -122,6 +123,18 @@ def understand(a, b, da, db):
     mech.append(
         "更深的: " + a + "与" + b + "本属不同层面(" + essence_a + " vs " + essence_b + "), "
         "它们的相遇产生一个第三物——既不是" + a + "也不是" + b + ", 而是'" + a + "-" + b + "'这个新类。")
+    # M4: b 是 a 的边界(限制/屏蔽) —— 不是检验, 是划界
+    mech.append(
+        "另一路: " + b + "(" + essence_b + ")划出" + a + "(" + essence_a + ")的适用范围——"
+        "不是判据, 而是'在" + b + "之内 " + a + "才有意义'的边界条件。")
+    # M5: b 是 a 的资源/原料(支撑) —— 不是改造, 是供养
+    mech.append(
+        "再一路: " + b + "(" + essence_b + ")为" + a + "(" + essence_a + ")提供所需的结构——"
+        "没有" + b + ", " + a + "无从谈起; " + a + "是" + b + "的显现。")
+    # M6: a 与 b 互为定义(循环) —— 不是单向, 而是双向锁定
+    mech.append(
+        "最彻底的: " + a + "与" + b + "互为前提(" + essence_a + " ⇄ " + essence_b + ")——"
+        "哪个都不先于另一个, 它们共同构成一个自洽的闭环。")
     return mech
 
 
@@ -130,22 +143,26 @@ def question(a, b):
            f"(它的成立条件/边界/反例是什么?)"
 
 
+def understand_pair(args):
+    a, b = args
+    return {"term": a + b, "a": a, "b": b,
+            "understandings": understand(a, b, WORDS[a], WORDS[b]),
+            "question": question(a, b)}
+
+
 def main():
     words = list(WORDS)
     print("=" * 100)
     print("词的认真理解器 —— 每个组合都有意义(不可动摇原则)")
     print("=" * 100)
-    print(f"  词数 {len(words)}, 组合 {len(words)**2}")
+    print(f"  词数 {len(words)}, 组合 {len(words)**2}, 并行 {mp.cpu_count()} 核")
 
-    all_u = []
-    for a in words:
-        for b in words:
-            if a == b:
-                continue
-            term = a + b
-            mech = understand(a, b, WORDS[a], WORDS[b])
-            all_u.append({"term": term, "a": a, "b": b,
-                          "understandings": mech, "question": question(a, b)})
+    pairs = [(a, b) for a in words for b in words if a != b]
+    if mp.cpu_count() > 1 and len(pairs) > 1000:
+        with mp.Pool(mp.cpu_count()) as pool:
+            all_u = pool.map(understand_pair, pairs, chunksize=64)
+    else:
+        all_u = [understand_pair(p) for p in pairs]
 
     print(f"  {len(all_u)} 个组合全部有认真理解")
     print(f"\n  == 样本: 之前我'不理解'的组合 ==")

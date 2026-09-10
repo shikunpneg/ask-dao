@@ -1,145 +1,171 @@
 # -*- coding: utf-8 -*-
-"""tools/arch_diagram.py — 系统架构图（SVG, 极简风）
+"""tools/arch_diagram.py — 系统架构图（墨纸风, 与 problem_tree.svg 同一套设计系统）
 
-产出 assets/architecture.svg（README 内嵌）+ docs/viz/architecture.svg
-内容: 四个模块 + 两条路 + 数据流 + AI4S 接口。
+风格参考 OJO Design Skills 的 theme-guide：材质隐喻（宣纸/墨/朱砂/石青）、粗粝不磨平
+（纸面噪点 3–5%）、极疏留白、0–2px 圆角、无 drop shadow / 无发光 / 不用 SaaS 灰蓝紫渐变。
+
+内容全部对得上仓库实现（模块名、引擎数量、判定器、诚实边界），不画没有的东西。
+
+用法: python tools/arch_diagram.py
+产出: assets/architecture.svg + docs/assets/architecture.svg + docs/viz/architecture.svg
 """
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent.parent
-ASSETS = HERE / "assets"
+from design_ink import (BRONZE, DIM, HAIR, INK, INK_SOFT, PAPER, PAPER_2, TEAL, VERMILION,
+                        caption, esc, save, svg_open, title_block)
 
-INK = "#111111"
-DIM = "#6b7280"
-LINE = "#9ca3af"
-ACCENT = "#b02a24"
-BLUE = "#2563eb"
-GOLD = "#a16207"
-BG = "#ffffff"
-BOX = "#f9fafb"
+ROOT = Path(__file__).resolve().parent.parent
+W, H = 1480, 880
+PAD = 54
+RAIL = "#ded7c6"
 
 
-def box(x, y, w, h, title, lines, color=INK, dash=None, rx=10, fill=BOX):
-    o = [f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" '
-         f'fill="{fill}" stroke="{color}" stroke-width="1.6"']
-    if dash:
-        o.append(f' stroke-dasharray="{dash}"')
-    o.append('/>')
-    o.append(f'<text x="{x + w / 2}" y="{y + 26}" text-anchor="middle" '
-             f'font-size="15" font-weight="700" fill="{color}">{title}</text>')
-    for i, l in enumerate(lines):
-        o.append(f'<text x="{x + w / 2}" y="{y + 48 + i * 17}" text-anchor="middle" '
-                 f'font-size="11.5" fill="{DIM}">{l}</text>')
-    return "".join(o)
+def panel(o, x, y, w, h, label_en, title_cn, note=None, fill=PAPER_2, accent=None):
+    """分区：极浅纸色块 + 1px 墨线 + 左上角拉丁小标签（不用标题栏色块）。"""
+    o.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="2" fill="{fill}" '
+             f'stroke="{HAIR}" stroke-width="1"/>')
+    if accent:
+        o.append(f'<rect x="{x}" y="{y}" width="{w}" height="3" fill="{accent}"/>')
+    o.append(f'<text x="{x + 16}" y="{y + 24}" font-size="14.5" fill="{INK}">{esc(title_cn)}</text>')
+    o.append(f'<text x="{x + 16}" y="{y + 40}" font-size="10" fill="{DIM}" '
+             f'font-family="JetBrains Mono,Consolas,monospace" letter-spacing="2">'
+             f'{esc(label_en.upper())}</text>')
+    if note:
+        o.append(f'<text x="{x + w - 16}" y="{y + 24}" text-anchor="end" font-size="10.5" '
+                 f'fill="{DIM}">{esc(note)}</text>')
+    return y + 60
 
 
-def arrow(x1, y1, x2, y2, color=LINE, label="", dash=None, lx=None, ly=None):
-    o = [f'<path d="M{x1},{y1} L{x2},{y2}" stroke="{color}" stroke-width="1.5" '
-         f'marker-end="url(#ah)" fill="none"']
-    if dash:
-        o.append(f' stroke-dasharray="{dash}"')
-    o.append('/>')
+def item(o, x, y, text, sub=None, color=INK, size=12.5, bullet=True):
+    o.append(f'<text x="{x}" y="{y}" font-size="{size}" fill="{color}">'
+             f'{esc(("· " if bullet else "") + text)}</text>')
+    if sub:
+        o.append(f'<text x="{x + 12}" y="{y + 15}" font-size="10" fill="{DIM}">{esc(sub)}</text>')
+        return y + 32
+    return y + 20
+
+
+def rail(o, x1, x2, y, label=None, color=INK_SOFT):
+    """一条细轨 + 端头小箭头，表示数据流；不用粗色带。"""
+    o.append(f'<line x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" stroke="{color}" stroke-width="1.2" '
+             f'marker-end="url(#tick)"/>')
     if label:
-        mx = lx if lx is not None else (x1 + x2) / 2
-        my = ly if ly is not None else (y1 + y2) / 2
-        o.append(f'<text x="{mx}" y="{my - 5}" text-anchor="middle" font-size="11" '
-                 f'fill="{DIM}">{label}</text>')
-    return "".join(o)
+        o.append(f'<text x="{(x1 + x2) / 2}" y="{y - 7}" text-anchor="middle" font-size="10" '
+                 f'fill="{BRONZE}">{esc(label)}</text>')
 
 
-def build():
-    W, H = 1080, 660
-    p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
-         f'width="100%" font-family="Segoe UI,Microsoft YaHei,sans-serif">']
-    p.append(f'''<defs>
-<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
-        orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="{LINE}"/></marker>
-<marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
-        orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="{BLUE}"/></marker>
-<marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
-        orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="{ACCENT}"/></marker>
-</defs>''')
-    p.append(f'<rect width="{W}" height="{H}" fill="{BG}"/>')
-
-    # 标题
-    p.append(f'<text x="{W/2}" y="34" text-anchor="middle" font-size="17" '
-             f'font-weight="700" fill="{INK}">问道 · 系统架构</text>')
-    p.append(f'<text x="{W/2}" y="56" text-anchor="middle" font-size="12" '
-             f'fill="{DIM}">两条路：一条产问题（需解决），一条产概念（需解释）</text>')
-
-    # ── 问题路（上排）───────────────────────────────
-    p.append(f'<text x="40" y="96" font-size="13" font-weight="700" fill="{BLUE}">'
-             f'问题路 · Problem Path</text>')
-    p.append(box(40, 108, 208, 100, "① 感受模块",
-                 ["视觉 / 听觉 / 网络文本", "→ 结构化观测", "perception · web · arxiv"]))
-    p.append(box(276, 108, 208, 100, "② 问题制造模块",
-                 ["日常问题 → 前问题 → 科学问题", "→ 基础领域 → 问题树 → 融合",
-                  "corpus · counterex · territory"]))
-    p.append(box(512, 108, 208, 100, "③ 执行模块 AI4S",
-                 ["独立验证 / 求解", "裁决回灌", "ai4s_harness"]))
-    p.append(box(748, 108, 292, 100, "出口 · 可判问题清单",
-                 ["每条带 判定路由 + 证据", "→ 交 AI4S 求解",
-                  "标准：答案成立 / 可判"],
-                 color=BLUE, dash="5 4"))
-    p.append(arrow(248, 158, 276, 158, BLUE, "结构化", lx=262, ly=150))
-    p.append(arrow(484, 158, 512, 158, BLUE, "问题", lx=498, ly=150))
-    p.append(arrow(720, 158, 748, 158, BLUE, "交付", lx=734, ly=150))
-
-    # ── 想象路（下排）───────────────────────────────
-    p.append(f'<text x="40" y="266" font-size="13" font-weight="700" fill="{GOLD}">'
-             f'想象路 · Imagination Path</text>')
-    p.append(box(40, 278, 208, 100, "输入 · 词",
-                 ["任意词 / 词对", "例：记忆调性", "原则：每个词都有意义"],
-                 color=GOLD, dash="5 4"))
-    p.append(box(276, 278, 208, 100, "① 组词",
-                 ["穷尽领域专业词组合", "82 × 82 = 6642", "word_fusion"]))
-    p.append(box(512, 278, 208, 100, "② 拆词（深度 d）",
-                 ["问\"它是什么?\" → 拆实体", "→ 再问 → 拆到原子概念",
-                  "depth_sentence"]))
-    p.append(box(748, 278, 292, 100, "③ 还原造句 → 成段 → 解释",
-                 ["嵌套 + 推理 + 判断 + 比较", "定义 → 判断 → 比较 → 结论",
-                  "reconstruct · understand_deep"]))
-    p.append(arrow(248, 328, 276, 328, GOLD, "词对", lx=262, ly=320))
-    p.append(arrow(484, 328, 512, 328, GOLD, "组合", lx=498, ly=320))
-    p.append(arrow(720, 328, 748, 328, GOLD, "展开", lx=734, ly=320))
-
-    # ── 想象路出口（单独一行）──────────────────────
-    p.append(box(748, 400, 292, 76, "出口 · 被理解的概念 / 理论",
-                 ["标准：语法正确 + 逻辑通畅", "     + 有推理判断"],
-                 color=GOLD, dash="5 4"))
-    p.append(arrow(894, 378, 894, 400, GOLD))
-
-    # ── 两条路的隔离线 ─────────────────────────────
-    p.append(f'<line x1="40" y1="232" x2="1040" y2="232" stroke="{LINE}" '
-             f'stroke-width="1" stroke-dasharray="2 6"/>')
-    p.append(f'<text x="546" y="228" text-anchor="middle" font-size="10.5" fill="{DIM}">'
-             f'两条路互相独立 · 各有各的成功标准 · 不许互相评判</text>')
-
-    # ── 底部：诚实边界 ─────────────────────────────
-    p.append(f'<rect x="40" y="512" width="1000" height="112" rx="10" '
-             f'fill="#fef2f2" stroke="{ACCENT}" stroke-width="1.3"/>')
-    p.append(f'<text x="60" y="540" font-size="13" font-weight="700" fill="{ACCENT}">'
-             f'诚实边界（不许粉饰）</text>')
-    for i, t in enumerate([
-        "N3（世界新问题）至今 = 0 —— 机器能产「真问题」「已知·未解问题」「参照系未见候选」，但无一条通过三重门槛；",
-        "「检索未见」≠「新」—— 手头参照系只有 OEIS + 检索，真正的文献门需要人 / 联网；",
-        "显著性 &gt; 新颖性 —— 任选参数的序列同样「OEIS 未见」，唯一拦得住的是显著性证书。",
-    ]):
-        p.append(f'<text x="60" y="565 + i * 20" font-size="11.5" fill="#7f1d1d">· {t}</text>')
-
-    p.append('</svg>')
-    return "".join(p)
+def chained(o, x, y, steps, bw=96, gap=13, fs=11, h=30):
+    """一排方框 + 细箭头（0–2px 圆角, 细墨线）。返回右侧端点 x。"""
+    sx = x
+    for i, s in enumerate(steps):
+        o.append(f'<rect x="{sx}" y="{y}" width="{bw}" height="{h}" rx="2" fill="{PAPER_2}" '
+                 f'stroke="{HAIR}" stroke-width="1"/>')
+        o.append(f'<text x="{sx + bw / 2}" y="{y + h / 2 + 4}" text-anchor="middle" font-size="{fs}" '
+                 f'fill="{INK}">{esc(s)}</text>')
+        if i < len(steps) - 1:
+            o.append(f'<path d="M{sx + bw},{y + h / 2} L{sx + bw + gap - 2},{y + h / 2}" '
+                     f'stroke="{INK_SOFT}" stroke-width="1" marker-end="url(#tick)"/>')
+        sx += bw + gap
+    return sx - gap
 
 
 def main():
-    svg = build()
-    ASSETS.mkdir(parents=True, exist_ok=True)
-    (ASSETS / "architecture.svg").write_text(svg, encoding="utf-8")
-    viz = HERE / "docs" / "viz"
-    viz.mkdir(parents=True, exist_ok=True)
-    (viz / "architecture.svg").write_text(svg, encoding="utf-8")
-    print("saved:", ASSETS / "architecture.svg")
-    print("saved:", viz / "architecture.svg")
+    o = svg_open(W, H)
+    title_block(o, PAD, 62, "问道系统架构",
+                "ask-dao-machine architecture · 两条相互独立的路 + 四模块 + 判定层",
+                note="道生一，一生二，二生三，三生万物")
+
+    # ── 左：输入 ──────────────────────────────────────────────────────
+    lw = 300
+    y = panel(o, PAD, 108, lw, 360, "inputs", "输入", "三条入口")
+    for t, s in (("外部信息", "网页 / arXiv / 语料 → 结构化观测"),
+                 ("日常问题", "困惑 → 前问题（先良构化）"),
+                 ("母题库", "assets/registry.json · 86 个母题")):
+        y = item(o, PAD + 18, y + 16, t, s)
+    o.append(f'<line x1="{PAD + 16}" y1="{y + 4}" x2="{PAD + lw - 16}" y2="{y + 4}" stroke="{HAIR}"/>')
+    item(o, PAD + 18, y + 26, "感受模块", "视觉/听觉/网络文本 → 结构化观测", DIM, 11)
+
+    # ── 中：两条路 ────────────────────────────────────────────────────
+    px = PAD + lw + 28
+    pw = 700
+    y = panel(o, px, 108, pw, 360, "two independent paths", "两条独立的路",
+              "产出不同 · 标准不同", fill=PAPER, accent=INK)
+
+    o.append(f'<text x="{px + 18}" y="{y + 14}" font-size="13" fill="{INK}">问题路</text>')
+    o.append(f'<text x="{px + 74}" y="{y + 14}" font-size="9.5" fill="{DIM}" '
+             f'font-family="JetBrains Mono,Consolas,monospace">PROBLEM PATH · 产问题 · 需要解决</text>')
+    chained(o, px + 18, y + 28, ["日常问题", "前问题", "科学问题", "基础领域", "问题树", "领域融合"],
+            bw=96, gap=13)
+    o.append(f'<text x="{px + 18}" y="{y + 78}" font-size="10.5" fill="{DIM}">'
+             f'判定路由：数值扫描 · 构造证明 · LLM 判（N0–N3）· 新颖性门（OEIS 离线索引）</text>')
+    o.append(f'<line x1="{px + 16}" y1="{y + 92}" x2="{px + pw - 16}" y2="{y + 92}" stroke="{HAIR}"/>')
+
+    o.append(f'<text x="{px + 18}" y="{y + 120}" font-size="13" fill="{INK}">想象路</text>')
+    o.append(f'<text x="{px + 74}" y="{y + 120}" font-size="9.5" fill="{DIM}" '
+             f'font-family="JetBrains Mono,Consolas,monospace">IMAGINATION PATH · 产概念 · 需要解释</text>')
+    chained(o, px + 18, y + 134, ["组词", "拆词(深度 d)", "还原造句", "成段", "解释"],
+            bw=104, gap=9)
+    o.append(f'<text x="{px + 18}" y="{y + 188}" font-size="10.5" fill="{DIM}">'
+             f'成功标准：语法正确 + 逻辑通畅 + 有推理判断（概念不是拿来"解决"的）</text>')
+    o.append(f'<text x="{px + 18}" y="{y + 216}" font-size="10.5" fill="{BRONZE}">'
+             f'两条路互不评判：用问题路的"这新吗"去判想象路的概念，是范畴错误</text>')
+
+    # ── 右：判定与出口 ────────────────────────────────────────────────
+    rx = px + pw + 28
+    rw = W - PAD - rx
+    y = panel(o, rx, 108, rw, 360, "judgement & output", "判定与出口", None,
+              fill=PAPER, accent=VERMILION)
+    for t, s in (("判定器", "数学引擎 25 条 / 记录 28 / 组合 23"),
+                 ("独立复核", "tools/ai4s_harness.py · 裁决回灌"),
+                 ("LLM 判", "N0 已知 → N1 大概率已知 → N2 疑似未见 → N3 强候选"),
+                 ("人类裁决", "出版级 / N2–N3 才介入")):
+        y = item(o, rx + 18, y + 18, t, s, INK, 12)
+    o.append(f'<line x1="{rx + 16}" y1="{y + 2}" x2="{rx + rw - 16}" y2="{y + 2}" stroke="{HAIR}"/>')
+    y = item(o, rx + 18, y + 26, "出口", "带出处链的问题清单（母题→模板→绑定→判定）",
+             VERMILION, 12.5)
+    o.append(f'<text x="{rx + 18}" y="{y + 16}" font-size="10.5" fill="{VERMILION}">'
+             f'诚实边界：世界新问题（N3）至今为 0，不粉饰</text>')
+
+    # ── 底部：真实数据流 ─────────────────────────────────────────────
+    by = 508
+    panel(o, PAD, by, W - 2 * PAD, 306, "data flow · real artifacts", "真实数据流",
+          "每一步都留下可复核的 JSON")
+    rows = [
+        ("母题 → 问题", "registry.json（86 母题）→ combo / records / math 引擎 → out/demo/problems_*.json",
+         "139 母题单元"),
+        ("判定 → 状态", "判定器给出 真 / 假 / 悬置，写入 problem.status 与 judgement",
+         "数学域：真 15 · 验证 2 · 悬置 8"),
+        ("新颖性门", "OEIS 离线索引 399,061 条序列比对 + LLM 分层判 N0–N3",
+         "S2 广义 Collatz 停时表：索引未见 ×7"),
+        ("可视化", "问题树 + 概念树 + 概念论证 → docs/viz/paths.html",
+         "全量 260+ 条 / 23 领域"),
+    ]
+    ry = by + 78
+    for i, (k, v, note) in enumerate(rows):
+        o.append(f'<text x="{PAD + 18}" y="{ry + i * 48}" font-size="12.5" fill="{INK}">'
+                 f'{esc(k)}</text>')
+        o.append(f'<text x="{PAD + 156}" y="{ry + i * 48}" font-size="11" fill="{INK_SOFT}">'
+                 f'{esc(v)}</text>')
+        o.append(f'<text x="{W - PAD - 18}" y="{ry + i * 48}" text-anchor="end" font-size="10.5" '
+                 f'fill="{TEAL}">{esc(note)}</text>')
+        if i < len(rows) - 1:
+            o.append(f'<line x1="{PAD + 16}" y1="{ry + i * 48 + 15}" x2="{W - PAD - 16}" '
+                     f'y2="{ry + i * 48 + 15}" stroke="{RAIL}" stroke-width="1"/>')
+
+    # ── 三轨连接 ─────────────────────────────────────────────────────
+    rail(o, PAD + lw, px, 200, "结构化观测 → 问题")
+    rail(o, PAD + lw, px, 300, "母题 → 生长")
+    rail(o, px + pw, rx, 190, "问题清单")
+    rail(o, px + pw, rx, 330, "概念 → 解释")
+
+    caption(o, PAD, H - 26,
+            "图内每个数字、模块名与状态词都对应仓库实现或 out/demo/*.json 的真实记录；"
+            "没有画进图里的能力，README 里也不声称", 10)
+
+    svg = save(o, ROOT / "assets" / "architecture.svg",
+               ROOT / "docs" / "assets" / "architecture.svg",
+               ROOT / "docs" / "viz" / "architecture.svg")
+    print(f"wrote assets/architecture.svg ({len(svg)} bytes)")
 
 
 if __name__ == "__main__":

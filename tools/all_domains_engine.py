@@ -33,6 +33,52 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent.parent
 
 
+# ============ 可复用序列生成器(给弱 worker 加深用) ============
+def _chain_lengths(step_fn, start, max_steps=50):
+    """迭代轨道链长序列: 对每个起点, 步进直到回到已见, 记录链长。"""
+    out = []
+    for x0 in start:
+        seen = {}
+        x = x0
+        steps = 0
+        while x not in seen and steps < max_steps:
+            seen[x] = steps
+            x = step_fn(x)
+            steps += 1
+        if x in seen:
+            out.append(steps - seen[x])
+        else:
+            out.append(steps)
+    return out
+
+
+def _collatz_like_seq(n, k=3):
+    """类 Collatz: 若可被k整除则/k, 否则×k+1; 返回 (首次到达1步数, 轨道最大值)。"""
+    steps = 0
+    x = n
+    peak = x
+    while x != 1 and steps < 10000:
+        x = x // k if x % k == 0 else k * x + 1
+        peak = max(peak, x)
+        steps += 1
+    return steps, peak
+
+
+def _sigma(n):
+    s, m, d = 1, n, 2
+    while d * d <= m:
+        if m % d == 0:
+            p = 1
+            while m % d == 0:
+                m //= d
+                p = p * d + 1
+            s *= p
+        d += 1
+    if m > 1:
+        s *= (1 + m)
+    return s
+
+
 # ============ 各领域 worker ============
 def worker_domain(args):
     domain, param = args
@@ -76,31 +122,41 @@ def _math(param):
 
 
 def _phys(param):
-    """物理: 伊辛图阻挫(不同图)"""
+    """物理: 伊辛图阻挫(不同 n 的阻挫图比例序列)"""
     n, = param
     import itertools
     pairs = list(itertools.combinations(range(n), 2))
-    # 枚举一部分图, 算阻挫签名
-    sigs = Counter()
-    for mask in range(0, 2 ** len(pairs), 64):  # 采样
-        edges = [pairs[i] for i in range(len(pairs)) if (mask >> i) & 1]
-        active = sorted(set(v for e in edges for v in e))
-        ec = {}
-        for bits in itertools.product((1, -1), repeat=len(active)):
-            b = dict(zip(active, bits))
-            e = 0
-            for u, v in edges:
-                e += -1 * b[u] * b[v]
-            ec[e] = ec.get(e, 0) + 1
-        gs = min(ec)
-        sigs[(gs, ec[gs])] += 1
-    sigs_str = {f"({gs},{deg})": c for (gs, deg), c in sigs.items()}
-    return [{"domain": "物理", "statement": f"n={n} 采样图的阻挫签名分布",
-             "evidence": {"sigs": sigs_str}, "judge_route": "伊辛枚举"}]
+    # 采样图, 算"存在阻挫(基态简并>1)"的比例, 得到随 n 的序列
+    seq = []
+    for m in range(3, n + 1):
+        # 对 m 顶点完全图的子图采样
+        p2 = list(itertools.combinations(range(m), 2))
+        frust = 0
+        total = 0
+        for mask in range(0, 2 ** len(p2), 32):  # 采样
+            edges = [p2[i] for i in range(len(p2)) if (mask >> i) & 1]
+            active = sorted(set(v for e in edges for v in e))
+            if len(active) < 3:
+                continue
+            ec = {}
+            for bits in itertools.product((1, -1), repeat=len(active)):
+                b = dict(zip(active, bits))
+                e = 0
+                for u, v in edges:
+                    e += -1 * b[u] * b[v]
+                ec[e] = ec.get(e, 0) + 1
+            gs = min(ec)
+            # 阻挫 = 基态简并度 > 1(奇环存在)
+            if ec[gs] > 1:
+                frust += 1
+            total += 1
+        seq.append(round(frust / max(1, total), 3))
+    return [{"domain": "物理", "statement": f"n={n} 顶点采样图阻挫比例序列: {seq}",
+             "evidence": {"seq": seq, "n": n}, "judge_route": "伊辛枚举"}]
 
 
 def _bio(param):
-    """生物: DNA串模式(GC含量/重复)"""
+    """生物: DNA串多度量(GC含量/最长重复/回文计数/二联体偏好)"""
     seed = param
     rnd = random.Random(seed)
     seq = ''.join(rnd.choice("ATGC") for _ in range(200))
@@ -114,82 +170,174 @@ def _bio(param):
                 maxrep = max(maxrep, L)
                 break
             seen.add(seq[i:i + L])
-    return [{"domain": "生物", "statement": f"随机DNA(seed{seed}): GC含量{gc/2}% 最长重复{L}",
-             "evidence": {"gc": gc / 2, "maxrep": maxrep}, "judge_route": "序列分析"}]
+    # 回文子串计数(长度≥2, 简: 只数互补回文)
+    pal = 0
+    comp = str.maketrans("ATGC", "TACG")
+    for L in range(2, 9):
+        for i in range(len(seq) - L + 1):
+            sub = seq[i:i + L]
+            if sub == sub.translate(comp)[::-1]:
+                pal += 1
+    # 二联体频次(16 种, 前几)
+    from collections import Counter
+    d = Counter(seq[i:i + 2] for i in range(len(seq) - 1))
+    top = [c for _, c in d.most_common(6)]
+    return [{"domain": "生物", "statement": f"随机DNA(seed{seed}): GC{gc/2:.0f}% 最长重复{maxrep} 回文{pal}",
+             "evidence": {"gc": round(gc / 2, 1), "maxrep": maxrep, "pals": pal,
+                          "top_di": top}, "judge_route": "序列分析"}]
 
 
 def _chem(param):
-    """化学: 小分子的同分异构计数(烷烃)"""
+    """化学: 烷烃异构数(已知序列, 扩展到高碳) + 碳链分支度计数"""
     c, = param
-    # 烷烃 C_nH_(2n+2) 异构数(已知序列)
-    isomers = {1: 1, 2: 1, 3: 1, 4: 2, 5: 3, 6: 5, 7: 9, 8: 18, 9: 35, 10: 75}
-    return [{"domain": "化学", "statement": f"烷烃 C_{c}H_{2*c+2} 异构数: {isomers.get(c)}",
-             "evidence": {"isomers": isomers.get(c)}, "judge_route": "图同构计数"}]
+    # 烷烃 C_nH_(2n+2) 异构数(已知序列, 到 12)
+    isomers = {1: 1, 2: 1, 3: 1, 4: 2, 5: 3, 6: 5, 7: 9, 8: 18, 9: 35, 10: 75,
+               11: 159, 12: 355}
+    # 分支度: 计算不同度数分布出现的次数(简化: 度数≥3 的碳数上限)
+    seq = []
+    for n in range(1, min(c + 1, 8)):
+        # 树形碳骨架中, 度数4的碳数受限于总碳数
+        seq.append(max(0, n - 2))
+    return [{"domain": "化学", "statement": f"烷烃 C_{c}H_{2*c+2} 异构数: {isomers.get(c, '>355')}",
+             "evidence": {"isomers": isomers.get(c), "branch_seq": seq},
+             "judge_route": "图同构计数"}]
 
 
 def _psych(param):
-    """心理: 遗忘曲线/学习曲线模式"""
+    """心理: 遗忘曲线(多速率) + 学习曲线(收益递减)"""
     rate, = param
     vals = [int(100 / (1 + rate * i)) for i in range(20)]
-    return [{"domain": "心理", "statement": f"遗忘曲线(速率{rate}): {vals}",
-             "evidence": {"curve": vals}, "judge_route": "实验拟合"}]
+    # 学习曲线: 每次练习错误数递减(幂律)
+    learn = [max(1, int(20 / (1 + rate * i) ** 0.5)) for i in range(12)]
+    return [{"domain": "心理", "statement": f"遗忘曲线(速率{rate}): 尾项{vals[-3:]}",
+             "evidence": {"curve": vals, "learn": learn, "rate": rate},
+             "judge_route": "实验拟合"}]
 
 
 def _ling(param):
-    """语言: 词频分布(Zipf)"""
+    """语言: 词频分布(Zipf) + 词长分布序列"""
     txt, = param
     from collections import Counter
-    words = ['的', '是', '在', '和', '了', '不', '有', '我', '人', '这'] * 20
+    # 用种子构造伪语料: 词频按 1/r 衰减(Zipf 律), 词长按频次递减
+    rnd = random.Random(txt)
+    words = []
+    for rank in range(1, 25):
+        w = f"词{rank}"
+        words.extend([w] * int(100 / rank))
     cnt = Counter(words)
     ranks = sorted(cnt.values(), reverse=True)
+    # 词长分布: 随机文本的字符数分布(简化: 泊松状)
+    lens = [0] * 8
+    for _ in range(200):
+        wl = min(7, max(1, int(rnd.gauss(3.5, 1.2))))
+        lens[wl] += 1
     return [{"domain": "语言", "statement": f"词频分布: 前5 {ranks[:5]}",
-             "evidence": {"ranks": ranks[:10]}, "judge_route": "语料统计"}]
+             "evidence": {"ranks": ranks[:10], "len_dist": lens}, "judge_route": "语料统计"}]
 
 
 def _info(param):
-    """信息: 汉明码/编码距离"""
+    """信息: 汉明重量分布序列(每个长度的码字数) + 线性码奇偶校验"""
     n, = param
-    # n 位二元码的最大最小距离(近似)
-    return [{"domain": "信息", "statement": f"{n}位码的编码距离性质(待展开)",
-             "evidence": {"n": n}, "judge_route": "编码论"}]
+    import itertools
+    # 枚举 n 位二元向量, 按汉明重量分组
+    wt = [0] * (n + 1)
+    for bits in itertools.product((0, 1), repeat=n):
+        wt[sum(bits)] += 1
+    # 取少数低重量(编码论关心低重量码字)
+    seq = wt[:min(6, n + 1)]
+    return [{"domain": "信息", "statement": f"{n}位二元码汉明重量分布: {seq}",
+             "evidence": {"seq": seq, "n": n}, "judge_route": "组合枚举"}]
 
 
 def _eng(param):
-    """工程: 可靠度前沿"""
+    """工程: k-out-of-n 冗余可靠度 + 冗余结构计数"""
     r0, = param
     rows = []
     for k, n in ((1, 3), (2, 3), (2, 5), (3, 5)):
         r = sum(math.comb(n, i) * r0 ** i * (1 - r0) ** (n - i) for i in range(k, n + 1))
         rows.append((k, n, round(r, 4)))
+    # 冗余结构计数: 在 n 个部件中取 k 组"可用子集"的方式数(组合数序列)
+    seq = [math.comb(5, k) for k in range(1, 6)]
     return [{"domain": "工程", "statement": f"k-out-of-n 冗余可靠度(r={r0}): {rows}",
-             "evidence": {"rows": rows}, "judge_route": "可靠度计算"}]
+             "evidence": {"rows": rows, "comb5": seq}, "judge_route": "可靠度计算"}]
 
 
 def _econ(param):
-    """经济: 价格/收入分布(洛伦兹/不平等)"""
+    """经济: 帕累托分布多指标(前10%份额/基尼系数/集中度序列)"""
     alpha, = param
     # 帕累托分布采样
-    rnd = random.Random(alpha)
-    vals = [int(1000 * rnd.paretovariate(alpha)) for _ in range(100)]
-    top = sum(sorted(vals)[-10:])
+    rnd = random.Random(int(alpha * 10))
+    vals = sorted(int(1000 * rnd.paretovariate(alpha)) for _ in range(100))
     tot = sum(vals)
-    return [{"domain": "经济", "statement": f"帕累托(α={alpha}): 前10%占 {top / tot:.0%}",
-             "evidence": {"top10_pct": round(top / tot, 4)}, "judge_route": "分布统计"}]
+    top = sum(vals[-10:])
+    # 基尼系数(简化: 洛伦兹曲线下面积)
+    n = len(vals)
+    cum = 0
+    gini_num = 0
+    for i, v in enumerate(vals):
+        gini_num += (2 * (i + 1) - n - 1) * v
+    gini = gini_num / (n * tot) if tot else 0
+    # 集中度: 前 k 个累积份额(序列)
+    conc = []
+    for k in (5, 10, 20, 50):
+        conc.append(round(sum(vals[-k:]) / tot, 4))
+    return [{"domain": "经济", "statement": f"帕累托(α={alpha}): 前10%占 {top / tot:.0%} 基尼{gini:.3f}",
+             "evidence": {"top10_pct": round(top / tot, 4), "gini": round(gini, 4),
+                          "conc": conc}, "judge_route": "分布统计"}]
 
 
 def _music(param):
-    """音乐: 音程向量(已知)"""
+    """音乐: n音集合的音程向量分布 + 音级集合族计数"""
     n, = param
-    # n 音集合的计数(近似)
-    return [{"domain": "音乐", "statement": f"{n}音集合的结构性质",
-             "evidence": {"n": n}, "judge_route": "乐理分析"}]
+    import itertools
+    from collections import Counter
+    # 所有 n 音集合(模12取子集)
+    ics = Counter()
+    for sub in itertools.combinations(range(12), n):
+        # 计算该音集的音程向量(12个模间距出现次数)
+        v = Counter()
+        for i, a in enumerate(sub):
+            for b in sub[i + 1:]:
+                d = (b - a) % 12
+                v[min(d, 12 - d)] += 1
+        # 归一化成类型签名(各音程数排序元组)
+        sig = tuple(sorted(v.values(), reverse=True))
+        ics[sig] += 1
+    top = sorted(ics.items(), key=lambda kv: -kv[1])[:6]
+    seq = [c for _, c in top]
+    return [{"domain": "音乐", "statement": f"{n}音集合的音程向量类型计数: {seq}",
+             "evidence": {"seq": seq, "n": n, "top_sigs": [list(s) for s, _ in top]},
+             "judge_route": "组合枚举"}]
 
 
 def _art(param):
-    """艺术: 纹样对称"""
+    """艺术: n×n 二值纹样的二面群 D4 轨道数(真实对称类计数, Burnside 引理)"""
     n, = param
-    return [{"domain": "艺术", "statement": f"{n}x{n}纹样的对称类计数(待展开)",
-             "evidence": {"n": n}, "judge_route": "对称群"}]
+    cells = [(r, c) for r in range(n) for c in range(n)]
+    # D4 的 8 个元素: 恒等, 旋转90/180/270, 水平/垂直/两条对角线翻转
+    def rot90(rc): return (rc[1], n - 1 - rc[0])
+    def rot180(rc): return (n - 1 - rc[0], n - 1 - rc[1])
+    def rot270(rc): return (n - 1 - rc[1], rc[0])
+    def hflip(rc): return (rc[0], n - 1 - rc[1])
+    def vflip(rc): return (n - 1 - rc[0], rc[1])
+    def dfwd(rc): return (rc[1], rc[0])
+    def dback(rc): return (n - 1 - rc[1], n - 1 - rc[0])
+    syms = [lambda rc: rc, rot90, rot180, rot270, hflip, vflip, dfwd, dback]
+    fixed = []
+    for s in syms:
+        seen = set()
+        unpaired = 0
+        for cell in cells:
+            if cell in seen:
+                continue
+            pr = s(cell)
+            seen.add(cell)
+            seen.add(pr)
+            unpaired += 1
+        fixed.append(1 << unpaired)
+    orbit = sum(fixed) // 8
+    return [{"domain": "艺术", "statement": f"{n}x{n}二值纹样 D4 轨道数: {orbit}",
+             "evidence": {"orbit": orbit, "fixed": fixed}, "judge_route": "Burnside"}]
 
 
 def _ethic(param):
@@ -199,11 +347,40 @@ def _ethic(param):
 
 
 def _logic(param):
-    """逻辑: 布尔函数计数"""
+    """逻辑: n变量单调布尔函数数(Dedekind) + 自对偶函数数(真实计数)"""
     n, = param
-    return [{"domain": "逻辑", "statement": f"{n}变量布尔函数数: 2^(2^{n})",
-             "evidence": {"count": 2 ** (2 ** n) if n <= 4 else "巨大"},
-             "judge_route": "计数"}]
+    if n > 4:
+        return [{"domain": "逻辑", "statement": f"{n}变量布尔函数数: 2^(2^{n})",
+                 "evidence": {"count": 2 ** (2 ** n), "n": n}, "judge_route": "计数"}]
+    import itertools
+    nvars = n
+    rows = 2 ** nvars
+    # 单调布尔函数计数(枚举真值表, 检查单调性)
+    mono = 0
+    selff = 0
+    for bits in range(2 ** rows):
+        tt = [(bits >> i) & 1 for i in range(rows)]
+        # 单调: 任何赋值向量 ≤ 另一赋值向量 => 真值 ≤
+        ok = True
+        for x in range(rows):
+            for y in range(rows):
+                if x != y and (x & y) == y and tt[x] < tt[y]:
+                    ok = False
+                    break
+            if not ok:
+                break
+        if ok:
+            mono += 1
+        # 自对偶: 对每个赋值, tt[~x] = ~tt[x]
+        sd = True
+        for x in range(rows):
+            if tt[(2 ** nvars - 1) ^ x] == tt[x]:
+                sd = False
+                break
+        if sd:
+            selff += 1
+    return [{"domain": "逻辑", "statement": f"{n}变量单调布尔函数(Dedekind): {mono}, 自对偶: {selff}",
+             "evidence": {"mono": mono, "selff": selff, "n": n}, "judge_route": "真值表枚举"}]
 
 
 def _phil(param):
@@ -305,7 +482,7 @@ def _sigma(n):
 def main():
     t0 = time.time()
     tasks = build_tasks()
-    nproc = min(14, len(tasks))
+    nproc = min(20, len(tasks))
     print("=" * 100)
     print(f"全领域并行引擎 —— {len(DOMAIN_WORKERS)} 个领域, {nproc} 进程")
     print("=" * 100)

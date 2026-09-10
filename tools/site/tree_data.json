@@ -1,0 +1,2640 @@
+{
+ "roots": [
+  {
+   "id": "R_goldbach",
+   "label": "疑问: 偶数与质数的拆分之谜",
+   "domain": "数学",
+   "motifs": [
+    "奇偶",
+    "质数",
+    "奇合数",
+    "两项和",
+    "三项和"
+   ],
+   "seed": "偶数能拆成什么?"
+  },
+  {
+   "id": "R_sigma",
+   "label": "疑问: '因子和'的世界",
+   "domain": "数学",
+   "motifs": [
+    "因子和",
+    "加常数变异",
+    "欧拉φ",
+    "除数个数τ"
+   ],
+   "seed": "因子和与自己差多少?"
+  },
+  {
+   "id": "R_primegap",
+   "label": "疑问: 质数之间的空档",
+   "domain": "数学",
+   "motifs": [
+    "整除",
+    "阶乘构造",
+    "连续区间"
+   ],
+   "seed": "质数越到后面越稀疏?"
+  },
+  {
+   "id": "R_squares",
+   "label": "疑问: 平方数之间藏着质数?",
+   "domain": "数学",
+   "motifs": [
+    "连续平方",
+    "质数"
+   ],
+   "seed": "相邻平方之间必有质数吗?"
+  },
+  {
+   "id": "R_seq",
+   "label": "疑问: 按规则一直算下去会怎样?(递推)",
+   "domain": "数学",
+   "motifs": [
+    "递推映射",
+    "Collatz3n+1",
+    "数位和",
+    "快乐数"
+   ],
+   "seed": "一个规则套下去, 会收敛/循环/发散?"
+  },
+  {
+   "id": "R_pal",
+   "label": "疑问: 数字的'长相'(回文与分解)",
+   "domain": "数学",
+   "motifs": [
+    "回文数",
+    "半素数",
+    "2的幂"
+   ],
+   "seed": "对称的数里藏着质数吗?"
+  }
+ ],
+ "problems": [
+  {
+   "id": "A1",
+   "domain": "数学",
+   "seed": "偶数能拆成两个'非质数'的奇数吗?",
+   "motifs": [
+    "奇偶",
+    "奇合数",
+    "两项和"
+   ],
+   "template": "T1 域×对象类×两项和",
+   "statement": "所有 ≥40 的偶数都是两个奇合数之和",
+   "judgement": {
+    "method": "暴力扫描",
+    "range": "偶数6..300000",
+    "fail_count": 12,
+    "fails_head": [
+     6,
+     8,
+     10,
+     12,
+     14,
+     16,
+     20,
+     22,
+     26,
+     28,
+     32,
+     38
+    ],
+    "threshold": 40,
+    "proof": "配方 n%6==0:9+(n-9); n≡4:25+(n-25); n≡2:35+(n-35)"
+   },
+   "status": "真(定理+配方证明)",
+   "honesty": "及格线产物(文献大概率已有)",
+   "binds": {
+    "对象类": "奇合数",
+    "约束": "可相同",
+    "扫描域": "6..300000"
+   },
+   "tree": {
+    "parent": "R_goldbach",
+    "edge": "把'质数'换成'奇合数'"
+   },
+   "provenance": [
+    "从 R_goldbach 生长: 把'质数'换成'奇合数'",
+    "母题组合: 奇偶 × 奇合数 × 两项和",
+    "模板: T1 域×对象类×两项和",
+    "参数: 对象类=奇合数, 约束=可相同, 扫描域=6..300000",
+    "判定(暴力扫描): 真(定理+配方证明)"
+   ]
+  },
+  {
+   "id": "A2",
+   "domain": "数学",
+   "seed": "若两数还必须不同(不许9+9)呢?",
+   "motifs": [
+    "奇偶",
+    "奇合数",
+    "两项和"
+   ],
+   "template": "T1 + 约束(相异)",
+   "statement": "所有 ≥40 的偶数都是两个不同奇合数之和",
+   "judgement": {
+    "method": "暴力扫描(相异)",
+    "range": "偶数6..300000",
+    "fail_count": 13,
+    "fails_head": [
+     6,
+     8,
+     10,
+     12,
+     14,
+     16,
+     18,
+     20,
+     22,
+     26,
+     28,
+     32,
+     38
+    ],
+    "threshold": 40
+   },
+   "status": "有限验证(至扫描上限, 非证明)",
+   "honesty": "待参照系反查(未过 novelty_gate)",
+   "binds": {
+    "对象类": "奇合数",
+    "约束": "两数不同",
+    "扫描域": "6..300000"
+   },
+   "tree": {
+    "parent": "A1",
+    "edge": "加约束:两数不同"
+   },
+   "provenance": [
+    "从 A1 生长: 加约束:两数不同",
+    "母题组合: 奇偶 × 奇合数 × 两项和",
+    "模板: T1 + 约束(相异)",
+    "参数: 对象类=奇合数, 约束=两数不同, 扫描域=6..300000",
+    "判定(暴力扫描(相异)): 有限验证(至扫描上限, 非证明)"
+   ]
+  },
+  {
+   "id": "A3",
+   "domain": "数学",
+   "seed": "一边质数一边奇合数呢?",
+   "motifs": [
+    "奇偶",
+    "质数",
+    "奇合数",
+    "两项和"
+   ],
+   "template": "T1 混合类",
+   "statement": "所有 ≥12 的偶数 = 奇合数+质数",
+   "judgement": {
+    "method": "暴力扫描",
+    "range": "偶数6..300000",
+    "fail_count": 3,
+    "fails_head": [
+     6,
+     8,
+     10
+    ],
+    "threshold": 12
+   },
+   "status": "有限验证(至扫描上限, 非证明)",
+   "honesty": "待参照系反查(未过 novelty_gate)",
+   "binds": {
+    "类A": "奇合数",
+    "类B": "质数",
+    "扫描域": "6..300000"
+   },
+   "tree": {
+    "parent": "R_goldbach",
+    "edge": "混合两类对象"
+   },
+   "provenance": [
+    "从 R_goldbach 生长: 混合两类对象",
+    "母题组合: 奇偶 × 质数 × 奇合数 × 两项和",
+    "模板: T1 混合类",
+    "参数: 类A=奇合数, 类B=质数, 扫描域=6..300000",
+    "判定(暴力扫描): 有限验证(至扫描上限, 非证明)"
+   ]
+  },
+  {
+   "id": "B1",
+   "domain": "数学",
+   "seed": "每个≥4的偶数=两质数和?",
+   "motifs": [
+    "奇偶",
+    "质数",
+    "两项和"
+   ],
+   "template": "T1(对象类=质数)",
+   "statement": "每个 ≥4 的偶数都是两个质数之和",
+   "judgement": {
+    "method": "暴力扫描",
+    "range": "偶数4..100000",
+    "fail_count": 0,
+    "fails_head": []
+   },
+   "status": "悬置(开放)",
+   "honesty": "已知-著名: 哥德巴赫猜想",
+   "binds": {
+    "对象类": "质数",
+    "扫描域": "4..100000"
+   },
+   "tree": {
+    "parent": "R_goldbach",
+    "edge": "原版(著名)"
+   },
+   "provenance": [
+    "从 R_goldbach 生长: 原版(著名)",
+    "母题组合: 奇偶 × 质数 × 两项和",
+    "模板: T1(对象类=质数)",
+    "参数: 对象类=质数, 扫描域=4..100000",
+    "判定(暴力扫描): 悬置(开放)"
+   ]
+  },
+  {
+   "id": "B2",
+   "domain": "数学",
+   "seed": "奇数 = 质数 + 2×质数?",
+   "motifs": [
+    "奇偶",
+    "质数",
+    "两项和"
+   ],
+   "template": "T2 奇数=p+2q",
+   "statement": "每个 ≥9 的奇数都是质数与二倍质数之和",
+   "judgement": {
+    "method": "暴力扫描",
+    "range": "奇数9..50000",
+    "fail_count": 0,
+    "fails_head": []
+   },
+   "status": "悬置(开放)",
+   "honesty": "已知-著名: 莱莫因/利维猜想",
+   "binds": {
+    "扫描域": "奇数9..50000"
+   },
+   "tree": {
+    "parent": "R_goldbach",
+    "edge": "换域+换结构(+2q)"
+   },
+   "provenance": [
+    "从 R_goldbach 生长: 换域+换结构(+2q)",
+    "母题组合: 奇偶 × 质数 × 两项和",
+    "模板: T2 奇数=p+2q",
+    "参数: 扫描域=奇数9..50000",
+    "判定(暴力扫描): 悬置(开放)"
+   ]
+  },
+  {
+   "id": "B3",
+   "domain": "数学",
+   "seed": "每个大奇数=三个质数和?(弱哥德巴赫)",
+   "motifs": [
+    "奇偶",
+    "质数",
+    "三项和"
+   ],
+   "template": "T3 奇数=p+q+r",
+   "statement": "每个 ≥9 的奇数都是三个质数之和",
+   "judgement": {
+    "method": "数值复核",
+    "range": "奇数9..50000",
+    "fail_count": 0,
+    "fails_head": []
+   },
+   "status": "真(已证: Helfgott 2013, 机器数值复核)",
+   "honesty": "已知-已证(弱哥德巴赫)",
+   "binds": {
+    "扫描域": "奇数9..50000"
+   },
+   "tree": {
+    "parent": "R_goldbach",
+    "edge": "三项和"
+   },
+   "provenance": [
+    "从 R_goldbach 生长: 三项和",
+    "母题组合: 奇偶 × 质数 × 三项和",
+    "模板: T3 奇数=p+q+r",
+    "参数: 扫描域=奇数9..50000",
+    "判定(数值复核): 真(已证: Helfgott 2013, 机器数值复核)"
+   ]
+  },
+  {
+   "id": "B4",
+   "domain": "数学",
+   "seed": "[n,2n] 之间必有质数?(贝特朗)",
+   "motifs": [
+    "连续区间",
+    "质数"
+   ],
+   "template": "T4 区间存在性",
+   "statement": "对任意 n>1, n 与 2n 之间存在质数",
+   "judgement": {
+    "method": "区间扫描",
+    "range": "n=2..29999",
+    "fail_count": 0,
+    "fails_head": []
+   },
+   "status": "真(已证: 切比雪夫/贝特朗)",
+   "honesty": "已知-已证定理",
+   "binds": {
+    "扫描域": "n=2..29999"
+   },
+   "tree": {
+    "parent": "R_primegap",
+    "edge": "区间[n,2n]"
+   },
+   "provenance": [
+    "从 R_primegap 生长: 区间[n,2n]",
+    "母题组合: 连续区间 × 质数",
+    "模板: T4 区间存在性",
+    "参数: 扫描域=n=2..29999",
+    "判定(区间扫描): 真(已证: 切比雪夫/贝特朗)"
+   ]
+  },
+  {
+   "id": "C1",
+   "domain": "数学",
+   "seed": "存在因子和=自己的数?",
+   "motifs": [
+    "因子和",
+    "加常数变异"
+   ],
+   "template": "T5 σ(n)=2n+c, c=0",
+   "statement": "存在完全数(σ=2n)",
+   "judgement": {
+    "method": "筛法σ表",
+    "range": "2..500000",
+    "found": [
+     6,
+     28,
+     496,
+     8128
+    ],
+    "count": 4
+   },
+   "status": "真(存在,例证)",
+   "honesty": "及格线产物",
+   "binds": {
+    "c": 0,
+    "扫描域": "2..500000"
+   },
+   "tree": {
+    "parent": "R_sigma",
+    "edge": "c=0 完全数"
+   },
+   "provenance": [
+    "从 R_sigma 生长: c=0 完全数",
+    "母题组合: 因子和 × 加常数变异",
+    "模板: T5 σ(n)=2n+c, c=0",
+    "参数: c=0, 扫描域=2..500000",
+    "判定(筛法σ表): 真(存在,例证)"
+   ]
+  },
+  {
+   "id": "C2",
+   "domain": "数学",
+   "seed": "因子和=自己+1 呢?",
+   "motifs": [
+    "因子和",
+    "加常数变异"
+   ],
+   "template": "T5 σ(n)=2n+c, c=1",
+   "statement": "存在 n>1 使 σ(n)=2n+1 (准完全数)",
+   "judgement": {
+    "method": "筛法σ表",
+    "range": "2..500000",
+    "found": [],
+    "count": 0
+   },
+   "status": "悬置(开放)",
+   "honesty": "已知-著名: 准完全数是否存在",
+   "binds": {
+    "c": 1,
+    "扫描域": "2..500000"
+   },
+   "tree": {
+    "parent": "C1",
+    "edge": "参数移动 c:0→1"
+   },
+   "provenance": [
+    "从 C1 生长: 参数移动 c:0→1",
+    "母题组合: 因子和 × 加常数变异",
+    "模板: T5 σ(n)=2n+c, c=1",
+    "参数: c=1, 扫描域=2..500000",
+    "判定(筛法σ表): 悬置(开放)"
+   ]
+  },
+  {
+   "id": "C3",
+   "domain": "数学",
+   "seed": "完全数还得是奇数?",
+   "motifs": [
+    "因子和",
+    "奇偶",
+    "加常数变异"
+   ],
+   "template": "T5+奇偶约束",
+   "statement": "存在奇完全数",
+   "judgement": {
+    "method": "筛法σ表(奇数)",
+    "range": "奇数1..500000",
+    "found": [],
+    "count": 0
+   },
+   "status": "悬置(开放)",
+   "honesty": "已知-著名: 奇完全数(未解)",
+   "binds": {
+    "奇偶": "奇数",
+    "扫描域": "奇数1..500000"
+   },
+   "tree": {
+    "parent": "C1",
+    "edge": "加约束:n为奇数"
+   },
+   "provenance": [
+    "从 C1 生长: 加约束:n为奇数",
+    "母题组合: 因子和 × 奇偶 × 加常数变异",
+    "模板: T5+奇偶约束",
+    "参数: 奇偶=奇数, 扫描域=奇数1..500000",
+    "判定(筛法σ表(奇数)): 悬置(开放)"
+   ]
+  },
+  {
+   "id": "C4",
+   "domain": "数学",
+   "seed": "两个数互为对方真因子和?(亲和)",
+   "motifs": [
+    "因子和",
+    "加常数变异"
+   ],
+   "template": "T6 σ(n)−n=m ∧ σ(m)−m=n",
+   "statement": "存在亲和数对",
+   "judgement": {
+    "method": "筛法σ表",
+    "range": "2..400000",
+    "found": [
+     [
+      220,
+      284
+     ],
+     [
+      1184,
+      1210
+     ],
+     [
+      2620,
+      2924
+     ],
+     [
+      5020,
+      5564
+     ],
+     [
+      6232,
+      6368
+     ],
+     [
+      10744,
+      10856
+     ],
+     [
+      12285,
+      14595
+     ],
+     [
+      17296,
+      18416
+     ]
+    ],
+    "count": 25
+   },
+   "status": "真(存在,例证)",
+   "honesty": "及格线产物",
+   "binds": {
+    "扫描域": "2..400000"
+   },
+   "tree": {
+    "parent": "R_sigma",
+    "edge": "自指配对(链长2)"
+   },
+   "provenance": [
+    "从 R_sigma 生长: 自指配对(链长2)",
+    "母题组合: 因子和 × 加常数变异",
+    "模板: T6 σ(n)−n=m ∧ σ(m)−m=n",
+    "参数: 扫描域=2..400000",
+    "判定(筛法σ表): 真(存在,例证)"
+   ]
+  },
+  {
+   "id": "C5",
+   "domain": "数学",
+   "seed": "σ(n) 何时是奇数?",
+   "motifs": [
+    "因子和",
+    "奇偶"
+   ],
+   "template": "T7 值域奇偶性刻画",
+   "statement": "σ(n) 奇 ⇔ n 为平方或2×平方",
+   "judgement": {
+    "method": "全量对照",
+    "range": "1..40000",
+    "violations": 0
+   },
+   "status": "真(已知定理,机器验证)",
+   "honesty": "及格线产物(验证)",
+   "binds": {
+    "扫描域": "1..40000"
+   },
+   "tree": {
+    "parent": "R_sigma",
+    "edge": "元观察:奇偶性"
+   },
+   "provenance": [
+    "从 R_sigma 生长: 元观察:奇偶性",
+    "母题组合: 因子和 × 奇偶",
+    "模板: T7 值域奇偶性刻画",
+    "参数: 扫描域=1..40000",
+    "判定(全量对照): 真(已知定理,机器验证)"
+   ]
+  },
+  {
+   "id": "C6",
+   "domain": "数学",
+   "seed": "τ(n)(因子个数) 何时是奇数?",
+   "motifs": [
+    "除数个数τ",
+    "奇偶"
+   ],
+   "template": "T8 τ奇偶刻画",
+   "statement": "τ(n) 奇 ⇔ n 为平方数",
+   "judgement": {
+    "method": "全量对照",
+    "range": "1..40000",
+    "violations": 0
+   },
+   "status": "真(已知定理,机器验证)",
+   "honesty": "及格线产物(验证)",
+   "binds": {
+    "扫描域": "1..40000"
+   },
+   "tree": {
+    "parent": "R_sigma",
+    "edge": "τ与平方配对"
+   },
+   "provenance": [
+    "从 R_sigma 生长: τ与平方配对",
+    "母题组合: 除数个数τ × 奇偶",
+    "模板: T8 τ奇偶刻画",
+    "参数: 扫描域=1..40000",
+    "判定(全量对照): 真(已知定理,机器验证)"
+   ]
+  },
+  {
+   "id": "C7",
+   "domain": "数学",
+   "seed": "φ(n)(1..n中与n互质数) 总为偶数?",
+   "motifs": [
+    "欧拉φ",
+    "奇偶"
+   ],
+   "template": "T9 φ值域奇偶性",
+   "statement": "对 n≥3, φ(n) 是偶数",
+   "judgement": {
+    "method": "全量对照",
+    "range": "n=3..40000",
+    "violations": 0
+   },
+   "status": "真(已知定理,机器验证)",
+   "honesty": "及格线产物(验证)",
+   "binds": {
+    "扫描域": "n=3..40000"
+   },
+   "tree": {
+    "parent": "R_sigma",
+    "edge": "φ与奇偶"
+   },
+   "provenance": [
+    "从 R_sigma 生长: φ与奇偶",
+    "母题组合: 欧拉φ × 奇偶",
+    "模板: T9 φ值域奇偶性",
+    "参数: 扫描域=n=3..40000",
+    "判定(全量对照): 真(已知定理,机器验证)"
+   ]
+  },
+  {
+   "id": "D1",
+   "domain": "数学",
+   "seed": "质数之间的空档能多大?",
+   "motifs": [
+    "整除",
+    "阶乘构造"
+   ],
+   "template": "T10 (k+1)!+t 为合数",
+   "statement": "存在任意长连续合数串(质数间隔无上界)",
+   "judgement": {
+    "method": "构造证明",
+    "witness": "39916800+2..39916800+11",
+    "verified": true
+   },
+   "status": "真(构造证明)",
+   "honesty": "及格线产物",
+   "binds": {
+    "k": 10
+   },
+   "tree": {
+    "parent": "R_primegap",
+    "edge": "阶乘构造"
+   },
+   "provenance": [
+    "从 R_primegap 生长: 阶乘构造",
+    "母题组合: 整除 × 阶乘构造",
+    "模板: T10 (k+1)!+t 为合数",
+    "参数: k=10",
+    "判定(构造证明): 真(构造证明)"
+   ]
+  },
+  {
+   "id": "E1",
+   "domain": "数学",
+   "seed": "k² 与 (k+1)² 之间有质数?",
+   "motifs": [
+    "连续平方",
+    "质数"
+   ],
+   "template": "T11 区间存在性",
+   "statement": "对任意 k≥1, k² 与 (k+1)² 之间存在质数",
+   "judgement": {
+    "method": "区间扫描",
+    "range": "k=1..546",
+    "fail_count": 0,
+    "fails_head": []
+   },
+   "status": "悬置(开放)",
+   "honesty": "已知-著名: 勒让德猜想",
+   "binds": {
+    "扫描域": "k=1..546"
+   },
+   "tree": {
+    "parent": "R_squares",
+    "edge": "连续平方域"
+   },
+   "provenance": [
+    "从 R_squares 生长: 连续平方域",
+    "母题组合: 连续平方 × 质数",
+    "模板: T11 区间存在性",
+    "参数: 扫描域=k=1..546",
+    "判定(区间扫描): 悬置(开放)"
+   ]
+  },
+  {
+   "id": "E2",
+   "domain": "数学",
+   "seed": "所有偶数都是两平方和?",
+   "motifs": [
+    "平方数",
+    "两项和",
+    "奇偶"
+   ],
+   "template": "T12 两平方和",
+   "statement": "所有偶数都是两个平方数之和",
+   "judgement": {
+    "method": "集合反查",
+    "range": "0..2000",
+    "even_fail_examples": [
+     6,
+     12,
+     14,
+     22,
+     24,
+     28
+    ],
+    "note": "4k+2 形数永不可拆 → 结构性假"
+   },
+   "status": "假(结构性: 4k+2 不可能)",
+   "honesty": "及格线产物(反例+模论证)",
+   "binds": {
+    "扫描域": "0..2000"
+   },
+   "tree": {
+    "parent": "R_squares",
+    "edge": "平方对象×两项和"
+   },
+   "provenance": [
+    "从 R_squares 生长: 平方对象×两项和",
+    "母题组合: 平方数 × 两项和 × 奇偶",
+    "模板: T12 两平方和",
+    "参数: 扫描域=0..2000",
+    "判定(集合反查): 假(结构性: 4k+2 不可能)"
+   ]
+  },
+  {
+   "id": "F1",
+   "domain": "数学",
+   "seed": "每个数=三个三角数和?(高斯)",
+   "motifs": [
+    "三角数",
+    "三项和"
+   ],
+   "template": "T13 n=T_a+T_b+T_c",
+   "statement": "每个非负整数都是三个三角数之和",
+   "judgement": {
+    "method": "集合反查",
+    "range": "0..20000",
+    "fail_count": 0,
+    "fails_head": []
+   },
+   "status": "真(已证: 高斯 Eureka)",
+   "honesty": "已知-已证定理(机器复核)",
+   "binds": {
+    "扫描域": "0..20000"
+   },
+   "tree": {
+    "parent": "R_goldbach",
+    "edge": "三角对象×三项和"
+   },
+   "provenance": [
+    "从 R_goldbach 生长: 三角对象×三项和",
+    "母题组合: 三角数 × 三项和",
+    "模板: T13 n=T_a+T_b+T_c",
+    "参数: 扫描域=0..20000",
+    "判定(集合反查): 真(已证: 高斯 Eureka)"
+   ]
+  },
+  {
+   "id": "G1",
+   "domain": "数学",
+   "seed": "3n+1 规则套下去都会回到1吗?(Collatz)",
+   "motifs": [
+    "递推映射",
+    "Collatz3n+1"
+   ],
+   "template": "T14 a→3a+1(奇)/a/2(偶)",
+   "statement": "对任意正整数, Collatz 迭代最终到达 1",
+   "judgement": {
+    "method": "带记忆迭代",
+    "range": "2..100000",
+    "fail_count": 0
+   },
+   "status": "悬置(开放)",
+   "honesty": "已知-著名: Collatz 猜想",
+   "binds": {
+    "扫描域": "2..100000"
+   },
+   "tree": {
+    "parent": "R_seq",
+    "edge": "代表'递推映射'族"
+   },
+   "provenance": [
+    "从 R_seq 生长: 代表'递推映射'族",
+    "母题组合: 递推映射 × Collatz3n+1",
+    "模板: T14 a→3a+1(奇)/a/2(偶)",
+    "参数: 扫描域=2..100000",
+    "判定(带记忆迭代): 悬置(开放)"
+   ]
+  },
+  {
+   "id": "G2",
+   "domain": "数学",
+   "seed": "'快乐数'(数位平方迭代到1)存在吗?循环长什么样?",
+   "motifs": [
+    "数位和",
+    "递推映射"
+   ],
+   "template": "T15 数位平方映射",
+   "statement": "存在快乐数; 存在不快乐数的循环(4→16→37→58→89→145→42→20→4)",
+   "judgement": {
+    "method": "迭代轨迹",
+    "range": "1..20000",
+    "happy_count": 3038,
+    "sad_cycle_seed": [
+     2,
+     [
+      2,
+      4,
+      37,
+      42,
+      16,
+      145,
+      20,
+      89,
+      58
+     ]
+    ]
+   },
+   "status": "真(存在例证+循环构造)",
+   "honesty": "及格线产物/部分已知定义",
+   "binds": {
+    "扫描域": "1..20000"
+   },
+   "tree": {
+    "parent": "R_seq",
+    "edge": "数位和×递推"
+   },
+   "provenance": [
+    "从 R_seq 生长: 数位和×递推",
+    "母题组合: 数位和 × 递推映射",
+    "模板: T15 数位平方映射",
+    "参数: 扫描域=1..20000",
+    "判定(迭代轨迹): 真(存在例证+循环构造)"
+   ]
+  },
+  {
+   "id": "G3",
+   "domain": "数学",
+   "seed": "斐波那契相邻两项互质吗?",
+   "motifs": [
+    "斐波那契数",
+    "整除"
+   ],
+   "template": "T16 gcd(F_n,F_{n+1})",
+   "statement": "斐波那契相邻项最大公约数为1",
+   "judgement": {
+    "method": "迭代gcd",
+    "range": "前100项",
+    "violations": 0
+   },
+   "status": "真(已知定理,机器验证)",
+   "honesty": "及格线产物(验证)",
+   "binds": {
+    "扫描域": "前100项"
+   },
+   "tree": {
+    "parent": "R_seq",
+    "edge": "递推×整除"
+   },
+   "provenance": [
+    "从 R_seq 生长: 递推×整除",
+    "母题组合: 斐波那契数 × 整除",
+    "模板: T16 gcd(F_n,F_{n+1})",
+    "参数: 扫描域=前100项",
+    "判定(迭代gcd): 真(已知定理,机器验证)"
+   ]
+  },
+  {
+   "id": "H1",
+   "domain": "数学",
+   "seed": "回文的数里藏得住质数吗?",
+   "motifs": [
+    "回文数",
+    "质数"
+   ],
+   "template": "T17 回文∩质数(存在)",
+   "statement": "存在回文质数",
+   "judgement": {
+    "method": "集合交",
+    "range": "1..300000",
+    "found": [
+     2,
+     3,
+     5,
+     7,
+     11,
+     98389,
+     101,
+     131,
+     151,
+     16561,
+     181,
+     191
+    ],
+    "count": 113
+   },
+   "status": "真(存在,例证)",
+   "honesty": "及格线产物",
+   "binds": {
+    "扫描域": "1..300000"
+   },
+   "tree": {
+    "parent": "R_pal",
+    "edge": "回文×质数"
+   },
+   "provenance": [
+    "从 R_pal 生长: 回文×质数",
+    "母题组合: 回文数 × 质数",
+    "模板: T17 回文∩质数(存在)",
+    "参数: 扫描域=1..300000",
+    "判定(集合交): 真(存在,例证)"
+   ]
+  },
+  {
+   "id": "H2",
+   "domain": "数学",
+   "seed": "回文质数有无限多个吗?",
+   "motifs": [
+    "回文数",
+    "质数"
+   ],
+   "template": "T18 无穷性",
+   "statement": "存在无穷多个回文质数",
+   "judgement": {
+    "method": "证据+文献",
+    "range": "1..300000",
+    "count_sofar": 113
+   },
+   "status": "悬置(开放)",
+   "honesty": "开放(相信为真未证明, 需查证)",
+   "binds": {
+    "扫描域": "1..300000"
+   },
+   "tree": {
+    "parent": "H1",
+    "edge": "升级为无穷性"
+   },
+   "provenance": [
+    "从 H1 生长: 升级为无穷性",
+    "母题组合: 回文数 × 质数",
+    "模板: T18 无穷性",
+    "参数: 扫描域=1..300000",
+    "判定(证据+文献): 悬置(开放)"
+   ]
+  },
+  {
+   "id": "H3",
+   "domain": "数学",
+   "seed": "两个连续数都是'半素数'(恰两个素因子)?",
+   "motifs": [
+    "半素数",
+    "连续整数串"
+   ],
+   "template": "T19 半素数连续对(存在)",
+   "statement": "存在连续两个半素数",
+   "judgement": {
+    "method": "集合扫描",
+    "range": "1..300000",
+    "example": [
+     9,
+     10
+    ]
+   },
+   "status": "真(存在,例证)",
+   "honesty": "及格线产物",
+   "binds": {
+    "扫描域": "1..300000"
+   },
+   "tree": {
+    "parent": "R_pal",
+    "edge": "半素数×连续串"
+   },
+   "provenance": [
+    "从 R_pal 生长: 半素数×连续串",
+    "母题组合: 半素数 × 连续整数串",
+    "模板: T19 半素数连续对(存在)",
+    "参数: 扫描域=1..300000",
+    "判定(集合扫描): 真(存在,例证)"
+   ]
+  },
+  {
+   "id": "H4",
+   "domain": "数学",
+   "seed": "这样的'半素数孪生对'无限吗?",
+   "motifs": [
+    "半素数",
+    "连续整数串"
+   ],
+   "template": "T20 无穷性",
+   "statement": "存在无穷多对连续半素数",
+   "judgement": {
+    "method": "证据+文献",
+    "note": "与筛法/孪生族相关"
+   },
+   "status": "悬置(开放)",
+   "honesty": "开放(需查证)",
+   "binds": {
+    "example": [
+     9,
+     10
+    ]
+   },
+   "tree": {
+    "parent": "H3",
+    "edge": "升级为无穷性"
+   },
+   "provenance": [
+    "从 H3 生长: 升级为无穷性",
+    "母题组合: 半素数 × 连续整数串",
+    "模板: T20 无穷性",
+    "参数: example=(9, 10)",
+    "判定(证据+文献): 悬置(开放)"
+   ]
+  }
+ ],
+ "derived": [
+  {
+   "id": "DM561",
+   "derived": "Collatz3n+1 × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "数学::Collatz3n+1",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: Collatz3n+1(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM564",
+   "derived": "Collatz3n+1 × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "数学::Collatz3n+1",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: Collatz3n+1(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM563",
+   "derived": "Collatz3n+1 × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "数学::Collatz3n+1",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: Collatz3n+1(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM608",
+   "derived": "信念修正 × 信道/约束",
+   "type": "过程度量",
+   "parents": [
+    "心理认知::信念修正",
+    "信息-计算::信道/约束"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 信念修正(过程) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM609",
+   "derived": "信息(香农/算法/语义) × 递归语法",
+   "type": "结构×对象",
+   "parents": [
+    "信息-计算::信息(香农/算法/语义)",
+    "语言-人文::递归语法"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "blueprint",
+   "note": "复合母题候选: 信息(香农/算法/语义)(对象) 与 递归语法(结构) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM611",
+   "derived": "信道/约束 × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "信息-计算::信道/约束",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 信道/约束(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM610",
+   "derived": "信道/约束 × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "信息-计算::信道/约束",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 信道/约束(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM613",
+   "derived": "功利-福利 × 意义解释(诠释)",
+   "type": "解释-度量",
+   "parents": [
+    "伦理-政治::功利-福利",
+    "语言-人文::意义解释(诠释)"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 功利-福利(度量) 与 意义解释(诠释)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM598",
+   "derived": "功能(选择效应) × 功利-福利",
+   "type": "解释-度量",
+   "parents": [
+    "生物::功能(选择效应)",
+    "伦理-政治::功利-福利"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 功能(选择效应)(解释类型) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM599",
+   "derived": "功能(选择效应) × 秩序-均匀",
+   "type": "解释-度量",
+   "parents": [
+    "生物::功能(选择效应)",
+    "美学::秩序-均匀"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 功能(选择效应)(解释类型) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM597",
+   "derived": "功能(选择效应) × 算法复杂度",
+   "type": "解释-度量",
+   "parents": [
+    "生物::功能(选择效应)",
+    "信息-计算::算法复杂度"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 功能(选择效应)(解释类型) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM462",
+   "derived": "因子和σ × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "数学::因子和σ",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 因子和σ(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM465",
+   "derived": "因子和σ × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "数学::因子和σ",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 因子和σ(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM464",
+   "derived": "因子和σ × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "数学::因子和σ",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 因子和σ(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM600",
+   "derived": "基因-信息-编码 × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "生物::基因-信息-编码",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 基因-信息-编码(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM603",
+   "derived": "基因-信息-编码 × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "生物::基因-信息-编码",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 基因-信息-编码(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM602",
+   "derived": "基因-信息-编码 × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "生物::基因-信息-编码",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 基因-信息-编码(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM532",
+   "derived": "数位和 × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "数学::数位和",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 数位和(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM535",
+   "derived": "数位和 × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "数学::数位和",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 数位和(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM534",
+   "derived": "数位和 × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "数学::数位和",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 数位和(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM605",
+   "derived": "机制(实体×活动×组织) × 功利-福利",
+   "type": "解释-度量",
+   "parents": [
+    "心理认知::机制(实体×活动×组织)",
+    "伦理-政治::功利-福利"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 机制(实体×活动×组织)(解释类型) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM606",
+   "derived": "机制(实体×活动×组织) × 秩序-均匀",
+   "type": "解释-度量",
+   "parents": [
+    "心理认知::机制(实体×活动×组织)",
+    "美学::秩序-均匀"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 机制(实体×活动×组织)(解释类型) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM604",
+   "derived": "机制(实体×活动×组织) × 算法复杂度",
+   "type": "解释-度量",
+   "parents": [
+    "心理认知::机制(实体×活动×组织)",
+    "信息-计算::算法复杂度"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 机制(实体×活动×组织)(解释类型) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM499",
+   "derived": "欧拉φ × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "数学::欧拉φ",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 欧拉φ(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM502",
+   "derived": "欧拉φ × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "数学::欧拉φ",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 欧拉φ(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM501",
+   "derived": "欧拉φ × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "数学::欧拉φ",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 欧拉φ(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM614",
+   "derived": "秩序-均匀 × 意义解释(诠释)",
+   "type": "解释-度量",
+   "parents": [
+    "美学::秩序-均匀",
+    "语言-人文::意义解释(诠释)"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 秩序-均匀(度量) 与 意义解释(诠释)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM612",
+   "derived": "算法复杂度 × 意义解释(诠释)",
+   "type": "解释-度量",
+   "parents": [
+    "信息-计算::算法复杂度",
+    "语言-人文::意义解释(诠释)"
+   ],
+   "cross": true,
+   "frame": "F_interval_exist",
+   "route": "blueprint",
+   "note": "复合母题候选: 算法复杂度(度量) 与 意义解释(诠释)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM516",
+   "derived": "素因子计数ω/Ω × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "数学::素因子计数ω/Ω",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 素因子计数ω/Ω(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM519",
+   "derived": "素因子计数ω/Ω × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "数学::素因子计数ω/Ω",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 素因子计数ω/Ω(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM518",
+   "derived": "素因子计数ω/Ω × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "数学::素因子计数ω/Ω",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 素因子计数ω/Ω(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM591",
+   "derived": "自然选择 × 意义解释(诠释)",
+   "type": "机制组合",
+   "parents": [
+    "生物::自然选择",
+    "语言-人文::意义解释(诠释)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 自然选择(机制) 与 意义解释(诠释)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM590",
+   "derived": "自然选择 × 机制(实体×活动×组织)",
+   "type": "机制组合",
+   "parents": [
+    "生物::自然选择",
+    "心理认知::机制(实体×活动×组织)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 自然选择(机制) 与 机制(实体×活动×组织)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM607",
+   "derived": "表征 × 递归语法",
+   "type": "结构×对象",
+   "parents": [
+    "心理认知::表征",
+    "语言-人文::递归语法"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "blueprint",
+   "note": "复合母题候选: 表征(对象) 与 递归语法(结构) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM593",
+   "derived": "适合度 × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "生物::适合度",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 适合度(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM596",
+   "derived": "适合度 × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "生物::适合度",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 适合度(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM595",
+   "derived": "适合度 × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "生物::适合度",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 适合度(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM547",
+   "derived": "递推映射 × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "数学::递推映射",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 递推映射(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM550",
+   "derived": "递推映射 × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "数学::递推映射",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 递推映射(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM549",
+   "derived": "递推映射 × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "数学::递推映射",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 递推映射(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM481",
+   "derived": "除数个数τ × 信念修正",
+   "type": "过程度量",
+   "parents": [
+    "数学::除数个数τ",
+    "心理认知::信念修正"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 除数个数τ(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM484",
+   "derived": "除数个数τ × 张力-释放",
+   "type": "过程度量",
+   "parents": [
+    "数学::除数个数τ",
+    "美学::张力-释放"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 除数个数τ(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM483",
+   "derived": "除数个数τ × 设计问题(协同进化)",
+   "type": "过程度量",
+   "parents": [
+    "数学::除数个数τ",
+    "工程::设计问题(协同进化)"
+   ],
+   "cross": true,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 除数个数τ(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM589",
+   "derived": "自然选择 × 功能(选择效应)",
+   "type": "机制组合",
+   "parents": [
+    "生物::自然选择",
+    "生物::功能(选择效应)"
+   ],
+   "cross": false,
+   "frame": "F_recur_converge",
+   "route": "blueprint",
+   "note": "复合母题候选: 自然选择(机制) 与 功能(选择效应)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM361",
+   "derived": "2的幂 × 信息流-因果",
+   "type": "关系×对象",
+   "parents": [
+    "数学::2的幂",
+    "信息-计算::信息流-因果"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 信息流-因果(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM359",
+   "derived": "2的幂 × 信道/约束",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::2的幂",
+    "信息-计算::信道/约束"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM362",
+   "derived": "2的幂 × 功利-福利",
+   "type": "度量×对象",
+   "parents": [
+    "数学::2的幂",
+    "伦理-政治::功利-福利"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM356",
+   "derived": "2的幂 × 同源/同形",
+   "type": "关系×对象",
+   "parents": [
+    "数学::2的幂",
+    "生物::同源/同形"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 同源/同形(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM354",
+   "derived": "2的幂 × 因果结构",
+   "type": "关系×对象",
+   "parents": [
+    "数学::2的幂",
+    "物理::因果结构"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 因果结构(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM357",
+   "derived": "2的幂 × 基因-信息-编码",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::2的幂",
+    "生物::基因-信息-编码"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 基因-信息-编码(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM358",
+   "derived": "2的幂 × 多重实现",
+   "type": "关系×对象",
+   "parents": [
+    "数学::2的幂",
+    "心理认知::多重实现"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 多重实现(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM363",
+   "derived": "2的幂 × 对称-平均脸",
+   "type": "关系×对象",
+   "parents": [
+    "数学::2的幂",
+    "美学::对称-平均脸"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 对称-平均脸(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM364",
+   "derived": "2的幂 × 秩序-均匀",
+   "type": "度量×对象",
+   "parents": [
+    "数学::2的幂",
+    "美学::秩序-均匀"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM360",
+   "derived": "2的幂 × 算法复杂度",
+   "type": "度量×对象",
+   "parents": [
+    "数学::2的幂",
+    "信息-计算::算法复杂度"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM355",
+   "derived": "2的幂 × 适合度",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::2的幂",
+    "生物::适合度"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: 2的幂(对象类) 与 适合度(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM442",
+   "derived": "Carmichael数 × 信息流-因果",
+   "type": "关系×对象",
+   "parents": [
+    "数学::Carmichael数",
+    "信息-计算::信息流-因果"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 信息流-因果(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM440",
+   "derived": "Carmichael数 × 信道/约束",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::Carmichael数",
+    "信息-计算::信道/约束"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM443",
+   "derived": "Carmichael数 × 功利-福利",
+   "type": "度量×对象",
+   "parents": [
+    "数学::Carmichael数",
+    "伦理-政治::功利-福利"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM437",
+   "derived": "Carmichael数 × 同源/同形",
+   "type": "关系×对象",
+   "parents": [
+    "数学::Carmichael数",
+    "生物::同源/同形"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 同源/同形(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM435",
+   "derived": "Carmichael数 × 因果结构",
+   "type": "关系×对象",
+   "parents": [
+    "数学::Carmichael数",
+    "物理::因果结构"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 因果结构(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM438",
+   "derived": "Carmichael数 × 基因-信息-编码",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::Carmichael数",
+    "生物::基因-信息-编码"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 基因-信息-编码(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM439",
+   "derived": "Carmichael数 × 多重实现",
+   "type": "关系×对象",
+   "parents": [
+    "数学::Carmichael数",
+    "心理认知::多重实现"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 多重实现(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM444",
+   "derived": "Carmichael数 × 对称-平均脸",
+   "type": "关系×对象",
+   "parents": [
+    "数学::Carmichael数",
+    "美学::对称-平均脸"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 对称-平均脸(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM445",
+   "derived": "Carmichael数 × 秩序-均匀",
+   "type": "度量×对象",
+   "parents": [
+    "数学::Carmichael数",
+    "美学::秩序-均匀"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM441",
+   "derived": "Carmichael数 × 算法复杂度",
+   "type": "度量×对象",
+   "parents": [
+    "数学::Carmichael数",
+    "信息-计算::算法复杂度"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM436",
+   "derived": "Carmichael数 × 适合度",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::Carmichael数",
+    "生物::适合度"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: Carmichael数(对象类) 与 适合度(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM562",
+   "derived": "Collatz3n+1 × 信道/约束",
+   "type": "复合映射",
+   "parents": [
+    "数学::Collatz3n+1",
+    "信息-计算::信道/约束"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: Collatz3n+1(映射) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM560",
+   "derived": "Collatz3n+1 × 基因-信息-编码",
+   "type": "复合映射",
+   "parents": [
+    "数学::Collatz3n+1",
+    "生物::基因-信息-编码"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: Collatz3n+1(映射) 与 基因-信息-编码(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM559",
+   "derived": "Collatz3n+1 × 适合度",
+   "type": "复合映射",
+   "parents": [
+    "数学::Collatz3n+1",
+    "生物::适合度"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: Collatz3n+1(映射) 与 适合度(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM239",
+   "derived": "三角数 × 信息流-因果",
+   "type": "关系×对象",
+   "parents": [
+    "数学::三角数",
+    "信息-计算::信息流-因果"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 信息流-因果(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM237",
+   "derived": "三角数 × 信道/约束",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::三角数",
+    "信息-计算::信道/约束"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM240",
+   "derived": "三角数 × 功利-福利",
+   "type": "度量×对象",
+   "parents": [
+    "数学::三角数",
+    "伦理-政治::功利-福利"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM234",
+   "derived": "三角数 × 同源/同形",
+   "type": "关系×对象",
+   "parents": [
+    "数学::三角数",
+    "生物::同源/同形"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 同源/同形(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM232",
+   "derived": "三角数 × 因果结构",
+   "type": "关系×对象",
+   "parents": [
+    "数学::三角数",
+    "物理::因果结构"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 因果结构(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM235",
+   "derived": "三角数 × 基因-信息-编码",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::三角数",
+    "生物::基因-信息-编码"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 基因-信息-编码(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM236",
+   "derived": "三角数 × 多重实现",
+   "type": "关系×对象",
+   "parents": [
+    "数学::三角数",
+    "心理认知::多重实现"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 多重实现(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM241",
+   "derived": "三角数 × 对称-平均脸",
+   "type": "关系×对象",
+   "parents": [
+    "数学::三角数",
+    "美学::对称-平均脸"
+   ],
+   "cross": true,
+   "frame": "F_exist_equal",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 对称-平均脸(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM242",
+   "derived": "三角数 × 秩序-均匀",
+   "type": "度量×对象",
+   "parents": [
+    "数学::三角数",
+    "美学::秩序-均匀"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM238",
+   "derived": "三角数 × 算法复杂度",
+   "type": "度量×对象",
+   "parents": [
+    "数学::三角数",
+    "信息-计算::算法复杂度"
+   ],
+   "cross": true,
+   "frame": "F_record_max",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  },
+  {
+   "id": "DM233",
+   "derived": "三角数 × 适合度",
+   "type": "映射作用对象",
+   "parents": [
+    "数学::三角数",
+    "生物::适合度"
+   ],
+   "cross": true,
+   "frame": "F_char_if",
+   "route": "math",
+   "note": "复合母题候选: 三角数(对象类) 与 适合度(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+  }
+ ],
+ "grown": [
+  {
+   "id": "GM000",
+   "derived": "质数 × 奇合数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::质数",
+    "数学::奇合数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     6,
+     8,
+     10
+    ],
+    "threshold": 12
+   }
+  },
+  {
+   "id": "GM001",
+   "derived": "质数 × 平方数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::质数",
+    "数学::平方数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     10,
+     34,
+     58,
+     64,
+     130,
+     196,
+     214,
+     226,
+     324,
+     370
+    ],
+    "threshold": 7746
+   }
+  },
+  {
+   "id": "GM002",
+   "derived": "质数 × 三角数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::质数",
+    "数学::三角数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     36,
+     210,
+     216,
+     406,
+     528,
+     630,
+     780,
+     990,
+     1176,
+     1596
+    ],
+    "threshold": 7752
+   }
+  },
+  {
+   "id": "GM003",
+   "derived": "质数 × 斐波那契数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::质数",
+    "数学::斐波那契数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     208,
+     416,
+     718,
+     768,
+     784,
+     926,
+     1274,
+     1740,
+     1818,
+     2194
+    ],
+    "threshold": 7946
+   }
+  },
+  {
+   "id": "GM004",
+   "derived": "质数 × 回文数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::质数",
+    "数学::回文数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [],
+    "threshold": 6
+   }
+  },
+  {
+   "id": "GM005",
+   "derived": "质数 × 2的幂",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::质数",
+    "数学::2的幂"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "needs_extend",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     16,
+     22,
+     26,
+     28,
+     36,
+     40,
+     46,
+     50,
+     52,
+     56
+    ],
+    "threshold": 8002
+   }
+  },
+  {
+   "id": "GM006",
+   "derived": "奇合数 × 平方数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::奇合数",
+    "数学::平方数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     6,
+     8,
+     12,
+     14,
+     20,
+     32,
+     38,
+     62,
+     68,
+     398
+    ],
+    "threshold": 400
+   }
+  },
+  {
+   "id": "GM007",
+   "derived": "奇合数 × 三角数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::奇合数",
+    "数学::三角数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     6,
+     8,
+     14,
+     20,
+     32,
+     44,
+     62,
+     74,
+     152,
+     194
+    ],
+    "threshold": 664
+   }
+  },
+  {
+   "id": "GM008",
+   "derived": "奇合数 × 斐波那契数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::奇合数",
+    "数学::斐波那契数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     6,
+     8
+    ],
+    "threshold": 10
+   }
+  },
+  {
+   "id": "GM009",
+   "derived": "奇合数 × 回文数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::奇合数",
+    "数学::回文数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     6,
+     8,
+     10
+    ],
+    "threshold": 12
+   }
+  },
+  {
+   "id": "GM010",
+   "derived": "奇合数 × 2的幂",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::奇合数",
+    "数学::2的幂"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     6,
+     8,
+     12,
+     14,
+     18,
+     20,
+     24,
+     30,
+     32,
+     38
+    ],
+    "threshold": 7996
+   }
+  },
+  {
+   "id": "GM011",
+   "derived": "平方数 × 三角数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::平方数",
+    "数学::三角数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "needs_extend",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     6,
+     8,
+     18,
+     20,
+     34,
+     36,
+     38,
+     48,
+     58,
+     60
+    ],
+    "threshold": 8002
+   }
+  },
+  {
+   "id": "GM012",
+   "derived": "平方数 × 斐波那契数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::平方数",
+    "数学::斐波那契数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "needs_extend",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     8,
+     16,
+     20,
+     32,
+     34,
+     36,
+     40,
+     42,
+     48,
+     58
+    ],
+    "threshold": 8002
+   }
+  },
+  {
+   "id": "GM013",
+   "derived": "平方数 × 回文数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::平方数",
+    "数学::回文数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     46,
+     50,
+     62,
+     74,
+     76,
+     94,
+     96,
+     98,
+     116,
+     118
+    ],
+    "threshold": 7996
+   }
+  },
+  {
+   "id": "GM014",
+   "derived": "平方数 × 2的幂",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::平方数",
+    "数学::2的幂"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "needs_extend",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     14,
+     16,
+     22,
+     28,
+     30,
+     34,
+     42,
+     46,
+     54,
+     56
+    ],
+    "threshold": 8000
+   }
+  },
+  {
+   "id": "GM015",
+   "derived": "三角数 × 斐波那契数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::三角数",
+    "数学::斐波那契数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "needs_extend",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     10,
+     32,
+     52,
+     54,
+     64,
+     72,
+     78,
+     82,
+     84,
+     88
+    ],
+    "threshold": 8002
+   }
+  },
+  {
+   "id": "GM016",
+   "derived": "三角数 × 回文数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::三角数",
+    "数学::回文数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     46,
+     90,
+     106,
+     118,
+     130,
+     148,
+     150,
+     170,
+     188,
+     200
+    ],
+    "threshold": 7996
+   }
+  },
+  {
+   "id": "GM017",
+   "derived": "三角数 × 2的幂",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::三角数",
+    "数学::2的幂"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "needs_extend",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     6,
+     20,
+     24,
+     28,
+     34,
+     48,
+     50,
+     54,
+     58,
+     62
+    ],
+    "threshold": 8002
+   }
+  },
+  {
+   "id": "GM018",
+   "derived": "斐波那契数 × 回文数",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::斐波那契数",
+    "数学::回文数"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "confirmed",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     44,
+     48,
+     50,
+     70,
+     72,
+     84,
+     86,
+     108,
+     118,
+     128
+    ],
+    "threshold": 7998
+   }
+  },
+  {
+   "id": "GM019",
+   "derived": "斐波那契数 × 2的幂",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::斐波那契数",
+    "数学::2的幂"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "hypothesis",
+   "probe": {
+    "complete": false,
+    "fails_head": [
+     8,
+     20,
+     26,
+     28,
+     30,
+     32,
+     44,
+     46,
+     48,
+     52
+    ]
+   }
+  },
+  {
+   "id": "GM020",
+   "derived": "回文数 × 2的幂",
+   "type": "配对集(对象类×对象类)",
+   "parents": [
+    "数学::回文数",
+    "数学::2的幂"
+   ],
+   "cross": false,
+   "frame": "F_threshold_sum",
+   "route": "math",
+   "stage": "needs_extend",
+   "probe": {
+    "complete": true,
+    "fails_head": [
+     28,
+     32,
+     42,
+     44,
+     50,
+     58,
+     62,
+     64,
+     80,
+     84
+    ],
+    "threshold": 8002
+   }
+  }
+ ]
+}

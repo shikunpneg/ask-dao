@@ -10,6 +10,7 @@
 不再"验证真实所指" —— 那是问题路逻辑, 违反想象路纪律。
 """
 import json
+import multiprocessing as mp
 from itertools import product
 from pathlib import Path
 
@@ -66,22 +67,26 @@ def logic_check(s):
     return checks, all(checks.values())
 
 
+def sentence_pair(args):
+    a, b = args
+    s = sentence(a, b, WORDS[a], WORDS[b])
+    checks, ok = logic_check(s)
+    return {"term": a + b, "sentence": s, "logic_checks": checks, "ok": ok}
+
+
 def main():
     words = list(WORDS)
     print("=" * 100)
     print("想象路造句器 —— 自己造句, 只要求语法正确+逻辑通畅")
     print("=" * 100)
-    print(f"  词数 {len(words)}, 组合 {len(words)**2}")
+    print(f"  词数 {len(words)}, 组合 {len(words)**2}, 并行 {mp.cpu_count()} 核")
 
-    sentences = []
-    for a in words:
-        for b in words:
-            if a == b:
-                continue
-            s = sentence(a, b, WORDS[a], WORDS[b])
-            checks, ok = logic_check(s)
-            sentences.append({"term": a + b, "sentence": s,
-                              "logic_checks": checks, "ok": ok})
+    pairs = [(a, b) for a in words for b in words if a != b]
+    if mp.cpu_count() > 1 and len(pairs) > 1000:
+        with mp.Pool(mp.cpu_count()) as pool:
+            sentences = pool.map(sentence_pair, pairs, chunksize=64)
+    else:
+        sentences = [sentence_pair(p) for p in pairs]
 
     ok_n = sum(1 for x in sentences if x["ok"])
     print(f"  {len(sentences)} 个组合, **{ok_n} 个解释语法正确+逻辑通畅**")

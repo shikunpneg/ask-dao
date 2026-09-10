@@ -138,6 +138,19 @@
   .struct-title{font-size:20px;font-weight:600;margin-bottom:16px;color:#08080a;letter-spacing:.04em;}
   .struct-desc{font-size:14px;line-height:2;color:var(--text-sub);font-weight:300;}
 
+  /* 真实生成的图（架构图 / 问题生成树）：不套圆角卡片、不加阴影，让图本身说话 */
+  .figure-block{
+    margin:64px 0 8px;opacity:0;transform:translateY(30px);
+    transition:all .6s cubic-bezier(.22,.61,.36,1);
+  }
+  .figure-block.visible{opacity:1;transform:translateY(0);}
+  .figure-block img{display:block;width:100%;height:auto;background:#f6f2e9;
+    border:1px solid rgba(30,40,60,0.14);}
+  .figure-block figcaption{margin-top:14px;font-size:12.5px;line-height:1.9;
+    color:var(--text-dim);letter-spacing:.02em;}
+  .figure-block code{font-family:ui-monospace,Consolas,monospace;font-size:12px;
+    color:var(--text-sub);}
+
   .models{background:#eef2f8;}
   .models h2{font-size:clamp(22px,3vw,36px);font-weight:500;letter-spacing:.08em;margin-bottom:20px;color:#08080a;}
   .models .sub{color:var(--text-sub);font-size:15px;font-weight:300;margin-bottom:64px;max-width:560px;line-height:1.9;}
@@ -248,6 +261,11 @@
       <div class="struct-desc">产概念，需解释。输入：词。出口：被理解的概念 / 理论。两条路互相独立。</div>
     </div>
   </div>
+
+  <figure class="figure-block" data-delay="6">
+    <img src="assets/architecture.svg" alt="问道系统架构图：两条路 + 四模块 + 判定层 + 真实数据流">
+    <figcaption>系统架构 · 每一步都留下可复核的 JSON（图源：<code>tools/arch_diagram.py</code>）</figcaption>
+  </figure>
 </section>
 
 
@@ -292,6 +310,13 @@
   <h2>我们正在追问的问题</h2>
 
   <div class="question-list" id="questionList"></div>
+
+  <figure class="figure-block" data-delay="4">
+    <img src="assets/problem_tree.svg" alt="问题生成树：母题根 → 真实生成操作 → 问题 → 判定状态">
+    <figcaption>问题生成树 · 节点正文是机器产出的原始 statement，边上的字是真实生成操作
+      （图源：<code>tools/make_problem_tree.py</code>，数据：<code>out/demo/problems_math.json</code>）</figcaption>
+  </figure>
+
   <p style="color:var(--text-dim);font-size:13px;margin-top:40px">
     完整清单（260+ 条，23 个领域）见
     <a href="viz/paths.html" style="color:var(--gold);border-bottom:1px solid rgba(168,137,79,0.4)">可视化页</a> ·
@@ -833,7 +858,7 @@
   }, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
 
   document.querySelectorAll(
-    '.section-label, .genesis-line, .genesis-divider, .struct-card, .model-card'
+    '.section-label, .genesis-line, .genesis-divider, .struct-card, .model-card, .figure-block'
   ).forEach(el => observer.observe(el));
 
   /* ================================================================

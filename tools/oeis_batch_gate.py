@@ -112,11 +112,15 @@ def main():
             candidates.append({"file": jf.name, "id": pid, "seq": seq, "field": field,
                                "statement": it.get("statement", ""), "item": it})
 
-    print(f"候选(带整数序列): {len(candidates)} 个")
-    print("=" * 90)
-
+    # 太短序列(<4项)降级为"信息不足", 不参与分级
     graded = []
+    info_poor = []
     for c in candidates:
+        if len(c["seq"]) < 4:
+            c["grade"] = "信息不足"
+            c["mechanism"] = mechanism_check(c["seq"])
+            info_poor.append(c)
+            continue
         hits = lookup(c["seq"][:6], idx)
         c["oeis_hits"] = [h[0] for h in hits[:5]]
         c["mechanism"] = mechanism_check(c["seq"])
@@ -126,30 +130,43 @@ def main():
             c["grade"] = "未见候选"
         graded.append(c)
 
+    # 未见候选去重: 相同前缀序列只留一条(保留语句更完整的)
+    unseen = [c for c in graded if c["grade"] == "未见候选"]
+    by_prefix = {}
+    for c in unseen:
+        pfx = tuple(c["seq"][:6])
+        if pfx not in by_prefix or len(c["seq"]) > len(by_prefix[pfx]["seq"]):
+            by_prefix[pfx] = c
+    deduped = sorted(by_prefix.values(), key=lambda c: -len(c["seq"]))
+
+    print(f"候选(带整数序列): {len(candidates)} 个, 其中信息不足(太短) {len(info_poor)} 个")
+    print(f"参与分级: {len(graded)} 个; 去重后独立未见候选: {len(deduped)} 个")
+    print("=" * 90)
+
     byg = Counter(c["grade"] for c in graded)
     print(f"分级: {dict(byg)}")
 
-    for g in ("已知/疑似", "未见候选"):
-        sub = [c for c in graded if c["grade"] == g]
+    for g in ("已知/疑似", "未见候选", "信息不足"):
+        sub = [c for c in graded + info_poor if c["grade"] == g]
         print(f"\n== {g} ({len(sub)}) ==")
-        for c in sub[:30]:
+        for c in sub[:25]:
             print(f"  [{c['file'][:20]:20s}] {c['id']:20s} seq={c['seq'][:6]} mech={c['mechanism']}"
-                  + (f" -> {c['oeis_hits'][:3]}" if c["oeis_hits"] else ""))
-        if len(sub) > 30:
+                  + (f" -> {c['oeis_hits'][:3]}" if c.get("oeis_hits") else ""))
+        if len(sub) > 25:
             print(f"  ... 共 {len(sub)} 个")
 
     # 回写 ledger
-    seen = [c for c in graded if c["grade"] == "未见候选"]
     OUT_LEDGER.parent.mkdir(parents=True, exist_ok=True)
     with OUT_LEDGER.open("a", encoding="utf-8") as f:
-        f.write(f"\n## 批量 OEIS 门 ({len(graded)} 候选)\n")
-        f.write(f"本地索引 {len(idx)} 条; 已知/疑似 {byg.get('已知/疑似',0)}; 未见 {len(seen)}\n")
-        for c in seen[:40]:
+        f.write(f"\n## 批量 OEIS 门 ({len(candidates)} 候选)\n")
+        f.write(f"本地索引 {len(idx)} 条; 已知/疑似 {byg.get('已知/疑似',0)}; "
+                f"未见候选(去重前) {byg.get('未见候选',0)} -> 独立未见 {len(deduped)}; 信息不足 {len(info_poor)}\n")
+        for c in deduped[:40]:
             f.write(f"- `{c['id']}` [{c['file']}] {c['statement'][:70]}\n"
-                    f"  seq={c['seq'][:8]} 机制={c['mechanism']}\n")
-        if len(seen) > 40:
-            f.write(f"- ... 共 {len(seen)} 个未见候选\n")
-    print(f"\n已回写 {OUT_LEDGER.name}: 未见候选 {len(seen)} 个")
+                    f"  seq={c['seq'][:10]} 机制={c['mechanism']}\n")
+        if len(deduped) > 40:
+            f.write(f"- ... 共 {len(deduped)} 个独立未见候选\n")
+    print(f"\n已回写 {OUT_LEDGER.name}: 独立未见候选 {len(deduped)} 个")
 
     # 存结构化结果
     (HERE / "out" / "demo" / "oeis_batch_gate.json").write_text(

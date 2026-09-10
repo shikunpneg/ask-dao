@@ -1,6 +1,9 @@
 <div align="center">
 
-<img src="assets/logo.png" width="180" alt="道">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/logo_white.png">
+  <img src="assets/logo.png" width="180" alt="道">
+</picture>
 
 # 问道 · ask-dao-machine
 

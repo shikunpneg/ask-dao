@@ -224,7 +224,7 @@ def main():
     print(f"  任务数: {len(tasks)} (跨进制/两数和/多边形/模迭代/组合)")
     print(f"  启动 {min(14, len(tasks))} 进程并行...")
 
-    with Pool(processes=min(14, len(tasks))) as pool:
+    with Pool(processes=min(20, len(tasks))) as pool:
         results = pool.map(worker_task, tasks, chunksize=1)
 
     all_probs = []
