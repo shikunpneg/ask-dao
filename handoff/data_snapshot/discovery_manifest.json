@@ -1,0 +1,869 @@
+{
+ "generator": "ask-dao-machine/discovery_pipeline",
+ "target": "AI4S harness",
+ "problem_format": "{statement, conjecture, evidence, judge_route, status, layer}",
+ "count": 33,
+ "problems": [
+  {
+   "id": "Q_b2",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 2) + 素数?",
+   "conjecture": "开放: 例外是否有限?",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     15,
+     21,
+     25,
+     27,
+     39,
+     45,
+     49,
+     51,
+     55,
+     57,
+     63,
+     69
+    ],
+    "count": 2147887,
+    "last": 4999997
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "贴边界(未知)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b3",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 3) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [78, 88, 100, 118, 142, 146, 148, 266, 268, 298, 328, 356]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     78,
+     88,
+     100,
+     118,
+     142,
+     146,
+     148,
+     266,
+     268,
+     298,
+     328,
+     356
+    ],
+    "count": 68,
+    "last": 12388
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b4",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 4) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [35, 255, 515, 1855, 4345]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     35,
+     255,
+     515,
+     1855,
+     4345
+    ],
+    "count": 5,
+    "last": 4345
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b5",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 5) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [66, 418, 448, 1266]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     66,
+     418,
+     448,
+     1266
+    ],
+    "count": 4,
+    "last": 1266
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b6",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 6) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [1855]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     1855
+    ],
+    "count": 1,
+    "last": 1855
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b7",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 7) + 素数?",
+   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [],
+    "count": 0,
+    "last": null
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "已验证(N=5e6 零例外)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b8",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 8) + 素数?",
+   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [],
+    "count": 0,
+    "last": null
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "已验证(N=5e6 零例外)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b9",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 9) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [124]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     124
+    ],
+    "count": 1,
+    "last": 124
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b10",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 10) + 素数?",
+   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [],
+    "count": 0,
+    "last": null
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "已验证(N=5e6 零例外)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b11",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 11) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [126]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     126
+    ],
+    "count": 1,
+    "last": 126
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b12",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 12) + 素数?",
+   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [],
+    "count": 0,
+    "last": null
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "已验证(N=5e6 零例外)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b13",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 13) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [126]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     126
+    ],
+    "count": 1,
+    "last": 126
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b14",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 14) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [540]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     540
+    ],
+    "count": 1,
+    "last": 540
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b15",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 15) + 素数?",
+   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [],
+    "count": 0,
+    "last": null
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "已验证(N=5e6 零例外)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "Q_b16",
+   "domain": "数论(进制依赖)",
+   "statement": "每个 n 是否都可写成 回文数(base 16) + 素数?",
+   "conjecture": "猜想: 例外集有限且 = [539]",
+   "evidence": {
+    "scan_to": 5000000,
+    "exceptions": [
+     539
+    ],
+    "count": 1,
+    "last": 539
+   },
+   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
+   "status": "疑似有限(最后例外后全覆盖)",
+   "layer": "L0/L2"
+  },
+  {
+   "id": "CX_质数_三角数_char",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 质数+三角数 的例外集 在 [6,40000] 内共 66 个, 最大者 39340(前几个: [36, 210, 216, 406, 528, 630])。**是什么刻画了这个例外集**?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     36,
+     210,
+     216,
+     406,
+     528,
+     630,
+     780,
+     990,
+     1176,
+     1596
+    ],
+    "count": 66,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 36,
+     "beyond_head": [
+      40470,
+      41328,
+      41616,
+      42486,
+      42778
+     ],
+     "extends": true
+    },
+    "settleable_by_machine": false,
+    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
+    "quant": "[6,40000] 内偶数"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_质数_三角数_finite",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 质数+三角数 的例外集: 最后例外在 39340(扫描上界 40000); 延伸到 79994 又见 36 个新例外。例外集是**有限**的吗? (机器的全部本事是'扫到上界', 扫不出这个问题)",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     36,
+     210,
+     216,
+     406,
+     528,
+     630,
+     780,
+     990,
+     1176,
+     1596
+    ],
+    "count": 66,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 36,
+     "beyond_head": [
+      40470,
+      41328,
+      41616,
+      42486,
+      42778
+     ],
+     "extends": true
+    },
+    "settleable_by_machine": false,
+    "crit": "证明例外有限并给出可证上界, 或构造扫描上界之外的新例外",
+    "quant": "扫描上界 40000; 延伸至 79994"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_质数_三角数_density",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 质数+三角数 的例外集 尾部密度稳定在 0.0025(逐窗 [0.003, 0.002, 0.003, 0.002])。密度极限是否存在? 极限值是多少?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     36,
+     210,
+     216,
+     406,
+     528,
+     630,
+     780,
+     990,
+     1176,
+     1596
+    ],
+    "count": 66,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 36,
+     "beyond_head": [
+      40470,
+      41328,
+      41616,
+      42486,
+      42778
+     ],
+     "extends": true
+    },
+    "settleable_by_machine": false,
+    "crit": "证明密度极限存在并定值, 或证明其不存在",
+    "quant": "分窗跨度 2000; 区间 [6,40000]"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_质数_平方数_char",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 质数+平方数 的例外集 在 [6,40000] 内共 75 个, 最大者 40000(前几个: [10, 34, 58, 64, 130, 196])。**是什么刻画了这个例外集**?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     10,
+     34,
+     58,
+     64,
+     130,
+     196,
+     214,
+     226,
+     324,
+     370
+    ],
+    "count": 75,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 27,
+     "beyond_head": [
+      40804,
+      41616,
+      42436,
+      43264,
+      44944
+     ],
+     "extends": true
+    },
+    "settleable_by_machine": false,
+    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
+    "quant": "[6,40000] 内偶数"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_质数_平方数_finite",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 质数+平方数 的例外集: 最后例外在 40000(扫描上界 40000); 延伸到 79994 又见 27 个新例外。例外集是**有限**的吗? (机器的全部本事是'扫到上界', 扫不出这个问题)",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     10,
+     34,
+     58,
+     64,
+     130,
+     196,
+     214,
+     226,
+     324,
+     370
+    ],
+    "count": 75,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 27,
+     "beyond_head": [
+      40804,
+      41616,
+      42436,
+      43264,
+      44944
+     ],
+     "extends": true
+    },
+    "settleable_by_machine": false,
+    "crit": "证明例外有限并给出可证上界, 或构造扫描上界之外的新例外",
+    "quant": "扫描上界 40000; 延伸至 79994"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_质数_平方数_density",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 质数+平方数 的例外集 尾部密度稳定在 0.002(逐窗 [0.001, 0.002, 0.001, 0.002])。密度极限是否存在? 极限值是多少?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     10,
+     34,
+     58,
+     64,
+     130,
+     196,
+     214,
+     226,
+     324,
+     370
+    ],
+    "count": 75,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 27,
+     "beyond_head": [
+      40804,
+      41616,
+      42436,
+      43264,
+      44944
+     ],
+     "extends": true
+    },
+    "settleable_by_machine": false,
+    "crit": "证明密度极限存在并定值, 或证明其不存在",
+    "quant": "分窗跨度 2000; 区间 [6,40000]"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_质数_半素数_char",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 质数+半素数 的例外集 在 [6,40000] 内共 1 个, 最大者 10(前几个: [10])。**是什么刻画了这个例外集**?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     10
+    ],
+    "count": 1,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
+    "quant": "[6,40000] 内偶数"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_奇合数_平方数_char",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 奇合数+平方数 的例外集 在 [6,40000] 内共 10 个, 最大者 398(前几个: [6, 8, 12, 14, 20, 32])。**是什么刻画了这个例外集**?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     6,
+     8,
+     12,
+     14,
+     20,
+     32,
+     38,
+     62,
+     68,
+     398
+    ],
+    "count": 10,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
+    "quant": "[6,40000] 内偶数"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_奇合数_三角数_char",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 奇合数+三角数 的例外集 在 [6,40000] 内共 13 个, 最大者 662(前几个: [6, 8, 14, 20, 32, 44])。**是什么刻画了这个例外集**?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     6,
+     8,
+     14,
+     20,
+     32,
+     44,
+     62,
+     74,
+     152,
+     194
+    ],
+    "count": 13,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
+    "quant": "[6,40000] 内偶数"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_奇合数_半素数_char",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 奇合数+半素数 的例外集 在 [6,40000] 内共 12 个, 最大者 38(前几个: [6, 8, 10, 12, 14, 16])。**是什么刻画了这个例外集**?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     6,
+     8,
+     10,
+     12,
+     14,
+     16,
+     20,
+     22,
+     26,
+     28
+    ],
+    "count": 12,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
+    "quant": "[6,40000] 内偶数"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "CX_半素数_平方数_char",
+   "domain": "加性数论",
+   "statement": "偶数 n 写成 半素数+平方数 的例外集 在 [6,40000] 内共 6 个, 最大者 108(前几个: [6, 12, 28, 32, 72, 108])。**是什么刻画了这个例外集**?",
+   "conjecture": "例外集的刻画/有限性/密度极限",
+   "evidence": {
+    "method": "反例集结构拟合(机器枚举)",
+    "examples": [
+     6,
+     12,
+     28,
+     32,
+     72,
+     108
+    ],
+    "count": 6,
+    "period": null,
+    "residues": null,
+    "scan": [
+     6,
+     40000
+    ],
+    "probe": {
+     "ext_range": [
+      40002,
+      79994
+     ],
+     "n_beyond": 0,
+     "beyond_head": [],
+     "extends": false
+    },
+    "settleable_by_machine": false,
+    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
+    "quant": "[6,40000] 内偶数"
+   },
+   "judge_route": "反例集结构拟合 + 延伸探针",
+   "status": "开放(机器无法结算)",
+   "layer": "L1/L2"
+  },
+  {
+   "id": "P3_0",
+   "domain": "跨域组合",
+   "statement": "数学:素数 + 物理:开普勒面积 的例外集(1个)有限吗? 刻画?",
+   "conjecture": "例外有限且小",
+   "evidence": {
+    "count": 1,
+    "density": 2e-05
+   },
+   "judge_route": "向量化标记到 1e5",
+   "status": "疑似有限",
+   "layer": "L1"
+  },
+  {
+   "id": "P3_1",
+   "domain": "跨域组合",
+   "statement": "数学:平方数 + 语言:Dyck路径长 的例外集(1个)有限吗? 刻画?",
+   "conjecture": "例外有限且小",
+   "evidence": {
+    "count": 1,
+    "density": 2e-05
+   },
+   "judge_route": "向量化标记到 1e5",
+   "status": "疑似有限",
+   "layer": "L1"
+  },
+  {
+   "id": "P3_2",
+   "domain": "跨域组合",
+   "statement": "数学:幂数 + 语言:Dyck路径长 的例外集(1个)有限吗? 刻画?",
+   "conjecture": "例外有限且小",
+   "evidence": {
+    "count": 1,
+    "density": 2e-05
+   },
+   "judge_route": "向量化标记到 1e5",
+   "status": "疑似有限",
+   "layer": "L1"
+  },
+  {
+   "id": "P3_3",
+   "domain": "跨域组合",
+   "statement": "数学:三角数 + 语言:Dyck路径长 的例外集(2个)有限吗? 刻画?",
+   "conjecture": "例外有限且小",
+   "evidence": {
+    "count": 2,
+    "density": 4e-05
+   },
+   "judge_route": "向量化标记到 1e5",
+   "status": "疑似有限",
+   "layer": "L1"
+  },
+  {
+   "id": "P3_4",
+   "domain": "跨域组合",
+   "statement": "物理:谐振子能级 + 语言:Dyck路径长 的例外集(2个)有限吗? 刻画?",
+   "conjecture": "例外有限且小",
+   "evidence": {
+    "count": 2,
+    "density": 4e-05
+   },
+   "judge_route": "向量化标记到 1e5",
+   "status": "疑似有限",
+   "layer": "L1"
+  },
+  {
+   "id": "P3_5",
+   "domain": "跨域组合",
+   "statement": "生物:三角数(群体) + 语言:Dyck路径长 的例外集(2个)有限吗? 刻画?",
+   "conjecture": "例外有限且小",
+   "evidence": {
+    "count": 2,
+    "density": 4e-05
+   },
+   "judge_route": "向量化标记到 1e5",
+   "status": "疑似有限",
+   "layer": "L1"
+  },
+  {
+   "id": "P3_6",
+   "domain": "跨域组合",
+   "statement": "数学:回文数_b10 + 物理:开普勒面积 的例外集(4个)有限吗? 刻画?",
+   "conjecture": "例外有限且小",
+   "evidence": {
+    "count": 4,
+    "density": 8e-05
+   },
+   "judge_route": "向量化标记到 1e5",
+   "status": "疑似有限",
+   "layer": "L1"
+  }
+ ]
+}
