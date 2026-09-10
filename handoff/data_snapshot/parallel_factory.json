@@ -1,0 +1,744 @@
+[
+ {
+  "domain": "palbase",
+  "param": 3,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 68 个",
+  "evidence": {
+   "exceptions": [
+    78,
+    88,
+    100,
+    118,
+    142,
+    146,
+    148,
+    266,
+    268,
+    298
+   ],
+   "count": 68,
+   "last": 12388
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 4,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个",
+  "evidence": {
+   "exceptions": [
+    35,
+    255,
+    515,
+    1855,
+    4345
+   ],
+   "count": 5,
+   "last": 4345
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 5,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个",
+  "evidence": {
+   "exceptions": [
+    66,
+    418,
+    448,
+    1266
+   ],
+   "count": 4,
+   "last": 1266
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 6,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 6) + 素数 覆盖偶数到 2,000,000: 例外 1 个",
+  "evidence": {
+   "exceptions": [
+    1855
+   ],
+   "count": 1,
+   "last": 1855
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 7,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 7) + 素数 覆盖偶数到 2,000,000: 例外 0 个",
+  "evidence": {
+   "exceptions": [],
+   "count": 0,
+   "last": null
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 8,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 8) + 素数 覆盖偶数到 2,000,000: 例外 0 个",
+  "evidence": {
+   "exceptions": [],
+   "count": 0,
+   "last": null
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 9,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 9) + 素数 覆盖偶数到 2,000,000: 例外 1 个",
+  "evidence": {
+   "exceptions": [
+    124
+   ],
+   "count": 1,
+   "last": 124
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 10,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 10) + 素数 覆盖偶数到 2,000,000: 例外 0 个",
+  "evidence": {
+   "exceptions": [],
+   "count": 0,
+   "last": null
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 11,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 11) + 素数 覆盖偶数到 2,000,000: 例外 1 个",
+  "evidence": {
+   "exceptions": [
+    126
+   ],
+   "count": 1,
+   "last": 126
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 12,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 12) + 素数 覆盖偶数到 2,000,000: 例外 0 个",
+  "evidence": {
+   "exceptions": [],
+   "count": 0,
+   "last": null
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 13,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 13) + 素数 覆盖偶数到 2,000,000: 例外 1 个",
+  "evidence": {
+   "exceptions": [
+    126
+   ],
+   "count": 1,
+   "last": 126
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 14,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 14) + 素数 覆盖偶数到 2,000,000: 例外 1 个",
+  "evidence": {
+   "exceptions": [
+    540
+   ],
+   "count": 1,
+   "last": 540
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 15,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 15) + 素数 覆盖偶数到 2,000,000: 例外 0 个",
+  "evidence": {
+   "exceptions": [],
+   "count": 0,
+   "last": null
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "palbase",
+  "param": 16,
+  "type": "跨进制覆盖",
+  "statement": "回文数(base 16) + 素数 覆盖偶数到 2,000,000: 例外 1 个",
+  "evidence": {
+   "exceptions": [
+    539
+   ],
+   "count": 1,
+   "last": 539
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "two_sum",
+  "param": "质数+3边形",
+  "type": "两数和覆盖",
+  "statement": "质数 + 3边形数 覆盖偶数到 200,000: 例外 95689 个",
+  "evidence": {
+   "exceptions": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22
+   ],
+   "count": 95689,
+   "last": 199122
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "two_sum",
+  "param": "质数+4边形",
+  "type": "两数和覆盖",
+  "statement": "质数 + 4边形数 覆盖偶数到 200,000: 例外 96489 个",
+  "evidence": {
+   "exceptions": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22
+   ],
+   "count": 96489,
+   "last": 199720
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "two_sum",
+  "param": "质数+5边形",
+  "type": "两数和覆盖",
+  "statement": "质数 + 5边形数 覆盖偶数到 200,000: 例外 96842 个",
+  "evidence": {
+   "exceptions": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22
+   ],
+   "count": 96842,
+   "last": 199582
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "two_sum",
+  "param": "质数+6边形",
+  "type": "两数和覆盖",
+  "statement": "质数 + 6边形数 覆盖偶数到 200,000: 例外 97143 个",
+  "evidence": {
+   "exceptions": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22
+   ],
+   "count": 97143,
+   "last": 199920
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "two_sum",
+  "param": "质数+7边形",
+  "type": "两数和覆盖",
+  "statement": "质数 + 7边形数 覆盖偶数到 200,000: 例外 97291 个",
+  "evidence": {
+   "exceptions": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22
+   ],
+   "count": 97291,
+   "last": 199828
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "two_sum",
+  "param": "质数+8边形",
+  "type": "两数和覆盖",
+  "statement": "质数 + 8边形数 覆盖偶数到 200,000: 例外 97363 个",
+  "evidence": {
+   "exceptions": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22
+   ],
+   "count": 97363,
+   "last": 199948
+  },
+  "judge_route": "数值枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "3边形",
+  "type": "多边形模结构",
+  "statement": "3边形数的模7分布: {0: 142, 1: 143, 3: 143, 6: 72}",
+  "evidence": {
+   "count": 631,
+   "mod7": {
+    "0": 142,
+    "1": 143,
+    "3": 143,
+    "6": 72
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "4边形",
+  "type": "多边形模结构",
+  "statement": "4边形数的模7分布: {0: 63, 1: 128, 2: 128, 4: 128}",
+  "evidence": {
+   "count": 447,
+   "mod7": {
+    "0": 63,
+    "1": 128,
+    "2": 128,
+    "4": 128
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "5边形",
+  "type": "多边形模结构",
+  "statement": "5边形数的模7分布: {0: 104, 1: 105, 2: 52, 5: 104}",
+  "evidence": {
+   "count": 365,
+   "mod7": {
+    "0": 104,
+    "1": 105,
+    "2": 52,
+    "5": 104
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "6边形",
+  "type": "多边形模结构",
+  "statement": "6边形数的模7分布: {0: 90, 1: 91, 3: 90, 6: 45}",
+  "evidence": {
+   "count": 316,
+   "mod7": {
+    "0": 90,
+    "1": 91,
+    "3": 90,
+    "6": 45
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "7边形",
+  "type": "多边形模结构",
+  "statement": "7边形数的模7分布: {0: 81, 1: 41, 4: 81, 6: 80}",
+  "evidence": {
+   "count": 283,
+   "mod7": {
+    "0": 81,
+    "1": 41,
+    "4": 81,
+    "6": 80
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "8边形",
+  "type": "多边形模结构",
+  "statement": "8边形数的模7分布: {0: 73, 1: 74, 2: 37, 5: 74}",
+  "evidence": {
+   "count": 258,
+   "mod7": {
+    "0": 73,
+    "1": 74,
+    "2": 37,
+    "5": 74
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "9边形",
+  "type": "多边形模结构",
+  "statement": "9边形数的模7分布: {0: 34, 1: 35, 2: 34, 3: 34, 4: 34, 5: 34, 6: 34}",
+  "evidence": {
+   "count": 239,
+   "mod7": {
+    "0": 34,
+    "1": 35,
+    "2": 34,
+    "3": 34,
+    "4": 34,
+    "5": 34,
+    "6": 34
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "10边形",
+  "type": "多边形模结构",
+  "statement": "10边形数的模7分布: {0: 63, 1: 64, 3: 64, 6: 32}",
+  "evidence": {
+   "count": 223,
+   "mod7": {
+    "0": 63,
+    "1": 64,
+    "3": 64,
+    "6": 32
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "11边形",
+  "type": "多边形模结构",
+  "statement": "11边形数的模7分布: {0: 30, 1: 61, 2: 60, 4: 60}",
+  "evidence": {
+   "count": 211,
+   "mod7": {
+    "0": 30,
+    "1": 61,
+    "2": 60,
+    "4": 60
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "poly_spec",
+  "param": "12边形",
+  "type": "多边形模结构",
+  "statement": "12边形数的模7分布: {0: 56, 1: 58, 2: 28, 5: 58}",
+  "evidence": {
+   "count": 200,
+   "mod7": {
+    "0": 56,
+    "1": 58,
+    "2": 28,
+    "5": 58
+   }
+  },
+  "judge_route": "模分析",
+  "status": "待判定"
+ },
+ {
+  "domain": "mod_iter",
+  "param": "c=1",
+  "type": "模迭代最长环",
+  "statement": "x^2+1 mod m 的最长环长随 m 的序列: [1, 2, 3, 2, 1, 2, 3, 6, 2, 2, 4, 2]...",
+  "evidence": {
+   "seq": [
+    1,
+    2,
+    3,
+    2,
+    1,
+    2,
+    3,
+    6,
+    2,
+    2,
+    4,
+    2,
+    3,
+    2,
+    6
+   ]
+  },
+  "judge_route": "迭代枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "mod_iter",
+  "param": "c=2",
+  "type": "模迭代最长环",
+  "statement": "x^2+2 mod m 的最长环长随 m 的序列: [2, 1, 2, 2, 1, 1, 2, 2, 1, 2, 4, 1]...",
+  "evidence": {
+   "seq": [
+    2,
+    1,
+    2,
+    2,
+    1,
+    1,
+    2,
+    2,
+    1,
+    2,
+    4,
+    1,
+    2,
+    1,
+    4
+   ]
+  },
+  "judge_route": "迭代枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "mod_iter",
+  "param": "c=3",
+  "type": "模迭代最长环",
+  "statement": "x^2+3 mod m 的最长环长随 m 的序列: [1, 2, 1, 2, 3, 2, 2, 2, 3, 2, 5, 6]...",
+  "evidence": {
+   "seq": [
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    2,
+    2,
+    3,
+    2,
+    5,
+    6,
+    1,
+    2,
+    4
+   ]
+  },
+  "judge_route": "迭代枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "mod_iter",
+  "param": "c=4",
+  "type": "模迭代最长环",
+  "statement": "x^2+4 mod m 的最长环长随 m 的序列: [1, 1, 2, 1, 2, 1, 3, 2, 2, 1, 6, 2]...",
+  "evidence": {
+   "seq": [
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    3,
+    2,
+    2,
+    1,
+    6,
+    2,
+    2,
+    1,
+    2
+   ]
+  },
+  "judge_route": "迭代枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "mod_iter",
+  "param": "c=5",
+  "type": "模迭代最长环",
+  "statement": "x^2+5 mod m 的最长环长随 m 的序列: [2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2]...",
+  "evidence": {
+   "seq": [
+    2,
+    2,
+    1,
+    2,
+    1,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    1
+   ]
+  },
+  "judge_route": "迭代枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "combo_avoid",
+  "param": "禁00",
+  "type": "禁构计数",
+  "statement": "禁 '00' 二元串计数(近似递推): [1, 2]",
+  "evidence": {
+   "seq": [
+    1,
+    2
+   ]
+  },
+  "judge_route": "DP枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "combo_avoid",
+  "param": "禁11",
+  "type": "禁构计数",
+  "statement": "禁 '11' 二元串计数(近似递推): [1, 2]",
+  "evidence": {
+   "seq": [
+    1,
+    2
+   ]
+  },
+  "judge_route": "DP枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "combo_avoid",
+  "param": "禁010",
+  "type": "禁构计数",
+  "statement": "禁 '010' 二元串计数(近似递推): [1, 2, 3]",
+  "evidence": {
+   "seq": [
+    1,
+    2,
+    3
+   ]
+  },
+  "judge_route": "DP枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "combo_avoid",
+  "param": "禁101",
+  "type": "禁构计数",
+  "statement": "禁 '101' 二元串计数(近似递推): [1, 2, 3]",
+  "evidence": {
+   "seq": [
+    1,
+    2,
+    3
+   ]
+  },
+  "judge_route": "DP枚举",
+  "status": "待判定"
+ },
+ {
+  "domain": "combo_avoid",
+  "param": "禁0000",
+  "type": "禁构计数",
+  "statement": "禁 '0000' 二元串计数(近似递推): [1, 2, 3, 5]",
+  "evidence": {
+   "seq": [
+    1,
+    2,
+    3,
+    5
+   ]
+  },
+  "judge_route": "DP枚举",
+  "status": "待判定"
+ }
+]
