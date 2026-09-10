@@ -1,0 +1,381 @@
+{
+ "rows": [
+  {
+   "id": "CX_质数_三角数_char",
+   "statement": "偶数 n 写成 质数+三角数 的例外集 在 [6,40000] 内共 66 个, 最大者 39340(前几个: [36, 210, 216, 406, 52",
+   "grade": "R1 机器已给出候选刻画(未证明)",
+   "frontier": "候选刻画",
+   "frontier_evidence": {
+    "period_fit_mmax300": null,
+    "claim": "例外集 ⊆ 三角数 ∪ [216](机器类库内的包含关系)",
+    "class": "三角数",
+    "outside": [
+     216
+    ]
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "例外分散到大 n",
+    "T": 39340,
+    "span_ratio": 0.9835,
+    "detail": "例外最大 39340, 扫描上界 40000 -> 例外延伸到扫描上界附近, 是真正开放的区域"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N0 已知(机器独立重发现)",
+    "literature": "Zhi-Wei Sun, 'On sums of primes and triangular numbers', arXiv:0803.3737 / J. Combin. Number Theory 1 (2009) 65-76",
+    "finding": "Sun 猜想: 每个自然数 n ≠ 216 可写成 p + T_x (p=0 或素数)。机器(要求 p 为正素数)的例外集 ⊆ {三角数} ∪ {216} —— **216 正是 Sun 猜想的唯一例外**。机器独立重现了该猜想。",
+    "machine_matched": true
+   }
+  },
+  {
+   "id": "CX_质数_三角数_finite",
+   "statement": "偶数 n 写成 质数+三角数 的例外集: 最后例外在 39340(扫描上界 40000); 延伸到 79994 又见 36 个新例外。例外集是**有限**的",
+   "grade": "R1 机器已削弱原主张(找到新反例)",
+   "frontier": "削弱原主张",
+   "frontier_evidence": {
+    "extended_to": 159982,
+    "new_exceptions": 100,
+    "new_head": [
+     40470,
+     41328,
+     41616,
+     42486,
+     42778,
+     43660
+    ],
+    "claim": "延伸到 159982 又见 100 个例外 (有限性未被支持)"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "例外分散到大 n",
+    "T": 39340,
+    "span_ratio": 0.9835,
+    "detail": "例外最大 39340, 扫描上界 40000 -> 例外延伸到扫描上界附近, 是真正开放的区域"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N0 已知(同上)",
+    "literature": "同 Sun (2009); Sun 已验证至 17,000,000",
+    "finding": "同一猜想的有限性侧面; 机器延伸扫描找到更多例外(36→100个), 结论与 Sun 的验证方向一致(例外集无限, 但密度趋 0)。",
+    "machine_matched": true
+   }
+  },
+  {
+   "id": "CX_质数_三角数_density",
+   "statement": "偶数 n 写成 质数+三角数 的例外集 尾部密度稳定在 0.0025(逐窗 [0.003, 0.002, 0.003, 0.002])。密度极限是否存在? ",
+   "grade": "R2 超出机器手段(无进展)",
+   "frontier": "无进展",
+   "frontier_evidence": {
+    "tail_density_at_hi": 0.0025,
+    "tail_density_at_2x": 0.00133,
+    "rel_change": 0.4667,
+    "claim": "密度估计随尺度变化 47%, 未稳定"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "例外分散到大 n",
+    "T": 39340,
+    "span_ratio": 0.9835,
+    "detail": "例外最大 39340, 扫描上界 40000 -> 例外延伸到扫描上界附近, 是真正开放的区域"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N2 检索未见(非'新')",
+    "literature": "未检索到直接的密度结果; Sun 系列讨论表数而非密度极限",
+    "finding": "机器问'例外密度极限是否存在'。检索未见直接文献, 但**只是检索未见, 不等于新**(需专家/文献门)。",
+    "machine_matched": null
+   }
+  },
+  {
+   "id": "CX_质数_平方数_char",
+   "statement": "偶数 n 写成 质数+平方数 的例外集 在 [6,40000] 内共 75 个, 最大者 40000(前几个: [10, 34, 58, 64, 130, ",
+   "grade": "R2 超出机器手段(无进展)",
+   "frontier": "无进展",
+   "frontier_evidence": {
+    "period_fit_mmax300": null,
+    "trivial_bound_T": 40000,
+    "holds_after_T": true
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "例外分散到大 n",
+    "T": 40000,
+    "span_ratio": 1.0,
+    "detail": "例外最大 40000, 扫描上界 40000 -> 例外延伸到扫描上界附近, 是真正开放的区域"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N0 已知(机器独立重现 Hardy-Littlewood 猜想 H 的例外集)",
+    "literature": "Hardy-Littlewood 猜想 H (每个充分大非平方 n = p + m²); Brünner-Perelli-Pintz (1989) 例外数 ≪ X^θ (θ<1); Nayebi, 'Upper bounds on the solutions to n = p + m^2' arXiv:1004.0536; Babaev: 例外集**无限**(猜想字面不成立)",
+    "finding": "文献记载'可能的例外'开头为 **10, 34, 58, 85, …**; 机器(只扫偶数)得到 **[10, 34, 58, 64, 130, 196, 214, 226, 324, 370]** —— 偶数列完全吻合。机器额外含 64/196/324(均为平方数), 正是猜想 H 明文排除的'非平方'条件在机器版本下的可检测痕迹。=> 机器独立重现了该猜想的例外集。",
+    "machine_matched": true
+   }
+  },
+  {
+   "id": "CX_质数_平方数_finite",
+   "statement": "偶数 n 写成 质数+平方数 的例外集: 最后例外在 40000(扫描上界 40000); 延伸到 79994 又见 27 个新例外。例外集是**有限**的",
+   "grade": "R1 机器已削弱原主张(找到新反例)",
+   "frontier": "削弱原主张",
+   "frontier_evidence": {
+    "extended_to": 159982,
+    "new_exceptions": 77,
+    "new_head": [
+     40804,
+     41616,
+     42436,
+     43264,
+     44944,
+     45796
+    ],
+    "claim": "延伸到 159982 又见 77 个例外 (有限性未被支持)"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "例外分散到大 n",
+    "T": 40000,
+    "span_ratio": 1.0,
+    "detail": "例外最大 40000, 扫描上界 40000 -> 例外延伸到扫描上界附近, 是真正开放的区域"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N0 已知(同上; 且字面猜想已被 Babaev 否证)",
+    "literature": "同猜想 H; Babaev 证明例外集无限",
+    "finding": "机器'延伸扫描仍见新例外'的结论与 Babaev '例外无限'一致 —— 机器用有限手段得到了正确方向, 但**未证明**。",
+    "machine_matched": true
+   }
+  },
+  {
+   "id": "CX_质数_平方数_density",
+   "statement": "偶数 n 写成 质数+平方数 的例外集 尾部密度稳定在 0.002(逐窗 [0.001, 0.002, 0.001, 0.002])。密度极限是否存在? 极",
+   "grade": "R2 超出机器手段(无进展)",
+   "frontier": "无进展",
+   "frontier_evidence": {
+    "tail_density_at_hi": 0.002,
+    "tail_density_at_2x": 0.00113,
+    "rel_change": 0.4333,
+    "claim": "密度估计随尺度变化 43%, 未稳定"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "例外分散到大 n",
+    "T": 40000,
+    "span_ratio": 1.0,
+    "detail": "例外最大 40000, 扫描上界 40000 -> 例外延伸到扫描上界附近, 是真正开放的区域"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N1 已知推论方向",
+    "literature": "Hardy-Littlewood 奇异级数给出 R(n) ~ S(n)·√n/log n 的渐近预测; Davenport-Heilbronn (1937): 对几乎所有 n 成立",
+    "finding": "机器问密度极限; 文献方向是表数函数渐近式(而非简单密度极限)。机器未能给出刻画(前沿=R2 无进展), 与'需圆法'一致。",
+    "machine_matched": null
+   }
+  },
+  {
+   "id": "CX_质数_半素数_char",
+   "statement": "偶数 n 写成 质数+半素数 的例外集 在 [6,40000] 内共 1 个, 最大者 10(前几个: [10])。**是什么刻画了这个例外集**?",
+   "grade": "R1 机器已给出候选刻画(未证明) · 疑似已知渐近定理的小例外",
+   "frontier": "候选刻画",
+   "frontier_evidence": {
+    "period_fit_mmax300": null,
+    "claim": "例外集 ⊆ 三角数 ∪ [](机器类库内的包含关系)",
+    "class": "三角数",
+    "outside": []
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "渐近成立(例外集中在小 n)",
+    "T": 10,
+    "span_ratio": 0.0003,
+    "detail": "例外最大 10, 扫描上界 40000 -> 猜想在 n>10 后成立, 大概率是已知渐近定理的小例外"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N0 已知(Chen 定理)",
+    "literature": "Chen Jingrun (1973): 每个充分大偶数 = p + P₂ (素数 + 至多两个素因子之积)",
+    "finding": "机器例外集仅 {10}, 且 10 = T₄ 是三角数(机器类库包含检查命中 ⊆ 三角数); 这正是 Chen 定理'充分大'之前的小例外。",
+    "machine_matched": true
+   }
+  },
+  {
+   "id": "CX_奇合数_平方数_char",
+   "statement": "偶数 n 写成 奇合数+平方数 的例外集 在 [6,40000] 内共 10 个, 最大者 398(前几个: [6, 8, 12, 14, 20, 32])",
+   "grade": "R1 机器已给出候选刻画(未证明) · 疑似已知渐近定理的小例外",
+   "frontier": "候选刻画",
+   "frontier_evidence": {
+    "period_fit_mmax300": null,
+    "trivial_bound_T": 398,
+    "holds_after_T": true,
+    "claim": "例外集就是 n<398 的小例外(之后恒成立)"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "渐近成立(例外集中在小 n)",
+    "T": 398,
+    "span_ratio": 0.01,
+    "detail": "例外最大 398, 扫描上界 40000 -> 猜想在 n>398 后成立, 大概率是已知渐近定理的小例外"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N1 已知(小例外)",
+    "literature": "加性基族; 未单独检索该组合",
+    "finding": "机器给出候选刻画: 例外集 = n<398 的小例外, 之后恒成立。**未检索文献** —— 但'小例外 + 渐近成立'通常对应已知渐近定理。",
+    "machine_matched": null
+   }
+  },
+  {
+   "id": "CX_奇合数_三角数_char",
+   "statement": "偶数 n 写成 奇合数+三角数 的例外集 在 [6,40000] 内共 13 个, 最大者 662(前几个: [6, 8, 14, 20, 32, 44])",
+   "grade": "R1 机器已给出候选刻画(未证明) · 疑似已知渐近定理的小例外",
+   "frontier": "候选刻画",
+   "frontier_evidence": {
+    "period_fit_mmax300": null,
+    "trivial_bound_T": 662,
+    "holds_after_T": true,
+    "claim": "例外集就是 n<662 的小例外(之后恒成立)"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "渐近成立(例外集中在小 n)",
+    "T": 662,
+    "span_ratio": 0.0165,
+    "detail": "例外最大 662, 扫描上界 40000 -> 猜想在 n>662 后成立, 大概率是已知渐近定理的小例外"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N1 已知(小例外)",
+    "literature": "未单独检索",
+    "finding": "机器候选刻画: 例外集 = n<662 的小例外。同上, 未检索。",
+    "machine_matched": null
+   }
+  },
+  {
+   "id": "CX_奇合数_半素数_char",
+   "statement": "偶数 n 写成 奇合数+半素数 的例外集 在 [6,40000] 内共 12 个, 最大者 38(前几个: [6, 8, 10, 12, 14, 16])。",
+   "grade": "R1 机器已给出候选刻画(未证明) · 疑似已知渐近定理的小例外",
+   "frontier": "候选刻画",
+   "frontier_evidence": {
+    "period_fit_mmax300": null,
+    "trivial_bound_T": 38,
+    "holds_after_T": true,
+    "claim": "例外集就是 n<38 的小例外(之后恒成立)"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "渐近成立(例外集中在小 n)",
+    "T": 38,
+    "span_ratio": 0.0009,
+    "detail": "例外最大 38, 扫描上界 40000 -> 猜想在 n>38 后成立, 大概率是已知渐近定理的小例外"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N1 已知(小例外)",
+    "literature": "未单独检索",
+    "finding": "机器候选刻画: 例外集 = n<38 的小例外。同上, 未检索。",
+    "machine_matched": null
+   }
+  },
+  {
+   "id": "CX_半素数_平方数_char",
+   "statement": "偶数 n 写成 半素数+平方数 的例外集 在 [6,40000] 内共 6 个, 最大者 108(前几个: [6, 12, 28, 32, 72, 108]",
+   "grade": "R1 机器已给出候选刻画(未证明) · 疑似已知渐近定理的小例外",
+   "frontier": "候选刻画",
+   "frontier_evidence": {
+    "period_fit_mmax300": null,
+    "trivial_bound_T": 108,
+    "holds_after_T": true,
+    "claim": "例外集就是 n<108 的小例外(之后恒成立)"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "渐近成立(例外集中在小 n)",
+    "T": 108,
+    "span_ratio": 0.0027,
+    "detail": "例外最大 108, 扫描上界 40000 -> 猜想在 n>108 后成立, 大概率是已知渐近定理的小例外"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N1 已知(小例外)",
+    "literature": "未单独检索",
+    "finding": "机器候选刻画: 例外集 = n<108 的小例外。同上, 未检索。",
+    "machine_matched": null
+   }
+  },
+  {
+   "id": "CX_回文数_平方数_char",
+   "statement": "偶数 n 写成 回文数+平方数 的例外集 在 [6,40000] 内共 3922 个, 最大者 39980(前几个: [46, 50, 62, 74, 76",
+   "grade": "R2 超出机器手段(无进展)",
+   "frontier": "无进展",
+   "frontier_evidence": {
+    "period_fit_mmax300": null,
+    "trivial_bound_T": 39980,
+    "holds_after_T": true
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "例外分散到大 n",
+    "T": 39980,
+    "span_ratio": 0.9995,
+    "detail": "例外最大 39980, 扫描上界 40000 -> 例外延伸到扫描上界附近, 是真正开放的区域"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N2 检索未见(非'新')",
+    "literature": "检索(palindrome + square)返回空; 未见直接文献",
+    "finding": "机器例外 3922 个(近 20%), 机器**未能**给出刻画(R2 无进展)。检索未见 —— 但回文数依赖十进制, 非常规加性数论对象, **检索未见不等于新**, 需专家。",
+    "machine_matched": null
+   }
+  },
+  {
+   "id": "CX_回文数_平方数_finite",
+   "statement": "偶数 n 写成 回文数+平方数 的例外集: 最后例外在 39980(扫描上界 40000); 延伸到 79994 又见 1511 个新例外。例外集是**有限",
+   "grade": "R1 机器已削弱原主张(找到新反例)",
+   "frontier": "削弱原主张",
+   "frontier_evidence": {
+    "extended_to": 159982,
+    "new_exceptions": 6685,
+    "new_head": [
+     40024,
+     40026,
+     40028,
+     40050,
+     40058,
+     40060
+    ],
+    "claim": "延伸到 159982 又见 6685 个例外 (有限性未被支持)"
+   },
+   "family": "加性基",
+   "literature": "加性数论: Schnirelmann 密度 / Goldbach-Euler / Chen(p+P2) / Vinogradov(三素数) / Waring-Goldbach",
+   "asymptotic": {
+    "signal": "例外分散到大 n",
+    "T": 39980,
+    "span_ratio": 0.9995,
+    "detail": "例外最大 39980, 扫描上界 40000 -> 例外延伸到扫描上界附近, 是真正开放的区域"
+   },
+   "known_status": "需文献门(离线不可判)",
+   "llm_judgment": {
+    "verdict": "N2 检索未见(非'新')",
+    "literature": "同上的检索空结果",
+    "finding": "机器延伸扫描见 1511 个新例外 -> 例外集几乎确定无限(两稀疏类的和集覆盖不了全部偶数), 但机器不能证明。",
+    "machine_matched": null
+   }
+  }
+ ],
+ "frontier_dist": {
+  "候选刻画": 6,
+  "削弱原主张": 3,
+  "无进展": 4
+ }
+}
