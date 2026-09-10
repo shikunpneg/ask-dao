@@ -1,0 +1,106 @@
+[
+ {
+  "fusion": "选择×编码20",
+  "before": 2,
+  "after": 6,
+  "note": "选择压是否维持/提升多样性"
+ },
+ {
+  "fusion": "选择×编码40",
+  "before": 2,
+  "after": 7,
+  "note": "选择压是否维持/提升多样性"
+ },
+ {
+  "fusion": "选择×周期编码",
+  "before": 2,
+  "after": 6,
+  "note": "选择压是否维持/提升多样性"
+ },
+ {
+  "fusion": "伊辛×六环",
+  "base_degen": 2,
+  "energy_levels": {
+   "-6": 2,
+   "-2": 30,
+   "2": 30,
+   "6": 2
+  }
+ },
+ {
+  "fusion": "伊辛×双三角",
+  "base_degen": 4,
+  "energy_levels": {
+   "-6": 4,
+   "-2": 24,
+   "2": 36
+  }
+ },
+ {
+  "fusion": "伊辛×星",
+  "base_degen": 2,
+  "energy_levels": {
+   "-5": 2,
+   "-3": 10,
+   "-1": 20,
+   "1": 20
+  }
+ },
+ {
+  "fusion": "伊辛×完全图K4",
+  "base_degen": 2,
+  "energy_levels": {
+   "-6": 2,
+   "0": 8,
+   "2": 6
+  }
+ },
+ {
+  "fusion": "压缩×规律词",
+  "ratio": 0.15
+ },
+ {
+  "fusion": "压缩×DNA词",
+  "ratio": 0.25
+ },
+ {
+  "fusion": "压缩×随机词",
+  "ratio": 0.65
+ },
+ {
+  "fusion": "压缩×斐波那契词",
+  "ratio": 0.2
+ },
+ {
+  "fusion": "熵×幂集子采样",
+  "sizes": [
+   1,
+   2,
+   1,
+   2,
+   2,
+   2,
+   3,
+   2
+  ],
+  "entropy": 1.2988
+ },
+ {
+  "fusion": "熵×均匀子集",
+  "sizes": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "entropy": -0.0
+ },
+ {
+  "fusion": "演化×编码20",
+  "final_distinct": 2
+ },
+ {
+  "fusion": "演化×编码40",
+  "final_distinct": 2
+ }
+]
