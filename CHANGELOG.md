@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.4.0 —— 节点连线树 + 书法 logo（2026-09-11）
+
+### 新增
+- **Logo 艺术化** `tools/art_logo.py`：用**用户提供的书法原图**（`道.png`）处理 ——
+  裁边 + 提对比 + 宣纸暖调光晕 + 朱红「问道」印章 + 圆角
+  产出 `assets/logo.png`(640) / `logo_small.png`(240) / `logo_banner.png`(1100x300)
+  原图留档 `assets/dao_original.png`
+- **节点连线树** `tools/tree_svg.py`：SVG 树渲染器（宣纸底 + 墨线 + 节点）
+  - `render_concept_tree`：概念 → 实体 → 子实体 → 原子概念（拆词来龙去脉）
+  - `render_problem_tree`：领域根 → 问题（生成来路）
+- 可视化升级：`build_paths_viz.py` 现渲染 **23 域问题树 + 11 概念树 = 34 棵节点连线树**
+  （318 节点 / 584 标签），不再是纯表格
+
+### 说明
+树风格与 logo 一致：宣纸底、墨色节点、暖褐连线。
 ## v0.3.1 —— README / Logo / 可视化（2026-09-11）
 
 ### 新增
