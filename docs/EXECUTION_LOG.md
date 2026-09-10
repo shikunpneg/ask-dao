@@ -1512,3 +1512,19 @@ urllib 抓 6 个公开页(黑洞/演化/量子力学/意识/arXiv/人工智能):
 网页疑问质量有限("whatDidn't"粘连, 多为已知科普疑问)。与其打磨24条粗疑问,
 不如**扩大信息源批量跑**, 提升 pipeline 吞吐 —— 这才是"跑出新知识"的正路。
 下一步: 批量抓 arXiv 摘要/多领域页, 大量产出 -> 用判定路由筛 -> 交 harness。
+
+## R56 arXiv 前沿摘要挖掘(跑出最接近"新知识"的)
+
+### 56.1 arxiv_miner.py
+arXiv API 批量抓最新论文摘要, 挖"open/unresolved/remains challenging/future work"信号。
+抓到 3 条(AI 2/天文 1), 例:
+  - AI: "translating this intelligence to the physical world, yet..." (智能->物理世界 未解决)
+  - 天文: "Origin of Europa and the Galilean Satellites... gas inflow to Jupiter ended" (木卫起源)
+=> **arXiv 论文自己标记的开放点 = 最新的前沿裂缝**, 比维基/网页更"新"。
+
+### 56.2 问题
+physics/math 抓取失败(网络不稳)。需加重试/更稳 URL。
+
+### 56.3 判断
+arXiv 线最有希望跑出"新知识"(前沿裂缝), 但质量受抓取稳定性限制。
+下一步: 修复抓取(重试)+ 扩大主题 + 对挖到的开放点做"是否新"判定。
