@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__TITLE__</title>
+<meta name="description" content="一台知识发现机器 —— 两条路：一条产问题（需解决），一条产概念（需解释）">
+<link rel="icon" href="assets/favicon.png">
+<style>
+:root{
+  --ink-900:#080b10; --ink-850:#0c1016; --ink-800:#11161d; --ink-700:#171e27;
+  --line:#242e3a; --line-2:#313d4c;
+  --silver-50:#f2f6fb; --silver-100:#dfe7f1; --silver-300:#b3c0d1; --dim:#8593a5;
+  --vermilion:#c0392b; --vermilion-soft:#d9564a; --bronze:#c8a45c; --bronze-dim:#8a7136;
+  --maxw:1180px;
+  --ease-spring:cubic-bezier(.22,1.4,.36,1);
+  --ease-out:cubic-bezier(.16,.84,.44,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink-900);color:var(--silver-100);
+  font:16px/1.75 "Segoe UI","Microsoft YaHei",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.kai{font-family:"STKaiti","KaiTi","楷体","Songti SC",serif}
+a{color:inherit;text-decoration:none}
+
+/* ---------- 导航 ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;gap:6px;
+  padding:13px 26px;
+  background:rgba(8,11,16,.5);backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .3s,background .3s;
+}
+nav.solid{background:rgba(8,11,16,.93);border-bottom-color:var(--line)}
+nav .brand{font-weight:700;letter-spacing:3px;font-size:17px;margin-right:auto;
+  font-family:"STKaiti","KaiTi",serif}
+nav .brand em{font-style:normal;color:var(--bronze)}
+nav a.link{padding:7px 13px;border-radius:7px;font-size:13.5px;color:var(--silver-300);
+  transition:background .2s,color .2s;white-space:nowrap}
+nav a.link:hover{background:rgba(255,255,255,.06);color:var(--silver-50)}
+nav a.gh{border:1px solid var(--line-2);color:var(--silver-100)}
+nav a.gh:hover{border-color:var(--bronze);color:var(--bronze)}
+@media(max-width:820px){nav a.link:not(.gh){display:none}}
+
+/* ---------- 首屏 ---------- */
+#hero{position:relative;height:100vh;min-height:620px;overflow:hidden;background:var(--ink-900)}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block}
+#hero .veil{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 42%,transparent 30%,rgba(8,11,16,.42) 78%,var(--ink-900) 100%)}
+#hero .copy{position:absolute;left:0;right:0;bottom:13vh;text-align:center;pointer-events:none}
+#hero .wm{font-size:clamp(38px,7vw,74px);letter-spacing:.22em;margin:0 0 10px;
+  font-family:"STKaiti","KaiTi",serif;font-weight:700;
+  text-shadow:0 2px 30px rgba(0,0,0,.75)}
+#hero .wm em{font-style:normal;color:var(--bronze)}
+#hero .sub{margin:0;color:var(--silver-300);font-size:clamp(13px,1.6vw,16px);letter-spacing:.16em}
+#hero .hint{position:absolute;left:0;right:0;bottom:34px;text-align:center;
+  color:var(--dim);font-size:12.5px;letter-spacing:.14em;animation:breathe 3.4s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.42}50%{opacity:.95}}
+#hero .cue{position:absolute;left:50%;bottom:66px;transform:translateX(-50%);
+  width:1px;height:44px;background:linear-gradient(var(--dim),transparent);opacity:.5}
+.fallback{position:absolute;inset:0;display:none;place-items:center;
+  background:radial-gradient(ellipse at 50% 40%,#1a222d,#080b10 72%)}
+.fallback img{width:min(46vh,340px);opacity:.92;filter:drop-shadow(0 10px 40px rgba(0,0,0,.7))}
+.fallback.on{display:grid}
+</style>
+<style>
+/* ---------- 通用版式 ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+section{padding:96px 0;position:relative}
+.sec-head{margin-bottom:42px}
+.sec-head .eyebrow{color:var(--bronze);font-size:12.5px;letter-spacing:.32em;
+  text-transform:uppercase;margin:0 0 12px}
+.sec-head h2{font-size:clamp(26px,3.6vw,38px);margin:0 0 12px;letter-spacing:.06em}
+.sec-head p{color:var(--dim);margin:0;max-width:760px}
+.rule{height:1px;background:linear-gradient(90deg,var(--bronze-dim),transparent);margin:0 0 34px}
+
+/* ---------- 二、道生万物 ---------- */
+#genesis{background:linear-gradient(180deg,var(--ink-900),var(--ink-850) 40%,var(--ink-900))}
+.chain{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:0 0 22px}
+.chain .seg{
+  font-family:"STKaiti","KaiTi",serif;
+  font-size:clamp(22px,3.4vw,40px);letter-spacing:.1em;
+  color:var(--silver-50);opacity:0;transform:translateY(22px) scale(.94);
+  transition:opacity .9s var(--ease-out),transform .9s var(--ease-spring);
+}
+.chain .seg.on{opacity:1;transform:none}
+.chain .op{color:var(--bronze);font-size:clamp(16px,2.2vw,26px);align-self:center;
+  opacity:0;transition:opacity .7s ease}
+.chain .op.on{opacity:1}
+.chain-note{text-align:center;color:var(--dim);font-size:14px;letter-spacing:.1em;
+  opacity:0;transition:opacity 1s ease .5s}
+.chain-note.on{opacity:1}
+#genesis .narr{margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+#genesis .narr .n{background:var(--ink-800);border:1px solid var(--line);border-radius:12px;
+  padding:20px 22px;opacity:0;transform:translateY(18px);
+  transition:opacity .7s var(--ease-out),transform .7s var(--ease-spring)}
+#genesis .narr .n.on{opacity:1;transform:none}
+#genesis .narr h3{margin:0 0 8px;font-size:16px;color:var(--bronze)}
+#genesis .narr p{margin:0;color:var(--silver-300);font-size:14px}
+
+/* ---------- 三、系统结构 ---------- */
+#struct{background:var(--ink-900)}
+.two-paths{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px}
+@media(max-width:820px){.two-paths{grid-template-columns:1fr}}
+.path-card{border-radius:14px;padding:24px;border:1px solid var(--line);background:var(--ink-800);
+  position:relative;overflow:hidden;transition:transform .35s var(--ease-spring),border-color .3s}
+.path-card:hover{transform:translateY(-5px)}
+.path-card.p{border-top:3px solid #3b82f6}
+.path-card.p:hover{border-color:#3b82f6}
+.path-card.i{border-top:3px solid var(--bronze)}
+.path-card.i:hover{border-color:var(--bronze)}
+.path-card h3{margin:0 0 6px;font-size:19px;letter-spacing:.08em}
+.path-card .role{font-size:12.5px;color:var(--dim);letter-spacing:.14em;margin:0 0 16px}
+.path-card .flow{font-size:13.5px;color:var(--silver-300);margin:0 0 10px;line-height:2}
+.path-card .flow b{color:var(--silver-50)}
+.path-card .k{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:8px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line-2);color:var(--silver-300);margin:2px 4px 0 0}
+.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:8px}
+.mod{background:var(--ink-800);border:1px solid var(--line);border-radius:12px;padding:18px;
+  transition:border-color .3s,transform .35s var(--ease-spring)}
+.mod:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.mod .no{font-family:"STKaiti",serif;font-size:26px;color:var(--bronze);line-height:1}
+.mod h4{margin:8px 0 6px;font-size:15px}
+.mod p{margin:0;color:var(--dim);font-size:13px;line-height:1.7}
+.arch-wrap{margin-top:26px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.arch-wrap img{display:block;width:100%;height:auto}
+<style>
+/* ---------- 四、模型训练 (ModelSpace) ---------- */
+#models{background:linear-gradient(180deg,var(--ink-900),var(--ink-850))}
+.ms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px}
+.ms-card{display:block;background:var(--ink-800);border:1px solid var(--line);border-radius:14px;
+  padding:22px;transition:transform .35s var(--ease-spring),border-color .3s,background .3s;position:relative}
+.ms-card:hover{transform:translateY(-5px);border-color:var(--bronze);background:var(--ink-700)}
+.ms-card .badge{position:absolute;top:18px;right:18px;font-size:11px;padding:2px 9px;
+  border-radius:9px;border:1px solid var(--line-2);color:var(--dim)}
+.ms-card .badge.live{border-color:var(--ok,#34d399);color:#34d399}
+.ms-card h4{margin:0 0 8px;font-size:16px;padding-right:64px}
+.ms-card p{margin:0 0 14px;color:var(--dim);font-size:13.5px;line-height:1.7}
+.ms-card .go{color:var(--bronze);font-size:13px;letter-spacing:.06em}
+
+/* ---------- 五、新问题 ---------- */
+#problems{background:var(--ink-900)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pcard{background:var(--ink-800);border:1px solid var(--line);border-radius:13px;padding:20px;
+  transition:transform .35s var(--ease-spring),border-color .3s}
+.pcard:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.pcard .top{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.pcard .tag{font-size:11px;padding:2px 9px;border-radius:9px;white-space:nowrap}
+.t-ok{background:rgba(52,211,153,.13);color:#34d399;border:1px solid rgba(52,211,153,.45)}
+.t-open{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.45)}
+.t-new{background:rgba(192,57,43,.15);color:var(--vermilion-soft);border:1px solid rgba(192,57,43,.5)}
+.pcard .dom{font-size:11.5px;color:var(--dim);letter-spacing:.1em}
+.pcard .stmt{font-size:14.5px;margin:0 0 12px;line-height:1.75}
+.pcard .ev{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--bronze);
+  background:#0a0e14;border:1px solid var(--line);border-radius:8px;padding:9px 11px;
+  overflow-x:auto;white-space:nowrap}
+.pcard .route{font-size:12px;color:var(--dim);margin-top:10px}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:30px}
+.stat{background:var(--ink-800);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center}
+.stat .v{font-size:30px;font-weight:700;color:var(--bronze);line-height:1.15;
+  font-family:"STKaiti",serif}
+.stat .l{color:var(--dim);font-size:12.5px;letter-spacing:.1em;margin-top:4px}
+
+/* ---------- 六、手册入口 ---------- */
+#docs{background:linear-gradient(180deg,var(--ink-900),var(--ink-850))}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px}
+.dcard{display:block;background:var(--ink-800);border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px;transition:transform .3s var(--ease-spring),border-color .25s}
+.dcard:hover{transform:translateY(-4px);border-color:var(--bronze)}
+.dcard h4{margin:0 0 6px;font-size:15px;color:var(--silver-50)}
+.dcard p{margin:0;color:var(--dim);font-size:13px;line-height:1.65}
+.dcard .arr{color:var(--bronze);font-size:12.5px;margin-top:10px;display:block}
+
+/* ---------- 七、开发者 ---------- */
+#dev{background:var(--ink-900);padding-bottom:60px}
+.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.dev-grid{grid-template-columns:1fr}}
+.dev-card{background:var(--ink-800);border:1px solid var(--line);border-radius:14px;padding:26px}
+.dev-card h3{margin:0 0 10px;font-size:17px;color:var(--bronze)}
+.dev-card p{margin:0 0 12px;color:var(--silver-300);font-size:14px}
+.dev-card .meta{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--dim)}
+.dev-card a.lk{color:var(--bronze);border-bottom:1px solid var(--bronze-dim)}
+
+footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--dim);font-size:13px}
+footer .sig{font-family:"STKaiti",serif;color:var(--silver-300);letter-spacing:.16em;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="brand">问<em>道</em></span>
+  <a class="link" href="#genesis">道生万物</a>
+  <a class="link" href="#struct">系统结构</a>
+  <a class="link" href="#models">模型训练</a>
+  <a class="link" href="#problems">新问题</a>
+  <a class="link" href="#docs">手册</a>
+  <a class="link gh" href="__GITHUB__" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+<!-- ========== 首屏: 金属湖面 + 道 + 鼠标涟漪 ========== -->
+<section id="hero">
+  <canvas id="gl"></canvas>
+  <div class="veil"></div>
+  <div class="fallback" id="fallback"><img src="assets/dao_ink.png" alt="道"></div>
+  <div class="copy">
+    <p class="sub">道生一，一生二，二生三，三生万物</p>
+  </div>
+  <div class="cue"></div>
+  <div class="hint">移动鼠标 · 湖面会起涟漪，道随波摆</div>
+</section>
+
+<!-- ========== 二、道生万物 ========== -->
+<section id="genesis">
+  <div class="wrap">
+    <div class="chain" id="chain">
+      <span class="seg" data-i="0">道</span>
+      <span class="op" data-i="1">生一</span>
+      <span class="seg" data-i="2">一</span>
+      <span class="op" data-i="3">生二</span>
+      <span class="seg" data-i="4">二</span>
+      <span class="op" data-i="5">生三</span>
+      <span class="seg" data-i="6">三</span>
+      <span class="op" data-i="7">生万物</span>
+    </div>
+    <p class="chain-note" id="chainNote">从一到多：母题生长为问题树，树与树交叉处，生出新问题。</p>
+
+    <div class="narr">
+      <div class="n"><h3>一 · 母题</h3><p>领域由母题组成。母题是**能生成问题的基元**——有载体、有生成规则、有判定路由。</p></div>
+      <div class="n"><h3>二 · 问题树</h3><p>每个真伪问题向深处分支：计数 → 刻画 → 渐近 → 机制 → 规范。已解决的层，向下推一格就是新问题。</p></div>
+      <div class="n"><h3>三 · 领域交叉</h3><p>不同的树交叉时产生新问题。融合必须有**结构桥梁**——两边共享结构，否则只是空洞的笛卡尔积。</p></div>
+      <div class="n"><h3>万物 · 两条路</h3><p>一条生产**问题**（需解决），一条生产**概念**（需解释）。两条路独立，各有各的成功标准。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 三、系统结构 ========== -->
+<section id="struct">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Architecture</p>
+      <h2>问道系统的结构</h2>
+      <p>不是问答机。它由四个模块支撑两条独立的路：一条把困惑变成可判的问题，一条把词变成可理解的概念。</p>
+    </div>
+    <div class="rule"></div>
+
+    <div class="two-paths">
+      <div class="path-card p">
+        <h3>问题路</h3>
+        <p class="role">PROBLEM PATH · 产问题 · 需解决</p>
+        <div class="flow">输入：<b>外部信息 / 日常问题 / 母题</b></div>
+        <div class="flow">流水：日常问题 → 前问题 → 科学问题 → 基础领域 → 问题树 → 领域融合</div>
+        <div class="flow">出口：可判问题清单（带判定路由）→ AI4S 求解</div>
+        <div><span class="k">标准：答案成立 / 可判</span></div>
+      </div>
+      <div class="path-card i">
+        <h3>想象路</h3>
+        <p class="role">IMAGINATION PATH · 产概念 · 需解释</p>
+        <div class="flow">输入：<b>词</b></div>
+        <div class="flow">流水：组词 → 拆词(深度d) → 还原造句 → 成段 → 解释</div>
+        <div class="flow">出口：被理解的概念 / 理论</div>
+        <div><span class="k">标准：语法正确 + 逻辑通畅 + 有推理判断</span></div>
+      </div>
+    </div>
+
+    <div class="modules">
+      <div class="mod"><div class="no">一</div><h4>感受模块</h4><p>视觉 / 听觉 / 网络文本 → 结构化观测 → 日常疑问</p></div>
+      <div class="mod"><div class="no">二</div><h4>问题制造模块</h4><p>反例驱动 · 问题树 L0–L5 · 全领域并行 · 领域融合 · 新颖性门</p></div>
+      <div class="mod"><div class="no">三</div><h4>执行模块 (AI4S)</h4><p>对问题清单独立验证，裁决回灌</p></div>
+      <div class="mod"><div class="no">四</div><h4>想象模块</h4><p>造词 → 拆词 → 还原造句 → 成段 → 解释</p></div>
+    </div>
+
+    <div class="arch-wrap"><img src="assets/architecture.svg" alt="问道系统架构图"></div>
+  </div>
+</section>
+
+<!-- ========== 四、模型训练 ========== -->
+<section id="models">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">ModelSpace · Training</p>
+      <h2>模型训练</h2>
+      <p>除两条路之外，我们也包含**模型训练**这条路径。下列入口指向 ModelSpace 上的运行页面。</p>
+    </div>
+    <div class="rule"></div>
+    <div class="ms-grid">
+      <a class="ms-card" href="__MODELSPACE__" target="_blank" rel="noopener">
+        <span class="badge live">ModelSpace</span>
+        <h4>问道 · 问题生成器</h4>
+        <p>全引擎跑批：母题库 × 组合引擎 × 判定器 × 新颖性门，产出带出处链的问题集。</p>
+        <span class="go">打开运行页面 →</span>
+      </a>
+      <a class="ms-card" href="__MODELSPACE__" target="_blank" rel="noopener">
+        <span class="badge">ModelSpace</span>
+        <h4>想象路 · 概念生成</h4>
+        <p>组词 → 拆词 → 还原造句 → 成段 → 解释。词 → 被理解的概念。</p>
+        <span class="go">打开运行页面 →</span>
+      </a>
+      <a class="ms-card" href="__MODELSPACE__" target="_blank" rel="noopener">
+        <span class="badge">ModelSpace</span>
+        <h4>AI4S Harness</h4>
+        <p>对问题清单做独立验证，产出 confirmed / rejected / open 裁决并回灌。</p>
+        <span class="go">打开运行页面 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 五、新问题 ========== -->
+<section id="problems">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">New Problems</p>
+      <h2>我们提出的新问题</h2>
+      <p>机器实际跑出来的问题，每条都带判定路由与证据。<strong>N3（世界新问题）至今为 0，不许粉饰。</strong></p>
+    </div>
+    <div class="rule"></div>
+
+    <div class="stat-row" id="stats"></div>
+    <div class="pgrid" id="pgrid"></div>
+
+    <p style="color:var(--dim);font-size:13.5px;margin-top:26px">
+      完整清单（260+ 条，23 个领域）见 <a href="viz/paths.html" style="color:var(--bronze);border-bottom:1px solid var(--bronze-dim)">可视化页</a> ·
+      <a href="guide/results.html" style="color:var(--bronze);border-bottom:1px solid var(--bronze-dim)">结果与证据</a>
+    </p>
+  </div>
+</section>
+
+<!-- ========== 六、手册入口 ========== -->
+<section id="docs">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Handbook</p>
+      <h2>使用手册</h2>
+      <p>从架构到命令，从"什么算新知识"到"诚实边界"。</p>
+    </div>
+    <div class="rule"></div>
+    <div class="dgrid">
+      <a class="dcard" href="guide/architecture.html"><h4>架构详解</h4><p>四模块 / 两条路 / 关键设计决策</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="guide/quickstart.html"><h4>快速开始</h4><p>环境 / 第一次运行 / 常见问题</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="guide/problem-path.html"><h4>问题路手册</h4><p>三种输入 / 反例驱动 / 问题树 L0–L5 / 新颖性门</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="guide/imagination-path.html"><h4>想象路手册</h4><p>五步流程 / 深度变量 d / 成段范例</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="guide/new-knowledge.html"><h4>什么算新知识</h4><p>三层问题发现模式 / 两种新知识产生方式</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="guide/ai4s.html"><h4>AI4S 接口</h4><p>问题清单格式 / 裁决回灌 / 闭环</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="guide/results.html"><h4>结果与证据</h4><p>全部可复核数字 / 负结果 / 自纠错</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="guide/honesty.html"><h4>诚实边界</h4><p>四条硬边界 / 血泪教训</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="guide/glossary.html"><h4>术语表</h4><p>全部术语</p><span class="arr">阅读 →</span></a>
+      <a class="dcard" href="viz/paths.html"><h4>可视化</h4><p>问题树 + 概念树 + 概念论证</p><span class="arr">打开 →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 七、开发者 ========== -->
+<section id="dev">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Developer</p>
+      <h2>开发者与项目</h2>
+    </div>
+    <div class="rule"></div>
+    <div class="dev-grid">
+      <div class="dev-card">
+        <h3>项目</h3>
+        <p>问道 · ask-dao-machine —— 一台知识发现机器。MIT License。</p>
+        <p class="meta">版本 v0.5.0</p>
+        <p><a class="lk" href="__GITHUB__" target="_blank" rel="noopener">__GITHUB__</a></p>
+      </div>
+      <div class="dev-card">
+        <h3>开发者</h3>
+        <p>__DEVELOPER__</p>
+        <p class="meta">__CONTACT__</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sig">道生一，一生二，二生三，三生万物</div>
+  <div>问道 · ask-dao-machine · MIT License</div>
+</footer>
+
+<script>
+/* ==================================================================
+   金属湖面 + 道字水墨相融  (WebGL, 无外部库)
+   材质: 真实湖面照片 (lake.jpg) 为基底; 道字墨迹 (dao_mask.png) 随波摆动。
+   交互: 鼠标移动注入涟漪; 涟漪驱动法线 -> 扭曲 UV + 镜面高光。
+   ================================================================== */
+(function(){
+  const canvas = document.getElementById('gl');
+  if(!canvas) return;
+  const gl = canvas.getContext('webgl', {antialias:true, alpha:false});
+  if(!gl){ document.getElementById('fallback').classList.add('on'); return; }
+
+  const VS = `
+attribute vec2 a_p;
+varying vec2 v_uv;
+void main(){ v_uv = a_p*0.5+0.5; gl_Position = vec4(a_p,0.0,1.0); }`;
+
+  const FS = `
+precision highp float;
+varying vec2 v_uv;
+uniform vec2  u_res;
+uniform float u_time;
+uniform sampler2D u_lake;
+uniform sampler2D u_ink;
+uniform vec3  u_rip[24];      // xy=位置(uv)  z=诞生时刻
+uniform float u_asp;
+
+float wave(vec2 p){
+  float h = 0.0;
+  for(int i=0;i<24;i++){
+    vec3 r = u_rip[i];
+    float age = u_time - r.z;
+    float live = step(0.0,age)*step(age,3.2);          // 用乘法代替 continue
+    vec2 d = p - r.xy;
+    d.x *= u_asp;
+    float dist = length(d);
+    float front = age*7.5;
+    float env = exp(-age*1.15) * exp(-pow((dist-front)*0.85,2.0));
+    h += live * env * sin((dist-front)*13.0) * 0.075;
+  }
+  // 环境微澜(平静水面)
+  h += 0.011*sin(p.x*6.5 + u_time*0.50)
+     + 0.009*sin(p.y*8.5 - u_time*0.38)
+     + 0.006*sin((p.x+p.y)*10.5 + u_time*0.62)
+     + 0.004*sin((p.x-p.y)*15.0 - u_time*0.9);
+  return h;
+}
+
+void main(){
+  vec2 uv = v_uv;
+  vec2 e = vec2(2.6/u_res.x, 2.6/u_res.y);
+  float h  = wave(uv);
+  float hx = wave(uv+vec2(e.x,0.0));
+  float hy = wave(uv+vec2(0.0,e.y));
+  vec3 n = normalize(vec3(-(hx-h)/e.x*0.055, -(hy-h)/e.y*0.055, 1.0));
+
+  // 湖面照片随波扭曲
+  vec2 luv = uv + n.xy*0.045;
+  luv = clamp(luv, 0.002, 0.998);
+  vec3 lake = texture2D(u_lake, luv).rgb;
+
+  // 墨迹: 同一波场, 位移更大 -> "道"随波摆动
+  vec2 iuv = uv + n.xy*0.070;
+  iuv = clamp(iuv, 0.002, 0.998);
+  float ink = texture2D(u_ink, iuv).a;   // dao_ink.png 墨迹在 alpha 通道
+
+  // 金属镜面: 用湖面亮度做反射强度
+  float lum = dot(lake, vec3(0.299,0.587,0.114));
+  vec3 L = normalize(vec3(0.35,0.72,0.60));
+  float spec = pow(max(dot(n,L),0.0), 58.0);
+  lake += spec*0.55*lum;                       // 高光偏金属
+  lake += n.x*0.06*lum;                        // 波峰一侧提亮
+
+  // 水墨相融: 墨处压暗并沉入水色
+  vec3 deep = lake*0.13 + vec3(0.020,0.026,0.036);
+  vec3 col  = mix(lake, deep, ink*0.94);
+
+  // 墨边缘的微微泛银(墨在水里散开)
+  float edge = smoothstep(0.06,0.42,ink)*(1.0-smoothstep(0.42,0.9,ink));
+  col += edge*vec3(0.05,0.06,0.075)*lum;
+
+  // 银灰调 + 暗角
+  col = mix(col, vec3(dot(col,vec3(0.32,0.55,0.13))), 0.16);
+  vec2 c = uv-0.5; c.x*=u_asp;
+  col *= 1.0 - 0.55*pow(length(c)*1.28, 2.4);
+
+  gl_FragColor = vec4(col,1.0);
+}`;
+
+  function sh(type, src){
+    const s = gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s);
+    if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, sh(gl.VERTEX_SHADER,VS));
+  gl.attachShader(prog, sh(gl.FRAGMENT_SHADER,FS));
+  gl.linkProgram(prog);
+  if(!gl.getProgramParameter(prog, gl.LINK_STATUS)){ console.error(gl.getProgramInfoLog(prog)); }
+  gl.useProgram(prog);
+
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog,'a_p');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+
+  const U = n => gl.getUniformLocation(prog, n);
+  const u_res=U('u_res'), u_time=U('u_time'), u_lake=U('u_lake'),
+        u_ink=U('u_ink'), u_rip=U('u_rip'), u_asp=U('u_asp');
+
+  function loadTex(url, unit){
+    const t = gl.createTexture();
+    gl.activeTexture(gl.TEXTURE0+unit);
+    gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,1,1,0,gl.RGBA,gl.UNSIGNED_BYTE,
+                  new Uint8Array([128,128,128,255]));
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    const img = new Image();
+    img.onload = function(){
+      gl.activeTexture(gl.TEXTURE0+unit);
+      gl.bindTexture(gl.TEXTURE_2D, t);
+      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,img);
+    };
+    img.onerror = function(){ console.warn('贴图加载失败:', url); };
+    img.src = url;
+    return t;
+  }
+  loadTex('assets/lake.jpg', 0);
+  loadTex('assets/dao_ink.png', 1);
+  gl.uniform1i(u_lake,0); gl.uniform1i(u_ink,1);
+
+  // 涟漪池
+  const NR = 24, ripples = new Float32Array(NR*3);
+  for(let i=0;i<NR;i++) ripples[i*3+2] = -99;   // 全部失效
+  gl.uniform3fv(u_rip, ripples);
+  let rIdx = 0, lastX = null, lastY = null, lastT = 0;
+
+  function addRipple(x, y){
+    const i = rIdx % NR;
+    ripples[i*3]   = x;
+    ripples[i*3+1] = y;
+    ripples[i*3+2] = tNow;
+    rIdx++;
+    gl.uniform3fv(u_rip, ripples);
+  }
+
+  function resize(){
+    const dpr = Math.min(window.devicePixelRatio||1, 2);
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width = Math.max(1, Math.floor(w*dpr));
+    canvas.height = Math.max(1, Math.floor(h*dpr));
+    gl.viewport(0,0,canvas.width,canvas.height);
+    gl.uniform2f(u_res, canvas.width, canvas.height);
+    gl.uniform1f(u_asp, w/h);
+  }
+  window.addEventListener('resize', resize);
+
+  let tNow = 0;
+  canvas.addEventListener('pointermove', function(ev){
+    const r = canvas.getBoundingClientRect();
+    const x = (ev.clientX - r.left)/r.width;
+    const y = 1.0 - (ev.clientY - r.top)/r.height;
+    const dx = lastX===null ? 99 : x-lastX, dy = lastY===null ? 99 : y-lastY;
+    const moved = Math.hypot(dx,dy);
+    if(moved > 0.012 || lastX===null){ addRipple(x,y); lastX=x; lastY=y; }
+  });
+  canvas.addEventListener('pointerdown', function(ev){
+    const r = canvas.getBoundingClientRect();
+    addRipple((ev.clientX-r.left)/r.width, 1.0-(ev.clientY-r.top)/r.height);
+  });
+  // 触摸
+  canvas.addEventListener('touchmove', function(ev){
+    if(!ev.touches[0]) return;
+    const r = canvas.getBoundingClientRect(), tp = ev.touches[0];
+    addRipple((tp.clientX-r.left)/r.width, 1.0-(tp.clientY-r.top)/r.height);
+    ev.preventDefault();
+  }, {passive:false});
+
+  const t0 = performance.now();
+  function frame(now){
+    tNow = (now - t0)/1000;
+    gl.uniform1f(u_time, tNow);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(frame);
+  }
+  resize();
+  requestAnimationFrame(frame);
+
+  // 首屏缓慢自涟漪(即使不动鼠标湖面也活)
+  setInterval(function(){
+    if(document.hidden) return;
+    addRipple(0.28+Math.random()*0.44, 0.34+Math.random()*0.32);
+  }, 2600);
+})();
+</script>
+
+<script>
+/* ==================================================================
+   滚动叙事: 道生万物逐渐出现 / 元素渐显 / 导航实化
+   ================================================================== */
+(function(){
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      en.target.classList.add('on');
+      io.unobserve(en.target);
+    });
+  }, {threshold:0.18});
+
+  // 链式出现: 道→生一→一→生二→二→生三→三→生万物 (间隔 0.38s)
+  const chainKids = document.querySelectorAll('#chain .seg, #chain .op');
+  const chainN = document.getElementById('chain');
+  if(chainKids.length){
+    const chainIO = new IntersectionObserver(function(en){
+      if(!en[0].isIntersecting) return;
+      chainKids.forEach(function(k, i){
+        setTimeout(function(){ k.classList.add('on'); }, i*380);
+      });
+      setTimeout(function(){ chainN.classList.add('on'); }, chainKids.length*380 + 500);
+      chainIO.disconnect();
+    }, {threshold:0.35});
+    chainIO.observe(chainN);
+  }
+  document.querySelectorAll('#genesis .n, #stats, .two-paths, #models .ms-card, #problems .pcard')
+    .forEach(function(el){ io.observe(el); });
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 30) nav.classList.add('solid'); else nav.classList.remove('solid');
+  }, {passive:true});
+})();
+</script>
+
+<script>
+/* ==================================================================
+   新问题数据 (由 make_site.py 注入)
+   ================================================================== */
+window.__PROBLEMS__ = __PROBLEMS_JSON__;
+(function(){
+  const list = window.__PROBLEMS__ || [];
+  if(!list.length) return;
+  const stats = document.getElementById('stats');
+  stats.innerHTML =
+    '<div class="stat"><div class="v">'+list.length+'</div><div class="l">已提出问题</div></div>'+
+    '<div class="stat"><div class="v">'+list.reduce((a,p)=>a+(p.status||'').includes('confirmed'),0)+'</div><div class="l">已复核</div></div>'+
+    '<div class="stat"><div class="v">'+new Set(list.map(p=>p.domain)).size+'</div><div class="l">领域</div></div>';
+
+  const box = document.getElementById('pgrid');
+  list.slice(0,8).forEach(function(p){
+    const st = (p.status||'待判定');
+    const cls = st.includes('confirmed')||st.includes('零例外') ? 't-ok'
+              : st.includes('有限') || st.includes('疑似') ? 't-open' : 't-new';
+    const d = document.createElement('div'); d.className='pcard';
+    d.innerHTML =
+      '<div class="top"><span class="tag '+cls+'">'+st.slice(0,10)+'</span>'+
+      '<span class="dom">'+(p.domain||'')+'</span></div>'+
+      '<p class="stmt">'+(p.statement||'').slice(0,120)+'</p>'+
+      '<div class="ev">'+(p.evidence||'')+'</div>'+
+      '<div class="route">路由：'+(p.judge_route||'—')+'</div>';
+    box.appendChild(d);
+  });
+})();
+</script>
+</body>
+</html>

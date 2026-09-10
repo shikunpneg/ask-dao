@@ -1,4 +1,6 @@
-<div align="center">
+﻿---
+permalink: /docs-index/
+---<div align="center">
 
 <img src="logo.png" width="150" alt="道">
 
@@ -115,3 +117,4 @@ python tools/build_paths_viz.py
 <div align="center">
 <sub>问道 · ask-dao-machine · MIT License</sub>
 </div>
+

@@ -1,4 +1,4 @@
-__pycache__/
+﻿__pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
@@ -6,3 +6,9 @@ out/
 .pytest_cache/
 
 data/
+
+# 本地工具/编辑器配置（不属于仓库内容）
+.claude/
+# 站点生成过程中的一次性中间产物
+tools/_preview/
+docs/_*.html
