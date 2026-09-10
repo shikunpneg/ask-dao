@@ -16,18 +16,25 @@
     --gold:#9c7c42;
     --gold-soft:rgba(156,124,66,.42);
     --ink:#12161c;
-    --sub:#3f4756;
-    --dim:#6f7889;
+    --sub:#252c38;            /* 正文：加深，压在湖面上也要够黑 */
+    --dim:#4d5765;            /* 说明文字：从浅灰提到中灰 */
+    --font-body:"Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+                "Source Han Sans SC","Noto Sans CJK SC",system-ui,sans-serif;
+    --font-display:"Songti SC","STSongti-SC","Source Han Serif SC","Noto Serif SC","SimSun",serif;
     --line:rgba(24,36,56,.13);
     --veil:247,250,254;          /* 银白薄雾（压在真实湖面上） */
     --paper:#f7f4ed;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
+  /* 压在真实湖面上：给文字一层极淡白晕，抵消照片纹理对可读性的干扰 */
+  h1,h2,h3,h4,p,li,td,th,small,b,span,a,figcaption,div{text-shadow:0 1px 1.5px rgba(255,255,255,.62);}
+  .card,.doc,.data-table td,.data-table th{text-shadow:0 1px 1.5px rgba(255,255,255,.5);}
   html{scroll-behavior:smooth;}
   body{
     background:#dde5f0;
     color:var(--ink);
-    font-family:"Songti SC","STSongti-SC","Noto Serif SC","SimSun",serif;
+    font-family:var(--font-body);
+    font-size:16.5px;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
@@ -50,19 +57,19 @@
     position:fixed;top:0;left:0;right:0;z-index:40;
     display:flex;align-items:center;gap:4px;
     padding:14px 4vw;
-    background:rgba(var(--veil),.55);
+    background:rgba(var(--veil),.72);
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid transparent;
     transition:border-color .4s,background .4s;
   }
-  .nav.solid{background:rgba(var(--veil),.88);border-bottom-color:var(--line);}
+  .nav.solid{background:rgba(var(--veil),.94);border-bottom-color:var(--line);}
   .nav .brand{
     font-family:"STKaiti","KaiTi","楷体",serif;
     font-size:19px;letter-spacing:.22em;margin-right:auto;color:var(--ink);
   }
   .nav .brand em{font-style:normal;color:var(--gold);}
   .nav a{
-    color:var(--sub);text-decoration:none;font-size:13px;
+    color:var(--sub);text-decoration:none;font-size:13.5px;
     padding:7px 11px;border-radius:2px;transition:background .25s,color .25s;
     white-space:nowrap;
   }
@@ -74,49 +81,50 @@
   section{
     position:relative;z-index:2;
     padding:132px 8vw;
-    background:rgba(var(--veil),.60);
+    background:rgba(var(--veil),.75);
     border-top:1px solid var(--line);
     backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);
   }
   section.hero{padding:0;background:transparent;border-top:0;backdrop-filter:none;}
-  section.genesis{background:rgba(var(--veil),.34);}
-  section.honesty{background:rgba(252,250,245,.72);}
+  section.genesis{background:rgba(var(--veil),.46);}
+  section.honesty{background:rgba(252,250,245,.84);}
 
   .label{
-    font-size:11.5px;letter-spacing:.5em;text-transform:uppercase;
+    font-size:12.5px;letter-spacing:.46em;text-transform:uppercase;font-weight:600;
     color:var(--gold);margin-bottom:24px;font-weight:500;
     opacity:0;transform:translateY(18px);
     transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);
   }
   .label.visible{opacity:1;transform:none;}
   h2{
-    font-size:clamp(21px,2.9vw,34px);font-weight:500;letter-spacing:.09em;
+    font-family:var(--font-display);
+    font-size:clamp(21px,2.9vw,34px);font-weight:700;letter-spacing:.09em;
     color:#080a0e;margin-bottom:18px;
   }
   h2 em{font-style:normal;color:var(--gold);}
-  .lead{
+  .lead{font-weight:400;
     max-width:760px;color:var(--sub);font-size:15px;line-height:2.05;
-    margin-bottom:56px;font-weight:300;
+    margin-bottom:56px;font-weight:400;
   }
-  .note{color:var(--dim);font-size:13px;line-height:1.95;font-weight:300;}
+  .note{color:var(--dim);font-size:14px;line-height:1.95;font-weight:400;}
   a.inline{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft);}
   a.inline:hover{color:#7d6234;}
 
   /* ==================== 表格（真实结果） ==================== */
   .data-table{
     width:100%;border-collapse:collapse;margin:8px 0 22px;
-    font-size:14px;background:rgba(255,255,255,.5);
+    font-size:14.5px;background:rgba(255,255,255,.62);
   }
   .data-table caption{
-    text-align:left;color:var(--dim);font-size:12.5px;letter-spacing:.06em;
+    text-align:left;color:var(--dim);font-size:13px;letter-spacing:.05em;
     padding:0 0 10px;
   }
   .data-table th,.data-table td{
     padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;
-    font-weight:300;
+    font-weight:400;
   }
   .data-table th{
-    color:var(--gold);font-weight:500;font-size:12.5px;letter-spacing:.1em;
+    color:#8a6b2f;font-weight:700;font-size:13px;letter-spacing:.1em;
     background:rgba(255,255,255,.42);
   }
   .data-table td{color:var(--sub);}
@@ -138,15 +146,15 @@
   .card.visible{opacity:1;transform:none;}
   .card:hover{background:rgba(255,255,255,.9);}
   .card .idx{font-size:12px;color:var(--gold);letter-spacing:.3em;margin-bottom:20px;}
-  .card h3{font-size:17.5px;font-weight:500;margin-bottom:12px;color:#080a0e;}
-  .card p{font-size:13.5px;line-height:1.95;color:var(--sub);font-weight:300;}
-  .card .en{font-size:11px;color:var(--dim);letter-spacing:.14em;margin-top:14px;}
+  .card h3{font-family:var(--font-display);font-size:18.5px;font-weight:700;margin-bottom:12px;color:#080a0e;}
+  .card p{font-size:14.5px;line-height:1.9;color:var(--sub);font-weight:400;}
+  .card .en{font-size:12px;color:var(--dim);letter-spacing:.14em;margin-top:14px;}
 
   /* ==================== 图 ==================== */
   .figure{margin:56px 0 0;opacity:0;transform:translateY(26px);transition:all .7s;}
   .figure.visible{opacity:1;transform:none;}
   .figure img{display:block;width:100%;height:auto;background:var(--paper);border:1px solid var(--line);}
-  .figure figcaption{margin-top:13px;font-size:12.5px;color:var(--dim);line-height:1.9;font-weight:300;}
+  .figure figcaption{margin-top:13px;font-size:13.5px;color:var(--dim);line-height:1.9;font-weight:400;}
   .figure code{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--sub);}
 
   /* ==================== 首屏 ==================== */
@@ -202,8 +210,8 @@
   .g-divider{width:1px;height:0;background:linear-gradient(to bottom,transparent,#4a5268,transparent);
     transition:height 1.5s ease;margin:4px 0;opacity:.32;}
   .g-divider.visible{height:56px;}
-  .g-note{margin-top:44px;max-width:640px;color:var(--sub);font-size:13.5px;line-height:2;
-    font-weight:300;}
+  .g-note{margin-top:44px;max-width:660px;color:var(--sub);font-size:15px;line-height:2;
+    font-weight:400;}
 
   /* ==================== 两条路 ==================== */
   .paths{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-bottom:40px;}
@@ -213,10 +221,10 @@
     opacity:0;transform:translateY(26px);transition:all .6s;
   }
   .path-card.visible{opacity:1;transform:none;}
-  .path-card h3{font-size:20px;font-weight:500;margin-bottom:6px;color:#080a0e;}
+  .path-card h3{font-family:var(--font-display);font-size:21px;font-weight:700;margin-bottom:6px;color:#080a0e;}
   .path-card .role{font-size:11.5px;letter-spacing:.16em;color:var(--dim);margin-bottom:20px;
     font-family:ui-monospace,Consolas,monospace;}
-  .path-card .flow{font-size:13.5px;line-height:2.1;color:var(--sub);font-weight:300;}
+  .path-card .flow{font-size:14.5px;line-height:2.05;color:var(--sub);font-weight:400;}
   .path-card .flow b{color:var(--ink);font-weight:500;}
   .path-card .k{display:inline-block;font-size:11.5px;padding:3px 9px;border:1px solid var(--line);
     color:var(--sub);margin:14px 6px 0 0;border-radius:2px;}
@@ -230,8 +238,8 @@
   }
   .q-item.visible{opacity:1;transform:none;}
   .q-item .id{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--gold);}
-  .q-item .stmt{font-size:14.5px;line-height:1.95;color:var(--ink);}
-  .q-item .ev{margin-top:9px;font-family:ui-monospace,Consolas,monospace;font-size:11.5px;
+  .q-item .stmt{font-size:15.5px;line-height:1.95;color:var(--ink);font-weight:400;}
+  .q-item .ev{margin-top:9px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;
     color:var(--dim);word-break:break-all;}
   .q-item .st{font-size:11.5px;color:#2f6b6b;text-align:right;}
   @media(max-width:820px){.q-item{grid-template-columns:1fr;gap:8px;} .q-item .st{text-align:left;}}
@@ -251,32 +259,32 @@
   }
   .doc.visible{opacity:1;transform:none;}
   .doc:hover{background:rgba(255,255,255,.92);}
-  .doc b{display:block;font-size:15px;font-weight:500;color:#080a0e;margin-bottom:7px;}
-  .doc small{color:var(--dim);font-size:12.5px;line-height:1.8;display:block;font-weight:300;}
+  .doc b{display:block;font-size:15.5px;font-weight:700;color:#080a0e;margin-bottom:7px;}
+  .doc small{color:var(--dim);font-size:13.5px;line-height:1.8;display:block;font-weight:400;}
   .doc .arr{display:block;margin-top:12px;color:var(--gold);font-size:12px;}
 
   /* ==================== 诚实边界 ==================== */
   .honesty ol{list-style:none;counter-reset:h;}
   .honesty li{
     counter-increment:h;position:relative;padding:22px 0 22px 54px;
-    border-bottom:1px solid var(--line);font-size:14px;line-height:1.95;color:var(--sub);
-    font-weight:300;
+    border-bottom:1px solid var(--line);font-size:15.5px;line-height:2;color:var(--sub);
+    font-weight:400;
   }
   .honesty li::before{
     content:counter(h,decimal-leading-zero);
     position:absolute;left:0;top:22px;color:var(--gold);
     font-family:ui-monospace,Consolas,monospace;font-size:12.5px;
   }
-  .honesty li b{color:#b03a2e;font-weight:500;}
+  .honesty li b{color:#a8332a;font-weight:700;}
 
   /* ==================== 页脚 ==================== */
   footer{
     position:relative;z-index:2;padding:70px 8vw 44px;
-    background:rgba(248,246,241,.82);border-top:1px solid var(--line);
+    background:rgba(249,247,242,.92);border-top:1px solid var(--line);
   }
   .dev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;}
   .dev-grid h3{font-size:11.5px;letter-spacing:.32em;color:var(--gold);margin-bottom:16px;}
-  .dev-grid p{font-size:13.5px;line-height:2;color:var(--sub);font-weight:300;}
+  .dev-grid p{font-size:13.5px;line-height:2;color:var(--sub);font-weight:400;}
   .dev-grid a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft);}
   footer .bottom{
     margin-top:52px;padding-top:24px;border-top:1px solid var(--line);
