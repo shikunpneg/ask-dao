@@ -19,7 +19,11 @@ from conjecture_search import build_pool, exceptions_fast, LO, HI               
 
 CANON_BASES_HINT = ("_b10",)
 
-MODS = (3, 4, 6, 8, 12, 24)
+MODS = (3, 4, 6, 8, 9, 12, 18, 24)
+
+
+def quadratic_residues(m):
+    return sorted({(a * a) % m for a in range(m)})
 
 
 def augment_with_modular(pool, hi=HI, mods=MODS):
@@ -30,6 +34,9 @@ def augment_with_modular(pool, hi=HI, mods=MODS):
     for m in mods:
         for r in range(m):
             out[f"≡{r}(mod {m})"] = {n for n in range(1, hi + 1) if n % m == r}
+        # 二次剩余类(自纠错第12次: Harshad+平方数 的例外恰好避开 mod 9 的 QR)
+        qr = set(quadratic_residues(m))
+        out[f"QR(mod {m})"] = {n for n in range(1, hi + 1) if n % m in qr}
     return out
 
 
@@ -46,7 +53,7 @@ def make_spec(a, b, F, lo, hi):
 
 def score(r):
     s, why = 0, []
-    if r["kind"] not in ("周期", "无例外(区间内)") and not r["class_fit"] and not r["small_bound"]:
+    if r["kind"] not in ("周期", "无例外(区间内)") and not r["class_fit"]             and not r.get("avoid_fit") and not r["small_bound"]:
         s += 2
         why.append("机器无法描述例外集")
     if 0 < r["density"] < 0.005:
@@ -83,6 +90,7 @@ def main():
         pi = red.get("perm_invariance")
         row = {"A": A, "B": B, "n": len(F), "density": round(len(F) / len(range(LO, HI + 1, 2)), 5),
                "kind": info.get("kind"), "class_fit": info.get("class_fit"),
+               "avoid_fit": info.get("avoid_fit"),
                "small_bound": info.get("small_bound"),
                "period": info.get("period"),
                "probe_extends": (F[-1] >= HI - 4) if F else False,
@@ -110,6 +118,8 @@ def main():
         desc = r["kind"] or "—"
         if r["class_fit"]:
             desc = f"⊆{r['class_fit']['class']}"
+        elif r.get("avoid_fit"):
+            desc = f"避开{r['avoid_fit']['avoids']}"
         elif r["small_bound"]:
             desc = f"<{r['small_bound']}"
         if r["period"]:
@@ -119,7 +129,8 @@ def main():
     print(f"\n== 详情(前 8) ==")
     for r in ded[:8]:
         print(f"\n[{r['score']}分] {r['A']} + {r['B']}  ({r['n']} 例外, {r['density']:.3%})")
-        print(f"  机器能说的: kind={r['kind']} class_fit={r['class_fit']} small={r['small_bound']}")
+        print(f"  机器能说的: kind={r['kind']} class_fit={r['class_fit']} "
+              f"avoid_fit={r.get('avoid_fit')} small={r['small_bound']}")
         print(f"  理由: {'; '.join(r['why']) or '(无)'}")
         if r["reduction"]:
             print(f"  机器归约: {r['reduction'][:90]}")

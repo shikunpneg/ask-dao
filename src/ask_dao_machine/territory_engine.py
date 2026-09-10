@@ -94,6 +94,23 @@ def classify(F: List[int], lo: int, hi: int, classes: Dict[str, Set[int]]):
         if len(outside) <= 3:
             info["class_fit"] = {"class": cname, "outside": outside}
             break
+    # **补原语(自纠错第 12 次)**: 例外集**避开**某个类(与某类不相交)。
+    # 首版只测"⊆ 某类", 于是把 `Harshad数+平方数` 的例外(无一 ≡{0,1,4,7} mod 9 —— 模9二次剩余)
+    # 误报成"无法描述"。这类"避开型"结构在数论里极常见(模障碍), 必须能测。
+    # 自纠错(第 12 次附): "避开某类"必须有**实质性**才有意义。
+    # 首版挑了"避开 2的幂"(只占区间 0.07%) —— 对几乎任何集合都平凡成立, 是废话。
+    # 加阈值: 被避开的类须覆盖扫描空间的 ≥10%。
+    info["avoid_fit"] = None
+    span = max(1, len(range(lo, hi + 1)))
+    for cname, C in sorted(classes.items()):
+        if not F:
+            break
+        if len(C) / span < 0.10:
+            continue
+        if all(n not in C for n in F):
+            info["avoid_fit"] = {"avoids": cname, "class_size": len(C),
+                                 "coverage": round(len(C) / span, 3)}
+            break
     # 小例外界: 例外全在 T 之前, 之后恒成立
     T = max(F)
     info["small_bound"] = T if T <= hi // 10 else None
