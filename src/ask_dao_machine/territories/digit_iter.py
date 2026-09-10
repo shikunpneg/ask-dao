@@ -33,7 +33,8 @@ def _spec(b: int, k: int, cls: dict) -> Spec:
         claim=f"每个 n 的乘法持续数(base {b}) ≤ {k}",
         holds=holds, classes=cls,
         params={"进制": b, "阈值k": k, "结构": "乘法持续数"},
-        step=1, quantity=f"n ∈ [2,{HI}]; 进制 b={b}; 阈值 k={k}")
+        step=1, quantity=f"n ∈ [2,{HI}]; 进制 b={b}; 阈值 k={k}",
+        strength="阈值k")   # 强度轴: k 越大主张越弱; 进制是语境, 不同进制不可比
 
 
 def _classes(hi=HI):

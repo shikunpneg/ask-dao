@@ -28,6 +28,10 @@ class Spec:
     params: Dict[str, Any] = field(default_factory=dict)
     step: int = 1                                # 扫描步长(偶数为 2)
     quantity: str = ""                           # 参数量词域(良构用)
+    # 强度轴: params 里哪个键控制"主张强弱"(其余键是**语境**, 不同语境不可比)。
+    # 自纠错(第 9 次追问): 不显式声明的话, "恰好一个参数不同"会把 `进制` 误当强度轴,
+    # 从而把 base-3 的猜想说成蕴含 base-10 的 —— 二者毫无关系。
+    strength: Optional[str] = None
 
 
 @dataclass
@@ -96,6 +100,134 @@ def classify(F: List[int], lo: int, hi: int, classes: Dict[str, Set[int]]):
     return info
 
 
+def _to_base(n, b):
+    d = []
+    while n:
+        d.append(n % b)
+        n //= b
+    return d or [0]
+
+
+def _from_base(d, b):
+    v = 0
+    for x in reversed(d):
+        v = v * b + x
+    return v
+
+
+# ---------------- 归约原语(Phase 2 / Axis F) ----------------
+def perm_invariance(spec: Spec, lo: int, hi: int, sample: int = 150) -> Optional[dict]:
+    """**归约原语**: 例外集是否在**数位置换**下不变?
+
+    若不变 => "∀n P(n)" 可**归约**为"∀数位多重集 P" —— 问题空间从 N 个数
+    缩到 partitions(len, b-1) 个多重集。这正是文献对乘法持续数做的归约
+    (持续数只依赖数位之积 => 置换不变 => 只在数位多重集上说话)。
+
+    自纠错/R27 教训: 机器此前的手段(周期/类库包含/小界/密度)**没有归约原语**,
+    所以到不了文献那一步。此函数补上。
+    """
+    from itertools import permutations
+    b = spec.params.get("进制")
+    if not b or b < 2:
+        return None
+    Fs = {n for n in range(lo, hi + 1, spec.step) if not spec.holds(n)}
+    if not Fs:
+        return None
+    tested, witness = 0, None
+    # 正方向: 例外的一切置换仍是例外
+    for n in sorted(Fs)[:sample]:
+        d = _to_base(n, b)
+        alld = set(permutations(d))
+        if len(alld) > 400:
+            continue
+        for p in alld:
+            m = _from_base(list(p), b)
+            if m < lo or m > hi or m % spec.step != lo % spec.step:
+                continue
+            tested += 1
+            if m not in Fs:
+                witness = {"from": n, "perm": _from_base(list(p), b)}
+                return {"invariant": False, "tested": tested, "witness": witness}
+    # 反方向: 非例外的一切置换仍非例外(抽样)
+    nonF = [n for n in range(lo, hi + 1, spec.step) if n not in Fs]
+    inv_fail = None
+    for n in nonF[:: max(1, len(nonF) // sample)][:sample]:
+        d = _to_base(n, b)
+        alld = set(permutations(d))
+        if len(alld) > 400:
+            continue
+        for p in alld:
+            m = _from_base(list(p), b)
+            if m < lo or m > hi or m % spec.step != lo % spec.step:
+                continue
+            tested += 1
+            if m in Fs:
+                inv_fail = {"from": n, "perm": m}
+                break
+        if inv_fail:
+            break
+    if inv_fail:
+        return {"invariant": False, "tested": tested, "witness": inv_fail,
+                "direction": "非例外的置换落入例外"}
+    n_multisets = "partitions(len, b-1)"
+    return {"invariant": True, "tested": tested,
+            "reduction": f"例外集只依赖**数位多重集**(进制 {b}) => "
+                         f"问题空间从 [{lo},{hi}] 的 {len(range(lo,hi+1,spec.step))} 个数 "
+                         f"归约为数位多重集({n_multisets} 量级)",
+            "reduces_to": "digit_multiset"}
+
+
+def reduction_probes(spec: Spec, lo: int, hi: int) -> dict:
+    """跑全部归约原语, 返回可用归约。"""
+    out = {}
+    pi = perm_invariance(spec, lo, hi)
+    if pi:
+        out["perm_invariance"] = pi
+    return out
+
+
+# ---------------- 蕴含去重(修 R27 缺陷) ----------------
+def implication_dedup(specs, lo, hi):
+    """识别"被更强形式蕴含的弱形式"(修 R27 缺陷: base3 的 k=3/4/5 被算了三次)。
+
+    自纠错(第 9 次): 首版规则是"例外(A) ⊆ 例外(B) 且 |A|<|B| => A 蕴含 B", 有两处错:
+      (a) **跨语境比较** —— 把 base-3 的猜想说成蕴含 base-10 的(毫无关系);
+      (b) 空例外集**平凡包含**于一切 => 每个"无例外"spec 都"蕴含"所有 spec。
+    修正后规则:
+      1. 只比较**同语境**的 spec(参数字典相同, 且**恰好一个**参数不同 —— 那个参数就是强度);
+      2. 只在**更强的那个在扫描范围内无例外**(即已被验证)时, 才认为弱形式被蕴含。
+    返回 {spec_id: [蕴含它的更强 spec_id,...]}。
+    """
+    exc = {s.id: {n for n in range(lo, hi + 1, s.step) if not s.holds(n)} for s in specs}
+
+    # 按 (强度轴, 语境) 分组; 语境 = 除强度轴外的全部参数
+    groups = {}
+    for s in specs:
+        if not s.strength:
+            continue
+        ctx = tuple(sorted((k, v) for k, v in s.params.items() if k != s.strength))
+        groups.setdefault((s.strength, ctx), []).append(s)
+
+    implied = {}
+    for (skey, _ctx), grp in groups.items():
+        if len(grp) < 2:
+            continue
+        # 自纠错(第 9 次终版): 蕴含判据 holds_a ⟹ holds_b  <=>  Fb ⊆ Fa。
+        # 若 Fa=∅ 则 Fb ⊆ ∅ 强制 Fb=∅ —— 即**蕴含只在"都无例外"时发生**, 方向不可分,
+        # 本质是**等价**, 不是蕴含。故按"例外集完全相同"做等价类去重, 保留一个代表。
+        by_exc = {}
+        for s in grp:
+            by_exc.setdefault(frozenset(exc[s.id]), []).append(s)
+        for _ex, members in by_exc.items():
+            if len(members) < 2:
+                continue
+            members.sort(key=lambda s: s.params[skey])   # 规约: 取强度值最小者为代表
+            canon = members[0]
+            for m in members[1:]:
+                implied.setdefault(m.id, []).append(canon.id)
+    return implied
+
+
 def probe(spec: Spec, lo: int, hi: int) -> dict:
     """诚实探针: 向 hi 之外延伸, 看是否还有新例外。"""
     ext_lo, ext_hi = hi + spec.step, hi + (hi - lo)
@@ -151,22 +283,27 @@ def questions(spec: Spec, info: dict, pr: dict, lo: int, hi: int) -> List[dict]:
 
 
 def emit(t: Territory, spec: Spec, info: dict, pr: dict, qs: List[dict],
-         lo: int, hi: int) -> List[ProblemRecord]:
+         lo: int, hi: int, reductions: dict = None) -> List[ProblemRecord]:
     root = TreeRoot(f"R_{t.name}", f"领地·{t.family}", "数学", t.motifs, t.seed)
     out = []
     for q in qs:
+        stmt = q["statement"]
+        # 归约是机器**自己**找到的: 把它并进问题陈述(问题空间被缩小, 问题更难了)
+        red = (reductions or {}).get("perm_invariance")
+        if red and red.get("invariant"):
+            stmt += f"\n  [机器归约] {red['reduction']} —— 归约后该问题的答案应只依赖数位多重集。"
         out.append(ProblemRecord(
             f"CX_{spec.id}_{q['suffix']}", "数学",
             f"机器扫出「{spec.claim}」的例外集后, 反例自身的结构成了新问题",
-            t.motifs + [info["kind"]],
+            t.motifs + [info["kind"]] + (["置换归约"] if red and red.get("invariant") else []),
             f"反例驱动({t.family})",
-            q["statement"],
+            stmt,
             {"method": "反例集结构拟合(机器枚举)", "examples": info["examples"],
              "count": info["n"], "period": info.get("period"),
              "residues": info.get("residues"), "class_fit": info.get("class_fit"),
              "small_bound": info.get("small_bound"), "scan": [lo, hi], "probe": pr,
              "settleable_by_machine": False, "crit": q["crit"],
-             "params": spec.params},
+             "params": spec.params, "reductions": reductions or {}},
             status=UNRESOLVED, honesty="机器提出·未结算(需证明或反例)",
             binds={**{k: str(v) for k, v in spec.params.items()},
                    "扫描": f"{lo}..{hi}"},
@@ -184,11 +321,22 @@ def run_territory(t: Territory, lo: int, hi: int, max_exc_density: float = 0.05)
     """
     specs = t.specs()
     recs, report = [], []
+    implied = implication_dedup(specs, lo, hi)
     total_n = len(range(lo, hi + 1))
     for spec in specs:
         F = [n for n in range(lo, hi + 1, spec.step) if not spec.holds(n)]
         scanned = len(range(lo, hi + 1, spec.step))
         dens = len(F) / max(scanned, 1)
+        # 蕴含去重必须在"无例外"分支**之前**判 — R27 的缺陷(同一猜想问三次)恰恰出在这里:
+        # 弱形式往往正是"无例外"的那些。自纠错(第 9 次追问): 首版放在后面, 永不触发。
+        impl = implied.get(spec.id)
+        if impl:
+            report.append({"spec": spec.id, "claim": spec.claim, "n": len(F),
+                           "density": round(dens, 4), "kind": "—",
+                           "implied_by": impl,
+                           "verdict": f"**被更强形式蕴含**({', '.join(impl)}); "
+                                      f"不产出问题(蕴含去重, 修 R27 缺陷)"})
+            continue
         # 无例外: 机器未能结算"是否恒成立" -> 这本身是个开放问题
         if not F:
             info = {"kind": "无例外(区间内)", "n": 0, "examples": []}
@@ -210,15 +358,18 @@ def run_territory(t: Territory, lo: int, hi: int, max_exc_density: float = 0.05)
         info = classify(F, lo, hi, spec.classes)
         info["density_overall"] = round(dens, 4)
         pr = probe(spec, lo, hi)
+        red = reduction_probes(spec, lo, hi)          # Phase 2: 归约原语
         qs = questions(spec, info, pr, lo, hi)
-        recs += emit(t, spec, info, pr, qs, lo, hi)
+        recs += emit(t, spec, info, pr, qs, lo, hi, red)
         report.append({"spec": spec.id, "claim": spec.claim, "n": info["n"],
                        "density": round(dens, 4), "kind": info["kind"], "last": info["last"],
                        "at_boundary": info["at_boundary"],
                        "class_fit": info.get("class_fit"),
                        "small_bound": info.get("small_bound"),
+                       "reductions": red,
                        "probe_extends": pr["extends"], "n_beyond": pr["n_beyond"],
-                       "verdict": f"产出 {len(qs)} 个开放问题"})
+                       "verdict": f"产出 {len(qs)} 个开放问题"
+                                  + (" [含归约]" if red else "")})
     roots = [TreeRoot(f"R_{t.name}", f"领地·{t.family}", "数学", t.motifs, t.seed)]
     return roots, recs, {"territory": t.name, "family": t.family,
                          "literature": t.literature, "specs": report}

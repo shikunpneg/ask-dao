@@ -113,9 +113,19 @@
      "at_boundary": false,
      "class_fit": null,
      "small_bound": null,
+     "reductions": {
+      "perm_invariance": {
+       "invariant": false,
+       "tested": 2,
+       "witness": {
+        "from": 78,
+        "perm": 62
+       }
+      }
+     },
      "probe_extends": true,
      "n_beyond": 2628,
-     "verdict": "产出 3 个开放问题",
+     "verdict": "产出 3 个开放问题 [含归约]",
      "oeis_on_exc_seq": [],
      "territory": "digit_base"
     },
@@ -181,7 +191,7 @@
    "is_control": false,
    "specs": 6,
    "killed": 1,
-   "questions": 7,
+   "questions": 5,
    "silent_proxy": 1,
    "oeis_hit": 1,
    "spec_detail": [
@@ -204,9 +214,17 @@
      "at_boundary": true,
      "class_fit": null,
      "small_bound": null,
+     "reductions": {
+      "perm_invariance": {
+       "invariant": true,
+       "tested": 5217,
+       "reduction": "例外集只依赖**数位多重集**(进制 10) => 问题空间从 [4,20000] 的 19997 个数 归约为数位多重集(partitions(len, b-1) 量级)",
+       "reduces_to": "digit_multiset"
+      }
+     },
      "probe_extends": true,
      "n_beyond": 535,
-     "verdict": "产出 2 个开放问题",
+     "verdict": "产出 2 个开放问题 [含归约]",
      "oeis_on_exc_seq": [],
      "territory": "digit_iter"
     },
@@ -220,9 +238,17 @@
      "at_boundary": false,
      "class_fit": null,
      "small_bound": null,
+     "reductions": {
+      "perm_invariance": {
+       "invariant": true,
+       "tested": 3136,
+       "reduction": "例外集只依赖**数位多重集**(进制 10) => 问题空间从 [4,20000] 的 19997 个数 归约为数位多重集(partitions(len, b-1) 量级)",
+       "reduces_to": "digit_multiset"
+      }
+     },
      "probe_extends": true,
      "n_beyond": 60,
-     "verdict": "产出 2 个开放问题",
+     "verdict": "产出 2 个开放问题 [含归约]",
      "oeis_on_exc_seq": [
       "A015649",
       "A038023",
@@ -244,8 +270,11 @@
      "claim": "每个 n 的乘法持续数(base 3) ≤ 4",
      "n": 0,
      "density": 0.0,
-     "kind": "无例外(区间内)",
-     "verdict": "无例外 -> 产出 1 个开放问题(是否定理)",
+     "kind": "—",
+     "implied_by": [
+      "di3_pers_k3"
+     ],
+     "verdict": "**被更强形式蕴含**(di3_pers_k3); 不产出问题(蕴含去重, 修 R27 缺陷)",
      "territory": "digit_iter"
     },
     {
@@ -253,8 +282,11 @@
      "claim": "每个 n 的乘法持续数(base 3) ≤ 5",
      "n": 0,
      "density": 0.0,
-     "kind": "无例外(区间内)",
-     "verdict": "无例外 -> 产出 1 个开放问题(是否定理)",
+     "kind": "—",
+     "implied_by": [
+      "di3_pers_k3"
+     ],
+     "verdict": "**被更强形式蕴含**(di3_pers_k3); 不产出问题(蕴含去重, 修 R27 缺陷)",
      "territory": "digit_iter"
     }
    ]

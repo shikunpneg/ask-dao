@@ -72,6 +72,16 @@
      "进制": 3,
      "类A": "回文数",
      "类B": "素数"
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 78,
+       "perm": 62
+      }
+     }
     }
    },
    "status": "开放(机器无法结算)",
@@ -151,6 +161,16 @@
      "进制": 3,
      "类A": "回文数",
      "类B": "素数"
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 78,
+       "perm": 62
+      }
+     }
     }
    },
    "status": "开放(机器无法结算)",
@@ -230,6 +250,16 @@
      "进制": 3,
      "类A": "回文数",
      "类B": "素数"
+    },
+    "reductions": {
+     "perm_invariance": {
+      "invariant": false,
+      "tested": 2,
+      "witness": {
+       "from": 78,
+       "perm": 62
+      }
+     }
     }
    },
    "status": "开放(机器无法结算)",
@@ -284,7 +314,8 @@
      "进制": 10,
      "类A": "回文数",
      "类B": "素数"
-    }
+    },
+    "reductions": {}
    },
    "status": "开放(机器无法结算)",
    "honesty": "机器提出·未结算(需证明或反例)",
