@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v0.5.0 —— 极简 logo + 架构图 + 详细手册 + GitHub Pages（2026-09-11）
+
+### 新增
+- **极简 logo** `tools/art_logo.py`：书法「道」二值化提墨、去纸纹与斑点 → 纯墨色（透明/白底/圆角）
+  `assets/logo.png`(透明) / `logo_white.png`(白底) / `favicon.png`
+- **架构图** `tools/arch_diagram.py` → `assets/architecture.svg`（SVG：四模块 + 两条路 + 诚实边界）
+- **详细使用手册** `docs/guide/`（9 篇）：
+  架构详解 / 快速开始 / 问题路手册 / 想象路手册 / 什么算新知识 / AI4S 接口 / 结果与证据 / 诚实边界 / 术语表
+- **GitHub Pages 站点** `docs/_config.yml` + `docs/index.md`
+- README 重写：极简 logo + 架构图内嵌 + **结果突出** + 手册链接表
+
+### 改进
+- 可视化深色页面改用白底 logo（黑墨透明版在深色下不可见）
+
 ## v0.4.0 —— 节点连线树 + 书法 logo（2026-09-11）
 
 ### 新增

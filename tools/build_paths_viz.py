@@ -189,7 +189,7 @@ def main():
             "arguments": args}
 
     from shutil import copyfile
-    logo = HERE / "assets" / "logo_small.png"
+    logo = HERE / "assets" / "logo_white.png"  # 深色页面用白底版
     html = TPL.replace("<script>\nconst D = window.DATA;",
                        "<script>\nwindow.DATA = " + json.dumps(data, ensure_ascii=False)
                        + ";\nconst D = window.DATA;")

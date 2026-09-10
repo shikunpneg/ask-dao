@@ -1,0 +1,7 @@
+title: 问道 · ask-dao-machine
+description: 一台知识发现机器 —— 两条路：一条产问题（需解决），一条产概念（需解释）
+theme: jekyll-theme-minimal
+show_downloads: false
+markdown: kramdown
+kramdown:
+  input: GFM

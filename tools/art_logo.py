@@ -1,124 +1,101 @@
 # -*- coding: utf-8 -*-
-"""tools/art_logo.py — 对书法原图(道.png)做艺术化处理，生成 logo（R91）
+"""tools/art_logo.py — 极简 logo: 书法「道」去纸纹、纯墨色（v0.5）
 
-输入: 道.png (书法原图, 369x420)
-输出: assets/logo.png (主 logo, 方形) / logo_small.png / logo_banner.png (横幅)
-
-处理:
-  1. 裁掉多余边距，居中
-  2. 宣纸底色统一(去原图杂色边缘)
-  3. 提高墨色对比(让笔画更黑更清晰)
-  4. 轻微暖调光晕(岁月感)
-  5. 加朱红「问」印章
-  6. 圆角
+用户: logo 要更简约、极简风。
+做法: 取书法原图 -> 二值化提墨 -> 去纸纹 -> 纯墨色 on 透明/白底 -> 细边圆角。
+不加印章、不加光晕、不加暖调。
 """
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
+from PIL import Image, ImageDraw, ImageFilter, ImageOps
 
 HERE = Path(__file__).resolve().parent.parent
-SRC = HERE / "道.png"
+SRC = HERE / "assets" / "dao_original.png"  # 书法原图(已归档)
 ASSETS = HERE / "assets"
-PAPER = (240, 229, 204)
+INK = (17, 17, 17)
+WHITE = (255, 255, 255)
 
 
-def load_ink():
-    im = Image.open(SRC).convert("RGB")
-    w, h = im.size
-    # 裁边(4%)去掉扫描杂边
-    m = int(min(w, h) * 0.03)
-    im = im.crop((m, m, w - m, h - m))
-    # 提对比 + 降饱和(让墨更黑、纸更净)
-    im = ImageEnhance.Contrast(im).enhance(1.35)
-    im = ImageEnhance.Color(im).enhance(0.85)
-    im = ImageEnhance.Brightness(im).enhance(1.06)
-    return im
-
-
-def square(im, side, pad_ratio=0.10):
-    """居中放入方形宣纸底, 留边。"""
-    canvas = Image.new("RGB", (side, side), PAPER)
-    inner = int(side * (1 - pad_ratio * 2))
-    w, h = im.size
-    s = min(inner / w, inner / h)
-    im2 = im.resize((max(1, int(w * s)), max(1, int(h * s))), Image.LANCZOS)
-    canvas.paste(im2, ((side - im2.width) // 2, (side - im2.height) // 2))
-    return canvas
-
-
-def warm_glow(im):
-    """淡淡的暖调光晕(岁月感)。"""
-    glow = im.filter(ImageFilter.GaussianBlur(18))
-    glow = ImageEnhance.Brightness(glow).enhance(1.04)
-    return Image.blend(im, glow, 0.18)
-
-
-def add_seal(im, text="问道", size_ratio=0.16, margin_ratio=0.055):
-    """右下角朱红印章(竖排两字)。"""
-    w = im.width
-    ss = int(w * size_ratio)
-    margin = int(w * margin_ratio)
-    seal = Image.new("RGBA", (ss, ss), (0, 0, 0, 0))
-    d = ImageDraw.Draw(seal)
-    d.rounded_rectangle([0, 0, ss - 1, ss - 1], radius=int(ss * 0.12),
-                        fill=(176, 42, 36, 235))
-    try:
-        f = ImageFont.truetype("C:/Windows/Fonts/STXINGKA.TTF", int(ss * 0.40))
-    except Exception:
-        f = ImageFont.load_default()
-    for i, ch in enumerate(text):
-        b = d.textbbox((0, 0), ch, font=f)
-        tw, th = b[2] - b[0], b[3] - b[1]
-        cy = ss * (0.28 + i * 0.44)
-        d.text(((ss - tw) / 2 - b[0], cy - th / 2 - b[1]), ch, font=f,
-               fill=(255, 240, 232, 250))
-    im = im.convert("RGBA")
-    im.alpha_composite(seal, (w - ss - margin, im.height - ss - margin))
-    return im.convert("RGB")
-
-
-def rounded(im, r_ratio=0.07):
-    w, h = im.size
-    r = int(min(w, h) * r_ratio)
-    mask = Image.new("L", (w, h), 0)
-    ImageDraw.Draw(mask).rounded_rectangle([0, 0, w - 1, h - 1], radius=r, fill=255)
-    out = Image.new("RGB", (w, h), PAPER)
-    out.paste(im, (0, 0), mask)
+def _drop_specks(bw, min_area):
+    """去掉小于 min_area 的孤立斑点(纸纹噪点), 保留笔画。"""
+    w, h = bw.size
+    px = bw.load()
+    seen = [[False] * w for _ in range(h)]
+    out = Image.new("L", (w, h), 255)
+    opx = out.load()
+    for sy in range(h):
+        for sx in range(w):
+            if seen[sy][sx] or px[sx, sy] != 0:
+                continue
+            # flood fill 该连通块
+            stack, comp = [(sx, sy)], []
+            seen[sy][sx] = True
+            while stack:
+                x, y = stack.pop()
+                comp.append((x, y))
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < w and 0 <= ny < h and not seen[ny][nx] \
+                            and px[nx, ny] == 0:
+                        seen[ny][nx] = True
+                        stack.append((nx, ny))
+            if len(comp) >= min_area:
+                for x, y in comp:
+                    opx[x, y] = 0
     return out
+
+
+def extract_ink(min_speck=26):
+    """把书法原图提成纯墨色笔画（去纸纹 + 去斑点）。"""
+    im = Image.open(SRC).convert("L")
+    w, h = im.size
+    m = int(min(w, h) * 0.045)
+    im = im.crop((m, m, w - m, h - m))
+    im = ImageOps.autocontrast(im, cutoff=1)
+    im = im.filter(ImageFilter.MedianFilter(3))
+    bw = im.point(lambda p: 0 if p < 118 else 255).convert("L")
+    bw = _drop_specks(bw, min_speck)          # 去小斑
+    bw = bw.filter(ImageFilter.MedianFilter(3))
+    alpha = ImageOps.invert(bw)
+    return bw, alpha
+
+
+def make(size, bg=None, pad_ratio=0.12, radius_ratio=0.10, name="logo.png"):
+    bw, alpha = extract_ink()
+    w, h = bw.size
+    inner = int(size * (1 - pad_ratio * 2))
+    s = min(inner / w, inner / h)
+    nw, nh = max(1, int(w * s)), max(1, int(h * s))
+    a = alpha.resize((nw, nh), Image.LANCZOS)
+
+    base = Image.new("RGBA", (size, size), (bg + (255,)) if bg else (0, 0, 0, 0))
+    if bg:
+        mask = Image.new("L", (size, size), 0)
+        ImageDraw.Draw(mask).rounded_rectangle(
+            [0, 0, size - 1, size - 1], radius=int(size * radius_ratio), fill=255)
+        base.putalpha(mask)
+
+    ink = Image.new("RGBA", (nw, nh), INK + (255,))
+    ink.putalpha(a)
+    base.alpha_composite(ink, ((size - nw) // 2, (size - nh) // 2))
+    base.save(ASSETS / name)
+    print(f"{name} {base.size}")
 
 
 def main():
     ASSETS.mkdir(parents=True, exist_ok=True)
-    ink = load_ink()
-
-    # 主 logo: 640 方形 + 印章 + 圆角
-    logo = square(ink, 640, pad_ratio=0.09)
-    logo = warm_glow(logo)
-    logo = add_seal(logo, "问道")
-    logo = rounded(logo, 0.075)
-    logo.save(ASSETS / "logo.png")
-    print("logo.png", logo.size)
-
-    # 小图(网页/avatar): 无印章, 净版
-    small = square(ink, 240, pad_ratio=0.07)
-    small = rounded(small, 0.09)
-    small.save(ASSETS / "logo_small.png")
-    print("logo_small.png", small.size)
-
-    # 横幅(README 顶部): 左道右字
-    bw, bh = 1100, 300
-    banner = Image.new("RGB", (bw, bh), PAPER)
-    b_ink = square(ink, bh - 40, pad_ratio=0.05)
-    banner.paste(b_ink, (60, 20))
-    d = ImageDraw.Draw(banner)
-    try:
-        f1 = ImageFont.truetype("C:/Windows/Fonts/STXINGKA.TTF", 74)
-        f2 = ImageFont.truetype("C:/Windows/Fonts/STXINGKA.TTF", 30)
-    except Exception:
-        f1 = f2 = ImageFont.load_default()
-    d.text((bh + 40, 78), "问道", font=f1, fill=(28, 22, 18))
-    d.text((bh + 48, 186), "道生一，一生二，二生三，三生万物", font=f2, fill=(122, 96, 62))
-    banner.save(ASSETS / "logo_banner.png")
-    print("logo_banner.png", banner.size)
+    # 主 logo: 透明底(README 深浅主题都能用)
+    make(512, bg=None, name="logo.png")
+    # 白底圆角版(社交/avatar)
+    make(512, bg=WHITE, radius_ratio=0.11, name="logo_white.png")
+    make(256, bg=None, pad_ratio=0.10, name="logo_small.png")
+    # 小图标(纯墨, 无留白, 用于 favicon)
+    bw, alpha = extract_ink()
+    s = 128
+    a = alpha.resize((s, s), Image.LANCZOS)
+    ic = Image.new("RGBA", (s, s), INK + (255,))
+    ic.putalpha(a)
+    ic.save(ASSETS / "favicon.png")
+    print("favicon.png", ic.size)
 
 
 if __name__ == "__main__":
