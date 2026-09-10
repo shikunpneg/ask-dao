@@ -155,6 +155,66 @@ JUDGMENTS.update({
 })
 
 
+# ---- R27: 领地·数位迭代(乘法持续数) ----
+JUDGMENTS.update({
+    "CX_di10_pers_k4_char": {
+        "verdict": "N0 已知(机器重发现 A003001 前段)",
+        "literature": "OEIS A003001(smallest number of multiplicative persistence n): "
+                      "0, 10, 25, 39, 77, **679**, 6788, 68889, 2677889, …",
+        "finding": "机器例外集(持续数>4, 即 ≥5)开头为 **679, 688, 697, 769, 796, 868, …** —— "
+                   "最小的 679 正是 A003001 的持续数-5 项。机器重发现了该序列的领头元。",
+        "machine_matched": True,
+    },
+    "CX_di10_pers_k4_finite": {
+        "verdict": "N0o **已知·未解**(机器独立重发现持久数无界猜想的问题)",
+        "literature": "Erdős 猜想: 乘法持续数**无界**; Sloane 猜想: 每个进制 b 存在最大值 c(b)。"
+                      "base 10 是否有界至今未解。",
+        "finding": "机器延伸扫描见 535 个新例外, 于是问'例外集有限吗?' —— "
+                   "这正是 Erdős/Sloane 猜想的核心(base 10 持续数是否有界, **未解**)。"
+                   "机器在无文献输入下独立提出了这个未解问题。",
+        "machine_matched": True,
+    },
+    "CX_di10_pers_k5_char": {
+        "verdict": "N0 已知(机器重发现 A003001)",
+        "literature": "同 A003001: 持续数-6 的最小者是 **6788**",
+        "finding": "机器例外集(持续数>5)开头为 **6788, 6878, 6887, 7688, 7868, 7886, …** "
+                   "—— 最小的 6788 正是 A003001 的持续数-6 项。",
+        "machine_matched": True,
+    },
+    "CX_di10_pers_k5_finite": {
+        "verdict": "N0o **已知·未解**(同 Erdős/Sloane 猜想)",
+        "literature": "同上有界性问题(base 10 未解)",
+        "finding": "机器延伸见 60 个新例外 -> '有限吗?' —— 同上有界性问题。",
+        "machine_matched": True,
+    },
+    "CX_di3_pers_k3_holds": {
+        "verdict": "N0o **已知·未解/猜想**(机器独立重发现 base-3 持续数猜想)",
+        "literature": "Guy (1994) 猜想: base 3 的最大乘法持续数为 **3**。"
+                      "等价于猜想: 每个 > 2^15 的 2 的幂在 base 3 下含数字 0(已验证至 2^500)。"
+                      "OEIS A064867: base-3 中持续数为 3 的最小者是 26 ([222]→[22]→[11]→[1])。",
+        "finding": "机器扫遍 [4,20000] 未发现持续数 >3 的 n, 于是问'这是定理吗?' —— "
+                   "**Guy 1994 确认这正是 conjecture(未解)**。机器独立重发现了该猜想。"
+                   "**但机器的局限也在此暴露**: 文献把猜想归约到'2^k 在 base 3 下含 0'这一"
+                   "**子族归约**, 而机器的手段(周期拟合/类库包含/小界/密度)里**没有归约原语**, "
+                   "所以机器到不了这一步 —— 这是 Axis F 要补的。",
+        "machine_matched": True,
+    },
+    "CX_di3_pers_k4_holds": {
+        "verdict": "N0o 已知·未解(同 Guy 猜想; 由 k=3 蕴含)",
+        "literature": "同 Guy (1994): 若 max=3, 则 k=4 自动成立",
+        "finding": "与 k=3 同源; 机器重复问了同一猜想的弱形式(信息冗余, 不是新问题)。",
+        "machine_matched": True,
+    },
+    "CX_di3_pers_k5_holds": {
+        "verdict": "N0o 已知·未解(同 Guy 猜想; 由 k=3 蕴含)",
+        "literature": "同 Guy (1994)",
+        "finding": "同上 —— 机器把同一猜想问了三次(k=3/4/5)。**这是生成侧的可改进点**: "
+                   "应识别'已被更强形式蕴含'的弱形式, 避免重复。",
+        "machine_matched": True,
+    },
+})
+
+
 def load(path=None):
     p = Path(path) if path else HERE / "out/demo/problem_gate.json"
     data = json.loads(p.read_text(encoding="utf-8"))

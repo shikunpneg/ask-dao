@@ -1,0 +1,263 @@
+{
+ "rows": [
+  {
+   "territory": "combo_control",
+   "family": "组合约束(稠密对照)",
+   "is_control": true,
+   "specs": 3,
+   "killed": 3,
+   "questions": 0,
+   "silent_proxy": 0,
+   "oeis_hit": 0,
+   "spec_detail": [
+    {
+     "spec": "cc_avoid_11",
+     "claim": "每个 n 的二进制表示不含子串 '11'",
+     "n": 18636,
+     "density": 0.9319,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 93% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "combo_control"
+    },
+    {
+     "spec": "cc_avoid_101",
+     "claim": "每个 n 的二进制表示不含子串 '101'",
+     "n": 15720,
+     "density": 0.7861,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 79% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "combo_control"
+    },
+    {
+     "spec": "cc_avoid_000",
+     "claim": "每个 n 的二进制表示不含子串 '000'",
+     "n": 12476,
+     "density": 0.6239,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 62% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "combo_control"
+    }
+   ]
+  },
+  {
+   "territory": "digit_base",
+   "family": "进制依赖结构",
+   "is_control": false,
+   "specs": 13,
+   "killed": 11,
+   "questions": 4,
+   "silent_proxy": 1,
+   "oeis_hit": 0,
+   "spec_detail": [
+    {
+     "spec": "dig2_回文数_平方数",
+     "claim": "每个 n 可写成 回文数(base 2) + 平方数",
+     "n": 4885,
+     "density": 0.2443,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 24% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig2_回文数_三角数",
+     "claim": "每个 n 可写成 回文数(base 2) + 三角数",
+     "n": 2906,
+     "density": 0.1453,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 15% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig2_回文数_素数",
+     "claim": "每个 n 可写成 回文数(base 2) + 素数",
+     "n": 9717,
+     "density": 0.4859,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 49% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig2_回文数_回文数",
+     "claim": "每个 n 可写成 回文数(base 2) + 回文数",
+     "n": 10656,
+     "density": 0.5329,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 53% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig3_回文数_平方数",
+     "claim": "每个 n 可写成 回文数(base 3) + 平方数",
+     "n": 5078,
+     "density": 0.2539,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 25% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig3_回文数_三角数",
+     "claim": "每个 n 可写成 回文数(base 3) + 三角数",
+     "n": 3026,
+     "density": 0.1513,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 15% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig3_回文数_素数",
+     "claim": "每个 n 可写成 回文数(base 3) + 素数",
+     "n": 68,
+     "density": 0.0034,
+     "kind": "非周期(疑似无限/稠密)",
+     "last": 12388,
+     "at_boundary": false,
+     "class_fit": null,
+     "small_bound": null,
+     "probe_extends": true,
+     "n_beyond": 2628,
+     "verdict": "产出 3 个开放问题",
+     "oeis_on_exc_seq": [],
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig3_回文数_回文数",
+     "claim": "每个 n 可写成 回文数(base 3) + 回文数",
+     "n": 5793,
+     "density": 0.2897,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 29% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig10_回文数_平方数",
+     "claim": "每个 n 可写成 回文数(base 10) + 平方数",
+     "n": 4936,
+     "density": 0.2468,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 25% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig10_回文数_三角数",
+     "claim": "每个 n 可写成 回文数(base 10) + 三角数",
+     "n": 3394,
+     "density": 0.1697,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 17% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig10_回文数_素数",
+     "claim": "每个 n 可写成 回文数(base 10) + 素数",
+     "n": 0,
+     "density": 0.0,
+     "kind": "无例外(区间内)",
+     "verdict": "无例外 -> 产出 1 个开放问题(是否定理)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig10_回文数_回文数",
+     "claim": "每个 n 可写成 回文数(base 10) + 回文数",
+     "n": 3115,
+     "density": 0.1558,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 16% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    },
+    {
+     "spec": "dig10_self_number",
+     "claim": "每个 n 可写成 m + 数位和_b(m)(base 10)",
+     "n": 1959,
+     "density": 0.098,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 10% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_base"
+    }
+   ]
+  },
+  {
+   "territory": "digit_iter",
+   "family": "数位迭代(乘法持续数)",
+   "is_control": false,
+   "specs": 6,
+   "killed": 1,
+   "questions": 7,
+   "silent_proxy": 1,
+   "oeis_hit": 1,
+   "spec_detail": [
+    {
+     "spec": "di10_pers_k3",
+     "claim": "每个 n 的乘法持续数(base 10) ≤ 3",
+     "n": 2673,
+     "density": 0.1337,
+     "kind": "—",
+     "verdict": "**猜想被否证**(例外占 13% > 5%); 例外集非特殊对象, 不产出问题(诚实守卫)",
+     "territory": "digit_iter"
+    },
+    {
+     "spec": "di10_pers_k4",
+     "claim": "每个 n 的乘法持续数(base 10) ≤ 4",
+     "n": 453,
+     "density": 0.0227,
+     "kind": "非周期(疑似无限/稠密)",
+     "last": 19996,
+     "at_boundary": true,
+     "class_fit": null,
+     "small_bound": null,
+     "probe_extends": true,
+     "n_beyond": 535,
+     "verdict": "产出 2 个开放问题",
+     "oeis_on_exc_seq": [],
+     "territory": "digit_iter"
+    },
+    {
+     "spec": "di10_pers_k5",
+     "claim": "每个 n 的乘法持续数(base 10) ≤ 5",
+     "n": 24,
+     "density": 0.0012,
+     "kind": "有限稀疏",
+     "last": 18876,
+     "at_boundary": false,
+     "class_fit": null,
+     "small_bound": null,
+     "probe_extends": true,
+     "n_beyond": 60,
+     "verdict": "产出 2 个开放问题",
+     "oeis_on_exc_seq": [
+      "A015649",
+      "A038023",
+      "A047167"
+     ],
+     "territory": "digit_iter"
+    },
+    {
+     "spec": "di3_pers_k3",
+     "claim": "每个 n 的乘法持续数(base 3) ≤ 3",
+     "n": 0,
+     "density": 0.0,
+     "kind": "无例外(区间内)",
+     "verdict": "无例外 -> 产出 1 个开放问题(是否定理)",
+     "territory": "digit_iter"
+    },
+    {
+     "spec": "di3_pers_k4",
+     "claim": "每个 n 的乘法持续数(base 3) ≤ 4",
+     "n": 0,
+     "density": 0.0,
+     "kind": "无例外(区间内)",
+     "verdict": "无例外 -> 产出 1 个开放问题(是否定理)",
+     "territory": "digit_iter"
+    },
+    {
+     "spec": "di3_pers_k5",
+     "claim": "每个 n 的乘法持续数(base 3) ≤ 5",
+     "n": 0,
+     "density": 0.0,
+     "kind": "无例外(区间内)",
+     "verdict": "无例外 -> 产出 1 个开放问题(是否定理)",
+     "territory": "digit_iter"
+    }
+   ]
+  }
+ ]
+}
