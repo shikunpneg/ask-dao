@@ -244,6 +244,61 @@
   .q-item .st{font-size:11.5px;color:#2f6b6b;text-align:right;}
   @media(max-width:820px){.q-item{grid-template-columns:1fr;gap:8px;} .q-item .st{text-align:left;}}
 
+  /* ---- 分级展示：一级一级读，像在翻一本台账 ---- */
+  .tier-nav{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 44px;}
+  .tier-nav a{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    padding:7px 13px;border:1px solid var(--line);border-radius:2px;
+    background:rgba(255,255,255,.55);color:var(--sub);font-size:13px;
+    transition:background .25s,border-color .25s;
+  }
+  .tier-nav a:hover{background:rgba(255,255,255,.92);border-color:var(--gold-soft);}
+  .tier-nav a b{color:var(--gold);font-family:ui-monospace,Consolas,monospace;font-size:12px;}
+  .tier-nav a span{
+    font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--dim);
+    border-left:1px solid var(--line);padding-left:8px;
+  }
+  .tier{margin-bottom:64px;}
+  .tier-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .tier-key{
+    font-family:ui-monospace,Consolas,monospace;font-size:12px;letter-spacing:.12em;
+    padding:3px 8px;border-radius:2px;background:rgba(156,124,66,.12);color:#8a6b2f;
+  }
+  .tier-key.k-k2{background:rgba(176,58,46,.12);color:#a8332a;}
+  .tier-key.k-im{background:rgba(47,107,107,.12);color:#2c6363;}
+  .tier-key.k-n{background:rgba(24,36,56,.10);color:var(--sub);}
+  .tier-head h3{font-family:var(--font-display);font-size:19px;font-weight:700;color:#080a0e;}
+  .tier-en{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;letter-spacing:.14em;
+    color:var(--dim);}
+  .tier-count{margin-left:auto;font-size:12px;color:var(--dim);}
+  .tier-desc{margin:14px 0 20px;color:var(--dim);font-size:13.5px;line-height:1.9;max-width:820px;}
+  .p-items{display:flex;flex-direction:column;gap:2px;background:var(--line);}
+  .p-item{
+    background:rgba(255,255,255,.62);padding:20px 22px 18px;
+    border-left:3px solid rgba(156,124,66,.5);
+    opacity:0;transform:translateY(18px);transition:all .6s cubic-bezier(.22,.61,.36,1);
+  }
+  .p-item.visible{opacity:1;transform:none;}
+  .p-item:hover{background:rgba(255,255,255,.9);}
+  .p-item.ok{border-left-color:#b03a2e;}
+  .p-item.no{border-left-color:#3f4756;}
+  .p-item.open{border-left-color:#9c7c42;}
+  .p-item.num{border-left-color:#2f6b6b;}
+  .p-item.concept{border-left-color:#2f6b6b;background:rgba(255,255,255,.70);}
+  .p-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+  .p-domain{font-size:11.5px;color:var(--gold);letter-spacing:.08em;}
+  .p-id{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--dim);}
+  .p-status{font-size:11.5px;padding:2px 8px;border-radius:2px;
+    background:rgba(24,36,56,.06);color:var(--sub);}
+  .p-item.ok .p-status{background:rgba(176,58,46,.10);color:#a8332a;}
+  .p-item.num .p-status{background:rgba(47,107,107,.10);color:#2c6363;}
+  .p-ev{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--dim);}
+  .p-claim{font-size:15.5px;line-height:1.95;color:var(--ink);}
+  .p-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--dim);}
+  .p-edge{color:#8a6b2f;}
+  .p-src{font-family:ui-monospace,Consolas,monospace;}
+
   .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;
     background:var(--line);margin-bottom:42px;}
   .stat{background:rgba(255,255,255,.66);padding:24px 18px;text-align:center;}
@@ -519,19 +574,23 @@
     可视化页 <a class="inline" href="viz/paths.html">paths.html</a>（问题树 + 概念树 + 概念论证）</p>
 </section>
 
-<!-- ==================== 新问题清单（真实数据注入） ==================== -->
+<!-- ==================== 分级展示：问题与结果（真实数据注入） ==================== -->
 <section id="questions">
-  <div class="label">Open Questions</div>
-  <h2>机器实际跑出来的<em>问题</em></h2>
-  <p class="lead">下列每一条都来自机器跑批的原始记录，带判定路由与证据。
+  <div class="label">Problem Ledger · Classified</div>
+  <h2>机器实际跑出来的<em>问题与结果</em></h2>
+  <p class="lead">按项目自己的分级展示：<strong>K1 提出的问题</strong>（新问题）、<strong>K2 证据边界推进</strong>（目前唯一称得上新知识的一类）、
+    <strong>K3 归纳的规律</strong>、<strong>想象路概念</strong>、<strong>跨域观点</strong>、<strong>复核性结果</strong>与<strong>负结果</strong>。
+    每条正文都是机器产出的原始陈述（仅做展示清洗），状态与判定路由直接来自记录。
     <strong>N3（世界新问题）至今为 0，不许粉饰。</strong></p>
 
   <div class="stat-row" id="statRow"></div>
-  <div class="q-list" id="qList"></div>
+  <nav class="tier-nav" id="tierNav"></nav>
+  <div id="tierBody"></div>
 
-  <p class="note" style="margin-top:36px">
-    完整清单（260+ 条，23 个领域）见 <a class="inline" href="viz/paths.html">可视化页</a> ·
-    <a class="inline" href="guide/results.html">结果与证据</a></p>
+  <p class="note" style="margin-top:40px">
+    全部 260+ 条问题、跨进制完整例外表、张力全量（129→387→258→19）、三域仿真表、12 次自纠错 ——
+    见 <a class="inline" href="guide/results.html">结果与证据（完整版手册）</a> ·
+    <a class="inline" href="viz/paths.html">可视化页</a></p>
 </section>
 
 <!-- ==================== 模型运行 / 训练路径 ==================== -->
@@ -1159,8 +1218,8 @@
 </script>
 
 <script>
-/* 真实问题数据（由 tools/make_site.py 从 out/demo/parallel_factory.json 注入） */
-window.__PROBLEMS__ = __PROBLEMS_JSON__;
+/* 分级展示数据（由 tools/make_site.py 注入 tools/site/problems_curated.json） */
+window.__CURATED__ = __CURATED_JSON__;
 </script>
 <script>
 /* ====================================================================
@@ -1192,31 +1251,84 @@ window.__PROBLEMS__ = __PROBLEMS_JSON__;
     if(scrollY > 40) nav.classList.add('solid'); else nav.classList.remove('solid');
   }, {passive:true});
 
-  /* ---- 新问题（真实记录） ---- */
-  const list = window.__PROBLEMS__ || [];
+  /* ---- 分级展示：K1 提出的问题 / K2 证据边界 / K3 归纳 / 想象路 / 跨域 / 复核 / 负结果 ---- */
+  const data = window.__CURATED__ || {};
+  const items = data.items || [];
+  const tiers = data.tiers || [];
+  const counts = data.counts || {};
   const statRow = document.getElementById('statRow');
-  const qList = document.getElementById('qList');
-  if(list.length){
-    const confirmed = list.filter(function(p){ return /confirmed|零例外|有限/.test(p.status || ''); }).length;
-    const domains = new Set(list.map(function(p){ return p.domain || '—'; })).size;
+  const tierNav = document.getElementById('tierNav');
+  const tierBody = document.getElementById('tierBody');
+
+  function clsOf(it){
+    const c = it.cls || 'num';
+    return c === 'ok' ? 'ok' : c === 'no' ? 'no' : c === 'concept' ? 'concept'
+         : c === 'open' ? 'open' : 'num';
+  }
+
+  if(items.length){
+    const byTier = {};
+    items.forEach(function(it){ (byTier[it.tier] = byTier[it.tier] || []).push(it); });
+
     statRow.innerHTML =
-      '<div class="stat"><div class="v">' + list.length + '</div><div class="l">本页展示的问题</div></div>' +
-      '<div class="stat"><div class="v">' + confirmed + '</div><div class="l">已复核 / 有限验证</div></div>' +
-      '<div class="stat"><div class="v">' + domains + '</div><div class="l">领域</div></div>' +
+      '<div class="stat"><div class="v">' + (counts.k1_domain_total || '—') + '</div>' +
+        '<div class="l">各域机器产出的问题（条）</div></div>' +
+      '<div class="stat"><div class="v">' + (counts.scihist_total || '—') + '</div>' +
+        '<div class="l">科学史未解（人类已知）</div></div>' +
+      '<div class="stat"><div class="v">' + (counts.cross_total || '—') + '</div>' +
+        '<div class="l">跨域母题配对</div></div>' +
+      '<div class="stat"><div class="v">' + (counts.imagination || '—') + '</div>' +
+        '<div class="l">想象路概念（需解释）</div></div>' +
       '<div class="stat"><div class="v">0</div><div class="l">世界新问题 N3（诚实边界）</div></div>';
 
-    list.slice(0, 12).forEach(function(p, i){
-      const d = document.createElement('div');
-      d.className = 'q-item';
-      d.dataset.delay = Math.min(i, 6);
-      const ev = p.evidence ? '<div class="ev">' + p.evidence + '</div>' : '';
-      d.innerHTML =
-        '<div class="id">' + (p.id || ('Q' + (i+1))) + '</div>' +
-        '<div><div class="stmt">' + (p.statement || '') + '</div>' + ev + '</div>' +
-        '<div class="st">' + (p.status || '') + '<br><span style="color:#9c7c42">' +
-        (p.judge_route || '—') + '</span></div>';
-      qList.appendChild(d);
-      io.observe(d);
+    tierNav.innerHTML = tiers.filter(function(t){ return (byTier[t.key] || []).length; })
+      .map(function(t){
+        return '<a href="#tier-' + t.key + '"><b>' + t.key + '</b>' + t.name.replace(/^.*·\s*/, '') +
+               '<span>' + (byTier[t.key] || []).length + '</span></a>';
+      }).join('');
+
+    tiers.forEach(function(t){
+      const list = byTier[t.key] || [];
+      if(!list.length) return;
+      const sec = document.createElement('div');
+      sec.className = 'tier';
+      sec.id = 'tier-' + t.key;
+      const totalNote = (t.key === 'K1' && counts.k1_domain_total)
+        ? '本页展示 ' + list.length + ' 条 · 全量 ' + counts.k1_domain_total + ' 条见手册'
+        : (t.key === 'X' && counts.cross_total)
+          ? '本页展示 ' + list.length + ' 组 · 实际 ' + counts.cross_total + ' 组'
+          : (t.key === 'IM' ? '本页展示 ' + list.length + ' 个概念' : '');
+      sec.innerHTML =
+        '<div class="tier-head">' +
+          '<span class="tier-key k-' + t.key.toLowerCase() + '">' + t.key + '</span>' +
+          '<h3>' + t.name.replace(new RegExp('^' + t.key + '\\s*·\\s*'), '') + '</h3>' +
+          '<span class="tier-en">' + (t.en || '') + '</span>' +
+          '<span class="tier-count">' + totalNote + '</span>' +
+        '</div>' +
+        '<p class="tier-desc">' + (t.desc || '') + '</p>' +
+        '<div class="p-items"></div>';
+      tierBody.appendChild(sec);
+      const box = sec.querySelector('.p-items');
+      list.forEach(function(it, i){
+        const a = document.createElement('article');
+        a.className = 'p-item ' + clsOf(it) + (t.key === 'IM' ? ' is-concept' : '');
+        a.dataset.delay = Math.min(i, 5);
+        const ev = it.evidence ? '<span class="p-ev">' + it.evidence + '</span>' : '';
+        const edge = it.edge ? '<span class="p-edge">' + it.edge + '</span>' : '';
+        a.innerHTML =
+          '<div class="p-top">' +
+            '<span class="p-domain">' + (it.domain || '') + '</span>' +
+            '<span class="p-id">' + (it.id || '') + '</span>' +
+            '<span class="p-status">' + (it.status || '') + '</span>' + ev +
+          '</div>' +
+          '<p class="p-claim">' + (it.display || it.claim || '') + '</p>' +
+          '<div class="p-meta">' + edge +
+            '<span class="p-route">判定路由：' + (it.route || '—') + '</span>' +
+            '<span class="p-src">出处：' + (it.src || '') + '</span>' +
+          '</div>';
+        box.appendChild(a);
+        io.observe(a);
+      });
     });
   }
 })();
