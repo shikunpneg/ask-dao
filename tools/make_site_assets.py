@@ -50,55 +50,90 @@ def ascii_preview(arr, cols=46, label=""):
     print()
 
 
-def ink_mask_from_photo(path, blur=1.2, lo=70, hi=170, keep_largest=True):
-    """从书法照片提取墨迹掩膜: 0=纸, 1=墨。返回 float32 HxW。
+def _otsu(a):
+    hist, _ = np.histogram(a, bins=256, range=(0, 256))
+    tot = a.size
+    sum_all = float(np.dot(np.arange(256), hist))
+    sum_b, w_b, best, thr = 0.0, 0, 0.0, 128
+    for t in range(256):
+        w_b += hist[t]
+        if w_b == 0:
+            continue
+        w_f = tot - w_b
+        if w_f == 0:
+            break
+        sum_b += t * hist[t]
+        m_b, m_f = sum_b / w_b, (sum_all - sum_b) / w_f
+        var = w_b * w_f * (m_b - m_f) ** 2
+        if var > best:
+            best, thr = var, t
+    return thr
 
-    照片是纸张底(亮) + 墨(暗)，且可能有拍摄阴影；用局部对比而非全局阈值:
-      1. 灰度 → 高斯模糊去噪
-      2. 用大核模糊估计"纸面亮度基线"，除以基线 → 去不均匀光照
-      3. 归一化后按 lo/hi 做软阈值
-    """
-    im = Image.open(path).convert("L")
-    g = np.asarray(im, dtype=np.float32)
-    base = np.asarray(im.filter(ImageFilter.GaussianBlur(radius=max(im.size) / 8.0)),
-                      dtype=np.float32)
-    norm = g / np.maximum(base, 1.0)              # ~1.0 = 纸, <1 = 墨
-    ink = np.clip((1.0 - norm) * 255.0 / (hi - lo) * 0.55, 0, 1) * 255.0
-    ink = np.asarray(Image.fromarray(ink.astype(np.uint8)).filter(
-        ImageFilter.GaussianBlur(blur)), dtype=np.float32) / 255.0
-    if keep_largest:
-        ink = keep_largest_component(ink > 0.35) * ink      # 去掉零散污点
-    return ink
 
-
-def keep_largest_component(mask):
-    """4-邻域连通域, 只保留面积最大的连通域（防止纸面污点混进墨迹）。"""
+def _components(mask):
+    """8-邻域连通域标注, 返回 (label 图, 面积列表)。"""
     h, w = mask.shape
     lab = np.zeros((h, w), dtype=np.int32)
     cur = 0
-    best_id, best_size = 0, 0
-    stack = []
+    sizes = {}
     for y0 in range(h):
         for x0 in range(w):
             if not mask[y0, x0] or lab[y0, x0]:
                 continue
             cur += 1
-            size = 0
-            stack.append((y0, x0))
+            stack, size = [(y0, x0)], 0
             lab[y0, x0] = cur
             while stack:
                 y, x = stack.pop()
                 size += 1
-                for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)):
-                    ny, nx = y + dy, x + dx
-                    if 0 <= ny < h and 0 <= nx < w and mask[ny, nx] and not lab[ny, nx]:
-                        lab[ny, nx] = cur
-                        stack.append((ny, nx))
-            if size > best_size:
-                best_size, best_id = size, cur
-    if best_id == 0:
-        return mask.astype(np.float32)
-    return (lab == best_id).astype(np.float32)
+                for dy in (-1, 0, 1):
+                    for dx in (-1, 0, 1):
+                        ny, nx = y + dy, x + dx
+                        if 0 <= ny < h and 0 <= nx < w and mask[ny, nx] and not lab[ny, nx]:
+                            lab[ny, nx] = cur
+                            stack.append((ny, nx))
+            sizes[cur] = size
+    return lab, sizes
+
+
+def ink_mask_from_photo(path, blur=1.8, thresh_gain=1.12, min_frac=0.004, smooth=0.7):
+    """极简处理: 从真实书法照片里抠出**干净的墨迹**, 不留纸底灰阶与纸纹噪点。
+
+    源图是干笔书法（纸底亮 ~180，笔画淡且有飞白），直接局部对比度会抠过头成糊块。
+    步骤（都是"极简"取向: 只做必要处理, 不描摹不改字形）:
+      1. 高斯模糊去纸纹
+      2. 1/99 分位对比拉伸（把淡墨拉开）
+      3. Otsu 阈值 × 小幅增益（保住飞白又不过度膨胀）
+      4. 连通域去碎点（小于总墨面积 min_frac 的噪点丢掉）
+      5. 闭运算补飞白 → 开运算去毛刺
+      6. 轻微高斯做抗锯齿边缘
+    返回 float32 HxW, 取值 0..1（1 = 墨）。
+    """
+    im = Image.open(path).convert("L").filter(ImageFilter.GaussianBlur(blur))
+    a = np.asarray(im, dtype=np.float32)
+    lo, hi = np.percentile(a, 1), np.percentile(a, 99)
+    a = np.clip((a - lo) / max(hi - lo, 1.0) * 255.0, 0, 255)
+    thr = _otsu(a) * thresh_gain
+    m = a < thr
+
+    lab, sizes = _components(m)
+    total = sum(sizes.values()) or 1
+    keep = np.zeros_like(m)
+    for cid, size in sizes.items():
+        if size >= min_frac * total:
+            keep |= (lab == cid)
+    m = keep
+
+    mi = Image.fromarray((m * 255).astype(np.uint8))
+    mi = mi.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.MinFilter(5))   # 闭: 补飞白
+    mi = mi.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.MaxFilter(3))   # 开: 去毛刺
+    ink = np.asarray(mi, dtype=np.float32) / 255.0
+    if smooth:
+        ink = np.asarray(Image.fromarray((ink * 255).astype(np.uint8)).filter(
+            ImageFilter.GaussianBlur(smooth)), dtype=np.float32) / 255.0
+    print(f"[极简处理] {Path(path).name}: Otsu×{thresh_gain:.2f} → {thr:.0f}, "
+          f"连通域 {len(sizes)} → 保留 {int((keep.sum() > 0))}, 墨占比 {100*ink.mean():.2f}%")
+    return ink
 
 
 def square_canvas(ink, size=1024, pad=0.06):
