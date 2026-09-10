@@ -19,6 +19,19 @@ from conjecture_search import build_pool, exceptions_fast, LO, HI               
 
 CANON_BASES_HINT = ("_b10",)
 
+MODS = (3, 4, 6, 8, 12, 24)
+
+
+def augment_with_modular(pool, hi=HI, mods=MODS):
+    """自纠错(第 11 次): 类库里原本**没有模类**, 于是机器把"≡2 mod 6"这种
+    一眼可见的结构报成"无法描述"。补上模类, 让机器至少能试这些。
+    例: Harshad数+三角数 的 38 个例外里 **36 个 ≡2 (mod 6)**(对照: 可表示的 n 模6 均匀)。"""
+    out = dict(pool)
+    for m in mods:
+        for r in range(m):
+            out[f"≡{r}(mod {m})"] = {n for n in range(1, hi + 1) if n % m == r}
+    return out
+
 
 def make_spec(a, b, F, lo, hi):
     Fs = set(F)
@@ -56,7 +69,7 @@ def score(r):
 def main():
     src = HERE / "out/demo/conjecture_search.json"
     surv = json.loads(src.read_text(encoding="utf-8"))["survivors"]
-    pool = build_pool()
+    pool = augment_with_modular(build_pool())
 
     rows = []
     for r in surv:

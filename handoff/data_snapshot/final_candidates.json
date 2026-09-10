@@ -111,33 +111,6 @@
    ]
   },
   {
-   "A": "Harshad数",
-   "B": "三角数",
-   "n": 38,
-   "density": 0.0038,
-   "kind": "有限稀疏",
-   "class_fit": null,
-   "small_bound": null,
-   "period": null,
-   "probe_extends": false,
-   "reduction": null,
-   "examples": [
-    104,
-    152,
-    164,
-    182,
-    242,
-    368,
-    404,
-    464
-   ],
-   "score": 3,
-   "why": [
-    "机器无法描述例外集",
-    "例外稀疏(0.380%)"
-   ]
-  },
-  {
    "A": "半素数",
    "B": "数位只含1和2",
    "n": 10,
@@ -606,6 +579,38 @@
    ]
   },
   {
+   "A": "Harshad数",
+   "B": "三角数",
+   "n": 38,
+   "density": 0.0038,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "≡2(mod 3)",
+    "outside": [
+     754,
+     1474
+    ]
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "reduction": null,
+   "examples": [
+    104,
+    152,
+    164,
+    182,
+    242,
+    368,
+    404,
+    464
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.380%)"
+   ]
+  },
+  {
    "A": "奇合数",
    "B": "立方数",
    "n": 18,
@@ -670,9 +675,10 @@
    "density": 0.0014,
    "kind": "有限稀疏",
    "class_fit": {
-    "class": "无数字0",
+    "class": "≡2(mod 3)",
     "outside": [
-     20
+     4,
+     6
     ]
    },
    "small_bound": 662,
@@ -733,9 +739,11 @@
    "density": 0.0011,
    "kind": "有限稀疏",
    "class_fit": {
-    "class": "无数字0",
+    "class": "≡2(mod 3)",
     "outside": [
-     20
+     4,
+     6,
+     12
     ]
    },
    "small_bound": 398,
@@ -827,9 +835,9 @@
    "density": 0.0008,
    "kind": "有限稀疏",
    "class_fit": {
-    "class": "无数字0",
+    "class": "≡0(mod 4)",
     "outside": [
-     108
+     6
     ]
    },
    "small_bound": 108,
@@ -858,9 +866,9 @@
    "density": 0.0007,
    "kind": "有限稀疏",
    "class_fit": {
-    "class": "无数字0",
+    "class": "≡0(mod 3)",
     "outside": [
-     390
+     4
     ]
    },
    "small_bound": null,
