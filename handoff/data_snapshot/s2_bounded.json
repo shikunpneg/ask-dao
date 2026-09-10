@@ -1,0 +1,175 @@
+{
+ "note": "max over q<=Q 是运行最大值(同义反复); 本节用滑窗统计量。",
+ "N": 20000,
+ "cap": 20000,
+ "windows": [
+  [
+   1,
+   201
+  ],
+  [
+   401,
+   601
+  ],
+  [
+   801,
+   1001
+  ],
+  [
+   1801,
+   2001
+  ],
+  [
+   4801,
+   5001
+  ]
+ ],
+ "by_p": {
+  "3": [
+   {
+    "q_lo": 1,
+    "q_hi": 201,
+    "win_max": 560,
+    "win_median": 289,
+    "win_mean": 299.1,
+    "survival_frac": 0.9997
+   },
+   {
+    "q_lo": 401,
+    "q_hi": 601,
+    "win_max": 601,
+    "win_median": 321,
+    "win_mean": 333.7,
+    "survival_frac": 0.9996
+   },
+   {
+    "q_lo": 801,
+    "q_hi": 1001,
+    "win_max": 1025,
+    "win_median": 367,
+    "win_mean": 384.0,
+    "survival_frac": 0.9996
+   },
+   {
+    "q_lo": 1801,
+    "q_hi": 2001,
+    "win_max": 1180,
+    "win_median": 430,
+    "win_mean": 448.9,
+    "survival_frac": 0.9995
+   },
+   {
+    "q_lo": 4801,
+    "q_hi": 5001,
+    "win_max": 1797,
+    "win_median": 587,
+    "win_mean": 631.5,
+    "survival_frac": 0.9994
+   }
+  ],
+  "5": [
+   {
+    "q_lo": 1,
+    "q_hi": 201,
+    "win_max": 586,
+    "win_median": 366,
+    "win_mean": 370.5,
+    "survival_frac": 0.935
+   },
+   {
+    "q_lo": 401,
+    "q_hi": 601,
+    "win_max": 665,
+    "win_median": 356,
+    "win_mean": 366.4,
+    "survival_frac": 0.9338
+   },
+   {
+    "q_lo": 801,
+    "q_hi": 1001,
+    "win_max": 748,
+    "win_median": 362,
+    "win_mean": 375.3,
+    "survival_frac": 0.9334
+   },
+   {
+    "q_lo": 1801,
+    "q_hi": 2001,
+    "win_max": 624,
+    "win_median": 353,
+    "win_mean": 362.8,
+    "survival_frac": 0.9316
+   },
+   {
+    "q_lo": 4801,
+    "q_hi": 5001,
+    "win_max": 687,
+    "win_median": 347,
+    "win_mean": 359.1,
+    "survival_frac": 0.9261
+   }
+  ],
+  "7": [
+   {
+    "q_lo": 1,
+    "q_hi": 201,
+    "win_max": 256,
+    "win_median": 134,
+    "win_mean": 138.2,
+    "survival_frac": 0.8631
+   },
+   {
+    "q_lo": 401,
+    "q_hi": 601,
+    "win_max": 257,
+    "win_median": 139,
+    "win_mean": 140.3,
+    "survival_frac": 0.8623
+   },
+   {
+    "q_lo": 801,
+    "q_hi": 1001,
+    "win_max": 212,
+    "win_median": 135,
+    "win_mean": 138.1,
+    "survival_frac": 0.8618
+   },
+   {
+    "q_lo": 1801,
+    "q_hi": 2001,
+    "win_max": 202,
+    "win_median": 130,
+    "win_mean": 132.2,
+    "survival_frac": 0.8599
+   },
+   {
+    "q_lo": 4801,
+    "q_hi": 5001,
+    "win_max": 238,
+    "win_median": 132,
+    "win_mean": 135.1,
+    "survival_frac": 0.8546
+   }
+  ]
+ },
+ "verdicts": {
+  "3": {
+   "median_monotone_up": true,
+   "winmax_monotone_up": true,
+   "growth_exponent_a": 0.179,
+   "verdict": "无界(随q增长)"
+  },
+  "5": {
+   "median_monotone_up": false,
+   "winmax_monotone_up": false,
+   "growth_exponent_a": -0.013,
+   "verdict": "窗口内有界(持平)"
+  },
+  "7": {
+   "median_monotone_up": false,
+   "winmax_monotone_up": false,
+   "growth_exponent_a": -0.008,
+   "verdict": "窗口内有界(持平)"
+  }
+ }
+}

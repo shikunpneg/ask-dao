@@ -1,0 +1,115 @@
+{
+ "problem": "言不尽意 的可判版本: 意义模式(形式语言)的最小文法类分离",
+ "tooling": [
+  "Myhill-Nerode 残差类计数(截断近似)",
+  "CFL 泵引理穷举(实例级机器验证)"
+ ],
+ "honesty": "组件理论(Myhill-Nerode/CFL泵引理)均为经典 N1; 本脚本的贡献是把'言不尽意'重写为可判分离问题, 不主张理论新意。",
+ "rows": [
+  {
+   "pattern": "a^n b^n  (嵌套依赖)",
+   "expect": "CFG(非正则)",
+   "residual_counts_by_prefix_len": {
+    "0": 1,
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 4,
+    "5": 4,
+    "6": 5,
+    "7": 5,
+    "8": 5,
+    "9": 5
+   },
+   "reg_witness": "aaaaaaaabbbbbbbb",
+   "reg_decompositions_tried": 10,
+   "reg_all_pump_fail": true,
+   "cfl_witness": "aaaaaaaabbbbbbbb",
+   "cfl_decompositions_tried": 8,
+   "cfl_all_pump_fail": false,
+   "verdict": ">=CFG 且非正则(未见非CFG见证)"
+  },
+  {
+   "pattern": "a^n b^n c^n (双重嵌套)",
+   "expect": "非CFG",
+   "residual_counts_by_prefix_len": {
+    "0": 1,
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 2
+   },
+   "reg_witness": "aaaaaaaabbbbbbbbcccccccc",
+   "reg_decompositions_tried": 10,
+   "reg_all_pump_fail": true,
+   "cfl_witness": "aaaaaaaabbbbbbbbcccccccc",
+   "cfl_decompositions_tried": 112,
+   "cfl_all_pump_fail": true,
+   "verdict": ">=上下文敏感(非CFG, 机器验证)"
+  },
+  {
+   "pattern": "a^n b^n c^n d^n (三重嵌套)",
+   "expect": "非CFG",
+   "residual_counts_by_prefix_len": {
+    "0": 1,
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 3
+   },
+   "reg_witness": "aaaaaaaabbbbbbbbcccccccc",
+   "reg_decompositions_tried": 10,
+   "reg_all_pump_fail": true,
+   "cfl_witness": "aaaaaaaabbbbbbbbcccccccc",
+   "cfl_decompositions_tried": 112,
+   "cfl_all_pump_fail": true,
+   "verdict": ">=上下文敏感(非CFG, 机器验证)"
+  },
+  {
+   "pattern": "ww (跨序列复制)",
+   "expect": "非CFG",
+   "residual_counts_by_prefix_len": {
+    "0": 1,
+    "1": 2,
+    "2": 4,
+    "3": 8,
+    "4": 16,
+    "5": 32,
+    "6": 64,
+    "7": 128,
+    "8": 124,
+    "9": 247
+   },
+   "reg_witness": "abababababababab",
+   "reg_decompositions_tried": 10,
+   "reg_all_pump_fail": true,
+   "cfl_witness": "abababababababab",
+   "cfl_decompositions_tried": 72,
+   "cfl_all_pump_fail": true,
+   "verdict": ">=上下文敏感(非CFG, 机器验证)"
+  },
+  {
+   "pattern": "Dyck (一般嵌套)",
+   "expect": "CFG(非正则)",
+   "residual_counts_by_prefix_len": {
+    "0": 1,
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 4,
+    "5": 4,
+    "6": 5,
+    "7": 5,
+    "8": 5,
+    "9": 5
+   },
+   "reg_witness": "(((((((())))))))",
+   "reg_decompositions_tried": 10,
+   "reg_all_pump_fail": true,
+   "cfl_witness": "(((((((())))))))",
+   "cfl_decompositions_tried": 8,
+   "cfl_all_pump_fail": false,
+   "verdict": ">=CFG 且非正则(未见非CFG见证)"
+  }
+ ]
+}

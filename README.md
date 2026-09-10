@@ -59,10 +59,22 @@ src/ask_dao_machine/
 （仓库：https://github.com/shikunpeng/ask-dao-machine —— 推送前请先在本机配置 git 凭证）
 
 
-## �����빤��ȫ��(���� v0.17)
-- ����: math(25) records(28) combo(23) fusion(4) ling(3) direction(4) break(��¼����) sparse(������)
-- ����: oeis_check/sweep(OEIS��������39.9��) | big_score(����H1-H10) | tension_detector(v0/v1����) |
-  method3_gen_tension(����ע������) | cross_explore(METHOD3����) | iterate(������) | make_ledger | humanities_math/sig
-- �ĵ�: MASTER_PLAN / METHODOLOGY3 / PLAN_TENSION_DETECTOR / BIG_PROBLEMS / MOTIF_DEFINITION /
-  DESIGN / EXPLORATION_REPORT / EXECUTION_LOG(���ּ�¼) / novelty_ledger(̨��)
-- ����: ����̽����(�·���) - ����: _text ���Ͽ�(������ѧʷ/�ֲ�/���)
+## 引擎与工具全景（v0.18）
+- 引擎：math(25) records(28) combo(23) fusion(4) ling(3) direction(4) break(纪录复核) sparse(参数族)
+- 工具：oeis_check/sweep(OEIS 离线索引 39.9 万) | big_score / **big_score_ev(证据门)** | tension_detector(v0/v1 张力) |
+  method3_gen_tension(张力注入) | cross_explore(METHOD3 管线) | iterate(迭代环) | make_ledger | humanities_math/sig
+- **R22 新增**：`s2_bounded`(S2 有界性滑窗复算·纠错) | `tri_verifiers`(真三域验证器·过参数敏感性) |
+  `cross_md_v4`(真F1门槛 + 名义三域审计 + 分层) | `p_A5_yanyi`(言不尽意→最小文法类分离) |
+  `build_tree_viz`(**母题树生长 + 树交叉可视化**)
+- 文档：MASTER_PLAN / METHODOLOGY3 / PLAN_TENSION_DETECTOR / BIG_PROBLEMS / MOTIF_DEFINITION /
+  DESIGN / EXPLORATION_REPORT / EXPERIMENT_RECORD(全史) / EXECUTION_LOG(逐轮记录) / novelty_ledger(台账)
+- 可视化：`out/demo/viz/index.html`(问题树) 与 `out/demo/viz/tree.html`(**树生长+树交叉+敏感性曲线+诚实层**)
+
+## 纪律（血泪教训）
+1. 状态只来自判定器；2. 当务分必须走 `big_score_ev` 证据门（关键词版会自灌水）；
+3. **N3 至今为 0，不许粉饰**；4. 自纠错优先（每次自纠都让候选缩水，这才是对的）；
+5. 别把"名义三域"当成果——第三域必须**进入计算**且结果随其参数变化（v3 实测：50 条三域候选真三域为 0）；
+6. 别用"长度≥N"冒充良构门槛（需对象+量词域+判据三元）；7. 别把"运行最大值单调"当趋势发现。
+
+## 路线
+- 下一步：经验/感知前端（摄像头/麦克风 → 结构化观测 → 日常疑问 → 真问题 → AI4S），见 `handoff/03_NEXT_STEPS.md` D 节。

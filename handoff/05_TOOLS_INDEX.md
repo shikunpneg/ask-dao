@@ -34,6 +34,11 @@
 | build_motif_map | L0–L4 母题地图(139基元/86方向) |
 | graph_space / station3 | 图不变量 / 极小构造（OEIS 过滤） |
 | p_A4 / p_B_deep / p_C_integrate / p_C_round2 / p_C_ev_regrade | LONG_PLAN 各阶段脚本 |
+| **s2_bounded** (R22) | S2 有界性**滑窗复算**(纠错: 运行最大值同义反复) |
+| **tri_verifiers** (R22) | **真三域验证器**(4个) + 参数敏感性验收 |
+| **cross_md_v4** (R22) | 真F1门槛(obj/quant/crit) + 名义三域审计 + 质量分层 |
+| **p_A5_yanyi** (R22) | 言不尽意 → 最小文法类分离(泵引理穷举机器判定) |
+| **build_tree_viz** (R22) | **母题树生长 + 树交叉可视化**(out/demo/viz/tree.html) |
 
 ## 数据（out/demo/）
 problems_*.json、derived/grown_motifs.json、tensions_v0/v1/…_west、gap_template_candidates、method3_*、cross_multidomain、cross_md_v3、cross_md_belief、s2_deep、iteration_gen2、humanities_math、viz/(index.html+data.js)
