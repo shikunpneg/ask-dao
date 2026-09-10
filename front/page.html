@@ -9,211 +9,134 @@
 <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --silver-bg:#e8ecf2;
-    --silver-mid:#d5dce8;
-    --silver-deep:#c2ccdb;
-    --silver-light:#f4f7fb;
-    --ink-black:#0a0a0c;
-    --ink-soft:#1a1d24;
-    --ink-mid:#2c3140;
+    --silver-1:#f6f8fc;
+    --silver-2:#e9edf5;
+    --silver-3:#d9e0ec;
+    --silver-4:#c6cfdf;
+    --silver-5:#b0bcd0;
+    --ink-deep:#08080a;
+    --ink-mid:#1a1c24;
+    --gold:#a8894f;
     --text-main:#1a1d24;
     --text-sub:#4a5268;
     --text-dim:#7a8399;
-    --gold:#9a7b4a;
     --border:rgba(30,40,60,0.12);
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
-
   html{scroll-behavior:smooth;}
-
   body{
-    background:var(--silver-bg);
+    background:var(--silver-2);
     color:var(--text-main);
     font-family:'Noto Serif SC',serif;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
 
-  /* ============ 首屏：黑色道 · 银白湖面 ============ */
+  /* ==================== 首屏 ==================== */
   .hero{
     position:relative;
     height:100vh;
-    min-height:640px;
+    min-height:680px;
     overflow:hidden;
+    /* 银白金属湖泊的基础质感 */
     background:
-      radial-gradient(ellipse 80% 60% at 25% 20%, rgba(255,255,255,0.95), transparent 60%),
-      radial-gradient(ellipse 70% 55% at 78% 80%, rgba(200,212,230,0.7), transparent 65%),
-      linear-gradient(165deg,#f2f5fa 0%, #e2e8f2 30%, #d4dce8 55%, #e8edf4 100%);
+      radial-gradient(ellipse 120% 90% at 15% 10%, rgba(255,255,255,1), transparent 50%),
+      radial-gradient(ellipse 80% 70% at 85% 85%, rgba(190,208,232,0.85), transparent 55%),
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(220,232,248,0.6), transparent 70%),
+      linear-gradient(170deg, #f8fafd 0%, #eef2f9 22%, #dde4ef 48%, #e8eef7 72%, #f4f7fb 100%);
   }
 
-  /* 银白金属光泽流动 */
-  .metal-sheen{
-    position:absolute;inset:-40%;
-    background:conic-gradient(from 210deg at 50% 50%,
-      transparent 0deg,
-      rgba(255,255,255,0.6) 40deg,
-      transparent 95deg,
-      rgba(210,222,240,0.45) 150deg,
-      transparent 210deg,
-      rgba(240,245,252,0.5) 265deg,
-      transparent 330deg);
-    mix-blend-mode:overlay;
-    animation:sheen 20s linear infinite;
-    pointer-events:none;
-  }
-  @keyframes sheen{
-    0%{transform:rotate(0deg) scale(1.15);}
-    100%{transform:rotate(360deg) scale(1.15);}
-  }
-
-  /* 随鼠标的光斑 */
-  .cursor-glow{
-    position:absolute;width:560px;height:560px;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(230,238,250,0.3) 40%, transparent 70%);
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    transition:opacity .5s;
-    filter:blur(8px);
-    mix-blend-mode:screen;
-    opacity:0;
-  }
-
-  /* 水波纹 canvas */
-  #ripple{
+  /* 水面 canvas —— 动态反光与涟漪 */
+  #waterCanvas{
     position:absolute;inset:0;
     width:100%;height:100%;
     pointer-events:none;
-    mix-blend-mode:multiply;
-    opacity:.55;
   }
 
-  /* 墨色晕染（让字更融） */
-  .ink-blur{
-    position:absolute;
-    top:50%;left:50%;
-    width:min(72vw,660px);
-    height:min(72vw,660px);
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle, rgba(10,10,12,0.10) 0%, rgba(10,10,12,0.04) 42%, transparent 70%);
-    filter:blur(50px);
+  /* 墨字 canvas —— 粒子化的道 */
+  #inkCanvas{
+    position:absolute;inset:0;
+    width:100%;height:100%;
     pointer-events:none;
   }
 
-  /* 道字容器 */
-  .dao-wrap{
-    position:absolute;
-    top:50%;left:50%;
-    transform:translate(-50%,-50%);
-    will-change:transform;
-    transition:transform .35s cubic-bezier(.22,.61,.36,1);
-  }
-
-  .dao-svg{
-    display:block;
-    width:min(56vw,420px);
-    height:auto;
-    filter:drop-shadow(0 14px 40px rgba(20,30,50,0.18));
-  }
-
-  /* 首屏底部提示 */
+  /* 首屏底部 */
   .scroll-hint{
     position:absolute;
-    bottom:38px;left:50%;
+    bottom:36px;left:50%;
     transform:translateX(-50%);
     display:flex;flex-direction:column;align-items:center;gap:10px;
     color:var(--text-dim);
-    font-size:12px;
-    letter-spacing:.4em;
-    text-indent:.4em;
-    animation:breathe 3.2s ease-in-out infinite;
+    font-size:11px;
+    letter-spacing:.5em;
+    text-indent:.5em;
+    animation:breathe 3.4s ease-in-out infinite;
+    z-index:6;
   }
   .scroll-hint span{writing-mode:vertical-rl;letter-spacing:.3em;}
   .scroll-hint::after{
     content:'';
-    width:1px;height:48px;
+    width:1px;height:44px;
     background:linear-gradient(to bottom, var(--text-sub), transparent);
   }
   @keyframes breathe{
-    0%,100%{opacity:.4;transform:translateX(-50%) translateY(0);}
-    50%{opacity:.85;transform:translateX(-50%) translateY(6px);}
+    0%,100%{opacity:.35;transform:translateX(-50%) translateY(0);}
+    50%{opacity:.8;transform:translateX(-50%) translateY(5px);}
   }
 
-  /* ============ 通用 section ============ */
-  section{
-    position:relative;
-    padding:140px 8vw;
-  }
+  /* ==================== 通用 ==================== */
+  section{position:relative;padding:140px 8vw;}
 
   .section-label{
-    font-size:12px;
-    letter-spacing:.5em;
-    color:var(--gold);
-    text-transform:uppercase;
+    font-size:12px;letter-spacing:.5em;
+    color:var(--gold);text-transform:uppercase;
     margin-bottom:28px;
-    opacity:0;
-    transform:translateY(20px);
+    opacity:0;transform:translateY(20px);
     transition:all .9s cubic-bezier(.22,.61,.36,1);
     font-weight:500;
   }
   .section-label.visible{opacity:1;transform:translateY(0);}
 
-  /* ============ 一生二 ============ */
+  /* ==================== 一生二 ==================== */
   .genesis{
     min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:center;
     text-align:center;
     background:
-      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,255,255,0.7), transparent 70%),
-      linear-gradient(180deg,#e8edf4, #f0f3f8);
-    gap:18px;
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,255,255,0.9), transparent 70%),
+      linear-gradient(180deg,#eef2f8, #f5f7fb);
+    gap:16px;
   }
-
   .genesis-line{
     font-family:'Ma Shan Zheng',serif;
     font-size:clamp(28px,5.5vw,64px);
-    color:var(--ink-black);
-    letter-spacing:.12em;
+    color:var(--ink-deep);
+    letter-spacing:.14em;
     opacity:0;
-    transform:translateY(36px) scale(.96);
-    transition:all 1.1s cubic-bezier(.22,.61,.36,1);
-    text-shadow:0 2px 20px rgba(30,40,60,0.08);
+    transform:translateY(36px) scale(.95);
+    transition:all 1.2s cubic-bezier(.22,.61,.36,1);
+    text-shadow:0 2px 24px rgba(30,40,60,0.06);
   }
   .genesis-line.visible{opacity:1;transform:translateY(0) scale(1);}
-  .genesis-line .num{
-    color:var(--gold);
-    font-size:.82em;
-  }
-
+  .genesis-line .num{color:var(--gold);font-size:.8em;}
   .genesis-divider{
     width:1px;height:0;
     background:linear-gradient(to bottom,transparent,var(--text-sub),transparent);
-    transition:height 1.4s ease;
-    margin:8px 0;
-    opacity:.4;
+    transition:height 1.5s ease;
+    margin:6px 0;opacity:.35;
   }
-  .genesis-divider.visible{height:70px;}
+  .genesis-divider.visible{height:64px;}
 
-  /* ============ 问道系统结构 ============ */
-  .structure{
-    background:linear-gradient(180deg,#f0f3f8, #e8ecf2);
-  }
-
+  /* ==================== 系统结构 ==================== */
+  .structure{background:linear-gradient(180deg,#f5f7fb, #eef2f8);}
   .structure h2{
     font-size:clamp(22px,3vw,36px);
-    font-weight:500;
-    letter-spacing:.08em;
-    margin-bottom:70px;
-    color:var(--ink-black);
+    font-weight:500;letter-spacing:.08em;
+    margin-bottom:70px;color:var(--ink-deep);
   }
-  .structure h2 em{
-    font-style:normal;
-    color:var(--gold);
-  }
+  .structure h2 em{font-style:normal;color:var(--gold);}
 
   .struct-grid{
     display:grid;
@@ -222,255 +145,172 @@
     background:rgba(30,40,60,0.08);
     border:1px solid rgba(30,40,60,0.08);
   }
-
   .struct-card{
-    background:linear-gradient(160deg, rgba(255,255,255,0.9), rgba(240,244,250,0.95));
+    background:linear-gradient(160deg, rgba(255,255,255,0.92), rgba(242,246,252,0.96));
     padding:44px 34px;
-    position:relative;
-    overflow:hidden;
+    position:relative;overflow:hidden;
     transition:all .5s cubic-bezier(.22,.61,.36,1);
-    opacity:0;
-    transform:translateY(30px);
+    opacity:0;transform:translateY(30px);
   }
   .struct-card.visible{opacity:1;transform:translateY(0);}
   .struct-card:hover{
-    background:linear-gradient(160deg, #ffffff, #f0f4fa);
-    box-shadow:0 20px 50px -20px rgba(30,50,90,0.18);
+    background:linear-gradient(160deg, #ffffff, #f2f6fc);
+    box-shadow:0 24px 56px -24px rgba(30,50,90,0.2);
   }
   .struct-card::before{
-    content:'';
-    position:absolute;top:0;left:0;
+    content:'';position:absolute;top:0;left:0;
     width:100%;height:2px;
     background:linear-gradient(90deg,transparent,var(--text-sub),transparent);
-    opacity:0;
-    transition:opacity .5s;
+    opacity:0;transition:opacity .5s;
   }
   .struct-card:hover::before{opacity:.5;}
-
   .struct-num{
-    font-size:13px;
-    color:var(--gold);
-    letter-spacing:.3em;
-    margin-bottom:22px;
-    font-family:'Noto Serif SC',serif;
-    font-weight:500;
+    font-size:13px;color:var(--gold);
+    letter-spacing:.3em;margin-bottom:22px;font-weight:500;
   }
   .struct-title{
-    font-size:20px;
-    font-weight:600;
-    margin-bottom:16px;
-    color:var(--ink-black);
+    font-size:20px;font-weight:600;
+    margin-bottom:16px;color:var(--ink-deep);
     letter-spacing:.04em;
   }
   .struct-desc{
-    font-size:14px;
-    line-height:2;
-    color:var(--text-sub);
-    font-weight:300;
+    font-size:14px;line-height:2;
+    color:var(--text-sub);font-weight:300;
   }
 
-  /* ============ ModelScope 窗口 ============ */
-  .models{
-    background:#e8ecf2;
-  }
+  /* ==================== ModelScope ==================== */
+  .models{background:#eef2f8;}
   .models h2{
     font-size:clamp(22px,3vw,36px);
-    font-weight:500;
-    letter-spacing:.08em;
-    margin-bottom:20px;
-    color:var(--ink-black);
+    font-weight:500;letter-spacing:.08em;
+    margin-bottom:20px;color:var(--ink-deep);
   }
   .models .sub{
-    color:var(--text-sub);
-    font-size:15px;
-    font-weight:300;
-    margin-bottom:64px;
-    max-width:560px;
-    line-height:1.9;
+    color:var(--text-sub);font-size:15px;
+    font-weight:300;margin-bottom:64px;
+    max-width:560px;line-height:1.9;
   }
-
   .model-list{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
     gap:20px;
   }
-
   .model-card{
-    display:block;
-    text-decoration:none;
-    color:inherit;
+    display:block;text-decoration:none;color:inherit;
     padding:36px 30px;
     border:1px solid rgba(30,40,60,0.12);
-    background:linear-gradient(150deg, rgba(255,255,255,0.85), rgba(242,246,252,0.9));
-    position:relative;
-    overflow:hidden;
+    background:linear-gradient(150deg, rgba(255,255,255,0.9), rgba(244,248,253,0.94));
+    position:relative;overflow:hidden;
     transition:all .45s cubic-bezier(.22,.61,.36,1);
-    opacity:0;
-    transform:translateY(26px);
+    opacity:0;transform:translateY(26px);
   }
   .model-card.visible{opacity:1;transform:translateY(0);}
   .model-card:hover{
     border-color:rgba(30,40,60,0.28);
     transform:translateY(-4px);
-    box-shadow:0 20px 50px -20px rgba(30,50,90,0.22);
+    box-shadow:0 24px 56px -24px rgba(30,50,90,0.24);
   }
   .model-card .tag{
-    display:inline-block;
-    font-size:11px;
-    letter-spacing:.2em;
-    color:var(--gold);
-    border:1px solid rgba(154,123,74,0.35);
-    padding:4px 10px;
-    margin-bottom:20px;
+    display:inline-block;font-size:11px;
+    letter-spacing:.2em;color:var(--gold);
+    border:1px solid rgba(168,137,79,0.4);
+    padding:4px 10px;margin-bottom:20px;
   }
   .model-card .name{
-    font-size:18px;
-    font-weight:600;
-    color:var(--ink-black);
-    margin-bottom:12px;
+    font-size:18px;font-weight:600;
+    color:var(--ink-deep);margin-bottom:12px;
     letter-spacing:.03em;
   }
   .model-card .path{
-    font-size:12px;
-    color:var(--text-dim);
-    font-family:monospace;
-    letter-spacing:.02em;
+    font-size:12px;color:var(--text-dim);
+    font-family:monospace;letter-spacing:.02em;
     word-break:break-all;
   }
   .model-card .arrow{
-    position:absolute;
-    right:28px;bottom:28px;
-    color:var(--text-sub);
-    font-size:18px;
-    opacity:.4;
-    transition:all .4s;
+    position:absolute;right:28px;bottom:28px;
+    color:var(--text-sub);font-size:18px;
+    opacity:.35;transition:all .4s;
   }
   .model-card:hover .arrow{opacity:1;transform:translate(4px,-4px);}
 
-  /* ============ 新问题 ============ */
-  .questions{
-    background:linear-gradient(180deg,#e8ecf2, #f0f3f8);
-  }
+  /* ==================== 新问题 ==================== */
+  .questions{background:linear-gradient(180deg,#eef2f8, #f5f7fb);}
   .questions h2{
     font-size:clamp(22px,3vw,36px);
-    font-weight:500;
-    letter-spacing:.08em;
-    margin-bottom:64px;
-    color:var(--ink-black);
+    font-weight:500;letter-spacing:.08em;
+    margin-bottom:64px;color:var(--ink-deep);
   }
-
   .question-item{
-    display:flex;
-    gap:32px;
+    display:flex;gap:32px;
     padding:40px 0;
     border-bottom:1px solid rgba(30,40,60,0.1);
-    opacity:0;
-    transform:translateY(24px);
+    opacity:0;transform:translateY(24px);
     transition:all .8s cubic-bezier(.22,.61,.36,1);
   }
   .question-item.visible{opacity:1;transform:translateY(0);}
   .question-item:first-of-type{border-top:1px solid rgba(30,40,60,0.1);}
-
   .q-index{
-    font-size:13px;
-    color:var(--gold);
-    letter-spacing:.2em;
-    min-width:52px;
-    padding-top:4px;
-    font-weight:500;
+    font-size:13px;color:var(--gold);
+    letter-spacing:.2em;min-width:52px;
+    padding-top:4px;font-weight:500;
   }
   .q-body{flex:1;}
   .q-title{
-    font-size:18px;
-    font-weight:600;
-    color:var(--ink-black);
-    margin-bottom:12px;
-    letter-spacing:.03em;
-    line-height:1.6;
+    font-size:18px;font-weight:600;
+    color:var(--ink-deep);margin-bottom:12px;
+    letter-spacing:.03em;line-height:1.6;
   }
   .q-desc{
-    font-size:14px;
-    line-height:2;
-    color:var(--text-sub);
-    font-weight:300;
+    font-size:14px;line-height:2;
+    color:var(--text-sub);font-weight:300;
   }
 
-  /* ============ 开发者 / 页脚 ============ */
+  /* ==================== 页脚 ==================== */
   .footer{
-    background:#e2e7ef;
+    background:#e6ebf3;
     padding:120px 8vw 70px;
     border-top:1px solid rgba(30,40,60,0.1);
   }
-
   .dev-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:60px;
-    margin-bottom:90px;
+    gap:60px;margin-bottom:90px;
   }
-
   .dev-block h3{
-    font-size:13px;
-    letter-spacing:.4em;
-    color:var(--gold);
-    margin-bottom:28px;
-    font-weight:600;
+    font-size:13px;letter-spacing:.4em;
+    color:var(--gold);margin-bottom:28px;font-weight:600;
   }
   .dev-block p{
-    font-size:14px;
-    line-height:2.1;
-    color:var(--text-sub);
-    font-weight:300;
+    font-size:14px;line-height:2.1;
+    color:var(--text-sub);font-weight:300;
   }
   .dev-block a{
-    color:var(--ink-soft);
-    text-decoration:none;
+    color:var(--ink-mid);text-decoration:none;
     border-bottom:1px solid rgba(30,40,60,0.25);
-    transition:all .3s;
-    padding-bottom:2px;
+    transition:all .3s;padding-bottom:2px;
   }
-  .dev-block a:hover{
-    color:var(--ink-black);
-    border-color:var(--ink-black);
-  }
-
+  .dev-block a:hover{color:var(--ink-deep);border-color:var(--ink-deep);}
   .dev-names{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px 18px;
-    margin-top:4px;
+    display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:4px;
   }
-  .dev-names span{
-    font-size:14px;
-    color:var(--ink-soft);
-    font-weight:400;
-  }
-
+  .dev-names span{font-size:14px;color:var(--ink-mid);font-weight:400;}
   .footer-bottom{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:20px;
+    display:flex;justify-content:space-between;
+    align-items:center;flex-wrap:wrap;gap:20px;
     padding-top:40px;
     border-top:1px solid rgba(30,40,60,0.08);
-    font-size:12px;
-    color:var(--text-dim);
-    letter-spacing:.1em;
+    font-size:12px;color:var(--text-dim);letter-spacing:.1em;
   }
   .footer-bottom .dao-mark{
     font-family:'Ma Shan Zheng',serif;
-    font-size:26px;
-    color:var(--ink-black);
-    letter-spacing:.1em;
-    opacity:.85;
+    font-size:26px;color:var(--ink-deep);
+    letter-spacing:.1em;opacity:.85;
   }
 
-  /* ============ 响应式 ============ */
+  /* ==================== 响应式 ==================== */
   @media(max-width:768px){
     section{padding:100px 7vw;}
-    .dao-svg{width:70vw;}
-    .genesis-line{letter-spacing:.08em;}
+    .genesis-line{letter-spacing:.1em;}
     .question-item{gap:18px;}
     .q-index{min-width:38px;}
     .footer{padding:90px 7vw 50px;}
@@ -479,59 +319,10 @@
 </head>
 <body>
 
-<!-- ==================== 首屏 ==================== -->
+<!-- ==================== 首屏：道 · 银白湖泊 ==================== -->
 <section class="hero" id="hero">
-  <div class="metal-sheen"></div>
-  <div class="cursor-glow" id="glow"></div>
-
-  <canvas id="ripple"></canvas>
-
-  <div class="ink-blur"></div>
-
-  <div class="dao-wrap" id="daoWrap">
-    <svg class="dao-svg" viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <!-- 水波扭曲 -->
-        <filter id="waterDistort" x="-25%" y="-25%" width="150%" height="150%">
-          <feTurbulence id="turb" type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="5" result="noise"/>
-          <feDisplacementMap id="disp" in="SourceGraphic" in2="noise" scale="6"
-                             xChannelSelector="R" yChannelSelector="G"/>
-        </filter>
-
-        <!-- 墨色渐变：从浓黑到稍灰，模拟墨在银白湖面上的层次 -->
-        <linearGradient id="inkGrad" x1="0%" y1="0%" x2="65%" y2="100%">
-          <stop offset="0%"  stop-color="#0a0a0c" stop-opacity="0.98"/>
-          <stop offset="45%" stop-color="#14161c" stop-opacity="0.95"/>
-          <stop offset="100%" stop-color="#2a2e3a" stop-opacity="0.88"/>
-        </linearGradient>
-
-        <!-- 微弱的银边（让字与湖面有微妙的融合感） -->
-        <linearGradient id="silverEdge" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.25"/>
-          <stop offset="50%" stop-color="#d0dae8" stop-opacity="0.08"/>
-          <stop offset="100%" stop-color="#ffffff" stop-opacity="0.18"/>
-        </linearGradient>
-      </defs>
-
-      <!-- 底：淡墨扩散（极轻） -->
-      <text x="200" y="360" text-anchor="middle"
-            font-family="'Ma Shan Zheng', serif"
-            font-size="300"
-            fill="#2a2e3a"
-            opacity="0.08"
-            filter="url(#waterDistort)">道</text>
-
-      <!-- 主字：黑色颜体 -->
-      <text x="200" y="360" text-anchor="middle"
-            font-family="'Ma Shan Zheng', serif"
-            font-size="300"
-            fill="url(#inkGrad)"
-            stroke="url(#silverEdge)"
-            stroke-width="0.8"
-            filter="url(#waterDistort)">道</text>
-    </svg>
-  </div>
-
+  <canvas id="waterCanvas"></canvas>
+  <canvas id="inkCanvas"></canvas>
   <div class="scroll-hint">
     <span>向下问道</span>
   </div>
@@ -590,7 +381,7 @@
 </section>
 
 
-<!-- ==================== ModelScope 模型窗口 ==================== -->
+<!-- ==================== ModelScope ==================== -->
 <section class="models" id="models">
   <div class="section-label">Models</div>
   <h2>模型运行 · 训练路径</h2>
@@ -603,21 +394,18 @@
       <div class="path">modelscope.cn/models/your-org/ask-way-infer</div>
       <span class="arrow">↗</span>
     </a>
-
     <a class="model-card" href="https://modelscope.cn/models" target="_blank" rel="noopener" data-delay="1">
       <span class="tag">TRAINING</span>
       <div class="name">问道 · 训练基座</div>
       <div class="path">modelscope.cn/models/your-org/ask-way-base</div>
       <span class="arrow">↗</span>
     </a>
-
     <a class="model-card" href="https://modelscope.cn/models" target="_blank" rel="noopener" data-delay="2">
       <span class="tag">MEMORY</span>
       <div class="name">Person-Centric Memory</div>
       <div class="path">modelscope.cn/models/your-org/pcm-agent</div>
       <span class="arrow">↗</span>
     </a>
-
     <a class="model-card" href="https://modelscope.cn/models" target="_blank" rel="noopener" data-delay="3">
       <span class="tag">RSI</span>
       <div class="name">RSI Reasoning Agent</div>
@@ -641,7 +429,6 @@
         <div class="q-desc">当前以人为中心的记忆系统，大多停留在检索与复述层面。我们试图回答：什么样的记忆结构，才能让智能体做出恰当的主动关心与提醒？</div>
       </div>
     </div>
-
     <div class="question-item" data-delay="1">
       <div class="q-index">Q2</div>
       <div class="q-body">
@@ -649,7 +436,6 @@
         <div class="q-desc">多数自进化工作本质上在过拟合某个评分。我们正在探索结合知识发现的评估方式，让 RSI 指向真正有意义的发现，而非分数上的自我循环。</div>
       </div>
     </div>
-
     <div class="question-item" data-delay="2">
       <div class="q-index">Q3</div>
       <div class="q-body">
@@ -657,7 +443,6 @@
         <div class="q-desc">从 Claude Code 到 Codex，Harness 的形态在不断变化。我们希望抽象出一套更底层的运行哲学，让系统在工具更迭中保持稳定。</div>
       </div>
     </div>
-
     <div class="question-item" data-delay="3">
       <div class="q-index">Q4</div>
       <div class="q-body">
@@ -669,14 +454,13 @@
 </section>
 
 
-<!-- ==================== 开发者 / 页脚 ==================== -->
+<!-- ==================== 页脚 ==================== -->
 <footer class="footer" id="footer">
   <div class="dev-grid">
     <div class="dev-block">
       <h3>ABOUT</h3>
       <p>问道（Ask the Way）是一个探索以人为中心的记忆、递归自我改进与稳定 Agent Harness 的研究项目。我们相信，好的智能体不仅要能回答问题，更要能理解人、陪伴人、与人一起发现新的问题。</p>
     </div>
-
     <div class="dev-block">
       <h3>DEVELOPERS</h3>
       <div class="dev-names">
@@ -687,7 +471,6 @@
       </div>
       <p style="margin-top:18px;">来自清华、北大、中科院、港科大、中科大等院校的前沿研究者。</p>
     </div>
-
     <div class="dev-block">
       <h3>PROJECT</h3>
       <p>
@@ -697,7 +480,6 @@
       </p>
     </div>
   </div>
-
   <div class="footer-bottom">
     <div class="dao-mark">道</div>
     <div>© 2026 问道 · Ask the Way</div>
@@ -706,155 +488,445 @@
 
 
 <script>
-/* ==================== 水波纹 Canvas ==================== */
+/* ==================================================================
+   粒子化的「道」 + 银白金属湖泊
+   ================================================================== */
 (function(){
-  const canvas = document.getElementById('ripple');
-  const ctx = canvas.getContext('2d');
-  let ripples = [];
+  'use strict';
+
+  /* ---------- 基础变量 ---------- */
+  const hero = document.getElementById('hero');
+  const waterCanvas = document.getElementById('waterCanvas');
+  const inkCanvas = document.getElementById('inkCanvas');
+  const waterCtx = waterCanvas.getContext('2d');
+  const inkCtx = inkCanvas.getContext('2d');
+
+  let W = 0, H = 0;
   let dpr = Math.min(window.devicePixelRatio || 1, 2);
 
+  /* 鼠标状态 */
+  let mouseX = -9999, mouseY = -9999;
+  let mouseActive = false;
+  let smoothMouseX = -9999, smoothMouseY = -9999;
+
+  /* 时间 */
+  let time = 0;
+
+  /* ---------- 预渲染粒子圆点 ---------- */
+  const dotCanvas = document.createElement('canvas');
+  dotCanvas.width = 24;
+  dotCanvas.height = 24;
+  (function(){
+    const c = dotCanvas.getContext('2d');
+    const g = c.createRadialGradient(12, 12, 0, 12, 12, 12);
+    g.addColorStop(0,   'rgba(0,0,0,1)');
+    g.addColorStop(0.35,'rgba(0,0,0,0.95)');
+    g.addColorStop(0.7, 'rgba(0,0,0,0.5)');
+    g.addColorStop(1,   'rgba(0,0,0,0)');
+    c.fillStyle = g;
+    c.fillRect(0, 0, 24, 24);
+  })();
+
+  /* ---------- 水面涟漪 ---------- */
+  const ripples = [];
+
+  function addRipple(x, y, strength){
+    if(ripples.length > 14) return;
+    ripples.push({
+      x, y,
+      radius: 2,
+      maxRadius: 160 + Math.random() * 220,
+      alpha: strength || 0.55,
+      speed: 1.6 + Math.random() * 1.2,
+      width: 0.8 + Math.random() * 1.2
+    });
+  }
+
+  /* ---------- 粒子系统 ---------- */
+  const particles = [];
+  let particleBaseScale = 1;
+  let particleBaseCX = 0;
+  let particleBaseCY = 0;
+
+  /* 在离屏画布上绘制「道」，采样像素生成粒子 */
+  function buildParticles(){
+    // 离屏画布：尺寸与「道」的逻辑尺寸一致
+    const offSize = 420;
+    const off = document.createElement('canvas');
+    off.width = offSize;
+    off.height = offSize;
+    const octx = off.getContext('2d');
+
+    octx.clearRect(0, 0, offSize, offSize);
+    octx.textAlign = 'center';
+    octx.textBaseline = 'middle';
+
+    // 多层绘制，让笔画更粗壮，更接近毛笔的厚度
+    octx.font = '900 300px "Ma Shan Zheng", "STKaiti", "KaiTi", "Noto Serif SC", serif';
+    octx.fillStyle = '#000';
+    octx.fillText('道', offSize / 2, offSize / 2);
+
+    octx.font = '900 300px "Ma Shan Zheng", "STKaiti", "KaiTi", "Noto Serif SC", serif';
+    octx.strokeStyle = '#000';
+    octx.lineWidth = 6;
+    octx.strokeText('道', offSize / 2, offSize / 2);
+
+    octx.font = '900 300px "Ma Shan Zheng", "STKaiti", "KaiTi", "Noto Serif SC", serif';
+    octx.lineWidth = 3;
+    octx.strokeText('道', offSize / 2, offSize / 2);
+
+    // 采样
+    let data;
+    try{
+      data = octx.getImageData(0, 0, offSize, offSize).data;
+    }catch(e){
+      return;
+    }
+
+    particles.length = 0;
+
+    const step = 3;
+    const baseCX = W / 2;
+    const baseCY = H / 2;
+    const displayScale = Math.min(W * 0.5, H * 0.52, 420) / offSize;
+
+    particleBaseScale = displayScale;
+    particleBaseCX = baseCX;
+    particleBaseCY = baseCY;
+
+    for(let y = 0; y < offSize; y += step){
+      for(let x = 0; x < offSize; x += step){
+        const idx = (y * offSize + x) * 4;
+        const a = data[idx + 3];
+        if(a > 80){
+          // 屏幕坐标
+          const jitter = step * 0.5;
+          const sx = baseCX + (x + (Math.random() - 0.5) * jitter - offSize / 2) * displayScale;
+          const sy = baseCY + (y + (Math.random() - 0.5) * jitter - offSize / 2) * displayScale;
+
+          // 跳过过于靠边的
+          if(sx < -50 || sx > W + 50 || sy < -50 || sy > H + 50) continue;
+
+          particles.push({
+            ox: sx, oy: sy,          // 原位
+            x: sx, y: sy,            // 当前位置
+            vx: 0, vy: 0,            // 速度
+            size: 1.6 + Math.random() * 1.6,  // 基础尺寸
+            alpha: 0.55 + Math.random() * 0.45, // 基础透明度
+            stiffness: 0.022 + Math.random() * 0.018,
+            damping: 0.90 + Math.random() * 0.06
+          });
+        }
+      }
+    }
+  }
+
+  /* ---------- 尺寸 ---------- */
   function resize(){
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  resize();
-  window.addEventListener('resize', resize);
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = hero.clientWidth;
+    H = hero.clientHeight;
 
-  function addRipple(x, y){
-    if(ripples.length > 24) return;
-    ripples.push({ x, y, r: 0, alpha: 0.5, speed: 1.4 + Math.random() * 0.7 });
+    waterCanvas.width = W * dpr;
+    waterCanvas.height = H * dpr;
+    waterCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    inkCanvas.width = W * dpr;
+    inkCanvas.height = H * dpr;
+    inkCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    buildParticles();
   }
 
-  function draw(){
-    const w = canvas.width / dpr;
-    const h = canvas.height / dpr;
-    ctx.clearRect(0, 0, w, h);
+  window.addEventListener('resize', ()=>{
+    clearTimeout(window.__resizeTimer);
+    window.__resizeTimer = setTimeout(resize, 180);
+  });
+
+
+  /* ================================================================
+     水 面 渲 染
+     ================================================================ */
+  function renderWater(dt){
+    waterCtx.clearRect(0, 0, W, H);
+
+    const t = time * 0.001;
+
+    /* --- 1. 流动的液态金属光带 --- */
+    waterCtx.globalCompositeOperation = 'soft-light';
+
+    for(let i = 0; i < 7; i++){
+      const phase = t * (0.6 + i * 0.15) + i * 1.7;
+      const x1 = W * (0.15 + 0.7 * (0.5 + 0.5 * Math.sin(phase)));
+      const y1 = H * (0.1 + 0.8 * (0.5 + 0.5 * Math.cos(phase * 0.73)));
+      const x2 = W * (0.15 + 0.7 * (0.5 + 0.5 * Math.cos(phase * 0.91)));
+      const y2 = H * (0.1 + 0.8 * (0.5 + 0.5 * Math.sin(phase * 0.67)));
+
+      const g = waterCtx.createLinearGradient(x1, y1, x2, y2);
+      const a = 0.35 + 0.25 * Math.sin(phase * 1.3);
+      g.addColorStop(0,    'rgba(255,255,255,0)');
+      g.addColorStop(0.22, `rgba(255,255,255,${a})`);
+      g.addColorStop(0.45, 'rgba(200,215,240,0.12)');
+      g.addColorStop(0.62, `rgba(255,255,255,${a * 0.8})`);
+      g.addColorStop(0.85, 'rgba(180,200,230,0.08)');
+      g.addColorStop(1,    'rgba(255,255,255,0)');
+
+      waterCtx.fillStyle = g;
+      waterCtx.fillRect(0, 0, W, H);
+    }
+
+    /* --- 2. 细密的焦散纹理 --- */
+    waterCtx.globalCompositeOperation = 'overlay';
+    waterCtx.globalAlpha = 0.5;
+
+    for(let i = 0; i < 3; i++){
+      const phase = t * 0.4 + i * 2.1;
+      const offsetX = Math.sin(phase) * 60;
+      const offsetY = Math.cos(phase * 0.8) * 40;
+
+      const g = waterCtx.createRadialGradient(
+        W * 0.5 + offsetX, H * 0.5 + offsetY, 0,
+        W * 0.5 + offsetX, H * 0.5 + offsetY, Math.max(W, H) * 0.7
+      );
+      g.addColorStop(0,    'rgba(255,255,255,0.18)');
+      g.addColorStop(0.3,  'rgba(220,232,248,0.06)');
+      g.addColorStop(0.6,  'rgba(255,255,255,0.12)');
+      g.addColorStop(1,    'rgba(200,215,235,0)');
+
+      waterCtx.fillStyle = g;
+      waterCtx.fillRect(0, 0, W, H);
+    }
+    waterCtx.globalAlpha = 1;
+
+    /* --- 3. 鼠标镜面高光 --- */
+    if(mouseActive){
+      smoothMouseX += (mouseX - smoothMouseX) * 0.12;
+      smoothMouseY += (mouseY - smoothMouseY) * 0.12;
+
+      waterCtx.globalCompositeOperation = 'screen';
+
+      const g = waterCtx.createRadialGradient(
+        smoothMouseX, smoothMouseY, 0,
+        smoothMouseX, smoothMouseY, 380
+      );
+      g.addColorStop(0,    'rgba(255,255,255,0.55)');
+      g.addColorStop(0.12, 'rgba(255,255,255,0.28)');
+      g.addColorStop(0.35, 'rgba(240,248,255,0.08)');
+      g.addColorStop(0.7,  'rgba(230,240,255,0.02)');
+      g.addColorStop(1,    'rgba(255,255,255,0)');
+
+      waterCtx.fillStyle = g;
+      waterCtx.fillRect(0, 0, W, H);
+
+      // 高光核心
+      const g2 = waterCtx.createRadialGradient(
+        smoothMouseX, smoothMouseY, 0,
+        smoothMouseX, smoothMouseY, 120
+      );
+      g2.addColorStop(0,   'rgba(255,255,255,0.7)');
+      g2.addColorStop(0.4, 'rgba(255,255,255,0.2)');
+      g2.addColorStop(1,   'rgba(255,255,255,0)');
+      waterCtx.fillStyle = g2;
+      waterCtx.fillRect(0, 0, W, H);
+    }
+
+    /* --- 4. 涟漪 --- */
+    waterCtx.globalCompositeOperation = 'overlay';
 
     for(let i = ripples.length - 1; i >= 0; i--){
-      const rp = ripples[i];
-      rp.r += rp.speed;
-      rp.alpha *= 0.966;
+      const r = ripples[i];
+      r.radius += r.speed;
+      r.alpha *= 0.975;
 
-      if(rp.alpha < 0.008){
+      if(r.alpha < 0.005 || r.radius > r.maxRadius){
         ripples.splice(i, 1);
         continue;
       }
 
-      // 银白湖面上的波纹：深色 + 白色双层
-      ctx.beginPath();
-      ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(40, 55, 85, ${rp.alpha * 0.7})`;
-      ctx.lineWidth = 1.2;
-      ctx.stroke();
+      const inner = Math.max(0, r.radius - r.width * 3);
+      const outer = r.radius + r.width * 3;
 
-      ctx.beginPath();
-      ctx.arc(rp.x, rp.y, rp.r * 0.75, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(255, 255, 255, ${rp.alpha * 0.9})`;
-      ctx.lineWidth = 1.0;
-      ctx.stroke();
+      const g = waterCtx.createRadialGradient(r.x, r.y, inner, r.x, r.y, outer);
+      g.addColorStop(0,    'rgba(255,255,255,0)');
+      g.addColorStop(0.35, `rgba(255,255,255,${r.alpha * 0.7})`);
+      g.addColorStop(0.5,  `rgba(255,255,255,${r.alpha * 0.9})`);
+      g.addColorStop(0.65, `rgba(160,185,220,${r.alpha * 0.5})`);
+      g.addColorStop(1,    'rgba(255,255,255,0)');
+
+      waterCtx.fillStyle = g;
+      waterCtx.beginPath();
+      waterCtx.arc(r.x, r.y, outer, 0, Math.PI * 2);
+      waterCtx.fill();
+
+      // 内圈高光
+      if(r.radius > 18){
+        waterCtx.beginPath();
+        waterCtx.arc(r.x, r.y, r.radius * 0.72, 0, Math.PI * 2);
+        waterCtx.strokeStyle = `rgba(255,255,255,${r.alpha * 0.35})`;
+        waterCtx.lineWidth = 0.8;
+        waterCtx.stroke();
+      }
     }
-    requestAnimationFrame(draw);
+
+    waterCtx.globalCompositeOperation = 'source-over';
   }
-  draw();
 
-  /* ==================== 鼠标交互 ==================== */
-  const hero = document.getElementById('hero');
-  const glow = document.getElementById('glow');
-  const daoWrap = document.getElementById('daoWrap');
-  const turb = document.getElementById('turb');
-  const disp = document.getElementById('disp');
 
-  let targetRotate = 0;
-  let targetShiftX = 0;
-  let targetShiftY = 0;
-  let currentRotate = 0;
-  let currentShiftX = 0;
-  let currentShiftY = 0;
-  let lastRippleTime = 0;
+  /* ================================================================
+     粒 子 更 新 与 绘 制
+     ================================================================ */
+  const REPEL_RADIUS = 260;   // 鼠标排斥半径
+  const REPEL_FORCE = 16;     // 排斥强度
 
-  hero.addEventListener('mousemove', (e) => {
+  function updateAndDrawParticles(){
+    inkCtx.clearRect(0, 0, W, H);
+
+    /* --- 更新 --- */
+    for(let i = 0; i < particles.length; i++){
+      const p = particles[i];
+
+      /* 鼠标排斥 */
+      if(mouseActive){
+        const dx = p.x - mouseX;
+        const dy = p.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if(dist < REPEL_RADIUS && dist > 0.5){
+          const force = Math.pow(1 - dist / REPEL_RADIUS, 2) * REPEL_FORCE;
+          const nx = dx / dist;
+          const ny = dy / dist;
+          p.vx += nx * force;
+          p.vy += ny * force;
+        }
+      }
+
+      /* 弹簧回位 */
+      p.vx += (p.ox - p.x) * p.stiffness;
+      p.vy += (p.oy - p.y) * p.stiffness;
+
+      /* 阻尼 */
+      p.vx *= p.damping;
+      p.vy *= p.damping;
+
+      /* 位置 */
+      p.x += p.vx;
+      p.y += p.vy;
+    }
+
+    /* --- 绘制 --- */
+    inkCtx.globalCompositeOperation = 'source-over';
+
+    for(let i = 0; i < particles.length; i++){
+      const p = particles[i];
+
+      // 位移量
+      const dx = p.x - p.ox;
+      const dy = p.y - p.oy;
+      const disp = Math.sqrt(dx * dx + dy * dy);
+
+      // 散开程度 0~1
+      const scatter = Math.min(disp / 70, 1);
+
+      // 动态尺寸：散开时变大（墨扩散）
+      const size = p.size * (1 + scatter * 3.2);
+
+      // 动态透明度：散开时变淡
+      const alpha = p.alpha * (1 - scatter * 0.55);
+
+      if(alpha < 0.02) continue;
+
+      inkCtx.globalAlpha = alpha;
+      inkCtx.drawImage(
+        dotCanvas,
+        p.x - size, p.y - size,
+        size * 2, size * 2
+      );
+    }
+
+    inkCtx.globalAlpha = 1;
+  }
+
+
+  /* ================================================================
+     主 循 环
+     ================================================================ */
+  let lastTime = performance.now();
+
+  function loop(now){
+    const dt = Math.min(now - lastTime, 50);
+    lastTime = now;
+    time += dt;
+
+    renderWater(dt);
+    updateAndDrawParticles();
+
+    requestAnimationFrame(loop);
+  }
+
+
+  /* ================================================================
+     鼠 标 事 件
+     ================================================================ */
+  hero.addEventListener('mousemove', (e)=>{
     const rect = hero.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // 光斑跟随
-    glow.style.left = x + 'px';
-    glow.style.top = y + 'px';
+    // 平滑
+    if(!mouseActive){
+      smoothMouseX = x;
+      smoothMouseY = y;
+    }
+    mouseX = x;
+    mouseY = y;
+    mouseActive = true;
 
-    // 道字摆动
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const dx = (x - cx) / cx;
-    const dy = (y - cy) / cy;
-
-    targetRotate = dx * 2.2;
-    targetShiftX = dx * 12;
-    targetShiftY = dy * 9;
-
-    // 水波扭曲随鼠标速度变化
-    const speed = Math.hypot(e.movementX || 0, e.movementY || 0);
-    const scale = Math.min(4 + speed * 0.3, 12);
-    disp.setAttribute('scale', scale.toFixed(2));
-
-    // 波纹生成（节流）
+    // 生成水波涟漪（节流）
     const now = performance.now();
-    if(now - lastRippleTime > 45){
-      addRipple(x, y);
-      lastRippleTime = now;
+    if(!hero.__lastRipple || now - hero.__lastRipple > 55){
+      addRipple(x, y, 0.5 + Math.random() * 0.3);
+      hero.__lastRipple = now;
     }
   });
 
-  hero.addEventListener('mouseleave', () => {
-    targetRotate = 0;
-    targetShiftX = 0;
-    targetShiftY = 0;
-    disp.setAttribute('scale', '4');
-    glow.style.opacity = '0';
-  });
-  hero.addEventListener('mouseenter', () => {
-    glow.style.opacity = '1';
+  hero.addEventListener('mouseleave', ()=>{
+    mouseActive = false;
+    mouseX = -9999;
+    mouseY = -9999;
   });
 
-  function animate(){
-    currentRotate += (targetRotate - currentRotate) * 0.06;
-    currentShiftX += (targetShiftX - currentShiftX) * 0.06;
-    currentShiftY += (targetShiftY - currentShiftY) * 0.06;
+  hero.addEventListener('mouseenter', ()=>{
+    mouseActive = true;
+  });
 
-    daoWrap.style.transform =
-      `translate(-50%, -50%) translate(${currentShiftX}px, ${currentShiftY}px) rotate(${currentRotate}deg)`;
-
-    const t = performance.now() * 0.00012;
-    const bfX = 0.008 + Math.sin(t) * 0.002;
-    const bfY = 0.016 + Math.cos(t * 1.3) * 0.003;
-    turb.setAttribute('baseFrequency', `${bfX.toFixed(4)} ${bfY.toFixed(4)}`);
-
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  // 点击时产生一圈较大波纹
-  hero.addEventListener('click', (e) => {
+  hero.addEventListener('click', (e)=>{
     const rect = hero.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    addRipple(x, y);
-    for(let i = 0; i < 3; i++){
-      setTimeout(() => addRipple(x + (Math.random()-0.5)*30, y + (Math.random()-0.5)*30), i * 70);
+
+    // 强涟漪
+    addRipple(x, y, 0.85);
+    for(let i = 0; i < 4; i++){
+      setTimeout(()=>{
+        addRipple(
+          x + (Math.random() - 0.5) * 50,
+          y + (Math.random() - 0.5) * 50,
+          0.4
+        );
+      }, i * 80);
     }
   });
-})();
 
 
-/* ==================== 滚动渐现 ==================== */
-(function(){
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  /* ================================================================
+     滚 动 渐 现
+     ================================================================ */
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
       if(entry.isIntersecting){
         const el = entry.target;
         const delay = parseInt(el.dataset.delay || 0, 10);
-        setTimeout(() => el.classList.add('visible'), delay * 130);
+        setTimeout(()=>el.classList.add('visible'), delay * 130);
         observer.unobserve(el);
       }
     });
@@ -863,6 +935,27 @@
   document.querySelectorAll(
     '.section-label, .genesis-line, .genesis-divider, .struct-card, .model-card, .question-item'
   ).forEach(el => observer.observe(el));
+
+
+  /* ================================================================
+     初 始 化
+     ================================================================ */
+  resize();
+  requestAnimationFrame(loop);
+
+  // 页面加载后，在道字周围生成一圈初始涟漪，建立“水在呼吸”的感觉
+  setTimeout(()=>{
+    for(let i = 0; i < 5; i++){
+      setTimeout(()=>{
+        addRipple(
+          W * 0.5 + (Math.random() - 0.5) * 200,
+          H * 0.5 + (Math.random() - 0.5) * 200,
+          0.25
+        );
+      }, i * 300);
+    }
+  }, 500);
+
 })();
 </script>
 
