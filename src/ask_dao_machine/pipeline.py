@@ -7,7 +7,8 @@ from pathlib import Path
 from typing import Dict, List
 
 from . import (math_engine, aesthetics_engine, records_engine, fusion_engine,
-               lang_info_engine, combo_engine, direction_engine, sparse_engine)
+               lang_info_engine, combo_engine, direction_engine, sparse_engine,
+               counterex_engine)
 from .model import ProblemSet
 from .registry import Registry
 
@@ -25,8 +26,18 @@ class ProblemMaker:
             "combo": self._run_combo,
             "direction": self._run_direction,
             "sparse": self._run_sparse,
+            "counterex": self._run_counterex,
             "aesthetics": aesthetics_engine.run,
         }
+
+    def _run_counterex(self, limits: dict = None):
+        """反例驱动: 唯一产出'机器自己答不出的问题'的引擎(status=开放)。"""
+        limits = limits or {}
+        roots, records, report = counterex_engine.run(
+            lo=limits.get("lo", 6), hi=limits.get("hi", 40000))
+        ps = ProblemSet("counterex", roots, records)
+        setattr(ps, "counterex_report", report)
+        return ps
 
     def _run_sparse(self, limits: dict = None):
         limits = limits or {}
