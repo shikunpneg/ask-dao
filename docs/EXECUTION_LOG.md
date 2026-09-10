@@ -95,3 +95,6 @@
 - A4: 子命题1(已知-机器复核)+ 子命题2(建模前问题); 子命题2转为'意义状态空间建模'前问题(已记 tension_formal_yanyi.md)
 - B深扫: p∈{3,5,7}奇q≤71停时单调爬升(信号表观有界 但未证)
 - C初轮: 99题写回big_score; gap_map模板生成 当务≥3 候选xN -> out/demo/gap_template_candidates.json
+
+## R16 P-C模板含触发词重跑
+- 缺口模板加入" 公设/悖论/统一/测量/预言/消解\等H触发词
