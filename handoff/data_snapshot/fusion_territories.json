@@ -5,50 +5,12 @@
    "n": 2,
    "ess_pure": [],
    "grid": 11,
-   "exceptions": 11,
-   "exc_density": 1.0,
-   "exc_head": [
-    {
-     "x0": [
-      0.083,
-      0.917
-     ],
-     "end": [
-      0.667,
-      0.333
-     ]
-    },
-    {
-     "x0": [
-      0.167,
-      0.833
-     ],
-     "end": [
-      0.667,
-      0.333
-     ]
-    },
-    {
-     "x0": [
-      0.25,
-      0.75
-     ],
-     "end": [
-      0.667,
-      0.333
-     ]
-    },
-    {
-     "x0": [
-      0.333,
-      0.667
-     ],
-     "end": [
-      0.667,
-      0.333
-     ]
-    }
-   ]
+   "endpoint_kinds": {
+    "mixed": 11
+   },
+   "exceptions": 0,
+   "exc_density": 0.0,
+   "exc_head": []
   },
   {
    "game": "协调(Coordination)",
@@ -58,20 +20,13 @@
     1
    ],
    "grid": 11,
-   "exceptions": 1,
-   "exc_density": 0.091,
-   "exc_head": [
-    {
-     "x0": [
-      0.333,
-      0.667
-     ],
-     "end": [
-      0.333,
-      0.667
-     ]
-    }
-   ]
+   "endpoint_kinds": {
+    "pure": 10,
+    "mixed": 1
+   },
+   "exceptions": 0,
+   "exc_density": 0.0,
+   "exc_head": []
   },
   {
    "game": "雪堆(Snowdrift)",
@@ -80,6 +35,9 @@
     0
    ],
    "grid": 11,
+   "endpoint_kinds": {
+    "pure": 11
+   },
    "exceptions": 0,
    "exc_density": 0.0,
    "exc_head": []
@@ -91,6 +49,9 @@
     1
    ],
    "grid": 11,
+   "endpoint_kinds": {
+    "pure": 11
+   },
    "exceptions": 0,
    "exc_density": 0.0,
    "exc_head": []
@@ -100,8 +61,12 @@
    "n": 3,
    "ess_pure": [],
    "grid": 55,
-   "exceptions": 55,
-   "exc_density": 1.0,
+   "endpoint_kinds": {
+    "cycle": 54,
+    "mixed": 1
+   },
+   "exceptions": 54,
+   "exc_density": 0.982,
    "exc_head": [
     {
      "x0": [
@@ -113,7 +78,8 @@
       0.775,
       0.039,
       0.186
-     ]
+     ],
+     "kind": "cycle"
     },
     {
      "x0": [
@@ -125,7 +91,8 @@
       0.754,
       0.165,
       0.081
-     ]
+     ],
+     "kind": "cycle"
     },
     {
      "x0": [
@@ -137,7 +104,8 @@
       0.653,
       0.27,
       0.077
-     ]
+     ],
+     "kind": "cycle"
     },
     {
      "x0": [
@@ -149,7 +117,8 @@
       0.613,
       0.301,
       0.086
-     ]
+     ],
+     "kind": "cycle"
     }
    ]
   },
@@ -158,8 +127,12 @@
    "n": 3,
    "ess_pure": [],
    "grid": 55,
-   "exceptions": 55,
-   "exc_density": 1.0,
+   "endpoint_kinds": {
+    "cycle": 54,
+    "mixed": 1
+   },
+   "exceptions": 54,
+   "exc_density": 0.982,
    "exc_head": [
     {
      "x0": [
@@ -171,7 +144,8 @@
       0.775,
       0.039,
       0.186
-     ]
+     ],
+     "kind": "cycle"
     },
     {
      "x0": [
@@ -183,7 +157,8 @@
       0.754,
       0.165,
       0.081
-     ]
+     ],
+     "kind": "cycle"
     },
     {
      "x0": [
@@ -195,7 +170,8 @@
       0.653,
       0.27,
       0.077
-     ]
+     ],
+     "kind": "cycle"
     },
     {
      "x0": [
@@ -207,7 +183,8 @@
       0.613,
       0.301,
       0.086
-     ]
+     ],
+     "kind": "cycle"
     }
    ]
   }
@@ -218,7 +195,10 @@
    "chars": 757688,
    "menzerath_monotone": 1.0,
    "zipf": 0.476,
+   "heaps_beta": 0.664,
+   "heaps_r2": 0.9999,
    "exception": false,
+   "exc_reason": null,
    "profile_head": [
     [
      1,
@@ -243,7 +223,10 @@
    "chars": 126351,
    "menzerath_monotone": 1.0,
    "zipf": 0.529,
+   "heaps_beta": 0.707,
+   "heaps_r2": 0.9985,
    "exception": false,
+   "exc_reason": null,
    "profile_head": [
     [
      1,
@@ -268,7 +251,10 @@
    "chars": 2865839,
    "menzerath_monotone": 1.0,
    "zipf": 0.444,
+   "heaps_beta": 0.686,
+   "heaps_r2": 0.9994,
    "exception": false,
+   "exc_reason": null,
    "profile_head": [
     [
      1,
@@ -293,7 +279,10 @@
    "chars": 156888,
    "menzerath_monotone": 1.0,
    "zipf": 0.533,
+   "heaps_beta": 0.698,
+   "heaps_r2": 0.9999,
    "exception": false,
+   "exc_reason": null,
    "profile_head": [
     [
      1,
@@ -318,7 +307,10 @@
    "chars": 272786,
    "menzerath_monotone": 1.0,
    "zipf": 0.471,
+   "heaps_beta": 0.739,
+   "heaps_r2": 0.9993,
    "exception": false,
+   "exc_reason": null,
    "profile_head": [
     [
      1,
@@ -343,7 +335,10 @@
    "chars": 607694,
    "menzerath_monotone": 1.0,
    "zipf": 0.461,
-   "exception": false,
+   "heaps_beta": 0.81,
+   "heaps_r2": 0.9992,
+   "exception": true,
+   "exc_reason": "Heaps",
    "profile_head": [
     [
      1,
@@ -368,7 +363,10 @@
    "chars": 532992,
    "menzerath_monotone": 1.0,
    "zipf": 0.475,
+   "heaps_beta": 0.739,
+   "heaps_r2": 0.9994,
    "exception": false,
+   "exc_reason": null,
    "profile_head": [
     [
      1,
@@ -393,7 +391,10 @@
    "chars": 779670,
    "menzerath_monotone": 1.0,
    "zipf": 0.504,
+   "heaps_beta": 0.673,
+   "heaps_r2": 0.9962,
    "exception": false,
+   "exc_reason": null,
    "profile_head": [
     [
      1,
@@ -418,7 +419,10 @@
    "chars": 2596111,
    "menzerath_monotone": 1.0,
    "zipf": 0.463,
+   "heaps_beta": 0.643,
+   "heaps_r2": 0.9997,
    "exception": false,
+   "exc_reason": null,
    "profile_head": [
     [
      1,

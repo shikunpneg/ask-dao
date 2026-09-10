@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>问道 · Ask the Way</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --silver-bg:#e8ecf2;
+    --silver-mid:#d5dce8;
+    --silver-deep:#c2ccdb;
+    --silver-light:#f4f7fb;
+    --ink-black:#0a0a0c;
+    --ink-soft:#1a1d24;
+    --ink-mid:#2c3140;
+    --text-main:#1a1d24;
+    --text-sub:#4a5268;
+    --text-dim:#7a8399;
+    --gold:#9a7b4a;
+    --border:rgba(30,40,60,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--silver-bg);
+    color:var(--text-main);
+    font-family:'Noto Serif SC',serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ============ 首屏：黑色道 · 银白湖面 ============ */
+  .hero{
+    position:relative;
+    height:100vh;
+    min-height:640px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 25% 20%, rgba(255,255,255,0.95), transparent 60%),
+      radial-gradient(ellipse 70% 55% at 78% 80%, rgba(200,212,230,0.7), transparent 65%),
+      linear-gradient(165deg,#f2f5fa 0%, #e2e8f2 30%, #d4dce8 55%, #e8edf4 100%);
+  }
+
+  /* 银白金属光泽流动 */
+  .metal-sheen{
+    position:absolute;inset:-40%;
+    background:conic-gradient(from 210deg at 50% 50%,
+      transparent 0deg,
+      rgba(255,255,255,0.6) 40deg,
+      transparent 95deg,
+      rgba(210,222,240,0.45) 150deg,
+      transparent 210deg,
+      rgba(240,245,252,0.5) 265deg,
+      transparent 330deg);
+    mix-blend-mode:overlay;
+    animation:sheen 20s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes sheen{
+    0%{transform:rotate(0deg) scale(1.15);}
+    100%{transform:rotate(360deg) scale(1.15);}
+  }
+
+  /* 随鼠标的光斑 */
+  .cursor-glow{
+    position:absolute;width:560px;height:560px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(230,238,250,0.3) 40%, transparent 70%);
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    transition:opacity .5s;
+    filter:blur(8px);
+    mix-blend-mode:screen;
+    opacity:0;
+  }
+
+  /* 水波纹 canvas */
+  #ripple{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    pointer-events:none;
+    mix-blend-mode:multiply;
+    opacity:.55;
+  }
+
+  /* 墨色晕染（让字更融） */
+  .ink-blur{
+    position:absolute;
+    top:50%;left:50%;
+    width:min(72vw,660px);
+    height:min(72vw,660px);
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(10,10,12,0.10) 0%, rgba(10,10,12,0.04) 42%, transparent 70%);
+    filter:blur(50px);
+    pointer-events:none;
+  }
+
+  /* 道字容器 */
+  .dao-wrap{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    will-change:transform;
+    transition:transform .35s cubic-bezier(.22,.61,.36,1);
+  }
+
+  .dao-svg{
+    display:block;
+    width:min(56vw,420px);
+    height:auto;
+    filter:drop-shadow(0 14px 40px rgba(20,30,50,0.18));
+  }
+
+  /* 首屏底部提示 */
+  .scroll-hint{
+    position:absolute;
+    bottom:38px;left:50%;
+    transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:var(--text-dim);
+    font-size:12px;
+    letter-spacing:.4em;
+    text-indent:.4em;
+    animation:breathe 3.2s ease-in-out infinite;
+  }
+  .scroll-hint span{writing-mode:vertical-rl;letter-spacing:.3em;}
+  .scroll-hint::after{
+    content:'';
+    width:1px;height:48px;
+    background:linear-gradient(to bottom, var(--text-sub), transparent);
+  }
+  @keyframes breathe{
+    0%,100%{opacity:.4;transform:translateX(-50%) translateY(0);}
+    50%{opacity:.85;transform:translateX(-50%) translateY(6px);}
+  }
+
+  /* ============ 通用 section ============ */
+  section{
+    position:relative;
+    padding:140px 8vw;
+  }
+
+  .section-label{
+    font-size:12px;
+    letter-spacing:.5em;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:28px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:all .9s cubic-bezier(.22,.61,.36,1);
+    font-weight:500;
+  }
+  .section-label.visible{opacity:1;transform:translateY(0);}
+
+  /* ============ 一生二 ============ */
+  .genesis{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,255,255,0.7), transparent 70%),
+      linear-gradient(180deg,#e8edf4, #f0f3f8);
+    gap:18px;
+  }
+
+  .genesis-line{
+    font-family:'Ma Shan Zheng',serif;
+    font-size:clamp(28px,5.5vw,64px);
+    color:var(--ink-black);
+    letter-spacing:.12em;
+    opacity:0;
+    transform:translateY(36px) scale(.96);
+    transition:all 1.1s cubic-bezier(.22,.61,.36,1);
+    text-shadow:0 2px 20px rgba(30,40,60,0.08);
+  }
+  .genesis-line.visible{opacity:1;transform:translateY(0) scale(1);}
+  .genesis-line .num{
+    color:var(--gold);
+    font-size:.82em;
+  }
+
+  .genesis-divider{
+    width:1px;height:0;
+    background:linear-gradient(to bottom,transparent,var(--text-sub),transparent);
+    transition:height 1.4s ease;
+    margin:8px 0;
+    opacity:.4;
+  }
+  .genesis-divider.visible{height:70px;}
+
+  /* ============ 问道系统结构 ============ */
+  .structure{
+    background:linear-gradient(180deg,#f0f3f8, #e8ecf2);
+  }
+
+  .structure h2{
+    font-size:clamp(22px,3vw,36px);
+    font-weight:500;
+    letter-spacing:.08em;
+    margin-bottom:70px;
+    color:var(--ink-black);
+  }
+  .structure h2 em{
+    font-style:normal;
+    color:var(--gold);
+  }
+
+  .struct-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:2px;
+    background:rgba(30,40,60,0.08);
+    border:1px solid rgba(30,40,60,0.08);
+  }
+
+  .struct-card{
+    background:linear-gradient(160deg, rgba(255,255,255,0.9), rgba(240,244,250,0.95));
+    padding:44px 34px;
+    position:relative;
+    overflow:hidden;
+    transition:all .5s cubic-bezier(.22,.61,.36,1);
+    opacity:0;
+    transform:translateY(30px);
+  }
+  .struct-card.visible{opacity:1;transform:translateY(0);}
+  .struct-card:hover{
+    background:linear-gradient(160deg, #ffffff, #f0f4fa);
+    box-shadow:0 20px 50px -20px rgba(30,50,90,0.18);
+  }
+  .struct-card::before{
+    content:'';
+    position:absolute;top:0;left:0;
+    width:100%;height:2px;
+    background:linear-gradient(90deg,transparent,var(--text-sub),transparent);
+    opacity:0;
+    transition:opacity .5s;
+  }
+  .struct-card:hover::before{opacity:.5;}
+
+  .struct-num{
+    font-size:13px;
+    color:var(--gold);
+    letter-spacing:.3em;
+    margin-bottom:22px;
+    font-family:'Noto Serif SC',serif;
+    font-weight:500;
+  }
+  .struct-title{
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:16px;
+    color:var(--ink-black);
+    letter-spacing:.04em;
+  }
+  .struct-desc{
+    font-size:14px;
+    line-height:2;
+    color:var(--text-sub);
+    font-weight:300;
+  }
+
+  /* ============ ModelScope 窗口 ============ */
+  .models{
+    background:#e8ecf2;
+  }
+  .models h2{
+    font-size:clamp(22px,3vw,36px);
+    font-weight:500;
+    letter-spacing:.08em;
+    margin-bottom:20px;
+    color:var(--ink-black);
+  }
+  .models .sub{
+    color:var(--text-sub);
+    font-size:15px;
+    font-weight:300;
+    margin-bottom:64px;
+    max-width:560px;
+    line-height:1.9;
+  }
+
+  .model-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:20px;
+  }
+
+  .model-card{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    padding:36px 30px;
+    border:1px solid rgba(30,40,60,0.12);
+    background:linear-gradient(150deg, rgba(255,255,255,0.85), rgba(242,246,252,0.9));
+    position:relative;
+    overflow:hidden;
+    transition:all .45s cubic-bezier(.22,.61,.36,1);
+    opacity:0;
+    transform:translateY(26px);
+  }
+  .model-card.visible{opacity:1;transform:translateY(0);}
+  .model-card:hover{
+    border-color:rgba(30,40,60,0.28);
+    transform:translateY(-4px);
+    box-shadow:0 20px 50px -20px rgba(30,50,90,0.22);
+  }
+  .model-card .tag{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:.2em;
+    color:var(--gold);
+    border:1px solid rgba(154,123,74,0.35);
+    padding:4px 10px;
+    margin-bottom:20px;
+  }
+  .model-card .name{
+    font-size:18px;
+    font-weight:600;
+    color:var(--ink-black);
+    margin-bottom:12px;
+    letter-spacing:.03em;
+  }
+  .model-card .path{
+    font-size:12px;
+    color:var(--text-dim);
+    font-family:monospace;
+    letter-spacing:.02em;
+    word-break:break-all;
+  }
+  .model-card .arrow{
+    position:absolute;
+    right:28px;bottom:28px;
+    color:var(--text-sub);
+    font-size:18px;
+    opacity:.4;
+    transition:all .4s;
+  }
+  .model-card:hover .arrow{opacity:1;transform:translate(4px,-4px);}
+
+  /* ============ 新问题 ============ */
+  .questions{
+    background:linear-gradient(180deg,#e8ecf2, #f0f3f8);
+  }
+  .questions h2{
+    font-size:clamp(22px,3vw,36px);
+    font-weight:500;
+    letter-spacing:.08em;
+    margin-bottom:64px;
+    color:var(--ink-black);
+  }
+
+  .question-item{
+    display:flex;
+    gap:32px;
+    padding:40px 0;
+    border-bottom:1px solid rgba(30,40,60,0.1);
+    opacity:0;
+    transform:translateY(24px);
+    transition:all .8s cubic-bezier(.22,.61,.36,1);
+  }
+  .question-item.visible{opacity:1;transform:translateY(0);}
+  .question-item:first-of-type{border-top:1px solid rgba(30,40,60,0.1);}
+
+  .q-index{
+    font-size:13px;
+    color:var(--gold);
+    letter-spacing:.2em;
+    min-width:52px;
+    padding-top:4px;
+    font-weight:500;
+  }
+  .q-body{flex:1;}
+  .q-title{
+    font-size:18px;
+    font-weight:600;
+    color:var(--ink-black);
+    margin-bottom:12px;
+    letter-spacing:.03em;
+    line-height:1.6;
+  }
+  .q-desc{
+    font-size:14px;
+    line-height:2;
+    color:var(--text-sub);
+    font-weight:300;
+  }
+
+  /* ============ 开发者 / 页脚 ============ */
+  .footer{
+    background:#e2e7ef;
+    padding:120px 8vw 70px;
+    border-top:1px solid rgba(30,40,60,0.1);
+  }
+
+  .dev-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:60px;
+    margin-bottom:90px;
+  }
+
+  .dev-block h3{
+    font-size:13px;
+    letter-spacing:.4em;
+    color:var(--gold);
+    margin-bottom:28px;
+    font-weight:600;
+  }
+  .dev-block p{
+    font-size:14px;
+    line-height:2.1;
+    color:var(--text-sub);
+    font-weight:300;
+  }
+  .dev-block a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid rgba(30,40,60,0.25);
+    transition:all .3s;
+    padding-bottom:2px;
+  }
+  .dev-block a:hover{
+    color:var(--ink-black);
+    border-color:var(--ink-black);
+  }
+
+  .dev-names{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 18px;
+    margin-top:4px;
+  }
+  .dev-names span{
+    font-size:14px;
+    color:var(--ink-soft);
+    font-weight:400;
+  }
+
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    padding-top:40px;
+    border-top:1px solid rgba(30,40,60,0.08);
+    font-size:12px;
+    color:var(--text-dim);
+    letter-spacing:.1em;
+  }
+  .footer-bottom .dao-mark{
+    font-family:'Ma Shan Zheng',serif;
+    font-size:26px;
+    color:var(--ink-black);
+    letter-spacing:.1em;
+    opacity:.85;
+  }
+
+  /* ============ 响应式 ============ */
+  @media(max-width:768px){
+    section{padding:100px 7vw;}
+    .dao-svg{width:70vw;}
+    .genesis-line{letter-spacing:.08em;}
+    .question-item{gap:18px;}
+    .q-index{min-width:38px;}
+    .footer{padding:90px 7vw 50px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== 首屏 ==================== -->
+<section class="hero" id="hero">
+  <div class="metal-sheen"></div>
+  <div class="cursor-glow" id="glow"></div>
+
+  <canvas id="ripple"></canvas>
+
+  <div class="ink-blur"></div>
+
+  <div class="dao-wrap" id="daoWrap">
+    <svg class="dao-svg" viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- 水波扭曲 -->
+        <filter id="waterDistort" x="-25%" y="-25%" width="150%" height="150%">
+          <feTurbulence id="turb" type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="5" result="noise"/>
+          <feDisplacementMap id="disp" in="SourceGraphic" in2="noise" scale="6"
+                             xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+
+        <!-- 墨色渐变：从浓黑到稍灰，模拟墨在银白湖面上的层次 -->
+        <linearGradient id="inkGrad" x1="0%" y1="0%" x2="65%" y2="100%">
+          <stop offset="0%"  stop-color="#0a0a0c" stop-opacity="0.98"/>
+          <stop offset="45%" stop-color="#14161c" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#2a2e3a" stop-opacity="0.88"/>
+        </linearGradient>
+
+        <!-- 微弱的银边（让字与湖面有微妙的融合感） -->
+        <linearGradient id="silverEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.25"/>
+          <stop offset="50%" stop-color="#d0dae8" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0.18"/>
+        </linearGradient>
+      </defs>
+
+      <!-- 底：淡墨扩散（极轻） -->
+      <text x="200" y="360" text-anchor="middle"
+            font-family="'Ma Shan Zheng', serif"
+            font-size="300"
+            fill="#2a2e3a"
+            opacity="0.08"
+            filter="url(#waterDistort)">道</text>
+
+      <!-- 主字：黑色颜体 -->
+      <text x="200" y="360" text-anchor="middle"
+            font-family="'Ma Shan Zheng', serif"
+            font-size="300"
+            fill="url(#inkGrad)"
+            stroke="url(#silverEdge)"
+            stroke-width="0.8"
+            filter="url(#waterDistort)">道</text>
+    </svg>
+  </div>
+
+  <div class="scroll-hint">
+    <span>向下问道</span>
+  </div>
+</section>
+
+
+<!-- ==================== 一生二 ==================== -->
+<section class="genesis" id="genesis">
+  <div class="genesis-line" data-delay="0">道 生 <span class="num">一</span></div>
+  <div class="genesis-divider"></div>
+  <div class="genesis-line" data-delay="1"><span class="num">一</span> 生 <span class="num">二</span></div>
+  <div class="genesis-divider"></div>
+  <div class="genesis-line" data-delay="2"><span class="num">二</span> 生 <span class="num">三</span></div>
+  <div class="genesis-divider"></div>
+  <div class="genesis-line" data-delay="3"><span class="num">三</span> 生 万 物</div>
+</section>
+
+
+<!-- ==================== 问道系统结构 ==================== -->
+<section class="structure" id="structure">
+  <div class="section-label">Architecture</div>
+  <h2>问道系统 <em>/</em> 结构</h2>
+
+  <div class="struct-grid">
+    <div class="struct-card" data-delay="0">
+      <div class="struct-num">01</div>
+      <div class="struct-title">感知层 · Perception</div>
+      <div class="struct-desc">接收多模态输入，理解用户意图与上下文，建立人与系统之间的第一层语义连接。</div>
+    </div>
+    <div class="struct-card" data-delay="1">
+      <div class="struct-num">02</div>
+      <div class="struct-title">记忆层 · Memory</div>
+      <div class="struct-desc">以人为中心的长期记忆结构，持续沉淀偏好、习惯与历史交互，让系统真正“认识你”。</div>
+    </div>
+    <div class="struct-card" data-delay="2">
+      <div class="struct-num">03</div>
+      <div class="struct-title">推理层 · Reasoning</div>
+      <div class="struct-desc">基于自进化与递归自我改进的推理引擎，在开放问题中持续逼近更优解。</div>
+    </div>
+    <div class="struct-card" data-delay="3">
+      <div class="struct-num">04</div>
+      <div class="struct-title">执行层 · Harness</div>
+      <div class="struct-desc">稳定可靠的运行框架，独立于具体模型与工具链，保证系统在真实环境中的确定性表现。</div>
+    </div>
+    <div class="struct-card" data-delay="4">
+      <div class="struct-num">05</div>
+      <div class="struct-title">训练层 · Training</div>
+      <div class="struct-desc">从数据构建到模型微调的全链路训练路径，支持自定义任务与领域适配。</div>
+    </div>
+    <div class="struct-card" data-delay="5">
+      <div class="struct-num">06</div>
+      <div class="struct-title">应用层 · Application</div>
+      <div class="struct-desc">面向科研、教育与产业场景，将能力封装为可调用的模型服务与智能体应用。</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== ModelScope 模型窗口 ==================== -->
+<section class="models" id="models">
+  <div class="section-label">Models</div>
+  <h2>模型运行 · 训练路径</h2>
+  <p class="sub">以下窗口直达 ModelScope 模型页面，覆盖推理运行与训练微调两条路径。</p>
+
+  <div class="model-list">
+    <a class="model-card" href="https://modelscope.cn/models" target="_blank" rel="noopener" data-delay="0">
+      <span class="tag">INFERENCE</span>
+      <div class="name">问道 · 推理模型</div>
+      <div class="path">modelscope.cn/models/your-org/ask-way-infer</div>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="model-card" href="https://modelscope.cn/models" target="_blank" rel="noopener" data-delay="1">
+      <span class="tag">TRAINING</span>
+      <div class="name">问道 · 训练基座</div>
+      <div class="path">modelscope.cn/models/your-org/ask-way-base</div>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="model-card" href="https://modelscope.cn/models" target="_blank" rel="noopener" data-delay="2">
+      <span class="tag">MEMORY</span>
+      <div class="name">Person-Centric Memory</div>
+      <div class="path">modelscope.cn/models/your-org/pcm-agent</div>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="model-card" href="https://modelscope.cn/models" target="_blank" rel="noopener" data-delay="3">
+      <span class="tag">RSI</span>
+      <div class="name">RSI Reasoning Agent</div>
+      <div class="path">modelscope.cn/models/your-org/rsi-reasoner</div>
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ==================== 新问题 ==================== -->
+<section class="questions" id="questions">
+  <div class="section-label">Open Questions</div>
+  <h2>我们正在追问的问题</h2>
+
+  <div class="question-list">
+    <div class="question-item" data-delay="0">
+      <div class="q-index">Q1</div>
+      <div class="q-body">
+        <div class="q-title">Personal Agent 如何真正“理解”一个人，而不是拟合一个人的历史行为？</div>
+        <div class="q-desc">当前以人为中心的记忆系统，大多停留在检索与复述层面。我们试图回答：什么样的记忆结构，才能让智能体做出恰当的主动关心与提醒？</div>
+      </div>
+    </div>
+
+    <div class="question-item" data-delay="1">
+      <div class="q-index">Q2</div>
+      <div class="q-body">
+        <div class="q-title">递归自我改进（RSI）的终局是什么？现有的 score 能衡量它吗？</div>
+        <div class="q-desc">多数自进化工作本质上在过拟合某个评分。我们正在探索结合知识发现的评估方式，让 RSI 指向真正有意义的发现，而非分数上的自我循环。</div>
+      </div>
+    </div>
+
+    <div class="question-item" data-delay="2">
+      <div class="q-index">Q3</div>
+      <div class="q-body">
+        <div class="q-title">是否存在一种独立于具体工具链的、稳定可靠的 Agent Harness？</div>
+        <div class="q-desc">从 Claude Code 到 Codex，Harness 的形态在不断变化。我们希望抽象出一套更底层的运行哲学，让系统在工具更迭中保持稳定。</div>
+      </div>
+    </div>
+
+    <div class="question-item" data-delay="3">
+      <div class="q-index">Q4</div>
+      <div class="q-body">
+        <div class="q-title">AI 能否参与真正的科学发现，而不只是加速已有范式？</div>
+        <div class="q-desc">结合我们在 AI 与 Science 两侧的理解，我们相信完全由 AI 驱动的发现仍有局限。人与 AI 的协同，可能是通往新知识更现实的路径。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== 开发者 / 页脚 ==================== -->
+<footer class="footer" id="footer">
+  <div class="dev-grid">
+    <div class="dev-block">
+      <h3>ABOUT</h3>
+      <p>问道（Ask the Way）是一个探索以人为中心的记忆、递归自我改进与稳定 Agent Harness 的研究项目。我们相信，好的智能体不仅要能回答问题，更要能理解人、陪伴人、与人一起发现新的问题。</p>
+    </div>
+
+    <div class="dev-block">
+      <h3>DEVELOPERS</h3>
+      <div class="dev-names">
+        <span>开发者 A</span>
+        <span>开发者 B</span>
+        <span>开发者 C</span>
+        <span>开发者 D</span>
+      </div>
+      <p style="margin-top:18px;">来自清华、北大、中科院、港科大、中科大等院校的前沿研究者。</p>
+    </div>
+
+    <div class="dev-block">
+      <h3>PROJECT</h3>
+      <p>
+        项目地址：<a href="https://github.com/your-org/ask-way" target="_blank" rel="noopener">github.com/your-org/ask-way</a><br>
+        模型主页：<a href="https://modelscope.cn/models" target="_blank" rel="noopener">ModelScope · 问道</a><br>
+        联系邮箱：<a href="mailto:hello@ask-way.ai">hello@ask-way.ai</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="dao-mark">道</div>
+    <div>© 2026 问道 · Ask the Way</div>
+  </div>
+</footer>
+
+
+<script>
+/* ==================== 水波纹 Canvas ==================== */
+(function(){
+  const canvas = document.getElementById('ripple');
+  const ctx = canvas.getContext('2d');
+  let ripples = [];
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize(){
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function addRipple(x, y){
+    if(ripples.length > 24) return;
+    ripples.push({ x, y, r: 0, alpha: 0.5, speed: 1.4 + Math.random() * 0.7 });
+  }
+
+  function draw(){
+    const w = canvas.width / dpr;
+    const h = canvas.height / dpr;
+    ctx.clearRect(0, 0, w, h);
+
+    for(let i = ripples.length - 1; i >= 0; i--){
+      const rp = ripples[i];
+      rp.r += rp.speed;
+      rp.alpha *= 0.966;
+
+      if(rp.alpha < 0.008){
+        ripples.splice(i, 1);
+        continue;
+      }
+
+      // 银白湖面上的波纹：深色 + 白色双层
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(40, 55, 85, ${rp.alpha * 0.7})`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, rp.r * 0.75, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(255, 255, 255, ${rp.alpha * 0.9})`;
+      ctx.lineWidth = 1.0;
+      ctx.stroke();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  /* ==================== 鼠标交互 ==================== */
+  const hero = document.getElementById('hero');
+  const glow = document.getElementById('glow');
+  const daoWrap = document.getElementById('daoWrap');
+  const turb = document.getElementById('turb');
+  const disp = document.getElementById('disp');
+
+  let targetRotate = 0;
+  let targetShiftX = 0;
+  let targetShiftY = 0;
+  let currentRotate = 0;
+  let currentShiftX = 0;
+  let currentShiftY = 0;
+  let lastRippleTime = 0;
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // 光斑跟随
+    glow.style.left = x + 'px';
+    glow.style.top = y + 'px';
+
+    // 道字摆动
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const dx = (x - cx) / cx;
+    const dy = (y - cy) / cy;
+
+    targetRotate = dx * 2.2;
+    targetShiftX = dx * 12;
+    targetShiftY = dy * 9;
+
+    // 水波扭曲随鼠标速度变化
+    const speed = Math.hypot(e.movementX || 0, e.movementY || 0);
+    const scale = Math.min(4 + speed * 0.3, 12);
+    disp.setAttribute('scale', scale.toFixed(2));
+
+    // 波纹生成（节流）
+    const now = performance.now();
+    if(now - lastRippleTime > 45){
+      addRipple(x, y);
+      lastRippleTime = now;
+    }
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    targetRotate = 0;
+    targetShiftX = 0;
+    targetShiftY = 0;
+    disp.setAttribute('scale', '4');
+    glow.style.opacity = '0';
+  });
+  hero.addEventListener('mouseenter', () => {
+    glow.style.opacity = '1';
+  });
+
+  function animate(){
+    currentRotate += (targetRotate - currentRotate) * 0.06;
+    currentShiftX += (targetShiftX - currentShiftX) * 0.06;
+    currentShiftY += (targetShiftY - currentShiftY) * 0.06;
+
+    daoWrap.style.transform =
+      `translate(-50%, -50%) translate(${currentShiftX}px, ${currentShiftY}px) rotate(${currentRotate}deg)`;
+
+    const t = performance.now() * 0.00012;
+    const bfX = 0.008 + Math.sin(t) * 0.002;
+    const bfY = 0.016 + Math.cos(t * 1.3) * 0.003;
+    turb.setAttribute('baseFrequency', `${bfX.toFixed(4)} ${bfY.toFixed(4)}`);
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // 点击时产生一圈较大波纹
+  hero.addEventListener('click', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    addRipple(x, y);
+    for(let i = 0; i < 3; i++){
+      setTimeout(() => addRipple(x + (Math.random()-0.5)*30, y + (Math.random()-0.5)*30), i * 70);
+    }
+  });
+})();
+
+
+/* ==================== 滚动渐现 ==================== */
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const delay = parseInt(el.dataset.delay || 0, 10);
+        setTimeout(() => el.classList.add('visible'), delay * 130);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll(
+    '.section-label, .genesis-line, .genesis-divider, .struct-card, .model-card, .question-item'
+  ).forEach(el => observer.observe(el));
+})();
+</script>
+
+</body>
+</html>

@@ -38,13 +38,29 @@ def _qr(m):
     return sorted({(a * a) % m for a in range(m)})
 
 
+_CLS_CACHE = {}
+
+
 def _classes(pool, lo, hi):
-    """具名类(含模类与二次剩余), 供 E2/E3/E4/E8/E9 用"""
+    """具名类(含模类与二次剩余), 供 E2/E3/E4/E8/E9 用。
+
+    **性能修复**: 每个候选都重建这几百个 20000 元素集合, 159 个候选直接卡死。
+    按 (lo,hi,id(pool)) 缓存 —— 同一轮扫描内类库不变。
+    """
+    key = (lo, hi, id(pool))
+    if key in _CLS_CACHE:
+        return _CLS_CACHE[key]
     out = dict(pool)
+    rng = range(lo, hi + 1)
     for m in MODS:
+        qr = set(_qr(m))
+        buckets = {}
+        for n in rng:
+            buckets.setdefault(n % m, set()).add(n)
         for r in range(m):
-            out[f"≡{r}(mod {m})"] = {n for n in range(lo, hi + 1) if n % m == r}
-        out[f"QR(mod {m})"] = {n for n in range(lo, hi + 1) if n % m in _qr(m)}
+            out[f"≡{r}(mod {m})"] = buckets.get(r, set())
+        out[f"QR(mod {m})"] = set().union(*(buckets[r] for r in qr)) if qr else set()
+    _CLS_CACHE[key] = out
     return out
 
 

@@ -1,7 +1,630 @@
 {
- "input": 57,
- "dup_removed": 18,
+ "input": 252,
+ "dup_removed": 93,
  "candidates": [
+  {
+   "A": "回文数_b3",
+   "B": "数位和是平方数",
+   "n": 46,
+   "density": 0.0046,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "QR(mod 18)",
+    "outside": []
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": true,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    16,
+    162,
+    6838,
+    6916,
+    7738,
+    7816,
+    7828
+   ],
+   "score": 3,
+   "why": [
+    "例外稀疏(0.460%)",
+    "例外贴扫描上界(越界或有新例外)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b11",
+   "B": "回文数_b16",
+   "n": 135,
+   "density": 0.0135,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": true,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    5932,
+    6032,
+    6048,
+    6064,
+    6268,
+    6284,
+    6432,
+    7248
+   ],
+   "score": 2,
+   "why": [
+    "例外贴扫描上界(越界或有新例外)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=3",
+   "B": "回文数_b11",
+   "n": 90,
+   "density": 0.009,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     15494
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": true,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    3822,
+    3984,
+    4062,
+    6198,
+    6354,
+    6594
+   ],
+   "score": 2,
+   "why": [
+    "例外贴扫描上界(越界或有新例外)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base3数位和=4",
+   "B": "回文数_b3",
+   "n": 49,
+   "density": 0.0049,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     8,
+     14
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    14,
+    9804,
+    9810,
+    9822,
+    9828
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.490%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=3",
+   "B": "回文数_b3",
+   "n": 46,
+   "density": 0.0046,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    10,
+    3422,
+    3566,
+    3626,
+    4826,
+    5798
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.460%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=4",
+   "B": "回文数_b2",
+   "n": 46,
+   "density": 0.0046,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    244,
+    1000
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.460%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b11",
+   "B": "数位单调不减",
+   "n": 38,
+   "density": 0.0038,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    730,
+    830,
+    852,
+    952,
+    974,
+    1074,
+    1096,
+    2828
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.380%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base3数位和=5",
+   "B": "回文数_b7",
+   "n": 30,
+   "density": 0.003,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    32
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.300%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b6",
+   "B": "回文数_b8",
+   "n": 27,
+   "density": 0.0027,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    968,
+    1036,
+    1044,
+    1120,
+    1428,
+    1436,
+    1512,
+    1570
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.270%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "回文数_b3",
+   "n": 26,
+   "density": 0.0026,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 154,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.260%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "回文数_b5",
+   "n": 25,
+   "density": 0.0025,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 84,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.250%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "回文数_b7",
+   "n": 23,
+   "density": 0.0023,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 76,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.230%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "回文数_b9",
+   "n": 22,
+   "density": 0.0022,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 136,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.220%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "回文数_b11",
+   "n": 21,
+   "density": 0.0021,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 140,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.210%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=3",
+   "B": "回文数_b7",
+   "n": 20,
+   "density": 0.002,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    966,
+    1478,
+    1990,
+    2030,
+    2046,
+    2758
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.200%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "回文数_b4",
+   "n": 19,
+   "density": 0.0019,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 54,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.190%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b7",
+   "B": "回文数_b9",
+   "n": 19,
+   "density": 0.0019,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     1136,
+     2336,
+     4436
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    1136,
+    1248,
+    1536,
+    1618,
+    1936,
+    1992,
+    2336,
+    3082
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.190%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "回文数_b12",
+   "n": 17,
+   "density": 0.0017,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     10,
+     20,
+     30
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 78,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.170%)",
+    "非标准进制"
+   ]
+  },
   {
    "A": "回文数_b3",
    "B": "奇合数",
@@ -23,6 +646,7 @@
    "small_bound": 570,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -41,6 +665,284 @@
    ]
   },
   {
+   "A": "base2数位和=5",
+   "B": "回文数_b2",
+   "n": 16,
+   "density": 0.0016,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     10,
+     20,
+     30
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 44,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.160%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "回文数_b16",
+   "n": 14,
+   "density": 0.0014,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "数位单调不减",
+    "outside": [
+     10,
+     20,
+     30
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 30,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.140%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=3",
+   "B": "回文数_b9",
+   "n": 10,
+   "density": 0.001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 18)",
+    "outside": [
+     6,
+     3776,
+     14474
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    3776,
+    7510,
+    7750,
+    7810,
+    7840,
+    10534
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.100%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=4",
+   "B": "回文数_b3",
+   "n": 10,
+   "density": 0.001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14,
+     22,
+     26
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 26,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    18,
+    20
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.100%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=4",
+   "B": "回文数_b5",
+   "n": 9,
+   "density": 0.0009,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14,
+     22,
+     38
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 38,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    20,
+    22
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.090%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base3数位和=5",
+   "B": "回文数_b12",
+   "n": 8,
+   "density": 0.0008,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14,
+     16,
+     18424
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18424
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.080%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=4",
+   "B": "回文数_b12",
+   "n": 7,
+   "density": 0.0007,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14,
+     13268
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    13268
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.070%)",
+    "非标准进制"
+   ]
+  },
+  {
    "A": "回文数_b5",
    "B": "奇合数",
    "n": 7,
@@ -55,13 +957,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 44,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -79,27 +982,173 @@
    ]
   },
   {
+   "A": "base2数位和=4",
+   "B": "回文数_b11",
+   "n": 6,
+   "density": 0.0006,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     14
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 14,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.060%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b3",
+   "B": "数位积是平方数",
+   "n": 5,
+   "density": 0.0005,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 12)",
+    "outside": [
+     58,
+     884
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 884,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    28,
+    58,
+    88,
+    884
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.050%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b5",
+   "B": "数位单调不减",
+   "n": 5,
+   "density": 0.0005,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 12)",
+    "outside": [
+     10892,
+     11002,
+     11042
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    9892,
+    10892,
+    10992,
+    11002,
+    11042
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.050%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b4",
+   "B": "数位和是平方数",
+   "n": 4,
+   "density": 0.0004,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     40,
+     54,
+     58
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 58,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    8,
+    40,
+    54,
+    58
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.040%)",
+    "非标准进制"
+   ]
+  },
+  {
    "A": "回文数_b5",
    "B": "素数",
    "n": 4,
    "density": 0.0004,
    "kind": "有限稀疏",
    "class_fit": {
-    "class": "Harshad数",
+    "class": "6边形数",
     "outside": [
-     66,
      418,
+     448,
      1266
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 1266,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     66,
@@ -135,6 +1184,7 @@
    "small_bound": 1864,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     296,
@@ -148,8 +1198,8 @@
    ]
   },
   {
-   "A": "半素数",
-   "B": "回文数_b2",
+   "A": "base3数位和=4",
+   "B": "回文数_b7",
    "n": 3,
    "density": 0.0003,
    "kind": "有限稀疏",
@@ -160,13 +1210,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 8,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -200,6 +1251,7 @@
    "small_bound": 1776,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     912,
@@ -212,8 +1264,205 @@
    ]
   },
   {
+   "A": "回文数_b4",
+   "B": "数位积是平方数",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     320
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 12)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 320,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    8,
+    320
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.020%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b5",
+   "B": "数位积是平方数",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     588,
+     594
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 594,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    588,
+    594
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.020%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b6",
+   "B": "数位和是平方数",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     60,
+     72
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 72,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    60,
+    72
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.020%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b7",
+   "B": "数位单调不减",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     1108,
+     2218
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    1108,
+    2218
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.020%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b8",
+   "B": "数位积是平方数",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     110,
+     210
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 12)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 210,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    110,
+    210
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.020%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b9",
+   "B": "数位积是平方数",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     66,
+     7640
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    66,
+    7640
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.020%)",
+    "非标准进制"
+   ]
+  },
+  {
    "A": "半素数",
-   "B": "回文数_b16",
+   "B": "回文数_b11",
    "n": 1,
    "density": 0.0001,
    "kind": "有限稀疏",
@@ -222,13 +1471,14 @@
     "outside": []
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 3)",
-    "class_size": 6666,
-    "coverage": 0.333
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 4,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4
@@ -236,6 +1486,518 @@
    "score": 2,
    "why": [
     "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b11",
+   "B": "数位积是平方数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     66
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": 66,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    66
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b11",
+   "B": "素数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     126
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 12)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 126,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    126
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b2",
+   "B": "数位和是平方数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     56
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": 56,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    56
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b2",
+   "B": "数位积是平方数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     90
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 12)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 90,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    90
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b5",
+   "B": "数位和是平方数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     18
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 12)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 18,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    18
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b6",
+   "B": "数位单调不减",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     10846
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    10846
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b7",
+   "B": "数位积是平方数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     40
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 40,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    40
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b8",
+   "B": "数位和是平方数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     62
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": 62,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    62
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b9",
+   "B": "素数",
+   "n": 1,
+   "density": 0.0001,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     124
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "Harshad数",
+    "class_size": 2954,
+    "coverage": 0.148
+   },
+   "small_bound": 124,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    124
+   ],
+   "score": 2,
+   "why": [
+    "例外稀疏(0.010%)",
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b2",
+   "B": "回文数_b6",
+   "n": 149,
+   "density": 0.0149,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    468,
+    524,
+    536,
+    552,
+    570,
+    576,
+    608,
+    632
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b4",
+   "B": "回文数_b6",
+   "n": 149,
+   "density": 0.0149,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    286,
+    382,
+    524,
+    568,
+    592,
+    614,
+    630,
+    766
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b12",
+   "B": "回文数_b9",
+   "n": 138,
+   "density": 0.0138,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    2336,
+    2458,
+    2524,
+    2536,
+    2548,
+    2572,
+    2584,
+    2614
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base3数位和=4",
+   "B": "回文数_b9",
+   "n": 135,
+   "density": 0.0135,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     8,
+     11438
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    9594,
+    9612,
+    9738,
+    9774,
+    9792
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b12",
+   "B": "回文数_b8",
+   "n": 135,
+   "density": 0.0135,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    1994,
+    2018,
+    2030,
+    2290,
+    2332,
+    2338,
+    2368,
+    2404
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base3数位和=4",
+   "B": "回文数_b11",
+   "n": 130,
+   "density": 0.013,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    4334,
+    4682,
+    5288,
+    5774,
+    5776
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b9",
+   "B": "数位和是平方数",
+   "n": 130,
+   "density": 0.013,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "QR(mod 18)",
+    "outside": []
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    144,
+    234,
+    2536,
+    3436,
+    3454,
+    3526,
+    3544,
+    4336
+   ],
+   "score": 1,
+   "why": [
     "非标准进制"
    ]
   },
@@ -254,6 +2016,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     298,
@@ -264,6 +2027,230 @@
     438,
     470,
     512
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b12",
+   "B": "回文数_b16",
+   "n": 114,
+   "density": 0.0114,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    5234,
+    5406,
+    5592,
+    5608,
+    5748,
+    5834,
+    5920,
+    6106
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "7边形数",
+   "B": "数位单调不减",
+   "n": 103,
+   "density": 0.0103,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": true,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    2090,
+    2498,
+    3280,
+    3718,
+    5326,
+    5512,
+    5928,
+    5950
+   ],
+   "score": 1,
+   "why": [
+    "例外贴扫描上界(越界或有新例外)"
+   ]
+  },
+  {
+   "A": "base3数位和=4",
+   "B": "回文数_b5",
+   "n": 100,
+   "density": 0.01,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    4138,
+    4268,
+    5462,
+    6452,
+    7262
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b11",
+   "B": "回文数_b7",
+   "n": 98,
+   "density": 0.0098,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    1638,
+    1670,
+    1682,
+    1690,
+    1694,
+    1702,
+    1712,
+    1750
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base3数位和=4",
+   "B": "回文数_b16",
+   "n": 90,
+   "density": 0.009,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    7040,
+    11510,
+    12906,
+    12942,
+    12950
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "base2数位和=3",
+   "B": "回文数_b5",
+   "n": 83,
+   "density": 0.0083,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    4596,
+    6310,
+    6756,
+    6906,
+    7326,
+    7638
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b9",
+   "B": "数位单调不减",
+   "n": 80,
+   "density": 0.008,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    2210,
+    3210,
+    3310,
+    3320,
+    3330,
+    3410,
+    3422,
+    3432
    ],
    "score": 1,
    "why": [
@@ -285,6 +2272,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     38,
@@ -316,6 +2304,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     78,
@@ -326,6 +2315,38 @@
     146,
     148,
     266
+   ],
+   "score": 1,
+   "why": [
+    "非标准进制"
+   ]
+  },
+  {
+   "A": "回文数_b11",
+   "B": "回文数_b9",
+   "n": 66,
+   "density": 0.0066,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    2044,
+    2318,
+    2350,
+    2440,
+    2498,
+    2504,
+    2594,
+    2710
    ],
    "score": 1,
    "why": [
@@ -347,6 +2368,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     800,
@@ -361,6 +2383,139 @@
    "score": 1,
    "why": [
     "非标准进制"
+   ]
+  },
+  {
+   "A": "6边形数",
+   "B": "base2数位和=5",
+   "n": 49,
+   "density": 0.0049,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.490%)"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "base3数位和=3",
+   "n": 48,
+   "density": 0.0048,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "≡2(mod 3)",
+    "outside": [
+     4
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 3)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    80,
+    134,
+    350,
+    392,
+    554,
+    1088,
+    1598
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.480%)"
+   ]
+  },
+  {
+   "A": "base2数位和=4",
+   "B": "五边形数",
+   "n": 47,
+   "density": 0.0047,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    18,
+    22
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.470%)"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "base3数位和=4",
+   "n": 42,
+   "density": 0.0042,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 112,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.420%)"
    ]
   },
   {
@@ -381,6 +2536,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     36,
@@ -418,6 +2574,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     104,
@@ -435,6 +2592,456 @@
    ]
   },
   {
+   "A": "8边形数",
+   "B": "数位和是平方数",
+   "n": 37,
+   "density": 0.0037,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 876,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    16,
+    20,
+    24,
+    36,
+    38
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.370%)"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "平方数",
+   "n": 35,
+   "density": 0.0035,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.350%)"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "五边形数",
+   "n": 34,
+   "density": 0.0034,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 436,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.340%)"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "完美幂",
+   "n": 31,
+   "density": 0.0031,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.310%)"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "base3数位和=5",
+   "n": 28,
+   "density": 0.0028,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 68,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.280%)"
+   ]
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "三角数",
+   "n": 24,
+   "density": 0.0024,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 126,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.240%)"
+   ]
+  },
+  {
+   "A": "完美幂",
+   "B": "数位积是平方数",
+   "n": 24,
+   "density": 0.0024,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    14,
+    16,
+    24,
+    56,
+    62,
+    72
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.240%)"
+   ]
+  },
+  {
+   "A": "6边形数",
+   "B": "奇合数",
+   "n": 23,
+   "density": 0.0023,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     20,
+     104
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 662,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    14,
+    18,
+    20,
+    32
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.230%)"
+   ]
+  },
+  {
+   "A": "8边形数",
+   "B": "半素数",
+   "n": 22,
+   "density": 0.0022,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 4)",
+    "outside": [
+     6,
+     38,
+     138
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    20,
+    24,
+    28,
+    32,
+    38
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.220%)"
+   ]
+  },
+  {
+   "A": "三角数",
+   "B": "数位积是平方数",
+   "n": 20,
+   "density": 0.002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     8,
+     68,
+     734
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    6,
+    8,
+    18,
+    60,
+    68,
+    84,
+    90,
+    108
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.200%)"
+   ]
+  },
+  {
+   "A": "五边形数",
+   "B": "数位和是平方数",
+   "n": 20,
+   "density": 0.002,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 606,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    8,
+    12,
+    20,
+    24,
+    38,
+    42,
+    54
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.200%)"
+   ]
+  },
+  {
+   "A": "7边形数",
+   "B": "奇合数",
+   "n": 19,
+   "density": 0.0019,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     20,
+     30,
+     60
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 338,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    14,
+    18,
+    20,
+    24
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.190%)"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "base2数位和=5",
+   "n": 18,
+   "density": 0.0018,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "无数字0",
+    "outside": [
+     10,
+     20,
+     30
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 78,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.180%)"
+   ]
+  },
+  {
    "A": "奇合数",
    "B": "立方数",
    "n": 18,
@@ -449,6 +3056,7 @@
    "small_bound": 128,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -466,26 +3074,92 @@
    ]
   },
   {
-   "A": "奇合数",
-   "B": "完美幂",
+   "A": "三角数",
+   "B": "数位单调不减",
+   "n": 16,
+   "density": 0.0016,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    5356,
+    7412,
+    7424,
+    7546,
+    8076,
+    8326,
+    8546,
+    8646
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.160%)"
+   ]
+  },
+  {
+   "A": "平方数",
+   "B": "数位单调不减",
+   "n": 16,
+   "density": 0.0016,
+   "kind": "有限稀疏",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    6976,
+    8086,
+    8976,
+    9086,
+    9186,
+    9196,
+    9790,
+    10196
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.160%)"
+   ]
+  },
+  {
+   "A": "base3数位和=5",
+   "B": "半素数",
    "n": 15,
    "density": 0.0015,
    "kind": "有限稀疏",
    "class_fit": {
-    "class": "无数字0",
+    "class": "QR(mod 3)",
     "outside": [
-     10,
+     8,
+     14,
      20
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
-   "small_bound": 68,
+   "small_bound": 54,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -495,7 +3169,7 @@
     12,
     14,
     16,
-    20
+    18
    ],
    "score": 1,
    "why": [
@@ -523,6 +3197,7 @@
    "small_bound": 662,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -540,26 +3215,143 @@
    ]
   },
   {
-   "A": "半素数",
-   "B": "奇合数",
+   "A": "7边形数",
+   "B": "半素数",
    "n": 13,
    "density": 0.0013,
    "kind": "有限稀疏",
    "class_fit": {
     "class": "无数字0",
     "outside": [
+     20,
+     30,
+     430
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 430,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    14,
+    18,
+    20,
+    30
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.130%)"
+   ]
+  },
+  {
+   "A": "base2数位和=4",
+   "B": "半素数",
+   "n": 13,
+   "density": 0.0013,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "数位单调不减",
+    "outside": [
      10,
      20
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
-   "small_bound": 38,
+   "small_bound": 46,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.130%)"
+   ]
+  },
+  {
+   "A": "8边形数",
+   "B": "Harshad数",
+   "n": 12,
+   "density": 0.0012,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 18)",
+    "outside": [
+     96,
+     254
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 864,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    34,
+    36,
+    40,
+    54,
+    96,
+    162,
+    254,
+    594
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.120%)"
+   ]
+  },
+  {
+   "A": "base3数位和=5",
+   "B": "数位和是平方数",
+   "n": 12,
+   "density": 0.0012,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     8,
+     14,
+     20
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 46,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -573,7 +3365,46 @@
    ],
    "score": 1,
    "why": [
-    "例外稀疏(0.130%)"
+    "例外稀疏(0.120%)"
+   ]
+  },
+  {
+   "A": "6边形数",
+   "B": "半素数",
+   "n": 11,
+   "density": 0.0011,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     8,
+     14,
+     98
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": 1036,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    14,
+    18,
+    46,
+    82,
+    98
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.110%)"
    ]
   },
   {
@@ -598,6 +3429,7 @@
    "small_bound": 398,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -635,6 +3467,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -665,13 +3498,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -708,6 +3542,7 @@
    "small_bound": 110,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -739,13 +3574,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡1(mod 4)",
-    "class_size": 5000,
-    "coverage": 0.25
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 108,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -780,6 +3616,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -789,6 +3626,44 @@
     6618,
     8718,
     12162
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.070%)"
+   ]
+  },
+  {
+   "A": "base3数位和=3",
+   "B": "数位单调不减",
+   "n": 7,
+   "density": 0.0007,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "QR(mod 12)",
+    "outside": [
+     10904,
+     10914,
+     17468
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    10800,
+    10864,
+    10904,
+    10914,
+    10920,
+    17468
    ],
    "score": 1,
    "why": [
@@ -809,13 +3684,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡1(mod 4)",
-    "class_size": 5000,
-    "coverage": 0.25
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 108,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -844,13 +3720,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡1(mod 4)",
-    "class_size": 5000,
-    "coverage": 0.25
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 24,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -864,6 +3741,184 @@
    "score": 1,
    "why": [
     "例外稀疏(0.070%)"
+   ]
+  },
+  {
+   "A": "base2数位和=3",
+   "B": "素数",
+   "n": 5,
+   "density": 0.0005,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6,
+     15046
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    256,
+    15046
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.050%)"
+   ]
+  },
+  {
+   "A": "base3数位和=4",
+   "B": "半素数",
+   "n": 5,
+   "density": 0.0005,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6,
+     10
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 16,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    16
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.050%)"
+   ]
+  },
+  {
+   "A": "奇合数",
+   "B": "数位积是平方数",
+   "n": 5,
+   "density": 0.0005,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6,
+     12,
+     14
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 14,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    12,
+    14
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.050%)"
+   ]
+  },
+  {
+   "A": "完美幂",
+   "B": "数位单调不减",
+   "n": 5,
+   "density": 0.0005,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     9790,
+     10286,
+     11012
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    9790,
+    10286,
+    10296,
+    11012
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.050%)"
+   ]
+  },
+  {
+   "A": "数位和是平方数",
+   "B": "数位积是平方数",
+   "n": 5,
+   "density": 0.0005,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6,
+     30,
+     52
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 52,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    16,
+    30,
+    52
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.050%)"
    ]
   },
   {
@@ -881,19 +3936,55 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     11096,
     11098,
     11100,
     11102
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.040%)"
+   ]
+  },
+  {
+   "A": "回文数_b10",
+   "B": "数位积是平方数",
+   "n": 4,
+   "density": 0.0004,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "Harshad数",
+    "outside": [
+     76,
+     11002,
+     11108
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 8)",
+    "class_size": 2500,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    76,
+    11002,
+    11010,
+    11108
    ],
    "score": 1,
    "why": [
@@ -914,13 +4005,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 10,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -931,6 +4023,105 @@
    "score": 1,
    "why": [
     "例外稀疏(0.040%)"
+   ]
+  },
+  {
+   "A": "base2数位和=3",
+   "B": "数位和是平方数",
+   "n": 3,
+   "density": 0.0003,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6,
+     10
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 10,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    10
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.030%)"
+   ]
+  },
+  {
+   "A": "base3数位和=3",
+   "B": "数位积是平方数",
+   "n": 3,
+   "density": 0.0003,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     10,
+     36
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 36,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    10,
+    36
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.030%)"
+   ]
+  },
+  {
+   "A": "半素数",
+   "B": "数位和是平方数",
+   "n": 3,
+   "density": 0.0003,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6,
+     12
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 12,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    12
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.030%)"
    ]
   },
   {
@@ -946,13 +4137,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 9)",
-    "class_size": 2222,
-    "coverage": 0.111
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 24,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -962,6 +4154,37 @@
    "score": 1,
    "why": [
     "例外稀疏(0.030%)"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "base2数位和=3",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     6
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": 6,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.020%)"
    ]
   },
   {
@@ -978,17 +4201,50 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 8)",
-    "class_size": 2500,
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
     "coverage": 0.125
    },
    "small_bound": 306,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     108,
     306
+   ],
+   "score": 1,
+   "why": [
+    "例外稀疏(0.020%)"
+   ]
+  },
+  {
+   "A": "Harshad数",
+   "B": "数位积是平方数",
+   "n": 2,
+   "density": 0.0002,
+   "kind": "有限稀疏",
+   "class_fit": {
+    "class": "2的幂",
+    "outside": [
+     66,
+     110
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "QR(mod 12)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": 110,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    66,
+    110
    ],
    "score": 1,
    "why": [
@@ -1008,13 +4264,14 @@
     ]
    },
    "avoid_fit": {
-    "avoids": "≡0(mod 3)",
-    "class_size": 6666,
-    "coverage": 0.333
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
    },
    "small_bound": 10,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -1026,7 +4283,7 @@
    ]
   },
   {
-   "A": "Harshad数",
+   "A": "数位和是平方数",
    "B": "素数",
    "n": 1,
    "density": 0.0001,
@@ -1034,7 +4291,7 @@
    "class_fit": {
     "class": "2的幂",
     "outside": [
-     126
+     10
     ]
    },
    "avoid_fit": {
@@ -1042,17 +4299,138 @@
     "class_size": 6666,
     "coverage": 0.333
    },
-   "small_bound": 126,
+   "small_bound": 10,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
-    126
+    10
    ],
    "score": 1,
    "why": [
     "例外稀疏(0.010%)"
    ]
+  },
+  {
+   "A": "6边形数",
+   "B": "数位积是平方数",
+   "n": 182,
+   "density": 0.0182,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    14,
+    18,
+    22,
+    30,
+    36
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "7边形数",
+   "B": "数位积是平方数",
+   "n": 171,
+   "density": 0.0171,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    14,
+    24,
+    28,
+    30,
+    36,
+    44
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "6边形数",
+   "B": "Harshad数",
+   "n": 161,
+   "density": 0.0161,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡0(mod 3)",
+    "class_size": 6666,
+    "coverage": 0.333
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    44,
+    62,
+    80,
+    104,
+    110,
+    152,
+    164,
+    182
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "7边形数",
+   "B": "base2数位和=4",
+   "n": 161,
+   "density": 0.0161,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    18,
+    20
+   ],
+   "score": 0,
+   "why": []
   },
   {
    "A": "回文数_b10",
@@ -1069,6 +4447,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     1252,
@@ -1079,6 +4458,192 @@
     1352,
     1358,
     1362
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "7边形数",
+   "B": "素数",
+   "n": 153,
+   "density": 0.0153,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     56,
+     176
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    16,
+    22,
+    28,
+    34,
+    40,
+    46,
+    52,
+    56
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "回文数_b10",
+   "B": "回文数_b8",
+   "n": 142,
+   "density": 0.0142,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    1368,
+    1498,
+    1674,
+    2086,
+    2106,
+    2158,
+    2178,
+    2236
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "回文数_b10",
+   "B": "回文数_b12",
+   "n": 139,
+   "density": 0.0139,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    2710,
+    2734,
+    2750,
+    2820,
+    2860,
+    2930,
+    2946,
+    2958
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "base2数位和=5",
+   "B": "数位只含1和2",
+   "n": 134,
+   "density": 0.0134,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "五边形数",
+   "B": "数位单调不减",
+   "n": 134,
+   "density": 0.0134,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    912,
+    1022,
+    1222,
+    2022,
+    2122,
+    2132,
+    2142,
+    2222
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "数位和是平方数",
+   "B": "斐波那契",
+   "n": 134,
+   "density": 0.0134,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    8,
+    54,
+    60,
+    72,
+    78,
+    112,
+    144,
+    150
    ],
    "score": 0,
    "why": []
@@ -1098,6 +4663,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     68,
@@ -1108,6 +4674,131 @@
     98,
     100,
     108
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "6边形数",
+   "B": "数位单调不减",
+   "n": 124,
+   "density": 0.0124,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    922,
+    1022,
+    1032,
+    2176,
+    2618,
+    2628,
+    3740,
+    4356
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "6边形数",
+   "B": "素数",
+   "n": 123,
+   "density": 0.0123,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     560
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    10,
+    16,
+    36,
+    40,
+    66,
+    70,
+    78,
+    100
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "base2数位和=4",
+   "B": "平方数",
+   "n": 121,
+   "density": 0.0121,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    18,
+    20
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "6边形数",
+   "B": "base2数位和=4",
+   "n": 120,
+   "density": 0.012,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    18,
+    20
    ],
    "score": 0,
    "why": []
@@ -1127,6 +4818,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     62,
@@ -1137,6 +4829,66 @@
     222,
     242,
     278
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "base3数位和=5",
+   "B": "三角数",
+   "n": 106,
+   "density": 0.0106,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    22
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "五边形数",
+   "B": "数位积是平方数",
+   "n": 106,
+   "density": 0.0106,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    8,
+    18,
+    22,
+    28,
+    30,
+    32,
+    48
    ],
    "score": 0,
    "why": []
@@ -1156,6 +4908,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     4,
@@ -1185,6 +4938,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     11804,
@@ -1195,6 +4949,36 @@
     12370,
     12384,
     12752
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "7边形数",
+   "B": "Harshad数",
+   "n": 102,
+   "density": 0.0102,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 3)",
+    "class_size": 6667,
+    "coverage": 0.333
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    18,
+    32,
+    50,
+    80,
+    92,
+    96,
+    110,
+    164
    ],
    "score": 0,
    "why": []
@@ -1214,6 +4998,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     292,
@@ -1224,6 +5009,126 @@
     3704,
     4350,
     4552
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "base3数位和=5",
+   "B": "完美幂",
+   "n": 97,
+   "density": 0.0097,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "8边形数",
+   "B": "素数",
+   "n": 93,
+   "density": 0.0093,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    16,
+    22,
+    36,
+    46,
+    56,
+    66,
+    86,
+    116
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "base2数位和=3",
+   "B": "base3数位和=5",
+   "n": 93,
+   "density": 0.0093,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "平方数",
+   "B": "数位积是平方数",
+   "n": 78,
+   "density": 0.0078,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    14,
+    16,
+    22,
+    24,
+    46,
+    52
    ],
    "score": 0,
    "why": []
@@ -1243,6 +5148,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     26,
@@ -1253,6 +5159,131 @@
     126,
     210,
     222
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "base2数位和=4",
+   "B": "完美幂",
+   "n": 63,
+   "density": 0.0063,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "base2数位和=5",
+    "class_size": 2494,
+    "coverage": 0.125
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "base3数位和=5",
+   "B": "五边形数",
+   "n": 61,
+   "density": 0.0061,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    20
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "7边形数",
+   "B": "base2数位和=5",
+   "n": 56,
+   "density": 0.0056,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "完美幂",
+   "B": "数位和是平方数",
+   "n": 55,
+   "density": 0.0055,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": {
+    "class": "QR(mod 3)",
+    "outside": [
+     32
+    ]
+   },
+   "avoid_fit": {
+    "avoids": "≡0(mod 9)",
+    "class_size": 2222,
+    "coverage": 0.111
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    16,
+    24,
+    32,
+    60,
+    64,
+    66
    ],
    "score": 0,
    "why": []
@@ -1275,6 +5306,7 @@
    "small_bound": null,
    "period": null,
    "probe_extends": false,
+   "n_beyond": null,
    "reduction": null,
    "examples": [
     10,
@@ -1285,6 +5317,36 @@
     196,
     214,
     226
+   ],
+   "score": 0,
+   "why": []
+  },
+  {
+   "A": "8边形数",
+   "B": "base2数位和=5",
+   "n": 50,
+   "density": 0.005,
+   "kind": "非周期(疑似无限/稠密)",
+   "class_fit": null,
+   "avoid_fit": {
+    "avoids": "≡1(mod 4)",
+    "class_size": 5000,
+    "coverage": 0.25
+   },
+   "small_bound": null,
+   "period": null,
+   "probe_extends": false,
+   "n_beyond": null,
+   "reduction": null,
+   "examples": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
    ],
    "score": 0,
    "why": []

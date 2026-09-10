@@ -61,7 +61,7 @@ def score(r):
         why.append(f"例外稀疏({r['density']:.3%})")
     if r["probe_extends"]:
         s += 1
-        why.append(f"越界仍有新例外(+{r['n_beyond']})")
+        why.append("例外贴扫描上界(越界或有新例外)")
     if any(k in r["A"] + r["B"] for k in CANON_BASES_HINT):
         pass
     elif any("_b" in x for x in (r["A"], r["B"])):
@@ -94,6 +94,7 @@ def main():
                "small_bound": info.get("small_bound"),
                "period": info.get("period"),
                "probe_extends": (F[-1] >= HI - 4) if F else False,
+               "n_beyond": None,
                "reduction": (pi or {}).get("reduction") if pi and pi.get("invariant") else None,
                "examples": F[:8]}
         row["score"], row["why"] = score(row)
