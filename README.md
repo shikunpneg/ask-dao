@@ -1,80 +1,164 @@
 # ask-dao-machine · 问道
 
-朝闻道，夕死可矣。
+> 朝闻道，夕死可矣。
+>
+> 一台**知识发现机器**：不是问答机，也不只是问题制造机——它有**两条独立的路**，
+> 一条生产**问题**（待解决），一条生产**概念**（待解释）。
 
-## 一句话
+---
 
-不是问答机，是**问题制造机**：输入是母题与日常疑问，输出是良构、可判、带诚实标签（是否已知著名/是否惊喜候选）的问题及其生长路径。
+## 系统总览：两条路
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║  问题路 (Problem Path)  —— 产问题，需解决                                       ║
+║    输入: 外部信息(视觉/听觉/文本) │ 日常问题 │ 母题                              ║
+║    流水: 日常问题 → 前问题 → 科学问题 → 基础领域 → 问题树 → 领域融合              ║
+║    出口: 可判问题清单(带判定路由) → AI4S 执行模块                                ║
+║    标准: 答案成立 / 可判                                                        ║
+╠═══════════════════════════════════════════════════════════════════════════════╣
+║  想象路 (Imagination Path)  —— 产概念，需解释                                   ║
+║    输入: 词                                                                     ║
+║    流水: 组词 → 拆词(深度d) → 还原造句(嵌套/推理/判断/比较) → 成段 → 解释        ║
+║    出口: 被理解的概念 / 理论                                                     ║
+║    标准: 解释语法正确 + 逻辑通畅 + 有推理判断                                     ║
+║    原则(不可动摇): 每个词都有意义，只不过是我们缺少想象力，无法理解它。            ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+```
+
+两条路**互相独立，各有各的成功标准**：
+- 想象路的概念**不是拿来"解决"的**，是拿来**"解释/理解"**的。
+- 不许用问题路的逻辑（"是否有真实所指""是否已研究""是否新"）去评判想象路的概念——那是范畴错误。
+
+---
+
+## 五模块架构
+
+```
+① 感受模块 → ② 问题制造模块 → ③ 执行模块(AI4S)
+  (视觉/听觉/文本)   (日常→前问题→科学问题      (解题)
+                     →基础领域→问题树→融合)
+                          ↑
+                    ④ 想象模块 (造词→拆词→还原造句→成段→解释)
+```
+
+| 模块 | 状态 | 工具 |
+|---|---|---|
+| ① 感受 | 视觉(最小) / 网页文本 / arXiv | `perception_module.py` `web_experience.py` `arxiv_miner.py` |
+| ② 问题制造 | 全通 | `corpus_to_problems.py` `counterex_engine.py` `territory_engine.py` `all_domains_engine.py` |
+| ③ 执行(AI4S) | 最小 harness | `ai4s_harness.py` |
+| ④ 想象 | 五步全通 | 见下 |
+
+---
 
 ## 快速开始
 
 ```bash
-# 无需安装也能跑(纯标准库)
-cd ask-dao-machine
-set PYTHONPATH=src          # Windows PowerShell: $env:PYTHONPATH='src'
+git clone https://github.com/shikunpneg/ask-dao-machine && cd ask-dao-machine
+export PYTHONPATH=src          # Windows PowerShell: $env:PYTHONPATH='src'
+
+# 全引擎 + 可视化 + 新颖性门
 python -m ask_dao_machine all --out out/demo
 
-# 或安装为包
-pip install -e .
-ask-dao-machine math --out out/math
+# 两条路统一入口
+python tools/run_paths.py problem --input daily --q "为什么黑洞会蒸发?"
+python tools/run_paths.py problem --input text  --src <语料文件>
+python tools/run_paths.py problem --input motif --m "质数"
+python tools/run_paths.py imagine --word 记忆调性 --depth 3
+python tools/run_paths.py imagine --pairs 经济 信息
 ```
 
-产物：
-- `out/demo/problems_math.json`、`problems_aesthetics.json` —— 问题集（含出处链）
-- `out/demo/viz/index.html` —— **可视化**（双击打开；每个问题展开可见 母题链→模板→参数→判定记录→诚实标签，树形展示生长关系）
+---
 
-## 架构
+## 问题路详解
+
+**输入接口**（三种）：
+
+| 输入 | 说明 | 工具 |
+|---|---|---|
+| 外部信息 | 视觉(图像结构) / 听觉 / 文本(语料/网页/arXiv) | `perception_module.py` `web_experience.py` `arxiv_miner.py` |
+| 日常问题 | "为什么X?" "X有多少?" → 定型为科学问题 | `question_refiner.py` |
+| 母题 | 领域母题 → 方向模板 → 实例化问题 | `registry.py` `make_ledger.py` |
+
+**流水线**：
+```
+日常问题 → 前问题 → 科学问题 → 基础领域 → 问题树 → 领域融合
+```
+- 反例驱动：`counterex_engine.py`（例外集 → 刻画/有限性/密度问题）
+- 问题树：`territory_engine.py`（Spec → L0–L5 问题，自动分型 char/holds）
+- 全领域并行：`all_domains_engine.py`（14 领域 × 14 进程）
+- 领域融合：`deep_fusion.py`（操作子×结构）、`field_fusion.py`（领域级，含结构桥梁判据）
+- 新问题判定：`novelty_gate.py`（OEIS 实查 + 结构可推性 + 显著性证书）
+- 执行：`ai4s_harness.py`（独立验证 + 裁决回灌）
+
+**诚实纪律**：N3（世界新问题）至今 = 0，不许粉饰；"检索未见" ≠ "新"。
+
+---
+
+## 想象路详解（五步）
+
+**输入接口**：**词**（任意词，或词对）
+
+| 步 | 做什么 | 工具 |
+|---|---|---|
+| ① 组词 | 穷尽领域专业词组合（82×82 = 6642） | `word_fusion.py` `word_understand.py` |
+| ② 拆词 | 问"它是什么?" → 拆实体 → 再问 → 可再拆？ **深度 d 是变量** | `depth_sentence.py` `depth_batch.py` |
+| ③ 还原造句 | 从底往上还原；**嵌套 + 推理 + 判断 + 比较** | `reconstruct*.py` |
+| ④ 成段 | 定义 → 判断 → 比较 → 结论 | `reconstruct_judge.py` `reconstruct_compare.py` |
+| ⑤ 解释 | 指什么现象/机制/深问 | `understand_deep.py` |
+
+**范例（记忆调性）**：
+> 记忆调性，若是一个真实概念，指的是：记忆不是平铺的档案，而是围绕某些"主音"组织。
+> **据此可以推断**：失忆不是记忆的"丢失"，而是记忆的"调性崩溃"。
+> **更进一步**：记忆有调性，恰恰保证了人类能更高效地分配精力。
+> **但必须区分**：失忆症是一种疾病，而记忆调性是正常现象——正如"心律失常"是病，"心跳有节律"是正常。
+> **因此**，记忆调性回答"正常记忆如何组织"，失忆症回答"组织被摧毁时发生什么"。
+
+**详版**：见 [`docs/IMAGINATION_MODULE.md`](docs/IMAGINATION_MODULE.md)
+
+---
+
+## 目录结构
 
 ```
-assets/registry.json (86 母题登记库)
-        │
-src/ask_dao_machine/
-   registry.py        母题库: 数学核心32(可实例化) + 全域54(物理/生物/心理/信息/工程/伦理/美学/语言/元层)
-   model.py           数据模型: ProblemRecord(出处链) / ProblemSet / 状态机(真·假·悬置·待实验)
-   judges_math.py     判定原语(纯函数): 阈值扫描/存在例证/结构反例/构造/表对照
-   math_engine.py     数学问题制造器(25 题/1.4s)
-   aesthetics_engine.py 美学问题制造器(8 题, 判定权=人类/实验)
-   pipeline.py        ProblemMaker: 统一入口 run(domain) → ProblemSet
-   viz.py             可视化构建: ProblemSet+Registry → data.js + index.html
-   cli.py             CLI
+ask-dao-machine/
+├── src/ask_dao_machine/    # 包: 引擎/判定器/母题库/可视化/CLI
+├── tools/                  # ~100 个工具: 两条路的引擎与探针
+├── docs/                   # 设计/计划/日志/实验记录
+│   ├── ARCHITECTURE_V3.md      # 五模块总图
+│   ├── IMAGINATION_MODULE.md   # 想象路五步详解
+│   ├── EXECUTION_LOG.md        # R1–R90 逐轮执行日志
+│   ├── EXPERIMENT_RECORD.md    # 完整实验史
+│   ├── LONG_PLAN_V2.md         # 长程计划
+│   └── K2_LEDGER.md            # 证据推进台账
+├── tests/                  # 冒烟测试
+├── handoff/                # 交接包(提示词/上下文/快照)
+└── out/demo/               # 产物(问题清单/概念/可视化)
 ```
 
-## 诚实层（产品纪律）
+---
 
-- **状态**只来自判定器：`真`(构造/验证到上限) `假`(反例/结构反例) `悬置`(开放·命中著名问题如实标注) `待实验/待评审`。
-- **新颖性双标签**：命中内置"著名问题签名"→ `已知`；未命中 → `惊喜候选(需查证)`，**不冒充新**。
-- 每个问题记录都带 provenance（生长步骤），可视化据此解释"为什么是这么长出来的"，而不是一段凭空文字。
+## 当前产出
 
-## 扩展：如何加域/加母题
+| 路 | 产出 |
+|---|---|
+| 问题路 | 问题清单 260+ 条（含判定路由）；跨进制规律（harness 13 条 confirmed） |
+| 想象路 | 6642 组合词；概念树（自然深度 3）；3 个完整论证段落；6 个深度解释 |
 
-1. 加母题：编辑 `src/ask_dao_machine/assets/registry.json`（name/type/note）。
-2. 加域引擎：实现 `run(limits) -> (roots:[TreeRoot], records:[ProblemRecord])`，注册进 `pipeline.py` 的 `engines`。
-3. 加模板/判定：数学域在 `math_engine.py` 内用 `judges_math` 原语组合。
+---
 
-## 路线
+## 诚实边界
 
-- v0.1 单文件原型 → **v0.2 本产品**：包结构 / CLI / 出处链 / 可视化
-- 下一件：registry 其余 54 个母题逐域接通判定器（物理对称×守恒最先）；更多数学模板扩大惊喜候选率
+1. **N3（世界新问题）至今 = 0** —— 机器能产"真问题""已知·未解问题""参照系未见候选"，但**没有一条通过三重门槛**。
+2. **"检索未见" ≠ "新"** —— 手头参照系只有 OEIS + 检索；文献门需人/联网。
+3. **想象路的成功标准是解释，不是真实所指** —— 不许用问题路逻辑评判。
+4. **显著性 > 新颖性** —— 任选参数的序列同样"OEIS 未见"，唯一拦得住的是显著性证书。
 
-（仓库：https://github.com/shikunpeng/ask-dao-machine —— 推送前请先在本机配置 git 凭证）
+---
 
+## 版本
 
-## 引擎与工具全景（v0.18）
-- 引擎：math(25) records(28) combo(23) fusion(4) ling(3) direction(4) break(纪录复核) sparse(参数族)
-- 工具：oeis_check/sweep(OEIS 离线索引 39.9 万) | big_score / **big_score_ev(证据门)** | tension_detector(v0/v1 张力) |
-  method3_gen_tension(张力注入) | cross_explore(METHOD3 管线) | iterate(迭代环) | make_ledger | humanities_math/sig
-- **R22 新增**：`s2_bounded`(S2 有界性滑窗复算·纠错) | `tri_verifiers`(真三域验证器·过参数敏感性) |
-  `cross_md_v4`(真F1门槛 + 名义三域审计 + 分层) | `p_A5_yanyi`(言不尽意→最小文法类分离) |
-  `build_tree_viz`(**母题树生长 + 树交叉可视化**)
-- 文档：MASTER_PLAN / METHODOLOGY3 / PLAN_TENSION_DETECTOR / BIG_PROBLEMS / MOTIF_DEFINITION /
-  DESIGN / EXPLORATION_REPORT / EXPERIMENT_RECORD(全史) / EXECUTION_LOG(逐轮记录) / novelty_ledger(台账)
-- 可视化：`out/demo/viz/index.html`(问题树) 与 `out/demo/viz/tree.html`(**树生长+树交叉+敏感性曲线+诚实层**)
+- v0.1 单文件原型 → v0.2 包结构 / CLI / 出处链 / 可视化
+- **v0.3 两条路**（本版）：问题路 + 想象路，统一入口 `tools/run_paths.py`
 
-## 纪律（血泪教训）
-1. 状态只来自判定器；2. 当务分必须走 `big_score_ev` 证据门（关键词版会自灌水）；
-3. **N3 至今为 0，不许粉饰**；4. 自纠错优先（每次自纠都让候选缩水，这才是对的）；
-5. 别把"名义三域"当成果——第三域必须**进入计算**且结果随其参数变化（v3 实测：50 条三域候选真三域为 0）；
-6. 别用"长度≥N"冒充良构门槛（需对象+量词域+判据三元）；7. 别把"运行最大值单调"当趋势发现。
-
-## 路线
-- 下一步：经验/感知前端（摄像头/麦克风 → 结构化观测 → 日常疑问 → 真问题 → AI4S），见 `handoff/03_NEXT_STEPS.md` D 节。
+（仓库：https://github.com/shikunpneg/ask-dao-machine）

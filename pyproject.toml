@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ask-dao-machine"
-version = "0.1.0"
-description = "问题制造器: 母题库 × 组合引擎 × 判定器 × 出处链 (Problem Maker with full provenance)"
+version = "0.3.0"
+description = "知识发现机器: 两条路(问题路产问题/想象路产概念) + 母题库 + 判定器 + 出处链"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "ask-dao" }]
-keywords = ["problem-generation", "motifs", "philosophy-of-science", "knowledge-machine"]
+keywords = ["knowledge-discovery", "problem-generation", "imagination", "motifs", "philosophy-of-science"]
 
 [project.scripts]
 ask-dao-machine = "ask_dao_machine.cli:main"
