@@ -56,11 +56,15 @@ def _classes(hi=HI):
     }
 
 
+# Phase 3 (Axis S) 规模化: 多进制 × 多阈值
+BASES = (3, 4, 5, 7, 10, 11, 16)
+
+
 def _specs():
     out = []
     cls = _classes()
-    for b in (10, 3):
-        for k in (3, 4, 5):
+    for b in BASES:
+        for k in (2, 3, 4):
             out.append(_spec(b, k, cls))
     return out
 

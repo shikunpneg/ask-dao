@@ -85,9 +85,13 @@ def _self_number_spec(b, cls, lo=4, hi=HI):
                 step=1, quantity=f"n ∈ [4,{HI}]; 进制 b={b}")
 
 
+# Phase 3 (Axis S) 规模化: 多进制形成稀疏度梯度(进制越大越少人做)
+BASES = (2, 3, 5, 10, 16)
+
+
 def _specs():
     out = []
-    for b in (2, 3, 10):
+    for b in BASES:
         cls = _classes(b)
         for a, bb in (("回文数", "平方数"), ("回文数", "三角数"), ("回文数", "素数")):
             out.append(_sum_spec(b, a, bb, cls))
