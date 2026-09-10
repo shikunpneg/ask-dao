@@ -1,0 +1,442 @@
+{
+ "T4_evo_game": [
+  {
+   "game": "鹰鸽(Hawk-Dove)",
+   "n": 2,
+   "ess_pure": [],
+   "grid": 11,
+   "exceptions": 11,
+   "exc_density": 1.0,
+   "exc_head": [
+    {
+     "x0": [
+      0.083,
+      0.917
+     ],
+     "end": [
+      0.667,
+      0.333
+     ]
+    },
+    {
+     "x0": [
+      0.167,
+      0.833
+     ],
+     "end": [
+      0.667,
+      0.333
+     ]
+    },
+    {
+     "x0": [
+      0.25,
+      0.75
+     ],
+     "end": [
+      0.667,
+      0.333
+     ]
+    },
+    {
+     "x0": [
+      0.333,
+      0.667
+     ],
+     "end": [
+      0.667,
+      0.333
+     ]
+    }
+   ]
+  },
+  {
+   "game": "协调(Coordination)",
+   "n": 2,
+   "ess_pure": [
+    0,
+    1
+   ],
+   "grid": 11,
+   "exceptions": 1,
+   "exc_density": 0.091,
+   "exc_head": [
+    {
+     "x0": [
+      0.333,
+      0.667
+     ],
+     "end": [
+      0.333,
+      0.667
+     ]
+    }
+   ]
+  },
+  {
+   "game": "雪堆(Snowdrift)",
+   "n": 2,
+   "ess_pure": [
+    0
+   ],
+   "grid": 11,
+   "exceptions": 0,
+   "exc_density": 0.0,
+   "exc_head": []
+  },
+  {
+   "game": "囚徒(Prisoner)",
+   "n": 2,
+   "ess_pure": [
+    1
+   ],
+   "grid": 11,
+   "exceptions": 0,
+   "exc_density": 0.0,
+   "exc_head": []
+  },
+  {
+   "game": "RPS(石头剪刀布)",
+   "n": 3,
+   "ess_pure": [],
+   "grid": 55,
+   "exceptions": 55,
+   "exc_density": 1.0,
+   "exc_head": [
+    {
+     "x0": [
+      0.083,
+      0.083,
+      0.833
+     ],
+     "end": [
+      0.775,
+      0.039,
+      0.186
+     ]
+    },
+    {
+     "x0": [
+      0.083,
+      0.167,
+      0.75
+     ],
+     "end": [
+      0.754,
+      0.165,
+      0.081
+     ]
+    },
+    {
+     "x0": [
+      0.083,
+      0.25,
+      0.667
+     ],
+     "end": [
+      0.653,
+      0.27,
+      0.077
+     ]
+    },
+    {
+     "x0": [
+      0.083,
+      0.333,
+      0.583
+     ],
+     "end": [
+      0.613,
+      0.301,
+      0.086
+     ]
+    }
+   ]
+  },
+  {
+   "game": "含内点的3策略",
+   "n": 3,
+   "ess_pure": [],
+   "grid": 55,
+   "exceptions": 55,
+   "exc_density": 1.0,
+   "exc_head": [
+    {
+     "x0": [
+      0.083,
+      0.083,
+      0.833
+     ],
+     "end": [
+      0.775,
+      0.039,
+      0.186
+     ]
+    },
+    {
+     "x0": [
+      0.083,
+      0.167,
+      0.75
+     ],
+     "end": [
+      0.754,
+      0.165,
+      0.081
+     ]
+    },
+    {
+     "x0": [
+      0.083,
+      0.25,
+      0.667
+     ],
+     "end": [
+      0.653,
+      0.27,
+      0.077
+     ]
+    },
+    {
+     "x0": [
+      0.083,
+      0.333,
+      0.583
+     ],
+     "end": [
+      0.613,
+      0.301,
+      0.086
+     ]
+    }
+   ]
+  }
+ ],
+ "T5_comp_ling": [
+  {
+   "file": "histmath.md",
+   "chars": 757688,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.476,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     12.02
+    ],
+    [
+     2,
+     11.34
+    ],
+    [
+     3,
+     10.94
+    ],
+    [
+     4,
+     9.65
+    ]
+   ]
+  },
+  {
+   "file": "kuhn_structure.md",
+   "chars": 126351,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.529,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     19.91
+    ],
+    [
+     2,
+     16.46
+    ],
+    [
+     3,
+     14.25
+    ],
+    [
+     4,
+     13.04
+    ]
+   ]
+  },
+  {
+   "file": "milestones.md",
+   "chars": 2865839,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.444,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     31.07
+    ],
+    [
+     2,
+     18.21
+    ],
+    [
+     3,
+     15.99
+    ],
+    [
+     4,
+     14.49
+    ]
+   ]
+  },
+  {
+   "file": "popper_logic.md",
+   "chars": 156888,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.533,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     21.83
+    ],
+    [
+     2,
+     17.74
+    ],
+    [
+     3,
+     15.7
+    ],
+    [
+     4,
+     14.26
+    ]
+   ]
+  },
+  {
+   "file": "strevens_knowledge.md",
+   "chars": 272786,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.471,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     19.5
+    ],
+    [
+     2,
+     17.72
+    ],
+    [
+     3,
+     16.22
+    ],
+    [
+     4,
+     15.45
+    ]
+   ]
+  },
+  {
+   "file": "whys.md",
+   "chars": 607694,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.461,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     16.63
+    ],
+    [
+     2,
+     12.76
+    ],
+    [
+     3,
+     11.59
+    ],
+    [
+     4,
+     10.83
+    ]
+   ]
+  },
+  {
+   "file": "中国哲学史第2版.md",
+   "chars": 532992,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.475,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     16.07
+    ],
+    [
+     2,
+     11.26
+    ],
+    [
+     3,
+     10.08
+    ],
+    [
+     4,
+     9.27
+    ]
+   ]
+  },
+  {
+   "file": "哲学100问_套装共3册_零基础哲学入门读物_一部深邃_古典_诗意_浪漫的极简西方哲学史_喜马拉雅超",
+   "chars": 779670,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.504,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     15.32
+    ],
+    [
+     2,
+     13.05
+    ],
+    [
+     3,
+     12.34
+    ],
+    [
+     4,
+     11.59
+    ]
+   ]
+  },
+  {
+   "file": "西方哲学史_英汉对照_共2册_美_弗兰克_梯利_Frank_Thilly_贾辰阳解本远_z_libr",
+   "chars": 2596111,
+   "menzerath_monotone": 1.0,
+   "zipf": 0.463,
+   "exception": false,
+   "profile_head": [
+    [
+     1,
+     31.77
+    ],
+    [
+     2,
+     25.59
+    ],
+    [
+     3,
+     21.81
+    ],
+    [
+     4,
+     19.66
+    ]
+   ]
+  }
+ ]
+}

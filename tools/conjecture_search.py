@@ -93,12 +93,37 @@ def build_pool(hi=HI):
         "三角数": tri, "五边形数": pent, "半素数": semi, "完美幂": perf,
         "斐波那契": fib, "2的幂": p2, "Harshad数": _harshad(hi),
     }
-    for b in (2, 3, 4, 5, 7, 10, 16):
+    for b in (2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16):
         pool[f"回文数_b{b}"] = _pal(b, hi)
-    # 数位约束
+    # 数位约束(Track 3: 扩池 —— 这些是"判定路由好但少人做"的稀少角落)
     pool["数位只含1和2"] = {n for n in range(1, hi + 1) if set(str(n)) <= {"1", "2"}}
     pool["无数字0"] = {n for n in range(1, hi + 1) if "0" not in str(n)}
+    pool["数位单调不减"] = {n for n in range(1, hi + 1)
+                           if all(a <= b for a, b in zip(str(n), str(n)[1:]))}
+    pool["数位和是平方数"] = {n for n in range(1, hi + 1)
+                             if int(sum(int(c) for c in str(n)) ** 0.5) ** 2 == sum(int(c) for c in str(n))}
+    pool["数位积是平方数"] = {n for n in range(1, hi + 1)
+                             if (lambda p: p > 0 and int(p ** 0.5) ** 2 == p)(
+                                 __import__("math").prod(int(c) for c in str(n)))}
+    # 更多多边数(Track 3)
+    for k in (6, 7, 8):
+        pool[f"{k}边形数"] = {i * ((k - 2) * i - (k - 4)) // 2
+                              for i in range(1, 400)
+                              if 0 < i * ((k - 2) * i - (k - 4)) // 2 <= hi}
+    # 各进制的"各位和 = 定值"结构
+    for b in (2, 3):
+        for t in (3, 4, 5):
+            pool[f"base{b}数位和={t}"] = {n for n in range(1, hi + 1)
+                                          if sum(int(c) for c in _digits(n, b)) == t}
     return pool
+
+
+def _digits(n, b):
+    d = []
+    while n:
+        d.append(n % b)
+        n //= b
+    return d or [0]
 
 
 # ---------------- 和集标记法 ----------------
