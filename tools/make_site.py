@@ -28,19 +28,28 @@ def load_problems():
         return rows
     print("数据源:", src)
     probs = []
-    for r in rows:
+    for i, r in enumerate(rows):
         ev = r.get("evidence") or {}
-        cnt = ev.get("count") if isinstance(ev, dict) else None
-        exc = ev.get("exceptions") if isinstance(ev, dict) else None
         parts = []
-        if cnt:
-            parts.append(f"例外 {cnt} 个")
-        if exc:
-            parts.append("前几个: " + ", ".join(map(str, exc[:6])))
+        if isinstance(ev, dict):
+            if ev.get("count"):
+                parts.append(f"例外 {ev['count']} 个")
+            if ev.get("exceptions"):
+                parts.append("前几个: " + ", ".join(map(str, ev["exceptions"][:6])))
+            if ev.get("last"):
+                parts.append(f"最后例外 {ev['last']}")
+        elif ev:
+            parts.append(str(ev))
+        dom = r.get("domain", "")
+        param = r.get("param")
         probs.append({
+            "id": f"{dom}/{param}" if dom and param is not None else (dom or f"Q{i+1}"),
+            "domain": dom,
+            "type": r.get("type", ""),
             "statement": r.get("statement", ""),
             "evidence": " · ".join(parts),
             "judge_route": r.get("judge_route", "—"),
+            "status": r.get("status", ""),
         })
     return probs
 

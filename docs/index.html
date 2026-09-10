@@ -4,908 +4,1214 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>问道 · ask-dao-machine —— 一台知识发现机器</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<meta name="description" content="问道 · ask-dao-machine —— 一台知识发现机器。两条独立的路：一条产问题（需解决），一条产概念（需解释）。">
+<link rel="icon" href="assets/favicon.png">
 <style>
+  /* ==================================================================
+     设计语言：真实湖面 + 墨纸。全部背景统一为同一张真实湖泊照片
+     （固定 WebGL 水面层），文字压在银白薄雾上，不是一屏一个假渐变。
+     参考 OJO：材质隐喻 / 极疏 / 0–2px 圆角 / 无发光 / 极淡分隔线。
+     ================================================================== */
   :root{
-    --gold:#a8894f;
-    --text-main:#1a1d24;
-    --text-sub:#4a5268;
-    --text-dim:#7a8399;
+    --gold:#9c7c42;
+    --gold-soft:rgba(156,124,66,.42);
+    --ink:#12161c;
+    --sub:#3f4756;
+    --dim:#6f7889;
+    --line:rgba(24,36,56,.13);
+    --veil:247,250,254;          /* 银白薄雾（压在真实湖面上） */
+    --paper:#f7f4ed;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    background:#e9edf5;
-    color:var(--text-main);
-    font-family:'Noto Serif SC',serif;
+    background:#dde5f0;
+    color:var(--ink);
+    font-family:"Songti SC","STSongti-SC","Noto Serif SC","SimSun",serif;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
 
-  /* ==================== 首屏 ==================== */
-  .hero{
-    position:relative;
-    height:100vh;
-    min-height:680px;
-    overflow:hidden;
-    background:#dde3ee;
+  /* ==================== 统一背景：真实湖面 ==================== */
+  #lakeGL{
+    position:fixed;inset:0;
+    width:100vw;height:100vh;
+    display:block;z-index:0;
   }
-  #waterCanvas{
-    position:absolute;inset:0;
-    width:100%;height:100%;
-    display:block;
-  }
-
-  .scroll-hint{
-    position:absolute;
-    bottom:36px;left:50%;
-    transform:translateX(-50%);
-    display:flex;flex-direction:column;align-items:center;gap:10px;
-    color:rgba(60,75,100,0.55);
-    font-size:11px;
-    letter-spacing:.5em;
-    text-indent:.5em;
-    animation:breathe 3.4s ease-in-out infinite;
-    z-index:6;
+  #inkLayer{
+    position:fixed;inset:0;
+    width:100vw;height:100vh;
+    display:block;z-index:30;      /* 压在内容之上，鼠标到哪儿哪儿就有墨点 */
     pointer-events:none;
   }
-  .scroll-hint span{writing-mode:vertical-rl;letter-spacing:.3em;}
-  .scroll-hint::after{
-    content:'';
-    width:1px;height:44px;
-    background:linear-gradient(to bottom, rgba(60,75,100,0.5), transparent);
+
+  /* ==================== 导航 ==================== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:40;
+    display:flex;align-items:center;gap:4px;
+    padding:14px 4vw;
+    background:rgba(var(--veil),.55);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s,background .4s;
   }
+  .nav.solid{background:rgba(var(--veil),.88);border-bottom-color:var(--line);}
+  .nav .brand{
+    font-family:"STKaiti","KaiTi","楷体",serif;
+    font-size:19px;letter-spacing:.22em;margin-right:auto;color:var(--ink);
+  }
+  .nav .brand em{font-style:normal;color:var(--gold);}
+  .nav a{
+    color:var(--sub);text-decoration:none;font-size:13px;
+    padding:7px 11px;border-radius:2px;transition:background .25s,color .25s;
+    white-space:nowrap;
+  }
+  .nav a:hover{background:rgba(18,22,28,.05);color:var(--ink);}
+  .nav a.ghost{border:1px solid var(--gold-soft);color:var(--gold);}
+  @media(max-width:900px){.nav a:not(.ghost){display:none;}}
+
+  /* ==================== 区块：统一薄雾 ==================== */
+  section{
+    position:relative;z-index:2;
+    padding:132px 8vw;
+    background:rgba(var(--veil),.60);
+    border-top:1px solid var(--line);
+    backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);
+  }
+  section.hero{padding:0;background:transparent;border-top:0;backdrop-filter:none;}
+  section.genesis{background:rgba(var(--veil),.34);}
+  section.honesty{background:rgba(252,250,245,.72);}
+
+  .label{
+    font-size:11.5px;letter-spacing:.5em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:24px;font-weight:500;
+    opacity:0;transform:translateY(18px);
+    transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);
+  }
+  .label.visible{opacity:1;transform:none;}
+  h2{
+    font-size:clamp(21px,2.9vw,34px);font-weight:500;letter-spacing:.09em;
+    color:#080a0e;margin-bottom:18px;
+  }
+  h2 em{font-style:normal;color:var(--gold);}
+  .lead{
+    max-width:760px;color:var(--sub);font-size:15px;line-height:2.05;
+    margin-bottom:56px;font-weight:300;
+  }
+  .note{color:var(--dim);font-size:13px;line-height:1.95;font-weight:300;}
+  a.inline{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft);}
+  a.inline:hover{color:#7d6234;}
+
+  /* ==================== 表格（真实结果） ==================== */
+  .data-table{
+    width:100%;border-collapse:collapse;margin:8px 0 22px;
+    font-size:14px;background:rgba(255,255,255,.5);
+  }
+  .data-table caption{
+    text-align:left;color:var(--dim);font-size:12.5px;letter-spacing:.06em;
+    padding:0 0 10px;
+  }
+  .data-table th,.data-table td{
+    padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;
+    font-weight:300;
+  }
+  .data-table th{
+    color:var(--gold);font-weight:500;font-size:12.5px;letter-spacing:.1em;
+    background:rgba(255,255,255,.42);
+  }
+  .data-table td{color:var(--sub);}
+  .data-table tr:hover td{background:rgba(255,255,255,.62);}
+  .data-table td.num{font-variant-numeric:tabular-nums;}
+  .ok{color:#2f6b6b;font-weight:500;}
+  .no{color:#b03a2e;font-weight:500;}
+  .mono{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;}
+
+  /* ==================== 卡片网格 ==================== */
+  .grid{display:grid;gap:2px;background:var(--line);}
+  .grid.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+  .grid.g4{grid-template-columns:repeat(auto-fit,minmax(215px,1fr));}
+  .card{
+    background:rgba(255,255,255,.66);padding:36px 30px;
+    transition:background .45s,transform .45s cubic-bezier(.22,.61,.36,1);
+    opacity:0;transform:translateY(26px);
+  }
+  .card.visible{opacity:1;transform:none;}
+  .card:hover{background:rgba(255,255,255,.9);}
+  .card .idx{font-size:12px;color:var(--gold);letter-spacing:.3em;margin-bottom:20px;}
+  .card h3{font-size:17.5px;font-weight:500;margin-bottom:12px;color:#080a0e;}
+  .card p{font-size:13.5px;line-height:1.95;color:var(--sub);font-weight:300;}
+  .card .en{font-size:11px;color:var(--dim);letter-spacing:.14em;margin-top:14px;}
+
+  /* ==================== 图 ==================== */
+  .figure{margin:56px 0 0;opacity:0;transform:translateY(26px);transition:all .7s;}
+  .figure.visible{opacity:1;transform:none;}
+  .figure img{display:block;width:100%;height:auto;background:var(--paper);border:1px solid var(--line);}
+  .figure figcaption{margin-top:13px;font-size:12.5px;color:var(--dim);line-height:1.9;font-weight:300;}
+  .figure code{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--sub);}
+
+  /* ==================== 首屏 ==================== */
+  .hero{position:relative;height:100vh;min-height:660px;overflow:hidden;}
+  #daoLayer{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;}
+  #daoFallback{
+    position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+    width:min(38vh,300px);height:auto;display:none;z-index:3;
+    filter:drop-shadow(0 6px 26px rgba(20,30,50,.28));
+  }
+  #daoFallback.on{display:block;}
+  .hero-copy{
+    position:absolute;left:0;right:0;bottom:16vh;text-align:center;z-index:4;
+    pointer-events:none;
+  }
+  .hero-copy .line{
+    font-family:"STKaiti","KaiTi","楷体",serif;
+    font-size:clamp(15px,2.1vw,22px);letter-spacing:.5em;text-indent:.5em;
+    color:rgba(32,42,60,.72);text-shadow:0 1px 14px rgba(255,255,255,.55);
+    opacity:0;transform:translateY(14px);transition:all 1.5s ease .4s;
+  }
+  .hero-copy .line.visible{opacity:1;transform:none;}
+  .scroll-hint{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:rgba(60,75,100,.55);font-size:11px;letter-spacing:.5em;text-indent:.5em;
+    animation:breathe 3.4s ease-in-out infinite;z-index:6;pointer-events:none;
+  }
+  .scroll-hint span{writing-mode:vertical-rl;letter-spacing:.3em;}
+  .scroll-hint::after{content:'';width:1px;height:44px;
+    background:linear-gradient(to bottom, rgba(60,75,100,.5), transparent);}
   @keyframes breathe{
     0%,100%{opacity:.35;transform:translateX(-50%) translateY(0);}
     50%{opacity:.8;transform:translateX(-50%) translateY(5px);}
   }
+  .water-hint{
+    position:absolute;left:0;right:0;top:12vh;text-align:center;z-index:4;
+    color:rgba(60,75,100,.5);font-size:12px;letter-spacing:.32em;
+    pointer-events:none;
+  }
 
-  /* ==================== 通用 ==================== */
-  section{position:relative;padding:140px 8vw;}
-  .section-label{
-    font-size:12px;letter-spacing:.5em;
-    color:var(--gold);text-transform:uppercase;
-    margin-bottom:28px;
+  /* ==================== 道生万物 ==================== */
+  .genesis{min-height:96vh;display:flex;flex-direction:column;justify-content:center;
+    align-items:center;text-align:center;gap:14px;}
+  .g-line{
+    font-family:"STKaiti","KaiTi","楷体",serif;
+    font-size:clamp(26px,5vw,58px);color:#080a0e;letter-spacing:.14em;
+    opacity:0;transform:translateY(34px) scale(.96);transition:all 1.2s cubic-bezier(.22,.61,.36,1);
+    text-shadow:0 1px 18px rgba(255,255,255,.5);
+  }
+  .g-line.visible{opacity:1;transform:none;}
+  .g-line .num{color:var(--gold);font-size:.82em;}
+  .g-divider{width:1px;height:0;background:linear-gradient(to bottom,transparent,#4a5268,transparent);
+    transition:height 1.5s ease;margin:4px 0;opacity:.32;}
+  .g-divider.visible{height:56px;}
+  .g-note{margin-top:44px;max-width:640px;color:var(--sub);font-size:13.5px;line-height:2;
+    font-weight:300;}
+
+  /* ==================== 两条路 ==================== */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-bottom:40px;}
+  @media(max-width:820px){.paths{grid-template-columns:1fr;}}
+  .path-card{
+    background:rgba(255,255,255,.68);padding:40px 34px;
+    opacity:0;transform:translateY(26px);transition:all .6s;
+  }
+  .path-card.visible{opacity:1;transform:none;}
+  .path-card h3{font-size:20px;font-weight:500;margin-bottom:6px;color:#080a0e;}
+  .path-card .role{font-size:11.5px;letter-spacing:.16em;color:var(--dim);margin-bottom:20px;
+    font-family:ui-monospace,Consolas,monospace;}
+  .path-card .flow{font-size:13.5px;line-height:2.1;color:var(--sub);font-weight:300;}
+  .path-card .flow b{color:var(--ink);font-weight:500;}
+  .path-card .k{display:inline-block;font-size:11.5px;padding:3px 9px;border:1px solid var(--line);
+    color:var(--sub);margin:14px 6px 0 0;border-radius:2px;}
+
+  /* ==================== 新问题（动态） ==================== */
+  .q-list{margin-top:8px;}
+  .q-item{
+    display:grid;grid-template-columns:64px 1fr 150px;gap:24px;align-items:baseline;
+    padding:26px 0;border-bottom:1px solid var(--line);
+    opacity:0;transform:translateY(22px);transition:all .7s cubic-bezier(.22,.61,.36,1);
+  }
+  .q-item.visible{opacity:1;transform:none;}
+  .q-item .id{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--gold);}
+  .q-item .stmt{font-size:14.5px;line-height:1.95;color:var(--ink);}
+  .q-item .ev{margin-top:9px;font-family:ui-monospace,Consolas,monospace;font-size:11.5px;
+    color:var(--dim);word-break:break-all;}
+  .q-item .st{font-size:11.5px;color:#2f6b6b;text-align:right;}
+  @media(max-width:820px){.q-item{grid-template-columns:1fr;gap:8px;} .q-item .st{text-align:left;}}
+
+  .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;
+    background:var(--line);margin-bottom:42px;}
+  .stat{background:rgba(255,255,255,.66);padding:24px 18px;text-align:center;}
+  .stat .v{font-size:30px;color:var(--gold);font-family:"STKaiti","KaiTi",serif;line-height:1.1;}
+  .stat .l{font-size:12px;color:var(--dim);letter-spacing:.1em;margin-top:8px;}
+
+  /* ==================== 手册入口 ==================== */
+  .docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;background:var(--line);}
+  .doc{
+    display:block;background:rgba(255,255,255,.66);padding:26px 24px;text-decoration:none;
+    color:inherit;transition:background .35s,transform .35s;
     opacity:0;transform:translateY(20px);
-    transition:all .9s cubic-bezier(.22,.61,.36,1);
-    font-weight:500;
   }
-  .section-label.visible{opacity:1;transform:translateY(0);}
+  .doc.visible{opacity:1;transform:none;}
+  .doc:hover{background:rgba(255,255,255,.92);}
+  .doc b{display:block;font-size:15px;font-weight:500;color:#080a0e;margin-bottom:7px;}
+  .doc small{color:var(--dim);font-size:12.5px;line-height:1.8;display:block;font-weight:300;}
+  .doc .arr{display:block;margin-top:12px;color:var(--gold);font-size:12px;}
 
-  .genesis{
-    min-height:100vh;
-    display:flex;flex-direction:column;
-    justify-content:center;align-items:center;
-    text-align:center;
-    background:linear-gradient(180deg,#eef2f8, #f5f7fb);
-    gap:16px;
+  /* ==================== 诚实边界 ==================== */
+  .honesty ol{list-style:none;counter-reset:h;}
+  .honesty li{
+    counter-increment:h;position:relative;padding:22px 0 22px 54px;
+    border-bottom:1px solid var(--line);font-size:14px;line-height:1.95;color:var(--sub);
+    font-weight:300;
   }
-  .genesis-line{
-    font-family:'Ma Shan Zheng',serif;
-    font-size:clamp(28px,5.5vw,64px);
-    color:#08080a;
-    letter-spacing:.14em;
-    opacity:0;
-    transform:translateY(36px) scale(.95);
-    transition:all 1.2s cubic-bezier(.22,.61,.36,1);
+  .honesty li::before{
+    content:counter(h,decimal-leading-zero);
+    position:absolute;left:0;top:22px;color:var(--gold);
+    font-family:ui-monospace,Consolas,monospace;font-size:12.5px;
   }
-  .genesis-line.visible{opacity:1;transform:translateY(0) scale(1);}
-  .genesis-line .num{color:var(--gold);font-size:.8em;}
-  .genesis-divider{
-    width:1px;height:0;
-    background:linear-gradient(to bottom,transparent,#4a5268,transparent);
-    transition:height 1.5s ease;
-    margin:6px 0;opacity:.35;
-  }
-  .genesis-divider.visible{height:64px;}
+  .honesty li b{color:#b03a2e;font-weight:500;}
 
-  .structure{background:linear-gradient(180deg,#f5f7fb, #eef2f8);}
-  .structure h2{
-    font-size:clamp(22px,3vw,36px);
-    font-weight:500;letter-spacing:.08em;
-    margin-bottom:70px;color:#08080a;
+  /* ==================== 页脚 ==================== */
+  footer{
+    position:relative;z-index:2;padding:70px 8vw 44px;
+    background:rgba(248,246,241,.82);border-top:1px solid var(--line);
   }
-  .structure h2 em{font-style:normal;color:var(--gold);}
-  .struct-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:2px;
-    background:rgba(30,40,60,0.08);
-    border:1px solid rgba(30,40,60,0.08);
+  .dev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;}
+  .dev-grid h3{font-size:11.5px;letter-spacing:.32em;color:var(--gold);margin-bottom:16px;}
+  .dev-grid p{font-size:13.5px;line-height:2;color:var(--sub);font-weight:300;}
+  .dev-grid a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft);}
+  footer .bottom{
+    margin-top:52px;padding-top:24px;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    color:var(--dim);font-size:12.5px;flex-wrap:wrap;
   }
-  .struct-card{
-    background:linear-gradient(160deg, rgba(255,255,255,0.92), rgba(242,246,252,0.96));
-    padding:44px 34px;
-    position:relative;overflow:hidden;
-    transition:all .5s cubic-bezier(.22,.61,.36,1);
-    opacity:0;transform:translateY(30px);
-  }
-  .struct-card.visible{opacity:1;transform:translateY(0);}
-  .struct-card:hover{
-    background:linear-gradient(160deg, #ffffff, #f2f6fc);
-    box-shadow:0 24px 56px -24px rgba(30,50,90,0.2);
-  }
-  .struct-card::before{
-    content:'';position:absolute;top:0;left:0;
-    width:100%;height:2px;
-    background:linear-gradient(90deg,transparent,#4a5268,transparent);
-    opacity:0;transition:opacity .5s;
-  }
-  .struct-card:hover::before{opacity:.5;}
-  .struct-num{font-size:13px;color:var(--gold);letter-spacing:.3em;margin-bottom:22px;font-weight:500;}
-  .struct-title{font-size:20px;font-weight:600;margin-bottom:16px;color:#08080a;letter-spacing:.04em;}
-  .struct-desc{font-size:14px;line-height:2;color:var(--text-sub);font-weight:300;}
-
-  /* 真实生成的图（架构图 / 问题生成树）：不套圆角卡片、不加阴影，让图本身说话 */
-  .figure-block{
-    margin:64px 0 8px;opacity:0;transform:translateY(30px);
-    transition:all .6s cubic-bezier(.22,.61,.36,1);
-  }
-  .figure-block.visible{opacity:1;transform:translateY(0);}
-  .figure-block img{display:block;width:100%;height:auto;background:#f6f2e9;
-    border:1px solid rgba(30,40,60,0.14);}
-  .figure-block figcaption{margin-top:14px;font-size:12.5px;line-height:1.9;
-    color:var(--text-dim);letter-spacing:.02em;}
-  .figure-block code{font-family:ui-monospace,Consolas,monospace;font-size:12px;
-    color:var(--text-sub);}
-
-  .models{background:#eef2f8;}
-  .models h2{font-size:clamp(22px,3vw,36px);font-weight:500;letter-spacing:.08em;margin-bottom:20px;color:#08080a;}
-  .models .sub{color:var(--text-sub);font-size:15px;font-weight:300;margin-bottom:64px;max-width:560px;line-height:1.9;}
-  .model-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
-  .model-card{
-    display:block;text-decoration:none;color:inherit;
-    padding:36px 30px;
-    border:1px solid rgba(30,40,60,0.12);
-    background:linear-gradient(150deg, rgba(255,255,255,0.9), rgba(244,248,253,0.94));
-    position:relative;overflow:hidden;
-    transition:all .45s cubic-bezier(.22,.61,.36,1);
-    opacity:0;transform:translateY(26px);
-  }
-  .model-card.visible{opacity:1;transform:translateY(0);}
-  .model-card:hover{border-color:rgba(30,40,60,0.28);transform:translateY(-4px);box-shadow:0 24px 56px -24px rgba(30,50,90,0.24);}
-  .model-card .tag{display:inline-block;font-size:11px;letter-spacing:.2em;color:var(--gold);border:1px solid rgba(168,137,79,0.4);padding:4px 10px;margin-bottom:20px;}
-  .model-card .name{font-size:18px;font-weight:600;color:#08080a;margin-bottom:12px;letter-spacing:.03em;}
-  .model-card .path{font-size:12px;color:var(--text-dim);font-family:monospace;letter-spacing:.02em;word-break:break-all;}
-  .model-card .arrow{position:absolute;right:28px;bottom:28px;color:var(--text-sub);font-size:18px;opacity:.35;transition:all .4s;}
-  .model-card:hover .arrow{opacity:1;transform:translate(4px,-4px);}
-
-  .questions{background:linear-gradient(180deg,#eef2f8, #f5f7fb);}
-  .questions h2{font-size:clamp(22px,3vw,36px);font-weight:500;letter-spacing:.08em;margin-bottom:64px;color:#08080a;}
-  .question-item{display:flex;gap:32px;padding:40px 0;border-bottom:1px solid rgba(30,40,60,0.1);opacity:0;transform:translateY(24px);transition:all .8s cubic-bezier(.22,.61,.36,1);}
-  .question-item.visible{opacity:1;transform:translateY(0);}
-  .question-item:first-of-type{border-top:1px solid rgba(30,40,60,0.1);}
-  .q-index{font-size:13px;color:var(--gold);letter-spacing:.2em;min-width:52px;padding-top:4px;font-weight:500;}
-  .q-body{flex:1;}
-  .q-title{font-size:18px;font-weight:600;color:#08080a;margin-bottom:12px;letter-spacing:.03em;line-height:1.6;}
-  .q-desc{font-size:14px;line-height:2;color:var(--text-sub);font-weight:300;}
-
-  .footer{background:#e6ebf3;padding:120px 8vw 70px;border-top:1px solid rgba(30,40,60,0.1);}
-  .dev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:60px;margin-bottom:90px;}
-  .dev-block h3{font-size:13px;letter-spacing:.4em;color:var(--gold);margin-bottom:28px;font-weight:600;}
-  .dev-block p{font-size:14px;line-height:2.1;color:var(--text-sub);font-weight:300;}
-  .dev-block a{color:#1a1c24;text-decoration:none;border-bottom:1px solid rgba(30,40,60,0.25);transition:all .3s;padding-bottom:2px;}
-  .dev-block a:hover{color:#08080a;border-color:#08080a;}
-  .dev-names{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:4px;}
-  .dev-names span{font-size:14px;color:#1a1c24;font-weight:400;}
-  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-top:40px;border-top:1px solid rgba(30,40,60,0.08);font-size:12px;color:var(--text-dim);letter-spacing:.1em;}
-  .footer-bottom .dao-mark{font-family:'Ma Shan Zheng',serif;font-size:26px;color:#08080a;letter-spacing:.1em;opacity:.85;}
-
-  @media(max-width:768px){
-    section{padding:100px 7vw;}
-    .question-item{gap:18px;}
-    .q-index{min-width:38px;}
-    .footer{padding:90px 7vw 50px;}
-  }
+  footer .mark{font-family:"STKaiti","KaiTi",serif;font-size:22px;color:var(--gold);}
 </style>
 </head>
 <body>
 
-<!-- ==================== 首屏：道 · 银白湖面 ==================== -->
+<!-- 固定背景：真实湖面 + 真实波方程涟漪 -->
+<canvas id="lakeGL"></canvas>
+<!-- 固定前景：全页鼠标墨点粒子 -->
+<canvas id="inkLayer"></canvas>
+
+<nav class="nav" id="nav">
+  <span class="brand">问<em>道</em></span>
+  <a href="#paths">两条路</a>
+  <a href="#knowledge">什么是新知识</a>
+  <a href="#structure">系统结构</a>
+  <a href="#tree">问题生成树</a>
+  <a href="#results">结果与证据</a>
+  <a href="#questions">问题清单</a>
+  <a href="#models">模型</a>
+  <a class="ghost" href="https://github.com/shikunpneg/ask-dao-machine" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+<!-- ==================== 首屏：真实湖面 + 真实书法「道」粒子 ==================== -->
 <section class="hero" id="hero">
-  <canvas id="waterCanvas"></canvas>
-  <div class="scroll-hint">
-    <span>向下问道</span>
+  <canvas id="daoLayer"></canvas>
+  <img id="daoFallback" src="assets/dao_ink.png" alt="道">
+  <div class="water-hint">移动鼠标 —— 水面会留下真实涟漪</div>
+  <div class="hero-copy">
+    <div class="line" id="heroLine">道生一，一生二，二生三，三生万物</div>
   </div>
+  <div class="scroll-hint"><span>向下问道</span></div>
 </section>
 
-
-<!-- ==================== 一生二 ==================== -->
+<!-- ==================== 道生万物 ==================== -->
 <section class="genesis" id="genesis">
-  <div class="genesis-line" data-delay="0">道 生 <span class="num">一</span></div>
-  <div class="genesis-divider"></div>
-  <div class="genesis-line" data-delay="1"><span class="num">一</span> 生 <span class="num">二</span></div>
-  <div class="genesis-divider"></div>
-  <div class="genesis-line" data-delay="2"><span class="num">二</span> 生 <span class="num">三</span></div>
-  <div class="genesis-divider"></div>
-  <div class="genesis-line" data-delay="3"><span class="num">三</span> 生 万 物</div>
+  <div class="g-line" data-delay="0">道 生 <span class="num">一</span></div>
+  <div class="g-divider"></div>
+  <div class="g-line" data-delay="1"><span class="num">一</span> 生 <span class="num">二</span></div>
+  <div class="g-divider"></div>
+  <div class="g-line" data-delay="2"><span class="num">二</span> 生 <span class="num">三</span></div>
+  <div class="g-divider"></div>
+  <div class="g-line" data-delay="3"><span class="num">三</span> 生 万 物</div>
+  <p class="g-note">母题是能生成问题的基元；每个真伪问题向深处分支（L0–L5）；
+    不同的树在<strong>结构桥梁</strong>处交叉，生出新问题。下面就是把这条链跑出来的全部东西。</p>
 </section>
 
+<!-- ==================== 项目目的 · 两条路 ==================== -->
+<section id="paths">
+  <div class="label">Purpose · Two Paths</div>
+  <h2>这台机器只做一件事：<em>发现新知识</em></h2>
+  <p class="lead">已有的 AI4S 生态擅长<strong>解决问题</strong>——给定问题，它能算出答案。
+    但"问题从哪来"这一环长期空缺：<strong>能定义问题、提出问题的系统，远比能解题的系统稀缺。</strong>
+    问道补的正是这一环，它认为知识产出于两条<strong>互相独立</strong>的路。</p>
 
-<!-- ==================== 问道系统结构 ==================== -->
-<section class="structure" id="structure">
-  <div class="section-label">Architecture</div>
+  <div class="paths">
+    <div class="path-card" data-delay="0">
+      <h3>问题路</h3>
+      <div class="role">PROBLEM PATH · 产问题 · 需要"解决"</div>
+      <div class="flow">输入：<b>外部信息（视觉/听觉/文本） · 日常问题 · 母题</b><br>
+        流水：日常问题 → 前问题 → 科学问题 → 基础领域 → 问题树 → 领域融合<br>
+        出口：带判定路由的可判问题清单 → AI4S 执行模块</div>
+      <span class="k">成功标准：答案成立 / 可判</span>
+    </div>
+    <div class="path-card" data-delay="1">
+      <h3>想象路</h3>
+      <div class="role">IMAGINATION PATH · 产概念 · 需要"解释"</div>
+      <div class="flow">输入：<b>词</b><br>
+        流水：组词 → 拆词（深度 d）→ 还原造句（嵌套/推理/判断/比较）→ 成段 → 解释<br>
+        出口：被理解的概念 / 理论</div>
+      <span class="k">成功标准：语法正确 + 逻辑通畅 + 有推理判断</span>
+    </div>
+  </div>
+  <p class="note">两条路互不评判：用问题路的逻辑（"这有真实所指吗""这新吗"）去评判想象路的概念，是范畴错误。<br>
+    想象路的核心原则：<strong>每个词都有意义，只不过是我们缺少想象力，无法理解它</strong>——因此不存在空想，
+    任务不是判断"有没有意义"，而是想出一个自洽的理解。</p>
+</section>
+
+<!-- ==================== 什么是新知识 ==================== -->
+<section id="knowledge">
+  <div class="label">What Counts As New</div>
+  <h2>什么算<em>新</em>知识</h2>
+  <p class="lead">我们反复重定义过"新"。最终确立<strong>三层问题发现模式</strong>与<strong>两种新知识产生方式</strong>。
+    早期只用"K3 且人类未知"当唯一及格线，于是把 K1/K2 的实际产出当成"不够格"——那是错的。</p>
+
+  <table class="data-table">
+    <caption>三层问题发现模式</caption>
+    <tr><th style="width:180px">层</th><th>是什么</th><th style="width:130px">机器能做到</th></tr>
+    <tr><td>K1 提出问题</td><td>把日常困惑 / 知识裂缝，改造成<strong>精确可判</strong>的问题</td><td class="ok">✅</td></tr>
+    <tr><td>K2 推进解答</td><td>对旧问题给出更强证据 / 更大边界</td><td class="ok">✅</td></tr>
+    <tr><td>K3 归纳理论</td><td>从数据归纳出可验证的普遍律</td><td style="color:#9c7c42">⚠ 部分</td></tr>
+  </table>
+
+  <table class="data-table">
+    <caption>两种新知识产生方式</caption>
+    <tr><th style="width:180px">方式</th><th>说明</th></tr>
+    <tr><td>① 提出新问题</td><td>爱因斯坦的追光思想实验不是解答，是问题——但它改变了物理</td></tr>
+    <tr><td>② 旧问题的新解答</td><td><span class="mono">回文数+素数</span> 从 10⁶ 推到 <strong>10⁸ 零例外</strong>——这是新知识</td></tr>
+  </table>
+
+  <table class="data-table">
+    <caption>"新"的三种形态</caption>
+    <tr><th style="width:130px">形态</th><th>含义</th><th style="width:250px">代价</th></tr>
+    <tr><td>陈述新</td><td>这个句子没出现过</td><td>廉价：换个说法就算新</td></tr>
+    <tr><td>对象新</td><td>这个结构没被研究过</td><td>可造：但查证后常被占领</td></tr>
+    <tr><td>接口新</td><td>问题站在刚被解锁的节点上</td><td>稀缺：科学史大问题的真实产地</td></tr>
+  </table>
+  <p class="note">真正的大问题不是"没人问过"，而是"<strong>问不出来</strong>"——
+    它在某个节点之前，既没有问它的动机，也没有答它的工具。</p>
+</section>
+
+<!-- ==================== 系统结构 ==================== -->
+<section id="structure">
+  <div class="label">Architecture</div>
   <h2>问道系统 <em>/</em> 结构</h2>
+  <p class="lead">四个模块支撑两条独立的路：一条把困惑变成可判的问题，一条把词变成被理解的概念。
+    每一步都必须机器实测，不许空转。</p>
 
-  <div class="struct-grid">
-    <div class="struct-card" data-delay="0">
-      <div class="struct-num">01</div>
-      <div class="struct-title">感受模块</div>
-      <div class="struct-desc">接收视觉 / 听觉 / 网络文本，转成结构化观测，长出日常疑问。</div>
-    </div>
-    <div class="struct-card" data-delay="1">
-      <div class="struct-num">02</div>
-      <div class="struct-title">问题制造模块</div>
-      <div class="struct-desc">反例驱动 · 问题树 L0–L5 · 全领域并行扫描 · 领域融合 · 新颖性门。把困惑变成可判的问题。</div>
-    </div>
-    <div class="struct-card" data-delay="2">
-      <div class="struct-num">03</div>
-      <div class="struct-title">执行模块 · AI4S</div>
-      <div class="struct-desc">对问题清单独立验证、求解，裁决回灌。标准：答案成立 / 可判。</div>
-    </div>
-    <div class="struct-card" data-delay="3">
-      <div class="struct-num">04</div>
-      <div class="struct-title">想象模块</div>
-      <div class="struct-desc">组词 → 拆词(深度d) → 还原造句 → 成段 → 解释。把词变成被理解的概念。</div>
-    </div>
-    <div class="struct-card" data-delay="4">
-      <div class="struct-num">05</div>
-      <div class="struct-title">问题路 · Problem Path</div>
-      <div class="struct-desc">产问题，需解决。输入：外部信息 / 日常问题 / 母题。出口：可判问题清单。</div>
-    </div>
-    <div class="struct-card" data-delay="5">
-      <div class="struct-num">06</div>
-      <div class="struct-title">想象路 · Imagination Path</div>
-      <div class="struct-desc">产概念，需解释。输入：词。出口：被理解的概念 / 理论。两条路互相独立。</div>
-    </div>
+  <div class="grid g3">
+    <div class="card" data-delay="0"><div class="idx">01</div><h3>感受模块</h3>
+      <p>视觉 / 听觉 / 网络文本 → 结构化观测，长出日常疑问。</p></div>
+    <div class="card" data-delay="1"><div class="idx">02</div><h3>问题制造模块</h3>
+      <p>反例驱动 · 问题树 L0–L5 · 全领域并行扫描 · 领域融合 · 新颖性门。</p>
+      <div class="en">COUNTEREX · TERRITORY · 14 DOMAINS</div></div>
+    <div class="card" data-delay="2"><div class="idx">03</div><h3>执行模块 · AI4S</h3>
+      <p>对问题清单独立验证、求解，裁决回灌。标准：答案成立 / 可判。</p>
+      <div class="en">INDEPENDENT VERIFICATION</div></div>
+    <div class="card" data-delay="3"><div class="idx">04</div><h3>想象模块</h3>
+      <p>组词 → 拆词（深度 d）→ 还原造句 → 成段 → 解释。</p>
+      <div class="en">WORD → UNDERSTOOD CONCEPT</div></div>
+    <div class="card" data-delay="4"><div class="idx">05</div><h3>问题路 · Problem Path</h3>
+      <p>产问题，需解决。出口：可判问题清单（带判定路由）。</p></div>
+    <div class="card" data-delay="5"><div class="idx">06</div><h3>想象路 · Imagination Path</h3>
+      <p>产概念，需解释。两条路互相独立。</p></div>
   </div>
 
-  <figure class="figure-block" data-delay="6">
+  <table class="data-table" style="margin-top:44px">
+    <caption>关键引擎与它们的纪律</caption>
+    <tr><th style="width:210px">引擎</th><th>作用</th><th style="width:300px">纪律</th></tr>
+    <tr><td class="mono">counterex_engine</td><td>反例驱动：从例外集长出机器<strong>答不出</strong>的问题</td><td>只提机器结算不了的问题</td></tr>
+    <tr><td class="mono">territory_engine</td><td>问题树 L0–L5 分层 + 谱系门</td><td>每爬一层必须机器实测</td></tr>
+    <tr><td class="mono">novelty_gate</td><td>四道真门：机器真判 → OEIS 实查 → 结构可推性 → 显著性证书</td><td>N3 路径已证明可达</td></tr>
+    <tr><td class="mono">all_domains_engine</td><td>14 领域 × 14 进程并行扫描</td><td>全领域覆盖</td></tr>
+    <tr><td class="mono">field_fusion</td><td>领域级融合（含<strong>结构桥梁</strong>判据）</td><td>无共享结构的配对是空洞笛卡尔积</td></tr>
+  </table>
+
+  <figure class="figure" data-delay="6">
     <img src="assets/architecture.svg" alt="问道系统架构图：两条路 + 四模块 + 判定层 + 真实数据流">
-    <figcaption>系统架构 · 每一步都留下可复核的 JSON（图源：<code>tools/arch_diagram.py</code>）</figcaption>
+    <figcaption>系统架构 · 图内每个数字与状态词都对应仓库实现或 <code>out/demo/*.json</code> 的真实记录
+      （生成脚本 <code>tools/arch_diagram.py</code>）</figcaption>
   </figure>
 </section>
 
+<!-- ==================== 问题生成树 ==================== -->
+<section id="tree">
+  <div class="label">Problem Generation Tree</div>
+  <h2>问题生成树 <em>/</em> 真实的生成过程</h2>
+  <p class="lead"><strong>母题</strong>通过组合模板生长为<strong>问题树</strong>，树与树在结构桥梁处交叉融合 → 新问题。
+    问题路分五步：母题 → 前问题 → 科学问题 → 基础领域 → 问题树 → 领域融合，每一步都必须机器实测。</p>
 
-<!-- ==================== ModelScope ==================== -->
-<section class="models" id="models">
-  <div class="section-label">Models</div>
-  <h2>模型运行 · 训练路径</h2>
-  <p class="sub">以下窗口直达 ModelScope 模型页面，覆盖推理运行与训练微调两条路径。</p>
+  <table class="data-table">
+    <caption>下图每一个节点都是机器实际产出的记录（本图为数学域全量 25 条）</caption>
+    <tr><th style="width:170px">图上的东西</th><th>来自数据里的哪一项</th></tr>
+    <tr><td>节点正文</td><td class="mono">problem.statement</td></tr>
+    <tr><td>节点颜色</td><td class="mono">problem.status（真 / 假 / 有限验证 / 悬置）</td></tr>
+    <tr><td>边上的字</td><td class="mono">problem.tree.edge（真实生成操作）</td></tr>
+    <tr><td>多层分支</td><td class="mono">problem.tree.parent（二级生长，如 C1 → C2）</td></tr>
+    <tr><td>跨域 inset</td><td class="mono">derived_motifs.parents / grown_motifs.probe</td></tr>
+  </table>
 
-  <div class="model-list">
-    <a class="model-card" href="https://www.modelscope.cn/studios/skopskp/dao-v-0.3" target="_blank" rel="noopener" data-delay="0">
-      <span class="tag">MODELSCOPE</span>
-      <div class="name">问道 · dao-v-0.3</div>
-      <div class="path">modelscope.cn/studios/skopskp/dao-v-0.3</div>
-      <span class="arrow">↗</span>
-    </a>
-    <a class="model-card" href="https://www.modelscope.cn/studios/skopskp/dao-v-0.2" target="_blank" rel="noopener" data-delay="1">
-      <span class="tag">MODELSCOPE</span>
-      <div class="name">问道 · dao-v-0.2</div>
-      <div class="path">modelscope.cn/studios/skopskp/dao-v-0.2</div>
-      <span class="arrow">↗</span>
-    </a>
-    <a class="model-card" href="https://github.com/shikunpneg/ask-dao-machine/tree/main" target="_blank" rel="noopener" data-delay="2">
-      <span class="tag">GITHUB</span>
-      <div class="name">问道 · 代码仓库</div>
-      <div class="path">github.com/shikunpneg/ask-dao-machine</div>
-      <span class="arrow">↗</span>
-    </a>
-    <a class="model-card" href="https://www.modelscope.cn/studios/skopskp/dao-v-0.3" target="_blank" rel="noopener" data-delay="3">
-      <span class="tag">RUN</span>
-      <div class="name">在线运行 · 全引擎</div>
-      <div class="path">母题库 × 组合引擎 × 判定器 × 新颖性门</div>
-      <span class="arrow">↗</span>
-    </a>
+  <figure class="figure" data-delay="2">
+    <img src="assets/problem_tree.svg" alt="问题生成树：母题根 → 真实生成操作 → 问题 → 判定状态">
+    <figcaption>问题生成树 · 生成脚本 <code>tools/make_problem_tree.py</code>，
+      数据 <code>out/demo/problems_math.json + derived_motifs.json + grown_motifs.json</code></figcaption>
+  </figure>
+</section>
+
+<!-- ==================== 结果与证据 ==================== -->
+<section id="results">
+  <div class="label">Results & Evidence</div>
+  <h2>结果与<em>证据</em></h2>
+  <p class="lead">下面每一张表都是可复核的数字。<strong>负结果与自纠错一并列出</strong>——这台机器最大的产出是验证边界，
+    而不是漂亮话。</p>
+
+  <table class="data-table">
+    <caption>一、证据边界推进（最扎实的产出）：<span class="mono">回文数(base b) + 素数</span> 的例外集</caption>
+    <tr><th style="width:230px">base</th><th style="width:120px">例外数</th><th style="width:160px">最后例外</th><th>状态</th></tr>
+    <tr><td class="mono">4</td><td class="num">5</td><td class="num">4345</td><td class="ok">confirmed</td></tr>
+    <tr><td class="mono">5</td><td class="num">4</td><td class="num">1266</td><td class="ok">confirmed</td></tr>
+    <tr><td class="mono">6</td><td class="num">1</td><td class="num">1855</td><td class="ok">confirmed</td></tr>
+    <tr><td class="mono">7 / 8 / 10 / 12 / 15</td><td class="num">0</td><td>—</td><td class="ok">confirmed</td></tr>
+    <tr><td class="mono">9 / 11 / 13 / 14 / 16</td><td class="num">1</td><td class="num">124 / 126 / 126 / 540 / 539</td><td class="ok">confirmed</td></tr>
+    <tr><td class="mono">2</td><td>持续增长</td><td>贴边界</td><td class="no">rejected</td></tr>
+  </table>
+  <p class="note" style="margin-bottom:52px">base 10 已推到 <strong>10⁸ 零例外</strong>，两种独立实现交叉验证；
+    人类讨论此前止于 ~10⁶（<span class="mono">MO #250504</span> 曾怀疑 999999 是反例）。</p>
+
+  <table class="data-table">
+    <caption>二、机器产出的问题（合计 260+）</caption>
+    <tr><th style="width:280px">来源</th><th>数量</th></tr>
+    <tr><td>跨进制规律</td><td class="num">15</td></tr>
+    <tr><td>反例驱动（机器答不出的）</td><td class="num">11</td></tr>
+    <tr><td>跨域组合</td><td class="num">7</td></tr>
+    <tr><td>科学史未解</td><td class="num">32</td></tr>
+    <tr><td>网页 / arXiv</td><td class="num">~30</td></tr>
+  </table>
+  <p class="note" style="margin-bottom:52px">科学史挖出的真未解：奇完全数 · 曲线与直线比较 · 欧拉-哥德巴赫 …</p>
+
+  <table class="data-table">
+    <caption>三、复核性结果（机器重发现，用来校准自己）</caption>
+    <tr><th style="width:250px">项目</th><th style="width:330px">机器</th><th>已知</th></tr>
+    <tr><td>Tn / TnI 集合类</td><td class="num">224</td><td>Forte 224 <span class="ok">✓</span></td></tr>
+    <tr><td>最大熵集合类</td><td>恰 2 个</td><td>all-interval tetrachords <span class="ok">✓</span></td></tr>
+    <tr><td>多完全数 k = 2,3,4</td><td class="mono">{6,28,496,8128} / {120,672,523776} / {30240,32760}</td><td>OEIS A007539 <span class="ok">✓</span></td></tr>
+  </table>
+
+  <table class="data-table" style="margin-top:52px">
+    <caption>四、想象路产出的概念（成功标准是"解释"，不是"真实所指"）</caption>
+    <tr><th style="width:200px">概念</th><th>核心判断</th></tr>
+    <tr><td>记忆调性</td><td>失忆 = 调性崩溃；记忆调性保证精力分配</td></tr>
+    <tr><td>认知压缩</td><td>理解与失真是同一硬币两面；直觉 = 解压最快路径</td></tr>
+    <tr><td>责任催化</td><td>问责 = 最强催化剂；责任爆炸的临界点</td></tr>
+    <tr><td>资本反馈</td><td>反馈强度决定财富分布形态</td></tr>
+  </table>
+  <p class="note" style="margin-top:18px">
+    完整结果、负结果与 12 次自纠错见 <a class="inline" href="guide/results.html">结果与证据手册</a> ·
+    可视化页 <a class="inline" href="viz/paths.html">paths.html</a>（问题树 + 概念树 + 概念论证）</p>
+</section>
+
+<!-- ==================== 新问题清单（真实数据注入） ==================== -->
+<section id="questions">
+  <div class="label">Open Questions</div>
+  <h2>机器实际跑出来的<em>问题</em></h2>
+  <p class="lead">下列每一条都来自机器跑批的原始记录，带判定路由与证据。
+    <strong>N3（世界新问题）至今为 0，不许粉饰。</strong></p>
+
+  <div class="stat-row" id="statRow"></div>
+  <div class="q-list" id="qList"></div>
+
+  <p class="note" style="margin-top:36px">
+    完整清单（260+ 条，23 个领域）见 <a class="inline" href="viz/paths.html">可视化页</a> ·
+    <a class="inline" href="guide/results.html">结果与证据</a></p>
+</section>
+
+<!-- ==================== 模型运行 / 训练路径 ==================== -->
+<section id="models">
+  <div class="label">ModelScope · Training</div>
+  <h2>模型运行 · <em>训练路径</em></h2>
+  <p class="lead">除两条路之外还有模型这条线。下列入口直达 ModelScope 运行页面，覆盖推理运行与训练微调两条路径。</p>
+
+  <div class="grid g3">
+    <a class="card" href="https://www.modelscope.cn/studios/skopskp/dao-v-0.3" target="_blank" rel="noopener" data-delay="0" style="text-decoration:none">
+      <div class="idx">MODELSCOPE</div><h3>问道 · dao-v-0.3</h3>
+      <p>在线运行页：母题库 × 组合引擎 × 判定器 × 新颖性门。</p>
+      <div class="en">STUDIO · RUN ↗</div></a>
+    <a class="card" href="https://www.modelscope.cn/studios/skopskp/dao-v-0.2" target="_blank" rel="noopener" data-delay="1" style="text-decoration:none">
+      <div class="idx">MODELSCOPE</div><h3>问道 · dao-v-0.2</h3>
+      <p>上一个版本，保留早期实验配置，便于对照。</p>
+      <div class="en">STUDIO · RUN ↗</div></a>
+    <a class="card" href="https://github.com/shikunpneg/ask-dao-machine/tree/main" target="_blank" rel="noopener" data-delay="2" style="text-decoration:none">
+      <div class="idx">GITHUB</div><h3>问道 · 代码仓库</h3>
+      <p>全引擎 + 判定器 + ~100 个工具 + 手册，MIT License。</p>
+      <div class="en">SOURCE ↗</div></a>
   </div>
 </section>
 
+<!-- ==================== 手册 ==================== -->
+<section id="guides">
+  <div class="label">Handbook</div>
+  <h2>使用<em>手册</em></h2>
+  <p class="lead">从架构到命令，从"什么算新知识"到"诚实边界"。全部九篇。</p>
 
-<!-- ==================== 新问题 ==================== -->
-<section class="questions" id="questions">
-  <div class="section-label">Open Questions</div>
-  <h2>我们正在追问的问题</h2>
-
-  <div class="question-list" id="questionList"></div>
-
-  <figure class="figure-block" data-delay="4">
-    <img src="assets/problem_tree.svg" alt="问题生成树：母题根 → 真实生成操作 → 问题 → 判定状态">
-    <figcaption>问题生成树 · 节点正文是机器产出的原始 statement，边上的字是真实生成操作
-      （图源：<code>tools/make_problem_tree.py</code>，数据：<code>out/demo/problems_math.json</code>）</figcaption>
-  </figure>
-
-  <p style="color:var(--text-dim);font-size:13px;margin-top:40px">
-    完整清单（260+ 条，23 个领域）见
-    <a href="viz/paths.html" style="color:var(--gold);border-bottom:1px solid rgba(168,137,79,0.4)">可视化页</a> ·
-    <a href="guide/results.html" style="color:var(--gold);border-bottom:1px solid rgba(168,137,79,0.4)">结果与证据</a>
-  </p>
+  <div class="docs">
+    <a class="doc" href="guide/architecture.html" data-delay="0"><b>架构详解</b><small>四模块 / 两条路 / 关键设计决策</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="guide/problem-path.html" data-delay="1"><b>问题路手册</b><small>三种输入 / 反例驱动 / 问题树 L0–L5 / 新颖性门</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="guide/imagination-path.html" data-delay="2"><b>想象路手册</b><small>五步流程 / 深度变量 d / 成段范例 / 常见误区</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="guide/new-knowledge.html" data-delay="3"><b>什么算新知识</b><small>三层问题发现模式 / 两种新知识产生方式 / 显著性</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="guide/results.html" data-delay="4"><b>结果与证据</b><small>全部可复核数字 / 负结果 / 12 次自纠错</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="guide/honesty.html" data-delay="5"><b>诚实边界</b><small>四条硬边界 / 血泪教训</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="guide/ai4s.html" data-delay="6"><b>AI4S 接口</b><small>问题清单格式 / 裁决回灌 / 闭环</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="guide/quickstart.html" data-delay="7"><b>快速开始</b><small>环境 / 第一次运行 / 常见问题</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="guide/glossary.html" data-delay="8"><b>术语表</b><small>全部术语</small><span class="arr">阅读 →</span></a>
+    <a class="doc" href="viz/paths.html" data-delay="9"><b>可视化</b><small>问题树 + 概念树 + 概念论证</small><span class="arr">打开 →</span></a>
+  </div>
 </section>
 
+<!-- ==================== 诚实边界 ==================== -->
+<section class="honesty" id="honesty">
+  <div class="label">Honest Boundaries</div>
+  <h2>诚实<em>边界</em></h2>
+  <p class="lead">这一节比上面任何一张表都重要。以下六条写在这里，是为了让这台机器不能靠话术变强。</p>
+  <ol>
+    <li><b>N3（世界新问题）至今 = 0。</b>机器能产"真问题""已知·未解问题""参照系未见候选"，
+      但没有一条通过三重门槛。不许粉饰。</li>
+    <li><b>"检索未见" ≠ "新"。</b>手头参照系只有 OEIS + 检索；真正的文献门需要人 / 联网。</li>
+    <li><b>想象路的成功标准是"解释"，不是"真实所指"。</b>不许用问题路的逻辑评判想象路的概念。</li>
+    <li><b>显著性 &gt; 新颖性。</b>任选参数的序列同样"OEIS 未见"——过 OEIS 门是廉价的，
+      唯一拦得住的是<strong>显著性证书</strong>（具名对象的不变量 + 任意选择扰动下保持）。</li>
+    <li><b>验证边界是机器最扎实的产出。</b>例如 <span class="mono">回文数+素数</span> 已被推到 10⁸ 零例外
+      （人类讨论此前止于 10⁶），并用两种独立实现交叉验证。</li>
+    <li><b>73% 的产出无法判定。</b>"不可判" ≠ "已排除"。</li>
+  </ol>
+</section>
 
 <!-- ==================== 页脚 ==================== -->
-<footer class="footer" id="footer">
+<footer id="dev">
   <div class="dev-grid">
-    <div class="dev-block">
+    <div>
       <h3>ABOUT</h3>
-      <p>问道（ask-dao-machine）是一台**知识发现机器**。已有的 AI4S 生态擅长解决问题，却缺"问题从哪来"这一环——能定义问题、提出问题的系统，远比能解题的系统稀缺。问道补的正是这一环。</p>
+      <p>问道（ask-dao-machine）是一台<strong>知识发现机器</strong>。已有的 AI4S 生态擅长解决问题，
+        却缺"问题从哪来"这一环——能定义问题、提出问题的系统，远比能解题的系统稀缺。</p>
     </div>
-    <div class="dev-block">
+    <div>
       <h3>DEVELOPER</h3>
-      <div class="dev-names">
-        <span>shikunpneg</span>
-      </div>
-      <p style="margin-top:18px;">问道项目主理人 · 问题制造器 / 想象路 / 知识发现机器</p>
+      <p>shikunpneg · 问道项目主理人<br>问题制造器 / 想象路 / 知识发现机器</p>
     </div>
-    <div class="dev-block">
+    <div>
       <h3>PROJECT</h3>
-      <p>
-        项目地址：<a href="https://github.com/shikunpneg/ask-dao-machine/tree/main" target="_blank" rel="noopener">github.com/shikunpneg/ask-dao-machine</a><br>
+      <p>项目地址：<a href="https://github.com/shikunpneg/ask-dao-machine" target="_blank" rel="noopener">github.com/shikunpneg/ask-dao-machine</a><br>
         模型主页：<a href="https://www.modelscope.cn/studios/skopskp/dao-v-0.3" target="_blank" rel="noopener">ModelScope · dao-v-0.3</a><br>
-        在线文档：<a href="https://shikunpneg.github.io/ask-dao-machine/" target="_blank" rel="noopener">GitHub Pages</a>
-      </p>
+        在线文档：<a href="guide/README.html">使用手册</a></p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div class="dao-mark">道</div>
-    <div>© 2026 问道 · ask-dao-machine · MIT License</div>
+  <div class="bottom">
+    <div class="mark">道</div>
+    <div>问道 · ask-dao-machine · v0.5.0 · MIT License</div>
+    <div>道生一，一生二，二生三，三生万物</div>
   </div>
 </footer>
 
-
 <script>
-/* ==================================================================
-   平静银白湖面 + 真实涟漪 + 粒子化「道」
-   ================================================================== */
+/* ====================================================================
+   一、真实水面：高度场波方程（ping-pong FBO）+ 真实湖泊照片折射
+   鼠标移动 = 向水面注入水花 → 真实的扩散/干涉/衰减，不是画的同心圆。
+   ==================================================================== */
 (function(){
   'use strict';
-
-  const hero = document.getElementById('hero');
-  const canvas = document.getElementById('waterCanvas');
-  const ctx = canvas.getContext('2d', { alpha: false });
-
-  let W = 0, H = 0;
-  let dpr = Math.min(window.devicePixelRatio || 1, 1.6);
-
-  /* 真实湖面照片 + 真实书法道字 */
-  const lakeImg = new Image();
-  lakeImg.src = 'assets/lake.jpg';
-  const daoImg = new Image();
-  daoImg.src = 'assets/dao_ink.png';
-
-  /* 鼠标 */
-  let mouseX = -9999, mouseY = -9999;
-  let mouseActive = false;
-  let smoothX = -9999, smoothY = -9999;
-
-  /* 时间 */
-  let t0 = performance.now();
-
-  /* ================================================================
-     一、预生成湖面噪声纹理（模拟真实水面的微纹理）
-     ================================================================ */
-  let noiseCanvas = null;
-  const NOISE_SIZE = 512;
-
-  function buildNoise(){
-    noiseCanvas = document.createElement('canvas');
-    noiseCanvas.width = NOISE_SIZE;
-    noiseCanvas.height = NOISE_SIZE;
-    const nc = noiseCanvas.getContext('2d');
-    const img = nc.createImageData(NOISE_SIZE, NOISE_SIZE);
-    const data = img.data;
-
-    for(let i = 0; i < data.length; i += 4){
-      // 多层随机，模拟水面的细微明暗
-      const v = 200 + Math.random() * 55;
-      data[i]     = v;
-      data[i + 1] = v + 4;
-      data[i + 2] = v + 12;
-      data[i + 3] = 255;
-    }
-    nc.putImageData(img, 0, 0);
+  const canvas = document.getElementById('lakeGL');
+  let gl = null;
+  try{ gl = canvas.getContext('webgl', {antialias:false, alpha:false, depth:false,
+                                       preserveDrawingBuffer:false}); }catch(e){ gl = null; }
+  if(!gl){                                   // 无 WebGL：退化为真实照片铺底
+    const c2 = document.createElement('canvas');
+    canvas.replaceWith(c2);
+    c2.id = 'lakeGL';
+    const ctx = c2.getContext('2d');
+    const img = new Image();
+    img.onload = function(){
+      const r = () => {
+        c2.width = innerWidth; c2.height = innerHeight;
+        const s = Math.max(c2.width / img.naturalWidth, c2.height / img.naturalHeight);
+        const w = img.naturalWidth * s, h = img.naturalHeight * s;
+        ctx.drawImage(img, (c2.width - w) / 2, (c2.height - h) / 2, w, h);
+        ctx.fillStyle = 'rgba(247,250,254,0.30)';
+        ctx.fillRect(0, 0, c2.width, c2.height);
+      };
+      addEventListener('resize', r); r();
+    };
+    img.src = 'assets/lake.jpg';
+    window.__waterReady = false;
+    return;
   }
 
-  /* ================================================================
-     二、预渲染「道」字 → 采样为粒子
-     ================================================================ */
-  const particles = [];
-  const dotSprite = document.createElement('canvas');
+  const SIM_BASE = 256;                       // 模拟网格宽度（按视口比例定高，保证涟漪是正圆）
+  let SIM_W = SIM_BASE, SIM_H = 144;
+  let texA, texB, fboA, fboB, lakeTex = null, simProg, drawProg, quad;
 
-  function buildDotSprite(){
-    dotSprite.width = 26;
-    dotSprite.height = 26;
-    const c = dotSprite.getContext('2d');
-    const g = c.createRadialGradient(13, 13, 0, 13, 13, 13);
-    g.addColorStop(0,    'rgba(5,5,8,1)');
-    g.addColorStop(0.30, 'rgba(10,10,14,0.96)');
-    g.addColorStop(0.60, 'rgba(20,22,30,0.55)');
-    g.addColorStop(1,    'rgba(30,34,45,0)');
-    c.fillStyle = g;
-    c.fillRect(0, 0, 26, 26);
+  const VS = 'attribute vec2 p; varying vec2 uv; void main(){ uv=p*0.5+0.5; gl_Position=vec4(p,0,1); }';
+
+  const SIM_FS = `
+  precision highp float;
+  varying vec2 uv;
+  uniform sampler2D u_tex;      // RG=当前高度(16 位)  BA=上一帧高度(16 位)
+  uniform vec2 u_texel;
+  uniform vec3 u_drop;          // xy=位置 uv  z=半径(uv)
+  uniform float u_amp;
+  uniform float u_damp;
+  uniform float u_edge;
+  // 16 位高度编码：h ∈ [-1,1] → t∈[0,1] → (hi, lo)，精度 ~3e-5
+  // 8 位单通道时精度只有 1/255，波前（幅度远小于波峰）会被量化直接抹平。
+  vec2 encH(float h){
+    float t = clamp(h*0.5 + 0.5, 0.0, 1.0) * 255.0;
+    float k = floor(t);
+    return vec2(k/255.0, t - k);
+  }
+  float decH(vec2 v){ return ((v.x + v.y/255.0) - 0.5) * 2.0; }
+  void main(){
+    vec4 c  = texture2D(u_tex, uv);
+    float hC = decH(c.rg);
+    float hP = decH(c.ba);
+    float hL = decH(texture2D(u_tex, uv - vec2(u_texel.x,0.0)).rg);
+    float hR = decH(texture2D(u_tex, uv + vec2(u_texel.x,0.0)).rg);
+    float hU = decH(texture2D(u_tex, uv - vec2(0.0,u_texel.y)).rg);
+    float hD = decH(texture2D(u_tex, uv + vec2(0.0,u_texel.y)).rg);
+    // 波方程离散：h' = (邻域和)*0.5 - 上一帧，再乘阻尼
+    float h = ((hL+hR+hU+hD)*0.5 - hP) * u_damp;
+    // 注入水花（高斯碗形）
+    float d = distance(uv, u_drop.xy);
+    h += u_amp * exp(-(d*d)/max(u_drop.z*u_drop.z, 1e-6));
+    // 边界吸收，避免反射堆叠
+    float bx = smoothstep(0.0, u_edge, uv.x) * smoothstep(0.0, u_edge, 1.0-uv.x);
+    float by = smoothstep(0.0, u_edge, uv.y) * smoothstep(0.0, u_edge, 1.0-uv.y);
+    h *= mix(0.90, 1.0, bx*by);
+    gl_FragColor = vec4(encH(h), encH(hC));
+  }`;
+
+  const DRAW_FS = `
+  precision highp float;
+  varying vec2 uv;
+  uniform sampler2D u_sim;
+  uniform sampler2D u_lake;
+  uniform vec2  u_texel;
+  uniform vec2  u_res;
+  uniform vec2  u_img;        // 湖图原始尺寸
+  uniform float u_time;
+  uniform float u_strength;
+  float decH(vec2 v){ return ((v.x + v.y/255.0) - 0.5) * 2.0; }
+  void main(){
+    float hL = decH(texture2D(u_sim, uv - vec2(u_texel.x,0.0)).rg);
+    float hR = decH(texture2D(u_sim, uv + vec2(u_texel.x,0.0)).rg);
+    float hU = decH(texture2D(u_sim, uv - vec2(0.0,u_texel.y)).rg);
+    float hD = decH(texture2D(u_sim, uv + vec2(0.0,u_texel.y)).rg);
+    vec3 n = normalize(vec3(-(hR-hL)*u_strength, -(hD-hU)*u_strength, 1.0));
+
+    // 湖图按 cover 铺满视口
+    float ir = u_img.x/u_img.y, cr = u_res.x/u_res.y;
+    vec2 suv = uv;
+    if(ir > cr){ float s = cr/ir; suv.x = (uv.x-0.5)*s + 0.5; }
+    else       { float s = ir/cr; suv.y = (uv.y-0.5)*s + 0.5; }
+    suv = clamp(suv + n.xy * 0.014, 0.001, 0.999);
+
+    vec3 col = texture2D(u_lake, suv).rgb;
+
+    // 镜面高光（天光方向固定）+ 波峰波谷明暗
+    vec3 L = normalize(vec3(-0.45, 0.62, 0.65));
+    float sp = pow(max(dot(n, normalize(L+vec3(0.0,0.0,1.0))), 0.0), 90.0);
+    col += sp * vec3(1.0,0.99,0.96) * 1.05;
+    col += n.y * 0.045;
+
+    // 水面本身的银白雾化（保持页面可读）
+    col = mix(col, vec3(0.972,0.980,0.992), 0.16);
+    gl_FragColor = vec4(col, 1.0);
+  }`;
+
+  function sh(type, src){
+    const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+    if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  function prog(fs){
+    const p = gl.createProgram();
+    gl.attachShader(p, sh(gl.VERTEX_SHADER, VS));
+    gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(p);
+    if(!gl.getProgramParameter(p, gl.LINK_STATUS)) console.error(gl.getProgramInfoLog(p));
+    return p;
+  }
+  function tex(w, h){
+    const t = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    return t;
   }
 
-  function buildParticles(){
-    // 从真实书法道字 dao_ink.png 采样粒子，而非网页字体
-    const srcW = 440, srcH = 440;
-    const off = document.createElement('canvas');
-    off.width = srcW;
-    off.height = srcH;
-    const octx = off.getContext('2d');
+  quad = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  simProg = prog(SIM_FS); drawProg = prog(DRAW_FS);
 
-    octx.clearRect(0, 0, srcW, srcH);
-    // 注意：这里**不能**预填任何不透明底色。采样读的是 alpha 通道
-    // （dao_ink.png 用 alpha 承载笔画），一旦预填不透明色，整块画布 alpha 全为 255，
-    // 采样就会对每个像素都生成粒子，「道」字会退化成一个实心方块。
-    // 只有真字体兜底时才需要填色，见下方 else 分支。
+  function bindQuad(p){
+    const loc = gl.getAttribLocation(p, 'p');
+    gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  }
 
-    // 真实墨迹道字，等比覆盖到画布
-    if(daoImg.complete && daoImg.naturalWidth){
-      const s = Math.min(srcW / daoImg.naturalWidth, srcH / daoImg.naturalHeight) * 0.92;
-      const dw = daoImg.naturalWidth * s;
-      const dh = daoImg.naturalHeight * s;
-      octx.drawImage(daoImg, (srcW - dw)/2, (srcH - dh)/2, dw, dh);
-    } else {
-      // 兜底：等宽字体的「道」（湖图/道图尚未加载时）
-      octx.fillStyle = '#fff';
-      octx.textAlign = 'center';
-      octx.textBaseline = 'middle';
-      octx.font = '900 300px "Ma Shan Zheng","STKaiti","KaiTi",serif';
-      octx.fillText('道', srcW/2, srcH/2);
+  function buildSim(){
+    const dpr = 1;
+    SIM_W = SIM_BASE;
+    SIM_H = Math.max(48, Math.min(SIM_BASE, Math.round(SIM_BASE * innerHeight / Math.max(innerWidth, 1))));
+    if(texA){ gl.deleteTexture(texA); gl.deleteTexture(texB); gl.deleteFramebuffer(fboA); gl.deleteFramebuffer(fboB); }
+    texA = tex(SIM_W, SIM_H); texB = tex(SIM_W, SIM_H);
+    fboA = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, fboA);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texA, 0);
+    fboB = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, fboB);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texB, 0);
+    // 清空
+    for(const f of [fboA, fboB]){
+      gl.bindFramebuffer(gl.FRAMEBUFFER, f);
+      gl.clearColor(0,0,0,1); gl.clear(gl.COLOR_BUFFER_BIT);
     }
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  }
 
-    let data;
-    try{
-      data = octx.getImageData(0, 0, srcW, srcH).data;
-    }catch(e){ return; }
+  function planarFallback(){
+    // file:// 打开时浏览器把本地图片当跨源，WebGL 贴图会被拒（SecurityError）。
+    // 这时退化为 2D 直接画真实照片 —— 背景仍是同一张真实湖面，只是没有水面波场。
+    const c2 = document.createElement('canvas');
+    c2.id = 'lakeGL';
+    canvas.replaceWith(c2);
+    const ctx2 = c2.getContext('2d');
+    const img2 = new Image();
+    img2.onload = function(){
+      const r = function(){
+        c2.width = innerWidth; c2.height = innerHeight;
+        const s = Math.max(c2.width / img2.naturalWidth, c2.height / img2.naturalHeight);
+        const w = img2.naturalWidth * s, h = img2.naturalHeight * s;
+        ctx2.drawImage(img2, (c2.width - w) / 2, (c2.height - h) / 2, w, h);
+        ctx2.fillStyle = 'rgba(247,250,254,0.30)';
+        ctx2.fillRect(0, 0, c2.width, c2.height);
+      };
+      addEventListener('resize', r); r();
+    };
+    img2.src = 'assets/lake.jpg';
+    window.__waterMode = 'planar-fallback';
+    window.__lakeReady = true;
+  }
 
-    particles.length = 0;
-
-    const step = 3;
-    const cx = W / 2;
-    const cy = H / 2;
-    const scale = Math.min(W * 0.52, H * 0.56, 430) / srcW;
-
-    for(let y = 0; y < srcH; y += step){
-      for(let x = 0; x < srcW; x += step){
-        // dao_ink.png 墨迹在 alpha 通道（RGB 全白），采样 alpha
-        const a = data[(y * srcW + x) * 4 + 3];
-        if(a > 60){
-          const jx = (Math.random() - 0.5) * step;
-          const jy = (Math.random() - 0.5) * step;
-          const sx = cx + (x + jx - srcW/2) * scale;
-          const sy = cy + (y + jy - srcH/2) * scale;
-
-          if(sx < -40 || sx > W + 40 || sy < -40 || sy > H + 40) continue;
-
-          particles.push({
-            ox: sx, oy: sy,
-            x: sx, y: sy,
-            vx: 0, vy: 0,
-            size: 1.5 + Math.random() * 1.8,
-            alpha: 0.6 + Math.random() * 0.4,
-            stiffness: 0.020 + Math.random() * 0.016,
-            damping: 0.905 + Math.random() * 0.05,
-            // 每粒子的独立相位，用于微抖动
-            phase: Math.random() * Math.PI * 2
-          });
-        }
+  function loadLake(){
+    lakeTex = tex(1,1);
+    const img = new Image();
+    img.onload = function(){
+      try{
+        gl.bindTexture(gl.TEXTURE_2D, lakeTex);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+        window.__lakeSize = [img.naturalWidth, img.naturalHeight];
+        window.__waterMode = 'webgl-water';
+        window.__lakeReady = true;
+      }catch(err){
+        console.warn('湖图贴图失败，降级为平铺照片:', err && err.message);
+        planarFallback();
       }
-    }
+    };
+    img.onerror = function(){ planarFallback(); };
+    img.src = 'assets/lake.jpg';
   }
 
-  /* ================================================================
-     三、涟漪系统 —— 真实湖面涟漪
-     ================================================================ */
-  const ripples = [];
-
-  function addRipple(x, y, strength){
-    if(ripples.length > 16) return;
-    ripples.push({
-      x, y,
-      r: 3,
-      maxR: 180 + Math.random() * 260,
-      alpha: strength || 0.6,
-      speed: 1.4 + Math.random() * 1.0,
-      // 每个涟漪的初始相位，用于打破完美的圆
-      seed: Math.random() * 1000
-    });
-  }
-
-  /* ================================================================
-     四、尺寸
-     ================================================================ */
   function resize(){
-    dpr = Math.min(window.devicePixelRatio || 1, 1.6);
-    W = hero.clientWidth;
-    H = hero.clientHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    buildParticles();
-    buildNoise();
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    canvas.width  = Math.floor(innerWidth  * dpr);
+    canvas.height = Math.floor(innerHeight * dpr);
+    buildSim();
+  }
+  addEventListener('resize', resize);
+
+  /* ---- 涟漪源：鼠标（全页都能激起）+ 偶发自然水花 ---- */
+  const ripples = window.__ripples = [];       // 供粒子系统耦合
+  let pendDrops = [];
+  function addDrop(x, y, amp, r){
+    pendDrops.push({x, y, amp, r});
+    ripples.push({x, y, t: performance.now() / 1000, amp});
+    if(ripples.length > 80) ripples.shift();
+    if(pendDrops.length > 24) pendDrops.shift();
+  }
+  window.__addDrop = addDrop;
+
+  let lastX = -1, lastY = -1;
+  function pointerDrop(cx, cy){
+    const x = cx / innerWidth, y = 1 - cy / innerHeight;
+    const d = Math.hypot(cx - lastX, cy - lastY);
+    if(lastX < 0 || d > 14){
+      addDrop(x, y, 0.22, d > 60 ? 0.040 : 0.020);
+      lastX = cx; lastY = cy;
+    }
+  }
+  addEventListener('pointermove', e => pointerDrop(e.clientX, e.clientY), {passive:true});
+  addEventListener('touchmove', e => { const t = e.touches[0]; if(t) pointerDrop(t.clientX, t.clientY); }, {passive:true});
+  addEventListener('pointerdown', e => addDrop(e.clientX / innerWidth, 1 - e.clientY / innerHeight, 0.62, 0.05));
+
+  let simTexIn = null, simTexOut = null;
+
+  /* 双缓冲：把 u_tex 读当前高度场、写进另一张；写完交换。 */
+  function renderSim(srcTex, dstFbo, drop){
+    gl.bindFramebuffer(gl.FRAMEBUFFER, dstFbo);
+    gl.viewport(0, 0, SIM_W, SIM_H);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, srcTex);
+    gl.uniform3f(gl.getUniformLocation(simProg,'u_drop'),
+                 drop ? drop.x : -9, drop ? drop.y : -9, drop ? drop.r : 0.02);
+    gl.uniform1f(gl.getUniformLocation(simProg,'u_amp'), drop ? drop.amp : 0.0);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+  function swapSim(){
+    let t2 = texA; texA = texB; texB = t2;
+    let f2 = fboA; fboA = fboB; fboB = f2;
   }
 
-  let resizeTimer;
-  window.addEventListener('resize', ()=>{
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(resize, 180);
-  });
+  function stepSim(t, quiet){
+    // 自然水花：即使不动鼠标，水面也活着（quiet=true 时不注入，用于纯模拟自检）
+    if(!quiet && Math.random() < 0.006) addDrop(0.12 + Math.random()*0.76, 0.2 + Math.random()*0.6, 0.16, 0.030);
 
-  /* ================================================================
-     五、渲染
-     ================================================================ */
-  function renderWater(now){
-    const t = (now - t0) * 0.001;
+    gl.useProgram(simProg); bindQuad(simProg);
+    gl.uniform2f(gl.getUniformLocation(simProg,'u_texel'), 1/SIM_W, 1/SIM_H);
+    gl.uniform1f(gl.getUniformLocation(simProg,'u_damp'), 0.9945);
+    gl.uniform1f(gl.getUniformLocation(simProg,'u_edge'), 0.035);
+    gl.uniform1i(gl.getUniformLocation(simProg,'u_tex'), 0);
 
-    /* --- 1. 真实湖面照片铺满 (cover) --- */
-    if(lakeImg.complete && lakeImg.naturalWidth){
-      const ir = lakeImg.naturalWidth / lakeImg.naturalHeight;
-      const cr = W / H;
-      let dw = W, dh = H;
-      if(ir > cr){ dh = W / ir; } else { dw = H * ir; }
-      ctx.drawImage(lakeImg, (W - dw)/2, (H - dh)/2, dw, dh);
-      // 提亮蒙版：银白雾化，让深色粒子道字清晰可读、水面显平静
-      const veil = ctx.createLinearGradient(0, 0, 0, H);
-      veil.addColorStop(0, 'rgba(242,246,252,0.52)');
-      veil.addColorStop(0.5, 'rgba(236,242,250,0.38)');
-      veil.addColorStop(1, 'rgba(230,237,246,0.55)');
-      ctx.fillStyle = veil;
-      ctx.fillRect(0, 0, W, H);
-    } else {
-      // 兜底：浅银灰渐变（湖图未加载时）
-      const baseGrad = ctx.createLinearGradient(0, 0, 0, H);
-      baseGrad.addColorStop(0,    '#f2f5fa');
-      baseGrad.addColorStop(0.25, '#e6ecf5');
-      baseGrad.addColorStop(0.55, '#d5deec');
-      baseGrad.addColorStop(0.80, '#c8d3e4');
-      baseGrad.addColorStop(1,    '#dae2ee');
-      ctx.fillStyle = baseGrad;
-      ctx.fillRect(0, 0, W, H);
+    const drops = pendDrops.slice(0, 6); pendDrops = [];
+
+    // 第一步：纯传播（无注入）
+    renderSim(texA, fboB, null);
+    swapSim();
+    // 之后每个水花一次叠加
+    for(const d of drops){
+      renderSim(texA, fboB, d);
+      swapSim();
     }
-
-    /* --- 2. 噪声微纹理（模拟水面细密颗粒） --- */
-    if(noiseCanvas){
-      const pat = ctx.createPattern(noiseCanvas, 'repeat');
-      ctx.globalAlpha = 0.06;
-      ctx.globalCompositeOperation = 'overlay';
-      ctx.fillStyle = pat;
-      ctx.fillRect(0, 0, W, H);
-      ctx.globalAlpha = 1;
-    }
-
-    /* --- 3. 流动的银白反光带（水面的天空倒影） --- */
-    ctx.globalCompositeOperation = 'soft-light';
-
-    for(let i = 0; i < 5; i++){
-      const phase = t * (0.22 + i * 0.07) + i * 2.3;
-      const y1 = H * (0.08 + 0.84 * (0.5 + 0.5 * Math.sin(phase * 0.51)));
-      const y2 = H * (0.08 + 0.84 * (0.5 + 0.5 * Math.cos(phase * 0.43 + 1.2)));
-      const x1 = W * (0.0 + 0.4 * (0.5 + 0.5 * Math.sin(phase * 0.37)));
-      const x2 = W * (0.6 + 0.4 * (0.5 + 0.5 * Math.cos(phase * 0.29)));
-
-      const g = ctx.createLinearGradient(x1, y1, x2, y2);
-      const a = 0.30 + 0.15 * Math.sin(phase * 0.9);
-      g.addColorStop(0,    'rgba(255,255,255,0)');
-      g.addColorStop(0.18, `rgba(255,255,255,${a})`);
-      g.addColorStop(0.38, 'rgba(235,242,252,0.10)');
-      g.addColorStop(0.52, `rgba(255,255,255,${a * 0.85})`);
-      g.addColorStop(0.72, 'rgba(210,222,242,0.08)');
-      g.addColorStop(1,    'rgba(255,255,255,0)');
-
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, W, H);
-    }
-
-    /* --- 4. 斜向的光带（模拟阳光在水面的拉长反射） --- */
-    ctx.globalCompositeOperation = 'screen';
-    ctx.globalAlpha = 0.35;
-
-    for(let i = 0; i < 4; i++){
-      const phase = t * 0.15 + i * 1.9;
-      const cx = W * (0.3 + 0.4 * (0.5 + 0.5 * Math.sin(phase)));
-      const cy = H * (0.2 + 0.6 * (0.5 + 0.5 * Math.cos(phase * 0.7)));
-
-      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.65);
-      g.addColorStop(0,   'rgba(255,255,255,0.45)');
-      g.addColorStop(0.2, 'rgba(255,255,255,0.18)');
-      g.addColorStop(0.5, 'rgba(255,255,255,0.05)');
-      g.addColorStop(1,   'rgba(255,255,255,0)');
-
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, W, H);
-    }
-    ctx.globalAlpha = 1;
-
-    /* --- 5. 鼠标位置的高光（镜面反射） --- */
-    if(mouseActive){
-      smoothX += (mouseX - smoothX) * 0.10;
-      smoothY += (mouseY - smoothY) * 0.10;
-
-      ctx.globalCompositeOperation = 'screen';
-
-      // 大范围柔光
-      let g = ctx.createRadialGradient(smoothX, smoothY, 0, smoothX, smoothY, 420);
-      g.addColorStop(0,    'rgba(255,255,255,0.38)');
-      g.addColorStop(0.10, 'rgba(255,255,255,0.18)');
-      g.addColorStop(0.35, 'rgba(240,248,255,0.06)');
-      g.addColorStop(0.7,  'rgba(230,240,255,0.02)');
-      g.addColorStop(1,    'rgba(255,255,255,0)');
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, W, H);
-
-      // 高光核心
-      g = ctx.createRadialGradient(smoothX, smoothY, 0, smoothX, smoothY, 90);
-      g.addColorStop(0,   'rgba(255,255,255,0.55)');
-      g.addColorStop(0.5, 'rgba(255,255,255,0.12)');
-      g.addColorStop(1,   'rgba(255,255,255,0)');
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, W, H);
-    }
-
-    /* --- 6. 涟漪（真实水波：同心圆环，边缘亮暗交替） --- */
-    ctx.globalCompositeOperation = 'overlay';
-
-    for(let i = ripples.length - 1; i >= 0; i--){
-      const rp = ripples[i];
-      rp.r += rp.speed;
-      rp.alpha *= 0.974;
-
-      if(rp.alpha < 0.006 || rp.r > rp.maxR){
-        ripples.splice(i, 1);
-        continue;
-      }
-
-      const R = rp.r;
-
-      // 真实涟漪有多个同心环：主环 + 内环 + 外环
-      // 每个环用渐变描边，模拟波峰与波谷
-
-      // 主波峰
-      const inner1 = Math.max(0, R - 4);
-      const outer1 = R + 4;
-      const g1 = ctx.createRadialGradient(rp.x, rp.y, inner1, rp.x, rp.y, outer1);
-      g1.addColorStop(0,    'rgba(255,255,255,0)');
-      g1.addColorStop(0.35, `rgba(255,255,255,${rp.alpha * 0.7})`);
-      g1.addColorStop(0.5,  `rgba(255,255,255,${rp.alpha * 0.95})`);
-      g1.addColorStop(0.65, `rgba(180,200,235,${rp.alpha * 0.5})`);
-      g1.addColorStop(1,    'rgba(255,255,255,0)');
-      ctx.fillStyle = g1;
-      ctx.beginPath();
-      ctx.arc(rp.x, rp.y, outer1, 0, Math.PI * 2);
-      ctx.fill();
-
-      // 内层波谷（暗环，增强立体感）
-      if(R > 16){
-        const inner2 = R * 0.70 - 3;
-        const outer2 = R * 0.70 + 3;
-        const g2 = ctx.createRadialGradient(rp.x, rp.y, inner2, rp.x, rp.y, outer2);
-        g2.addColorStop(0,    'rgba(140,160,195,0)');
-        g2.addColorStop(0.45, `rgba(140,160,195,${rp.alpha * 0.35})`);
-        g2.addColorStop(0.55, `rgba(120,140,175,${rp.alpha * 0.45})`);
-        g2.addColorStop(1,    'rgba(140,160,195,0)');
-        ctx.fillStyle = g2;
-        ctx.beginPath();
-        ctx.arc(rp.x, rp.y, outer2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // 最外圈微弱光环
-      if(R > 36){
-        const inner3 = R * 0.92;
-        const outer3 = R * 0.98;
-        const g3 = ctx.createRadialGradient(rp.x, rp.y, inner3, rp.x, rp.y, outer3);
-        g3.addColorStop(0,    'rgba(255,255,255,0)');
-        g3.addColorStop(0.5,  `rgba(255,255,255,${rp.alpha * 0.25})`);
-        g3.addColorStop(1,    'rgba(255,255,255,0)');
-        ctx.fillStyle = g3;
-        ctx.beginPath();
-        ctx.arc(rp.x, rp.y, outer3, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    ctx.globalCompositeOperation = 'source-over';
   }
 
-
-  /* ================================================================
-     六、粒子更新与绘制（道字散开 / 回聚）
-     ================================================================ */
-  const REPEL_RADIUS = 240;
-  const REPEL_FORCE = 14;
-
-  function updateAndDrawParticles(now){
-    const t = (now - t0) * 0.001;
-
-    /* --- 更新 --- */
-    for(let i = 0; i < particles.length; i++){
-      const p = particles[i];
-
-      /* 鼠标排斥 */
-      if(mouseActive){
-        const dx = p.x - mouseX;
-        const dy = p.y - mouseY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if(dist < REPEL_RADIUS && dist > 0.5){
-          const force = Math.pow(1 - dist / REPEL_RADIUS, 2.2) * REPEL_FORCE;
-          p.vx += (dx / dist) * force;
-          p.vy += (dy / dist) * force;
-        }
-      }
-
-      /* 弹簧回位 */
-      p.vx += (p.ox - p.x) * p.stiffness;
-      p.vy += (p.oy - p.y) * p.stiffness;
-
-      /* 阻尼 */
-      p.vx *= p.damping;
-      p.vy *= p.damping;
-
-      /* 位置更新 */
-      p.x += p.vx;
-      p.y += p.vy;
-
-      /* 微小呼吸抖动（让字有生命感） */
-      p.x += Math.sin(t * 0.6 + p.phase) * 0.08;
-      p.y += Math.cos(t * 0.5 + p.phase) * 0.08;
-    }
-
-    /* --- 绘制 --- */
-    for(let i = 0; i < particles.length; i++){
-      const p = particles[i];
-
-      // 位移量
-      const dx = p.x - p.ox;
-      const dy = p.y - p.oy;
-      const disp = Math.sqrt(dx * dx + dy * dy);
-
-      // 散开程度
-      const scatter = Math.min(disp / 80, 1);
-
-      // 散开时：尺寸变大（墨扩散），透明度降低
-      const size = p.size * (1 + scatter * 3.8);
-      const alpha = p.alpha * (1 - scatter * 0.6);
-
-      if(alpha < 0.015) continue;
-
-      ctx.globalAlpha = alpha;
-      ctx.drawImage(
-        dotSprite,
-        p.x - size, p.y - size,
-        size * 2, size * 2
-      );
-    }
-    ctx.globalAlpha = 1;
+  function draw(t){
+    gl.useProgram(drawProg); bindQuad(drawProg);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(gl.getUniformLocation(drawProg,'u_texel'), 1/SIM_W, 1/SIM_H);
+    gl.uniform2f(gl.getUniformLocation(drawProg,'u_res'), canvas.width, canvas.height);
+    gl.uniform2f(gl.getUniformLocation(drawProg,'u_img'), (window.__lakeSize||[1600,1000])[0], (window.__lakeSize||[1600,1000])[1]);
+    gl.uniform1f(gl.getUniformLocation(drawProg,'u_time'), t);
+    gl.uniform1f(gl.getUniformLocation(drawProg,'u_strength'), 12.0);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texA);
+    gl.uniform1i(gl.getUniformLocation(drawProg,'u_sim'), 0);
+    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, lakeTex);
+    gl.uniform1i(gl.getUniformLocation(drawProg,'u_lake'), 1);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   }
 
+  resize(); loadLake();
 
-  /* ================================================================
-     七、主循环
-     ================================================================ */
-  function loop(now){
-    renderWater(now);
-    updateAndDrawParticles(now);
+  /* 自检接口：让页面外（headless / 控制台）能验证水面确实在按波方程扩散，而不是画的圈 */
+  window.__water = {
+    size: function(){ return [SIM_W, SIM_H]; },
+    drop: function(x, y, amp, r){ addDrop(x, y, amp, r); },
+    step: function(n, quiet){ for(let i=0;i<n;i++) stepSim(performance.now()/1000, quiet); },
+    readHeight: function(){
+      const n = SIM_W * SIM_H;
+      const buf = new Uint8Array(n * 4);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fboA);
+      gl.readPixels(0, 0, SIM_W, SIM_H, gl.RGBA, gl.UNSIGNED_BYTE, buf);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      const h = new Float32Array(n);
+      for(let i=0;i<n;i++) h[i] = ((buf[i*4] + buf[i*4+1]/255) / 255 - 0.5) * 2.0;
+      return {w: SIM_W, h: SIM_H, data: h};
+    }
+  };
+
+  let t0 = performance.now();
+  (function loop(now){
+    const t = (now - t0) / 1000;
+    stepSim(t);
+    draw(t);
     requestAnimationFrame(loop);
-  }
-
-
-  /* ================================================================
-     八、鼠标事件
-     ================================================================ */
-  hero.addEventListener('mousemove', (e)=>{
-    const rect = hero.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    if(!mouseActive){
-      smoothX = x;
-      smoothY = y;
-    }
-    mouseX = x;
-    mouseY = y;
-    mouseActive = true;
-
-    // 生成涟漪（节流，保证连续感）
-    const now = performance.now();
-    if(!hero.__lastR || now - hero.__lastR > 55){
-      addRipple(x, y, 0.45 + Math.random() * 0.3);
-      hero.__lastR = now;
-    }
-  });
-
-  hero.addEventListener('mouseleave', ()=>{
-    mouseActive = false;
-    mouseX = -9999;
-    mouseY = -9999;
-  });
-  hero.addEventListener('mouseenter', ()=>{ mouseActive = true; });
-
-  hero.addEventListener('click', (e)=>{
-    const rect = hero.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    // 强涟漪
-    addRipple(x, y, 0.9);
-    for(let i = 0; i < 4; i++){
-      setTimeout(()=>{
-        addRipple(
-          x + (Math.random() - 0.5) * 60,
-          y + (Math.random() - 0.5) * 60,
-          0.4
-        );
-      }, i * 80);
-    }
-  });
-
-
-  /* ================================================================
-     九、滚动渐现
-     ================================================================ */
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        const el = entry.target;
-        const delay = parseInt(el.dataset.delay || 0, 10);
-        setTimeout(()=>el.classList.add('visible'), delay * 130);
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll(
-    '.section-label, .genesis-line, .genesis-divider, .struct-card, .model-card, .figure-block'
-  ).forEach(el => observer.observe(el));
-
-  /* ================================================================
-     十、渲染真实问题 (从 [{"statement": "回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 301084 个", "evidence": "例外 301084 个 · 前几个: 78, 88, 100, 118, 142, 146", "judge_route": "数值枚举"}, {"statement": "回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 201295 个", "evidence": "例外 201295 个 · 前几个: 165010, 165022, 165024, 165026, 165028, 165030", "judge_route": "数值枚举"}, {"statement": "回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 244349 个", "evidence": "例外 244349 个 · 前几个: 66, 418, 448, 1266, 108152, 114846", "judge_route": "数值枚举"}, {"statement": "回文数(base 6) + 素数 覆盖偶数到 2,000,000: 例外 169905 个", "evidence": "例外 169905 个 · 前几个: 103438, 104146, 107422, 111286, 122920, 125566", "judge_route": "数值枚举"}, {"statement": "回文数(base 7) + 素数 覆盖偶数到 2,000,000: 例外 206055 个", "evidence": "例外 206055 个 · 前几个: 83966, 85592, 86192, 88320, 88488, 89958", "judge_route": "数值枚举"}, {"statement": "回文数(base 8) + 素数 覆盖偶数到 2,000,000: 例外 169951 个", "evidence": "例外 169951 个 · 前几个: 153666, 165012, 165018, 165024, 165030, 165032", "judge_route": "数值枚举"}, {"statement": "回文数(base 9) + 素数 覆盖偶数到 2,000,000: 例外 172658 个", "evidence": "例外 172658 个 · 前几个: 124, 84770, 93886, 94678, 97648, 97748", "judge_route": "数值枚举"}, {"statement": "回文数(base 10) + 素数 覆盖偶数到 2,000,000: 例外 171140 个", "evidence": "例外 171140 个 · 前几个: 165014, 165016, 165022, 165024, 165026, 165028", "judge_route": "数值枚举"}, {"statement": "回文数(base 11) + 素数 覆盖偶数到 2,000,000: 例外 172189 个", "evidence": "例外 172189 个 · 前几个: 126, 165022, 165026, 165028, 165030, 165032", "judge_route": "数值枚举"}, {"statement": "回文数(base 12) + 素数 覆盖偶数到 2,000,000: 例外 169346 个", "evidence": "例外 169346 个 · 前几个: 165016, 165028, 165034, 165036, 165058, 165068", "judge_route": "数值枚举"}, {"statement": "回文数(base 13) + 素数 覆盖偶数到 2,000,000: 例外 170247 个", "evidence": "例外 170247 个 · 前几个: 126, 165022, 165024, 165026, 165028, 165030", "judge_route": "数值枚举"}, {"statement": "回文数(base 14) + 素数 覆盖偶数到 2,000,000: 例外 168607 个", "evidence": "例外 168607 个 · 前几个: 540, 165026, 165028, 165030, 165058, 165068", "judge_route": "数值枚举"}, {"statement": "回文数(base 15) + 素数 覆盖偶数到 2,000,000: 例外 169385 个", "evidence": "例外 169385 个 · 前几个: 165018, 165024, 165026, 165028, 165032, 165034", "judge_route": "数值枚举"}, {"statement": "回文数(base 16) + 素数 覆盖偶数到 2,000,000: 例外 168111 个", "evidence": "例外 168111 个 · 前几个: 165022, 165024, 165026, 165028, 165030, 165032", "judge_route": "数值枚举"}, {"statement": "质数 + 3边形数 覆盖偶数到 500,000: 例外 279 个", "evidence": "例外 279 个 · 前几个: 36, 210, 216, 406, 528, 630", "judge_route": "数值枚举"}, {"statement": "质数 + 4边形数 覆盖偶数到 500,000: 例外 256 个", "evidence": "例外 256 个 · 前几个: 10, 34, 58, 64, 130, 196", "judge_route": "数值枚举"}, {"statement": "质数 + 5边形数 覆盖偶数到 500,000: 例外 371 个", "evidence": "例外 371 个 · 前几个: 26, 50, 86, 100, 116, 126", "judge_route": "数值枚举"}, {"statement": "质数 + 6边形数 覆盖偶数到 500,000: 例外 471 个", "evidence": "例外 471 个 · 前几个: 10, 16, 36, 40, 66, 70", "judge_route": "数值枚举"}, {"statement": "质数 + 7边形数 覆盖偶数到 500,000: 例外 438 个", "evidence": "例外 438 个 · 前几个: 16, 22, 28, 34, 40, 46", "judge_route": "数值枚举"}, {"statement": "质数 + 8边形数 覆盖偶数到 500,000: 例外 352 个", "evidence": "例外 352 个 · 前几个: 16, 22, 36, 46, 56, 66", "judge_route": "数值枚举"}, {"statement": "3边形数的模7分布: {0: 142, 1: 143, 3: 143, 6: 72}", "evidence": "例外 631 个", "judge_route": "模分析"}, {"statement": "4边形数的模7分布: {0: 63, 1: 128, 2: 128, 4: 128}", "evidence": "例外 447 个", "judge_route": "模分析"}, {"statement": "5边形数的模7分布: {0: 104, 1: 105, 2: 52, 5: 104}", "evidence": "例外 365 个", "judge_route": "模分析"}, {"statement": "6边形数的模7分布: {0: 90, 1: 91, 3: 90, 6: 45}", "evidence": "例外 316 个", "judge_route": "模分析"}, {"statement": "7边形数的模7分布: {0: 81, 1: 41, 4: 81, 6: 80}", "evidence": "例外 283 个", "judge_route": "模分析"}, {"statement": "8边形数的模7分布: {0: 73, 1: 74, 2: 37, 5: 74}", "evidence": "例外 258 个", "judge_route": "模分析"}, {"statement": "9边形数的模7分布: {0: 34, 1: 35, 2: 34, 3: 34, 4: 34, 5: 34, 6: 34}", "evidence": "例外 239 个", "judge_route": "模分析"}, {"statement": "10边形数的模7分布: {0: 63, 1: 64, 3: 64, 6: 32}", "evidence": "例外 223 个", "judge_route": "模分析"}, {"statement": "11边形数的模7分布: {0: 30, 1: 61, 2: 60, 4: 60}", "evidence": "例外 211 个", "judge_route": "模分析"}, {"statement": "12边形数的模7分布: {0: 56, 1: 58, 2: 28, 5: 58}", "evidence": "例外 200 个", "judge_route": "模分析"}, {"statement": "x^2+1 mod m 的最长环长随 m 的序列: [1, 2, 3, 2, 1, 2, 3, 6, 2, 2, 4, 2]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "x^2+2 mod m 的最长环长随 m 的序列: [2, 1, 2, 2, 1, 1, 2, 2, 1, 2, 4, 1]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "x^2+3 mod m 的最长环长随 m 的序列: [1, 2, 1, 2, 3, 2, 2, 2, 3, 2, 5, 6]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "x^2+4 mod m 的最长环长随 m 的序列: [1, 1, 2, 1, 2, 1, 3, 2, 2, 1, 6, 2]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "x^2+5 mod m 的最长环长随 m 的序列: [2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "禁 '00' 二元串计数(近似递推): [1, 2]", "evidence": "", "judge_route": "DP枚举"}, {"statement": "禁 '11' 二元串计数(近似递推): [1, 2]", "evidence": "", "judge_route": "DP枚举"}, {"statement": "禁 '010' 二元串计数(近似递推): [1, 2, 3]", "evidence": "", "judge_route": "DP枚举"}, {"statement": "禁 '101' 二元串计数(近似递推): [1, 2, 3]", "evidence": "", "judge_route": "DP枚举"}, {"statement": "禁 '0000' 二元串计数(近似递推): [1, 2, 3, 5]", "evidence": "", "judge_route": "DP枚举"}] 注入)
-     ================================================================ */
-  (function(){
-    const rows = [{"statement": "回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 301084 个", "evidence": "例外 301084 个 · 前几个: 78, 88, 100, 118, 142, 146", "judge_route": "数值枚举"}, {"statement": "回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 201295 个", "evidence": "例外 201295 个 · 前几个: 165010, 165022, 165024, 165026, 165028, 165030", "judge_route": "数值枚举"}, {"statement": "回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 244349 个", "evidence": "例外 244349 个 · 前几个: 66, 418, 448, 1266, 108152, 114846", "judge_route": "数值枚举"}, {"statement": "回文数(base 6) + 素数 覆盖偶数到 2,000,000: 例外 169905 个", "evidence": "例外 169905 个 · 前几个: 103438, 104146, 107422, 111286, 122920, 125566", "judge_route": "数值枚举"}, {"statement": "回文数(base 7) + 素数 覆盖偶数到 2,000,000: 例外 206055 个", "evidence": "例外 206055 个 · 前几个: 83966, 85592, 86192, 88320, 88488, 89958", "judge_route": "数值枚举"}, {"statement": "回文数(base 8) + 素数 覆盖偶数到 2,000,000: 例外 169951 个", "evidence": "例外 169951 个 · 前几个: 153666, 165012, 165018, 165024, 165030, 165032", "judge_route": "数值枚举"}, {"statement": "回文数(base 9) + 素数 覆盖偶数到 2,000,000: 例外 172658 个", "evidence": "例外 172658 个 · 前几个: 124, 84770, 93886, 94678, 97648, 97748", "judge_route": "数值枚举"}, {"statement": "回文数(base 10) + 素数 覆盖偶数到 2,000,000: 例外 171140 个", "evidence": "例外 171140 个 · 前几个: 165014, 165016, 165022, 165024, 165026, 165028", "judge_route": "数值枚举"}, {"statement": "回文数(base 11) + 素数 覆盖偶数到 2,000,000: 例外 172189 个", "evidence": "例外 172189 个 · 前几个: 126, 165022, 165026, 165028, 165030, 165032", "judge_route": "数值枚举"}, {"statement": "回文数(base 12) + 素数 覆盖偶数到 2,000,000: 例外 169346 个", "evidence": "例外 169346 个 · 前几个: 165016, 165028, 165034, 165036, 165058, 165068", "judge_route": "数值枚举"}, {"statement": "回文数(base 13) + 素数 覆盖偶数到 2,000,000: 例外 170247 个", "evidence": "例外 170247 个 · 前几个: 126, 165022, 165024, 165026, 165028, 165030", "judge_route": "数值枚举"}, {"statement": "回文数(base 14) + 素数 覆盖偶数到 2,000,000: 例外 168607 个", "evidence": "例外 168607 个 · 前几个: 540, 165026, 165028, 165030, 165058, 165068", "judge_route": "数值枚举"}, {"statement": "回文数(base 15) + 素数 覆盖偶数到 2,000,000: 例外 169385 个", "evidence": "例外 169385 个 · 前几个: 165018, 165024, 165026, 165028, 165032, 165034", "judge_route": "数值枚举"}, {"statement": "回文数(base 16) + 素数 覆盖偶数到 2,000,000: 例外 168111 个", "evidence": "例外 168111 个 · 前几个: 165022, 165024, 165026, 165028, 165030, 165032", "judge_route": "数值枚举"}, {"statement": "质数 + 3边形数 覆盖偶数到 500,000: 例外 279 个", "evidence": "例外 279 个 · 前几个: 36, 210, 216, 406, 528, 630", "judge_route": "数值枚举"}, {"statement": "质数 + 4边形数 覆盖偶数到 500,000: 例外 256 个", "evidence": "例外 256 个 · 前几个: 10, 34, 58, 64, 130, 196", "judge_route": "数值枚举"}, {"statement": "质数 + 5边形数 覆盖偶数到 500,000: 例外 371 个", "evidence": "例外 371 个 · 前几个: 26, 50, 86, 100, 116, 126", "judge_route": "数值枚举"}, {"statement": "质数 + 6边形数 覆盖偶数到 500,000: 例外 471 个", "evidence": "例外 471 个 · 前几个: 10, 16, 36, 40, 66, 70", "judge_route": "数值枚举"}, {"statement": "质数 + 7边形数 覆盖偶数到 500,000: 例外 438 个", "evidence": "例外 438 个 · 前几个: 16, 22, 28, 34, 40, 46", "judge_route": "数值枚举"}, {"statement": "质数 + 8边形数 覆盖偶数到 500,000: 例外 352 个", "evidence": "例外 352 个 · 前几个: 16, 22, 36, 46, 56, 66", "judge_route": "数值枚举"}, {"statement": "3边形数的模7分布: {0: 142, 1: 143, 3: 143, 6: 72}", "evidence": "例外 631 个", "judge_route": "模分析"}, {"statement": "4边形数的模7分布: {0: 63, 1: 128, 2: 128, 4: 128}", "evidence": "例外 447 个", "judge_route": "模分析"}, {"statement": "5边形数的模7分布: {0: 104, 1: 105, 2: 52, 5: 104}", "evidence": "例外 365 个", "judge_route": "模分析"}, {"statement": "6边形数的模7分布: {0: 90, 1: 91, 3: 90, 6: 45}", "evidence": "例外 316 个", "judge_route": "模分析"}, {"statement": "7边形数的模7分布: {0: 81, 1: 41, 4: 81, 6: 80}", "evidence": "例外 283 个", "judge_route": "模分析"}, {"statement": "8边形数的模7分布: {0: 73, 1: 74, 2: 37, 5: 74}", "evidence": "例外 258 个", "judge_route": "模分析"}, {"statement": "9边形数的模7分布: {0: 34, 1: 35, 2: 34, 3: 34, 4: 34, 5: 34, 6: 34}", "evidence": "例外 239 个", "judge_route": "模分析"}, {"statement": "10边形数的模7分布: {0: 63, 1: 64, 3: 64, 6: 32}", "evidence": "例外 223 个", "judge_route": "模分析"}, {"statement": "11边形数的模7分布: {0: 30, 1: 61, 2: 60, 4: 60}", "evidence": "例外 211 个", "judge_route": "模分析"}, {"statement": "12边形数的模7分布: {0: 56, 1: 58, 2: 28, 5: 58}", "evidence": "例外 200 个", "judge_route": "模分析"}, {"statement": "x^2+1 mod m 的最长环长随 m 的序列: [1, 2, 3, 2, 1, 2, 3, 6, 2, 2, 4, 2]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "x^2+2 mod m 的最长环长随 m 的序列: [2, 1, 2, 2, 1, 1, 2, 2, 1, 2, 4, 1]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "x^2+3 mod m 的最长环长随 m 的序列: [1, 2, 1, 2, 3, 2, 2, 2, 3, 2, 5, 6]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "x^2+4 mod m 的最长环长随 m 的序列: [1, 1, 2, 1, 2, 1, 3, 2, 2, 1, 6, 2]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "x^2+5 mod m 的最长环长随 m 的序列: [2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2]...", "evidence": "", "judge_route": "迭代枚举"}, {"statement": "禁 '00' 二元串计数(近似递推): [1, 2]", "evidence": "", "judge_route": "DP枚举"}, {"statement": "禁 '11' 二元串计数(近似递推): [1, 2]", "evidence": "", "judge_route": "DP枚举"}, {"statement": "禁 '010' 二元串计数(近似递推): [1, 2, 3]", "evidence": "", "judge_route": "DP枚举"}, {"statement": "禁 '101' 二元串计数(近似递推): [1, 2, 3]", "evidence": "", "judge_route": "DP枚举"}, {"statement": "禁 '0000' 二元串计数(近似递推): [1, 2, 3, 5]", "evidence": "", "judge_route": "DP枚举"}];
-    if(!rows || !rows.length) return;
-    const box = document.getElementById('questionList');
-    rows.slice(0, 4).forEach((p, i)=>{
-      const item = document.createElement('div');
-      item.className = 'question-item';
-      item.dataset.delay = i;
-      const ev = p.evidence || '';
-      item.innerHTML =
-        '<div class="q-index">Q' + (i + 1) + '</div>' +
-        '<div class="q-body">' +
-          '<div class="q-title">' + (p.statement || '') + '</div>' +
-          '<div class="q-desc">' + (ev ? '证据：' + ev + ' · ' : '') + '判定路由：' + (p.judge_route || '—') + '</div>' +
-        '</div>';
-      box.appendChild(item);
-      observer.observe(item);
-    });
-  })();
-
-  /* ================================================================
-     十一、初始化
-     ================================================================ */
-  buildDotSprite();
-  resize();
-  requestAnimationFrame(loop);
-
-  // 开场涟漪：让湖面先“活”起来
-  setTimeout(()=>{
-    for(let i = 0; i < 5; i++){
-      setTimeout(()=>{
-        addRipple(
-          W * 0.5 + (Math.random() - 0.5) * 240,
-          H * 0.5 + (Math.random() - 0.5) * 240,
-          0.28
-        );
-      }, i * 350);
-    }
-  }, 600);
-
+  })(t0);
 })();
 </script>
 
+<script>
+/* ====================================================================
+   二、粒子两层
+   1) 首屏「道」：从真实书法 dao_ink.png 的 alpha 采样，弹簧回位 + 随波摆动
+   2) 全页墨点：鼠标到哪儿，哪儿就有墨点粒子，并被经过的涟漪推开
+   ==================================================================== */
+(function(){
+  'use strict';
+
+  /* ---------- 1) 首屏真实书法「道」：粒子化 ---------- */
+  const daoCanvas = document.getElementById('daoLayer');
+  const hero = document.getElementById('hero');
+  const dctx = daoCanvas.getContext('2d', {alpha:true});
+  const particles = [];
+  const dot = document.createElement('canvas');
+  (function(){
+    dot.width = dot.height = 26;
+    const c = dot.getContext('2d');
+    const g = c.createRadialGradient(13,13,0,13,13,13);
+    g.addColorStop(0,'rgba(8,10,14,1)');
+    g.addColorStop(.35,'rgba(14,17,22,.94)');
+    g.addColorStop(.65,'rgba(22,26,34,.5)');
+    g.addColorStop(1,'rgba(30,36,46,0)');
+    c.fillStyle = g; c.fillRect(0,0,26,26);
+  })();
+
+  const daoImg = new Image();
+  let daoReady = false;
+  daoImg.onload = function(){ daoReady = true; buildDao(); };
+  daoImg.src = 'assets/dao_ink.png';
+
+  let DW = 0, DH = 0;
+  function buildDao(){
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    DW = daoCanvas.clientWidth; DH = daoCanvas.clientHeight;
+    daoCanvas.width = DW * dpr; daoCanvas.height = DH * dpr;
+    dctx.setTransform(dpr,0,0,dpr,0,0);
+    particles.length = 0;
+    if(!daoReady) return;
+    const S = 420;
+    const off = document.createElement('canvas');
+    off.width = off.height = S;
+    const octx = off.getContext('2d');
+    // 关键：不能预填不透明底色。dao_ink.png 用 alpha 承载笔画，
+    // 一旦预填，整块 alpha 变 255，采样就会给每个像素都生成粒子（字会变成实心方块）。
+    const s = Math.min(S/daoImg.naturalWidth, S/daoImg.naturalHeight) * 0.94;
+    octx.drawImage(daoImg, (S-daoImg.naturalWidth*s)/2, (S-daoImg.naturalHeight*s)/2,
+                   daoImg.naturalWidth*s, daoImg.naturalHeight*s);
+    let data;
+    try{ data = octx.getImageData(0,0,S,S).data; }
+    catch(e){                      // 跨源（file://）读不到像素：直接显示真实书法图
+      console.warn('道字粒子采样失败，改用真实书法图直接显示:', e && e.message);
+      const fb = document.getElementById('daoFallback');
+      if(fb){ fb.classList.add('on'); }
+      return;
+    }
+    const scale = Math.min(DW*0.50, DH*0.62, 400) / S;
+    const cx = DW/2, cy = DH*0.44;
+    for(let y=0;y<S;y+=3){
+      for(let x=0;x<S;x+=3){
+        const a = data[(y*S+x)*4+3];
+        if(a > 70){
+          const px = cx + (x - S/2)*scale + (Math.random()-.5)*3;
+          const py = cy + (y - S/2)*scale + (Math.random()-.5)*3;
+          particles.push({ox:px, oy:py, x:px, y:py, vx:0, vy:0,
+            size:1.6 + Math.random()*1.9, alpha:.55 + Math.random()*.45,
+            k:.020 + Math.random()*.016, d:.905 + Math.random()*.05,
+            ph:Math.random()*Math.PI*2});
+        }
+      }
+    }
+  }
+  addEventListener('resize', buildDao);
+
+  /* ---------- 2) 全页墨点：鼠标处喷射 + 被涟漪推开 ---------- */
+  const inkCanvas = document.getElementById('inkLayer');
+  const ictx = inkCanvas.getContext('2d', {alpha:true});
+  const ink = [];
+  let IW = 0, IH = 0;
+  function sizeInk(){
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    IW = innerWidth; IH = innerHeight;
+    inkCanvas.width = IW*dpr; inkCanvas.height = IH*dpr;
+    ictx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  sizeInk(); addEventListener('resize', sizeInk);
+
+  const mouse = {x:-1, y:-1, active:false};
+  addEventListener('pointermove', function(e){
+    const dx = e.clientX - mouse.x, dy = e.clientY - mouse.y;
+    const moved = Math.hypot(dx, dy);
+    if(!mouse.active || moved > 6){
+      const n = moved > 26 ? 3 : 1;
+      for(let i=0;i<n;i++){
+        ink.push({x:e.clientX + (Math.random()-.5)*14, y:e.clientY + (Math.random()-.5)*14,
+          vx:(Math.random()-.5)*.55 + dx*0.012, vy:(Math.random()-.5)*.55 + dy*0.012,
+          r:1.1 + Math.random()*2.0, a:.5 + Math.random()*.4, life:1,
+          decay:.0045 + Math.random()*.006, ph:Math.random()*Math.PI*2});
+      }
+      if(ink.length > 900) ink.splice(0, ink.length - 900);
+    }
+    mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+  }, {passive:true});
+  addEventListener('pointerleave', function(){ mouse.active = false; });
+
+  // 自检接口：让页面外能确认"鼠标到哪儿哪儿就有墨点"
+  window.__ink = {
+    count: function(){ return ink.length; },
+    spawn: function(x, y, n){
+      n = n || 3;
+      for(var i=0;i<n;i++) ink.push({x:x, y:y, vx:(Math.random()-.5)*.5, vy:(Math.random()-.5)*.5,
+        r:1.4 + Math.random()*1.8, a:.62 + Math.random()*.3, life:1,
+        decay:.0045 + Math.random()*.006, ph:Math.random()*Math.PI*2});
+    },
+    alphaSum: function(){
+      const d = ictx.getImageData(0, 0, inkCanvas.width, inkCanvas.height).data;
+      let s = 0;
+      for(let i=3;i<d.length;i+=4) s += d[i];
+      return s;
+    }
+  };
+
+  const RIP_S = 340;                 // 波前传播速度（像素/秒），与水面观感一致
+  function tickParticles(t, dt){
+    /* 道：弹簧回位 + 呼吸 + 涟漪推动 */
+    if(particles.length){
+      const rect = hero.getBoundingClientRect();
+      const visible = rect.bottom > 0 && rect.top < innerHeight;
+      if(visible){
+        dctx.clearRect(0,0,DW,DH);
+        const rs = window.__ripples || [];
+        for(let i=0;i<particles.length;i++){
+          const p = particles[i];
+          if(mouse.active){
+            const dx = p.x - (mouse.x - rect.left), dy = p.y - (mouse.y - rect.top);
+            const dist = Math.hypot(dx,dy);
+            if(dist < 150 && dist > .5){
+              const f = Math.pow(1 - dist/150, 2)*3.4;
+              p.vx += dx/dist*f; p.vy += dy/dist*f;
+            }
+          }
+          // 波前到达时把粒子推开（水墨随波扩散）
+          for(let k=rs.length-1;k>=0 && k>rs.length-6;k--){
+            const rp = rs[k];
+            const age = t - rp.t;
+            if(age < 0 || age > 2.4) continue;
+            const front = age * RIP_S;
+            const rx = (rp.x*IW - rect.left), ry = (rp.y*IH - rect.top);
+            const dx = p.x - rx, dy = p.y - ry;
+            const dist = Math.hypot(dx,dy) + .001;
+            const env = Math.exp(-Math.pow(dist - front, 2)/1400) * Math.exp(-age*1.2);
+            const f = env * 12;
+            p.vx += dx/dist*f; p.vy += dy/dist*f;
+          }
+          p.vx += (p.ox - p.x)*p.k; p.vy += (p.oy - p.y)*p.k;
+          p.vx *= p.d; p.vy *= p.d;
+          p.x += p.vx; p.y += p.vy;
+          p.x += Math.sin(t*.7 + p.ph)*.09;
+          p.y += Math.cos(t*.6 + p.ph)*.09;
+          const sc = Math.min(Math.hypot(p.x-p.ox, p.y-p.oy)/70, 1);
+          const size = p.size*(1 + sc*2.6);
+          dctx.globalAlpha = p.alpha*(1 - sc*.55);
+          dctx.drawImage(dot, p.x-size, p.y-size, size*2, size*2);
+        }
+        dctx.globalAlpha = 1;
+      }
+    }
+
+    /* 全页墨点：漂移 + 涟漪推力 + 淡出 */
+    ictx.clearRect(0,0,IW,IH);
+    const rs = window.__ripples || [];
+    for(let i=ink.length-1;i>=0;i--){
+      const q = ink[i];
+      q.vx += Math.sin(t*1.1 + q.ph)*.012;
+      q.vy += Math.cos(t*0.9 + q.ph)*.010 - .006;      // 微微上浮，像墨在水里
+      q.vx *= .992; q.vy *= .992;
+      for(let k=rs.length-1;k>=0 && k>rs.length-5;k--){
+        const rp = rs[k];
+        const age = t - rp.t;
+        if(age < 0 || age > 2.0) continue;
+        const front = age * RIP_S;
+        const rx = rp.x*IW, ry = rp.y*IH;
+        const dx = q.x - rx, dy = q.y - ry;
+        const dist = Math.hypot(dx,dy) + .001;
+        const env = Math.exp(-Math.pow(dist - front, 2)/1100) * Math.exp(-age*1.3);
+        const f = env * 22;
+        q.vx += dx/dist*f; q.vy += dy/dist*f;
+      }
+      q.x += q.vx; q.y += q.vy;
+      q.a -= q.decay;
+      if(q.a <= 0 || q.x < -40 || q.x > IW+40 || q.y < -40 || q.y > IH+40){ ink.splice(i,1); continue; }
+      ictx.globalAlpha = Math.max(0, q.a);
+      ictx.fillStyle = '#0e1218';
+      ictx.beginPath();
+      ictx.arc(q.x, q.y, q.r, 0, Math.PI*2);
+      ictx.fill();
+    }
+    ictx.globalAlpha = 1;
+  }
+
+  let last = performance.now(), t0 = last;
+  (function loop(now){
+    const t = (now - t0)/1000, dt = Math.min((now-last)/1000, .05); last = now;
+    tickParticles(t, dt);
+    requestAnimationFrame(loop);
+  })(last);
+})();
+</script>
+
+<script>
+/* 真实问题数据（由 tools/make_site.py 从 out/demo/parallel_factory.json 注入） */
+window.__PROBLEMS__ = [{"id": "palbase/3", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 68 个", "evidence": "例外 68 个 · 前几个: 78, 88, 100, 118, 142, 146 · 最后例外 12388", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/4", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个", "evidence": "例外 5 个 · 前几个: 35, 255, 515, 1855, 4345 · 最后例外 4345", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/5", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个", "evidence": "例外 4 个 · 前几个: 66, 418, 448, 1266 · 最后例外 1266", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/6", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 6) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 1855 · 最后例外 1855", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/7", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 7) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/8", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 8) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/9", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 9) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 124 · 最后例外 124", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/10", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 10) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/11", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 11) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 126 · 最后例外 126", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/12", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 12) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/13", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 13) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 126 · 最后例外 126", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/14", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 14) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 540 · 最后例外 540", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/15", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 15) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/16", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 16) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 539 · 最后例外 539", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+3边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 3边形数 覆盖偶数到 200,000: 例外 95689 个", "evidence": "例外 95689 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199122", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+4边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 4边形数 覆盖偶数到 200,000: 例外 96489 个", "evidence": "例外 96489 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199720", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+5边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 5边形数 覆盖偶数到 200,000: 例外 96842 个", "evidence": "例外 96842 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199582", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+6边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 6边形数 覆盖偶数到 200,000: 例外 97143 个", "evidence": "例外 97143 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199920", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+7边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 7边形数 覆盖偶数到 200,000: 例外 97291 个", "evidence": "例外 97291 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199828", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+8边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 8边形数 覆盖偶数到 200,000: 例外 97363 个", "evidence": "例外 97363 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199948", "judge_route": "数值枚举", "status": "待判定"}, {"id": "poly_spec/3边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "3边形数的模7分布: {0: 142, 1: 143, 3: 143, 6: 72}", "evidence": "例外 631 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/4边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "4边形数的模7分布: {0: 63, 1: 128, 2: 128, 4: 128}", "evidence": "例外 447 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/5边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "5边形数的模7分布: {0: 104, 1: 105, 2: 52, 5: 104}", "evidence": "例外 365 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/6边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "6边形数的模7分布: {0: 90, 1: 91, 3: 90, 6: 45}", "evidence": "例外 316 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/7边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "7边形数的模7分布: {0: 81, 1: 41, 4: 81, 6: 80}", "evidence": "例外 283 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/8边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "8边形数的模7分布: {0: 73, 1: 74, 2: 37, 5: 74}", "evidence": "例外 258 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/9边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "9边形数的模7分布: {0: 34, 1: 35, 2: 34, 3: 34, 4: 34, 5: 34, 6: 34}", "evidence": "例外 239 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/10边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "10边形数的模7分布: {0: 63, 1: 64, 3: 64, 6: 32}", "evidence": "例外 223 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/11边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "11边形数的模7分布: {0: 30, 1: 61, 2: 60, 4: 60}", "evidence": "例外 211 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/12边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "12边形数的模7分布: {0: 56, 1: 58, 2: 28, 5: 58}", "evidence": "例外 200 个", "judge_route": "模分析", "status": "待判定"}, {"id": "mod_iter/c=1", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+1 mod m 的最长环长随 m 的序列: [1, 2, 3, 2, 1, 2, 3, 6, 2, 2, 4, 2]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "mod_iter/c=2", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+2 mod m 的最长环长随 m 的序列: [2, 1, 2, 2, 1, 1, 2, 2, 1, 2, 4, 1]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "mod_iter/c=3", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+3 mod m 的最长环长随 m 的序列: [1, 2, 1, 2, 3, 2, 2, 2, 3, 2, 5, 6]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "mod_iter/c=4", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+4 mod m 的最长环长随 m 的序列: [1, 1, 2, 1, 2, 1, 3, 2, 2, 1, 6, 2]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "mod_iter/c=5", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+5 mod m 的最长环长随 m 的序列: [2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "combo_avoid/禁00", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '00' 二元串计数(近似递推): [1, 2]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}, {"id": "combo_avoid/禁11", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '11' 二元串计数(近似递推): [1, 2]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}, {"id": "combo_avoid/禁010", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '010' 二元串计数(近似递推): [1, 2, 3]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}, {"id": "combo_avoid/禁101", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '101' 二元串计数(近似递推): [1, 2, 3]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}, {"id": "combo_avoid/禁0000", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '0000' 二元串计数(近似递推): [1, 2, 3, 5]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}];
+</script>
+<script>
+/* ====================================================================
+   三、滚动渐现 + 新问题注入（真实数据来自 [{"id": "palbase/3", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 68 个", "evidence": "例外 68 个 · 前几个: 78, 88, 100, 118, 142, 146 · 最后例外 12388", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/4", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个", "evidence": "例外 5 个 · 前几个: 35, 255, 515, 1855, 4345 · 最后例外 4345", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/5", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个", "evidence": "例外 4 个 · 前几个: 66, 418, 448, 1266 · 最后例外 1266", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/6", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 6) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 1855 · 最后例外 1855", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/7", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 7) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/8", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 8) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/9", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 9) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 124 · 最后例外 124", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/10", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 10) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/11", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 11) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 126 · 最后例外 126", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/12", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 12) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/13", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 13) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 126 · 最后例外 126", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/14", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 14) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 540 · 最后例外 540", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/15", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 15) + 素数 覆盖偶数到 2,000,000: 例外 0 个", "evidence": "", "judge_route": "数值枚举", "status": "待判定"}, {"id": "palbase/16", "domain": "palbase", "type": "跨进制覆盖", "statement": "回文数(base 16) + 素数 覆盖偶数到 2,000,000: 例外 1 个", "evidence": "例外 1 个 · 前几个: 539 · 最后例外 539", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+3边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 3边形数 覆盖偶数到 200,000: 例外 95689 个", "evidence": "例外 95689 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199122", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+4边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 4边形数 覆盖偶数到 200,000: 例外 96489 个", "evidence": "例外 96489 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199720", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+5边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 5边形数 覆盖偶数到 200,000: 例外 96842 个", "evidence": "例外 96842 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199582", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+6边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 6边形数 覆盖偶数到 200,000: 例外 97143 个", "evidence": "例外 97143 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199920", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+7边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 7边形数 覆盖偶数到 200,000: 例外 97291 个", "evidence": "例外 97291 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199828", "judge_route": "数值枚举", "status": "待判定"}, {"id": "two_sum/质数+8边形", "domain": "two_sum", "type": "两数和覆盖", "statement": "质数 + 8边形数 覆盖偶数到 200,000: 例外 97363 个", "evidence": "例外 97363 个 · 前几个: 4, 6, 8, 10, 12, 14 · 最后例外 199948", "judge_route": "数值枚举", "status": "待判定"}, {"id": "poly_spec/3边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "3边形数的模7分布: {0: 142, 1: 143, 3: 143, 6: 72}", "evidence": "例外 631 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/4边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "4边形数的模7分布: {0: 63, 1: 128, 2: 128, 4: 128}", "evidence": "例外 447 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/5边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "5边形数的模7分布: {0: 104, 1: 105, 2: 52, 5: 104}", "evidence": "例外 365 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/6边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "6边形数的模7分布: {0: 90, 1: 91, 3: 90, 6: 45}", "evidence": "例外 316 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/7边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "7边形数的模7分布: {0: 81, 1: 41, 4: 81, 6: 80}", "evidence": "例外 283 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/8边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "8边形数的模7分布: {0: 73, 1: 74, 2: 37, 5: 74}", "evidence": "例外 258 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/9边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "9边形数的模7分布: {0: 34, 1: 35, 2: 34, 3: 34, 4: 34, 5: 34, 6: 34}", "evidence": "例外 239 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/10边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "10边形数的模7分布: {0: 63, 1: 64, 3: 64, 6: 32}", "evidence": "例外 223 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/11边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "11边形数的模7分布: {0: 30, 1: 61, 2: 60, 4: 60}", "evidence": "例外 211 个", "judge_route": "模分析", "status": "待判定"}, {"id": "poly_spec/12边形", "domain": "poly_spec", "type": "多边形模结构", "statement": "12边形数的模7分布: {0: 56, 1: 58, 2: 28, 5: 58}", "evidence": "例外 200 个", "judge_route": "模分析", "status": "待判定"}, {"id": "mod_iter/c=1", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+1 mod m 的最长环长随 m 的序列: [1, 2, 3, 2, 1, 2, 3, 6, 2, 2, 4, 2]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "mod_iter/c=2", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+2 mod m 的最长环长随 m 的序列: [2, 1, 2, 2, 1, 1, 2, 2, 1, 2, 4, 1]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "mod_iter/c=3", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+3 mod m 的最长环长随 m 的序列: [1, 2, 1, 2, 3, 2, 2, 2, 3, 2, 5, 6]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "mod_iter/c=4", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+4 mod m 的最长环长随 m 的序列: [1, 1, 2, 1, 2, 1, 3, 2, 2, 1, 6, 2]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "mod_iter/c=5", "domain": "mod_iter", "type": "模迭代最长环", "statement": "x^2+5 mod m 的最长环长随 m 的序列: [2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2]...", "evidence": "", "judge_route": "迭代枚举", "status": "待判定"}, {"id": "combo_avoid/禁00", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '00' 二元串计数(近似递推): [1, 2]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}, {"id": "combo_avoid/禁11", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '11' 二元串计数(近似递推): [1, 2]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}, {"id": "combo_avoid/禁010", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '010' 二元串计数(近似递推): [1, 2, 3]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}, {"id": "combo_avoid/禁101", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '101' 二元串计数(近似递推): [1, 2, 3]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}, {"id": "combo_avoid/禁0000", "domain": "combo_avoid", "type": "禁构计数", "statement": "禁 '0000' 二元串计数(近似递推): [1, 2, 3, 5]", "evidence": "", "judge_route": "DP枚举", "status": "待判定"}]）+ 导航
+   ==================================================================== */
+(function(){
+  'use strict';
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      const el = en.target;
+      const delay = parseInt(el.dataset.delay || 0, 10);
+      setTimeout(function(){ el.classList.add('visible'); }, delay * 120);
+      io.unobserve(el);
+    });
+  }, {threshold:.16, rootMargin:'0px 0px -60px 0px'});
+
+  document.querySelectorAll('.label, .g-line, .g-divider, .card, .path-card, .doc, .figure, .q-item, #heroLine')
+    .forEach(function(el){ io.observe(el); });
+  const gl2 = document.querySelectorAll('.g-divider');
+  gl2.forEach(function(el){ io.observe(el); });
+
+  document.querySelectorAll('.g-line').forEach(function(el, i){
+    el.dataset.delay = i * 2;
+  });
+
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', function(){
+    if(scrollY > 40) nav.classList.add('solid'); else nav.classList.remove('solid');
+  }, {passive:true});
+
+  /* ---- 新问题（真实记录） ---- */
+  const list = window.__PROBLEMS__ || [];
+  const statRow = document.getElementById('statRow');
+  const qList = document.getElementById('qList');
+  if(list.length){
+    const confirmed = list.filter(function(p){ return /confirmed|零例外|有限/.test(p.status || ''); }).length;
+    const domains = new Set(list.map(function(p){ return p.domain || '—'; })).size;
+    statRow.innerHTML =
+      '<div class="stat"><div class="v">' + list.length + '</div><div class="l">本页展示的问题</div></div>' +
+      '<div class="stat"><div class="v">' + confirmed + '</div><div class="l">已复核 / 有限验证</div></div>' +
+      '<div class="stat"><div class="v">' + domains + '</div><div class="l">领域</div></div>' +
+      '<div class="stat"><div class="v">0</div><div class="l">世界新问题 N3（诚实边界）</div></div>';
+
+    list.slice(0, 12).forEach(function(p, i){
+      const d = document.createElement('div');
+      d.className = 'q-item';
+      d.dataset.delay = Math.min(i, 6);
+      const ev = p.evidence ? '<div class="ev">' + p.evidence + '</div>' : '';
+      d.innerHTML =
+        '<div class="id">' + (p.id || ('Q' + (i+1))) + '</div>' +
+        '<div><div class="stmt">' + (p.statement || '') + '</div>' + ev + '</div>' +
+        '<div class="st">' + (p.status || '') + '<br><span style="color:#9c7c42">' +
+        (p.judge_route || '—') + '</span></div>';
+      qList.appendChild(d);
+      io.observe(d);
+    });
+  }
+})();
+</script>
 </body>
 </html>
