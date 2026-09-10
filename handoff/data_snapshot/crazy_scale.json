@@ -1,0 +1,5228 @@
+{
+ "same_domain": [
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 数学:回文数_b10"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 物理:普朗克量子"
+  },
+  {
+   "exception_count": 19,
+   "density": 0.00038,
+   "first": [
+    5,
+    85,
+    169,
+    370,
+    676,
+    706,
+    730,
+    771
+   ],
+   "last": 78961,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 数学:幂数"
+  },
+  {
+   "exception_count": 171,
+   "density": 0.00342,
+   "first": [
+    10,
+    13,
+    27,
+    31,
+    40,
+    45,
+    75,
+    78
+   ],
+   "last": 99989,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 230,
+   "density": 0.0046,
+   "first": [
+    7,
+    36,
+    61,
+    105,
+    171,
+    210,
+    211,
+    216
+   ],
+   "last": 99681,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 数学:三角数"
+  },
+  {
+   "exception_count": 236,
+   "density": 0.00472,
+   "first": [
+    5,
+    10,
+    13,
+    25,
+    31,
+    34,
+    37,
+    58
+   ],
+   "last": 99225,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 数学:平方数"
+  },
+  {
+   "exception_count": 6825,
+   "density": 0.136503,
+   "first": [
+    90,
+    101,
+    115,
+    118,
+    119,
+    130,
+    148,
+    150
+   ],
+   "last": 99941,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 数学:回文数_b10"
+  },
+  {
+   "exception_count": 8523,
+   "density": 0.170463,
+   "first": [
+    46,
+    61,
+    62,
+    76,
+    77,
+    79,
+    94,
+    95
+   ],
+   "last": 99966,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 数学:幂数"
+  },
+  {
+   "exception_count": 9626,
+   "density": 0.192524,
+   "first": [
+    90375,
+    90376,
+    90377,
+    90378,
+    90379,
+    90380,
+    90381,
+    90382
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 11701,
+   "density": 0.234025,
+   "first": [
+    35,
+    46,
+    61,
+    62,
+    63,
+    74,
+    76,
+    77
+   ],
+   "last": 99966,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 数学:回文数_b10"
+  },
+  {
+   "exception_count": 40394,
+   "density": 0.807896,
+   "first": [
+    70,
+    76,
+    78,
+    82,
+    86,
+    88,
+    92,
+    94
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 数学:质数间隙"
+  },
+  {
+   "exception_count": 44620,
+   "density": 0.892418,
+   "first": [
+    6,
+    8,
+    13,
+    20,
+    21,
+    27,
+    34,
+    38
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 数学:幂数"
+  },
+  {
+   "exception_count": 51702,
+   "density": 1.034061,
+   "first": [
+    6,
+    8,
+    9,
+    13,
+    18,
+    20,
+    21,
+    23
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 数学:三角数"
+  },
+  {
+   "exception_count": 65593,
+   "density": 1.311886,
+   "first": [
+    154,
+    156,
+    158,
+    164,
+    166,
+    168,
+    170,
+    174
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 数学:回文数_b10"
+  },
+  {
+   "exception_count": 69100,
+   "density": 1.382028,
+   "first": [
+    4,
+    6,
+    7,
+    11,
+    14,
+    15,
+    16,
+    19
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 数学:幂数"
+  },
+  {
+   "exception_count": 72637,
+   "density": 1.452769,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    10,
+    12,
+    14,
+    15
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 数学:完全数"
+  },
+  {
+   "exception_count": 75062,
+   "density": 1.50127,
+   "first": [
+    702,
+    816,
+    819,
+    859,
+    897,
+    900,
+    939,
+    942
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 85550,
+   "density": 1.711034,
+   "first": [
+    6,
+    276,
+    319,
+    321,
+    323,
+    366,
+    368,
+    370
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 数学:三角数"
+  },
+  {
+   "exception_count": 88542,
+   "density": 1.770875,
+   "first": [
+    4,
+    322,
+    324,
+    390,
+    392,
+    394,
+    398,
+    400
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 数学:幂数"
+  },
+  {
+   "exception_count": 89513,
+   "density": 1.790296,
+   "first": [
+    4,
+    322,
+    324,
+    355,
+    357,
+    359,
+    390,
+    392
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 数学:平方数"
+  },
+  {
+   "exception_count": 90383,
+   "density": 1.807696,
+   "first": [
+    10,
+    21,
+    25,
+    32,
+    43,
+    45,
+    51,
+    52
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 92980,
+   "density": 1.859637,
+   "first": [
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:无平方词长 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 95708,
+   "density": 1.914198,
+   "first": [
+    4,
+    5,
+    16,
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 数学:完全数"
+  },
+  {
+   "exception_count": 95994,
+   "density": 1.919918,
+   "first": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:无平方词长 + 语言:回文词长"
+  },
+  {
+   "exception_count": 98258,
+   "density": 1.965199,
+   "first": [
+    4,
+    5,
+    6,
+    8,
+    10,
+    11,
+    13,
+    14
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 数学:完全数"
+  },
+  {
+   "exception_count": 98501,
+   "density": 1.970059,
+   "first": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:回文词长 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 98603,
+   "density": 1.972099,
+   "first": [
+    4,
+    5,
+    6,
+    8,
+    9,
+    11,
+    12,
+    13
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 数学:幂数"
+  },
+  {
+   "exception_count": 98758,
+   "density": 1.9752,
+   "first": [
+    4,
+    5,
+    6,
+    8,
+    9,
+    11,
+    12,
+    13
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 数学:完全数"
+  },
+  {
+   "exception_count": 98972,
+   "density": 1.97948,
+   "first": [
+    125,
+    135,
+    137,
+    140,
+    142,
+    183,
+    186,
+    188
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 98984,
+   "density": 1.97972,
+   "first": [
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "逻辑:可计算数(图灵) + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99235,
+   "density": 1.98474,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "心理:反应时幂律 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99243,
+   "density": 1.9849,
+   "first": [
+    99,
+    109,
+    111,
+    116,
+    117,
+    119,
+    120,
+    122
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:汉明码长 + 工程:帕累托"
+  },
+  {
+   "exception_count": 99776,
+   "density": 1.99556,
+   "first": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 信息论:2的幂"
+  },
+  {
+   "exception_count": 99777,
+   "density": 1.99558,
+   "first": [
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 信息论:梅森数"
+  },
+  {
+   "exception_count": 99848,
+   "density": 1.997,
+   "first": [
+    6,
+    10,
+    12,
+    13,
+    14,
+    18,
+    20,
+    21
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 99883,
+   "density": 1.9977,
+   "first": [
+    4,
+    5,
+    6,
+    9,
+    11,
+    13,
+    15,
+    17
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 数学:完全数"
+  }
+ ],
+ "cross": [
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 物理:普朗克量子"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 物理:普朗克量子"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 物理:普朗克量子"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 物理:普朗克量子"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 物理:普朗克量子"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 0,
+   "density": 0.0,
+   "first": [],
+   "last": null,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 1,
+   "density": 2e-05,
+   "first": [
+    26
+   ],
+   "last": 26,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 1,
+   "density": 2e-05,
+   "first": [
+    4
+   ],
+   "last": 4,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 1,
+   "density": 2e-05,
+   "first": [
+    4
+   ],
+   "last": 4,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 2,
+   "density": 4e-05,
+   "first": [
+    4,
+    6
+   ],
+   "last": 6,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 2,
+   "density": 4e-05,
+   "first": [
+    4,
+    6
+   ],
+   "last": 6,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 2,
+   "density": 4e-05,
+   "first": [
+    4,
+    6
+   ],
+   "last": 6,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 4,
+   "density": 8e-05,
+   "first": [
+    3868,
+    4778,
+    5531,
+    13823
+   ],
+   "last": 13823,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 55,
+   "density": 0.0011,
+   "first": [
+    19651,
+    25517,
+    28268,
+    31460,
+    31465,
+    31466,
+    31955,
+    34118
+   ],
+   "last": 97768,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 55,
+   "density": 0.0011,
+   "first": [
+    19651,
+    25517,
+    28268,
+    31460,
+    31465,
+    31466,
+    31955,
+    34118
+   ],
+   "last": 97768,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 工程:帕累托"
+  },
+  {
+   "exception_count": 98,
+   "density": 0.00196,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 101,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 100,
+   "density": 0.002,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 103,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 105,
+   "density": 0.0021,
+   "first": [
+    19651,
+    19657,
+    25517,
+    25520,
+    28265,
+    28268,
+    28275,
+    31454
+   ],
+   "last": 97768,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 171,
+   "density": 0.00342,
+   "first": [
+    10,
+    13,
+    27,
+    31,
+    40,
+    45,
+    75,
+    78
+   ],
+   "last": 99989,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 171,
+   "density": 0.00342,
+   "first": [
+    10,
+    13,
+    27,
+    31,
+    40,
+    45,
+    75,
+    78
+   ],
+   "last": 99989,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 230,
+   "density": 0.0046,
+   "first": [
+    7,
+    36,
+    61,
+    105,
+    171,
+    210,
+    211,
+    216
+   ],
+   "last": 99681,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 物理:谐振子能级"
+  },
+  {
+   "exception_count": 230,
+   "density": 0.0046,
+   "first": [
+    7,
+    36,
+    61,
+    105,
+    171,
+    210,
+    211,
+    216
+   ],
+   "last": 99681,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 463,
+   "density": 0.00926,
+   "first": [
+    4,
+    7,
+    8,
+    25,
+    46,
+    48,
+    64,
+    70
+   ],
+   "last": 99795,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 931,
+   "density": 0.01862,
+   "first": [
+    4,
+    7,
+    8,
+    13,
+    16,
+    25,
+    29,
+    46
+   ],
+   "last": 99979,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 4063,
+   "density": 0.081262,
+   "first": [
+    63000,
+    63499,
+    63501,
+    63503,
+    64000,
+    64002,
+    64004,
+    64006
+   ],
+   "last": 99855,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 语言:回文词长"
+  },
+  {
+   "exception_count": 4356,
+   "density": 0.087122,
+   "first": [
+    63000,
+    63499,
+    63501,
+    63503,
+    64000,
+    64002,
+    64004,
+    64006
+   ],
+   "last": 99855,
+   "at_boundary": false,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 语言:回文词长"
+  },
+  {
+   "exception_count": 4839,
+   "density": 0.096782,
+   "first": [
+    5,
+    56277,
+    56279,
+    56944,
+    56946,
+    56948,
+    56950,
+    56952
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 语言:回文词长"
+  },
+  {
+   "exception_count": 4839,
+   "density": 0.096782,
+   "first": [
+    5,
+    56277,
+    56279,
+    56944,
+    56946,
+    56948,
+    56950,
+    56952
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 语言:回文词长"
+  },
+  {
+   "exception_count": 4839,
+   "density": 0.096782,
+   "first": [
+    5,
+    56277,
+    56279,
+    56944,
+    56946,
+    56948,
+    56950,
+    56952
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 语言:回文词长"
+  },
+  {
+   "exception_count": 6825,
+   "density": 0.136503,
+   "first": [
+    90,
+    101,
+    115,
+    118,
+    119,
+    130,
+    148,
+    150
+   ],
+   "last": 99941,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 物理:谐振子能级"
+  },
+  {
+   "exception_count": 6825,
+   "density": 0.136503,
+   "first": [
+    90,
+    101,
+    115,
+    118,
+    119,
+    130,
+    148,
+    150
+   ],
+   "last": 99941,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 8660,
+   "density": 0.173203,
+   "first": [
+    91308,
+    91310,
+    91312,
+    91314,
+    91316,
+    91318,
+    91320,
+    91322
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 9626,
+   "density": 0.192524,
+   "first": [
+    90375,
+    90376,
+    90377,
+    90378,
+    90379,
+    90380,
+    90381,
+    90382
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 10242,
+   "density": 0.204844,
+   "first": [
+    47116,
+    47118,
+    47120,
+    47122,
+    47124,
+    47126,
+    47128,
+    47130
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 语言:回文词长"
+  },
+  {
+   "exception_count": 10328,
+   "density": 0.206564,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 11179,
+   "density": 0.223584,
+   "first": [
+    17,
+    29,
+    35,
+    59,
+    83,
+    89,
+    119,
+    125
+   ],
+   "last": 99989,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 14168,
+   "density": 0.283366,
+   "first": [
+    540,
+    541,
+    904,
+    905,
+    906,
+    907,
+    1086,
+    1087
+   ],
+   "last": 99989,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 14168,
+   "density": 0.283366,
+   "first": [
+    541,
+    542,
+    905,
+    906,
+    907,
+    908,
+    1087,
+    1088
+   ],
+   "last": 99990,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 21027,
+   "density": 0.420548,
+   "first": [
+    14148,
+    14257,
+    14330,
+    14439,
+    14476,
+    14549,
+    14622,
+    14659
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 21027,
+   "density": 0.420548,
+   "first": [
+    14148,
+    14257,
+    14330,
+    14439,
+    14476,
+    14549,
+    14622,
+    14659
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 工程:帕累托"
+  },
+  {
+   "exception_count": 23106,
+   "density": 0.462129,
+   "first": [
+    14148,
+    14257,
+    14330,
+    14439,
+    14476,
+    14549,
+    14622,
+    14659
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 23981,
+   "density": 0.47963,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 23981,
+   "density": 0.47963,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 23981,
+   "density": 0.47963,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 36554,
+   "density": 0.731095,
+   "first": [
+    10998,
+    11000,
+    11002,
+    11004,
+    11006,
+    11008,
+    11010,
+    11012
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 37703,
+   "density": 0.754075,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 99957,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 39504,
+   "density": 0.790096,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 99957,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 41156,
+   "density": 0.823136,
+   "first": [
+    1897,
+    1899,
+    1901,
+    1903,
+    1905,
+    1907,
+    1909,
+    1911
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 语言:回文词长"
+  },
+  {
+   "exception_count": 43789,
+   "density": 0.875798,
+   "first": [
+    16,
+    22,
+    26,
+    28,
+    36,
+    40,
+    46,
+    50
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 44620,
+   "density": 0.892418,
+   "first": [
+    6,
+    8,
+    13,
+    20,
+    21,
+    27,
+    34,
+    38
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 物理:谐振子能级"
+  },
+  {
+   "exception_count": 44620,
+   "density": 0.892418,
+   "first": [
+    6,
+    8,
+    13,
+    20,
+    21,
+    27,
+    34,
+    38
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 45626,
+   "density": 0.912538,
+   "first": [
+    519,
+    521,
+    523,
+    527,
+    529,
+    531,
+    533,
+    535
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 45784,
+   "density": 0.915698,
+   "first": [
+    1043,
+    1066,
+    1073,
+    1076,
+    1083,
+    1086,
+    1087,
+    1092
+   ],
+   "last": 99998,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 45784,
+   "density": 0.915698,
+   "first": [
+    1043,
+    1066,
+    1073,
+    1076,
+    1083,
+    1086,
+    1087,
+    1092
+   ],
+   "last": 99998,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 工程:帕累托"
+  },
+  {
+   "exception_count": 47145,
+   "density": 0.942919,
+   "first": [
+    1043,
+    1058,
+    1064,
+    1066,
+    1068,
+    1071,
+    1073,
+    1074
+   ],
+   "last": 99998,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 49000,
+   "density": 0.98002,
+   "first": [
+    2002,
+    2004,
+    2006,
+    2008,
+    2010,
+    2012,
+    2014,
+    2016
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 49500,
+   "density": 0.99002,
+   "first": [
+    1001,
+    1003,
+    1005,
+    1007,
+    1009,
+    1011,
+    1013,
+    1015
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 语言:回文词长"
+  },
+  {
+   "exception_count": 51702,
+   "density": 1.034061,
+   "first": [
+    6,
+    8,
+    9,
+    13,
+    18,
+    20,
+    21,
+    23
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 物理:谐振子能级"
+  },
+  {
+   "exception_count": 51702,
+   "density": 1.034061,
+   "first": [
+    6,
+    8,
+    9,
+    13,
+    18,
+    20,
+    21,
+    23
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 53375,
+   "density": 1.067521,
+   "first": [
+    7,
+    11,
+    13,
+    15,
+    19,
+    21,
+    23,
+    25
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 53375,
+   "density": 1.067521,
+   "first": [
+    8,
+    12,
+    14,
+    16,
+    20,
+    22,
+    24,
+    26
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 53375,
+   "density": 1.067521,
+   "first": [
+    7,
+    11,
+    13,
+    15,
+    19,
+    21,
+    23,
+    25
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:素数 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 56569,
+   "density": 1.131403,
+   "first": [
+    5,
+    8,
+    10,
+    14,
+    15,
+    17,
+    19,
+    23
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 物理:谐振子能级"
+  },
+  {
+   "exception_count": 56569,
+   "density": 1.131403,
+   "first": [
+    5,
+    8,
+    10,
+    14,
+    15,
+    17,
+    19,
+    23
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 56569,
+   "density": 1.131403,
+   "first": [
+    5,
+    8,
+    10,
+    14,
+    15,
+    17,
+    19,
+    23
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 63003,
+   "density": 1.260085,
+   "first": [
+    50,
+    58,
+    64,
+    68,
+    74,
+    76,
+    88,
+    93
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 68606,
+   "density": 1.372147,
+   "first": [
+    1299,
+    1332,
+    1365,
+    1398,
+    1415,
+    1432,
+    1449,
+    1466
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 68607,
+   "density": 1.372167,
+   "first": [
+    1298,
+    1331,
+    1364,
+    1397,
+    1414,
+    1431,
+    1448,
+    1465
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 72197,
+   "density": 1.443969,
+   "first": [
+    8,
+    11,
+    14,
+    25,
+    36,
+    41,
+    51,
+    55
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 73695,
+   "density": 1.473929,
+   "first": [
+    8,
+    11,
+    14,
+    23,
+    25,
+    28,
+    32,
+    36
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 73696,
+   "density": 1.473949,
+   "first": [
+    7,
+    10,
+    13,
+    22,
+    24,
+    27,
+    31,
+    35
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 73696,
+   "density": 1.473949,
+   "first": [
+    7,
+    10,
+    13,
+    22,
+    24,
+    27,
+    31,
+    35
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:开普勒面积 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 75062,
+   "density": 1.50127,
+   "first": [
+    702,
+    816,
+    819,
+    859,
+    897,
+    900,
+    939,
+    942
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 75062,
+   "density": 1.50127,
+   "first": [
+    702,
+    816,
+    819,
+    859,
+    897,
+    900,
+    939,
+    942
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 工程:帕累托"
+  },
+  {
+   "exception_count": 75062,
+   "density": 1.50127,
+   "first": [
+    702,
+    816,
+    819,
+    859,
+    897,
+    900,
+    939,
+    942
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 75062,
+   "density": 1.50127,
+   "first": [
+    702,
+    816,
+    819,
+    859,
+    897,
+    900,
+    939,
+    942
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 工程:帕累托"
+  },
+  {
+   "exception_count": 75062,
+   "density": 1.50127,
+   "first": [
+    702,
+    816,
+    819,
+    859,
+    897,
+    900,
+    939,
+    942
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 工程:帕累托"
+  },
+  {
+   "exception_count": 77887,
+   "density": 1.557771,
+   "first": [
+    702,
+    739,
+    777,
+    816,
+    819,
+    859,
+    897,
+    900
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 77887,
+   "density": 1.557771,
+   "first": [
+    702,
+    739,
+    777,
+    816,
+    819,
+    859,
+    897,
+    900
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 77887,
+   "density": 1.557771,
+   "first": [
+    702,
+    739,
+    777,
+    816,
+    819,
+    859,
+    897,
+    900
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 78257,
+   "density": 1.565171,
+   "first": [
+    31,
+    33,
+    44,
+    48,
+    50,
+    51,
+    53,
+    70
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 80267,
+   "density": 1.605372,
+   "first": [
+    436,
+    439,
+    480,
+    565,
+    568,
+    571,
+    573,
+    575
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 80267,
+   "density": 1.605372,
+   "first": [
+    436,
+    439,
+    480,
+    565,
+    568,
+    571,
+    573,
+    575
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 工程:帕累托"
+  },
+  {
+   "exception_count": 81762,
+   "density": 1.635273,
+   "first": [
+    436,
+    439,
+    480,
+    520,
+    523,
+    526,
+    528,
+    565
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 81762,
+   "density": 1.635273,
+   "first": [
+    436,
+    439,
+    480,
+    520,
+    523,
+    526,
+    528,
+    565
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 工程:帕累托"
+  },
+  {
+   "exception_count": 82684,
+   "density": 1.653713,
+   "first": [
+    397,
+    436,
+    439,
+    477,
+    480,
+    565,
+    568,
+    571
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 83268,
+   "density": 1.665393,
+   "first": [
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 83268,
+   "density": 1.665393,
+   "first": [
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025,
+    1026
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 84001,
+   "density": 1.680054,
+   "first": [
+    397,
+    436,
+    439,
+    477,
+    480,
+    520,
+    523,
+    526
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 84896,
+   "density": 1.697954,
+   "first": [
+    28,
+    29,
+    31,
+    42,
+    44,
+    47,
+    50,
+    51
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 85550,
+   "density": 1.711034,
+   "first": [
+    6,
+    276,
+    319,
+    321,
+    323,
+    366,
+    368,
+    370
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 物理:谐振子能级"
+  },
+  {
+   "exception_count": 85550,
+   "density": 1.711034,
+   "first": [
+    6,
+    276,
+    319,
+    321,
+    323,
+    366,
+    368,
+    370
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 85764,
+   "density": 1.715314,
+   "first": [
+    27,
+    28,
+    30,
+    41,
+    43,
+    44,
+    46,
+    49
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 85764,
+   "density": 1.715314,
+   "first": [
+    28,
+    29,
+    31,
+    42,
+    44,
+    45,
+    47,
+    50
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 85764,
+   "density": 1.715314,
+   "first": [
+    27,
+    28,
+    30,
+    41,
+    43,
+    44,
+    46,
+    49
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:回文数_b10 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 88918,
+   "density": 1.778396,
+   "first": [
+    3597,
+    3599,
+    3601,
+    3603,
+    3605,
+    3607,
+    3609,
+    3611
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 89424,
+   "density": 1.788516,
+   "first": [
+    3584,
+    3585,
+    3586,
+    3587,
+    3588,
+    3589,
+    3590,
+    3591
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 89424,
+   "density": 1.788516,
+   "first": [
+    3584,
+    3585,
+    3586,
+    3587,
+    3588,
+    3589,
+    3590,
+    3591
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 90383,
+   "density": 1.807696,
+   "first": [
+    10,
+    21,
+    25,
+    32,
+    43,
+    45,
+    51,
+    52
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 90383,
+   "density": 1.807696,
+   "first": [
+    10,
+    21,
+    25,
+    32,
+    43,
+    45,
+    51,
+    52
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 91982,
+   "density": 1.839677,
+   "first": [
+    2001,
+    2003,
+    2005,
+    2007,
+    2009,
+    2011,
+    2013,
+    2015
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 91983,
+   "density": 1.839697,
+   "first": [
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 91983,
+   "density": 1.839697,
+   "first": [
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 91983,
+   "density": 1.839697,
+   "first": [
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 91983,
+   "density": 1.839697,
+   "first": [
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:无平方词长 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 91984,
+   "density": 1.839717,
+   "first": [
+    2023,
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 91984,
+   "density": 1.839717,
+   "first": [
+    2023,
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 91984,
+   "density": 1.839717,
+   "first": [
+    2023,
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 91984,
+   "density": 1.839717,
+   "first": [
+    2023,
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:汉明码长 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 92263,
+   "density": 1.845297,
+   "first": [
+    8,
+    15,
+    20,
+    23,
+    31,
+    34,
+    36,
+    45
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 92272,
+   "density": 1.845477,
+   "first": [
+    4,
+    5,
+    6,
+    9,
+    10,
+    12,
+    13,
+    15
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 物理:开普勒面积"
+  },
+  {
+   "exception_count": 92967,
+   "density": 1.859377,
+   "first": [
+    154,
+    171,
+    172,
+    189,
+    190,
+    191,
+    208,
+    209
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 92967,
+   "density": 1.859377,
+   "first": [
+    154,
+    171,
+    172,
+    189,
+    190,
+    191,
+    208,
+    209
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 92967,
+   "density": 1.859377,
+   "first": [
+    154,
+    171,
+    172,
+    189,
+    190,
+    191,
+    208,
+    209
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 92968,
+   "density": 1.859397,
+   "first": [
+    153,
+    170,
+    171,
+    188,
+    189,
+    190,
+    207,
+    208
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 92968,
+   "density": 1.859397,
+   "first": [
+    153,
+    170,
+    171,
+    188,
+    189,
+    190,
+    207,
+    208
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 92968,
+   "density": 1.859397,
+   "first": [
+    153,
+    170,
+    171,
+    188,
+    189,
+    190,
+    207,
+    208
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 92981,
+   "density": 1.859657,
+   "first": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 92981,
+   "density": 1.859657,
+   "first": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:Dyck路径长 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 93036,
+   "density": 1.860757,
+   "first": [
+    6,
+    13,
+    15,
+    20,
+    21,
+    24,
+    27,
+    28
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 93036,
+   "density": 1.860757,
+   "first": [
+    6,
+    13,
+    15,
+    20,
+    21,
+    24,
+    27,
+    28
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 93036,
+   "density": 1.860757,
+   "first": [
+    6,
+    13,
+    15,
+    20,
+    21,
+    24,
+    27,
+    28
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 信息论:2的幂"
+  },
+  {
+   "exception_count": 93083,
+   "density": 1.861697,
+   "first": [
+    8,
+    13,
+    15,
+    16,
+    20,
+    23,
+    31,
+    32
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    5,
+    12,
+    14,
+    15,
+    19,
+    20,
+    23,
+    26
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    4,
+    6,
+    13,
+    15,
+    16,
+    20,
+    21,
+    24
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    5,
+    12,
+    14,
+    15,
+    19,
+    20,
+    23,
+    26
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:三角数 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    5,
+    12,
+    14,
+    15,
+    19,
+    20,
+    23,
+    26
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    4,
+    6,
+    13,
+    15,
+    16,
+    20,
+    21,
+    24
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    5,
+    12,
+    14,
+    15,
+    19,
+    20,
+    23,
+    26
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:谐振子能级 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    5,
+    12,
+    14,
+    15,
+    19,
+    20,
+    23,
+    26
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 信息论:梅森数"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    4,
+    6,
+    13,
+    15,
+    16,
+    20,
+    21,
+    24
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 语言:无平方词长"
+  },
+  {
+   "exception_count": 93422,
+   "density": 1.868477,
+   "first": [
+    5,
+    12,
+    14,
+    15,
+    19,
+    20,
+    23,
+    26
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:三角数(群体) + 工程:汉明码长"
+  },
+  {
+   "exception_count": 93907,
+   "density": 1.878178,
+   "first": [
+    1609,
+    1611,
+    1613,
+    1615,
+    1617,
+    1619,
+    1621,
+    1623
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 语言:回文词长"
+  },
+  {
+   "exception_count": 94438,
+   "density": 1.888798,
+   "first": [
+    82,
+    99,
+    100,
+    101,
+    118,
+    119,
+    120,
+    121
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 94439,
+   "density": 1.888818,
+   "first": [
+    81,
+    98,
+    99,
+    100,
+    117,
+    118,
+    119,
+    120
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 94754,
+   "density": 1.895118,
+   "first": [
+    4,
+    7,
+    14,
+    15,
+    19,
+    21,
+    22,
+    23
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 94991,
+   "density": 1.899858,
+   "first": [
+    82,
+    99,
+    100,
+    101,
+    118,
+    119,
+    120,
+    121
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 94992,
+   "density": 1.899878,
+   "first": [
+    81,
+    98,
+    99,
+    100,
+    117,
+    118,
+    119,
+    120
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 95078,
+   "density": 1.901598,
+   "first": [
+    6,
+    13,
+    14,
+    18,
+    20,
+    21,
+    22,
+    25
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 95078,
+   "density": 1.901598,
+   "first": [
+    6,
+    13,
+    14,
+    18,
+    20,
+    21,
+    22,
+    25
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 95079,
+   "density": 1.901618,
+   "first": [
+    4,
+    7,
+    14,
+    15,
+    19,
+    21,
+    22,
+    23
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:幂数 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 95348,
+   "density": 1.906998,
+   "first": [
+    4,
+    7,
+    14,
+    15,
+    16,
+    19,
+    21,
+    22
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 95496,
+   "density": 1.909958,
+   "first": [
+    1000,
+    1002,
+    1004,
+    1006,
+    1008,
+    1010,
+    1012,
+    1014
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 语言:回文词长"
+  },
+  {
+   "exception_count": 95637,
+   "density": 1.912778,
+   "first": [
+    6,
+    9,
+    13,
+    14,
+    15,
+    18,
+    20,
+    21
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 95637,
+   "density": 1.912778,
+   "first": [
+    6,
+    9,
+    13,
+    14,
+    15,
+    18,
+    20,
+    21
+   ],
+   "last": 99999,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 95638,
+   "density": 1.912798,
+   "first": [
+    4,
+    7,
+    10,
+    14,
+    15,
+    16,
+    19,
+    21
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:平方数 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 95994,
+   "density": 1.919918,
+   "first": [
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 语言:回文词长"
+  },
+  {
+   "exception_count": 95994,
+   "density": 1.919918,
+   "first": [
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:回文词长 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 96697,
+   "density": 1.933979,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 97003,
+   "density": 1.940099,
+   "first": [
+    2998,
+    2999,
+    3000,
+    3001,
+    3002,
+    3003,
+    3004,
+    3005
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 97003,
+   "density": 1.940099,
+   "first": [
+    2998,
+    2999,
+    3000,
+    3001,
+    3002,
+    3003,
+    3004,
+    3005
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:Dyck路径长 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 97242,
+   "density": 1.944879,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:Dyck路径长 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 97509,
+   "density": 1.950219,
+   "first": [
+    4,
+    5,
+    6,
+    1496,
+    1497,
+    1498,
+    1499,
+    1500
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 物理:普朗克量子"
+  },
+  {
+   "exception_count": 97509,
+   "density": 1.950219,
+   "first": [
+    4,
+    5,
+    6,
+    1496,
+    1497,
+    1498,
+    1499,
+    1500
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 97537,
+   "density": 1.950779,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 97540,
+   "density": 1.950839,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 97540,
+   "density": 1.950839,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:无平方词长 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 97540,
+   "density": 1.950839,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:汉明码长 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 97585,
+   "density": 1.951739,
+   "first": [
+    2333,
+    2335,
+    2337,
+    2339,
+    2341,
+    2343,
+    2345,
+    2347
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 97585,
+   "density": 1.951739,
+   "first": [
+    2333,
+    2335,
+    2337,
+    2339,
+    2341,
+    2343,
+    2345,
+    2347
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:Dyck路径长 + 工程:帕累托"
+  },
+  {
+   "exception_count": 97754,
+   "density": 1.955119,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    9,
+    11,
+    13,
+    15
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 97915,
+   "density": 1.958339,
+   "first": [
+    2083,
+    2085,
+    2087,
+    2089,
+    2090,
+    2091,
+    2092,
+    2093
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:Dyck路径长 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 97965,
+   "density": 1.959339,
+   "first": [
+    2001,
+    2003,
+    2005,
+    2007,
+    2009,
+    2011,
+    2013,
+    2015
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 97985,
+   "density": 1.959739,
+   "first": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:Dyck路径长 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 97986,
+   "density": 1.959759,
+   "first": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 语言:Dyck路径长"
+  },
+  {
+   "exception_count": 98002,
+   "density": 1.960079,
+   "first": [
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 98004,
+   "density": 1.960119,
+   "first": [
+    1997,
+    1998,
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2004
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 语言:回文词长"
+  },
+  {
+   "exception_count": 98004,
+   "density": 1.960119,
+   "first": [
+    1997,
+    1998,
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2004
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:回文词长 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 98100,
+   "density": 1.962039,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 98100,
+   "density": 1.962039,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "心理:反应时幂律 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 98242,
+   "density": 1.964879,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:回文词长 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 98258,
+   "density": 1.965199,
+   "first": [
+    4,
+    5,
+    6,
+    8,
+    10,
+    11,
+    13,
+    14
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 物理:谐振子能级"
+  },
+  {
+   "exception_count": 98258,
+   "density": 1.965199,
+   "first": [
+    4,
+    5,
+    6,
+    8,
+    10,
+    11,
+    13,
+    14
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 生物:三角数(群体)"
+  },
+  {
+   "exception_count": 98501,
+   "density": 1.970059,
+   "first": [
+    1500,
+    1501,
+    1502,
+    1503,
+    1504,
+    1505,
+    1506,
+    1507
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 98501,
+   "density": 1.970059,
+   "first": [
+    1500,
+    1501,
+    1502,
+    1503,
+    1504,
+    1505,
+    1506,
+    1507
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 工程:帕累托"
+  },
+  {
+   "exception_count": 98501,
+   "density": 1.970059,
+   "first": [
+    1500,
+    1501,
+    1502,
+    1503,
+    1504,
+    1505,
+    1506,
+    1507
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 98501,
+   "density": 1.970059,
+   "first": [
+    1500,
+    1501,
+    1502,
+    1503,
+    1504,
+    1505,
+    1506,
+    1507
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:帕累托 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 98586,
+   "density": 1.971759,
+   "first": [
+    1332,
+    1334,
+    1336,
+    1338,
+    1340,
+    1342,
+    1344,
+    1346
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 语言:回文词长"
+  },
+  {
+   "exception_count": 98586,
+   "density": 1.971759,
+   "first": [
+    1332,
+    1334,
+    1336,
+    1338,
+    1340,
+    1342,
+    1344,
+    1346
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:回文词长 + 工程:帕累托"
+  },
+  {
+   "exception_count": 98754,
+   "density": 1.97512,
+   "first": [
+    4,
+    5,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 语言:回文词长"
+  },
+  {
+   "exception_count": 98911,
+   "density": 1.97826,
+   "first": [
+    1090,
+    1091,
+    1092,
+    1093,
+    1094,
+    1095,
+    1096,
+    1097
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 98911,
+   "density": 1.97826,
+   "first": [
+    1090,
+    1091,
+    1092,
+    1093,
+    1094,
+    1095,
+    1096,
+    1097
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "心理:遗忘曲线 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 98916,
+   "density": 1.97836,
+   "first": [
+    1082,
+    1084,
+    1086,
+    1088,
+    1089,
+    1090,
+    1091,
+    1092
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:回文词长 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 98929,
+   "density": 1.97862,
+   "first": [
+    1072,
+    1073,
+    1074,
+    1075,
+    1076,
+    1077,
+    1078,
+    1079
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 物理:普朗克量子"
+  },
+  {
+   "exception_count": 98929,
+   "density": 1.97862,
+   "first": [
+    1072,
+    1073,
+    1074,
+    1075,
+    1076,
+    1077,
+    1078,
+    1079
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 98966,
+   "density": 1.97936,
+   "first": [
+    1000,
+    1002,
+    1004,
+    1006,
+    1008,
+    1010,
+    1012,
+    1014
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 语言:回文词长"
+  },
+  {
+   "exception_count": 98972,
+   "density": 1.97948,
+   "first": [
+    125,
+    135,
+    137,
+    140,
+    142,
+    183,
+    186,
+    188
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 工程:帕累托"
+  },
+  {
+   "exception_count": 98984,
+   "density": 1.97972,
+   "first": [
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 98985,
+   "density": 1.97974,
+   "first": [
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "物理:普朗克量子 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 98985,
+   "density": 1.97974,
+   "first": [
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 逻辑:可计算数(图灵)"
+  },
+  {
+   "exception_count": 98986,
+   "density": 1.97976,
+   "first": [
+    1015,
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:回文词长 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 98987,
+   "density": 1.97978,
+   "first": [
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 语言:回文词长"
+  },
+  {
+   "exception_count": 99124,
+   "density": 1.98252,
+   "first": [
+    125,
+    128,
+    133,
+    135,
+    137,
+    140,
+    142,
+    143
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99142,
+   "density": 1.98288,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 99142,
+   "density": 1.98288,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:帕累托 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 99211,
+   "density": 1.98426,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 99236,
+   "density": 1.98476,
+   "first": [
+    100,
+    110,
+    117,
+    118,
+    120,
+    121,
+    123,
+    124
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 信息论:2的幂"
+  },
+  {
+   "exception_count": 99236,
+   "density": 1.98476,
+   "first": [
+    100,
+    110,
+    117,
+    118,
+    120,
+    121,
+    123,
+    124
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 工程:帕累托"
+  },
+  {
+   "exception_count": 99242,
+   "density": 1.98488,
+   "first": [
+    100,
+    110,
+    112,
+    117,
+    118,
+    120,
+    121,
+    123
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 语言:无平方词长"
+  },
+  {
+   "exception_count": 99242,
+   "density": 1.98488,
+   "first": [
+    100,
+    110,
+    112,
+    117,
+    118,
+    120,
+    121,
+    123
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:无平方词长 + 工程:帕累托"
+  },
+  {
+   "exception_count": 99243,
+   "density": 1.9849,
+   "first": [
+    99,
+    109,
+    111,
+    116,
+    117,
+    119,
+    120,
+    122
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 信息论:梅森数"
+  },
+  {
+   "exception_count": 99243,
+   "density": 1.9849,
+   "first": [
+    99,
+    109,
+    111,
+    116,
+    117,
+    119,
+    120,
+    122
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 工程:汉明码长"
+  },
+  {
+   "exception_count": 99243,
+   "density": 1.9849,
+   "first": [
+    99,
+    109,
+    111,
+    116,
+    117,
+    119,
+    120,
+    122
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 工程:帕累托"
+  },
+  {
+   "exception_count": 99332,
+   "density": 1.98668,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 99355,
+   "density": 1.98714,
+   "first": [
+    100,
+    110,
+    112,
+    113,
+    117,
+    118,
+    120,
+    121
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99355,
+   "density": 1.98714,
+   "first": [
+    100,
+    110,
+    112,
+    113,
+    117,
+    118,
+    120,
+    121
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:无平方词长 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99356,
+   "density": 1.98716,
+   "first": [
+    99,
+    109,
+    111,
+    112,
+    116,
+    117,
+    119,
+    120
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99356,
+   "density": 1.98716,
+   "first": [
+    99,
+    109,
+    111,
+    112,
+    116,
+    117,
+    119,
+    120
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:汉明码长 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99397,
+   "density": 1.98798,
+   "first": [
+    100,
+    102,
+    104,
+    108,
+    110,
+    112,
+    114,
+    116
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 99438,
+   "density": 1.9888,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 心理:反应时幂律"
+  },
+  {
+   "exception_count": 99438,
+   "density": 1.9888,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "心理:反应时幂律 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99562,
+   "density": 1.99128,
+   "first": [
+    67,
+    69,
+    71,
+    75,
+    77,
+    79,
+    81,
+    83
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 99577,
+   "density": 1.99158,
+   "first": [
+    239,
+    244,
+    246,
+    248,
+    286,
+    289,
+    292,
+    294
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 工程:帕累托"
+  },
+  {
+   "exception_count": 99589,
+   "density": 1.99182,
+   "first": [
+    7,
+    11,
+    13,
+    15,
+    19,
+    21,
+    23,
+    25
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 99590,
+   "density": 1.99184,
+   "first": [
+    6,
+    10,
+    12,
+    14,
+    18,
+    20,
+    22,
+    24
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 99590,
+   "density": 1.99184,
+   "first": [
+    6,
+    10,
+    12,
+    14,
+    18,
+    20,
+    22,
+    24
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 99599,
+   "density": 1.99202,
+   "first": [
+    236,
+    239,
+    244,
+    246,
+    248,
+    286,
+    289,
+    292
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99599,
+   "density": 1.99202,
+   "first": [
+    236,
+    239,
+    244,
+    246,
+    248,
+    286,
+    289,
+    292
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:帕累托 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99609,
+   "density": 1.99222,
+   "first": [
+    8,
+    20,
+    26,
+    27,
+    28,
+    30,
+    31,
+    32
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 信息论:2的幂"
+  },
+  {
+   "exception_count": 99627,
+   "density": 1.99258,
+   "first": [
+    8,
+    14,
+    20,
+    22,
+    26,
+    27,
+    28,
+    30
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 语言:无平方词长"
+  },
+  {
+   "exception_count": 99628,
+   "density": 1.9926,
+   "first": [
+    7,
+    13,
+    19,
+    21,
+    25,
+    26,
+    27,
+    29
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 信息论:梅森数"
+  },
+  {
+   "exception_count": 99628,
+   "density": 1.9926,
+   "first": [
+    7,
+    13,
+    19,
+    21,
+    25,
+    26,
+    27,
+    29
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 工程:汉明码长"
+  },
+  {
+   "exception_count": 99676,
+   "density": 1.99356,
+   "first": [
+    191,
+    193,
+    195,
+    199,
+    203,
+    205,
+    207,
+    209
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 99676,
+   "density": 1.99356,
+   "first": [
+    191,
+    193,
+    195,
+    199,
+    203,
+    205,
+    207,
+    209
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 工程:帕累托"
+  },
+  {
+   "exception_count": 99693,
+   "density": 1.9939,
+   "first": [
+    52,
+    53,
+    54,
+    55,
+    56,
+    73,
+    74,
+    75
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99694,
+   "density": 1.99392,
+   "first": [
+    51,
+    52,
+    53,
+    54,
+    55,
+    72,
+    73,
+    74
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:费氏数列(生长) + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 99762,
+   "density": 1.99528,
+   "first": [
+    143,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99762,
+   "density": 1.99528,
+   "first": [
+    143,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:帕累托 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99763,
+   "density": 1.9953,
+   "first": [
+    142,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "生物:幂律(种群) + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 99763,
+   "density": 1.9953,
+   "first": [
+    142,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 工程:帕累托"
+  },
+  {
+   "exception_count": 99775,
+   "density": 1.99554,
+   "first": [
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99775,
+   "density": 1.99554,
+   "first": [
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:无平方词长 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99776,
+   "density": 1.99556,
+   "first": [
+    4,
+    5,
+    67,
+    70,
+    74,
+    76,
+    79,
+    81
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 生物:幂律(种群)"
+  },
+  {
+   "exception_count": 99776,
+   "density": 1.99556,
+   "first": [
+    4,
+    5,
+    67,
+    70,
+    74,
+    76,
+    79,
+    81
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 工程:帕累托"
+  },
+  {
+   "exception_count": 99776,
+   "density": 1.99556,
+   "first": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 语言:无平方词长"
+  },
+  {
+   "exception_count": 99776,
+   "density": 1.99556,
+   "first": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99776,
+   "density": 1.99556,
+   "first": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "工程:汉明码长 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99777,
+   "density": 1.99558,
+   "first": [
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 工程:汉明码长"
+  },
+  {
+   "exception_count": 99810,
+   "density": 1.99624,
+   "first": [
+    4,
+    5,
+    67,
+    70,
+    74,
+    76,
+    79,
+    81
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99847,
+   "density": 1.99698,
+   "first": [
+    149,
+    151,
+    153,
+    156,
+    157,
+    158,
+    159,
+    160
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99847,
+   "density": 1.99698,
+   "first": [
+    7,
+    11,
+    13,
+    14,
+    15,
+    19,
+    21,
+    22
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 99848,
+   "density": 1.997,
+   "first": [
+    6,
+    10,
+    12,
+    13,
+    14,
+    18,
+    20,
+    21
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:2的幂 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 99863,
+   "density": 1.9973,
+   "first": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    13,
+    14,
+    16
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 99863,
+   "density": 1.9973,
+   "first": [
+    5,
+    7,
+    9,
+    11,
+    12,
+    13,
+    15,
+    17
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:梅森数 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 99863,
+   "density": 1.9973,
+   "first": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    13,
+    14,
+    16
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "语言:无平方词长 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 99893,
+   "density": 1.9979,
+   "first": [
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "心理:遗忘曲线 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99894,
+   "density": 1.99792,
+   "first": [
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 心理:遗忘曲线"
+  },
+  {
+   "exception_count": 99901,
+   "density": 1.99806,
+   "first": [
+    4,
+    5,
+    6,
+    10,
+    12,
+    13,
+    15,
+    16
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 生物:费氏数列(生长)"
+  },
+  {
+   "exception_count": 99911,
+   "density": 1.99826,
+   "first": [
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99912,
+   "density": 1.99828,
+   "first": [
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:质数间隙 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 99929,
+   "density": 1.99862,
+   "first": [
+    4,
+    5,
+    6,
+    9,
+    11,
+    12,
+    13,
+    15
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 信息论:2的幂"
+  },
+  {
+   "exception_count": 99933,
+   "density": 1.9987,
+   "first": [
+    4,
+    5,
+    6,
+    23,
+    24,
+    25,
+    26,
+    27
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 信息论:汉明权(格雷码)"
+  },
+  {
+   "exception_count": 99933,
+   "density": 1.9987,
+   "first": [
+    4,
+    5,
+    6,
+    8,
+    10,
+    11,
+    12,
+    14
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 信息论:梅森数"
+  },
+  {
+   "exception_count": 99933,
+   "density": 1.9987,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    9,
+    11,
+    12,
+    13
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 语言:无平方词长"
+  },
+  {
+   "exception_count": 99933,
+   "density": 1.9987,
+   "first": [
+    4,
+    5,
+    6,
+    8,
+    10,
+    11,
+    12,
+    14
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 工程:汉明码长"
+  },
+  {
+   "exception_count": 99933,
+   "density": 1.9987,
+   "first": [
+    4,
+    5,
+    6,
+    7,
+    24,
+    25,
+    26,
+    27
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "数学:完全数 + 逻辑:归约链长"
+  },
+  {
+   "exception_count": 99967,
+   "density": 1.99938,
+   "first": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41
+   ],
+   "last": 100000,
+   "at_boundary": true,
+   "scan_to": 100000,
+   "pair": "信息论:汉明权(格雷码) + 逻辑:归约链长"
+  }
+ ]
+}
