@@ -1,0 +1,201 @@
+[
+ {
+  "b": 2,
+  "pals": 4489,
+  "primes": 348513,
+  "exc": 2147887,
+  "last": 4999997,
+  "at_boundary": true,
+  "oeis": "HIT",
+  "exc_list": [
+   15,
+   21,
+   25,
+   27,
+   39,
+   45,
+   49,
+   51,
+   55,
+   57,
+   63,
+   69
+  ]
+ },
+ {
+  "b": 3,
+  "pals": 4473,
+  "primes": 348513,
+  "exc": 68,
+  "last": 12388,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   78,
+   88,
+   100,
+   118,
+   142,
+   146,
+   148,
+   266,
+   268,
+   298,
+   328,
+   356
+  ]
+ },
+ {
+  "b": 4,
+  "pals": 5316,
+  "primes": 348513,
+  "exc": 5,
+  "last": 4345,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   35,
+   255,
+   515,
+   1855,
+   4345
+  ]
+ },
+ {
+  "b": 5,
+  "pals": 4724,
+  "primes": 348513,
+  "exc": 4,
+  "last": 1266,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   66,
+   418,
+   448,
+   1266
+  ]
+ },
+ {
+  "b": 6,
+  "pals": 5153,
+  "primes": 348513,
+  "exc": 1,
+  "last": 1855,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   1855
+  ]
+ },
+ {
+  "b": 7,
+  "pals": 4482,
+  "primes": 348513,
+  "exc": 0,
+  "last": null,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": []
+ },
+ {
+  "b": 8,
+  "pals": 5316,
+  "primes": 348513,
+  "exc": 0,
+  "last": null,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": []
+ },
+ {
+  "b": 9,
+  "pals": 7322,
+  "primes": 348513,
+  "exc": 1,
+  "last": 124,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   124
+  ]
+ },
+ {
+  "b": 10,
+  "pals": 5999,
+  "primes": 348513,
+  "exc": 0,
+  "last": null,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": []
+ },
+ {
+  "b": 11,
+  "pals": 5087,
+  "primes": 348513,
+  "exc": 1,
+  "last": 126,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   126
+  ]
+ },
+ {
+  "b": 12,
+  "pals": 4621,
+  "primes": 348513,
+  "exc": 0,
+  "last": null,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": []
+ },
+ {
+  "b": 13,
+  "pals": 4472,
+  "primes": 348513,
+  "exc": 1,
+  "last": 126,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   126
+  ]
+ },
+ {
+  "b": 14,
+  "pals": 4565,
+  "primes": 348513,
+  "exc": 1,
+  "last": 540,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   540
+  ]
+ },
+ {
+  "b": 15,
+  "pals": 4855,
+  "primes": 348513,
+  "exc": 0,
+  "last": null,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": []
+ },
+ {
+  "b": 16,
+  "pals": 5316,
+  "primes": 348513,
+  "exc": 1,
+  "last": 539,
+  "at_boundary": false,
+  "oeis": "未见",
+  "exc_list": [
+   539
+  ]
+ }
+]
