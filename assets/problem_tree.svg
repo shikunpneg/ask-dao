@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 720" width="100%" font-family="Segoe UI,Microsoft YaHei,sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/></marker>
+<marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker></defs>
+<rect width="1080" height="720" fill="#ffffff"/>
+<text x="540.0" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#111111">问题生成树 · Problem Tree</text>
+<text x="540.0" y="56" text-anchor="middle" font-size="12" fill="#6b7280">母题通过组合模板生长为问题树，树与树在结构桥梁处融合 → 新问题</text>
+<rect x="40" y="90" width="200" height="76" rx="10" fill="#f9fafb" stroke="#2563eb" stroke-width="1.6"/>
+<text x="140.0" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#2563eb">外部信息</text>
+<text x="140.0" y="138" text-anchor="middle" font-size="11" fill="#6b7280">视觉 / 听觉 / 文本</text>
+<text x="140.0" y="156" text-anchor="middle" font-size="11" fill="#6b7280">网页 / arXiv</text>
+<rect x="270" y="90" width="200" height="76" rx="10" fill="#f9fafb" stroke="#2563eb" stroke-width="1.6"/>
+<text x="370.0" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#2563eb">日常问题</text>
+<text x="370.0" y="138" text-anchor="middle" font-size="11" fill="#6b7280">困惑 / 裂缝 / 疑问</text>
+<text x="370.0" y="156" text-anchor="middle" font-size="11" fill="#6b7280">言不尽意 · 黑洞蒸发</text>
+<rect x="500" y="90" width="200" height="76" rx="10" fill="#f9fafb" stroke="#2563eb" stroke-width="1.6"/>
+<text x="600.0" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#2563eb">母题</text>
+<text x="600.0" y="138" text-anchor="middle" font-size="11" fill="#6b7280">质数 · 回文 · 对称 · …</text>
+<text x="600.0" y="156" text-anchor="middle" font-size="11" fill="#6b7280">86 个母题登记</text>
+<rect x="730" y="90" width="310" height="76" rx="10" fill="#f9fafb" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="885.0" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#2563eb">感受 / 观察</text>
+<text x="885.0" y="138" text-anchor="middle" font-size="11" fill="#6b7280">结构化观测 → 输入</text>
+<text x="885.0" y="156" text-anchor="middle" font-size="11" fill="#6b7280">问题路入口</text>
+<rect x="40" y="216" width="1000" height="84" rx="10" fill="#f9fafb" stroke="#111111" stroke-width="1.6"/>
+<text x="540.0" y="242" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">② 问题制造模块</text>
+<text x="540.0" y="264" text-anchor="middle" font-size="11" fill="#6b7280">日常问题 → 前问题 → 科学问题  →  基础领域</text>
+<text x="540.0" y="282" text-anchor="middle" font-size="11" fill="#6b7280">territory_engine: 问题树 L0-L5 分层 · 谱系门 · 每爬一层必须机器实测</text>
+<path d="M140,166 L140,216" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<path d="M370,166 L370,216" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<path d="M600,166 L600,216" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<rect x="40" y="352" width="1000" height="150" rx="10" fill="#f9fafb" stroke="#111111" stroke-width="1.6"/>
+<text x="540.0" y="378" text-anchor="middle" font-size="14" font-weight="700" fill="#111111">③ 问题树生长 · 母题 × 组合模板</text>
+<text x="540.0" y="400" text-anchor="middle" font-size="11" fill="#6b7280">L0 母题   →   L1 前问题   →   L2 科学问题   →   L3 基础领域   →   L4 问题树   →   L5 领域融合</text>
+<text x="540.0" y="418" text-anchor="middle" font-size="11" fill="#6b7280">例: 质数 × 回文数(对象类) + 两项和(规则) + 域构造 → 「回文素数在进位制 b 中的例外」</text>
+<text x="540.0" y="436" text-anchor="middle" font-size="11" fill="#6b7280">树与树在结构桥梁处交叉：无共享结构的配对是空洞笛卡尔积</text>
+<path d="M540,300 L540,352" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<circle cx="120" cy="440" r="26" fill="#2563eb" opacity="0.9"/>
+<text x="120" y="437" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">L0</text>
+<text x="120" y="449" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">母题</text>
+<path d="M146,440 L186,440" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<circle cx="272" cy="440" r="26" fill="#1d4ed8" opacity="0.9"/>
+<text x="272" y="437" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">L1</text>
+<text x="272" y="449" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">前问题</text>
+<path d="M298,440 L338,440" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<circle cx="424" cy="440" r="26" fill="#1e40af" opacity="0.9"/>
+<text x="424" y="437" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">L2</text>
+<text x="424" y="449" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">科学问题</text>
+<path d="M450,440 L490,440" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<circle cx="576" cy="440" r="26" fill="#3730a3" opacity="0.9"/>
+<text x="576" y="437" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">L3</text>
+<text x="576" y="449" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">基础领域</text>
+<path d="M602,440 L642,440" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<circle cx="728" cy="440" r="26" fill="#4f46e5" opacity="0.9"/>
+<text x="728" y="437" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">L4</text>
+<text x="728" y="449" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">问题树</text>
+<path d="M754,440 L794,440" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<circle cx="880" cy="440" r="26" fill="#7c3aed" opacity="0.9"/>
+<text x="880" y="437" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">L5</text>
+<text x="880" y="449" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="700">融合</text>
+<rect x="40" y="572" width="460" height="96" rx="10" fill="#f9fafb" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="270.0" y="598" text-anchor="middle" font-size="14" font-weight="700" fill="#2563eb">出口 · 可判问题清单</text>
+<text x="270.0" y="620" text-anchor="middle" font-size="11" fill="#6b7280">每条带 判定路由 + 证据</text>
+<text x="270.0" y="638" text-anchor="middle" font-size="11" fill="#6b7280">→ 交 AI4S 执行模块求解</text>
+<text x="270.0" y="656" text-anchor="middle" font-size="11" fill="#6b7280">标准：答案成立 / 可判</text>
+<rect x="540" y="572" width="500" height="96" rx="10" fill="#f9fafb" stroke="#7c3aed" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="790.0" y="598" text-anchor="middle" font-size="14" font-weight="700" fill="#7c3aed">出口 · 领域融合新问题</text>
+<text x="790.0" y="620" text-anchor="middle" font-size="11" fill="#6b7280">树 × 树 在结构桥梁处交叉</text>
+<text x="790.0" y="638" text-anchor="middle" font-size="11" fill="#6b7280">反例驱动：只提机器答不出的</text>
+<text x="790.0" y="656" text-anchor="middle" font-size="11" fill="#6b7280">标准：显著性 > 新颖性</text>
+<path d="M540,502 L270,572" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<path d="M540,502 L790,572" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#ah)" fill="none"/>
+<text x="540.0" y="700" text-anchor="middle" font-size="11.5" fill="#6b7280">已产出 260+ 条问题 · 23 个领域 · 其中 25 条数学题为 22 个母题的真实组合产物</text>
+</svg>
