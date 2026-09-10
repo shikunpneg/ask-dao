@@ -133,38 +133,38 @@ def run(nmax: int = 40):
         c = counts_avoid_word(nmax, w)
         kind, seedname = classify(c)
         rl = c[-1] / c[-2] if c[-2] else 0
-        tag = f"种子命中: {seedname}" if kind == "known" else "R: 真且种子表外(需查证)"
-        st = "真(DP精确计数到%d)" % nmax
+        tag = f"种子命中: {seedname}" if kind == "known" else "种子表外(待 novelty_gate 反查 OEIS)"
+        st = "有限验证(DP精确计数至%d, 非证明)" % nmax
         add(f"CB{i:02d}", f"禁连续子串 '{w}' 的二元串, 计数族是什么?",
             ["连续整数串", "组合计数"], "约束串计数(禁子串)", {"禁": w, "n": nmax},
             f"禁 '{w}' 二元串计数: 尾比≈{rl:.4f}",
-            {"method": "KMP-DP", "tail_ratio": round(rl, 4), "c_n": c[-1]},
+            {"method": "KMP-DP", "tail_ratio": round(rl, 4), "c_n": c[-1], "seq": c},
             st, tag, f"禁子串 '{w}'")
     # ---- 生成实例: 最长游程族 ----
     for maxrun in range(2, 7):
         c = counts_maxrun(nmax, 2, maxrun)
         kind, seedname = classify(c)
         rl = c[-1] / c[-2] if c[-2] else 0
-        tag = f"种子命中: {seedname}" if kind == "known" else "R: 真且种子表外(需查证)"
+        tag = f"种子命中: {seedname}" if kind == "known" else "种子表外(待 novelty_gate 反查 OEIS)"
         add(f"MR{maxrun}", f"没有 {maxrun} 个连续相同符号的二元串, 多少个?",
             ["连续整数串", "组合计数"], "约束串计数(最大游程)", {"maxrun": maxrun, "n": nmax},
             f"无≥{maxrun}连续相同的二元串计数: 尾比≈{rl:.4f}",
-            {"method": "游程DP", "tail_ratio": round(rl, 4), "c_n": c[-1]},
-            f"真(DP精确计数到{nmax})", tag, f"maxrun={maxrun}")
+            {"method": "游程DP", "tail_ratio": round(rl, 4), "c_n": c[-1], "seq": c},
+            f"有限验证(DP精确计数至{nmax}, 非证明)", tag, f"maxrun={maxrun}")
     # ---- 生成实例: 游走族(返回原点计数) ----
     walks = [(-1, 1), (-1, 1, 2, -2), (-1, 0, 1), (-1, 1, -3, 3), (-2, 2, -1, 1, 3, -3), (-1, 1, 2), (-1, 1, 0, 2, -2)]
     for i, stp in enumerate(walks):
         c = counts_walk(nmax, stp)
         kind, seedname = classify(c, paired=(stp == (-2, 2) or stp == (-1, 1)))
         rl = c[-1] / c[-2] if c[-2] else 0
-        tag = f"种子命中: {seedname}" if kind == "known" else "R: 真且种子表外(需查证)"
+        tag = f"种子命中: {seedname}" if kind == "known" else "种子表外(待 novelty_gate 反查 OEIS)"
         add(f"WK{i:02d}", f"步集 {stp} 的格点游走, 回原点的路数序列?",
             ["递推映射", "组合计数"], "游走返回计数", {"steps": stp, "n": nmax},
             f"步集{stp}返回计数: 尾比≈{rl:.4f}",
-            {"method": "格点DP", "tail_ratio": round(rl, 4), "c_n": c[-1]},
-            f"真(DP精确计数到{nmax})", tag, f"步集 {stp}")
+            {"method": "格点DP", "tail_ratio": round(rl, 4), "c_n": c[-1], "seq": c},
+            f"有限验证(DP精确计数至{nmax}, 非证明)", tag, f"步集 {stp}")
     # ---- 统计 ----
     from collections import Counter
     stat = Counter(p.honesty.split(":")[0].strip() for p in out)
-    r_items = [p for p in out if p.honesty.startswith("R:")]
+    r_items = [p for p in out if p.honesty.startswith("种子表外")]
     return ROOT, out, stat, len(r_items)

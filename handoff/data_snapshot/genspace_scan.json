@@ -1,0 +1,637 @@
+{
+ "report": [
+  {
+   "strategy": "A 经典组合计数",
+   "n": 9,
+   "N0_OEIS命中": 4,
+   "N1_结构可推": 5,
+   "N2_检索级未见": 0,
+   "N3_强候选": 0,
+   "幸存率": 0.0
+  },
+  {
+   "strategy": "B 参数族停时表(运行极值)",
+   "n": 3,
+   "N0_OEIS命中": 0,
+   "N1_结构可推": 3,
+   "N2_检索级未见": 0,
+   "N3_强候选": 0,
+   "幸存率": 0.0
+  },
+  {
+   "strategy": "C 模迭代轨道",
+   "n": 3,
+   "N0_OEIS命中": 1,
+   "N1_结构可推": 2,
+   "N2_检索级未见": 0,
+   "N3_强候选": 0,
+   "幸存率": 0.0
+  },
+  {
+   "strategy": "D 表示计数(math引擎模板)",
+   "n": 2,
+   "N0_OEIS命中": 0,
+   "N1_结构可推": 2,
+   "N2_检索级未见": 0,
+   "N3_强候选": 0,
+   "幸存率": 0.0
+  },
+  {
+   "strategy": "E 任选参数对照(无证书)",
+   "n": 3,
+   "N0_OEIS命中": 0,
+   "N1_结构可推": 0,
+   "N2_检索级未见": 3,
+   "N3_强候选": 0,
+   "幸存率": 1.0
+  },
+  {
+   "strategy": "F 带显著性证书正例",
+   "n": 2,
+   "N0_OEIS命中": 0,
+   "N1_结构可推": 0,
+   "N2_检索级未见": 0,
+   "N3_强候选": 2,
+   "幸存率": 1.0
+  }
+ ],
+ "records": [
+  {
+   "id": "A_avoid_00",
+   "statement": "长度 n 的 0/1 串中不含子串 00 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A000044",
+    "A000045",
+    "A005181",
+    "A011185"
+   ],
+   "oeis_strong_hit": [
+    "A000044",
+    "A000045",
+    "A005181"
+   ],
+   "grade": "N0",
+   "reason": "OEIS 命中并对齐 8 项: ['A000044', 'A000045', 'A005181']",
+   "stage": "G2",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    3,
+    5,
+    8,
+    13,
+    21,
+    34,
+    55
+   ]
+  },
+  {
+   "id": "A_avoid_010",
+   "statement": "长度 n 的 0/1 串中不含子串 010 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A014167",
+    "A100671",
+    "A103197",
+    "A189600"
+   ],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "满足 3 阶常数系数线性递推 a[n]=2*a[n-1]+-1*a[n-2]+1*a[n-3]",
+   "stage": "G3",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    4,
+    7,
+    12,
+    21,
+    37,
+    65,
+    114
+   ]
+  },
+  {
+   "id": "A_avoid_0101",
+   "statement": "长度 n 的 0/1 串中不含子串 0101 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A118870",
+    "A171857",
+    "A190160"
+   ],
+   "oeis_strong_hit": [
+    "A118870"
+   ],
+   "grade": "N0",
+   "reason": "OEIS 命中并对齐 8 项: ['A118870']",
+   "stage": "G2",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    4,
+    8,
+    15,
+    28,
+    53,
+    100,
+    188
+   ]
+  },
+  {
+   "id": "A_avoid_000",
+   "statement": "长度 n 的 0/1 串中不含子串 000 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A005318",
+    "A006744",
+    "A107281",
+    "A160254"
+   ],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "满足 3 阶常数系数线性递推 a[n]=1*a[n-1]+1*a[n-2]+1*a[n-3]",
+   "stage": "G3",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    4,
+    7,
+    13,
+    24,
+    44,
+    81,
+    149
+   ]
+  },
+  {
+   "id": "A_avoid_01001",
+   "statement": "长度 n 的 0/1 串中不含子串 01001 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A102726",
+    "A107066",
+    "A118891",
+    "A141019"
+   ],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "其「差分」命中 OEIS ['A066369', 'A108564'] -> 可由已知序列导出",
+   "stage": "G3",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    4,
+    8,
+    16,
+    31,
+    60,
+    116,
+    225
+   ]
+  },
+  {
+   "id": "A_avoid_10110",
+   "statement": "长度 n 的 0/1 串中不含子串 10110 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A102726",
+    "A107066",
+    "A118891",
+    "A141019"
+   ],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "其「差分」命中 OEIS ['A066369', 'A108564'] -> 可由已知序列导出",
+   "stage": "G3",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    4,
+    8,
+    16,
+    31,
+    60,
+    116,
+    225
+   ]
+  },
+  {
+   "id": "A_maxrun2",
+   "statement": "0/1 串中 1-游程不超过 2 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A000044",
+    "A000045",
+    "A005181",
+    "A011185"
+   ],
+   "oeis_strong_hit": [
+    "A000044",
+    "A000045",
+    "A005181"
+   ],
+   "grade": "N0",
+   "reason": "OEIS 命中并对齐 8 项: ['A000044', 'A000045', 'A005181']",
+   "stage": "G2",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    3,
+    5,
+    8,
+    13,
+    21,
+    34,
+    55
+   ]
+  },
+  {
+   "id": "A_maxrun3",
+   "statement": "0/1 串中 1-游程不超过 3 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A005318",
+    "A006744",
+    "A107281",
+    "A160254"
+   ],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "满足 3 阶常数系数线性递推 a[n]=1*a[n-1]+1*a[n-2]+1*a[n-3]",
+   "stage": "G3",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    4,
+    7,
+    13,
+    24,
+    44,
+    81,
+    149
+   ]
+  },
+  {
+   "id": "A_maxrun4",
+   "statement": "0/1 串中 1-游程不超过 4 的计数",
+   "evidence": "DP精确枚举",
+   "oeis_hits": [
+    "A066369",
+    "A108564",
+    "A239555",
+    "A275544"
+   ],
+   "oeis_strong_hit": [
+    "A275544"
+   ],
+   "grade": "N0",
+   "reason": "OEIS 命中并对齐 8 项: ['A275544']",
+   "stage": "G2",
+   "strategy": "A 经典组合计数",
+   "seq_head": [
+    2,
+    4,
+    8,
+    15,
+    29,
+    56,
+    108,
+    208
+   ]
+  },
+  {
+   "id": "B_stop_p3",
+   "statement": "n<=3 广义Collatz(n奇->3n+1) 最大停时随规模",
+   "evidence": "带记忆迭代",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "序列非减(疑似'运行极值/随规模增长'构造伪影: 单调由构造产生, 不含发现; S2 教训)",
+   "stage": "G3.5",
+   "strategy": "B 参数族停时表(运行极值)",
+   "seq_head": [
+    143,
+    178,
+    181,
+    237,
+    261,
+    275
+   ]
+  },
+  {
+   "id": "B_stop_p5",
+   "statement": "n<=5 广义Collatz(n奇->5n+1) 最大停时随规模",
+   "evidence": "带记忆迭代",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "序列非减(疑似'运行极值/随规模增长'构造伪影: 单调由构造产生, 不含发现; S2 教训)",
+   "stage": "G3.5",
+   "strategy": "B 参数族停时表(运行极值)",
+   "seq_head": [
+    112,
+    167,
+    171,
+    189,
+    190,
+    217
+   ]
+  },
+  {
+   "id": "B_stop_p7",
+   "statement": "n<=7 广义Collatz(n奇->7n+1) 最大停时随规模",
+   "evidence": "带记忆迭代",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "序列非减(疑似'运行极值/随规模增长'构造伪影: 单调由构造产生, 不含发现; S2 教训)",
+   "stage": "G3.5",
+   "strategy": "B 参数族停时表(运行极值)",
+   "seq_head": [
+    72,
+    76,
+    77,
+    90,
+    98,
+    103
+   ]
+  },
+  {
+   "id": "C_cycle_c1",
+   "statement": "x->x^2+1 mod m 最长原始环随 m (m=3..18)",
+   "evidence": "全态迭代",
+   "oeis_hits": [
+    "A002175",
+    "A004738",
+    "A005811",
+    "A006968"
+   ],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "其「差分」命中 OEIS ['A011758', 'A034947'] -> 可由已知序列导出",
+   "stage": "G3",
+   "strategy": "C 模迭代轨道",
+   "seq_head": [
+    1,
+    2,
+    3,
+    2,
+    1,
+    2,
+    3,
+    6
+   ]
+  },
+  {
+   "id": "C_cycle_c2",
+   "statement": "x->x^2+2 mod m 最长原始环随 m (m=3..18)",
+   "evidence": "全态迭代",
+   "oeis_hits": [
+    "A014710",
+    "A026606",
+    "A035176",
+    "A054350"
+   ],
+   "oeis_strong_hit": [
+    "A014710",
+    "A026606",
+    "A054350"
+   ],
+   "grade": "N0",
+   "reason": "OEIS 命中并对齐 8 项: ['A014710', 'A026606', 'A054350']",
+   "stage": "G2",
+   "strategy": "C 模迭代轨道",
+   "seq_head": [
+    2,
+    1,
+    2,
+    2,
+    1,
+    1,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "C_cycle_c3",
+   "statement": "x->x^2+3 mod m 最长原始环随 m (m=3..18)",
+   "evidence": "全态迭代",
+   "oeis_hits": [
+    "A002850",
+    "A003984",
+    "A004738",
+    "A005811"
+   ],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "其「差分」命中 OEIS ['A062244', 'A134541'] -> 可由已知序列导出",
+   "stage": "G3",
+   "strategy": "C 模迭代轨道",
+   "seq_head": [
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "D_R_oddcomp",
+   "statement": "n = 奇合数 + 奇合数 的表示数 R(n), n=40,42,...",
+   "evidence": "程序枚举",
+   "oeis_hits": [
+    "A023142",
+    "A077196",
+    "A093415",
+    "A106749"
+   ],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "其「部分和」命中 OEIS ['A010456', 'A072496'] -> 可由已知序列导出",
+   "stage": "G3",
+   "strategy": "D 表示计数(math引擎模板)",
+   "seq_head": [
+    1,
+    3,
+    1,
+    1,
+    3,
+    2,
+    1,
+    4
+   ]
+  },
+  {
+   "id": "D_R_prime_semi",
+   "statement": "n = 质数 + 半素数 的表示数 R(n)",
+   "evidence": "程序枚举",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "grade": "N1",
+   "reason": "其「二项变换」命中 OEIS ['A036375'] -> 可由已知序列导出",
+   "stage": "G3",
+   "strategy": "D 表示计数(math引擎模板)",
+   "seq_head": [
+    2,
+    2,
+    2,
+    3,
+    5,
+    1,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "E_arbitrary_12345",
+   "statement": "x->x^2+3 mod 10007 自种子 12345 的轨道",
+   "evidence": "任意迭代",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "grade": "N2",
+   "reason": "OEIS 未命中 + 结构不可推, 但**缺显著性证书**(需: 具名对象的不变量 + 至少2个任意选择扰动下该不变量保持)",
+   "stage": "G3.6",
+   "sig": false,
+   "strategy": "E 任选参数对照(无证书)",
+   "seq_head": [
+    12345,
+    2425,
+    6519,
+    7642,
+    9322,
+    8906,
+    1357,
+    164
+   ]
+  },
+  {
+   "id": "E_arbitrary_777",
+   "statement": "x->x^2+3 mod 10007 自种子 777 的轨道",
+   "evidence": "任意迭代",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "grade": "N2",
+   "reason": "OEIS 未命中 + 结构不可推, 但**缺显著性证书**(需: 具名对象的不变量 + 至少2个任意选择扰动下该不变量保持)",
+   "stage": "G3.6",
+   "sig": false,
+   "strategy": "E 任选参数对照(无证书)",
+   "seq_head": [
+    777,
+    3312,
+    1675,
+    3668,
+    4819,
+    6524,
+    2808,
+    9358
+   ]
+  },
+  {
+   "id": "E_arbitrary_31337",
+   "statement": "x->x^2+3 mod 10007 自种子 31337 的轨道",
+   "evidence": "任意迭代",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "grade": "N2",
+   "reason": "OEIS 未命中 + 结构不可推, 但**缺显著性证书**(需: 具名对象的不变量 + 至少2个任意选择扰动下该不变量保持)",
+   "stage": "G3.6",
+   "sig": false,
+   "strategy": "E 任选参数对照(无证书)",
+   "seq_head": [
+    31337,
+    648,
+    9620,
+    9674,
+    815,
+    3766,
+    2840,
+    9968
+   ]
+  },
+  {
+   "id": "F_collatz_density_p3",
+   "statement": "广义Collatz(p=3) 第3步为奇的 n 的密度随扫描窗",
+   "evidence": "程序枚举",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "invariant_spread": 0.0032,
+   "invariant_tol": 0.01,
+   "invariant": "p=3 第3步奇占比≈常数",
+   "sig_perturbations": [
+    [
+     "窗[100,1100]",
+     0.313
+    ],
+    [
+     "窗[2000,3000]",
+     0.312
+    ],
+    [
+     "窗[5000,6000]",
+     0.313
+    ]
+   ],
+   "growth": "非平凡",
+   "grade": "N3",
+   "reason": "OEIS 未命中 + 结构不可推 + 不变量「p=3 第3步奇占比≈常数」在3个扰动下保持 + 有可检验预言 (仍须文献/专家复核才能称世界新)",
+   "stage": "G4",
+   "route": "需文献门",
+   "strategy": "F 带显著性证书正例",
+   "seq_head": [
+    315,
+    315,
+    310,
+    310,
+    315,
+    315,
+    310,
+    310
+   ]
+  },
+  {
+   "id": "F_collatz_density_p5",
+   "statement": "广义Collatz(p=5) 第3步为奇的 n 的密度随扫描窗",
+   "evidence": "程序枚举",
+   "oeis_hits": [],
+   "oeis_strong_hit": [],
+   "invariant_spread": 0.0032,
+   "invariant_tol": 0.01,
+   "invariant": "p=5 第3步奇占比≈常数",
+   "sig_perturbations": [
+    [
+     "窗[100,1100]",
+     0.313
+    ],
+    [
+     "窗[2000,3000]",
+     0.312
+    ],
+    [
+     "窗[5000,6000]",
+     0.313
+    ]
+   ],
+   "growth": "非平凡",
+   "grade": "N3",
+   "reason": "OEIS 未命中 + 结构不可推 + 不变量「p=5 第3步奇占比≈常数」在3个扰动下保持 + 有可检验预言 (仍须文献/专家复核才能称世界新)",
+   "stage": "G4",
+   "route": "需文献门",
+   "strategy": "F 带显著性证书正例",
+   "seq_head": [
+    315,
+    315,
+    310,
+    310,
+    315,
+    315,
+    310,
+    310
+   ]
+  }
+ ]
+}

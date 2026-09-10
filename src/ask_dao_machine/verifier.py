@@ -81,7 +81,7 @@ def record_result_by_ids(problems_path: Path, ids: List[str], status: str,
 
 
 def pending_families(problems_path: Path) -> List[dict]:
-    """records 型惊喜候选按(类A,类B)去重, 供按族检索。"""
+    """records 型待查候选按(类A,类B)去重, 供按族检索。"""
     data = json.loads(Path(problems_path).read_text(encoding="utf-8"))
     fam = {}
     for p in data["problems"]:

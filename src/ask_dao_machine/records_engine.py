@@ -2,7 +2,7 @@
 """records_engine.py — 纪录/图案型问题制造器:
   把生成移到"参数化边角": (对象类A × 对象类B × 偶数域) 的覆盖性扫描,
   输出 覆盖阈值/反例图案/间隙纪录/迭代纪录 —— 机器自己发现的数字事实即新问题原料。
-  诚实: 只对扫描范围负责; 已知配对自动标注; 其余=惊喜候选 -> 交给查证器。"""
+  诚实: 只对扫描范围负责; 已知配对自动标注; 其余=待参照系反查 -> 交给 novelty_gate。"""
 import math
 from .judges_math import sieve
 from .model import ProblemRecord, TreeRoot
@@ -10,10 +10,10 @@ from .model import ProblemRecord, TreeRoot
 # 已收录配对的先验知识(模板=偶数两数和)
 KNOWN = {
     ("质数", "质数"): ("悬置(开放)", "已知-著名: 哥德巴赫"),
-    ("奇合数", "奇合数"): ("真(验证到上限)", "已知-小定理(阈值40; 文献大概率已有)"),
+    ("奇合数", "奇合数"): ("有限验证(至扫描上限, 非证明)", "已知-小定理(阈值40; 文献大概率已有)"),
     ("平方数", "平方数"): ("假(结构性: 4k+2)", "已知(模论证)"),
-    ("质数", "奇合数"): ("真(验证到上限)", "已知-易证类(文献需核对具体阈值)"),
-    ("无平方因子数", "无平方因子数"): ("真(验证到上限)", "已知(Estermann 系: 大整数=两无平方因子数)"),
+    ("质数", "奇合数"): ("有限验证(至扫描上限, 非证明)", "已知-易证类(文献需核对具体阈值)"),
+    ("无平方因子数", "无平方因子数"): ("有限验证(至扫描上限, 非证明)", "已知(Estermann 系: 大整数=两无平方因子数)"),
 }
 
 
@@ -112,10 +112,10 @@ def run(N: int = 80000, SCAN: int = 40000, RUN_CAP: int = 400):
                     stmt = f"6..{SCAN} 内偶数均可写成 {a}+{b}"
                 if key:
                     status, tag = KNOWN[key]
-                    if r["fails_head"] and status.startswith("真"):
-                        status = f"真(阈值{r['threshold']}, 验证到{SCAN})"
+                    if r["fails_head"] and (status.startswith("真") or status.startswith("有限验证")):
+                        status = f"有限验证(阈值{r['threshold']}, 扫描至{SCAN}, 非证明)"
                 else:
-                    status, tag = "真(验证到上限)", "惊喜候选(查证器待检)"
+                    status, tag = "有限验证(至扫描上限, 非证明)", "待参照系反查(未过 novelty_gate)"
                 judge = {"method": "双类两数和覆盖扫描", "range": f"偶数6..{SCAN}",
                          "fail_count": len(r["fails_head"]), "fails_head": r["fails_head"][:10],
                          "threshold": r["threshold"]}
@@ -126,7 +126,7 @@ def run(N: int = 80000, SCAN: int = 40000, RUN_CAP: int = 400):
                     if status.startswith("假"):
                         stmt = f"并非所有偶数都是 {a}+{b} (结构性失败, 如 4k+2)"
                 else:
-                    status, tag = "悬置(覆盖疑似失败·证据不足)", "惊喜候选(查证器待检)"
+                    status, tag = "悬置(覆盖疑似失败·证据不足)", "待参照系反查(未过 novelty_gate)"
                 judge = {"method": "双类两数和覆盖扫描(失败截断)", "range": f"偶数6..{SCAN}",
                          "fails_head": r["fails_head"][:10], "capped": True}
             add(rid, f"把 {a} 与 {b} 配对当'两个加数', 偶数都够得到吗?", [a, b, "奇偶", "两项和"],

@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Dict, List
 
 from . import (math_engine, aesthetics_engine, records_engine, fusion_engine,
-               lang_info_engine, combo_engine, direction_engine)
+               lang_info_engine, combo_engine, direction_engine, sparse_engine)
 from .model import ProblemSet
 from .registry import Registry
 
@@ -24,8 +24,15 @@ class ProblemMaker:
             "ling": self._run_ling,
             "combo": self._run_combo,
             "direction": self._run_direction,
+            "sparse": self._run_sparse,
             "aesthetics": aesthetics_engine.run,
         }
+
+    def _run_sparse(self, limits: dict = None):
+        limits = limits or {}
+        roots, records = sparse_engine.run(m_hi=limits.get("m_hi", 64),
+                                           q_hi=limits.get("q_hi", 9))
+        return ProblemSet("sparse", roots, records)
 
     def _run_math(self, limits: dict = None):
         limits = limits or {}

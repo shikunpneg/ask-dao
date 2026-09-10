@@ -48,7 +48,7 @@ def detect(problems_path: Path, scan_limit: int = 40000,
                     "evidence": {"threshold": th, "scan_limit": scan_limit, "fails_head": j.get("fails_head", [])[:6]},
                     "pre_problem": f"{pid}: 最后一个例外紧贴扫描边界 {scan_limit}——扫描之外还有反例吗? 是真定理还只是'碰巧'?",
                     "suggest": f"证明或找反例: 判定 {p.get('statement','')[:50]}… 的阈值是否真的有限",
-                    "status": "真(验证到上限) -> 前问题: 边界外未验证"})
+                    "status": "有限验证(至扫描上限) -> 前问题: 边界外未验证"})
         if j.get("capped"):
             out.append({
                 "type": "覆盖空洞(扫描截断)",

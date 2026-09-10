@@ -13,9 +13,12 @@ TRUE = "真"
 FALSE = "假"
 OPEN = "悬置(开放)"
 PENDING = "待实验/待评审"
+# "验到上限"不等于"证明": 必须与 TRUE 分开, 否则是把有限验证冒充真。
+FINITE = "有限验证(至扫描上限, 非证明)"
 
 KNOWN = "已知(著名/已证)"
-SURPRISE = "惊喜候选(需查证)"
+# 诚实纪律: 引擎不得自称新颖。新颖性只能由 novelty_gate 实查 OEIS 后给出。
+AWAIT_GATE = "待参照系反查(未过 novelty_gate)"
 BASELINE = "及格线产物"
 
 
@@ -71,10 +74,12 @@ class ProblemSet:
     problems: List[ProblemRecord]
 
     def stats(self) -> Dict[str, int]:
-        c = {"真": 0, "假": 0, "悬置(开放)": 0, "待实验/待评审": 0}
+        c = {"真": 0, "假": 0, "悬置(开放)": 0, "待实验/待评审": 0, "有限验证": 0}
         for p in self.problems:
             if p.status in c:
                 c[p.status] += 1
+            elif p.status.startswith("有限验证"):
+                c["有限验证"] += 1
             elif p.status.startswith("真"):
                 c["真"] += 1
             elif p.status.startswith("假"):

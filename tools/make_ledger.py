@@ -13,14 +13,16 @@ def collect():
     rows = []
     for f in sorted(DEMO.glob("problems_*.json")):
         d = json.loads(f.read_text(encoding="utf-8"))
-        nc = {"N0": 0, "N1": 0, "N2": 0, "N3": 0, "无": 0}
-        st = {"真": 0, "假": 0, "悬置": 0, "待实验": 0}
+        # 新颖性只认 novelty_gate(实查 OEIS)的结果; 无 gate 结果 = 不可判, 不是"新"。
+        nc = {"N0": 0, "N1": 0, "N2": 0, "N3": 0, "不可判": 0}
+        st = {"真": 0, "假": 0, "悬置": 0, "待实验": 0, "有限验证": 0}
         for p in d.get("problems", []):
-            v = (p.get("novelty_judge") or {}).get("verdict", "")
-            k = v.split(" ")[0] if v else "无"
-            nc[k] = nc.get(k, 0) + 1
+            g = (p.get("novelty_gate") or {}).get("grade")
+            nc[g if g in nc else "不可判"] += 1
             s = p.get("status", "")
-            if s.startswith("真"):
+            if s.startswith("有限验证"):
+                st["有限验证"] += 1
+            elif s.startswith("真"):
                 st["真"] += 1
             elif s.startswith("假"):
                 st["假"] += 1
