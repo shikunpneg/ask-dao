@@ -1,4 +1,4 @@
-﻿---
+---
 permalink: /docs-index/
 ---<div align="center">
 
