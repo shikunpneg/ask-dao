@@ -2,924 +2,8 @@
  "generator": "ask-dao-machine/discovery_pipeline",
  "target": "AI4S harness",
  "problem_format": "{statement, conjecture, evidence, judge_route, status, layer}",
- "count": 59,
+ "count": 72,
  "problems": [
-  {
-   "id": "Q_b2",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 2) + 素数?",
-   "conjecture": "开放: 例外是否有限?",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     15,
-     21,
-     25,
-     27,
-     39,
-     45,
-     49,
-     51,
-     55,
-     57,
-     63,
-     69
-    ],
-    "count": 2147887,
-    "last": 4999997
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "贴边界(未知)",
-   "layer": "L0/L2",
-   "harness_verdict": "rejected(出现新例外 [5000001, 5000003, 5000005, 5000007])"
-  },
-  {
-   "id": "Q_b3",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 3) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [78, 88, 100, 118, 142, 146, 148, 266, 268, 298, 328, 356]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     78,
-     88,
-     100,
-     118,
-     142,
-     146,
-     148,
-     266,
-     268,
-     298,
-     328,
-     356
-    ],
-    "count": 68,
-    "last": 12388
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "open(例外多/仍在冒)"
-  },
-  {
-   "id": "Q_b4",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 4) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [35, 255, 515, 1855, 4345]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     35,
-     255,
-     515,
-     1855,
-     4345
-    ],
-    "count": 5,
-    "last": 4345
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(例外汇合: [35, 255, 515, 1855, 4345], N0->N1 无新)"
-  },
-  {
-   "id": "Q_b5",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 5) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [66, 418, 448, 1266]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     66,
-     418,
-     448,
-     1266
-    ],
-    "count": 4,
-    "last": 1266
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(例外汇合: [66, 418, 448, 1266], N0->N1 无新)"
-  },
-  {
-   "id": "Q_b6",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 6) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [1855]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     1855
-    ],
-    "count": 1,
-    "last": 1855
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(例外汇合: [1855], N0->N1 无新)"
-  },
-  {
-   "id": "Q_b7",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 7) + 素数?",
-   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [],
-    "count": 0,
-    "last": null
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
-  },
-  {
-   "id": "Q_b8",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 8) + 素数?",
-   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [],
-    "count": 0,
-    "last": null
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
-  },
-  {
-   "id": "Q_b9",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 9) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [124]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     124
-    ],
-    "count": 1,
-    "last": 124
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(例外汇合: [124], N0->N1 无新)"
-  },
-  {
-   "id": "Q_b10",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 10) + 素数?",
-   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [],
-    "count": 0,
-    "last": null
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
-  },
-  {
-   "id": "Q_b11",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 11) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [126]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     126
-    ],
-    "count": 1,
-    "last": 126
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(例外汇合: [126], N0->N1 无新)"
-  },
-  {
-   "id": "Q_b12",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 12) + 素数?",
-   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [],
-    "count": 0,
-    "last": null
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
-  },
-  {
-   "id": "Q_b13",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 13) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [126]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     126
-    ],
-    "count": 1,
-    "last": 126
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(例外汇合: [126], N0->N1 无新)"
-  },
-  {
-   "id": "Q_b14",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 14) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [540]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     540
-    ],
-    "count": 1,
-    "last": 540
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(例外汇合: [540], N0->N1 无新)"
-  },
-  {
-   "id": "Q_b15",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 15) + 素数?",
-   "conjecture": "猜想: 回文(b)+素数 覆盖所有 n (b≥7)",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [],
-    "count": 0,
-    "last": null
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "已验证(N=5e6 零例外)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(零例外, 到 N1 仍零)"
-  },
-  {
-   "id": "Q_b16",
-   "domain": "数论(进制依赖)",
-   "statement": "每个 n 是否都可写成 回文数(base 16) + 素数?",
-   "conjecture": "猜想: 例外集有限且 = [539]",
-   "evidence": {
-    "scan_to": 5000000,
-    "exceptions": [
-     539
-    ],
-    "count": 1,
-    "last": 539
-   },
-   "judge_route": "数值枚举到 N(向量化标记); 若需证明走解析数论",
-   "status": "疑似有限(最后例外后全覆盖)",
-   "layer": "L0/L2",
-   "harness_verdict": "confirmed(例外汇合: [539], N0->N1 无新)"
-  },
-  {
-   "id": "CX_质数_三角数_char",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 质数+三角数 的例外集 在 [6,40000] 内共 66 个, 最大者 39340(前几个: [36, 210, 216, 406, 528, 630])。**是什么刻画了这个例外集**?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     36,
-     210,
-     216,
-     406,
-     528,
-     630,
-     780,
-     990,
-     1176,
-     1596
-    ],
-    "count": 66,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 36,
-     "beyond_head": [
-      40470,
-      41328,
-      41616,
-      42486,
-      42778
-     ],
-     "extends": true
-    },
-    "settleable_by_machine": false,
-    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
-    "quant": "[6,40000] 内偶数"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_质数_三角数_finite",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 质数+三角数 的例外集: 最后例外在 39340(扫描上界 40000); 延伸到 79994 又见 36 个新例外。例外集是**有限**的吗? (机器的全部本事是'扫到上界', 扫不出这个问题)",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     36,
-     210,
-     216,
-     406,
-     528,
-     630,
-     780,
-     990,
-     1176,
-     1596
-    ],
-    "count": 66,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 36,
-     "beyond_head": [
-      40470,
-      41328,
-      41616,
-      42486,
-      42778
-     ],
-     "extends": true
-    },
-    "settleable_by_machine": false,
-    "crit": "证明例外有限并给出可证上界, 或构造扫描上界之外的新例外",
-    "quant": "扫描上界 40000; 延伸至 79994"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_质数_三角数_density",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 质数+三角数 的例外集 尾部密度稳定在 0.0025(逐窗 [0.003, 0.002, 0.003, 0.002])。密度极限是否存在? 极限值是多少?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     36,
-     210,
-     216,
-     406,
-     528,
-     630,
-     780,
-     990,
-     1176,
-     1596
-    ],
-    "count": 66,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 36,
-     "beyond_head": [
-      40470,
-      41328,
-      41616,
-      42486,
-      42778
-     ],
-     "extends": true
-    },
-    "settleable_by_machine": false,
-    "crit": "证明密度极限存在并定值, 或证明其不存在",
-    "quant": "分窗跨度 2000; 区间 [6,40000]"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_质数_平方数_char",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 质数+平方数 的例外集 在 [6,40000] 内共 75 个, 最大者 40000(前几个: [10, 34, 58, 64, 130, 196])。**是什么刻画了这个例外集**?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     10,
-     34,
-     58,
-     64,
-     130,
-     196,
-     214,
-     226,
-     324,
-     370
-    ],
-    "count": 75,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 27,
-     "beyond_head": [
-      40804,
-      41616,
-      42436,
-      43264,
-      44944
-     ],
-     "extends": true
-    },
-    "settleable_by_machine": false,
-    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
-    "quant": "[6,40000] 内偶数"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_质数_平方数_finite",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 质数+平方数 的例外集: 最后例外在 40000(扫描上界 40000); 延伸到 79994 又见 27 个新例外。例外集是**有限**的吗? (机器的全部本事是'扫到上界', 扫不出这个问题)",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     10,
-     34,
-     58,
-     64,
-     130,
-     196,
-     214,
-     226,
-     324,
-     370
-    ],
-    "count": 75,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 27,
-     "beyond_head": [
-      40804,
-      41616,
-      42436,
-      43264,
-      44944
-     ],
-     "extends": true
-    },
-    "settleable_by_machine": false,
-    "crit": "证明例外有限并给出可证上界, 或构造扫描上界之外的新例外",
-    "quant": "扫描上界 40000; 延伸至 79994"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_质数_平方数_density",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 质数+平方数 的例外集 尾部密度稳定在 0.002(逐窗 [0.001, 0.002, 0.001, 0.002])。密度极限是否存在? 极限值是多少?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     10,
-     34,
-     58,
-     64,
-     130,
-     196,
-     214,
-     226,
-     324,
-     370
-    ],
-    "count": 75,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 27,
-     "beyond_head": [
-      40804,
-      41616,
-      42436,
-      43264,
-      44944
-     ],
-     "extends": true
-    },
-    "settleable_by_machine": false,
-    "crit": "证明密度极限存在并定值, 或证明其不存在",
-    "quant": "分窗跨度 2000; 区间 [6,40000]"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_质数_半素数_char",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 质数+半素数 的例外集 在 [6,40000] 内共 1 个, 最大者 10(前几个: [10])。**是什么刻画了这个例外集**?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     10
-    ],
-    "count": 1,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 0,
-     "beyond_head": [],
-     "extends": false
-    },
-    "settleable_by_machine": false,
-    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
-    "quant": "[6,40000] 内偶数"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_奇合数_平方数_char",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 奇合数+平方数 的例外集 在 [6,40000] 内共 10 个, 最大者 398(前几个: [6, 8, 12, 14, 20, 32])。**是什么刻画了这个例外集**?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     6,
-     8,
-     12,
-     14,
-     20,
-     32,
-     38,
-     62,
-     68,
-     398
-    ],
-    "count": 10,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 0,
-     "beyond_head": [],
-     "extends": false
-    },
-    "settleable_by_machine": false,
-    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
-    "quant": "[6,40000] 内偶数"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_奇合数_三角数_char",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 奇合数+三角数 的例外集 在 [6,40000] 内共 13 个, 最大者 662(前几个: [6, 8, 14, 20, 32, 44])。**是什么刻画了这个例外集**?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     6,
-     8,
-     14,
-     20,
-     32,
-     44,
-     62,
-     74,
-     152,
-     194
-    ],
-    "count": 13,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 0,
-     "beyond_head": [],
-     "extends": false
-    },
-    "settleable_by_machine": false,
-    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
-    "quant": "[6,40000] 内偶数"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_奇合数_半素数_char",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 奇合数+半素数 的例外集 在 [6,40000] 内共 12 个, 最大者 38(前几个: [6, 8, 10, 12, 14, 16])。**是什么刻画了这个例外集**?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     6,
-     8,
-     10,
-     12,
-     14,
-     16,
-     20,
-     22,
-     26,
-     28
-    ],
-    "count": 12,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 0,
-     "beyond_head": [],
-     "extends": false
-    },
-    "settleable_by_machine": false,
-    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
-    "quant": "[6,40000] 内偶数"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "CX_半素数_平方数_char",
-   "domain": "加性数论",
-   "statement": "偶数 n 写成 半素数+平方数 的例外集 在 [6,40000] 内共 6 个, 最大者 108(前几个: [6, 12, 28, 32, 72, 108])。**是什么刻画了这个例外集**?",
-   "conjecture": "例外集的刻画/有限性/密度极限",
-   "evidence": {
-    "method": "反例集结构拟合(机器枚举)",
-    "examples": [
-     6,
-     12,
-     28,
-     32,
-     72,
-     108
-    ],
-    "count": 6,
-    "period": null,
-    "residues": null,
-    "scan": [
-     6,
-     40000
-    ],
-    "probe": {
-     "ext_range": [
-      40002,
-      79994
-     ],
-     "n_beyond": 0,
-     "beyond_head": [],
-     "extends": false
-    },
-    "settleable_by_machine": false,
-    "crit": "给出例外集的精确刻画(同余类/代数条件)并证明, 或指出刻画不存在的理由",
-    "quant": "[6,40000] 内偶数"
-   },
-   "judge_route": "反例集结构拟合 + 延伸探针",
-   "status": "开放(机器无法结算)",
-   "layer": "L1/L2"
-  },
-  {
-   "id": "P3_0",
-   "domain": "跨域组合",
-   "statement": "数学:素数 + 物理:开普勒面积 的例外集(1个)有限吗? 刻画?",
-   "conjecture": "例外有限且小",
-   "evidence": {
-    "count": 1,
-    "density": 2e-05
-   },
-   "judge_route": "向量化标记到 1e5",
-   "status": "疑似有限",
-   "layer": "L1"
-  },
-  {
-   "id": "P3_1",
-   "domain": "跨域组合",
-   "statement": "数学:平方数 + 语言:Dyck路径长 的例外集(1个)有限吗? 刻画?",
-   "conjecture": "例外有限且小",
-   "evidence": {
-    "count": 1,
-    "density": 2e-05
-   },
-   "judge_route": "向量化标记到 1e5",
-   "status": "疑似有限",
-   "layer": "L1"
-  },
-  {
-   "id": "P3_2",
-   "domain": "跨域组合",
-   "statement": "数学:幂数 + 语言:Dyck路径长 的例外集(1个)有限吗? 刻画?",
-   "conjecture": "例外有限且小",
-   "evidence": {
-    "count": 1,
-    "density": 2e-05
-   },
-   "judge_route": "向量化标记到 1e5",
-   "status": "疑似有限",
-   "layer": "L1"
-  },
-  {
-   "id": "P3_3",
-   "domain": "跨域组合",
-   "statement": "数学:三角数 + 语言:Dyck路径长 的例外集(2个)有限吗? 刻画?",
-   "conjecture": "例外有限且小",
-   "evidence": {
-    "count": 2,
-    "density": 4e-05
-   },
-   "judge_route": "向量化标记到 1e5",
-   "status": "疑似有限",
-   "layer": "L1"
-  },
-  {
-   "id": "P3_4",
-   "domain": "跨域组合",
-   "statement": "物理:谐振子能级 + 语言:Dyck路径长 的例外集(2个)有限吗? 刻画?",
-   "conjecture": "例外有限且小",
-   "evidence": {
-    "count": 2,
-    "density": 4e-05
-   },
-   "judge_route": "向量化标记到 1e5",
-   "status": "疑似有限",
-   "layer": "L1"
-  },
-  {
-   "id": "P3_5",
-   "domain": "跨域组合",
-   "statement": "生物:三角数(群体) + 语言:Dyck路径长 的例外集(2个)有限吗? 刻画?",
-   "conjecture": "例外有限且小",
-   "evidence": {
-    "count": 2,
-    "density": 4e-05
-   },
-   "judge_route": "向量化标记到 1e5",
-   "status": "疑似有限",
-   "layer": "L1"
-  },
-  {
-   "id": "P3_6",
-   "domain": "跨域组合",
-   "statement": "数学:回文数_b10 + 物理:开普勒面积 的例外集(4个)有限吗? 刻画?",
-   "conjecture": "例外有限且小",
-   "evidence": {
-    "count": 4,
-    "density": 8e-05
-   },
-   "judge_route": "向量化标记到 1e5",
-   "status": "疑似有限",
-   "layer": "L1"
-  },
-  {
-   "source": "grass",
-   "domain": "视觉感知",
-   "features": {
-    "size": [
-     512,
-     512
-    ],
-    "density": 0.528,
-    "sym_h": 0.494,
-    "sym_v": 0.514,
-    "local_entropy": 3.06,
-    "edge_density": 0.334
-   },
-   "trigger": "复杂度-熵",
-   "daily_question": "这张grass为什么看起来很复杂?",
-   "scientific_question": "该图像的局部块熵接近上界(高复杂度)。自然图像的熵分布? 与人类复杂度感知是否一致?",
-   "judge_route": "信息论: 图像块熵 vs 人类复杂度评分(需实验)",
-   "status": "待实验/待数据"
-  },
-  {
-   "source": "grass",
-   "domain": "视觉感知",
-   "features": {
-    "size": [
-     512,
-     512
-    ],
-    "density": 0.528,
-    "sym_h": 0.494,
-    "sym_v": 0.514,
-    "local_entropy": 3.06,
-    "edge_density": 0.334
-   },
-   "trigger": "边界",
-   "daily_question": "这张grass为什么看起来纹理很密?",
-   "scientific_question": "该图像边界密度高(纹理丰富)。边界密度与对象分割难度的关系?",
-   "judge_route": "图像处理: 边界检测准确率 vs 密度",
-   "status": "待实验/待数据"
-  },
   {
    "source": "https://en.wikipedia.org/wiki/Black_hole",
    "domain": "天文",
@@ -1111,6 +195,678 @@
    "scientific_question": "在信息中, 'can we be certain a machine isn't conscious' 的机制/结构是什么?",
    "judge_route": "计算+统计",
    "status": "待判定"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "whatDidn't the Infant Universe Collapse into a Black Hole?",
+   "scientific_question": "'Didn't the Infant Universe Collapse into' 在天文中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_0",
+   "statement": "'Didn't the Infant Universe Collapse into' 在天文中的结构是什么?",
+   "conjecture": "whatDidn't the Infant Universe Collapse into a Black Hole?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "what10 dimensions?",
+   "scientific_question": "'10 dimensions?' 在天文中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_1",
+   "statement": "'10 dimensions?' 在天文中的结构是什么?",
+   "conjecture": "what10 dimensions?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "howbig can a black hole grow?",
+   "scientific_question": "'big can a black hole grow?' 在天文中是否可实现/存在? 构造或反例?",
+   "judge_route": "观测验证",
+   "status": "待判定",
+   "kind": "存在性/可行性",
+   "id": "WEB_2",
+   "statement": "'big can a black hole grow?' 在天文中是否可实现/存在? 构造或反例?",
+   "conjecture": "howbig can a black hole grow?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "howBig Is a Black Hole?",
+   "scientific_question": "'Big Is a Black Hole?' 在天文中是否为真? 判定依据?",
+   "judge_route": "观测",
+   "status": "待判定",
+   "kind": "真伪判断",
+   "id": "WEB_3",
+   "statement": "'Big Is a Black Hole?' 在天文中是否为真? 判定依据?",
+   "conjecture": "howBig Is a Black Hole?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "whatDo Organisms Shuffle Their Genotypes?",
+   "scientific_question": "'Do Organisms Shuffle Their Genotypes?' 在生物中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_4",
+   "statement": "'Do Organisms Shuffle Their Genotypes?' 在生物中的结构是什么?",
+   "conjecture": "whatDo Organisms Shuffle Their Genotypes?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "whatare there so many insect species?",
+   "scientific_question": "'are there so many insect species?' 在生物中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_5",
+   "statement": "'are there so many insect species?' 在生物中的结构是什么?",
+   "conjecture": "whatare there so many insect species?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "howshall we name and generalise the unit of Darwinism?",
+   "scientific_question": "'shall we name and generalise the unit of' 在生物中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_6",
+   "statement": "'shall we name and generalise the unit of' 在生物中的结构是什么?",
+   "conjecture": "howshall we name and generalise the unit of Darwinism?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "howMany Species Are There on Earth and in the Ocean?",
+   "scientific_question": "'Many Species Are There on Earth and in t' 在生物中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_7",
+   "statement": "'Many Species Are There on Earth and in t' 在生物中的结构是什么?",
+   "conjecture": "howMany Species Are There on Earth and in the Ocean?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "what-isQuantum Mechanics?",
+   "scientific_question": "'-isQuantum Mechanics?' 在物理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_8",
+   "statement": "'-isQuantum Mechanics?' 在物理中的结构是什么?",
+   "conjecture": "what-isQuantum Mechanics?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('8 The wave nature of light causes the li…')的机制/原因是什么??",
+   "scientific_question": "在物理中, 驱动'因果:这段陈述('8 The wave nature of light caus' 的机制是什么? 能否用可检验模型刻画?",
+   "judge_route": "理论",
+   "status": "待判定",
+   "kind": "机制/因果",
+   "id": "WEB_9",
+   "statement": "在物理中, 驱动'因果:这段陈述('8 The wave nature of light caus' 的机制是什么? 能否用可检验模型刻画?",
+   "conjecture": "因果:这段陈述('8 The wave nature of light causes the li…')的机制/原因是什么??",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('This necessarily causes a loss of inform…')的机制/原因是什么??",
+   "scientific_question": "在物理中, 驱动'因果:这段陈述('This necessarily causes a loss ' 的机制是什么? 能否用可检验模型刻画?",
+   "judge_route": "理论",
+   "status": "待判定",
+   "kind": "机制/因果",
+   "id": "WEB_10",
+   "statement": "在物理中, 驱动'因果:这段陈述('This necessarily causes a loss ' 的机制是什么? 能否用可检验模型刻画?",
+   "conjecture": "因果:这段陈述('This necessarily causes a loss of inform…')的机制/原因是什么??",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('[ 92 ] [ 93 ] Notable results from this …')的机制/原因是什么??",
+   "scientific_question": "在物理中, 驱动'因果:这段陈述('[ 92 ] [ 93 ] Notable results f' 的机制是什么? 能否用可检验模型刻画?",
+   "judge_route": "理论",
+   "status": "待判定",
+   "kind": "机制/因果",
+   "id": "WEB_11",
+   "statement": "在物理中, 驱动'因果:这段陈述('[ 92 ] [ 93 ] Notable results f' 的机制是什么? 能否用可检验模型刻画?",
+   "conjecture": "因果:这段陈述('[ 92 ] [ 93 ] Notable results from this …')的机制/原因是什么??",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "whatam I me and not someone else?",
+   "scientific_question": "'am I me and not someone else?' 在心理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_12",
+   "statement": "'am I me and not someone else?' 在心理中的结构是什么?",
+   "conjecture": "whatam I me and not someone else?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howcan I know that others have minds?",
+   "scientific_question": "'can I know that others have minds?' 在心理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_13",
+   "statement": "'can I know that others have minds?' 在心理中的结构是什么?",
+   "conjecture": "howcan I know that others have minds?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howsimilar are they?",
+   "scientific_question": "'similar are they?' 在心理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_14",
+   "statement": "'similar are they?' 在心理中的结构是什么?",
+   "conjecture": "howsimilar are they?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howmany concepts of consciousness?",
+   "scientific_question": "'many concepts of consciousness?' 在心理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_15",
+   "statement": "'many concepts of consciousness?' 在心理中的结构是什么?",
+   "conjecture": "howmany concepts of consciousness?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isthe Explorer?",
+   "scientific_question": "'-isthe Explorer?' 在数学中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_16",
+   "statement": "'-isthe Explorer?' 在数学中的结构是什么?",
+   "conjecture": "what-isthe Explorer?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isConnected Papers?",
+   "scientific_question": "'-isConnected Papers?' 在数学中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_17",
+   "statement": "'-isConnected Papers?' 在数学中的结构是什么?",
+   "conjecture": "what-isConnected Papers?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isLitmaps?",
+   "scientific_question": "'-isLitmaps?' 在数学中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_18",
+   "statement": "'-isLitmaps?' 在数学中的结构是什么?",
+   "conjecture": "what-isLitmaps?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isalphaXiv?",
+   "scientific_question": "'-isalphaXiv?' 在数学中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_19",
+   "statement": "'-isalphaXiv?' 在数学中的结构是什么?",
+   "conjecture": "what-isalphaXiv?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "whatdon't robots have rights?",
+   "scientific_question": "'don't robots have rights?' 在信息中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_20",
+   "statement": "'don't robots have rights?' 在信息中的结构是什么?",
+   "conjecture": "whatdon't robots have rights?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howDoes It Work?",
+   "scientific_question": "'Does It Work?' 在信息中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_21",
+   "statement": "'Does It Work?' 在信息中的结构是什么?",
+   "conjecture": "howDoes It Work?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howlong will it last?",
+   "scientific_question": "'long will it last?' 在信息中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_22",
+   "statement": "'long will it last?' 在信息中的结构是什么?",
+   "conjecture": "howlong will it last?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howcan we be certain a machine isn't conscious?",
+   "scientific_question": "'can we be certain a machine isn't consci' 在信息中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_23",
+   "statement": "'can we be certain a machine isn't consci' 在信息中的结构是什么?",
+   "conjecture": "howcan we be certain a machine isn't conscious?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "whatDidn't the Infant Universe Collapse into a Black Hole?",
+   "scientific_question": "'Didn't the Infant Universe Collapse into' 在天文中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_0",
+   "statement": "'Didn't the Infant Universe Collapse into' 在天文中的结构是什么?",
+   "conjecture": "whatDidn't the Infant Universe Collapse into a Black Hole?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "what10 dimensions?",
+   "scientific_question": "'10 dimensions' 在天文中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_1",
+   "statement": "'10 dimensions' 在天文中的结构是什么?",
+   "conjecture": "what10 dimensions?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "howbig can a black hole grow?",
+   "scientific_question": "'big can a black hole grow' 在天文中是否可实现/存在? 构造或反例?",
+   "judge_route": "观测验证",
+   "status": "待判定",
+   "kind": "存在性/可行性",
+   "id": "WEB_2",
+   "statement": "'big can a black hole grow' 在天文中是否可实现/存在? 构造或反例?",
+   "conjecture": "howbig can a black hole grow?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Black_hole",
+   "domain": "天文",
+   "daily_question": "howBig Is a Black Hole?",
+   "scientific_question": "'Big Is a Black Hole' 在天文中是否为真? 判定依据?",
+   "judge_route": "观测",
+   "status": "待判定",
+   "kind": "真伪判断",
+   "id": "WEB_3",
+   "statement": "'Big Is a Black Hole' 在天文中是否为真? 判定依据?",
+   "conjecture": "howBig Is a Black Hole?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "whatDo Organisms Shuffle Their Genotypes?",
+   "scientific_question": "'Do Organisms Shuffle Their Genotypes' 在生物中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_4",
+   "statement": "'Do Organisms Shuffle Their Genotypes' 在生物中的结构是什么?",
+   "conjecture": "whatDo Organisms Shuffle Their Genotypes?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "whatare there so many insect species?",
+   "scientific_question": "'are there so many insect species' 在生物中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_5",
+   "statement": "'are there so many insect species' 在生物中的结构是什么?",
+   "conjecture": "whatare there so many insect species?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "howshall we name and generalise the unit of Darwinism?",
+   "scientific_question": "'shall we name and generalise the unit of' 在生物中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_6",
+   "statement": "'shall we name and generalise the unit of' 在生物中的结构是什么?",
+   "conjecture": "howshall we name and generalise the unit of Darwinism?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Evolution",
+   "domain": "生物",
+   "daily_question": "howMany Species Are There on Earth and in the Ocean?",
+   "scientific_question": "'Many Species Are There on Earth and in t' 在生物中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_7",
+   "statement": "'Many Species Are There on Earth and in t' 在生物中的结构是什么?",
+   "conjecture": "howMany Species Are There on Earth and in the Ocean?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "what-isQuantum Mechanics?",
+   "scientific_question": "'-isQuantum Mechanics' 在物理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_8",
+   "statement": "'-isQuantum Mechanics' 在物理中的结构是什么?",
+   "conjecture": "what-isQuantum Mechanics?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('8 The wave nature of light causes the li…')的机制/原因是什么??",
+   "scientific_question": "在物理中, 驱动'因果:这段陈述('8 The wave nature of light caus' 的机制是什么? 能否用可检验模型刻画?",
+   "judge_route": "理论",
+   "status": "待判定",
+   "kind": "机制/因果",
+   "id": "WEB_9",
+   "statement": "在物理中, 驱动'因果:这段陈述('8 The wave nature of light caus' 的机制是什么? 能否用可检验模型刻画?",
+   "conjecture": "因果:这段陈述('8 The wave nature of light causes the li…')的机制/原因是什么??",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('This necessarily causes a loss of inform…')的机制/原因是什么??",
+   "scientific_question": "在物理中, 驱动'因果:这段陈述('This necessarily causes a loss ' 的机制是什么? 能否用可检验模型刻画?",
+   "judge_route": "理论",
+   "status": "待判定",
+   "kind": "机制/因果",
+   "id": "WEB_10",
+   "statement": "在物理中, 驱动'因果:这段陈述('This necessarily causes a loss ' 的机制是什么? 能否用可检验模型刻画?",
+   "conjecture": "因果:这段陈述('This necessarily causes a loss of inform…')的机制/原因是什么??",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
+   "domain": "物理",
+   "daily_question": "因果:这段陈述('[ 92 ] [ 93 ] Notable results from this …')的机制/原因是什么??",
+   "scientific_question": "在物理中, 驱动'因果:这段陈述('[ 92 ] [ 93 ] Notable results f' 的机制是什么? 能否用可检验模型刻画?",
+   "judge_route": "理论",
+   "status": "待判定",
+   "kind": "机制/因果",
+   "id": "WEB_11",
+   "statement": "在物理中, 驱动'因果:这段陈述('[ 92 ] [ 93 ] Notable results f' 的机制是什么? 能否用可检验模型刻画?",
+   "conjecture": "因果:这段陈述('[ 92 ] [ 93 ] Notable results from this …')的机制/原因是什么??",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "whatam I me and not someone else?",
+   "scientific_question": "'am I me and not someone else' 在心理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_12",
+   "statement": "'am I me and not someone else' 在心理中的结构是什么?",
+   "conjecture": "whatam I me and not someone else?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howcan I know that others have minds?",
+   "scientific_question": "'can I know that others have minds' 在心理中是否可实现/存在? 构造或反例?",
+   "judge_route": "实验",
+   "status": "待判定",
+   "kind": "存在性/可行性",
+   "id": "WEB_13",
+   "statement": "'can I know that others have minds' 在心理中是否可实现/存在? 构造或反例?",
+   "conjecture": "howcan I know that others have minds?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howsimilar are they?",
+   "scientific_question": "'similar are they' 在心理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_14",
+   "statement": "'similar are they' 在心理中的结构是什么?",
+   "conjecture": "howsimilar are they?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Consciousness",
+   "domain": "心理",
+   "daily_question": "howmany concepts of consciousness?",
+   "scientific_question": "'many concepts of consciousness' 在心理中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_15",
+   "statement": "'many concepts of consciousness' 在心理中的结构是什么?",
+   "conjecture": "howmany concepts of consciousness?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isthe Explorer?",
+   "scientific_question": "'-isthe Explorer' 在数学中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_16",
+   "statement": "'-isthe Explorer' 在数学中的结构是什么?",
+   "conjecture": "what-isthe Explorer?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isConnected Papers?",
+   "scientific_question": "'-isConnected Papers' 在数学中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_17",
+   "statement": "'-isConnected Papers' 在数学中的结构是什么?",
+   "conjecture": "what-isConnected Papers?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isLitmaps?",
+   "scientific_question": "'-isLitmaps' 在数学中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_18",
+   "statement": "'-isLitmaps' 在数学中的结构是什么?",
+   "conjecture": "what-isLitmaps?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://arxiv.org/abs/2306.13282",
+   "domain": "数学",
+   "daily_question": "what-isalphaXiv?",
+   "scientific_question": "'-isalphaXiv' 在数学中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_19",
+   "statement": "'-isalphaXiv' 在数学中的结构是什么?",
+   "conjecture": "what-isalphaXiv?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "whatdon't robots have rights?",
+   "scientific_question": "'don't robots have rights' 在信息中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_20",
+   "statement": "'don't robots have rights' 在信息中的结构是什么?",
+   "conjecture": "whatdon't robots have rights?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howDoes It Work?",
+   "scientific_question": "'Does It Work' 在信息中是否为真? 判定依据?",
+   "judge_route": "检验",
+   "status": "待判定",
+   "kind": "真伪判断",
+   "id": "WEB_21",
+   "statement": "'Does It Work' 在信息中是否为真? 判定依据?",
+   "conjecture": "howDoes It Work?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howlong will it last?",
+   "scientific_question": "'long will it last' 在信息中的结构是什么?",
+   "judge_route": "待定",
+   "status": "待判定",
+   "kind": "混合/待定",
+   "id": "WEB_22",
+   "statement": "'long will it last' 在信息中的结构是什么?",
+   "conjecture": "howlong will it last?",
+   "evidence": {},
+   "layer": "L0/L1"
+  },
+  {
+   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+   "domain": "信息",
+   "daily_question": "howcan we be certain a machine isn't conscious?",
+   "scientific_question": "'can we be certain a machine isn't consci' 在信息中是否可实现/存在? 构造或反例?",
+   "judge_route": "算法",
+   "status": "待判定",
+   "kind": "存在性/可行性",
+   "id": "WEB_23",
+   "statement": "'can we be certain a machine isn't consci' 在信息中是否可实现/存在? 构造或反例?",
+   "conjecture": "howcan we be certain a machine isn't conscious?",
+   "evidence": {},
+   "layer": "L0/L1"
   }
  ]
 }

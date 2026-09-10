@@ -3,192 +3,216 @@
   "source": "https://en.wikipedia.org/wiki/Black_hole",
   "domain": "天文",
   "daily_question": "whatDidn't the Infant Universe Collapse into a Black Hole?",
-  "scientific_question": "在天文中, 'Didn't the Infant Universe Collapse into a Black Hole' 的机制/结构是什么?",
-  "judge_route": "观测+物理建模",
-  "status": "待判定"
+  "scientific_question": "'Didn't the Infant Universe Collapse into' 在天文中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Black_hole",
   "domain": "天文",
   "daily_question": "what10 dimensions?",
-  "scientific_question": "在天文中, '10 dimensions' 的机制/结构是什么?",
-  "judge_route": "观测+物理建模",
-  "status": "待判定"
+  "scientific_question": "'10 dimensions' 在天文中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Black_hole",
   "domain": "天文",
   "daily_question": "howbig can a black hole grow?",
-  "scientific_question": "在天文中, 'big can a black hole grow' 的机制/结构是什么?",
-  "judge_route": "观测+物理建模",
-  "status": "待判定"
+  "scientific_question": "'big can a black hole grow' 在天文中是否可实现/存在? 构造或反例?",
+  "judge_route": "观测验证",
+  "status": "待判定",
+  "kind": "存在性/可行性"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Black_hole",
   "domain": "天文",
   "daily_question": "howBig Is a Black Hole?",
-  "scientific_question": "在天文中, 'Big Is a Black Hole' 的机制/结构是什么?",
-  "judge_route": "观测+物理建模",
-  "status": "待判定"
+  "scientific_question": "'Big Is a Black Hole' 在天文中是否为真? 判定依据?",
+  "judge_route": "观测",
+  "status": "待判定",
+  "kind": "真伪判断"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Evolution",
   "domain": "生物",
   "daily_question": "whatDo Organisms Shuffle Their Genotypes?",
-  "scientific_question": "在生物中, 'Do Organisms Shuffle Their Genotypes' 的机制/结构是什么?",
-  "judge_route": "实验+系谱证据",
-  "status": "待判定"
+  "scientific_question": "'Do Organisms Shuffle Their Genotypes' 在生物中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Evolution",
   "domain": "生物",
   "daily_question": "whatare there so many insect species?",
-  "scientific_question": "在生物中, 'are there so many insect species' 的机制/结构是什么?",
-  "judge_route": "实验+系谱证据",
-  "status": "待判定"
+  "scientific_question": "'are there so many insect species' 在生物中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Evolution",
   "domain": "生物",
   "daily_question": "howshall we name and generalise the unit of Darwinism?",
-  "scientific_question": "在生物中, 'shall we name and generalise the unit of Darwinism' 的机制/结构是什么?",
-  "judge_route": "实验+系谱证据",
-  "status": "待判定"
+  "scientific_question": "'shall we name and generalise the unit of' 在生物中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Evolution",
   "domain": "生物",
   "daily_question": "howMany Species Are There on Earth and in the Ocean?",
-  "scientific_question": "在生物中, 'Many Species Are There on Earth and in the Ocean' 的机制/结构是什么?",
-  "judge_route": "实验+系谱证据",
-  "status": "待判定"
+  "scientific_question": "'Many Species Are There on Earth and in t' 在生物中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
   "domain": "物理",
   "daily_question": "what-isQuantum Mechanics?",
-  "scientific_question": "在物理中, 'Quantum Mechanics' 的机制/结构是什么?",
-  "judge_route": "理论+实验",
-  "status": "待判定"
+  "scientific_question": "'-isQuantum Mechanics' 在物理中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
   "domain": "物理",
   "daily_question": "因果:这段陈述('8 The wave nature of light causes the li…')的机制/原因是什么??",
-  "scientific_question": "在物理中, '这段陈述('8 The wave nature of light causes the li…')的机制/原因是什么?' 的机制/结构是什么?",
-  "judge_route": "理论+实验",
-  "status": "待判定"
+  "scientific_question": "在物理中, 驱动'因果:这段陈述('8 The wave nature of light caus' 的机制是什么? 能否用可检验模型刻画?",
+  "judge_route": "理论",
+  "status": "待判定",
+  "kind": "机制/因果"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
   "domain": "物理",
   "daily_question": "因果:这段陈述('This necessarily causes a loss of inform…')的机制/原因是什么??",
-  "scientific_question": "在物理中, '这段陈述('This necessarily causes a loss of inform…')的机制/原因是什么?' 的机制/结构是什么?",
-  "judge_route": "理论+实验",
-  "status": "待判定"
+  "scientific_question": "在物理中, 驱动'因果:这段陈述('This necessarily causes a loss ' 的机制是什么? 能否用可检验模型刻画?",
+  "judge_route": "理论",
+  "status": "待判定",
+  "kind": "机制/因果"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Quantum_mechanics",
   "domain": "物理",
   "daily_question": "因果:这段陈述('[ 92 ] [ 93 ] Notable results from this …')的机制/原因是什么??",
-  "scientific_question": "在物理中, '这段陈述('[ 92 ] [ 93 ] Notable results from this …')的机制/原因是什么?' 的机制/结构是什么?",
-  "judge_route": "理论+实验",
-  "status": "待判定"
+  "scientific_question": "在物理中, 驱动'因果:这段陈述('[ 92 ] [ 93 ] Notable results f' 的机制是什么? 能否用可检验模型刻画?",
+  "judge_route": "理论",
+  "status": "待判定",
+  "kind": "机制/因果"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Consciousness",
   "domain": "心理",
   "daily_question": "whatam I me and not someone else?",
-  "scientific_question": "在心理中, 'am I me and not someone else' 的机制/结构是什么?",
-  "judge_route": "实验设计",
-  "status": "待判定"
+  "scientific_question": "'am I me and not someone else' 在心理中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Consciousness",
   "domain": "心理",
   "daily_question": "howcan I know that others have minds?",
-  "scientific_question": "在心理中, 'can I know that others have minds' 的机制/结构是什么?",
-  "judge_route": "实验设计",
-  "status": "待判定"
+  "scientific_question": "'can I know that others have minds' 在心理中是否可实现/存在? 构造或反例?",
+  "judge_route": "实验",
+  "status": "待判定",
+  "kind": "存在性/可行性"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Consciousness",
   "domain": "心理",
   "daily_question": "howsimilar are they?",
-  "scientific_question": "在心理中, 'similar are they' 的机制/结构是什么?",
-  "judge_route": "实验设计",
-  "status": "待判定"
+  "scientific_question": "'similar are they' 在心理中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Consciousness",
   "domain": "心理",
   "daily_question": "howmany concepts of consciousness?",
-  "scientific_question": "在心理中, 'many concepts of consciousness' 的机制/结构是什么?",
-  "judge_route": "实验设计",
-  "status": "待判定"
+  "scientific_question": "'many concepts of consciousness' 在心理中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://arxiv.org/abs/2306.13282",
   "domain": "数学",
   "daily_question": "what-isthe Explorer?",
-  "scientific_question": "在数学中, 'the Explorer' 的机制/结构是什么?",
-  "judge_route": "数值+证明",
-  "status": "待判定"
+  "scientific_question": "'-isthe Explorer' 在数学中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://arxiv.org/abs/2306.13282",
   "domain": "数学",
   "daily_question": "what-isConnected Papers?",
-  "scientific_question": "在数学中, 'Connected Papers' 的机制/结构是什么?",
-  "judge_route": "数值+证明",
-  "status": "待判定"
+  "scientific_question": "'-isConnected Papers' 在数学中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://arxiv.org/abs/2306.13282",
   "domain": "数学",
   "daily_question": "what-isLitmaps?",
-  "scientific_question": "在数学中, 'Litmaps' 的机制/结构是什么?",
-  "judge_route": "数值+证明",
-  "status": "待判定"
+  "scientific_question": "'-isLitmaps' 在数学中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://arxiv.org/abs/2306.13282",
   "domain": "数学",
   "daily_question": "what-isalphaXiv?",
-  "scientific_question": "在数学中, 'alphaXiv' 的机制/结构是什么?",
-  "judge_route": "数值+证明",
-  "status": "待判定"
+  "scientific_question": "'-isalphaXiv' 在数学中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
   "domain": "信息",
   "daily_question": "whatdon't robots have rights?",
-  "scientific_question": "在信息中, 'don't robots have rights' 的机制/结构是什么?",
-  "judge_route": "计算+统计",
-  "status": "待判定"
+  "scientific_question": "'don't robots have rights' 在信息中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
   "domain": "信息",
   "daily_question": "howDoes It Work?",
-  "scientific_question": "在信息中, 'Does It Work' 的机制/结构是什么?",
-  "judge_route": "计算+统计",
-  "status": "待判定"
+  "scientific_question": "'Does It Work' 在信息中是否为真? 判定依据?",
+  "judge_route": "检验",
+  "status": "待判定",
+  "kind": "真伪判断"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
   "domain": "信息",
   "daily_question": "howlong will it last?",
-  "scientific_question": "在信息中, 'long will it last' 的机制/结构是什么?",
-  "judge_route": "计算+统计",
-  "status": "待判定"
+  "scientific_question": "'long will it last' 在信息中的结构是什么?",
+  "judge_route": "待定",
+  "status": "待判定",
+  "kind": "混合/待定"
  },
  {
   "source": "https://en.wikipedia.org/wiki/Artificial_intelligence",
   "domain": "信息",
   "daily_question": "howcan we be certain a machine isn't conscious?",
-  "scientific_question": "在信息中, 'can we be certain a machine isn't conscious' 的机制/结构是什么?",
-  "judge_route": "计算+统计",
-  "status": "待判定"
+  "scientific_question": "'can we be certain a machine isn't consci' 在信息中是否可实现/存在? 构造或反例?",
+  "judge_route": "算法",
+  "status": "待判定",
+  "kind": "存在性/可行性"
  }
 ]
