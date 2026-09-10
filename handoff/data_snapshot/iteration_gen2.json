@@ -1,0 +1,248 @@
+{
+ "note": "R项->子代(变异/扩界), kind=R 表示扩到nmax_child后仍不在本地种子表",
+ "parents_count": 14,
+ "children_count": 30,
+ "R_survive": 11,
+ "children": [
+  {
+   "parent": "CB04",
+   "gen": 2,
+   "op": "变异禁子串 010->110",
+   "kind": "known",
+   "seed": "Fibonacci",
+   "tail_ratio": 1.618
+  },
+  {
+   "parent": "CB04",
+   "gen": 2,
+   "op": "变异禁子串 010->000",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB04",
+   "gen": 2,
+   "op": "变异禁子串 010->011",
+   "kind": "known",
+   "seed": "Fibonacci",
+   "tail_ratio": 1.618
+  },
+  {
+   "parent": "CB05",
+   "gen": 2,
+   "op": "变异禁子串 101->001",
+   "kind": "known",
+   "seed": "Fibonacci",
+   "tail_ratio": 1.618
+  },
+  {
+   "parent": "CB05",
+   "gen": 2,
+   "op": "变异禁子串 101->111",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB05",
+   "gen": 2,
+   "op": "变异禁子串 101->100",
+   "kind": "known",
+   "seed": "Fibonacci",
+   "tail_ratio": 1.618
+  },
+  {
+   "parent": "CB06",
+   "gen": 2,
+   "op": "变异禁子串 0101->1101",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB06",
+   "gen": 2,
+   "op": "变异禁子串 0101->0001",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB06",
+   "gen": 2,
+   "op": "变异禁子串 0101->0111",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB06",
+   "gen": 2,
+   "op": "变异禁子串 0101->0100",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB07",
+   "gen": 2,
+   "op": "变异禁子串 1010->0010",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB07",
+   "gen": 2,
+   "op": "变异禁子串 1010->1110",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB07",
+   "gen": 2,
+   "op": "变异禁子串 1010->1000",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB07",
+   "gen": 2,
+   "op": "变异禁子串 1010->1011",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB08",
+   "gen": 2,
+   "op": "变异禁子串 0000->1000",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB08",
+   "gen": 2,
+   "op": "变异禁子串 0000->0100",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB08",
+   "gen": 2,
+   "op": "变异禁子串 0000->0010",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB08",
+   "gen": 2,
+   "op": "变异禁子串 0000->0001",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB09",
+   "gen": 2,
+   "op": "变异禁子串 0110->1110",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB09",
+   "gen": 2,
+   "op": "变异禁子串 0110->0010",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB09",
+   "gen": 2,
+   "op": "变异禁子串 0110->0100",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB09",
+   "gen": 2,
+   "op": "变异禁子串 0110->0111",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB10",
+   "gen": 2,
+   "op": "变异禁子串 1001->0001",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "CB10",
+   "gen": 2,
+   "op": "变异禁子串 1001->1101",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB10",
+   "gen": 2,
+   "op": "变异禁子串 1001->1011",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.8668
+  },
+  {
+   "parent": "CB10",
+   "gen": 2,
+   "op": "变异禁子串 1001->1000",
+   "kind": "known",
+   "seed": "Tribonacci",
+   "tail_ratio": 1.8393
+  },
+  {
+   "parent": "MR4",
+   "gen": 2,
+   "op": "扩maxrun 4->5",
+   "kind": "R",
+   "seed": null,
+   "tail_ratio": 1.9659
+  },
+  {
+   "parent": "MR4",
+   "gen": 2,
+   "op": "扩maxrun 4->6",
+   "kind": "known",
+   "seed": "powers_of_2",
+   "tail_ratio": 1.9836
+  },
+  {
+   "parent": "MR5",
+   "gen": 2,
+   "op": "扩maxrun 5->6",
+   "kind": "known",
+   "seed": "powers_of_2",
+   "tail_ratio": 1.9836
+  },
+  {
+   "parent": "MR5",
+   "gen": 2,
+   "op": "扩maxrun 5->7",
+   "kind": "known",
+   "seed": "powers_of_2",
+   "tail_ratio": 1.992
+  }
+ ]
+}

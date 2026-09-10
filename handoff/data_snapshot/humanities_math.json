@@ -1,0 +1,38 @@
+[
+ {
+  "name": "哲学100问(通俗)",
+  "chars": 300000,
+  "sents": 8317,
+  "mean_sent_len": 34.32,
+  "std_sent_len": 22.06,
+  "zipf_slope": -0.73,
+  "entropy1_nats": 4.5826
+ },
+ {
+  "name": "中国哲学史第2版(教材)",
+  "chars": 300000,
+  "sents": 8444,
+  "mean_sent_len": 34.23,
+  "std_sent_len": 20.25,
+  "zipf_slope": -0.7598,
+  "entropy1_nats": 5.5769
+ },
+ {
+  "name": "手册-数学哲学(学术)",
+  "chars": 300000,
+  "sents": 5918,
+  "mean_sent_len": 48.03,
+  "std_sent_len": 32.63,
+  "zipf_slope": -0.7236,
+  "entropy1_nats": 4.7039
+ },
+ {
+  "name": "手册-心理学(学术)",
+  "chars": 300000,
+  "sents": 5561,
+  "mean_sent_len": 51.24,
+  "std_sent_len": 39.08,
+  "zipf_slope": -0.662,
+  "entropy1_nats": 4.3474
+ }
+]

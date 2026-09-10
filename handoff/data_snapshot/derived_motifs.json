@@ -1,0 +1,1042 @@
+[
+ {
+  "id": "DM561",
+  "derived": "Collatz3n+1 × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "数学::Collatz3n+1",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: Collatz3n+1(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM564",
+  "derived": "Collatz3n+1 × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "数学::Collatz3n+1",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: Collatz3n+1(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM563",
+  "derived": "Collatz3n+1 × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "数学::Collatz3n+1",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: Collatz3n+1(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM608",
+  "derived": "信念修正 × 信道/约束",
+  "type": "过程度量",
+  "parents": [
+   "心理认知::信念修正",
+   "信息-计算::信道/约束"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 信念修正(过程) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM609",
+  "derived": "信息(香农/算法/语义) × 递归语法",
+  "type": "结构×对象",
+  "parents": [
+   "信息-计算::信息(香农/算法/语义)",
+   "语言-人文::递归语法"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "blueprint",
+  "note": "复合母题候选: 信息(香农/算法/语义)(对象) 与 递归语法(结构) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM611",
+  "derived": "信道/约束 × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "信息-计算::信道/约束",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 信道/约束(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM610",
+  "derived": "信道/约束 × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "信息-计算::信道/约束",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 信道/约束(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM613",
+  "derived": "功利-福利 × 意义解释(诠释)",
+  "type": "解释-度量",
+  "parents": [
+   "伦理-政治::功利-福利",
+   "语言-人文::意义解释(诠释)"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 功利-福利(度量) 与 意义解释(诠释)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM598",
+  "derived": "功能(选择效应) × 功利-福利",
+  "type": "解释-度量",
+  "parents": [
+   "生物::功能(选择效应)",
+   "伦理-政治::功利-福利"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 功能(选择效应)(解释类型) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM599",
+  "derived": "功能(选择效应) × 秩序-均匀",
+  "type": "解释-度量",
+  "parents": [
+   "生物::功能(选择效应)",
+   "美学::秩序-均匀"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 功能(选择效应)(解释类型) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM597",
+  "derived": "功能(选择效应) × 算法复杂度",
+  "type": "解释-度量",
+  "parents": [
+   "生物::功能(选择效应)",
+   "信息-计算::算法复杂度"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 功能(选择效应)(解释类型) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM462",
+  "derived": "因子和σ × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "数学::因子和σ",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 因子和σ(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM465",
+  "derived": "因子和σ × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "数学::因子和σ",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 因子和σ(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM464",
+  "derived": "因子和σ × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "数学::因子和σ",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 因子和σ(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM600",
+  "derived": "基因-信息-编码 × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "生物::基因-信息-编码",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 基因-信息-编码(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM603",
+  "derived": "基因-信息-编码 × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "生物::基因-信息-编码",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 基因-信息-编码(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM602",
+  "derived": "基因-信息-编码 × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "生物::基因-信息-编码",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 基因-信息-编码(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM532",
+  "derived": "数位和 × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "数学::数位和",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 数位和(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM535",
+  "derived": "数位和 × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "数学::数位和",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 数位和(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM534",
+  "derived": "数位和 × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "数学::数位和",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 数位和(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM605",
+  "derived": "机制(实体×活动×组织) × 功利-福利",
+  "type": "解释-度量",
+  "parents": [
+   "心理认知::机制(实体×活动×组织)",
+   "伦理-政治::功利-福利"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 机制(实体×活动×组织)(解释类型) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM606",
+  "derived": "机制(实体×活动×组织) × 秩序-均匀",
+  "type": "解释-度量",
+  "parents": [
+   "心理认知::机制(实体×活动×组织)",
+   "美学::秩序-均匀"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 机制(实体×活动×组织)(解释类型) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM604",
+  "derived": "机制(实体×活动×组织) × 算法复杂度",
+  "type": "解释-度量",
+  "parents": [
+   "心理认知::机制(实体×活动×组织)",
+   "信息-计算::算法复杂度"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 机制(实体×活动×组织)(解释类型) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM499",
+  "derived": "欧拉φ × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "数学::欧拉φ",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 欧拉φ(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM502",
+  "derived": "欧拉φ × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "数学::欧拉φ",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 欧拉φ(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM501",
+  "derived": "欧拉φ × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "数学::欧拉φ",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 欧拉φ(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM614",
+  "derived": "秩序-均匀 × 意义解释(诠释)",
+  "type": "解释-度量",
+  "parents": [
+   "美学::秩序-均匀",
+   "语言-人文::意义解释(诠释)"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 秩序-均匀(度量) 与 意义解释(诠释)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM612",
+  "derived": "算法复杂度 × 意义解释(诠释)",
+  "type": "解释-度量",
+  "parents": [
+   "信息-计算::算法复杂度",
+   "语言-人文::意义解释(诠释)"
+  ],
+  "cross": true,
+  "frame": "F_interval_exist",
+  "route": "blueprint",
+  "note": "复合母题候选: 算法复杂度(度量) 与 意义解释(诠释)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM516",
+  "derived": "素因子计数ω/Ω × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "数学::素因子计数ω/Ω",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 素因子计数ω/Ω(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM519",
+  "derived": "素因子计数ω/Ω × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "数学::素因子计数ω/Ω",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 素因子计数ω/Ω(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM518",
+  "derived": "素因子计数ω/Ω × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "数学::素因子计数ω/Ω",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 素因子计数ω/Ω(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM591",
+  "derived": "自然选择 × 意义解释(诠释)",
+  "type": "机制组合",
+  "parents": [
+   "生物::自然选择",
+   "语言-人文::意义解释(诠释)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 自然选择(机制) 与 意义解释(诠释)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM590",
+  "derived": "自然选择 × 机制(实体×活动×组织)",
+  "type": "机制组合",
+  "parents": [
+   "生物::自然选择",
+   "心理认知::机制(实体×活动×组织)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 自然选择(机制) 与 机制(实体×活动×组织)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM607",
+  "derived": "表征 × 递归语法",
+  "type": "结构×对象",
+  "parents": [
+   "心理认知::表征",
+   "语言-人文::递归语法"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "blueprint",
+  "note": "复合母题候选: 表征(对象) 与 递归语法(结构) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM593",
+  "derived": "适合度 × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "生物::适合度",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 适合度(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM596",
+  "derived": "适合度 × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "生物::适合度",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 适合度(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM595",
+  "derived": "适合度 × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "生物::适合度",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 适合度(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM547",
+  "derived": "递推映射 × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "数学::递推映射",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 递推映射(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM550",
+  "derived": "递推映射 × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "数学::递推映射",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 递推映射(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM549",
+  "derived": "递推映射 × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "数学::递推映射",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 递推映射(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM481",
+  "derived": "除数个数τ × 信念修正",
+  "type": "过程度量",
+  "parents": [
+   "数学::除数个数τ",
+   "心理认知::信念修正"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 除数个数τ(映射) 与 信念修正(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM484",
+  "derived": "除数个数τ × 张力-释放",
+  "type": "过程度量",
+  "parents": [
+   "数学::除数个数τ",
+   "美学::张力-释放"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 除数个数τ(映射) 与 张力-释放(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM483",
+  "derived": "除数个数τ × 设计问题(协同进化)",
+  "type": "过程度量",
+  "parents": [
+   "数学::除数个数τ",
+   "工程::设计问题(协同进化)"
+  ],
+  "cross": true,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 除数个数τ(映射) 与 设计问题(协同进化)(过程) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM589",
+  "derived": "自然选择 × 功能(选择效应)",
+  "type": "机制组合",
+  "parents": [
+   "生物::自然选择",
+   "生物::功能(选择效应)"
+  ],
+  "cross": false,
+  "frame": "F_recur_converge",
+  "route": "blueprint",
+  "note": "复合母题候选: 自然选择(机制) 与 功能(选择效应)(解释类型) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM361",
+  "derived": "2的幂 × 信息流-因果",
+  "type": "关系×对象",
+  "parents": [
+   "数学::2的幂",
+   "信息-计算::信息流-因果"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 信息流-因果(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM359",
+  "derived": "2的幂 × 信道/约束",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::2的幂",
+   "信息-计算::信道/约束"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM362",
+  "derived": "2的幂 × 功利-福利",
+  "type": "度量×对象",
+  "parents": [
+   "数学::2的幂",
+   "伦理-政治::功利-福利"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM356",
+  "derived": "2的幂 × 同源/同形",
+  "type": "关系×对象",
+  "parents": [
+   "数学::2的幂",
+   "生物::同源/同形"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 同源/同形(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM354",
+  "derived": "2的幂 × 因果结构",
+  "type": "关系×对象",
+  "parents": [
+   "数学::2的幂",
+   "物理::因果结构"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 因果结构(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM357",
+  "derived": "2的幂 × 基因-信息-编码",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::2的幂",
+   "生物::基因-信息-编码"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 基因-信息-编码(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM358",
+  "derived": "2的幂 × 多重实现",
+  "type": "关系×对象",
+  "parents": [
+   "数学::2的幂",
+   "心理认知::多重实现"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 多重实现(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM363",
+  "derived": "2的幂 × 对称-平均脸",
+  "type": "关系×对象",
+  "parents": [
+   "数学::2的幂",
+   "美学::对称-平均脸"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 对称-平均脸(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM364",
+  "derived": "2的幂 × 秩序-均匀",
+  "type": "度量×对象",
+  "parents": [
+   "数学::2的幂",
+   "美学::秩序-均匀"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM360",
+  "derived": "2的幂 × 算法复杂度",
+  "type": "度量×对象",
+  "parents": [
+   "数学::2的幂",
+   "信息-计算::算法复杂度"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM355",
+  "derived": "2的幂 × 适合度",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::2的幂",
+   "生物::适合度"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: 2的幂(对象类) 与 适合度(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM442",
+  "derived": "Carmichael数 × 信息流-因果",
+  "type": "关系×对象",
+  "parents": [
+   "数学::Carmichael数",
+   "信息-计算::信息流-因果"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 信息流-因果(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM440",
+  "derived": "Carmichael数 × 信道/约束",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::Carmichael数",
+   "信息-计算::信道/约束"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM443",
+  "derived": "Carmichael数 × 功利-福利",
+  "type": "度量×对象",
+  "parents": [
+   "数学::Carmichael数",
+   "伦理-政治::功利-福利"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM437",
+  "derived": "Carmichael数 × 同源/同形",
+  "type": "关系×对象",
+  "parents": [
+   "数学::Carmichael数",
+   "生物::同源/同形"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 同源/同形(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM435",
+  "derived": "Carmichael数 × 因果结构",
+  "type": "关系×对象",
+  "parents": [
+   "数学::Carmichael数",
+   "物理::因果结构"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 因果结构(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM438",
+  "derived": "Carmichael数 × 基因-信息-编码",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::Carmichael数",
+   "生物::基因-信息-编码"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 基因-信息-编码(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM439",
+  "derived": "Carmichael数 × 多重实现",
+  "type": "关系×对象",
+  "parents": [
+   "数学::Carmichael数",
+   "心理认知::多重实现"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 多重实现(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM444",
+  "derived": "Carmichael数 × 对称-平均脸",
+  "type": "关系×对象",
+  "parents": [
+   "数学::Carmichael数",
+   "美学::对称-平均脸"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 对称-平均脸(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM445",
+  "derived": "Carmichael数 × 秩序-均匀",
+  "type": "度量×对象",
+  "parents": [
+   "数学::Carmichael数",
+   "美学::秩序-均匀"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM441",
+  "derived": "Carmichael数 × 算法复杂度",
+  "type": "度量×对象",
+  "parents": [
+   "数学::Carmichael数",
+   "信息-计算::算法复杂度"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM436",
+  "derived": "Carmichael数 × 适合度",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::Carmichael数",
+   "生物::适合度"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: Carmichael数(对象类) 与 适合度(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM562",
+  "derived": "Collatz3n+1 × 信道/约束",
+  "type": "复合映射",
+  "parents": [
+   "数学::Collatz3n+1",
+   "信息-计算::信道/约束"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: Collatz3n+1(映射) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM560",
+  "derived": "Collatz3n+1 × 基因-信息-编码",
+  "type": "复合映射",
+  "parents": [
+   "数学::Collatz3n+1",
+   "生物::基因-信息-编码"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: Collatz3n+1(映射) 与 基因-信息-编码(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM559",
+  "derived": "Collatz3n+1 × 适合度",
+  "type": "复合映射",
+  "parents": [
+   "数学::Collatz3n+1",
+   "生物::适合度"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: Collatz3n+1(映射) 与 适合度(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM239",
+  "derived": "三角数 × 信息流-因果",
+  "type": "关系×对象",
+  "parents": [
+   "数学::三角数",
+   "信息-计算::信息流-因果"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 信息流-因果(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM237",
+  "derived": "三角数 × 信道/约束",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::三角数",
+   "信息-计算::信道/约束"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 信道/约束(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM240",
+  "derived": "三角数 × 功利-福利",
+  "type": "度量×对象",
+  "parents": [
+   "数学::三角数",
+   "伦理-政治::功利-福利"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 功利-福利(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM234",
+  "derived": "三角数 × 同源/同形",
+  "type": "关系×对象",
+  "parents": [
+   "数学::三角数",
+   "生物::同源/同形"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 同源/同形(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM232",
+  "derived": "三角数 × 因果结构",
+  "type": "关系×对象",
+  "parents": [
+   "数学::三角数",
+   "物理::因果结构"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 因果结构(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM235",
+  "derived": "三角数 × 基因-信息-编码",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::三角数",
+   "生物::基因-信息-编码"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 基因-信息-编码(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM236",
+  "derived": "三角数 × 多重实现",
+  "type": "关系×对象",
+  "parents": [
+   "数学::三角数",
+   "心理认知::多重实现"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 多重实现(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM241",
+  "derived": "三角数 × 对称-平均脸",
+  "type": "关系×对象",
+  "parents": [
+   "数学::三角数",
+   "美学::对称-平均脸"
+  ],
+  "cross": true,
+  "frame": "F_exist_equal",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 对称-平均脸(关系) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM242",
+  "derived": "三角数 × 秩序-均匀",
+  "type": "度量×对象",
+  "parents": [
+   "数学::三角数",
+   "美学::秩序-均匀"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 秩序-均匀(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM238",
+  "derived": "三角数 × 算法复杂度",
+  "type": "度量×对象",
+  "parents": [
+   "数学::三角数",
+   "信息-计算::算法复杂度"
+  ],
+  "cross": true,
+  "frame": "F_record_max",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 算法复杂度(度量) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ },
+ {
+  "id": "DM233",
+  "derived": "三角数 × 适合度",
+  "type": "映射作用对象",
+  "parents": [
+   "数学::三角数",
+   "生物::适合度"
+  ],
+  "cross": true,
+  "frame": "F_char_if",
+  "route": "math",
+  "note": "复合母题候选: 三角数(对象类) 与 适合度(映射) 组合; 若route=math则可由对应引擎直接实例化判定, 若blueprint则进 judge_blueprints"
+ }
+]

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ask-dao-machine"
+version = "0.1.0"
+description = "问题制造器: 母题库 × 组合引擎 × 判定器 × 出处链 (Problem Maker with full provenance)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "ask-dao" }]
+keywords = ["problem-generation", "motifs", "philosophy-of-science", "knowledge-machine"]
+
+[project.scripts]
+ask-dao-machine = "ask_dao_machine.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["ask_dao_machine"]
+
+[tool.setuptools.package-data]
+ask_dao_machine = ["assets/*.json"]
