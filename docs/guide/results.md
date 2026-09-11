@@ -17,6 +17,36 @@ title: 结果与证据（完整版）
 
 ---
 
+## 〇、输入 → 输出（这张表按代码核对过）
+
+六个入口，三条输出线。每个入口都能跑，命令即证据。
+
+| 输入 | 入口（命令） | 产出 |
+|---|---|---|
+| 经验（图像） | `python -m ask_dao_machine perceive 图片/` | 结构特征（对称度 / 块熵 / 边界密度 / 前景占比）→ 带 `route` 判定路由的问题 |
+| 日常问题 | `python tools/run_paths.py problem --input daily --q "…"` | 类型判定 + 判定路由 → 科学问题 |
+| 已知未解 / 科学问题 | `python tools/scihist_to_problems.py`（32 个 A 级开放点）· `problem_lineage.py` | 正式问题 + 谱系（祖先 / 自身 / 后代 / 侧枝） |
+| 母题（86 个） | `python -m ask_dao_machine all` | 问题树：母题 → 前问题 → 科学问题 → 基础领域 → 问题树 L0–L5 → 领域融合 |
+| 造词 | `python tools/run_paths.py imagine --word 记忆调性` | 概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释） |
+| 论文 / 语料 | `python -m ask_dao_machine paper papers/` | 问题清单（「作者已提出」与「机器新提出」分开标注） |
+
+| 输出 | 文件 | 说明 |
+|---|---|---|
+| 问题清单（主产物） | `out/**/problems_*.json` · `discovery_manifest.json` | 每条带对象 / 量词域 / 判据 / `route` / 出处链 |
+| 概念 / 理论草稿 | `word_*.json` · `sentence_batch.json` | 想象路产出；标准是"解释"，不是真伪 |
+| 判定结果与证据推进 | `harness_verdicts.json` · `novelty_report.json` | confirmed / rejected / open；目前唯一称得上新知识的一类 |
+| 报告与可视化 | `<out>/REPORT.md` · `docs/viz/paths.html` | 一页人话汇总 + 问题树 / 概念树 |
+
+**两条必须说清的边界**：
+
+1. **科学问题是中间阶段，不是输入。** 链子是
+   `日常问题 → 前问题 → 科学问题 → 基础领域 → 问题树 L0–L5 → 领域融合`；
+   已知未解问题从另一侧进入（`scihist_to_problems.py`）。
+2. **论文是输入，不是输出——机器不写论文。** 且世界新问题（N3）至今 = 0：
+   输出的是**候选问题**与**证据边界推进**，不是"已确认的新知识"。
+
+---
+
 ## 一、K2 证据边界推进（最扎实）
 
 ### 1.1 命题与观察

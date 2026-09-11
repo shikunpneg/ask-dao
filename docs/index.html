@@ -470,6 +470,36 @@
   <p class="lead">四个模块支撑两条独立的路：一条把困惑变成可判的问题，一条把词变成被理解的概念。
     每一步都必须机器实测，不许空转。</p>
 
+  <table class="data-table" style="margin-bottom:44px">
+    <caption>输入 → 输出（这张表按代码核对过：每个入口都能跑，命令见右列）</caption>
+    <tr><th style="width:150px">输入</th><th style="width:330px">入口（可跑的命令）</th><th>产出</th></tr>
+    <tr><td>经验（图像）</td><td class="mono">ask-dao-machine perceive 图片/</td>
+      <td>结构特征（对称度/块熵/边界密度/占比）→ 带判定路由的视觉问题</td></tr>
+    <tr><td>日常问题</td><td class="mono">run_paths.py problem --input daily --q "…"</td>
+      <td>类型判定 + 判定路由 → 科学问题</td></tr>
+    <tr><td>已知未解 / 科学问题</td><td class="mono">scihist_to_problems.py · problem_lineage.py</td>
+      <td>正式问题 + 谱系（祖先/自身/后代/侧枝）</td></tr>
+    <tr><td>母题</td><td class="mono">ask-dao-machine &lt;域&gt;（86 个母题）</td>
+      <td>问题树：母题 → 前问题 → 科学问题 → 基础领域 → 问题树 L0–L5 → 领域融合</td></tr>
+    <tr><td>造词</td><td class="mono">run_paths.py imagine --word / --pairs</td>
+      <td>概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释）</td></tr>
+    <tr><td>论文 / 语料</td><td class="mono">ask-dao-machine paper 文件或目录</td>
+      <td>问题清单（「作者已提出」与「机器新提出」分开标注）</td></tr>
+  </table>
+
+  <table class="data-table" style="margin-bottom:44px">
+    <caption>输出（实际的产物；<strong>论文是输入，不是输出——机器不写论文</strong>）</caption>
+    <tr><th style="width:220px">产物</th><th style="width:330px">文件</th><th>说明</th></tr>
+    <tr><td>问题清单（主产物）</td><td class="mono">problems_*.json · discovery_manifest.json</td>
+      <td>每条带对象 / 量词域 / 判据 / 判定路由 / 出处链</td></tr>
+    <tr><td>概念 / 理论草稿</td><td class="mono">word_*.json · sentence_batch.json</td>
+      <td>想象路产出；标准是「解释」，不是真伪</td></tr>
+    <tr><td>判定结果与证据推进</td><td class="mono">harness_verdicts.json · novelty_report.json</td>
+      <td>confirmed / rejected / open；目前唯一称得上「新知识」的一类</td></tr>
+    <tr><td>报告与可视化</td><td class="mono">REPORT.md · viz/paths.html</td>
+      <td>一页人话汇总 + 问题树/概念树</td></tr>
+  </table>
+
   <div class="grid g3">
     <div class="card" data-delay="0"><div class="idx">01</div><h3>感受模块</h3>
       <p>视觉 / 听觉 / 网络文本 → 结构化观测，长出日常疑问。</p></div>

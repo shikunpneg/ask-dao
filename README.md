@@ -110,6 +110,25 @@
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
+### 输入 → 输出（按代码核对）
+
+| 输入 | 入口 | 产出 |
+|---|---|---|
+| 经验（图像） | `python -m ask_dao_machine perceive 图片/` | 结构特征 → 带判定路由的视觉问题 |
+| 日常问题 | `python tools/run_paths.py problem --input daily --q "…"` | 判定路由 → 科学问题 |
+| 已知未解 | `python tools/scihist_to_problems.py` · `problem_lineage.py` | 正式问题 + 谱系（前问题/后代/侧枝） |
+| 母题（86 个） | `python -m ask_dao_machine all` | 问题树：母题 → 前问题 → 科学问题 → 基础领域 → 问题树 L0–L5 → 领域融合 |
+| 造词 | `python tools/run_paths.py imagine --word 记忆调性` | 概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释） |
+| 论文 / 语料 | `python -m ask_dao_machine paper papers/` | 问题清单（「作者已提出」与「机器新提出」分开标注） |
+
+**输出**：① 问题清单（`problems_*.json` / `discovery_manifest.json`，主产物）
+② 概念/理论草稿（`word_*.json` / `sentence_batch.json`）
+③ 判定结果与证据推进（`harness_verdicts.json` / `novelty_report.json`）
+④ 报告与可视化（`REPORT.md` / `docs/viz/paths.html`）。
+
+> **论文是输入，不是输出**——机器不写论文。且世界新问题（N3）至今为 0：
+> 输出的是**候选问题**与**证据边界推进**，不是"已确认的新知识"。
+
 ### 关键引擎
 
 | 引擎 | 作用 | 纪律 |

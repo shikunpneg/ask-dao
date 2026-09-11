@@ -34,6 +34,18 @@ def _dispatch(argv):
         a = ap.parse_args(argv[1:])
         from . import report as report_mod
         return report_mod.main(a.out)
+    if head == "perceive":
+        ap = argparse.ArgumentParser(
+            prog="ask-dao-machine perceive",
+            description="经验/感知入口：图像结构 → 日常疑问 → 带判定路由的科学问题",
+            epilog=("例子:\n  ask-dao-machine perceive\n"
+                    "  ask-dao-machine perceive photos/ --out out/perceive\n"),
+            formatter_class=argparse.RawDescriptionHelpFormatter)
+        ap.add_argument("paths", nargs="*", help="图像文件或目录（不给则用 numpy 合成图，零依赖可跑）")
+        ap.add_argument("--out", default=str(Path.cwd() / "out" / "perceive"), help="输出目录")
+        a = ap.parse_args(argv[1:])
+        from . import perceive as perceive_mod
+        return perceive_mod.main(a.paths, out_dir=a.out)
     if head == "paper":
         ap = argparse.ArgumentParser(
             prog="ask-dao-machine paper",
@@ -81,6 +93,7 @@ def main(argv=None):
         description="问题制造器 CLI —— 两条路（问题路产问题 / 想象路产概念）+ 母题库 + 判定器 + 出处链",
         epilog=("子命令:\n"
                 "  paper <文件/目录...>    输入论文 → 输出问题清单 + REPORT.md\n"
+                "  perceive [图像/目录]    输入图像（经验）→ 输出带判定路由的问题\n"
                 "  report [--out DIR]      把一次跑批汇总成一页人话（写 <out>/REPORT.md）\n"
                 "  doctor                  环境自查（缺什么、下一步做什么）\n"
                 "  data fetch [--force]    取 OEIS 参照系（data/stripped.gz，约 32MB）\n"
