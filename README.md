@@ -238,10 +238,15 @@ python tools/run_paths.py imagine --word 记忆调性 --depth 3
 # ④ 可视化：问题树 + 概念树 + 概念论证
 python tools/build_paths_viz.py     # → docs/viz/paths.html
 
-# ⑤ 一页人话汇总（跑完先看这个，不用自己翻 10 个 JSON）
+# ⑤ 输入论文 → 输出问题（支持 md/txt/pdf/docx/epub 或目录）
+python -m ask_dao_machine paper papers/ --out out/papers
+#    产出含两类标注：「作者已提出（作者自陈的开放点）」与「机器新提出」
+#    GitHub 上：把论文放进 papers/ 推送即可，见 .github/workflows/paper-to-problems.yml
+
+# ⑥ 一页人话汇总（跑完先看这个，不用自己翻 10 个 JSON）
 python -m ask_dao_machine report --out out/demo   # → out/demo/REPORT.md
 
-# ⑥ 参照系（新颖性门要用；约 32MB，来自 oeis.org）
+# ⑦ 参照系（新颖性门要用；约 32MB，来自 oeis.org）
 python -m ask_dao_machine data fetch              # → data/stripped.gz
 python -m ask_dao_machine doctor                  # 环境自查：缺什么、下一步做什么
 ```

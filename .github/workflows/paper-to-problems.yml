@@ -1,0 +1,66 @@
+name: paper-to-problems
+
+# 把论文丢进 papers/（或本 workflow 手动指定路径）→ 自动产出问题清单 + REPORT.md
+# 产出作为构建产物上传；PR 时把问题清单直接评论在 PR 上。
+
+on:
+  push:
+    paths:
+      - "papers/**"
+      - ".github/workflows/paper-to-problems.yml"
+  pull_request:
+    paths:
+      - "papers/**"
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: 论文文件或目录
+        required: false
+        default: papers
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Paper → Problems
+        id: mine
+        uses: ./.github/actions/paper-to-problems
+        with:
+          paths: ${{ github.event.inputs.paths || 'papers' }}
+          out: out/papers
+          per-type: "8"
+
+      - name: Show summary in the job log
+        run: |
+          echo "产出问题总数: ${{ steps.mine.outputs.total }}"
+          echo "其中机器新提出: ${{ steps.mine.outputs.machine-raised }}"
+          sed -n '1,40p' out/papers/REPORT.md || true
+
+      - name: Upload results (problem list + REPORT.md)
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-problems
+          path: |
+            out/papers/problems_paper.json
+            out/papers/REPORT.md
+            out/papers/PR_COMMENT.md
+
+      - name: Comment on PR with the problem list
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const p = 'out/papers/PR_COMMENT.md';
+            if (!fs.existsSync(p)) { core.info('没有 PR_COMMENT.md，跳过'); return; }
+            const body = fs.readFileSync(p, 'utf8');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number, body
+            });

@@ -113,8 +113,10 @@ def render_markdown(rep: dict) -> str:
         L.append(f"**世界新问题 N3 = {n3}**；「不可判」不等于「已排除」——没有整数序列的记录进不了这道门。")
     else:
         L.append("")
-        L.append("本批**没有跑新颖性门**（缺 `data/stripped.gz`，或用了 `--no-novelty`）。"
-                 "需要它时先取参照系：`python -m ask_dao_machine data fetch`。")
+        L.append("本批**没有跑新颖性门**：论文支线（`paper`）默认不过门；引擎跑批若用了 "
+                 "`--no-novelty` 或尚未取参照系也不会过门。"
+                 "要过门：`python -m ask_dao_machine data fetch` 取下 OEIS 索引，"
+                 "再用 `all`（不加 `--no-novelty`）跑一次。")
     L.append("")
     L.append("## 各域一览")
     L.append("")
@@ -194,7 +196,8 @@ def main(out_dir="out", quiet=False) -> int:
             print("  新颖性门：" + " · ".join(f"{k} {rep['novelty'].get(k, 0)}" for k in NOVELTY_ORDER
                                              if rep["novelty"].get(k) is not None))
         else:
-            print("  新颖性门：未跑（缺 data/stripped.gz）—— python -m ask_dao_machine data fetch")
+            print("  新颖性门：未跑（论文支线默认不过门；引擎跑批需取下 OEIS 参照系："
+                  "python -m ask_dao_machine data fetch）")
         picks = [(d["domain"], s) for d in rep["domains"] for s in d["open_samples"]][:3]
         if picks:
             print("\n  先看这几条：")

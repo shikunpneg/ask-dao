@@ -1,0 +1,72 @@
+name: paper-to-problems
+description: 输入论文（papers/ 目录或指定路径），产出问题清单 + REPORT.md（含「作者已提出」与「机器新提出」两类标注）
+author: ask-dao-machine
+
+inputs:
+  paths:
+    description: 论文文件或目录（支持 .md/.txt/.pdf/.docx/.epub；目录会递归收集）
+    required: false
+    default: papers
+  out:
+    description: 输出目录
+    required: false
+    default: out/papers
+  per-type:
+    description: 每类机制最多产出多少条问题
+    required: false
+    default: "8"
+
+outputs:
+  out:
+    description: 输出目录（含 problems_paper.json 与 REPORT.md）
+    value: ${{ steps.run.outputs.out }}
+  total:
+    description: 产出问题总数
+    value: ${{ steps.run.outputs.total }}
+  machine-raised:
+    description: 其中「机器新提出」（作者未提出）的条数
+    value: ${{ steps.run.outputs.machine_raised }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install ask-dao-machine
+      shell: bash
+      run: python -m pip install --quiet "$GITHUB_ACTION_PATH/../../.."
+
+    - name: Mine problems from papers
+      id: run
+      shell: bash
+      env:
+        IN_PATHS: ${{ inputs.paths }}
+        IN_OUT: ${{ inputs.out }}
+        IN_PER: ${{ inputs.per-type }}
+      run: |
+        set -euo pipefail
+        if [ ! -e "$IN_PATHS" ]; then
+          echo "找不到输入路径：$IN_PATHS（把论文放进 papers/ 或用 paths 指定）"
+          echo "out=$IN_OUT" >> "$GITHUB_OUTPUT"
+          echo "total=0" >> "$GITHUB_OUTPUT"
+          echo "machine_raised=0" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+        python -m ask_dao_machine paper "$IN_PATHS" --out "$IN_OUT" --per-type "$IN_PER"
+        python - "$IN_OUT" <<'PY'
+        import json, sys
+        from pathlib import Path
+        out = Path(sys.argv[1])
+        d = json.loads((out / "problems_paper.json").read_text(encoding="utf-8"))
+        c = d.get("counts", {})
+        with open(__import__("os").environ["GITHUB_OUTPUT"], "a") as fh:
+            fh.write(f"out={out}\n")
+            fh.write(f"total={c.get('total', 0)}\n")
+            fh.write(f"machine_raised={c.get('machine_raised', 0)}\n")
+        # PR 评论用的 Markdown
+        from ask_dao_machine import paper as P
+        (out / "PR_COMMENT.md").write_text(P.pr_comment(d), encoding="utf-8")
+        PY

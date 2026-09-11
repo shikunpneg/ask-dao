@@ -3,6 +3,7 @@
 
 用法:
   ask-dao-machine <domains...> [--out DIR] [--limits JSON] [--no-viz] [--no-novelty]
+  ask-dao-machine paper <文件/目录...>     输入论文，输出问题（含来源标注）+ REPORT.md
   ask-dao-machine report [--out DIR]       把一次跑批汇总成一页人话（写 <out>/REPORT.md）
   ask-dao-machine doctor                   环境自查（缺什么、下一步做什么）
   ask-dao-machine data fetch [--force]     取 OEIS 参照系（data/stripped.gz，约 32MB）
@@ -33,6 +34,21 @@ def _dispatch(argv):
         a = ap.parse_args(argv[1:])
         from . import report as report_mod
         return report_mod.main(a.out)
+    if head == "paper":
+        ap = argparse.ArgumentParser(
+            prog="ask-dao-machine paper",
+            description="输入论文（.md/.txt/.pdf/.docx/.epub 或目录），输出问题清单 + 一页人话报告",
+            epilog=("例子:\n  ask-dao-machine paper papers/\n"
+                    "  ask-dao-machine paper paper.pdf --out out/papers\n"
+                    "  产出：problems_paper.json（含「作者已提出」与「机器新提出」两类标注）与 REPORT.md\n"),
+            formatter_class=argparse.RawDescriptionHelpFormatter)
+        ap.add_argument("paths", nargs="+", help="论文文件或目录")
+        ap.add_argument("--out", default=str(Path.cwd() / "out" / "papers"), help="输出目录")
+        ap.add_argument("--per-type", type=int, default=8, help="每类机制最多产出多少条（默认 8）")
+        a = ap.parse_args(argv[1:])
+        from . import paper as paper_mod
+        rc = paper_mod.main(a.paths, out_dir=a.out)
+        return rc
     if head == "doctor":
         ap = argparse.ArgumentParser(prog="ask-dao-machine doctor",
                                      description="环境自查：Python / 包 / 引擎 / 参照系 / 输出目录 / 测试")
@@ -62,12 +78,14 @@ def main(argv=None):
         prog="ask-dao-machine",
         description="问题制造器 CLI —— 两条路（问题路产问题 / 想象路产概念）+ 母题库 + 判定器 + 出处链",
         epilog=("子命令:\n"
+                "  paper <文件/目录...>    输入论文 → 输出问题清单 + REPORT.md\n"
                 "  report [--out DIR]      把一次跑批汇总成一页人话（写 <out>/REPORT.md）\n"
                 "  doctor                  环境自查（缺什么、下一步做什么）\n"
                 "  data fetch [--force]    取 OEIS 参照系（data/stripped.gz，约 32MB）\n"
                 "\n例子:\n"
                 "  ask-dao-machine all --out out/demo\n"
                 "  ask-dao-machine math --limits '{\"N\":100000,\"M\":200000}'\n"
+                "  ask-dao-machine paper papers/ --out out/papers\n"
                 "  ask-dao-machine report --out out/demo\n"),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
