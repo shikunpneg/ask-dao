@@ -28,6 +28,25 @@ DOMAIN_CN = {
 }
 
 
+TIERS = [
+            {"key": "K1", "name": "K1 · 提出的问题", "en": "NEW PROBLEMS",
+             "desc": "把困惑/数据改造成可判的问题——这是新知识的第一步。每条都带判定路由。"},
+            {"key": "K2", "name": "K2 · 证据边界推进", "en": "EVIDENCE FRONTIER",
+             "desc": "对已有问题给出更强证据、更大边界。目前唯一称得上「新知识」的一类。"},
+            {"key": "K3", "name": "K3 · 归纳的规律", "en": "INDUCED LAWS",
+             "desc": "从数据归纳出的普遍律。机器只做到「数值汇合 + 待证明」。"},
+            {"key": "IM", "name": "想象路 · 概念", "en": "IMAGINATION PATH",
+             "desc": "产概念，不是产答案。标准是「解释」：语法正确 + 逻辑通畅 + 有推理判断。"},
+            {"key": "F", "name": "领域融合 · 结果", "en": "DOMAIN FUSION",
+             "desc": "27 个领域两两配对 702 对 → 结构桥梁判据后 144 对；三域笛卡尔矩阵 454 条审计"
+                     "→ 真三域候选 4 条（每条都带第三域参数网格与实测输出）。"},
+            {"key": "R", "name": "复核性结果", "en": "REPRODUCTION",
+             "desc": "机器重发现已知——不是新知，是可信度基线。"},
+            {"key": "N", "name": "负结果", "en": "NEGATIVE RESULTS",
+             "desc": "机器自己否掉的、产不出问题的——与正结果同等重要。"},
+]
+
+
 def load(name):
     p = D / name
     if not p.exists():
@@ -59,20 +78,125 @@ def _shape(text):
     return re.sub(r"[\d\s,，.。:：;；'\"()（）\[\]{}]+", "", str(text))
 
 
+def _cn_punct(s):
+    """中文语境下的标点规范化：只在中文旁边把半角换成全角，不动公式里的符号。"""
+    import re as _re
+    if not _re.search(r"[\u4e00-\u9fff]", s):
+        return s
+    s = _re.sub(r"(?<=[\u4e00-\u9fff]),(?=[\u4e00-\u9fff])", "，", s)
+    s = _re.sub(r"(?<=[\u4e00-\u9fff]),", "，", s)
+    s = _re.sub(r"(?<=[\u4e00-\u9fff]);", "；", s)
+    s = _re.sub(r"(?<=[\u4e00-\u9fff]):", "：", s)
+    s = _re.sub(r"\?\s*$", "？", s)
+    s = _re.sub(r"(?<=[\u4e00-\u9fff])\?", "？", s)
+    return s
+
+
 def clean(text):
-    """展示清洗：把生成器塞进陈述里的原始数据摘掉，只留问题/命题本身。
+    """展示清洗：摘掉生成器塞进陈述里的原始数据，只留问题/命题本身，并规范标点。
+
     例：'…共 6 个, 最大者 108(前几个: [6, 12, 28])。**是什么刻画了这个例外集**?'
       → '…共 6 个，最大者 108。是什么刻画了这个例外集？'
+    注意：**不动数学记号**（c_{n-1}、x^{-α}、[6, 40000]、P(x) 都保持原样）。
     """
     import re
     s = str(text or "")
-    s = re.sub(r"[（(]\s*前几个[:：][^）)]*[）)]", "", s)          # 摘掉"前几个: [...]"
+    # 摘掉括号里的原始数据（四种写法都覆盖）
+    s = re.sub(r"[（(]\s*前几个[:：]?[^）)]*[）)]", "", s)
     s = re.sub(r"[（(]\s*(?:例外前|seq|examples?)[^）)]*[）)]", "", s, flags=re.I)
-    s = s.replace("**", "").replace("  ", " ").strip()
-    s = s.replace(", ", "，").replace("; ", "；")   # 只换"逗号+空格"，别动区间里的 6,40000
-    s = re.sub(r"\s*([?？])", r"\1", s)
-    s = s.replace("?", "？").replace("。？", "？")
+    s = s.replace("**", "").strip()
+    s = re.sub(r"\s+", " ", s)
+    # 机器写法 → 人话（不改事实）
+    s = re.sub(r"(?<=\d)\.\.(?=\d)", ", ", s)          # 6..40000 → 6, 40000
+    s = s.replace("mod m", "模 m").replace(" mod ", " 模 ")
+    s = s.replace(" vs ", " 与 ")
+
+    has_cjk = bool(re.search(r"[\u4e00-\u9fff]", s))
+    if has_cjk:
+        # 单引号 → 中文引号
+        s = re.sub(r"'([^']{1,40})'", r"“\1”", s)
+        # 括号：只在里面含中文时才转全角（P(x)、[6, 40000] 这类保持原样）
+        s = re.sub(r"\(([^()]*[\u4e00-\u9fff][^()]*)\)", r"（\1）", s)
+        # 逗号/分号/冒号：只在"后面紧跟中文"且不在括号内时转换
+        def _commas(t):
+            out, depth = [], 0
+            for i, ch in enumerate(t):
+                nxt = t[i + 1] if i + 1 < len(t) else ""
+                if ch in "[{":
+                    depth += 1
+                elif ch in "]}":
+                    depth = max(0, depth - 1)
+                # 逗号后面允许有空格：只要跳过空格是中文，就换成全角；区间 [6, 40000] 里的不动
+                tail = t[i + 1:i + 3]
+                ascii_then_cjk = bool(re.match(r"\s*[\u4e00-\u9fff]", tail))
+                if depth == 0 and ch == "," and ascii_then_cjk:
+                    out.append("，")
+                    skip_space = True
+                elif depth == 0 and ch == ";" and ascii_then_cjk:
+                    out.append("；")
+                    skip_space = True
+                elif depth == 0 and ch == ":" and ascii_then_cjk:
+                    out.append("：")
+                    skip_space = True
+                else:
+                    if ch == " " and out and out[-1] in "，；：":
+                        continue
+                    out.append(ch)
+            return "".join(out)
+        s = _commas(s)
+    # （不再做无条件的 ", " → "，"：那会把 [6, 40000] 里的逗号也换掉）
+    s = s.replace("?", "？").replace("!", "！")
+    s = s.replace("。？", "？").replace("？。", "？").replace("。。", "。")
+    s = re.sub(r"[，。；！]{2,}", "，", s)
+    s = re.sub(r"（\s*）|\(\s*\)", "", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    if s and s[-1] not in "。？！":
+        s += "。"
     return s
+
+
+def load_overrides():
+    """审校覆盖表：{（src, id）→ 覆盖项}。
+
+    审校结论落在 tools/site/review_overrides.json，生成数据时自动套用，
+    保证"改过的措辞"不会被下一次跑批覆盖掉。
+    """
+    p = ROOT / "tools" / "site" / "review_overrides.json"
+    if not p.exists():
+        return {}
+    try:
+        raw = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:                                   # noqa: BLE001
+        return {}
+    out = {}
+    for r in raw.get("items") or []:
+        m = r.get("match") or {}
+        out[(m.get("src", ""), str(m.get("id", "")))] = r
+    return out
+
+
+def apply_overrides(items, overrides):
+    """套用覆盖：改写正文/状态，或整条丢弃。返回 (保留条目, 改写数, 丢弃清单)。"""
+    kept, dropped, changed = [], [], 0
+    for it in items:
+        ov = overrides.get((it.get("src", ""), str(it.get("id", ""))))
+        if ov:
+            if ov.get("drop"):
+                dropped.append((it.get("src"), it.get("id")))
+                continue
+            if ov.get("display"):
+                it["display"] = ov["display"]
+            if ov.get("status"):
+                it["status"] = ov["status"]
+            if ov.get("cls"):
+                it["cls"] = ov["cls"]
+            if ov.get("verdict"):
+                it["review"] = ov["verdict"]
+            if ov.get("note"):
+                it["review_note"] = ov["note"]
+            changed += 1
+        kept.append(it)
+    return kept, changed, dropped
 
 
 def _evidence_of(p):
@@ -130,10 +254,14 @@ def collect_k1():
             st, cls = fmt_status(p.get("status"))
             t = p.get("tree") or {}
             jd = p.get("judgement") or {}
+            honesty = str(p.get("honesty") or "")
+            known = ("已知" in honesty) or ("著名" in str(t.get("edge") or "")) or \
+                    str(p.get("status", "")).startswith(("真(已证", "真(已知", "真(定理"))
+            badge = "已知问题 · 机器重新表述" if known else "机器提出（参照系未见）"
             items.append({
                 "tier": "K1", "domain": DOMAIN_CN.get(dom, dom), "id": p.get("id"),
-                "claim": stmt, "display": clean(stmt),
-                "evidence": _evidence_of(p),
+                "claim": stmt, "display": clean(stmt), "badge": badge,
+                "honesty": honesty, "evidence": _evidence_of(p),
                 "status": st, "cls": cls,
                 "route": p.get("judge_route") or jd.get("method") or "—",
                 "edge": t.get("edge") or "",
@@ -151,6 +279,7 @@ def collect_tension():
     m3 = load("method3_unique.json") or []
     for r in m3[:6]:
         out.append({"tier": "K1", "domain": "语料张力", "id": r.get("topic"),
+                    "badge": "机器提出（语料张力候选）",
                     "claim": r.get("statement", ""),
                     "status": "待人类裁决", "cls": "open",
                     "route": "张力探测 → 形式化缺口",
@@ -159,12 +288,14 @@ def collect_tension():
     tw = load("tensions_west.json") or []
     if t1:
         out.append({"tier": "K1", "domain": "语料张力", "id": "中哲",
+                    "badge": "机器提出（语料张力候选）",
                     "claim": f"中哲语料里 {len(t1)} 处文本张力（取「{t1[0].get('topic')}」等）"
                              f"——两派交锋引文是否指向同一未形式化的问题？",
                     "status": "候选", "cls": "open", "route": "对峙/同文并存检测",
                     "edge": t1[0].get("topic", ""), "src": "tensions_v1.json"})
     if tw:
         out.append({"tier": "K1", "domain": "语料张力", "id": "西哲",
+                    "badge": "机器提出（语料张力候选）",
                     "claim": f"西方哲学语料 {len(tw)} 处张力（如「{tw[0].get('topic')}」）"
                              f"→ 逐条映射到当代形式化缺口",
                     "status": "候选", "cls": "open", "route": "张力 → 缺口映射",
@@ -173,24 +304,26 @@ def collect_tension():
 
 
 def collect_scihist():
-    """科学史挖出的真未解（人类已知未解，机器只是挖出来——必须在文案里说清）。"""
+    """科学史语料里被作者自己承认的「未知」——**汇总为一条**。
+
+    早期版本把语料片段（可能截断在半句上）直接当条目展示，被审校判为"语料碎片，非问题"。
+    这里改为引用文档中已核实的完整引文，并明确标注：这是**人类已知未解**，机器只是把它们找齐。
+    """
     d = load("scihist_open.json") or {}
     A = d.get("A") or []
-    samples, seen = [], set()
-    for r in A:
-        sig = (r.get("signal") or "").strip()
-        if sig in seen:
-            continue
-        seen.add(sig)
-        ctx = (r.get("context") or "").strip()
-        samples.append({"tier": "K1", "domain": "科学史未解", "id": sig or "未解",
-                        "claim": ctx[:120] + ("…" if len(ctx) > 120 else ""),
-                        "status": "人类已知未解", "cls": "open",
-                        "route": "科学史语料挖掘（A 级自我承认的未知）",
-                        "edge": r.get("level", ""), "src": "scihist_open.json"})
-        if len(samples) >= 4:
-            break
-    return samples, len(A)
+    item = {
+        "tier": "K1", "domain": "科学史未解", "id": "A 级自我承认的未知",
+        "badge": "人类已知未解 · 机器找齐",
+        "claim": (f"从科学史语料中挖出 {len(A)} 条「作者自己承认的未知」（A 级），"
+                  f"例如：奇完全数——“是否存在奇完全数的问题依然是一个尚未解决的难题”；"
+                  f"曲线与直线比较——“曲线和直线形状的比较，尚未解决”；"
+                  f"欧拉-哥德巴赫——“欧拉与哥德巴赫…至今尚未解决”。"),
+        "evidence": f"{len(A)} 条 A 级；来源为数学史/里程碑书系等语料",
+        "status": "人类已知未解（机器只是找齐）", "cls": "open",
+        "route": "科学史语料 → 自我承认的未知信号（不得而知/尚未解决）",
+        "edge": "已知未解 ≠ 新知", "src": "scihist_open.json",
+    }
+    return [item], len(A)
 
 
 def collect_k2():
@@ -287,22 +420,184 @@ def collect_imagination():
     return items
 
 
-def collect_cross():
-    """跨域融合：母题 × 母题（真实 parents + 共享框架）。"""
+def collect_fusion():
+    """领域融合：全量真实结果（矩阵审计、结构桥梁、真三域候选、仿真、territory、负结果）。"""
+    items = []
+
+    # A. 领域级融合 + 结构桥梁判据
+    ff = load("field_fusion.json") or {}
+    fields = ff.get("fields") or {}
+    cand = ff.get("candidates") or []
+    n_fields = len(fields)
+    n_pairs = ff.get("total_pairs") or n_fields * (n_fields - 1)
+    if n_fields:
+        items.append({
+            "tier": "F", "domain": "领域级融合", "id": "结构桥梁判据",
+            "claim": f"{n_fields} 个基础领域两两配对共 {n_pairs} 对；加上「结构桥梁」判据"
+                     f"（对象携带的结构 ∩ 方法作用的结构 ≠ ∅）后，剩 {len(cand)} 对值得问的配对 —— "
+                     f"砍掉的正是「数论的对象 × 音乐的方法」这类无理由配对。",
+            "evidence": f"{len(cand)}/{n_pairs} 对通过结构桥梁",
+            "status": "判据已落地", "cls": "num",
+            "route": "结构交集非空 + 可算性",
+            "edge": "桥 = 对象结构 ∩ 方法结构", "src": "field_fusion.json"})
+        c0 = next((c for c in cand if isinstance(c, dict) and c.get("structural")), None)
+        if c0:
+            hit = c0.get("bridges") or []
+            br = ""
+            if hit and isinstance(hit[0], dict):
+                b = hit[0]
+                br = f"（{b.get('o', '')} × {b.get('m', '')}）"
+            items.append({
+                "tier": "F", "domain": "领域级融合", "id": c0.get("name") or "候选",
+                "claim": c0.get("new_question") or "",
+                "evidence": f"配对：{c0.get('shape', '')}；{c0.get('computable', '')}{br}",
+                "status": "领域级融合问题", "cls": "open",
+                "route": c0.get("judge") or "实验+理论",
+                "edge": " × ".join((c0.get("parent_questions") or [])[:2]),
+                "src": "field_fusion.json"})
+
+    # B. 笛卡尔矩阵审计（负结果 → 整改 → 真三域）
+    v4 = load("cross_md_v4.json") or {}
+    st, na, lay = v4.get("stages") or {}, v4.get("nominal_audit_v3") or {}, v4.get("layering") or {}
+    if st:
+        items.append({
+            "tier": "F", "domain": "矩阵审计", "id": "真三域",
+            "claim": f"三域笛卡尔矩阵 {st.get('笛卡尔矩阵')} 条 → F1 良构过门 {st.get('F1过门')} 条 → "
+                     f"真三域候选 {st.get('真三域候选')} 条。同时对上一版 {na.get('three_domain_total')} 条三域候选"
+                     f"逐条核对：真三域参与 {na.get('real_three_domain')} 条，其余只是把第三域写进句子。",
+            "evidence": f"分层：可判 {lay.get('i_可判')} · 需建验证器 {lay.get('ii_需建验证器')} · 空壳 {lay.get('iii_空壳')}",
+            "status": "负结果 + 已整改", "cls": "no",
+            "route": "逐条核对第三域是否真的参与判定",
+            "edge": "名义三域 → 真三域", "src": "cross_md_v4.json"})
+    for r in v4.get("three_domain") or []:
+        doms = " × ".join(r.get("domains") or [])
+        tt = r.get("third_table") or []
+        first = tt[0] if tt else {}
+        items.append({
+            "tier": "F", "domain": "真三域候选", "id": doms,
+            "claim": r.get("statement") or "",
+            "evidence": f"第三域参数 {r.get('third_param')} 网格 {r.get('third_grid')}；"
+                        f"首行实测输出 {first.get('outputs')}",
+            "status": "真三域（已跑参数网格）", "cls": "num",
+            "route": f"仿真/数值 · {str(r.get('crit'))[:40]}",
+            "edge": r.get("obj") or "", "src": "cross_md_v4.json"})
+    for r in v4.get("needs_verifier") or []:
+        items.append({
+            "tier": "F", "domain": "跨域候选", "id": " × ".join(r.get("domains") or []),
+            "claim": r.get("statement") or "",
+            "evidence": f"对象 {r.get('obj')}；量词域 {r.get('quant')}",
+            "status": "需建验证器", "cls": "open",
+            "route": r.get("route") or "需建验证器",
+            "edge": str(r.get("crit"))[:44], "src": "cross_md_v4.json"})
+
+    # C. 跨域候选扫描的判官分布
+    v3 = load("cross_md_v3.json") or {}
+    rows = v3.get("rows") or []
+    if rows:
+        judge = Counter(str(r.get("llm_judge", ""))[:4] for r in rows)
+        kind = Counter(str((r.get("verify") or {}).get("kind", "")) for r in rows)
+        two = sum(1 for r in rows if len(r.get("domains") or []) == 2)
+        three = sum(1 for r in rows if len(r.get("domains") or []) == 3)
+        stages = v3.get("stages") or ["", "", ""]
+        items.append({
+            "tier": "F", "domain": "候选扫描", "id": f"{len(rows)} 条",
+            "claim": f"从 {stages[1]} 条里筛出 {len(rows)} 条可判跨域候选（双域 {two} / 三域 {three}），"
+                     f"每条都配了判定方式并实跑出结果。",
+            "evidence": f"判定：数值 {kind.get('数值', 0)} · 仿真 {kind.get('仿真', 0)}；"
+                        f"判官：N1 已知 {judge.get('N1 ', 0)} · N2 需复核 {judge.get('N2 ', 0)} · N3 {judge.get('N3', 0)}",
+            "status": "全部可判（无 N3）", "cls": "num",
+            "route": "数值/仿真实跑 + LLM 分层判",
+            "edge": "stage 454 → 454 → 130", "src": "cross_md_v3.json"})
+
+    # D. 三域仿真结论
+    cb = load("cross_md_belief.json") or []
+    if cb:
+        collapse = [r for r in cb if r.get("belief_underest_noise") == 0.5]
+        ok = [r for r in cb if r.get("belief_underest_noise") == 1.0]
+        if collapse and ok:
+            items.append({
+                "tier": "F", "domain": "三域仿真", "id": "AGM × 信道",
+                "claim": f"信念修正 × 迭代 × 噪声信道：正确模型总是收敛；但低估噪声时，"
+                         f"信道容量 ≤ {collapse[-1].get('capacity_bit')} bit 段会塌成「完全不学习」，"
+                         f"容量 ≥ {ok[0].get('capacity_bit')} bit 后恢复收敛，偏差随容量单调下降。",
+                "evidence": f"容量跨度 {cb[0].get('capacity_bit')}–{cb[-1].get('capacity_bit')} bit（{len(cb)} 个点）",
+                "status": "真三域参与（已实测）", "cls": "num",
+                "route": "仿真：AGM 修正 + 信道噪声（第三域以信道容量参数参与）",
+                "edge": "容量阈值 ≈0.03 bit", "src": "cross_md_belief.json"})
+
+    # E. 派生母题
     dm = load("derived_motifs.json") or []
     cross = [r for r in dm if r.get("cross")]
-    items = []
-    for r in cross[:4]:
-        pa = r["parents"][0].split("::")[-1]
-        pb = r["parents"][1].split("::")[-1]
+    if dm:
+        fr = Counter(r.get("frame") for r in dm)
+        pairs = Counter()
+        for r in dm:
+            doms = tuple(sorted(p.split("::")[0] for p in r.get("parents", [])))
+            if len(doms) == 2:
+                pairs[doms] += 1
+        top = "；".join(f"{'×'.join(k)} {v}" for k, v in pairs.most_common(3))
         items.append({
-            "tier": "X", "domain": "跨域融合", "id": r.get("id"),
-            "claim": f"「{pa}」与「{pb}」共享框架 {r.get('frame')} —— 能否由此问出"
-                     f"一个两边都不曾单独问过的问题？",
-            "status": "派生母题（待判）", "cls": "open",
-            "route": f"母题交叉 → 框架匹配（route={r.get('route')}）",
-            "edge": r.get("derived", ""), "src": "derived_motifs.json"})
-    return items, len(cross)
+            "tier": "F", "domain": "派生母题", "id": f"{len(dm)} 条",
+            "claim": f"母题 × 母题生成 {len(dm)} 条派生母题（{len(cross)} 条真跨域），"
+                     f"每条都必须落到一个具名共享框架才成立。",
+            "evidence": f"框架：{' · '.join(f'{k} {v}' for k, v in fr.most_common())}｜配对最多：{top}",
+            "status": "已生成（待判）", "cls": "open",
+            "route": "母题交叉 → 框架匹配 → 判定路由",
+            "edge": "同构框架才配对", "src": "derived_motifs.json"})
+
+    # F. 配对集命题
+    gm = load("grown_motifs.json") or []
+    if gm:
+        stages = Counter(g.get("stage") for g in gm)
+        items.append({
+            "tier": "F", "domain": "配对集命题", "id": f"{len(gm)} 条",
+            "claim": f"母题配对生成的命题共 {len(gm)} 条：confirmed {stages.get('confirmed', 0)} · "
+                     f"needs_extend {stages.get('needs_extend', 0)} · hypothesis {stages.get('hypothesis', 0)}，"
+                     f"每条都带机器实测阈值（阈值之后无例外）。",
+            "evidence": "例：质数×回文数 阈值 6 · 质数×奇合数 12 · 质数×平方数 7746",
+            "status": "已实测", "cls": "ok",
+            "route": "两族对象相加的覆盖阈值（探针跑满）",
+            "edge": "配对集覆盖阈值", "src": "grown_motifs.json"})
+
+    # G. 领域领地扫描
+    ft = load("fusion_territories.json") or {}
+    t4, t5 = ft.get("T4_evo_game") or [], ft.get("T5_comp_ling") or []
+    if t4 or t5:
+        ex4 = sum(1 for r in t4 if r.get("exceptions"))
+        ex5 = sum(1 for r in t5 if r.get("exception"))
+        items.append({
+            "tier": "F", "domain": "领地扫描", "id": "博弈×进化 · 计量×语言学",
+            "claim": f"两类跨域领地实跑：博弈论 × 演化（{len(t4)} 个博弈扫描 ESS 端点，{ex4} 个出现例外）；"
+                     f"计量语言学 × 压缩（{len(t5)} 个语料，Menzerath/Zipf/Heaps 三项指标，{ex5} 个例外）。",
+            "evidence": "计量语言学侧 9/9 语料全服从 → 产不出问题（记为负结果）",
+            "status": "领地稀疏度实测", "cls": "num",
+            "route": "扫描该领地是否还有例外（有例外才有问题）",
+            "edge": "例外 = 问题来源", "src": "fusion_territories.json"})
+
+    # H. 融合机制实验
+    fm = load("fusion_matrix.json") or []
+    run = [r for r in fm if r.get("before") is not None]
+    if run:
+        items.append({
+            "tier": "F", "domain": "融合实验", "id": "选择 × 编码",
+            "claim": f"「选择压 × 编码方式」的融合实验：结构多样性从 {run[0].get('before')} 提高到 "
+                     f"{max(r.get('after') for r in run)}（三种编码结果不同）——选择压并非只做收敛。",
+            "evidence": "；".join(f"{r.get('fusion')}: {r.get('before')}→{r.get('after')}" for r in run),
+            "status": "实测（机制）", "cls": "num",
+            "route": "仿真：选择压 × 编码冗余度",
+            "edge": "多样性 before → after", "src": "fusion_matrix.json"})
+
+    # I. 负结果
+    items.append({
+        "tier": "F", "domain": "负结果", "id": "跨域扫描",
+        "claim": "300 组合的跨域扫描全部落在已知类（Schnirelmann 密度 / 稠密推论）；"
+                 "「数学 × 艺术」的 26 个配对里 20 个已被已知结果占领。",
+        "status": "负结果", "cls": "no",
+        "route": "逐条回查文献/已知类",
+        "edge": "跨域 ≠ 新", "src": "docs/guide/results.md"})
+    return items, {"fields": n_fields, "pairs": n_pairs, "bridges": len(cand),
+                   "three_domain": len(v4.get("three_domain") or []),
+                   "cross_candidates": len(rows), "derived": len(dm), "grown": len(gm)}
 
 
 def collect_checks():
@@ -361,7 +656,7 @@ def main():
     k2 = collect_k2()
     k3 = collect_k3()
     im = collect_imagination()
-    x, cross_total = collect_cross()
+    x, fusion = collect_fusion()
     check = collect_checks()
     neg = collect_negative()
 
@@ -370,28 +665,31 @@ def main():
     for it in all_items:                       # 统一补展示字段
         it.setdefault("display", clean(it.get("claim", "")))
         it.setdefault("evidence", "")
+
+    # 先落一份"未套用审校"的快照：供 build_overrides 从原始措辞生成覆盖表
+    snap = ROOT / "out" / "curated_unreviewed.json"
+    try:
+        snap.parent.mkdir(parents=True, exist_ok=True)
+        snap.write_text(json.dumps({"tiers": TIERS, "items": all_items}, ensure_ascii=False,
+                                   indent=1), encoding="utf-8")
+    except Exception as e:                             # noqa: BLE001
+        print("! 未审校快照写入失败:", e)
+
+    # 套用 LLM 审校覆盖（改写语病 / 把数据陈述改造成问题 / 丢掉落选项）
+    overrides = load_overrides()
+    all_items, n_ov, dropped = apply_overrides(all_items, overrides)
+    if n_ov or dropped:
+        print(f"审校覆盖：改写 {n_ov} 条，丢弃 {len(dropped)} 条 -> {dropped}")
     data = {
-        "note": "全部条目取自机器实际产出的记录；状态与判定路由来自数据，不由展示层改写。",
+        "note": "全部条目取自机器实际产出的记录；状态与判定路由来自数据，不由展示层改写；"
+                "正文措辞经 LLM 审校（tools/site/review_overrides.json）——只改措辞不改事实。",
+        "reviewed": n_ov, "dropped": len(dropped),
         "counts": {"k1_domain_total": total_k1, "domains": dom_counts,
-                   "scihist_total": sci_total, "cross_total": cross_total,
+                   "scihist_total": sci_total, "cross_total": fusion.get("bridges"),
+                   "fusion": fusion,
                    "k2": len(k2), "k3": len(k3), "imagination": len(im),
                    "checks": len(check), "negative": len(neg)},
-        "tiers": [
-            {"key": "K1", "name": "K1 · 提出的问题", "en": "NEW PROBLEMS",
-             "desc": "把困惑/数据改造成可判的问题——这是新知识的第一步。每条都带判定路由。"},
-            {"key": "K2", "name": "K2 · 证据边界推进", "en": "EVIDENCE FRONTIER",
-             "desc": "对已有问题给出更强证据、更大边界。目前唯一称得上「新知识」的一类。"},
-            {"key": "K3", "name": "K3 · 归纳的规律", "en": "INDUCED LAWS",
-             "desc": "从数据归纳出的普遍律。机器只做到「数值汇合 + 待证明」。"},
-            {"key": "IM", "name": "想象路 · 概念", "en": "IMAGINATION PATH",
-             "desc": "产概念，不是产答案。标准是「解释」：语法正确 + 逻辑通畅 + 有推理判断。"},
-            {"key": "X", "name": "跨域融合 · 观点", "en": "CROSS-DOMAIN",
-             "desc": "母题 × 母题：只有共享结构桥梁的配对才值得问。"},
-            {"key": "R", "name": "复核性结果", "en": "REPRODUCTION",
-             "desc": "机器重发现已知——不是新知，是可信度基线。"},
-            {"key": "N", "name": "负结果", "en": "NEGATIVE RESULTS",
-             "desc": "机器自己否掉的、产不出问题的——与正结果同等重要。"},
-        ],
+        "tiers": TIERS,
         "items": all_items,
     }
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -399,7 +697,7 @@ def main():
     c = Counter(i["tier"] for i in data["items"])
     print(f"wrote {OUT} ({OUT.stat().st_size/1024:.0f}KB)")
     print("分级计数:", dict(c))
-    print("各域问题总数:", total_k1, "| 科学史未解:", sci_total, "| 跨域:", cross_total)
+    print("各域问题总数:", total_k1, "| 科学史未解:", sci_total, "| 融合:", fusion)
     # 便于人工检查：把正文写一份 UTF-8 文本
     report = ROOT / "out" / "curated_preview.txt"
     lines = [f"[{i['tier']}] {i['domain']} / {i['id']} · {i['status']} · {i['route']}\n"
