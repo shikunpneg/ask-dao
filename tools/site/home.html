@@ -107,6 +107,16 @@
     margin-bottom:56px;font-weight:400;
   }
   .note{color:var(--dim);font-size:14px;line-height:1.95;font-weight:400;}
+
+  /* 真实使用章节：小标题给足呼吸（h3 无全局样式，默认 1em 会贴住上一块） */
+  #realuse h3{
+    font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:.06em;
+    color:#080a0e;margin:48px 0 18px;
+  }
+  #realuse h3:first-of-type{margin-top:26px;}
+  #realuse .data-table{margin-bottom:0;}
+  #realuse figure{margin-bottom:0;}
+  #realuse > p + h3{margin-top:44px;}
   a.inline{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft);}
   a.inline:hover{color:#7d6234;}
 
@@ -677,7 +687,7 @@
     <tr><td class="mono">HR 1.49 (95% CI 1.28–1.74)</td><td class="num"><strong>2.34</strong></td><td class="num">1.88</td><td>最高风险组所需的混杂强度更高，最难被混杂解释</td></tr>
     <tr><td class="mono">HR 1.02 (95% CI 1.01–1.04)</td><td class="num"><strong>1.16</strong></td><td class="num">1.11</td><td>替代分析那一条<strong>最脆</strong>：几乎任何微弱混杂都能解释掉</td></tr>
   </table>
-  <p class="note" style="margin:-14px 0 26px;color:var(--dim);font-size:13px;line-height:1.9">
+  <p class="note" style="margin:16px 0 0;color:var(--dim);font-size:13px;line-height:1.9">
     公式 <code>E = RR + √(RR(RR−1))</code>，用 HR 近似 RR，只在结局不常见时成立（本文 CKD 发病率低）。
     E-value 是<strong>门槛</strong>，不是"存在这样的混杂"的证据；<strong>原文里从未出现 E-value</strong>——
     这一条是机器加上去的。</p>
