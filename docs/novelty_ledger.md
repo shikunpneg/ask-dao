@@ -1,5 +1,13 @@
 # novelty_ledger
 
+> **⚠️ 计数更正（2026-09-11）**：本文档中 `回文数(base b) + 素数` / `质数 + k边形数` 条目，
+> 部分例外个数来自 `tools/parallel_factory.py` 的一个**已修复旧版本**（素数表未排序导致覆盖标记
+> 大面积失效），数字偏大数千倍到无穷倍，例如 base 4 曾记 201,295 个、真值 **5** 个。
+> 旧值一律保留，已就地补正确值；完整前后对照、影响范围与三套独立复算见
+> **[`novelty_ledger_corrections.md`](novelty_ledger_corrections.md)**。
+> 引用这些例外数、或用被错清单喂过的 OEIS 门结论，在重跑前**视为作废**。
+
+
 ## 2026-09-10T01:35:18
 - grown_motifs: {'confirmed': 13, 'needs_extend': 7, 'hypothesis': 1}
 ## 2026-09-10T01:35:41
@@ -254,33 +262,33 @@
   seq=[78, 88, 100, 118, 142, 146, 148, 266] 机制=['无简单机制']
 - `all_domains:2` [all_domains.json] 回文(base5)+素数覆盖: 例外4
   seq=[66, 418, 448, 1266] 机制=['无简单机制']
-- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 301084 个
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[78, 88, 100, 118, 142, 146, 148, 266] 机制=['无简单机制']
-- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 201295 个
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034] 机制=['无简单机制']
-- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 244349 个
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728] 机制=['无简单机制']
-- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖偶数到 2,000,000: 例外 169905 个
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216] 机制=['无简单机制']
-- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖偶数到 2,000,000: 例外 206055 个
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350] 机制=['无简单机制']
-- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖偶数到 2,000,000: 例外 169951 个
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036] 机制=['无简单机制']
-- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖偶数到 2,000,000: 例外 172658 个
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894] 机制=['无简单机制']
-- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖偶数到 2,000,000: 例外 171140 个
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032] 机制=['无简单机制']
-- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖偶数到 2,000,000: 例外 172189 个
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058] 机制=['无简单机制']
-- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖偶数到 2,000,000: 例外 169346 个
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072] 机制=['无简单机制']
-- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖偶数到 2,000,000: 例外 170247 个
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034] 机制=['无简单机制']
-- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖偶数到 2,000,000: 例外 168607 个
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072] 机制=['无简单机制']
-- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖偶数到 2,000,000: 例外 169385 个
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058] 机制=['无简单机制']
-- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖偶数到 2,000,000: 例外 168111 个
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['线性', '二次', '等比']
 - `PF_145` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 68 个
   seq=[78, 88, 100, 118, 142, 146, 148, 266] 机制=['无简单机制']
@@ -288,43 +296,43 @@
   seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
 - `PF_147` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个
   seq=[66, 418, 448, 1266] 机制=['无简单机制']
-- `PF_185` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 301084 个
+- `PF_185` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[78, 88, 100, 118, 142, 146, 148, 266] 机制=['无简单机制']
-- `PF_186` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 201295 个
+- `PF_186` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034] 机制=['无简单机制']
-- `PF_187` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 244349 个
+- `PF_187` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728] 机制=['无简单机制']
-- `PF_188` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖偶数到 2,000,000: 例外 169905 个
+- `PF_188` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216] 机制=['无简单机制']
-- `PF_189` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖偶数到 2,000,000: 例外 206055 个
+- `PF_189` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350] 机制=['无简单机制']
-- `PF_190` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖偶数到 2,000,000: 例外 169951 个
+- `PF_190` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036] 机制=['无简单机制']
-- `PF_191` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖偶数到 2,000,000: 例外 172658 个
+- `PF_191` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894] 机制=['无简单机制']
-- `PF_192` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖偶数到 2,000,000: 例外 171140 个
+- `PF_192` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032] 机制=['无简单机制']
-- `PF_193` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖偶数到 2,000,000: 例外 172189 个
+- `PF_193` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058] 机制=['无简单机制']
-- `PF_194` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖偶数到 2,000,000: 例外 169346 个
+- `PF_194` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072] 机制=['无简单机制']
-- `PF_195` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖偶数到 2,000,000: 例外 170247 个
+- `PF_195` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034] 机制=['无简单机制']
-- `PF_196` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖偶数到 2,000,000: 例外 168607 个
+- `PF_196` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072] 机制=['无简单机制']
-- `PF_197` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖偶数到 2,000,000: 例外 169385 个
+- `PF_197` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058] 机制=['无简单机制']
-- `PF_198` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖偶数到 2,000,000: 例外 168111 个
+- `PF_198` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['线性', '二次', '等比']
-- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖偶数到 500,000: 例外 279 个
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[36, 210, 216, 406, 528, 630, 780, 990] 机制=['无简单机制']
-- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖偶数到 500,000: 例外 256 个
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[10, 34, 58, 64, 130, 196, 214, 226] 机制=['无简单机制']
-- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 500,000: 例外 371 个
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[26, 50, 86, 100, 116, 126, 210, 222] 机制=['无简单机制']
-- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 500,000: 例外 471 个
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[10, 16, 36, 40, 66, 70, 78, 100] 机制=['无简单机制']
-- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖偶数到 500,000: 例外 352 个
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[16, 22, 36, 46, 56, 66, 86, 116] 机制=['无简单机制']
 - `AD_225` [discovery_manifest.json] 回文(base3)+素数覆盖: 例外68
   seq=[78, 88, 100, 118, 142, 146, 148, 266] 机制=['无简单机制']
@@ -334,45 +342,4187 @@
 
 ## 批量 OEIS 门 (131 候选)
 本地索引 399061 条; 已知/疑似 38; 未见候选(去重前) 59 -> 独立未见 21; 信息不足 34
-- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖偶数到 2,000,000: 例外 301084 个
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
-- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 201295 个
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
-- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 244349 个
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
-- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖偶数到 2,000,000: 例外 169905 个
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
-- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖偶数到 2,000,000: 例外 206055 个
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
-- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖偶数到 2,000,000: 例外 169951 个
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
-- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖偶数到 2,000,000: 例外 172658 个
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
-- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖偶数到 2,000,000: 例外 171140 个
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
-- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖偶数到 2,000,000: 例外 172189 个
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
-- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖偶数到 2,000,000: 例外 169346 个
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
-- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖偶数到 2,000,000: 例外 170247 个
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
-- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖偶数到 2,000,000: 例外 168607 个
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
-- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖偶数到 2,000,000: 例外 169385 个
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
-- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖偶数到 2,000,000: 例外 168111 个
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
-- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖偶数到 500,000: 例外 279 个
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
-- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖偶数到 500,000: 例外 256 个
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
-- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 500,000: 例外 371 个
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
-- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 500,000: 例外 471 个
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
-- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖偶数到 500,000: 例外 352 个
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
   seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
 - `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
   seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
 - `all_domains:2` [all_domains.json] 回文(base5)+素数覆盖: 例外4
   seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (223 候选)
+本地索引 399061 条; 已知/疑似 80; 未见候选(去重前) 78 -> 独立未见 24; 信息不足 65
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (318 候选)
+本地索引 399061 条; 已知/疑似 135; 未见候选(去重前) 76 -> 独立未见 24; 信息不足 107
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 严格分级(去重后 24): 强候选 22 / 弱 0 / 短 2
+- ★ `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[78, 88, 100, 118, 142, 146, 148, 266] | 机制=['无简单机制']
+- ★ `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24] | seq=[360, 132, 108, 72, 36, 24] | 机制=['无简单机制']
+- ★ `all_domains:24` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36] | seq=[360, 96, 72, 48, 48, 36] | 机制=['无简单机制']
+- ★ `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034] | 机制=['无简单机制']
+- ★ `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728] | 机制=['无简单机制']
+- ★ `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216] | 机制=['无简单机制']
+- ★ `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350] | 机制=['无简单机制']
+- ★ `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036] | 机制=['无简单机制']
+- ★ `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894] | 机制=['无简单机制']
+- ★ `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032] | 机制=['无简单机制']
+- ★ `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058] | 机制=['无简单机制']
+- ★ `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072] | 机制=['无简单机制']
+- ★ `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034] | 机制=['无简单机制']
+- ★ `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072] | 机制=['无简单机制']
+- ★ `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058] | 机制=['无简单机制']
+- ★ `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] | 机制=['线性', '二次', '等比']
+- ★ `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[36, 210, 216, 406, 528, 630, 780, 990] | 机制=['无简单机制']
+- ★ `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[10, 34, 58, 64, 130, 196, 214, 226] | 机制=['无简单机制']
+- ★ `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[26, 50, 86, 100, 116, 126, 210, 222] | 机制=['无简单机制']
+- ★ `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[10, 16, 36, 40, 66, 70, 78, 100] | 机制=['无简单机制']
+- ★ `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[16, 22, 36, 46, 56, 66, 86, 116] | 机制=['无简单机制']
+- ★ `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10 | seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2] | 机制=['无简单机制']
+
+## 严格分级(去重后 24): 强 22 → 独立 4 / 弱 0 / 短 2
+领域族: {'回文+素数覆盖(跨进制)': 14, '音集音程向量': 2, '质数+多边形覆盖': 5, 'Collatz链长': 1}
+- ★ `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10 | seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2] | 机制=['无简单机制']
+- ★ `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[78, 88, 100, 118, 142, 146, 148, 266] | 机制=['无简单机制']
+- ★ `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[36, 210, 216, 406, 528, 630, 780, 990] | 机制=['无简单机制']
+- ★ `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24] | seq=[360, 132, 108, 72, 36, 24] | 机制=['无简单机制']
+
+## 批量 OEIS 门 (368 候选)
+本地索引 399061 条; 已知/疑似 160; 未见候选(去重前) 83 -> 独立未见 24; 信息不足 125
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (449 候选)
+本地索引 399061 条; 已知/疑似 198; 未见候选(去重前) 100 -> 独立未见 26; 信息不足 151
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (501 候选)
+本地索引 399061 条; 已知/疑似 223; 未见候选(去重前) 109 -> 独立未见 26; 信息不足 169
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 严格分级(去重后 26): 强 24 → 独立 5 / 弱 0 / 短 2
+领域族: {'回文+素数覆盖(跨进制)': 14, '音集音程向量': 2, 'D4纹样轨道数': 2, '质数+多边形覆盖': 5, 'Collatz链长': 1}
+- ★ `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10 | seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2] | 机制=['无简单机制']
+- ★ `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[78, 88, 100, 118, 142, 146, 148, 266] | 机制=['无简单机制']
+- ★ `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[36, 210, 216, 406, 528, 630, 780, 990] | 机制=['无简单机制']
+- ★ `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15] | seq=[25, 19, 13, 19, 15, 15, 15, 15] | 机制=['无简单机制']
+- ★ `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24] | seq=[360, 132, 108, 72, 36, 24] | 机制=['无简单机制']
+
+## 批量 OEIS 门 (553 候选)
+本地索引 399061 条; 已知/疑似 248; 未见候选(去重前) 118 -> 独立未见 26; 信息不足 187
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (605 候选)
+本地索引 399061 条; 已知/疑似 273; 未见候选(去重前) 127 -> 独立未见 26; 信息不足 205
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (657 候选)
+本地索引 399061 条; 已知/疑似 298; 未见候选(去重前) 136 -> 独立未见 26; 信息不足 223
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (709 候选)
+本地索引 399061 条; 已知/疑似 323; 未见候选(去重前) 145 -> 独立未见 26; 信息不足 241
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (761 候选)
+本地索引 399061 条; 已知/疑似 348; 未见候选(去重前) 154 -> 独立未见 26; 信息不足 259
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (813 候选)
+本地索引 399061 条; 已知/疑似 373; 未见候选(去重前) 163 -> 独立未见 26; 信息不足 277
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (865 候选)
+本地索引 399061 条; 已知/疑似 398; 未见候选(去重前) 172 -> 独立未见 26; 信息不足 295
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (917 候选)
+本地索引 399061 条; 已知/疑似 423; 未见候选(去重前) 181 -> 独立未见 26; 信息不足 313
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (967 候选)
+本地索引 399061 条; 已知/疑似 446; 未见候选(去重前) 190 -> 独立未见 26; 信息不足 331
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1020 候选)
+本地索引 399061 条; 已知/疑似 472; 未见候选(去重前) 199 -> 独立未见 26; 信息不足 349
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1072 候选)
+本地索引 399061 条; 已知/疑似 497; 未见候选(去重前) 208 -> 独立未见 26; 信息不足 367
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1124 候选)
+本地索引 399061 条; 已知/疑似 522; 未见候选(去重前) 217 -> 独立未见 26; 信息不足 385
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1176 候选)
+本地索引 399061 条; 已知/疑似 547; 未见候选(去重前) 226 -> 独立未见 26; 信息不足 403
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1228 候选)
+本地索引 399061 条; 已知/疑似 572; 未见候选(去重前) 235 -> 独立未见 26; 信息不足 421
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1280 候选)
+本地索引 399061 条; 已知/疑似 597; 未见候选(去重前) 244 -> 独立未见 26; 信息不足 439
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1332 候选)
+本地索引 399061 条; 已知/疑似 622; 未见候选(去重前) 253 -> 独立未见 26; 信息不足 457
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1384 候选)
+本地索引 399061 条; 已知/疑似 647; 未见候选(去重前) 262 -> 独立未见 26; 信息不足 475
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1436 候选)
+本地索引 399061 条; 已知/疑似 672; 未见候选(去重前) 271 -> 独立未见 26; 信息不足 493
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1488 候选)
+本地索引 399061 条; 已知/疑似 697; 未见候选(去重前) 280 -> 独立未见 26; 信息不足 511
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1540 候选)
+本地索引 399061 条; 已知/疑似 722; 未见候选(去重前) 289 -> 独立未见 26; 信息不足 529
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1592 候选)
+本地索引 399061 条; 已知/疑似 747; 未见候选(去重前) 298 -> 独立未见 26; 信息不足 547
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1644 候选)
+本地索引 399061 条; 已知/疑似 772; 未见候选(去重前) 307 -> 独立未见 26; 信息不足 565
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1696 候选)
+本地索引 399061 条; 已知/疑似 797; 未见候选(去重前) 316 -> 独立未见 26; 信息不足 583
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1748 候选)
+本地索引 399061 条; 已知/疑似 822; 未见候选(去重前) 325 -> 独立未见 26; 信息不足 601
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1800 候选)
+本地索引 399061 条; 已知/疑似 847; 未见候选(去重前) 334 -> 独立未见 26; 信息不足 619
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (1852 候选)
+本地索引 399061 条; 已知/疑似 872; 未见候选(去重前) 343 -> 独立未见 26; 信息不足 637
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `all_domains:26` [all_domains.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `all_domains:25` [all_domains.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 回文(base5)+素数覆盖: 例外4
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 严格分级(去重后 26): 强 24 → 独立 5 / 弱 0 / 短 2
+领域族: {'回文+素数覆盖(跨进制)': 14, '音集音程向量': 2, 'D4纹样轨道数': 2, '质数+多边形覆盖': 5, 'Collatz链长': 1}
+- ★ `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10 | seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2] | 机制=['无简单机制']
+- ★ `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[78, 88, 100, 118, 142, 146, 148, 266] | 机制=['无简单机制']
+- ★ `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[36, 210, 216, 406, 528, 630, 780, 990] | 机制=['无简单机制']
+- ★ `all_domains:24` [all_domains.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15] | seq=[25, 19, 13, 19, 15, 15, 15, 15] | 机制=['无简单机制']
+- ★ `all_domains:23` [all_domains.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24] | seq=[360, 132, 108, 72, 36, 24] | 机制=['无简单机制']
+
+## 批量 OEIS 门 (109 候选)
+本地索引 399061 条; 已知/疑似 37; 未见候选(去重前) 41 -> 独立未见 34; 信息不足 31
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `all_domains:5` [all_domains.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `all_domains:7` [all_domains.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `all_domains:4` [all_domains.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `PF_147` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (108 候选)
+本地索引 399061 条; 已知/疑似 39; 未见候选(去重前) 42 -> 独立未见 36; 信息不足 27
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `PF_147` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 严格分级(去重后 36): 强 34 → 独立 5 / 弱 0 / 短 2
+领域族: {'回文+素数覆盖(跨进制)': 14, '质数+多边形覆盖': 7, 'Collatz链长': 1, '音集音程向量': 5, 'D4纹样轨道数': 7}
+- ★ `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10 | seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2] | 机制=['无简单机制']
+- ★ `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[78, 88, 100, 118, 142, 146, 148, 266] | 机制=['无简单机制']
+- ★ `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】 | seq=[36, 210, 216, 406, 528, 630, 780, 990] | 机制=['无简单机制']
+- ★ `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15] | seq=[25, 19, 13, 19, 15, 15, 15, 15] | 机制=['无简单机制']
+- ★ `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24] | seq=[360, 132, 108, 72, 36, 24] | 机制=['无简单机制']
+
+## 批量 OEIS 门 (119 候选)
+本地索引 399061 条; 已知/疑似 45; 未见候选(去重前) 44 -> 独立未见 38; 信息不足 30
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:1` [all_domains.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `all_domains:2` [all_domains.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `PF_147` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (112 候选)
+本地索引 399061 条; 已知/疑似 40; 未见候选(去重前) 42 -> 独立未见 38; 信息不足 30
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `PF_147` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (113 候选)
+本地索引 399061 条; 已知/疑似 42; 未见候选(去重前) 42 -> 独立未见 38; 信息不足 29
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `PF_147` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (120 候选)
+本地索引 399061 条; 已知/疑似 49; 未见候选(去重前) 42 -> 独立未见 38; 信息不足 29
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `PF_147` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖偶数到 2,000,000: 例外 4 个
+  seq=[66, 418, 448, 1266] 机制=['无简单机制']
+
+## 批量 OEIS 门 (134 候选)
+本地索引 399061 条; 已知/疑似 51; 未见候选(去重前) 48 -> 独立未见 41; 信息不足 35
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:1` [all_domains.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `all_domains:3` [all_domains.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 9音集合的音程向量类型计数: [120, 48, 36, 12, 4]
+  seq=[120, 48, 36, 12, 4] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- ... 共 41 个独立未见候选
+
+## 批量 OEIS 门 (131 候选)
+本地索引 399061 条; 已知/疑似 50; 未见候选(去重前) 45 -> 独立未见 41; 信息不足 36
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `AD_318` [discovery_manifest.json] 9音集合的音程向量类型计数: [120, 48, 36, 12, 4]
+  seq=[120, 48, 36, 12, 4] 机制=['无简单机制']
+- ... 共 41 个独立未见候选
+
+## 批量 OEIS 门 (134 候选)
+本地索引 399061 条; 已知/疑似 53; 未见候选(去重前) 45 -> 独立未见 41; 信息不足 36
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- `AD_318` [discovery_manifest.json] 9音集合的音程向量类型计数: [120, 48, 36, 12, 4]
+  seq=[120, 48, 36, 12, 4] 机制=['无简单机制']
+- ... 共 41 个独立未见候选
+
+## 批量 OEIS 门 (137 候选)
+本地索引 399061 条; 已知/疑似 53; 未见候选(去重前) 47 -> 独立未见 42; 信息不足 37
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- `AD_242` [discovery_manifest.json] 8音集合的音程向量类型计数: [144, 120, 72, 48, 24, 24]
+  seq=[144, 120, 72, 48, 24, 24] 机制=['无简单机制']
+- `PF_146` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖偶数到 2,000,000: 例外 5 个
+  seq=[35, 255, 515, 1855, 4345] 机制=['无简单机制']
+- ... 共 42 个独立未见候选
+
+## 批量 OEIS 门 (146 候选)
+本地索引 399061 条; 已知/疑似 60; 未见候选(去重前) 50 -> 独立未见 44; 信息不足 36
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `all_domains:1` [all_domains.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- ... 共 44 个独立未见候选
+
+## 批量 OEIS 门 (144 候选)
+本地索引 399061 条; 已知/疑似 58; 未见候选(去重前) 48 -> 独立未见 44; 信息不足 38
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- ... 共 44 个独立未见候选
+
+## 批量 OEIS 门 (152 候选)
+本地索引 399061 条; 已知/疑似 65; 未见候选(去重前) 48 -> 独立未见 44; 信息不足 39
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- ... 共 44 个独立未见候选
+
+## 批量 OEIS 门 (153 候选)
+本地索引 399061 条; 已知/疑似 63; 未见候选(去重前) 48 -> 独立未见 44; 信息不足 42
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- `AD_201` [discovery_manifest.json] 6音集合的音程向量类型计数: [240, 156, 144, 96, 96, 48]
+  seq=[240, 156, 144, 96, 96, 48] 机制=['无简单机制']
+- ... 共 44 个独立未见候选
+
+## 批量 OEIS 门 (152 候选)
+本地索引 399061 条; 已知/疑似 62; 未见候选(去重前) 50 -> 独立未见 45; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- `AD_199` [discovery_manifest.json] 4音集合的音程向量类型计数: [216, 144, 48, 48, 24, 12]
+  seq=[216, 144, 48, 48, 24, 12] 机制=['无简单机制']
+- ... 共 45 个独立未见候选
+
+## 批量 OEIS 门 (157 候选)
+本地索引 399061 条; 已知/疑似 66; 未见候选(去重前) 51 -> 独立未见 46; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- `AD_299` [discovery_manifest.json] 7音集合的音程向量类型计数: [360, 96, 72, 48, 48, 36]
+  seq=[360, 96, 72, 48, 48, 36] 机制=['无简单机制']
+- ... 共 46 个独立未见候选
+
+## 批量 OEIS 门 (156 候选)
+本地索引 399061 条; 已知/疑似 64; 未见候选(去重前) 52 -> 独立未见 47; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_297` [discovery_manifest.json] 5音集合的音程向量类型计数: [360, 132, 108, 72, 36, 24]
+  seq=[360, 132, 108, 72, 36, 24] 机制=['无简单机制']
+- ... 共 47 个独立未见候选
+
+## 批量 OEIS 门 (167 候选)
+本地索引 399061 条; 已知/疑似 72; 未见候选(去重前) 55 -> 独立未见 49; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 27x27二值纹样 D4 未配对格点数: [729, 547, 365, 547, 378, 378, 378, 378]
+  seq=[729, 547, 365, 547, 378, 378, 378, 378] 机制=['无简单机制']
+- `all_domains:1` [all_domains.json] 28x28二值纹样 D4 未配对格点数: [784, 588, 392, 588, 392, 392, 406, 406]
+  seq=[784, 588, 392, 588, 392, 392, 406, 406] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- ... 共 49 个独立未见候选
+
+## 批量 OEIS 门 (165 候选)
+本地索引 399061 条; 已知/疑似 70; 未见候选(去重前) 55 -> 独立未见 50; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 22x22二值纹样 D4 未配对格点数: [484, 363, 242, 363, 242, 242, 253, 253]
+  seq=[484, 363, 242, 363, 242, 242, 253, 253] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- ... 共 50 个独立未见候选
+
+## 批量 OEIS 门 (165 候选)
+本地索引 399061 条; 已知/疑似 71; 未见候选(去重前) 54 -> 独立未见 50; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- `AD_404` [discovery_manifest.json] 27x27二值纹样 D4 未配对格点数: [729, 547, 365, 547, 378, 378, 378, 378]
+  seq=[729, 547, 365, 547, 378, 378, 378, 378] 机制=['无简单机制']
+- ... 共 50 个独立未见候选
+
+## 批量 OEIS 门 (170 候选)
+本地索引 399061 条; 已知/疑似 74; 未见候选(去重前) 56 -> 独立未见 51; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 19x19二值纹样 D4 未配对格点数: [361, 271, 181, 271, 190, 190, 190, 190]
+  seq=[361, 271, 181, 271, 190, 190, 190, 190] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- ... 共 51 个独立未见候选
+
+## 批量 OEIS 门 (169 候选)
+本地索引 399061 条; 已知/疑似 74; 未见候选(去重前) 55 -> 独立未见 51; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- `AD_404` [discovery_manifest.json] 27x27二值纹样 D4 未配对格点数: [729, 547, 365, 547, 378, 378, 378, 378]
+  seq=[729, 547, 365, 547, 378, 378, 378, 378] 机制=['无简单机制']
+- ... 共 51 个独立未见候选
+
+## 批量 OEIS 门 (172 候选)
+本地索引 399061 条; 已知/疑似 77; 未见候选(去重前) 55 -> 独立未见 51; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- `AD_404` [discovery_manifest.json] 27x27二值纹样 D4 未配对格点数: [729, 547, 365, 547, 378, 378, 378, 378]
+  seq=[729, 547, 365, 547, 378, 378, 378, 378] 机制=['无简单机制']
+- ... 共 51 个独立未见候选
+
+## 批量 OEIS 门 (180 候选)
+本地索引 399061 条; 已知/疑似 83; 未见候选(去重前) 57 -> 独立未见 52; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 26x26二值纹样 D4 未配对格点数: [676, 507, 338, 507, 338, 338, 351, 351]
+  seq=[676, 507, 338, 507, 338, 338, 351, 351] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- ... 共 52 个独立未见候选
+
+## 批量 OEIS 门 (181 候选)
+本地索引 399061 条; 已知/疑似 83; 未见候选(去重前) 58 -> 独立未见 53; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 36x36二值纹样 D4 未配对格点数: [1296, 972, 648, 972, 648, 648, 666, 666]
+  seq=[1296, 972, 648, 972, 648, 648, 666, 666] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- ... 共 53 个独立未见候选
+
+## 批量 OEIS 门 (184 候选)
+本地索引 399061 条; 已知/疑似 83; 未见候选(去重前) 61 -> 独立未见 55; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 30x30二值纹样 D4 未配对格点数: [900, 675, 450, 675, 450, 450, 465, 465]
+  seq=[900, 675, 450, 675, 450, 450, 465, 465] 机制=['无简单机制']
+- `all_domains:1` [all_domains.json] 31x31二值纹样 D4 未配对格点数: [961, 721, 481, 721, 496, 496, 496, 496]
+  seq=[961, 721, 481, 721, 496, 496, 496, 496] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- ... 共 55 个独立未见候选
+
+## 批量 OEIS 门 (187 候选)
+本地索引 399061 条; 已知/疑似 86; 未见候选(去重前) 61 -> 独立未见 56; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 29x29二值纹样 D4 未配对格点数: [841, 631, 421, 631, 435, 435, 435, 435]
+  seq=[841, 631, 421, 631, 435, 435, 435, 435] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- ... 共 56 个独立未见候选
+
+## 批量 OEIS 门 (186 候选)
+本地索引 399061 条; 已知/疑似 86; 未见候选(去重前) 60 -> 独立未见 56; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- `AD_404` [discovery_manifest.json] 27x27二值纹样 D4 未配对格点数: [729, 547, 365, 547, 378, 378, 378, 378]
+  seq=[729, 547, 365, 547, 378, 378, 378, 378] 机制=['无简单机制']
+- ... 共 56 个独立未见候选
+
+## 批量 OEIS 门 (191 候选)
+本地索引 399061 条; 已知/疑似 89; 未见候选(去重前) 62 -> 独立未见 57; 信息不足 40
+- `AD_262` [discovery_manifest.json] 类Collatz(k=3)链长序列: [10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10
+  seq=[10000, 1, 10000, 10000, 10000, 10000, 10000, 2, 10000, 10000] 机制=['无简单机制']
+- `PF_105` [discovery_manifest.json] 回文数(base 3) + 素数 覆盖 [4, 2,000,000]：例外 68 个（旧版错计 301084）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[78, 88, 100, 118, 142, 146, 148, 266, 268, 298] 机制=['无简单机制']
+- `PF_106` [discovery_manifest.json] 回文数(base 4) + 素数 覆盖 [4, 2,000,000]：例外 5 个（旧版错计 201295）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165010, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165056] 机制=['无简单机制']
+- `PF_107` [discovery_manifest.json] 回文数(base 5) + 素数 覆盖 [4, 2,000,000]：例外 4 个（旧版错计 244349）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[66, 418, 448, 1266, 108152, 114846, 115196, 140728, 147652, 165006] 机制=['无简单机制']
+- `PF_108` [discovery_manifest.json] 回文数(base 6) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 169905）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[103438, 104146, 107422, 111286, 122920, 125566, 134764, 139216, 165018, 165022] 机制=['无简单机制']
+- `PF_109` [discovery_manifest.json] 回文数(base 7) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 206055）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[83966, 85592, 86192, 88320, 88488, 89958, 89972, 90350, 90490, 90896] 机制=['无简单机制']
+- `PF_110` [discovery_manifest.json] 回文数(base 8) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169951）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[153666, 165012, 165018, 165024, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['无简单机制']
+- `PF_111` [discovery_manifest.json] 回文数(base 9) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172658）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[124, 84770, 93886, 94678, 97648, 97748, 97812, 97894, 97912, 98704] 机制=['无简单机制']
+- `PF_112` [discovery_manifest.json] 回文数(base 10) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 171140）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165014, 165016, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036] 机制=['无简单机制']
+- `PF_113` [discovery_manifest.json] 回文数(base 11) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 172189）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165026, 165028, 165030, 165032, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_114` [discovery_manifest.json] 回文数(base 12) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169346）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165016, 165028, 165034, 165036, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_115` [discovery_manifest.json] 回文数(base 13) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 170247）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[126, 165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058] 机制=['无简单机制']
+- `PF_116` [discovery_manifest.json] 回文数(base 14) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168607）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[540, 165026, 165028, 165030, 165058, 165068, 165070, 165072, 165074, 165076] 机制=['无简单机制']
+- `PF_117` [discovery_manifest.json] 回文数(base 15) + 素数 覆盖 [4, 2,000,000]：例外 0 个（旧版错计 169385）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165018, 165024, 165026, 165028, 165032, 165034, 165036, 165058, 165068, 165070] 机制=['无简单机制']
+- `PF_118` [discovery_manifest.json] 回文数(base 16) + 素数 覆盖 [4, 2,000,000]：例外 1 个（旧版错计 168111）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[165022, 165024, 165026, 165028, 165030, 165032, 165034, 165036, 165058, 165068] 机制=['线性', '二次', '等比']
+- `PF_199` [discovery_manifest.json] 质数 + 3边形数 覆盖 [4, 200,000]：例外 341 个（旧版错计 279）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[36, 210, 216, 406, 528, 630, 780, 990, 1176, 1596] 机制=['无简单机制']
+- `PF_200` [discovery_manifest.json] 质数 + 4边形数 覆盖 [4, 200,000]：例外 328 个（旧版错计 256）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 34, 58, 64, 130, 196, 214, 226, 324, 370] 机制=['无简单机制']
+- `PF_201` [discovery_manifest.json] 质数 + 5边形数 覆盖 [4, 200,000]：例外 465 个（旧版错计 371）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[26, 50, 86, 100, 116, 126, 210, 222, 236, 392] 机制=['无简单机制']
+- `PF_202` [discovery_manifest.json] 质数 + 6边形数 覆盖 [4, 200,000]：例外 635 个（旧版错计 471）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[10, 16, 36, 40, 66, 70, 78, 100, 126, 130] 机制=['无简单机制']
+- `PF_204` [discovery_manifest.json] 质数 + 8边形数 覆盖 [4, 200,000]：例外 477 个（旧版错计 352）【旧版计数错，见 docs/novelty_ledger_corrections.md】
+  seq=[16, 22, 36, 46, 56, 66, 86, 116, 120, 142] 机制=['无简单机制']
+- `PF_267` [discovery_manifest.json] 质数 + 5边形数 覆盖偶数到 200,000: 例外 465 个
+  seq=[5, 9, 11, 13, 21, 26, 47, 50, 57, 61] 机制=['无简单机制']
+- `PF_268` [discovery_manifest.json] 质数 + 6边形数 覆盖偶数到 200,000: 例外 635 个
+  seq=[5, 7, 10, 15, 16, 21, 27, 36, 40, 55] 机制=['无简单机制']
+- `all_domains:0` [all_domains.json] 16x16二值纹样 D4 未配对格点数: [256, 192, 128, 192, 128, 128, 136, 136]
+  seq=[256, 192, 128, 192, 128, 128, 136, 136] 机制=['无简单机制']
+- `AD_688` [discovery_manifest.json] 5x5二值纹样 D4 未配对格点数: [25, 19, 13, 19, 15, 15, 15, 15]
+  seq=[25, 19, 13, 19, 15, 15, 15, 15] 机制=['无简单机制']
+- `AD_690` [discovery_manifest.json] 7x7二值纹样 D4 未配对格点数: [49, 37, 25, 37, 28, 28, 28, 28]
+  seq=[49, 37, 25, 37, 28, 28, 28, 28] 机制=['无简单机制']
+- `AD_200` [discovery_manifest.json] 4x4二值纹样 D4 未配对格点数: [16, 12, 8, 12, 8, 8, 10, 10]
+  seq=[16, 12, 8, 12, 8, 8, 10, 10] 机制=['无简单机制']
+- `AD_202` [discovery_manifest.json] 6x6二值纹样 D4 未配对格点数: [36, 27, 18, 27, 18, 18, 21, 21]
+  seq=[36, 27, 18, 27, 18, 18, 21, 21] 机制=['无简单机制']
+- `AD_233` [discovery_manifest.json] 11x11二值纹样 D4 未配对格点数: [121, 91, 61, 91, 66, 66, 66, 66]
+  seq=[121, 91, 61, 91, 66, 66, 66, 66] 机制=['无简单机制']
+- `AD_243` [discovery_manifest.json] 8x8二值纹样 D4 未配对格点数: [64, 48, 32, 48, 32, 32, 36, 36]
+  seq=[64, 48, 32, 48, 32, 32, 36, 36] 机制=['无简单机制']
+- `AD_245` [discovery_manifest.json] 12x12二值纹样 D4 未配对格点数: [144, 108, 72, 108, 72, 72, 78, 78]
+  seq=[144, 108, 72, 108, 72, 72, 78, 78] 机制=['无简单机制']
+- `AD_279` [discovery_manifest.json] 13x13二值纹样 D4 未配对格点数: [169, 127, 85, 127, 91, 91, 91, 91]
+  seq=[169, 127, 85, 127, 91, 91, 91, 91] 机制=['无简单机制']
+- `AD_280` [discovery_manifest.json] 14x14二值纹样 D4 未配对格点数: [196, 147, 98, 147, 98, 98, 105, 105]
+  seq=[196, 147, 98, 147, 98, 98, 105, 105] 机制=['无简单机制']
+- `AD_319` [discovery_manifest.json] 9x9二值纹样 D4 未配对格点数: [81, 61, 41, 61, 45, 45, 45, 45]
+  seq=[81, 61, 41, 61, 45, 45, 45, 45] 机制=['无简单机制']
+- `AD_321` [discovery_manifest.json] 10x10二值纹样 D4 未配对格点数: [100, 75, 50, 75, 50, 50, 55, 55]
+  seq=[100, 75, 50, 75, 50, 50, 55, 55] 机制=['无简单机制']
+- `AD_346` [discovery_manifest.json] 18x18二值纹样 D4 未配对格点数: [324, 243, 162, 243, 162, 162, 171, 171]
+  seq=[324, 243, 162, 243, 162, 162, 171, 171] 机制=['无简单机制']
+- `AD_353` [discovery_manifest.json] 15x15二值纹样 D4 未配对格点数: [225, 169, 113, 169, 120, 120, 120, 120]
+  seq=[225, 169, 113, 169, 120, 120, 120, 120] 机制=['无简单机制']
+- `AD_354` [discovery_manifest.json] 20x20二值纹样 D4 未配对格点数: [400, 300, 200, 300, 200, 200, 210, 210]
+  seq=[400, 300, 200, 300, 200, 200, 210, 210] 机制=['无简单机制']
+- `AD_386` [discovery_manifest.json] 25x25二值纹样 D4 未配对格点数: [625, 469, 313, 469, 325, 325, 325, 325]
+  seq=[625, 469, 313, 469, 325, 325, 325, 325] 机制=['无简单机制']
+- `AD_390` [discovery_manifest.json] 21x21二值纹样 D4 未配对格点数: [441, 331, 221, 331, 231, 231, 231, 231]
+  seq=[441, 331, 221, 331, 231, 231, 231, 231] 机制=['无简单机制']
+- `AD_397` [discovery_manifest.json] 24x24二值纹样 D4 未配对格点数: [576, 432, 288, 432, 288, 288, 300, 300]
+  seq=[576, 432, 288, 432, 288, 288, 300, 300] 机制=['无简单机制']
+- ... 共 57 个独立未见候选
