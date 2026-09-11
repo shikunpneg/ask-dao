@@ -85,6 +85,15 @@ def main():
     o.append(f'<line x1="{PAD + 16}" y1="{y + 4}" x2="{PAD + lw - 16}" y2="{y + 4}" stroke="{HAIR}"/>')
     item(o, PAD + 18, y + 26, "感受模块", "视觉/听觉/网络文本 → 结构化观测", DIM, 11)
 
+    # 未来尝试的反向（未实现）：多模态实体提取 —— 虚线框，明确标出尚未实现
+    fut = y + 52
+    o.append(f'<rect x="{PAD + 14}" y="{fut - 8}" width="{lw - 28}" height="54" rx="2" '
+             f'fill="none" stroke="{DIM}" stroke-width="1" stroke-dasharray="4 3"/>')
+    o.append(f'<text x="{PAD + 22}" y="{fut + 2}" font-size="11" fill="{DIM}">'
+             f'未来尝试的反向：多模态实体提取</text>')
+    o.append(f'<text x="{PAD + 22}" y="{fut + 20}" font-size="9.5" fill="{DIM}">'
+             f'图像 / 声音 → 直接抽实体 → 两条路的入口（未实现）</text>')
+
     # ── 中：两条路 ────────────────────────────────────────────────────
     px = PAD + lw + 28
     pw = 700

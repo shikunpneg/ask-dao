@@ -433,6 +433,7 @@
       <h3>问题路</h3>
       <div class="role">PROBLEM PATH · 产问题 · 需要"解决"</div>
       <div class="flow">输入：<b>外部信息（视觉/听觉/文本） · 日常问题 · 母题</b><br>
+        <span style="color:var(--dim)">未来尝试的反向：<b>多模态实体提取</b></span>——不是「信息 → 疑问」，而是反过来从图像/声音里直接抽出实体（对象/关系/量）当入口（<strong>尚未实现</strong>，现在只有图像→结构特征的最小闭环）<br>
         流水：日常问题 → 前问题 → 科学问题 → 基础领域 → 问题树 → 领域融合<br>
         出口：带判定路由的可判问题清单 → AI4S 执行模块</div>
       <span class="k">成功标准：答案成立 / 可判</span>
@@ -527,7 +528,7 @@
 
   <div class="grid g3">
     <div class="card" data-delay="0"><div class="idx">01</div><h3>感受模块</h3>
-      <p>视觉 / 听觉 / 网络文本 → 结构化观测，长出日常疑问。</p></div>
+      <p>视觉 / 听觉 / 网络文本 → 结构化观测，长出日常疑问。<br><span class="en" style="color:var(--dim)">未来尝试的反向：多模态实体提取（未实现）</span></p></div>
     <div class="card" data-delay="1"><div class="idx">02</div><h3>问题制造模块</h3>
       <p>反例驱动 · 问题树 L0–L5 · 全领域并行扫描 · 领域融合 · 新颖性门。</p>
       <div class="en">COUNTEREX · TERRITORY · 14 DOMAINS</div></div>

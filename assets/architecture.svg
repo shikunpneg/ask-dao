@@ -23,6 +23,9 @@
 <line x1="70" y1="316" x2="338" y2="316" stroke="#cdc6b6"/>
 <text x="72" y="338" font-size="11" fill="#7c8188">· 感受模块</text>
 <text x="84" y="353" font-size="10" fill="#7c8188">视觉/听觉/网络文本 → 结构化观测</text>
+<rect x="68" y="356" width="272" height="54" rx="2" fill="none" stroke="#7c8188" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="76" y="366" font-size="11" fill="#7c8188">未来尝试的反向：多模态实体提取</text>
+<text x="76" y="384" font-size="9.5" fill="#7c8188">图像 / 声音 → 直接抽实体 → 两条路的入口（未实现）</text>
 <rect x="382" y="108" width="700" height="360" rx="2" fill="#f6f2e9" stroke="#cdc6b6" stroke-width="1"/>
 <rect x="382" y="108" width="700" height="3" fill="#16191d"/>
 <text x="398" y="132" font-size="14.5" fill="#16191d">两条独立的路</text>
