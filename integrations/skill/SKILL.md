@@ -31,6 +31,9 @@ python tools/run_paths.py problem --input daily --q "为什么有些数学猜想
 # 自造词 → 概念链（组词→拆词(d)→还原造句→成段→解释）
 python tools/run_paths.py imagine --word 记忆调性 --depth 3
 
+# 经验桥（可选）：组合词 → 维基双通道 + arXiv 回退 → 经验锚点
+ask-dao-machine bridge 熵 选择
+
 # 图像（经验）→ 结构特征 → 带判定路由的问题
 ask-dao-machine perceive photos/ --out out/perceive
 

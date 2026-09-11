@@ -56,7 +56,11 @@
 用问题路的逻辑（"这有真实所指吗""这新吗"）去评判想象路的概念，是范畴错误。
 
 
-我们还有**经验桥**可以把这两条路连接起来。
+两条路**可以各自单独跑，也可以选择过桥**。经验桥（`ask-dao-machine bridge <词A> <词B>`）
+把组合词接到现实经验上：中文维基双通道（词条通道：a 的词条里是否提到 b；搜索通道：组合词是否已成词）
++ arXiv 回退 → **经验锚点**写进概念理解。它只提供**脚手架**，不做裁判：
+过桥不改变任何判定，检索失败即退化为无锚点，概念照常成立。
+已跑：6,642 个组合词 · 词条通道命中 558（8.4%）· 维基已有独立条目 37（0.6%）· 经验锚点 7 处。
 
 ---
 
@@ -330,7 +334,8 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
 | `ask-dao-machine <回车>` | **进来看徽标 + 速查**（TTY 上色；`NO_COLOR=1` 关闭） |
 | `ask-dao-machine paper <文件/目录> [--domain auto\|biomed\|none]` | 论文/语料 → 问题清单（「作者已提出」与「机器新提出」分开标注） |
 | `ask-dao-machine ask "<日常疑问>"` | 疑问 → 类型 + 判定路由 + 科学问题 |
-| `ask-dao-machine imagine <自造词> [--depth d]` | 造词 → 概念（组词/拆词/还原造句/成段/解释） |
+| `ask-dao-machine imagine <自造词> [--depth d] [--bridge]` | 造词 → 概念（五步；`--bridge` 过经验桥） |
+| `ask-dao-machine bridge <词A> <词B>` | 经验桥（可选）：维基双通道 + arXiv 回退 → 经验锚点（只检索，不判真伪） |
 | `ask-dao-machine perceive <图片/目录>` | 图像（经验）→ 结构特征 → 带判定路由的问题 |
 | `ask-dao-machine all` | 86 母题 → 问题树 L0–L5 → 领域融合（+ 新颖性门） |
 | `ask-dao-machine report [--out DIR]` | 把一次跑批汇总成一页人话 `REPORT.md` |
@@ -375,6 +380,8 @@ ask-dao-machine ask "为什么黑洞会蒸发?"
 ```bash
 # ③ 想象路：词 → 五步（组词/拆词/还原造句/成段/解释）
 ask-dao-machine imagine 记忆调性 --depth 3
+ask-dao-machine imagine 熵选择 --bridge      # 选择过经验桥：先检索现实经验作脚手架
+ask-dao-machine bridge 熵 选择               # 只看桥本身：经验锚点 + 是否已成词
 ```
 
 ```bash

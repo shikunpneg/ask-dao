@@ -15,6 +15,7 @@
 """
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -77,19 +78,96 @@ def _cmd_imagine(argv):
         prog="ask-dao-machine imagine",
         description="想象路：自造词 → 概念（标准是「被理解」，不是真伪）",
         epilog=("例子:\n  ask-dao-machine imagine 记忆调性 --depth 3\n"
-                "  ask-dao-machine imagine --pairs 经济 信息\n"),
+                "  ask-dao-machine imagine 熵选择 --bridge    # 过经验桥：检索现实经验作脚手架\n"
+                "  ask-dao-machine imagine --pairs 经济 信息\n"
+                "说明：想象路可以单独跑，也可以选择过桥；桥只做脚手架，不做裁判。\n"),
         formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("word", nargs="?", help="要理解的概念词（与 --pairs 二选一）")
     ap.add_argument("--pairs", nargs=2, metavar=("A", "B"), help="用两个词组合出新概念")
     ap.add_argument("--depth", type=int, default=3, help="拆分深度 d（默认 3）")
+    ap.add_argument("--bridge", action="store_true",
+                    help="过经验桥：全量走检索（等价 RETRIEVE_ALL=1），把现实经验写成经验锚点")
     a = ap.parse_args(argv)
     if not a.word and not a.pairs:
         ap.error("给一个词，或用 --pairs A B")
     if not _repo_tools():
         print("这条命令需要仓库里的 tools/（用源码运行或 pip install -e .）。", file=sys.stderr)
         return 2
+    if a.bridge:
+        import os
+        os.environ["RETRIEVE_ALL"] = "1"
+        print("（已开启经验桥：每个组合词都会先检索现实经验；失败则自动退化为无锚点）")
     import run_paths as rp
     rp.run_imagine(argparse.Namespace(word=a.word, pairs=a.pairs, depth=a.depth))
+    return 0
+
+
+def _cmd_bridge(argv):
+    """经验桥：把两个词接到现实经验上（维基双通道 + arXiv 回退）。只检索，不判真伪。"""
+    ap = argparse.ArgumentParser(
+        prog="ask-dao-machine bridge",
+        description="经验桥（可选）：组合词 → 中文维基双通道（词条通道 / 搜索通道）"
+                    "+ arXiv 回退 → 经验锚点。只检索，不做价值判断。",
+        epilog=("例子:\n  ask-dao-machine bridge 熵 选择\n"
+                "  ask-dao-machine bridge 熵 选择 --out out/bridge --no-browser   # 只读本地缓存/API\n"
+                "说明：两条路可以各自单独跑，也可以选择过桥；过桥不改变任何判定。\n"),
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("a", help="第一个词")
+    ap.add_argument("b", help="第二个词")
+    ap.add_argument("--out", default=str(Path.cwd() / "out" / "bridge"), help="输出目录")
+    ap.add_argument("--no-browser", action="store_true",
+                    help="跳过浏览器通道（只读 data/wiki 缓存 + arXiv 回退，离线友好）")
+    a = ap.parse_args(argv)
+    if not _repo_tools():
+        print("这条命令需要仓库里的 tools/（用源码运行或 pip install -e .）。", file=sys.stderr)
+        return 2
+
+    term, hits, search = f"{a.a}{a.b}", [], None
+    if not a.no_browser:
+        try:
+            import retrieve_browser as rb
+            r = rb.retrieve_cached(a.a, a.b) or {}
+            hits = r.get("hits") or []
+            search = r.get("search")
+        except Exception as e:                                        # noqa: BLE001
+            print(f"[bridge] 浏览器通道不可用（{type(e).__name__}），回退 arXiv", file=sys.stderr)
+    if not hits:
+        try:
+            import retrieve_context as rc
+            r = rc.retrieve(a.a, a.b) or {}
+            hits = r.get("hits") or []
+        except Exception as e:                                        # noqa: BLE001
+            print(f"[bridge] arXiv 通道也不可用（{type(e).__name__}）；本次无脚手架",
+                  file=sys.stderr)
+
+    # 搜索通道摘要：维基里这个组合词"是否已成词"
+    search_line = None
+    if isinstance(search, dict):
+        sn = (search.get("snippet") or "")
+        m = re.search(r"共([\d,]+)条", sn)
+        newpage = "您可以新建这个页面" in sn
+        search_line = (f"命中 {m.group(1)} 条" if m else "（无命中统计）")
+        search_line += "；尚无独立条目（维基提示可新建）" if newpage else "；词条/页面已存在"
+    elif isinstance(search, str):
+        search_line = search.strip().split("\n")[-1][:120]
+
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    payload = {"term": term, "a": a.a, "b": a.b, "hits": hits,
+               "search": search, "search_line": search_line,
+               "note": "只检索，不做价值判断；无命中即退化为无脚手架，不阻止理解"}
+    (out / "bridge.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1),
+                                     encoding="utf-8")
+    print(f"组合词：{term}")
+    if hits:
+        for h in hits[:3]:
+            print(f"  经验锚点（{h.get('title', '')[:40]}）："
+                  f"{(h.get('fragment') or '').replace(chr(10), ' ')[:120]}")
+    else:
+        print("  经验锚点：无（本地缓存与 arXiv 都没命中；这不影响概念是否成立）")
+    if search_line:
+        print(f"  搜索通道：{search_line}")
+    print(f"→ {out / 'bridge.json'}（可接 ask-dao-machine report --out {out}）")
     return 0
 
 
@@ -127,6 +205,8 @@ def _dispatch(argv):
         return _cmd_ask(argv[1:])
     if head == "imagine":
         return _cmd_imagine(argv[1:])
+    if head == "bridge":
+        return _cmd_bridge(argv[1:])
     if head == "doctor":
         ap = argparse.ArgumentParser(prog="ask-dao-machine doctor",
                                      description="环境自查：Python / 包 / 引擎 / 参照系 / 输出目录 / 测试")
@@ -184,6 +264,8 @@ def main(argv=None):
                 "  perceive [图像/目录]    输入图像（经验）→ 输出带判定路由的问题\n"
                 "  mcp                     以 MCP server 方式运行（stdio，供 Claude Code / DSH / Cursor 等挂载）\n"
                 "  report [--out DIR]      把一次跑批汇总成一页人话（写 <out>/REPORT.md）\n"
+                "  imagine <自造词>        造词 → 概念（五步；--bridge 可选择过经验桥）\n"
+                "  bridge <词A> <词B>      经验桥：组合词 → 维基双通道 + arXiv 回退 → 经验锚点\n"
                 "  doctor                  环境自查（缺什么、下一步做什么）\n"
                 "  data fetch [--force]    取 OEIS 参照系（data/stripped.gz，约 32MB）\n"
                 "\n例子:\n"

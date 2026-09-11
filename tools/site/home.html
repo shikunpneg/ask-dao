@@ -449,6 +449,20 @@
       <span class="k">成功标准：语法正确 + 逻辑通畅 + 有推理判断</span>
     </div>
   </div>
+  <div class="card" style="margin:2px 0 26px;background:rgba(255,255,255,.5)">
+    <div class="idx">EXPERIENCE BRIDGE · 可选</div>
+    <h3>经验桥：把概念接到现实经验</h3>
+    <p><strong>两条路可以各自单独跑，也可以选择过桥。</strong>过桥不改变任何判定——
+      它只把「现实里这两件事有没有被放在一起说过」取回来当<strong>脚手架</strong>：
+      组合词 → 中文维基双通道（<span class="mono">词条通道</span>：a 的词条里是否提到 b；
+      <span class="mono">搜索通道</span>：组合词是否已成词）+ arXiv 回退 → <strong>经验锚点</strong>写进概念理解。</p>
+    <p>已跑：<span class="mono">6,642</span> 个组合词 · 词条通道命中 <span class="mono">558</span>（8.4%）·
+      维基已有独立条目 <span class="mono">37</span>（0.6%）· 经验锚点已写入 <span class="mono">7</span> 处。
+      命令：<span class="mono">ask-dao-machine bridge 熵 选择</span>　或　
+      <span class="mono">ask-dao-machine imagine 熵选择 --bridge</span></p>
+    <p><strong>纪律</strong>：只检索、不做价值判断；检索失败即退化为无脚手架，概念照常成立；
+      概念仍不被判定真伪——用「这新吗」去判想象路，是范畴错误。</p>
+  </div>
   <p class="note">两条路互不评判：用问题路的逻辑（"这有真实所指吗""这新吗"）去评判想象路的概念，是范畴错误。<br>
     经验检索桥只提供<strong>脚手架</strong>，不做裁判：检索到的真实机制用来支撑理解，
     不改变"概念不需要真实所指"这条纪律；检索失败时桥退化为无锚点，想象路照常走。<br>
@@ -556,8 +570,8 @@
 
   <figure class="figure" data-delay="6">
     <img src="assets/architecture.svg" alt="问道系统架构图：两条路 + 四模块 + 判定层 + 真实数据流">
-    <figcaption>系统架构 · 图内每个数字与状态词都对应仓库实现或 <code>out/demo/*.json</code> 的真实记录
-      （生成脚本 <code>tools/arch_diagram.py</code>）</figcaption>
+    <figcaption>系统架构 · 图内每个数字与状态词都对应仓库实现或 <code>out/demo/*.json</code> 的真实记录；
+      中栏想象路下方的<strong>经验检索桥（可选）</strong>表示「两条路可各自单独跑，也可选择过桥」（生成脚本 <code>tools/arch_diagram.py</code>）</figcaption>
   </figure>
 </section>
 
@@ -566,7 +580,7 @@
 
 <section id="cli">
   <div class="label">CLI · ask-dao-machine</div>
-  <h2>命令行：<em>一个命令，九个动作</em></h2>
+  <h2>命令行：<em>一个命令，十个动作</em></h2>
   <p class="lead">道生一，一生二，二生三，三生万物。<strong>它不是问答机，也不是单纯的问题制造机器 ——
     是一台知识发现机器。</strong>装好之后只有一个命令 <code>ask-dao-machine</code>：敲它就报身份，
     敲参数就干活；产出固定落在 <code>--out</code> 目录，可以直接接进管道与脚本。</p>
@@ -586,7 +600,7 @@
   </figure>
 
   <table class="data-table">
-    <caption>九个动作：你要做的事 → 命令 → 得到什么</caption>
+    <caption>十个动作：你要做的事 → 命令 → 得到什么</caption>
     <tr><th style="width:210px">你要做的事</th><th style="width:330px">命令</th><th>得到什么</th></tr>
     <tr><td>读一篇论文，找出作者没提的问题</td>
       <td class="mono">paper &lt;文件/目录…&gt; [--domain biomed]</td>
@@ -595,8 +609,11 @@
       <td class="mono">ask "&lt;疑问&gt;"</td>
       <td>类型判定 + 判定路由 <code>route</code> + 形式化后的科学问题</td></tr>
     <tr><td>造一个词，逼它自洽</td>
-      <td class="mono">imagine &lt;自造词&gt; [--depth 3]</td>
-      <td>概念链：组词 → 拆词 → 还原造句 → 成段 → 解释</td></tr>
+      <td class="mono">imagine &lt;自造词&gt; [--depth 3] [--bridge]</td>
+      <td>概念链：组词 → 拆词 → 还原造句 → 成段 → 解释（<code>--bridge</code> 过经验桥）</td></tr>
+    <tr><td>把一个组合词接到现实经验</td>
+      <td class="mono">bridge &lt;词A&gt; &lt;词B&gt;</td>
+      <td>经验锚点（维基词条通道）+ 是否已成词（搜索通道）；只检索，不判真伪</td></tr>
     <tr><td>从图像（经验）里长出问题</td>
       <td class="mono">perceive &lt;图片/目录…&gt;</td>
       <td>结构特征（对称度/块熵/边界密度…）+ 带路由的问题</td></tr>

@@ -30,7 +30,8 @@ $ ask-dao-machine
 |---|---|
 | `ask-dao-machine paper <文件/目录…> [--domain auto\|biomed\|none]` | 论文/语料 → 问题清单（`problems_paper.json` + `REPORT.md`），「作者已提出」与「机器提出」分开标注 |
 | `ask-dao-machine ask "<日常疑问>"` | 疑问 → 类型 + `route` 判定路由 + 形式化后的科学问题 |
-| `ask-dao-machine imagine <自造词> [--depth d]` | 造词 → 概念（组词 / 拆词 / 还原造句 / 成段 / 解释） |
+| `ask-dao-machine imagine <自造词> [--depth d] [--bridge]` | 造词 → 概念（五步；`--bridge` 选择过经验桥） |
+| `ask-dao-machine bridge <词A> <词B> [--no-browser]` | 经验桥（可选）：维基双通道 + arXiv 回退 → 经验锚点 |
 | `ask-dao-machine perceive <图片/目录…>` | 图像（经验）→ 结构特征 → 带判定路由的问题 |
 | `ask-dao-machine all` | 86 母题 → 问题树 L0–L5 → 领域融合（+ 新颖性门） |
 | `ask-dao-machine <域> …` | 单域跑批：`aesthetics combo counterex digit_base direction fusion ling math records sparse` |

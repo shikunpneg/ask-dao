@@ -50,7 +50,7 @@ def rail(o, x1, x2, y, label=None, color=INK_SOFT):
     o.append(f'<line x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" stroke="{color}" stroke-width="1.2" '
              f'marker-end="url(#tick)"/>')
     if label:
-        o.append(f'<text x="{(x1 + x2) / 2}" y="{y - 7}" text-anchor="middle" font-size="10" '
+        o.append(f'<text x="{(x1 + x2) / 2}" y="{y - 6}" text-anchor="middle" font-size="9.5" '
                  f'fill="{BRONZE}">{esc(label)}</text>')
 
 
@@ -76,7 +76,8 @@ def main():
                 note="道生一，一生二，二生三，三生万物")
 
     # ── 左：输入 ──────────────────────────────────────────────────────
-    lw = 300
+    GAP = 82                     # 栏间距：过渡标签要横着放得下（原来 28px，标签会压到面板上）
+    lw = 268
     y = panel(o, PAD, 108, lw, 360, "inputs", "输入", "三条入口")
     for t, s in (("外部信息", "网页 / arXiv / 语料 → 结构化观测"),
                  ("日常问题", "困惑 → 前问题（先良构化）"),
@@ -95,8 +96,8 @@ def main():
              f'图像 / 声音 → 直接抽实体 → 两条路的入口（未实现）</text>')
 
     # ── 中：两条路 ────────────────────────────────────────────────────
-    px = PAD + lw + 28
-    pw = 700
+    px = PAD + lw + GAP
+    pw = 640
     y = panel(o, px, 108, pw, 360, "two independent paths", "两条独立的路",
               "产出不同 · 标准不同", fill=PAPER, accent=INK)
 
@@ -104,7 +105,7 @@ def main():
     o.append(f'<text x="{px + 74}" y="{y + 14}" font-size="9.5" fill="{DIM}" '
              f'font-family="JetBrains Mono,Consolas,monospace">PROBLEM PATH · 产问题 · 需要解决</text>')
     chained(o, px + 18, y + 28, ["日常问题", "前问题", "科学问题", "基础领域", "问题树", "领域融合"],
-            bw=96, gap=13)
+            bw=88, gap=10)
     o.append(f'<text x="{px + 18}" y="{y + 78}" font-size="10.5" fill="{DIM}">'
              f'判定路由：数值扫描 · 构造证明 · LLM 判（N0–N3）· 新颖性门（OEIS 离线索引）</text>')
     o.append(f'<line x1="{px + 16}" y1="{y + 92}" x2="{px + pw - 16}" y2="{y + 92}" stroke="{HAIR}"/>')
@@ -122,7 +123,7 @@ def main():
     # 经验检索桥：想象路接现实经验（只做脚手架，不做裁判）
     o.append(f'<line x1="{px + 16}" y1="{y + 232}" x2="{px + pw - 16}" y2="{y + 232}" stroke="{HAIR}"/>')
     o.append(f'<text x="{px + 18}" y="{y + 254}" font-size="12" fill="{INK}">'
-             f'经验检索桥</text>')
+             f'经验检索桥（可选）</text>')
     o.append(f'<text x="{px + 96}" y="{y + 254}" font-size="9.5" fill="{DIM}" '
              f'font-family="JetBrains Mono,Consolas,monospace">'
              f'EXPERIENCE RETRIEVAL · 组合词 → 现实经验 → 经验锚点</text>')
@@ -130,10 +131,10 @@ def main():
              f'组合词 → 中文维基双通道（词条通道 / 搜索通道）+ arXiv 回退 → '
              f'M7 经验锚点写进概念理解</text>')
     o.append(f'<text x="{px + 18}" y="{y + 290}" font-size="10.5" fill="{TEAL}">'
-             f'只检索、不做价值判断：网络失败即退化为无脚手架；概念仍不被判定真伪</text>')
+             f'两条路可各自单独跑，也可选择过桥；只检索不判真伪，网络失败即退化为无脚手架</text>')
 
     # ── 右：判定与出口 ────────────────────────────────────────────────
-    rx = px + pw + 28
+    rx = px + pw + GAP
     rw = W - PAD - rx
     y = panel(o, rx, 108, rw, 360, "judgement & output", "判定与出口", None,
               fill=PAPER, accent=VERMILION)
@@ -178,9 +179,9 @@ def main():
                      f'y2="{ry + i * 48 + 15}" stroke="{RAIL}" stroke-width="1"/>')
 
     # ── 三轨连接 ─────────────────────────────────────────────────────
-    rail(o, PAD + lw, px, 200, "结构化观测 → 问题")
+    rail(o, PAD + lw, px, 200, "观测 → 问题")
     rail(o, PAD + lw, px, 300, "母题 → 生长")
-    rail(o, PAD + lw, px, 424, "真实语料 → 经验锚点")
+    rail(o, PAD + lw, px, 424, "语料 → 锚点")
     rail(o, px + pw, rx, 190, "问题清单")
     rail(o, px + pw, rx, 330, "概念 → 解释")
 

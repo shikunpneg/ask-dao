@@ -10,87 +10,87 @@
 <text x="68" y="80" font-size="10.5" fill="#7c8188" font-family='"JetBrains Mono","Cascadia Mono","Consolas",monospace' letter-spacing="2.6">ASK-DAO-MACHINE ARCHITECTURE · 两条相互独立的路 + 四模块 + 判定层 + 经验检索桥</text>
 <line x1="54" y1="92" x2="1234" y2="92" stroke="#cdc6b6" stroke-width="1"/>
 <text x="1234" y="80" text-anchor="end" font-size="11" fill="#7c8188">道生一，一生二，二生三，三生万物</text>
-<rect x="54" y="108" width="300" height="360" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<rect x="54" y="108" width="268" height="360" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
 <text x="70" y="132" font-size="14.5" fill="#16191d">输入</text>
 <text x="70" y="148" font-size="10" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace" letter-spacing="2">INPUTS</text>
-<text x="338" y="132" text-anchor="end" font-size="10.5" fill="#7c8188">三条入口</text>
+<text x="306" y="132" text-anchor="end" font-size="10.5" fill="#7c8188">三条入口</text>
 <text x="72" y="184" font-size="12.5" fill="#16191d">· 外部信息</text>
 <text x="84" y="199" font-size="10" fill="#7c8188">网页 / arXiv / 语料 → 结构化观测</text>
 <text x="72" y="232" font-size="12.5" fill="#16191d">· 日常问题</text>
 <text x="84" y="247" font-size="10" fill="#7c8188">困惑 → 前问题（先良构化）</text>
 <text x="72" y="280" font-size="12.5" fill="#16191d">· 母题库</text>
 <text x="84" y="295" font-size="10" fill="#7c8188">assets/registry.json · 86 个母题</text>
-<line x1="70" y1="316" x2="338" y2="316" stroke="#cdc6b6"/>
+<line x1="70" y1="316" x2="306" y2="316" stroke="#cdc6b6"/>
 <text x="72" y="338" font-size="11" fill="#7c8188">· 感受模块</text>
 <text x="84" y="353" font-size="10" fill="#7c8188">视觉/听觉/网络文本 → 结构化观测</text>
-<rect x="68" y="356" width="272" height="54" rx="2" fill="none" stroke="#7c8188" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="68" y="356" width="240" height="54" rx="2" fill="none" stroke="#7c8188" stroke-width="1" stroke-dasharray="4 3"/>
 <text x="76" y="366" font-size="11" fill="#7c8188">未来尝试的反向：多模态实体提取</text>
 <text x="76" y="384" font-size="9.5" fill="#7c8188">图像 / 声音 → 直接抽实体 → 两条路的入口（未实现）</text>
-<rect x="382" y="108" width="700" height="360" rx="2" fill="#f6f2e9" stroke="#cdc6b6" stroke-width="1"/>
-<rect x="382" y="108" width="700" height="3" fill="#16191d"/>
-<text x="398" y="132" font-size="14.5" fill="#16191d">两条独立的路</text>
-<text x="398" y="148" font-size="10" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace" letter-spacing="2">TWO INDEPENDENT PATHS</text>
-<text x="1066" y="132" text-anchor="end" font-size="10.5" fill="#7c8188">产出不同 · 标准不同</text>
-<text x="400" y="182" font-size="13" fill="#16191d">问题路</text>
-<text x="456" y="182" font-size="9.5" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace">PROBLEM PATH · 产问题 · 需要解决</text>
-<rect x="400" y="196" width="96" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="448.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">日常问题</text>
-<path d="M496,211.0 L507,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="509" y="196" width="96" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="557.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">前问题</text>
-<path d="M605,211.0 L616,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="618" y="196" width="96" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="666.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">科学问题</text>
-<path d="M714,211.0 L725,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="727" y="196" width="96" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="775.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">基础领域</text>
-<path d="M823,211.0 L834,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="836" y="196" width="96" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="884.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">问题树</text>
-<path d="M932,211.0 L943,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="945" y="196" width="96" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="993.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">领域融合</text>
-<text x="400" y="246" font-size="10.5" fill="#7c8188">判定路由：数值扫描 · 构造证明 · LLM 判（N0–N3）· 新颖性门（OEIS 离线索引）</text>
-<line x1="398" y1="260" x2="1066" y2="260" stroke="#cdc6b6"/>
-<text x="400" y="288" font-size="13" fill="#16191d">想象路</text>
-<text x="456" y="288" font-size="9.5" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace">IMAGINATION PATH · 产概念 · 需要解释</text>
-<rect x="400" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="452.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">组词</text>
-<path d="M504,317.0 L511,317.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="513" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="565.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">拆词(深度 d)</text>
-<path d="M617,317.0 L624,317.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="626" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="678.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">还原造句</text>
-<path d="M730,317.0 L737,317.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="739" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="791.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">成段</text>
-<path d="M843,317.0 L850,317.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
-<rect x="852" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
-<text x="904.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">解释</text>
-<text x="400" y="356" font-size="10.5" fill="#7c8188">成功标准：语法正确 + 逻辑通畅 + 有推理判断（概念不是拿来"解决"的）</text>
-<text x="400" y="384" font-size="10.5" fill="#9a7b3f">两条路互不评判：用问题路的"这新吗"去判想象路的概念，是范畴错误</text>
-<line x1="398" y1="400" x2="1066" y2="400" stroke="#cdc6b6"/>
-<text x="400" y="422" font-size="12" fill="#16191d">经验检索桥</text>
-<text x="478" y="422" font-size="9.5" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace">EXPERIENCE RETRIEVAL · 组合词 → 现实经验 → 经验锚点</text>
-<text x="400" y="442" font-size="10.5" fill="#454a51">组合词 → 中文维基双通道（词条通道 / 搜索通道）+ arXiv 回退 → M7 经验锚点写进概念理解</text>
-<text x="400" y="458" font-size="10.5" fill="#2f6b6b">只检索、不做价值判断：网络失败即退化为无脚手架；概念仍不被判定真伪</text>
-<rect x="1110" y="108" width="316" height="360" rx="2" fill="#f6f2e9" stroke="#cdc6b6" stroke-width="1"/>
-<rect x="1110" y="108" width="316" height="3" fill="#b03a2e"/>
-<text x="1126" y="132" font-size="14.5" fill="#16191d">判定与出口</text>
-<text x="1126" y="148" font-size="10" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace" letter-spacing="2">JUDGEMENT &amp; OUTPUT</text>
-<text x="1128" y="186" font-size="12" fill="#16191d">· 判定器</text>
-<text x="1140" y="201" font-size="10" fill="#7c8188">数学引擎 25 条 / 记录 28 / 组合 23</text>
-<text x="1128" y="236" font-size="12" fill="#16191d">· 独立复核</text>
-<text x="1140" y="251" font-size="10" fill="#7c8188">tools/ai4s_harness.py · 裁决回灌</text>
-<text x="1128" y="286" font-size="12" fill="#16191d">· LLM 判</text>
-<text x="1140" y="301" font-size="10" fill="#7c8188">N0 已知 → N1 大概率已知 → N2 疑似未见 → N3 强候选</text>
-<text x="1128" y="336" font-size="12" fill="#16191d">· 人类裁决</text>
-<text x="1140" y="351" font-size="10" fill="#7c8188">出版级 / N2–N3 才介入</text>
-<line x1="1126" y1="370" x2="1410" y2="370" stroke="#cdc6b6"/>
-<text x="1128" y="394" font-size="12.5" fill="#b03a2e">· 出口</text>
-<text x="1140" y="409" font-size="10" fill="#7c8188">带出处链的问题清单（母题→模板→绑定→判定）</text>
-<text x="1128" y="442" font-size="10.5" fill="#b03a2e">诚实边界：世界新问题（N3）至今为 0，不粉饰</text>
+<rect x="404" y="108" width="640" height="360" rx="2" fill="#f6f2e9" stroke="#cdc6b6" stroke-width="1"/>
+<rect x="404" y="108" width="640" height="3" fill="#16191d"/>
+<text x="420" y="132" font-size="14.5" fill="#16191d">两条独立的路</text>
+<text x="420" y="148" font-size="10" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace" letter-spacing="2">TWO INDEPENDENT PATHS</text>
+<text x="1028" y="132" text-anchor="end" font-size="10.5" fill="#7c8188">产出不同 · 标准不同</text>
+<text x="422" y="182" font-size="13" fill="#16191d">问题路</text>
+<text x="478" y="182" font-size="9.5" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace">PROBLEM PATH · 产问题 · 需要解决</text>
+<rect x="422" y="196" width="88" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="466.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">日常问题</text>
+<path d="M510,211.0 L518,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="520" y="196" width="88" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="564.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">前问题</text>
+<path d="M608,211.0 L616,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="618" y="196" width="88" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="662.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">科学问题</text>
+<path d="M706,211.0 L714,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="716" y="196" width="88" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="760.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">基础领域</text>
+<path d="M804,211.0 L812,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="814" y="196" width="88" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="858.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">问题树</text>
+<path d="M902,211.0 L910,211.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="912" y="196" width="88" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="956.0" y="215.0" text-anchor="middle" font-size="11" fill="#16191d">领域融合</text>
+<text x="422" y="246" font-size="10.5" fill="#7c8188">判定路由：数值扫描 · 构造证明 · LLM 判（N0–N3）· 新颖性门（OEIS 离线索引）</text>
+<line x1="420" y1="260" x2="1028" y2="260" stroke="#cdc6b6"/>
+<text x="422" y="288" font-size="13" fill="#16191d">想象路</text>
+<text x="478" y="288" font-size="9.5" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace">IMAGINATION PATH · 产概念 · 需要解释</text>
+<rect x="422" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="474.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">组词</text>
+<path d="M526,317.0 L533,317.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="535" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="587.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">拆词(深度 d)</text>
+<path d="M639,317.0 L646,317.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="648" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="700.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">还原造句</text>
+<path d="M752,317.0 L759,317.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="761" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="813.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">成段</text>
+<path d="M865,317.0 L872,317.0" stroke="#454a51" stroke-width="1" marker-end="url(#tick)"/>
+<rect x="874" y="302" width="104" height="30" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
+<text x="926.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">解释</text>
+<text x="422" y="356" font-size="10.5" fill="#7c8188">成功标准：语法正确 + 逻辑通畅 + 有推理判断（概念不是拿来"解决"的）</text>
+<text x="422" y="384" font-size="10.5" fill="#9a7b3f">两条路互不评判：用问题路的"这新吗"去判想象路的概念，是范畴错误</text>
+<line x1="420" y1="400" x2="1028" y2="400" stroke="#cdc6b6"/>
+<text x="422" y="422" font-size="12" fill="#16191d">经验检索桥（可选）</text>
+<text x="500" y="422" font-size="9.5" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace">EXPERIENCE RETRIEVAL · 组合词 → 现实经验 → 经验锚点</text>
+<text x="422" y="442" font-size="10.5" fill="#454a51">组合词 → 中文维基双通道（词条通道 / 搜索通道）+ arXiv 回退 → M7 经验锚点写进概念理解</text>
+<text x="422" y="458" font-size="10.5" fill="#2f6b6b">两条路可各自单独跑，也可选择过桥；只检索不判真伪，网络失败即退化为无脚手架</text>
+<rect x="1126" y="108" width="300" height="360" rx="2" fill="#f6f2e9" stroke="#cdc6b6" stroke-width="1"/>
+<rect x="1126" y="108" width="300" height="3" fill="#b03a2e"/>
+<text x="1142" y="132" font-size="14.5" fill="#16191d">判定与出口</text>
+<text x="1142" y="148" font-size="10" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace" letter-spacing="2">JUDGEMENT &amp; OUTPUT</text>
+<text x="1144" y="186" font-size="12" fill="#16191d">· 判定器</text>
+<text x="1156" y="201" font-size="10" fill="#7c8188">数学引擎 25 条 / 记录 28 / 组合 23</text>
+<text x="1144" y="236" font-size="12" fill="#16191d">· 独立复核</text>
+<text x="1156" y="251" font-size="10" fill="#7c8188">tools/ai4s_harness.py · 裁决回灌</text>
+<text x="1144" y="286" font-size="12" fill="#16191d">· LLM 判</text>
+<text x="1156" y="301" font-size="10" fill="#7c8188">N0 已知 → N1 大概率已知 → N2 疑似未见 → N3 强候选</text>
+<text x="1144" y="336" font-size="12" fill="#16191d">· 人类裁决</text>
+<text x="1156" y="351" font-size="10" fill="#7c8188">出版级 / N2–N3 才介入</text>
+<line x1="1142" y1="370" x2="1410" y2="370" stroke="#cdc6b6"/>
+<text x="1144" y="394" font-size="12.5" fill="#b03a2e">· 出口</text>
+<text x="1156" y="409" font-size="10" fill="#7c8188">带出处链的问题清单（母题→模板→绑定→判定）</text>
+<text x="1144" y="442" font-size="10.5" fill="#b03a2e">诚实边界：世界新问题（N3）至今为 0，不粉饰</text>
 <rect x="54" y="508" width="1372" height="306" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
 <text x="70" y="532" font-size="14.5" fill="#16191d">真实数据流</text>
 <text x="70" y="548" font-size="10" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace" letter-spacing="2">DATA FLOW · REAL ARTIFACTS</text>
@@ -114,15 +114,15 @@
 <text x="72" y="778" font-size="12.5" fill="#16191d">经验检索桥</text>
 <text x="210" y="778" font-size="11" fill="#454a51">组合词 → tools/retrieve_browser.py（维基双通道）/ retrieve_context.py（arXiv 回退）→ word_understand 的 M7 经验锚点</text>
 <text x="1408" y="778" text-anchor="end" font-size="10.5" fill="#2f6b6b">6,642 组合 · 词条命中 558 · 已成词 37 · 锚点 7 处</text>
-<line x1="354" y1="200" x2="382" y2="200" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
-<text x="368.0" y="193" text-anchor="middle" font-size="10" fill="#9a7b3f">结构化观测 → 问题</text>
-<line x1="354" y1="300" x2="382" y2="300" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
-<text x="368.0" y="293" text-anchor="middle" font-size="10" fill="#9a7b3f">母题 → 生长</text>
-<line x1="354" y1="424" x2="382" y2="424" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
-<text x="368.0" y="417" text-anchor="middle" font-size="10" fill="#9a7b3f">真实语料 → 经验锚点</text>
-<line x1="1082" y1="190" x2="1110" y2="190" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
-<text x="1096.0" y="183" text-anchor="middle" font-size="10" fill="#9a7b3f">问题清单</text>
-<line x1="1082" y1="330" x2="1110" y2="330" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
-<text x="1096.0" y="323" text-anchor="middle" font-size="10" fill="#9a7b3f">概念 → 解释</text>
+<line x1="322" y1="200" x2="404" y2="200" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
+<text x="363.0" y="194" text-anchor="middle" font-size="9.5" fill="#9a7b3f">观测 → 问题</text>
+<line x1="322" y1="300" x2="404" y2="300" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
+<text x="363.0" y="294" text-anchor="middle" font-size="9.5" fill="#9a7b3f">母题 → 生长</text>
+<line x1="322" y1="424" x2="404" y2="424" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
+<text x="363.0" y="418" text-anchor="middle" font-size="9.5" fill="#9a7b3f">语料 → 锚点</text>
+<line x1="1044" y1="190" x2="1126" y2="190" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
+<text x="1085.0" y="184" text-anchor="middle" font-size="9.5" fill="#9a7b3f">问题清单</text>
+<line x1="1044" y1="330" x2="1126" y2="330" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
+<text x="1085.0" y="324" text-anchor="middle" font-size="9.5" fill="#9a7b3f">概念 → 解释</text>
 <text x="54" y="854" font-size="10" fill="#7c8188">图内每个数字、模块名与状态词都对应仓库实现或 out/demo/*.json 的真实记录；没有画进图里的能力，README 里也不声称</text>
 </svg>
