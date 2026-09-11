@@ -94,6 +94,16 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
 要核对某一条，直接看它的 `evidence` 字段（原文句子）与 `route` 字段（怎么判）；
 `novelty_note` 会写明机器对这条主张到什么程度。
 
+### 真实回放（本次运行的原始输出）
+
+![抓开放获取全文](../assets/real-use/t1-fetch.png)
+
+![生成问题 + 一页人话报告](../assets/real-use/t2-run.png)
+
+![逐条查看：3 条机器算出的 E-value + 11 类方法学追问](../assets/real-use/t3-items.png)
+
+![产物本身：out/biomed_demo/REPORT.md](../assets/real-use/t4-report.png)
+
 ## 6. 这个演示**不**证明什么
 
 1. **不证明这些问题是"新的"。** 世界新问题（N3）至今 = 0；这里产出的是候选问题与判定路由。

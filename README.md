@@ -241,20 +241,36 @@ export PYTHONPATH=src          # Windows PowerShell: $env:PYTHONPATH='src'
 
 装好后命令行是 `ask-dao-machine`（等价 `python -m ask_dao_machine`）。
 
-### 一条命令看清它能干什么（生物医学演示）
+### 真实使用（生物医学）：一次运行的完整回放
+
+不是示例，是**实际跑过的命令与输出**。输入是一篇开放获取论文
+（[PMC13331974](https://europepmc.org/article/PMC/PMC13331974)，J Nutr Health Aging，CC BY 4.0；
+UK Biobank 前瞻队列 n=156,000，中位随访 13.3 年，调整后 HR 1.19）。
 
 ```bash
+# 1. 找一篇开放获取论文并抓全文（Europe PMC 公开接口，记录许可字段）
+python tools/fetch_biomed_paper.py --list
+python tools/fetch_biomed_paper.py --pmcid PMC13331974
+
+# 2. 生成问题（--domain biomed：11 类方法学追问 + 从 HR/CI 直接算 E-value）
 ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo
+
+# 3. 一页人话报告
+ask-dao-machine report --out out/biomed_demo
+
+# 4. 只看机器真正算出来的数
+python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',encoding='utf-8'));[print(p['id'],p['computed']['effect_type'],p['computed']['point'],'-> E =',p['computed']['evalue_point']) for p in d['problems'] if p.get('computed')]"
 ```
 
-```
-[PMC13331974.md] 32,787 字符 | 抽取方式=plain | 产出问题 54 条
-合计 54 条：作者已提出 0 条 · 机器新提出 54 条（其中生物医学方法学追问 32 条）
-→ out/biomed_demo/problems_paper.json + REPORT.md
-```
+![真实终端：抓开放获取全文](docs/assets/real-use/t1-fetch.png)
 
-输入是一篇 **CC BY 4.0 开放获取的真实论文**（UK Biobank 前瞻队列，n=156,000，调整后 HR 1.19），
-输出是 **11 类方法学缺口**上的可判问题，其中 3 条是**真算数**：
+![真实终端：生成问题 + 一页人话报告](docs/assets/real-use/t2-run.png)
+
+![真实终端：逐条查看（3 条机器算出的 E-value + 11 类方法学追问的证据句）](docs/assets/real-use/t3-items.png)
+
+![产物本身：out/biomed_demo/REPORT.md](docs/assets/real-use/t4-report.png)
+
+54 条产出里，**32 条是生物医学方法学追问**，其中 3 条是**真算数**（残余混杂门槛）：
 
 | 论文报告 | 机器算出 | 含义 |
 |---|---|---|
@@ -262,8 +278,9 @@ ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/bio
 | HR 1.02 (95% CI 1.01–1.04) | 残余混杂门槛 **E=1.16** | 替代分析那一条**最脆**：几乎任何微弱混杂都能解释掉 |
 | HR 1.49 (95% CI 1.28–1.74) | 残余混杂门槛 **E=2.34** | 最高风险组更难被混杂解释 |
 
-**完整演示（逐条证据句 + 判定路由 + 它不证明什么）**：`docs/guide/demo-biomed.md`。
-可复现：`python tools/fetch_biomed_paper.py`（Europe PMC 公开接口，记录许可字段）。
+诚实标注：32 条里 **23 条的主题作者已在文中论及**（机器只贡献"写成可判形式"），
+**9 条的主题文中未见**（E-value、效应量 vs 决策阈值、人群外推边界）；两种都不主张"机器首先提出"。
+逐条说明与「这个演示**不**证明什么」见 `docs/guide/demo-biomed.md`。
 
 ### 子命令
 

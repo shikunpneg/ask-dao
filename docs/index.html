@@ -527,27 +527,49 @@
       <p>产概念，需解释。两条路互相独立。</p></div>
   </div>
 
-  <div class="label">One Command · Agent Hosts</div>
-  <h3 style="font-size:19px;margin:6px 0 10px">一条命令：论文 → 问题（生物医学演示）</h3>
-  <p class="lead" style="margin-bottom:14px">输入是一篇 <strong>CC BY 4.0 开放获取的真实论文</strong>
-    （UK Biobank 前瞻队列，n=156,000，调整后 HR 1.19），输出是 11 类方法学缺口上的可判问题。
-    下面是从终端原样复制的输出，不是示意图。</p>
+  <div class="label">Real Use · Biomedicine</div>
+  <h3 style="font-size:19px;margin:6px 0 10px">真实使用：一篇开放获取论文的全过程（含真实命令）</h3>
+  <p class="lead" style="margin-bottom:14px">下面是<strong>一次真实运行</strong>的完整回放：抓论文 → 生成问题 → 看报告 → 逐条查看。
+    论文是 <a class="inline" href="https://europepmc.org/article/PMC/PMC13331974" target="_blank" rel="noopener">PMC13331974</a>
+    （J Nutr Health Aging，CC BY 4.0），命令可照抄，输出未做删改。</p>
 
-  <pre class="term"><span class="c">$</span> ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo
-[PMC13331974.md] 32,787 字符 | 抽取方式=plain | 产出问题 54 条
-合计 54 条：作者已提出 0 条 · 机器新提出 54 条（其中生物医学方法学追问 32 条）
+  <pre class="term"><span class="c"># 1. 找一篇开放获取论文，抓全文（Europe PMC 公开接口，记录许可字段）</span>
+python tools/fetch_biomed_paper.py --list
+python tools/fetch_biomed_paper.py --pmcid PMC13331974
 
-<span class="k">[④方法学追问·残余混杂强度（机器算出） BM_EV01]</span> (机器提出)
-  机器算出：文中 HR=1.19（95% CI 1.08–1.30）要被称为残余混杂解释掉，未测混杂必须与暴露、
-  结局各自达到 <span class="m">RR≈1.67</span> 的关联（按置信区间下界则是 RR≈1.37）
-  判定路由：E-value 门槛 + 阴性对照结局 + 已测协变量关联强度排行（可精确复核）
+<span class="c"># 2. 生成问题（--domain biomed 打开生物医学方法学追问 + E-value 计算）</span>
+ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo
 
-<span class="k">[④方法学追问·因果方向 BM_CAUSAL01]</span> (机器提出) <span class="c">主题作者已论及，机器只做形式化</span>
-  把随访前 k 年发生的事件剔除（lag 分析），效应量随 k 如何变化？k≥2 年就衰减到 1 说明什么？
-  判定路由：滞后/剔除分析（lag analysis）+ 反向孟德尔随机化</pre>
+<span class="c"># 3. 一页人话报告（不用自己翻 JSON）</span>
+ask-dao-machine report --out out/biomed_demo
+
+<span class="c"># 4. 只看机器真正算出来的数（残余混杂门槛）</span>
+python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',encoding='utf-8'));[print(p['id'],p['computed']['effect_type'],p['computed']['point'],'-> E =',p['computed']['evalue_point']) for p in d['problems'] if p.get('computed')]"</pre>
+
+  <figure class="figure">
+    <img src="assets/real-use/t1-fetch.png" alt="真实终端：Europe PMC 检索与抓取开放获取全文，输出许可字段">
+    <figcaption>① 抓论文 · 检索命中 10 篇 → 抓 PMC13331974 → 32,787 字符，许可读作 CC BY 4.0
+      （<code>tools/fetch_biomed_paper.py</code>，只走公开接口）</figcaption>
+  </figure>
+
+  <figure class="figure">
+    <img src="assets/real-use/t2-run.png" alt="真实终端：paper --domain biomed 运行输出与一页人话报告">
+    <figcaption>② 生成问题 + 一页人话报告 · 54 条：通用 22（文本张力 6 / 结构追问 16）+ 生物医学方法学追问 32</figcaption>
+  </figure>
+
+  <figure class="figure">
+    <img src="assets/real-use/t3-items.png" alt="真实终端：逐条查看，3 条机器算出的 E-value 与 11 类方法学追问的证据句">
+    <figcaption>③ 逐条查看 · 上段是 3 条机器算出的 E-value；下段是 11 类方法学追问，每条都带<strong>触发它的原文句子</strong>
+      与<strong>判定路由</strong>，并标注该主题作者是否已在文中论及</figcaption>
+  </figure>
+
+  <figure class="figure">
+    <img src="assets/real-use/t4-report.png" alt="产物本身：out/biomed_demo/REPORT.md 一页人话报告">
+    <figcaption>④ 产物本身 · <code>out/biomed_demo/REPORT.md</code>（这个文件在仓库里生成，不是另做的展示页）</figcaption>
+  </figure>
 
   <table class="data-table" style="margin-bottom:34px">
-    <caption>机器算出的三个残余混杂门槛（可用论文自报的 HR/CI 复核）</caption>
+    <caption>机器算出的三个残余混杂门槛（用论文自报的 HR/CI 复核，算式公开）</caption>
     <tr><th style="width:230px">论文报告</th><th style="width:140px">E-value（点估计）</th>
       <th style="width:130px">按 CI 下界</th><th>含义</th></tr>
     <tr><td class="mono">HR 1.19 (95% CI 1.08–1.30)</td><td class="num"><strong>1.67</strong></td>
@@ -560,7 +582,8 @@
   <p class="note" style="margin:-18px 0 30px;color:var(--dim);font-size:13px;line-height:1.9">
     公式 <code>E = RR + √(RR(RR−1))</code>，用 HR 近似 RR，只在结局不常见时成立（本文 CKD 发病率低）。
     E-value 是<strong>门槛</strong>，不是「存在这样的混杂」的证据；原文里从未出现 E-value。
-    完整演示（逐条证据句 / 判定路由 / 它不证明什么）见
+    32 条方法学追问里，23 条的主题作者已在文中论及（机器只贡献「写成可判形式」），9 条的主题文中未见。
+    完整说明（含「这个演示<em>不</em>证明什么」）见
     <a class="inline" href="guide/demo-biomed.html">生物医学完整演示</a>。</p>
 
   <table class="data-table" style="margin-bottom:44px">
