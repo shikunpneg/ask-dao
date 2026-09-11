@@ -378,6 +378,7 @@
   <a href="#knowledge">什么是新知识</a>
   <a href="#structure">系统结构</a>
   <a href="#cli">命令行</a>
+  <a href="#realuse">真实使用</a>
   <a href="#tree">问题生成树</a>
   <a href="#results">结果与证据</a>
   <a href="#questions">问题清单</a>
@@ -485,13 +486,13 @@
     <tr><th style="width:150px">输入</th><th style="width:330px">入口（可跑的命令）</th><th>产出</th></tr>
     <tr><td>经验（图像）</td><td class="mono">ask-dao-machine perceive 图片/</td>
       <td>结构特征（对称度/块熵/边界密度/占比）→ 带判定路由的视觉问题</td></tr>
-    <tr><td>日常问题</td><td class="mono">ask-dao-machine ask "…"</td>
+    <tr><td>日常问题</td><td class="mono">run_paths.py problem --input daily --q "…"</td>
       <td>类型判定 + 判定路由 → 科学问题</td></tr>
     <tr><td>已知未解 / 科学问题</td><td class="mono">scihist_to_problems.py · problem_lineage.py</td>
       <td>正式问题 + 谱系（祖先/自身/后代/侧枝）</td></tr>
     <tr><td>母题</td><td class="mono">ask-dao-machine &lt;域&gt;（86 个母题）</td>
       <td>问题树：母题 → 前问题 → 科学问题 → 基础领域 → 问题树 L0–L5 → 领域融合</td></tr>
-    <tr><td>造词</td><td class="mono">ask-dao-machine imagine <词></td>
+    <tr><td>造词</td><td class="mono">run_paths.py imagine --word / --pairs</td>
       <td>概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释）</td></tr>
     <tr><td>论文 / 语料</td><td class="mono">ask-dao-machine paper 文件或目录</td>
       <td>问题清单（「作者已提出」与「机器新提出」分开标注）</td></tr>
@@ -528,80 +529,6 @@
       <p>产概念，需解释。两条路互相独立。</p></div>
   </div>
 
-  <div class="label">Real Use · Biomedicine</div>
-  <h3 style="font-size:19px;margin:6px 0 10px">真实使用：一篇开放获取论文的全过程（含真实命令）</h3>
-  <p class="lead" style="margin-bottom:14px">下面是<strong>一次真实运行</strong>的完整回放：抓论文 → 生成问题 → 看报告 → 逐条查看。
-    论文是 <a class="inline" href="https://europepmc.org/article/PMC/PMC13331974" target="_blank" rel="noopener">PMC13331974</a>
-    （J Nutr Health Aging，CC BY 4.0），命令可照抄，输出未做删改。</p>
-
-  <pre class="term"><span class="c"># 1. 找一篇开放获取论文，抓全文（Europe PMC 公开接口，记录许可字段）</span>
-python tools/fetch_biomed_paper.py --list
-python tools/fetch_biomed_paper.py --pmcid PMC13331974
-
-<span class="c"># 2. 生成问题（--domain biomed 打开生物医学方法学追问 + E-value 计算）</span>
-ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo
-
-<span class="c"># 3. 一页人话报告（不用自己翻 JSON）</span>
-ask-dao-machine report --out out/biomed_demo
-
-<span class="c"># 4. 只看机器真正算出来的数（残余混杂门槛）</span>
-python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',encoding='utf-8'));[print(p['id'],p['computed']['effect_type'],p['computed']['point'],'-> E =',p['computed']['evalue_point']) for p in d['problems'] if p.get('computed')]"</pre>
-
-  <figure class="figure">
-    <img src="assets/real-use/t1-fetch.png" alt="真实终端：Europe PMC 检索与抓取开放获取全文，输出许可字段">
-    <figcaption>① 抓论文 · 检索命中 10 篇 → 抓 PMC13331974 → 32,787 字符，许可读作 CC BY 4.0
-      （<code>tools/fetch_biomed_paper.py</code>，只走公开接口）</figcaption>
-  </figure>
-
-  <figure class="figure">
-    <img src="assets/real-use/t2-run.png" alt="真实终端：paper --domain biomed 运行输出与一页人话报告">
-    <figcaption>② 生成问题 + 一页人话报告 · 54 条：通用 22（文本张力 6 / 结构追问 16）+ 生物医学方法学追问 32</figcaption>
-  </figure>
-
-  <figure class="figure">
-    <img src="assets/real-use/t3-items.png" alt="真实终端：逐条查看，3 条机器算出的 E-value 与 11 类方法学追问的证据句">
-    <figcaption>③ 逐条查看 · 上段是 3 条机器算出的 E-value；下段是 11 类方法学追问，每条都带<strong>触发它的原文句子</strong>
-      与<strong>判定路由</strong>，并标注该主题作者是否已在文中论及</figcaption>
-  </figure>
-
-  <figure class="figure">
-    <img src="assets/real-use/t4-report.png" alt="产物本身：out/biomed_demo/REPORT.md 一页人话报告">
-    <figcaption>④ 产物本身 · <code>out/biomed_demo/REPORT.md</code>（这个文件在仓库里生成，不是另做的展示页）</figcaption>
-  </figure>
-
-  <table class="data-table" style="margin-bottom:34px">
-    <caption>机器算出的三个残余混杂门槛（用论文自报的 HR/CI 复核，算式公开）</caption>
-    <tr><th style="width:230px">论文报告</th><th style="width:140px">E-value（点估计）</th>
-      <th style="width:130px">按 CI 下界</th><th>含义</th></tr>
-    <tr><td class="mono">HR 1.19 (95% CI 1.08–1.30)</td><td class="num"><strong>1.67</strong></td>
-      <td class="num">1.37</td><td>未测混杂要与暴露、结局<strong>各自</strong>达到 RR≈1.67 才能把效应解释为零</td></tr>
-    <tr><td class="mono">HR 1.49 (95% CI 1.28–1.74)</td><td class="num"><strong>2.34</strong></td>
-      <td class="num">1.88</td><td>最高风险组最难被混杂解释</td></tr>
-    <tr><td class="mono">HR 1.02 (95% CI 1.01–1.04)</td><td class="num"><strong>1.16</strong></td>
-      <td class="num">1.11</td><td>替代分析那一条<strong>最脆</strong>：几乎任何微弱混杂都能解释掉</td></tr>
-  </table>
-  <p class="note" style="margin:-18px 0 30px;color:var(--dim);font-size:13px;line-height:1.9">
-    公式 <code>E = RR + √(RR(RR−1))</code>，用 HR 近似 RR，只在结局不常见时成立（本文 CKD 发病率低）。
-    E-value 是<strong>门槛</strong>，不是「存在这样的混杂」的证据；原文里从未出现 E-value。
-    32 条方法学追问里，23 条的主题作者已在文中论及（机器只贡献「写成可判形式」），9 条的主题文中未见。
-    完整说明（含「这个演示<em>不</em>证明什么」）见
-    <a class="inline" href="guide/demo-biomed.html">生物医学完整演示</a>。</p>
-
-  <table class="data-table" style="margin-bottom:44px">
-    <caption>挂到 Agent 宿主：一份实现、三种挂法（前三行已实测）</caption>
-    <tr><th style="width:200px">宿主</th><th style="width:320px">挂法</th><th>状态</th></tr>
-    <tr><td>任何 shell（Claude Code / Codex / CI）</td><td class="mono">ask-dao-machine paper …</td>
-      <td class="ok">✅ CLI 实测</td></tr>
-    <tr><td>Claude Code · Cursor · Continue</td><td class="mono">.mcp.json（tools/install_integrations.py）</td>
-      <td class="ok">✅ 配置已生成</td></tr>
-    <tr><td>DSH</td><td class="mono">.dsh/skills/ask-dao-machine/SKILL.md</td>
-      <td class="ok">✅ 本机热加载通过</td></tr>
-    <tr><td>DSH（MCP 插件行）</td><td class="mono">cordis.yml: dsh-mcp-client + command/args</td>
-      <td>⬜ 片段已给全，未在本机挂</td></tr>
-    <tr><td>GitHub</td><td class="mono">论文进 papers/ 推送 → Action 评论回问题</td>
-      <td class="ok">✅ 已跑通</td></tr>
-  </table>
-
   <table class="data-table" style="margin-top:44px">
     <caption>关键引擎与它们的纪律</caption>
     <tr><th style="width:210px">引擎</th><th>作用</th><th style="width:300px">纪律</th></tr>
@@ -619,7 +546,9 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
   </figure>
 </section>
 
-<!-- ==================== 命令行产品 ==================== -->
+<!-- ==================== 问题生成树 ==================== -->
+
+
 <section id="cli">
   <div class="label">CLI · ask-dao-machine</div>
   <h2>命令行：<em>一个命令，九个动作</em></h2>
@@ -691,6 +620,21 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
       <code>1</code> 其它失败</td></tr>
   </table>
 
+<table class="data-table" style="margin-bottom:44px">
+    <caption>挂到 Agent 宿主：一份实现、三种挂法（前三行已实测）</caption>
+    <tr><th style="width:200px">宿主</th><th style="width:320px">挂法</th><th>状态</th></tr>
+    <tr><td>任何 shell（Claude Code / Codex / CI）</td><td class="mono">ask-dao-machine paper …</td>
+      <td class="ok">✅ CLI 实测</td></tr>
+    <tr><td>Claude Code · Cursor · Continue</td><td class="mono">.mcp.json（tools/install_integrations.py）</td>
+      <td class="ok">✅ 配置已生成</td></tr>
+    <tr><td>DSH</td><td class="mono">.dsh/skills/ask-dao-machine/SKILL.md</td>
+      <td class="ok">✅ 本机热加载通过</td></tr>
+    <tr><td>DSH（MCP 插件行）</td><td class="mono">cordis.yml: dsh-mcp-client + command/args</td>
+      <td>⬜ 片段已给全，未在本机挂</td></tr>
+    <tr><td>GitHub</td><td class="mono">论文进 papers/ 推送 → Action 评论回问题</td>
+      <td class="ok">✅ 已跑通</td></tr>
+  </table>
+
   <p class="note" style="color:var(--dim);font-size:13px;line-height:1.9">
     完整说明（含徽标怎么来的）：<a class="inline" href="guide/cli.html">命令行</a> ·
     真实使用回放（论文 → 问题 → 报告）：<a class="inline" href="guide/demo-biomed.html">生物医学完整演示</a> ·
@@ -699,6 +643,79 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
 </section>
 
 <!-- ==================== 问题生成树 ==================== -->
+
+<!-- ==================== 真实使用：生命医学 ==================== -->
+<section id="realuse">
+  <div class="label">Real Use · Biomedicine</div>
+  <h2>真实使用：生命医学发现新知识示例</h2>
+  <p class="lead">一次真实运行的完整回放：输入一篇<strong>开放获取（CC BY 4.0）</strong>的临床研究全文
+    （<a class="inline" href="https://europepmc.org/article/PMC/PMC13331974" target="_blank" rel="noopener">PMC13331974</a>，
+    J Nutr Health Aging；UK Biobank 前瞻队列 n=156,000，中位随访 13.3 年，调整后 HR 1.19），
+    输出<strong>新知识</strong>与<strong>新问题</strong>。命令可照抄，输出未做删改。</p>
+
+  <h3>过程</h3>
+  <figure class="figure">
+    <img src="assets/real-use/t1-fetch.png" alt="真实终端：Europe PMC 检索并抓取开放获取全文">
+    <figcaption>① 抓论文 · 检索命中 10 篇 → 抓 PMC13331974 → 32,787 字符，许可读作 CC BY 4.0
+      （<code>tools/fetch_biomed_paper.py</code>，只走公开接口）</figcaption>
+  </figure>
+
+  <figure class="figure">
+    <img src="assets/real-use/t2-run.png" alt="真实终端：ask-dao-machine paper --domain biomed 的输出">
+    <figcaption>② 生成结果 · 一条命令：<code>ask-dao-machine paper papers/biomed/PMC13331974.md
+      --domain biomed --out out/biomed_demo</code> → 54 条，其中生物医学方法学追问 32 条</figcaption>
+  </figure>
+
+  <h3>发现的新知识（机器算出来的数）</h3>
+  <p>从论文自报的 <code>HR/OR/RR (95% CI)</code> 直接算出<strong>残余混杂门槛</strong>（E-value）：
+    要把这个效应解释成"没有效应"，未测混杂必须与暴露、结局<strong>同时</strong>达到多强的关联。</p>
+  <table class="data-table">
+    <caption>三个残余混杂门槛（算式公开，任何人可复核）</caption>
+    <tr><th style="width:250px">论文报告</th><th style="width:130px">E-value</th>
+      <th style="width:120px">按 CI 下界</th><th>含义</th></tr>
+    <tr><td class="mono">HR 1.19 (95% CI 1.08–1.3)</td><td class="num"><strong>1.67</strong></td><td class="num">1.37</td><td>未测混杂要与暴露、结局<strong>各自</strong>达到 RR≈1.67，才能把该效应解释为零</td></tr>
+    <tr><td class="mono">HR 1.49 (95% CI 1.28–1.74)</td><td class="num"><strong>2.34</strong></td><td class="num">1.88</td><td>最高风险组所需的混杂强度更高，最难被混杂解释</td></tr>
+    <tr><td class="mono">HR 1.02 (95% CI 1.01–1.04)</td><td class="num"><strong>1.16</strong></td><td class="num">1.11</td><td>替代分析那一条<strong>最脆</strong>：几乎任何微弱混杂都能解释掉</td></tr>
+  </table>
+  <p class="note" style="margin:-14px 0 26px;color:var(--dim);font-size:13px;line-height:1.9">
+    公式 <code>E = RR + √(RR(RR−1))</code>，用 HR 近似 RR，只在结局不常见时成立（本文 CKD 发病率低）。
+    E-value 是<strong>门槛</strong>，不是"存在这样的混杂"的证据；<strong>原文里从未出现 E-value</strong>——
+    这一条是机器加上去的。</p>
+
+  <h3>发现的新问题（作者未提出的更进一步问题）</h3>
+  <p>论文的<strong>方法学缺口</strong>被写成"可判问题"：每条都指回原文句子，并给出判定方式（<code>route</code>）。
+    10 类缺口共 29 条：其中 <strong>23 条的主题作者已在文中论及</strong>（机器只贡献形式化），
+    6 条的主题文中未见；另有 3 条是机器算出的 E-value（见上表）。</p>
+  <table class="data-table">
+    <caption>10 类方法学缺口 → 可判问题（原文句子 → 追问 → 怎么判），共 29 条</caption>
+    <tr><th style="width:120px">缺口</th><th style="width:260px">触发它的原文句子</th>
+      <th>机器追问（可判形式）</th><th style="width:190px">判定路由</th>
+      <th style="width:90px">作者</th></tr>
+    <tr><td>因果方向</td><td class="mono">Cox regression models were used to analyze the association between AS intakes and the risk of incident CKD, as well as</td><td>文中给出的是关联，但设计默认了 X→Y 的方向：反向因果（结局或早期病变改变了暴露）能否解释该效应？用可检验的形式说：把随访前 k 年发生的事件剔除（lag 分析），效应量随 k 如何变化？若 k≥2 年就衰减到 1，说明什么？…</td><td class="mono">滞后/剔除分析（lag analysis）+ 反向孟德尔随机化</td><td><span class='no'>作者已论及</span></td></tr>
+    <tr><td>残余混杂强度</td><td class="mono">## Results Compared to None-AS group, high-AS group had higher risk of new-onset CKD after fully adjusted, with HR 1.1</td><td>该效应是「已调整」之后剩下的：残余混杂要多强才能把它解释掉？把它写成可算的形式：给定效应量与置信区间，算 E-value（未测混杂与暴露、结局的关联强度各自要达到多少，才能把效应推到无效），并给出最小混杂强度数值。…</td><td class="mono">E-value / 敏感性分析（可精确计算）</td><td><span class='no'>作者已论及</span></td></tr>
+    <tr><td>剂量—反应形状</td><td class="mono">## Associations between artificial sweetener intake and the incidence of chronic kidney disease Over a median follow-u</td><td>文中把暴露分组比较，但没有给出函数形状：单调、阈值，还是非单调（低剂量有益、高剂量有害）？写成可判形式：在连续暴露上拟合样条/分段模型，检验非线性（P-nonlinear），给出拐点位置与其置信区间。…</td><td class="mono">限制立方样条 + 非线性检验（拐点估计）</td><td><span class='no'>作者已论及</span></td></tr>
+    <tr><td>效应量 vs 判定阈值</td><td class="mono">Participants with high AS intakes and high polygenic risk had the greatest risk of CKD (HR = 1.49, 95% CI:1.28−1.74).</td><td>由 HR 与 95% CI 直接给出：这个效应量有没有超过事先设定的决策阈值（临床/公共卫生意义上的）？换算成绝对尺度（每千人年多/少多少事件）、以及使结论翻转所需的最小偏倚或最小随访时间。…</td><td class="mono">绝对风险差 / NNH 计算 + 阈值敏感性</td><td><span class='ok'>文中未见</span></td></tr>
+    <tr><td>人群外推边界</td><td class="mono">## Methods The study included 156,000 participants from the UK Biobank cohort with a median follow-up of 13.3 years.</td><td>该效应量是在特定人群里测出来的：换人群（不同族裔、不同基线风险、志愿者偏健康的「健康志愿者效应」）后，是效应量缩放，还是方向都可能翻转？写成可判形式：给出该效应在不同基线风险下的绝对风险差，并说明在什么基线风险下绝对危害为零。…</td><td class="mono">绝对风险重算（基线风险 × HR）+ 跨队列复现</td><td><span class='ok'>文中未见</span></td></tr>
+    <tr><td>交互尺度与多重比较</td><td class="mono">To evaluate the potential interaction effects, the likelihood ratio test was used to compare the multivariate Cox mode</td><td>联合暴露的「最高风险组」是相加还是相乘？写成可判形式：在<strong>加性与乘性两种尺度</strong>上分别检验交互，报告 RERI / 交互 HR 及 P-interaction；并说明该交互是否通过了多重比较校正（未校正的亚组交互是最常见的假阳性来源）。…</td><td class="mono">加性/乘性交互分解（RERI）+ 多重比较校正</td><td><span class='no'>作者已论及</span></td></tr>
+    <tr><td>测量误差方向</td><td class="mono">The intake of AS from various sources was evaluated through a 24-h dietary recall.</td><td>暴露/结局是自报或单次测量的：这类误差是<strong>非差异性</strong>（把效应推向无效、低估）还是<strong>差异性</strong>（可能制造假阳性）？写成可判形式：用重复测量做回归校准，报告校准系数与校准后的效应量；若校准后效应变大，说明原结论被低估。…</td><td class="mono">回归校准（regression calibration）+ 重复测量子样本</td><td><span class='no'>作者已论及</span></td></tr>
+    <tr><td>机制的必要性/充分性</td><td class="mono">There are potential mechanisms explaining the association between AS intake and the risk of CKD.</td><td>文中提到机制但不区分<strong>必要性</strong>与<strong>充分性</strong>：敲掉该通路，效应是否消失（必要）？单独激活该通路，是否足以复制效应（充分）？写成可判形式：给出两问各自的实验设计（KO + rescue / 激活剂），以及在人样本上可观察的中间量。…</td><td class="mono">必要性与充分性实验设计（KO+rescue）+ 中介分析</td><td><span class='no'>作者已论及</span></td></tr>
+    <tr><td>多重比较与假发现</td><td class="mono">Last, we conducted subgroup analysis to identify high-risk populations in which artificial sweetener intake is associa</td><td>文中做了多少个亚组/敏感性/次要结局检验？写成可判形式：报告检验总数与假发现率曲线，给出「FDR=5% 下仍然成立」的结论清单；若某一敏感性分析翻转结论，说明翻转阈值在哪里。…</td><td class="mono">多重比较清单化 + FDR 曲线 + 翻转阈值</td><td><span class='no'>作者已论及</span></td></tr>
+    <tr><td>替代分析的反事实</td><td class="mono">Substitution analysis indicate no advantage to using AS instead of sugar to reduce the risk of CKD.</td><td>替代模型的结论依赖「对照是什么」：把 A 换成 B，与「把 A 拿掉」、「A 换成 C」是两个不同的反事实，效应量不可互换。写成可判形式：明确反事实集，并检验结论在该反事实集内是否稳健（不同替代物之间的排序是否一致）。…</td><td class="mono">反事实定义显式化 + 替代物排序稳健性检验</td><td><span class='no'>作者已论及</span></td></tr>
+  </table>
+
+  <figure class="figure">
+    <img src="assets/real-use/t3-items.png" alt="真实终端：逐条查看机器算出的 E-value 与 11 类方法学追问">
+    <figcaption>③ 逐条核对 · 上段是机器算出的 E-value，下段是 11 类方法学追问，
+      每条都带触发它的原文句子与判定路由（这张图就是上两张表的原始输出）</figcaption>
+  </figure>
+
+  <p class="note" style="color:var(--dim);font-size:13px;line-height:1.9">
+    <strong>这个示例不证明什么</strong>：世界新问题（N3）至今 = 0，这里产出的是候选问题与证据边界推进；
+    "文中未见"只表示这份全文里没有，不代表文献里没有；HR 与 E-value 的换算不构成任何临床建议。
+    逐条说明见 <a class="inline" href="guide/demo-biomed.html">生物医学完整演示</a>。
+  </p>
+</section>
+
 <section id="tree">
   <div class="label">Problem Generation Tree</div>
   <h2>问题生成树 <em>/</em> 真实的生成过程</h2>
