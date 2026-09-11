@@ -377,6 +377,7 @@
   <a href="#paths">两条路</a>
   <a href="#knowledge">什么是新知识</a>
   <a href="#structure">系统结构</a>
+  <a href="#cli">命令行</a>
   <a href="#tree">问题生成树</a>
   <a href="#results">结果与证据</a>
   <a href="#questions">问题清单</a>
@@ -527,19 +528,6 @@
       <p>产概念，需解释。两条路互相独立。</p></div>
   </div>
 
-  <div class="label">Entry</div>
-  <h3 style="font-size:19px;margin:6px 0 10px">敲 <code>ask-dao-machine</code> 进去看到的东西</h3>
-  <p class="lead" style="margin-bottom:14px">没有参数时它先报身份：<strong>「道」的徽标</strong> + 命令速查。
-    徽标不是手绘的图案，是把系统字体里「道」的位图取出来转成字符画，并做过反向校验
-    （字符画还原回位图与原字体位图逐点一致）；着色只用朱砂，正文用终端默认前景色，
-    浅底深底都不会看不见。子命令不打印徽标、不上色，因此可以直接进管道。</p>
-
-  <figure class="figure">
-    <img src="assets/cli-banner.png" alt="ask-dao-machine 进入时的道徽标与命令速查">
-    <figcaption>真实输出（<code>ASK_DAO_COLOR=1</code> 保留颜色后的回放）·
-      全部命令与可复用约定见 <a class="inline" href="guide/cli.html">命令行</a></figcaption>
-  </figure>
-
   <div class="label">Real Use · Biomedicine</div>
   <h3 style="font-size:19px;margin:6px 0 10px">真实使用：一篇开放获取论文的全过程（含真实命令）</h3>
   <p class="lead" style="margin-bottom:14px">下面是<strong>一次真实运行</strong>的完整回放：抓论文 → 生成问题 → 看报告 → 逐条查看。
@@ -629,6 +617,85 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
     <figcaption>系统架构 · 图内每个数字与状态词都对应仓库实现或 <code>out/demo/*.json</code> 的真实记录
       （生成脚本 <code>tools/arch_diagram.py</code>）</figcaption>
   </figure>
+</section>
+
+<!-- ==================== 命令行产品 ==================== -->
+<section id="cli">
+  <div class="label">CLI · ask-dao-machine</div>
+  <h2>命令行：<em>一个命令，九个动作</em></h2>
+  <p class="lead">道生一，一生二，二生三，三生万物。<strong>它不是问答机，也不是单纯的问题制造机器 ——
+    是一台知识发现机器。</strong>装好之后只有一个命令 <code>ask-dao-machine</code>：敲它就报身份，
+    敲参数就干活；产出固定落在 <code>--out</code> 目录，可以直接接进管道与脚本。</p>
+
+  <pre class="term"><span class="c"># 装（Python 3.9+；核心零依赖）</span>
+<span class="cmd">$</span> git clone https://github.com/shikunpneg/ask-dao-machine &amp;&amp; cd ask-dao-machine
+<span class="cmd">$</span> pip install -e .
+
+<span class="c"># 用：无参数先报身份（徽标 + 命令速查），有参数就干活</span>
+<span class="cmd">$</span> ask-dao-machine
+<span class="cmd">$</span> ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo</pre>
+
+  <figure class="figure">
+    <img src="assets/cli-banner.png" alt="ask-dao-machine 进入时的「道」徽标与命令速查">
+    <figcaption>敲 <code>ask-dao-machine</code> 进去看到的东西 · 徽标是把系统字体里「道」的位图转成字符画
+      （反向校验逐点一致），着色只用朱砂，正文用终端默认前景色，浅底深底都看得见</figcaption>
+  </figure>
+
+  <table class="data-table">
+    <caption>九个动作：你要做的事 → 命令 → 得到什么</caption>
+    <tr><th style="width:210px">你要做的事</th><th style="width:330px">命令</th><th>得到什么</th></tr>
+    <tr><td>读一篇论文，找出作者没提的问题</td>
+      <td class="mono">paper &lt;文件/目录…&gt; [--domain biomed]</td>
+      <td>问题清单 + <code>REPORT.md</code>；「作者已提出」与「机器提出」分开标注</td></tr>
+    <tr><td>把一句日常疑问变成可判问题</td>
+      <td class="mono">ask "&lt;疑问&gt;"</td>
+      <td>类型判定 + 判定路由 <code>route</code> + 形式化后的科学问题</td></tr>
+    <tr><td>造一个词，逼它自洽</td>
+      <td class="mono">imagine &lt;自造词&gt; [--depth 3]</td>
+      <td>概念链：组词 → 拆词 → 还原造句 → 成段 → 解释</td></tr>
+    <tr><td>从图像（经验）里长出问题</td>
+      <td class="mono">perceive &lt;图片/目录…&gt;</td>
+      <td>结构特征（对称度/块熵/边界密度…）+ 带路由的问题</td></tr>
+    <tr><td>全领域跑一批问题树</td>
+      <td class="mono">all</td>
+      <td>86 母题 → 问题树 L0–L5 → 领域融合 → 新颖性门</td></tr>
+    <tr><td>只跑一个领域</td>
+      <td class="mono">math | records | combo | counterex | …</td>
+      <td>该域问题 JSON（可选 <code>--limits '{"N":100000}'</code>）</td></tr>
+    <tr><td>把一堆产出汇总成一页人话</td>
+      <td class="mono">report [--out DIR]</td>
+      <td><code>&lt;out&gt;/REPORT.md</code>：不用自己翻十个 JSON</td></tr>
+    <tr><td>确认这台机器能不能跑</td>
+      <td class="mono">doctor</td>
+      <td>Python / 依赖 / 引擎 / 参照系 / 输出目录 / 测试，全绿即可用</td></tr>
+    <tr><td>取参照系（新颖性门要用）</td>
+      <td class="mono">data fetch</td>
+      <td><code>data/stripped.gz</code>（约 32MB，来自 OEIS）</td></tr>
+    <tr><td>挂到 Agent 宿主里当工具用</td>
+      <td class="mono">mcp</td>
+      <td>MCP server（stdio）：Claude Code / DSH / Cursor 可挂载</td></tr>
+    <tr><td>看全部用法 / 版本</td>
+      <td class="mono">help · --version</td>
+      <td>徽标 + 速查；每条子命令都支持 <code>--help</code></td></tr>
+  </table>
+
+  <table class="data-table" style="margin-bottom:44px">
+    <caption>可复用的三条约定（脚本里靠得住）</caption>
+    <tr><th style="width:190px">约定</th><th>说明</th></tr>
+    <tr><td>产出固定</td><td>全部落在 <code>--out</code> 目录：<code>problems_*.json</code>（机器可读、每条带
+      <code>route</code>）+ <code>REPORT.md</code>（一页人话）；同一个 <code>--out</code> 能继续接
+      <code>report</code></td></tr>
+    <tr><td>管道友好</td><td>子命令<strong>不打印徽标、不上色</strong>，可直接
+      <code>ask-dao-machine paper papers/ --out out/p | tail -3</code></td></tr>
+    <tr><td>退出码有意义</td><td><code>0</code> 完成 · <code>2</code> 参数/路径/格式问题（细节在 stderr）·
+      <code>1</code> 其它失败</td></tr>
+  </table>
+
+  <p class="note" style="color:var(--dim);font-size:13px;line-height:1.9">
+    完整说明（含徽标怎么来的）：<a class="inline" href="guide/cli.html">命令行</a> ·
+    真实使用回放（论文 → 问题 → 报告）：<a class="inline" href="guide/demo-biomed.html">生物医学完整演示</a> ·
+    装进 Claude Code / DSH / Cursor：<a class="inline" href="#structure">系统结构</a> 里的宿主矩阵。
+  </p>
 </section>
 
 <!-- ==================== 问题生成树 ==================== -->
@@ -800,7 +867,7 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
     </div>
     <div>
       <h3>DEVELOPER</h3>
-      <p>shikunpneg · 问道项目主理人<br>问题制造器 / 想象路 / 知识发现机器</p>
+      <p><a href="https://github.com/shikunpneg" target="_blank" rel="noopener">shikunpunk</a> · 问道项目主理人<br>问题制造器 / 想象路 / 知识发现机器</p>
     </div>
     <div>
       <h3>PROJECT</h3>

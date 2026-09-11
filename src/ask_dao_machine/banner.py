@@ -27,7 +27,8 @@ DAO_ART = [
     "          ▀▀▀▀████████████▀▀",
 ]
 
-TAGLINE = "一台制造知识的机器：只产问题与概念，不产答案。"
+TAGLINE = "道生一，一生二，二生三，三生万物"
+TAGLINE2 = "不是问答机，也不是单纯的问题制造机器 —— 它是一台知识发现机器。"
 HONESTY = "诚实边界：世界新问题 N3 = 0 —— 产出是候选问题与判定路由，不是「已确认的新知识」。"
 
 # (命令, 说明) —— 保持短、可组合、能直接复制着跑
@@ -92,6 +93,7 @@ def render(color: bool | None = None, stream=None, width: int | None = None) -> 
     L.append("")
     L.append("   " + c(_B, "问道 · ask-dao-machine") + c(_D, f"  v{version()}"))
     L.append("   " + c(_D, TAGLINE))
+    L.append("   " + c(_D, TAGLINE2))
     L.append("")
     labels = [f"ask-dao-machine {cmd}" for cmd, _ in COMMANDS]
     pad = max(_dw(s) for s in labels) + 2
