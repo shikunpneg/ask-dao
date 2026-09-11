@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.9", "3.11"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install (editable, with dev extras)
+        run: python -m pip install -e ".[dev]"
+      - name: Smoke tests
+        run: python -m pytest -q
+      - name: CLI self-check
+        run: python -m ask_dao_machine doctor || true
+      - name: Run one domain and summarize (no OEIS data needed)
+        run: |
+          python -m ask_dao_machine math --out out/ci --no-novelty --no-viz
+          python -m ask_dao_machine report --out out/ci

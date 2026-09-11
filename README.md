@@ -237,6 +237,18 @@ python tools/run_paths.py imagine --word 记忆调性 --depth 3
 ```bash
 # ④ 可视化：问题树 + 概念树 + 概念论证
 python tools/build_paths_viz.py     # → docs/viz/paths.html
+
+# ⑤ 一页人话汇总（跑完先看这个，不用自己翻 10 个 JSON）
+python -m ask_dao_machine report --out out/demo   # → out/demo/REPORT.md
+
+# ⑥ 参照系（新颖性门要用；约 32MB，来自 oeis.org）
+python -m ask_dao_machine data fetch              # → data/stripped.gz
+python -m ask_dao_machine doctor                  # 环境自查：缺什么、下一步做什么
+```
+
+```bash
+# 开发/测试（pytest 在 dev 附加依赖里）
+pip install -e ".[dev]" && pytest -q
 ```
 
 ---

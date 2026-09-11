@@ -13,6 +13,15 @@ HERE = Path(__file__).resolve().parent.parent
 
 
 def main():
+    try:
+        return _main()
+    except FileNotFoundError as e:
+        print(e)
+        print("跳过该步；其余引擎不受影响。")
+        return 0
+
+
+def _main():
     idx = load_index()
     print("indexed:", len(idx))
     combo = json.loads((HERE / "out/demo/problems_combo.json").read_text(encoding="utf-8"))

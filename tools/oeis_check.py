@@ -9,6 +9,11 @@ DATA = Path(__file__).resolve().parent.parent / "data" / "stripped.gz"
 
 
 def load_index(max_terms=12):
+    if not DATA.exists():
+        raise FileNotFoundError(
+            f"OEIS 参照系缺失: {DATA}\n"
+            f"  取数据: python -m ask_dao_machine data fetch   (约 32MB, 来自 oeis.org)\n"
+            f"  或手动下载 https://oeis.org/stripped.gz 放到 {DATA}")
     idx = []
     with gzip.open(DATA, "rt", encoding="utf-8", errors="ignore") as fh:
         for line in fh:

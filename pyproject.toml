@@ -12,6 +12,10 @@ license = { text = "MIT" }
 authors = [{ name = "ask-dao" }]
 keywords = ["knowledge-discovery", "problem-generation", "imagination", "motifs", "philosophy-of-science"]
 
+[project.optional-dependencies]
+# 开发/测试用：pip install -e ".[dev]"
+dev = ["pytest>=7"]
+
 [project.scripts]
 ask-dao-machine = "ask_dao_machine.cli:main"
 
