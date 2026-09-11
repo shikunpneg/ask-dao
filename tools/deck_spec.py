@@ -124,6 +124,92 @@ MODEL_QS = [
     "为什么在高糖摄入水平上用人工甜味剂代替蔗糖并未降低肾病风险？",
 ]
 
+
+# ── 结果展示用：把产物里的问句拆成 (标签, 问句, 触发原文) ──────────
+def _tag_of(x: dict) -> str:
+    t = (x.get("type") or "").strip()
+    if "·" in t:
+        t = t.split("·", 1)[1].strip()
+    return t[:7]
+
+
+def _src_of(x: dict, n: int = 58) -> str:
+    ev = (x.get("evidence") or "").replace("\n", " ").strip()
+    ev = ev.lstrip("# ").strip()
+    return ("触发原文：" + ev[:n] + "…") if len(ev) > n else ("触发原文：" + ev)
+
+
+def _entry(x: dict, with_src: bool = True):
+    """结构/张力类：问句形如「针对文中结论「…」的范围追问：<核心问法>」，取出核心问法。"""
+    s = (x.get("statement") or "").strip()
+    sig = (x.get("signal") or "").strip()
+    if sig in ("however", "yet", "inconsistent"):
+        tag = sig                                  # 张力类直接用触发词当标签
+    else:
+        tag = _tag_of(x)
+    if s.startswith("针对文中结论") and "：" in s:
+        q = s.split("：", 1)[1].strip()
+    else:
+        q = _strip_tag(s)
+    return (tag, q, _src_of(x) if with_src else "")
+
+
+STRUCT_ITEMS = [_entry(x) for x in probs if x.get("signal") == "equivalent"]
+TENSION_ITEMS = [_entry(x) for x in probs
+                 if x.get("signal") in ("however", "yet", "inconsistent")]
+SIG_SHORT = {
+    "BM_EXTRAPOLATE": "人群外推边界", "BM_MEASURE": "测量误差方向",
+    "BM_CAUSAL": "因果方向", "BM_CONFOUND": "残余混杂强度",
+    "BM_EFFECTSIZE": "效应量 vs 判定阈值", "BM_SUBSTITUTION": "替代分析的反事实",
+    "BM_MULTIPLE": "多重比较", "BM_MULTIPLICITY": "多重比较与假发现",
+    "BM_INTERACTION": "交互与尺度",
+    "BM_DOSE": "剂量—反应形状", "BM_MECHANISM": "机制必要性",
+}
+METH_ITEMS = [(SIG_SHORT.get(x.get("signal"), _tag_of(x)),
+               _strip_tag(x.get("statement") or ""),
+               f"判定路由：{x.get('route') or '—'}"
+               + ("　·　主题作者已论及" if x.get("author_touched") else "　·　文中未见"))
+              for x in mg]
+
+
+def _uniq_by_tag(items):
+    """每类只留第一条（10 类缺口各一条，而不是同类重复）。"""
+    seen, out = set(), []
+    for t in items:
+        if t[0] in seen:
+            continue
+        seen.add(t[0])
+        out.append(t)
+    return out
+
+
+METH_UNIQUE = _uniq_by_tag(METH_ITEMS)
+
+
+def _struct_by_form():
+    """结构追问：4 种问法是固定模板，真正因论文而异的是「追问了哪几个结论」。"""
+    forms = {}
+    for x in probs:
+        if x.get("signal") != "equivalent":
+            continue
+        f = _tag_of(x)
+        s = (x.get("statement") or "").strip()
+        q = s.split("：", 1)[1].strip() if "：" in s else _strip_tag(s)
+        concl = s.split("「", 1)[1].split("」", 1)[0].strip() if "「" in s else ""
+        d = forms.setdefault(f, {"q": q, "c": []})
+        if concl and all(concl[:36] != y[:36] for y in d["c"]):
+            d["c"].append(concl)
+    return forms
+
+
+STRUCT_FORMS = _struct_by_form()
+STRUCT_ITEMS_BY_FORM = [(f, d["q"], "") for f, d in STRUCT_FORMS.items()]
+STRUCT_CONCLS = []
+for _d in STRUCT_FORMS.values():
+    for _c in _d["c"]:
+        if all(_c[:36] != _y[:36] for _y in STRUCT_CONCLS):
+            STRUCT_CONCLS.append(_c)
+
 F = "figs/"
 SLIDES = [
     # ══════════ 封面 ══════════
@@ -251,45 +337,56 @@ SLIDES = [
         "note": "命令：`ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo`",
     },
     {
-        "kind": "bullets",
-        "kicker": "二、在生物医学的实践 · 新问题（原句）",
-        "title": "机器提出的问题，长什么样",
-        "lead": "下面是**产物里的原句，一字未改**。每条都指回触发它的原文句子，并给出判定方式（`route`）——"
-                "**问题必须写成可判形式，否则不产出**。",
-        "bullets": [
-            (f"【{BM_CN['BM_CONFOUND']}】　判定路由：{BM_ROUTE['BM_CONFOUND']}",
-             _strip_tag(Q_CONFOUND["statement"]) if Q_CONFOUND else ""),
-            (f"【{BM_CN['BM_CAUSAL']}】　判定路由：{BM_ROUTE['BM_CAUSAL']}",
-             _strip_tag(Q_CAUSAL["statement"]) if Q_CAUSAL else ""),
-            (f"【{BM_CN['BM_MEASURE']}】　判定路由：{BM_ROUTE['BM_MEASURE']}",
-             _strip_tag(Q_MEASURE["statement"]) if Q_MEASURE else ""),
-        ],
-        "note": "另外两类：**③结构追问**（对结论句套范围 / 反例 / 机制 / 定量四问）与"
-                "**②文本张力**（however / yet 处的分歧）。全部 54 条的原句见 `docs/guide/demo-biomed.md`。",
+        "kind": "qlist",
+        "kicker": "二、在生物医学的实践 · 结果 ②",
+        "title": f"③ 结构追问 {len(STRUCT_ITEMS)} 条：4 种问法 × 4 个结论",
+        "lead": f"对论文里的**结论句**逐条套四问。四种问法是**固定模板**；"
+                f"**真正因论文而异的是「追问了哪几个结论」**——所以这里每种问法只列一次。",
+        "items": STRUCT_ITEMS_BY_FORM,
+        "note": f"{len(STRUCT_ITEMS)} 条 = 这 4 种问法 × **{len(STRUCT_CONCLS)} 个被追问的结论**（"
+                + "　·　".join(c[:34] + "…" for c in STRUCT_CONCLS)
+                + "）。四种问法对任何结论句都能套；全部原句见 `out/biomed_demo/problems_paper.json`。",
     },
     {
-        "kind": "figure",
-        "kicker": "二、在生物医学的实践 · 新知识",
-        "title": "三个结论，强弱其实差很多",
-        "lead": "观察性研究有个**天生软肋**：**没人测过的东西**（残余混杂）可能才是真凶——"
-                "比如「本来肾就不好的人更爱喝零度可乐」。"
-                "E-value 把「可能存在残余混杂」这句含糊话**变成一个数**："
-                "**那个东西得多强，才能把这条结论解释掉？**",
+        "kind": "qlist",
+        "kicker": "二、在生物医学的实践 · 结果 ③",
+        "title": f"② 文本张力 {len(TENSION_ITEMS)} 条（原句）",
+        "lead": "抓论文里 **however / yet / inconsistent** 处的分歧——这些是作者自己写下的"
+                "「和前人不一样」的地方，机器把它们**形式化成一个可判的追问**。",
+        "items": TENSION_ITEMS,
+        "note": "分歧落在哪一层（定义 / 前提 / 判定标准 / 尺度），决定这条追问能不能被判。",
+    },
+    {
+        "kind": "qlist",
+        "kicker": "二、在生物医学的实践 · 结果 ④",
+        "title": f"④ 方法学追问 {N_MG} 条：10 类缺口各列 1 条（原句）",
+        "lead": "领域包按 **10 类方法学缺口**逐条追问；每条都写成**可判形式**，"
+                "并标明**主题作者是否已在文中论及**。",
+        "items": METH_UNIQUE,
+        "note": f"全 {N_MG} 条中，主题**作者已论及 {N_TOUCH} 条**、**文中未见 {N_MG - N_TOUCH} 条**；"
+                "另有 3 条是机器直接算出的数值（见下页）。完整清单见 `docs/guide/demo-biomed.md`。",
+    },
+    {
+        "kind": "stats",
+        "kicker": "二、在生物医学的实践 · 结果 ④（新知识）",
+        "title": "机器算出来的三个残余混杂门槛",
+        "lead": "观察性研究的天生软肋：**没人测过的东西**可能才是真凶。"
+                "E-value 回答一个问题——**那个东西得多强，才能把这条结论解释掉？**",
+        "stats": [
+            (str(EV["1.19"]["evalue_point"]), "**代糖吃得多 → 肾病风险高 19%**\n"
+             "要有中等强度隐藏因素才能推翻：站得住", False),
+            (str(EV["1.49"]["evalue_point"]), "**代糖多 + 遗传风险高 → 高 49%**\n"
+             "现实里很少有这么强的因素：**最稳**", False),
+            (str(EV["1.02"]["evalue_point"]), "**用代糖替代糖 → 高 2%**\n"
+             "微弱偏差就能推翻：**几乎站不住**", True),
+        ],
         "figure": {
             "src": F + "fig_evalue.png",
             "caption": "条形越长 = 越难推翻 = 结论越稳；原点 1 表示「隐藏因素毫无作用」。"
-                       "黑色短竖线是按 95% CI **下界**重算的保守读数（更低 = 更脆弱）。",
+                       "红色虚线（1.5）以下为脆弱区；黑色短竖线是按 95% CI **下界**重算的保守读数。",
         },
-        "bullets": [
-            ("论文自己怎么处理", "只说一句「可能存在残余混杂」就过去了。"
-                          "**原文中 “E-value” 出现 0 次**——这三个数是机器算的。"),
-            ("① 代糖 vs 不吃", "门槛 **1.67**：要有中等强度的隐藏因素才能推翻。不算铁证，但**站得住**。"),
-            ("② 代糖多 + 遗传高风险", "门槛 **2.34**：现实里很少有这么强的因素。**这是三条里最稳的**。"),
-            ("③ 用代糖替代糖", "门槛只有 **1.16**：**微弱偏差就能推翻**。"
-                          "论文说「换代糖没有好处」，但**这个数据撑不起这句话**。"),
-        ],
-        "note": "纪律：这是**门槛，不是结论**。1.67 不等于「代糖真的有害」，"
-                "也推不出任何饮食、用药或诊断建议；任何人都能用论文里的数字复核这三个数。",
+        "note": "**原文中 “E-value” 出现 0 次**——这三个数是机器用论文自报的 HR/CI 算出来的。"
+                "纪律：这是**门槛，不是结论**，也推不出任何饮食或用药建议。",
     },
     {
         "kind": "figgrid",

@@ -103,6 +103,20 @@ td:first-child{{color:{INK};}}
 .figfull{{margin:0;}}
 .figfull img{{width:100%;max-height:376px;object-fit:contain;display:block;}}
 .figfull figcaption{{font-size:11.5px;color:#6b7078;margin-top:9px;line-height:1.65;}}
+/* ── 结果展示：原句清单（一页尽量多放真实产出） ── */
+.qlist{{columns:2;column-gap:38px;margin:0;padding:0;list-style:none;}}
+.qlist li{{break-inside:avoid;margin:0 0 10px;padding-left:0;font-size:11px;line-height:1.66;
+  color:#2b3036;}}
+.qlist li .tag{{display:inline-block;font-size:9.5px;font-weight:700;color:{VERM};
+  letter-spacing:.04em;margin-right:6px;vertical-align:1px;}}
+.qlist li .src{{display:block;font-size:9.5px;color:#8a8f96;margin-top:2px;line-height:1.5;}}
+/* ── 结果展示：数字榜 ── */
+.statrow{{display:flex;gap:26px;margin:0 0 24px;}}
+.stat{{flex:1;border-top:2px solid {BRONZE};padding-top:10px;}}
+.stat b{{display:block;font-family:"Source Han Serif SC",SimSun,serif;font-size:30px;
+  line-height:1.1;color:{MINERAL};letter-spacing:.01em;}}
+.stat span{{display:block;font-size:11.5px;color:#6b7078;margin-top:5px;line-height:1.6;}}
+.stat.verm b{{color:{VERM};}}
 @media print{{@page{{size:{W}px {H}px;margin:0}}html,body{{background:{PAPER}}}
   .slide{{margin:0;box-shadow:none}}
   .slide:before{{content:none}}   /* 噪点滤镜打印时会被逐页栅格化，PDF 会爆到几十 MB */}}
@@ -152,6 +166,27 @@ def slide_html(s: dict, idx: int, total: int) -> str:
             f'<figcaption>{inline(g.get("caption", ""))}</figcaption></figure>'
             for g in s["figures"])
         body.append(f'<div class="figgrid g{cols}">{figs}</div>')
+    elif kind == "qlist":
+        items = "".join(
+            f'<li><span class="tag">{html.escape(t)}</span>{inline(txt)}'
+            + (f'<span class="src">{inline(src)}</span>' if src else "")
+            + "</li>"
+            for t, txt, src in s["items"])
+        body.append(f'<ul class="qlist">{items}</ul>')
+    elif kind == "stats":
+        stats = "".join(
+            f'<div class="stat{" verm" if v else ""}"><b>{html.escape(str(n))}</b>'
+            f'<span>{inline(lbl)}</span></div>'
+            for n, lbl, v in s["stats"])
+        body.append(f'<div class="statrow">{stats}</div>')
+        if s.get("bullets"):
+            items = "".join(f'<li><b>{html.escape(k)}</b>{inline(v)}</li>' for k, v in s["bullets"])
+            body.append(f"<ul>{items}</ul>")
+        if s.get("figure"):
+            f = s["figure"]
+            cap = f'<figcaption>{inline(f["caption"])}</figcaption>' if f.get("caption") else ""
+            body.append(f'<figure class="figfull"><img src="{html.escape(f["src"])}" alt="">'
+                        f'{cap}</figure>')
     elif kind == "cover":
         if s.get("figure"):
             body.append(f'<img class="logo" src="{html.escape(s["figure"]["src"])}" alt="">')

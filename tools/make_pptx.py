@@ -174,7 +174,67 @@ def add_figure(slide, s, base: Path, y, bottom):
                 para(tf, True, _segments(g["caption"]), size=8.5, color="6b7078", space_after=0)
 
 
+def add_qlist(slide, s, y):
+    """结果展示：原句清单，两栏排。"""
+    items = s["items"]
+    half = (len(items) + 1) // 2
+    for ci, chunk in enumerate((items[:half], items[half:])):
+        x = Inches(0.75) + ci * Inches(6.05)
+        tf = textbox(slide, x, y, Inches(5.78), Inches(4.4))
+        for k, (tag, txt, src) in enumerate(chunk):
+            p = tf.paragraphs[0] if k == 0 else tf.add_paragraph()
+            p.space_after = Pt(7)
+            r = p.add_run(); r.text = tag + "　"
+            style(r, size=8.5, bold=True, color=VERM)
+            for t, is_em in _segments(txt):
+                r = p.add_run(); r.text = t
+                style(r, size=10, color=INK)
+            if src:
+                p2 = tf.add_paragraph()
+                p2.space_after = Pt(9)
+                r2 = p2.add_run(); r2.text = src
+                style(r2, size=8, color="8a8f96")
+
+
+def add_stats(slide, s, y, bottom):
+    """结果展示：数字榜 + 可选正文/图。"""
+    stats = s["stats"]
+    n = len(stats)
+    gap = Inches(0.26)
+    w = Emu(int((Inches(11.83) - gap * (n - 1)) / n))
+    for i, (num, lbl, is_verm) in enumerate(stats):
+        x = Inches(0.75) + i * (w + gap)
+        rule(slide, x, y, w, color="9a7b3f", height=Pt(1.6))
+        tf = textbox(slide, x, y + Inches(0.06), w, Inches(0.5))
+        para(tf, True, [(str(num), False)], size=22, serif=True, bold=True,
+             color=(VERM if is_verm else MINERAL), space_after=0)
+        tf = textbox(slide, x, y + Inches(0.56), w, Inches(0.6))
+        para(tf, True, _segments(lbl), size=8.5, color="6b7078", space_after=0)
+    y2 = y + Inches(1.28)
+    if s.get("figure"):
+        f = s["figure"]
+        max_h = max(int(bottom) - int(y2) - int(Inches(0.6)), int(Inches(1.4)))
+        w2, h = add_picture(slide, DECK_BASE / f["src"], Inches(0.75), y2, Inches(11.83), max_h)
+        if w2 < Inches(11.83):
+            slide.shapes[-1].left = Inches(0.75) + Emu(int((Inches(11.83) - w2) / 2))
+        if f.get("caption"):
+            tf = textbox(slide, Inches(0.75), y2 + h + Inches(0.08), Inches(11.83), Inches(0.5))
+            para(tf, True, _segments(f["caption"]), size=9, color="6b7078", space_after=0)
+    elif s.get("bullets"):
+        tf = textbox(slide, Inches(0.75), y2, Inches(11.83), Inches(3.0))
+        first = True
+        for k, v in s["bullets"]:
+            para(tf, first, [(k, False)], size=11.5, serif=True, bold=True, space_after=1)
+            para(tf, False, _segments(v), size=10.5, color=SUB, space_after=8)
+            first = False
+
+
+DECK_BASE = Path(".")
+
+
 def build_pptx(slides, dst: Path) -> Path:
+    global DECK_BASE
+    DECK_BASE = dst.parent
     prs = Presentation()
     prs.slide_width, prs.slide_height = SW, SH
     blank = prs.slide_layouts[6]
@@ -228,6 +288,10 @@ def build_pptx(slides, dst: Path) -> Path:
                 para(tf, True, _segments(v), size=11, color=SUB, space_after=0)
         elif kind in ("figure", "figfull", "figgrid"):
             add_figure(sl, s, dst.parent, y, Inches(6.28))
+        elif kind == "qlist":
+            add_qlist(sl, s, y - Inches(0.1))
+        elif kind == "stats":
+            add_stats(sl, s, y - Inches(0.1), Inches(6.28))
         elif kind == "end":
             tf = textbox(sl, Inches(0.75), y, Inches(11.6), Inches(2.6))
             for kk, (k, v) in enumerate(s["links"]):
