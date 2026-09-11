@@ -376,6 +376,7 @@ pip install -e ".[dev]" && pytest -q
 | [**什么算新知识**](docs/guide/new-knowledge.md) | 三层问题发现模式 / 两种新知识产生方式 / 显著性 |
 | [**命令行**](docs/guide/cli.md) | 徽标与「道」怎么来的 / 全部命令 / 可复用的三条约定 |
 | [**生物医学完整演示**](docs/guide/demo-biomed.md) | 真实论文 → 54 条问题 / 11 类方法学缺口 / E-value 真算数 |
+| [**演示幻灯片**](docs/ppt/index.html) | 《问道知识发现系统在生物医学领域的发现》（14 页，OJO 墨纸风；PPTX / PDF 同目录） |
 | [**AI4S 接口**](docs/guide/ai4s.md) | 问题清单格式 / 裁决回灌 / 闭环 |
 | [**结果与证据**](docs/guide/results.md) | 全部可复核数字 |
 | [**诚实边界**](docs/guide/honesty.md) | 四条硬边界 / 血泪教训 |
