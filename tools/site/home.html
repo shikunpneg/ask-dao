@@ -442,11 +442,15 @@
       <div class="role">IMAGINATION PATH · 产概念 · 需要"解释"</div>
       <div class="flow">输入：<b>词</b><br>
         流水：组词 → 拆词（深度 d）→ 还原造句（嵌套/推理/判断/比较）→ 成段 → 解释<br>
+        <b>接现实经验</b>（经验检索桥）：组合词 → 中文维基双通道（词条通道 / 搜索通道）+ arXiv 回退
+        → <b>经验锚点</b>写进概念理解<br>
         出口：被理解的概念 / 理论</div>
       <span class="k">成功标准：语法正确 + 逻辑通畅 + 有推理判断</span>
     </div>
   </div>
   <p class="note">两条路互不评判：用问题路的逻辑（"这有真实所指吗""这新吗"）去评判想象路的概念，是范畴错误。<br>
+    经验检索桥只提供<strong>脚手架</strong>，不做裁判：检索到的真实机制用来支撑理解，
+    不改变"概念不需要真实所指"这条纪律；检索失败时桥退化为无锚点，想象路照常走。<br>
     想象路的核心原则：<strong>每个词都有意义，只不过是我们缺少想象力，无法理解它</strong>——因此不存在空想，
     任务不是判断"有没有意义"，而是想出一个自洽的理解。</p>
 </section>
@@ -797,6 +801,27 @@
     <tr><td>责任催化</td><td>问责 = 最强催化剂；责任爆炸的临界点</td></tr>
     <tr><td>资本反馈</td><td>反馈强度决定财富分布形态</td></tr>
   </table>
+  <table class="data-table" style="margin-top:52px">
+    <caption>五、经验检索桥：想象路接上现实经验（<span class="mono">6,642</span> 个组合词 × 双通道检索）</caption>
+    <tr><th style="width:330px">项</th><th style="width:170px">数字</th><th>说明</th></tr>
+    <tr><td>组合词总数</td><td class="num">6,642</td>
+      <td>词库 82 词两两组合（<span class="mono">word_fusion.json</span>）</td></tr>
+    <tr><td>词条通道命中</td><td class="num">558 <span class="ok">8.4%</span></td>
+      <td>a 或 b 的维基词条里<strong>提到了对方</strong>——现实中两词确实有联系的那些组合</td></tr>
+    <tr><td>搜索通道：已成词</td><td class="num">37 <span class="ok">0.6%</span></td>
+      <td>组合词本身在中文维基<strong>已有独立条目</strong>（其余是"可以新建这个页面"）</td></tr>
+    <tr><td>维基搜索命中（中位 / 最大）</td><td class="num">381 / 48,287</td>
+      <td>≥1000 条的有 2,023 个（现实里被大量讨论）；0 条的 <strong>0 个</strong></td></tr>
+    <tr><td>语料规模</td><td class="num">49 词条</td>
+      <td><span class="mono">data/wiki/</span>（词库 82 词中已抓 49），平均 9.1 段/词</td></tr>
+    <tr><td>经验锚点已写入</td><td class="num">7 处</td>
+      <td>写进概念理解的 M7 锚点（维基·公理系统 / 熵 ×2 / 意识 / 记忆 / 责任 / 正义）；
+        当前只对 9 个重点组合检索，<span class="mono">RETRIEVE_ALL=1</span> 可全量</td></tr>
+  </table>
+  <p class="note" style="margin:-14px 0 52px">桥的纪律：<strong>只检索，不做价值判断</strong>。
+    它给概念一个可核对的现实接口（"现实中这两件事有没有被放在一起说过"），
+    但不判定概念真伪——可判性留给问题路。数字来自跑批产物
+    <span class="mono">out/demo/browser_mass_search.json</span>（16.9 MB，跑批产物不入库，可重跑复现）。</p>
   <p class="note" style="margin-top:18px">
     完整结果、负结果与 12 次自纠错见 <a class="inline" href="guide/results.html">结果与证据手册</a> ·
     可视化页 <a class="inline" href="viz/paths.html">paths.html</a>（问题树 + 概念树 + 概念论证）</p>

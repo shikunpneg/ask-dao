@@ -11,6 +11,7 @@
 """
 import json
 import multiprocessing as mp
+import os
 from itertools import product
 from pathlib import Path
 
@@ -82,8 +83,9 @@ def main():
     print(f"  词数 {len(words)}, 组合 {len(words)**2}, 并行 {mp.cpu_count()} 核")
 
     pairs = [(a, b) for a in words for b in words if a != b]
-    if mp.cpu_count() > 1 and len(pairs) > 1000:
-        with mp.Pool(mp.cpu_count()) as pool:
+    workers = int(os.environ.get("POOL_WORKERS", str(mp.cpu_count())))
+    if workers > 1 and len(pairs) > 1000:
+        with mp.Pool(workers) as pool:
             sentences = pool.map(sentence_pair, pairs, chunksize=64)
     else:
         sentences = [sentence_pair(p) for p in pairs]
@@ -94,12 +96,12 @@ def main():
 
     print(f"\n  == 样本(自己造的句子) ==")
     for x in sentences[:10]:
-        print(f"  ▸ 「{x['term']}」: {x['sentence'][:80]}")
+        print(f"  -> 「{x['term']}」: {x['sentence'][:80]}")
 
     print("\n  == 之前被误判'空想'的组合(现在有解释) ==")
     for x in sentences:
         if x["term"] in ("责任催化", "熵市场", "公理化记忆"):
-            print(f"  ▸ 「{x['term']}」: {x['sentence'][:80]}")
+            print(f"  -> 「{x['term']}」: {x['sentence'][:80]}")
 
     (HERE / "out/demo/imagination_sentence.json").write_text(
         json.dumps(sentences, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -72,7 +72,7 @@ def chained(o, x, y, steps, bw=96, gap=13, fs=11, h=30):
 def main():
     o = svg_open(W, H)
     title_block(o, PAD, 62, "问道系统架构",
-                "ask-dao-machine architecture · 两条相互独立的路 + 四模块 + 判定层",
+                "ask-dao-machine architecture · 两条相互独立的路 + 四模块 + 判定层 + 经验检索桥",
                 note="道生一，一生二，二生三，三生万物")
 
     # ── 左：输入 ──────────────────────────────────────────────────────
@@ -110,6 +110,19 @@ def main():
     o.append(f'<text x="{px + 18}" y="{y + 216}" font-size="10.5" fill="{BRONZE}">'
              f'两条路互不评判：用问题路的"这新吗"去判想象路的概念，是范畴错误</text>')
 
+    # 经验检索桥：想象路接现实经验（只做脚手架，不做裁判）
+    o.append(f'<line x1="{px + 16}" y1="{y + 232}" x2="{px + pw - 16}" y2="{y + 232}" stroke="{HAIR}"/>')
+    o.append(f'<text x="{px + 18}" y="{y + 254}" font-size="12" fill="{INK}">'
+             f'经验检索桥</text>')
+    o.append(f'<text x="{px + 96}" y="{y + 254}" font-size="9.5" fill="{DIM}" '
+             f'font-family="JetBrains Mono,Consolas,monospace">'
+             f'EXPERIENCE RETRIEVAL · 组合词 → 现实经验 → 经验锚点</text>')
+    o.append(f'<text x="{px + 18}" y="{y + 274}" font-size="10.5" fill="{INK_SOFT}">'
+             f'组合词 → 中文维基双通道（词条通道 / 搜索通道）+ arXiv 回退 → '
+             f'M7 经验锚点写进概念理解</text>')
+    o.append(f'<text x="{px + 18}" y="{y + 290}" font-size="10.5" fill="{TEAL}">'
+             f'只检索、不做价值判断：网络失败即退化为无脚手架；概念仍不被判定真伪</text>')
+
     # ── 右：判定与出口 ────────────────────────────────────────────────
     rx = px + pw + 28
     rw = W - PAD - rx
@@ -139,6 +152,9 @@ def main():
          "S2 广义 Collatz 停时表：索引未见 ×7"),
         ("可视化", "问题树 + 概念树 + 概念论证 → docs/viz/paths.html",
          "全量 260+ 条 / 23 领域"),
+        ("经验检索桥", "组合词 → tools/retrieve_browser.py（维基双通道）/ retrieve_context.py（arXiv 回退）"
+                  "→ word_understand 的 M7 经验锚点",
+         "6,642 组合 · 词条命中 558 · 已成词 37 · 锚点 7 处"),
     ]
     ry = by + 78
     for i, (k, v, note) in enumerate(rows):
@@ -155,6 +171,7 @@ def main():
     # ── 三轨连接 ─────────────────────────────────────────────────────
     rail(o, PAD + lw, px, 200, "结构化观测 → 问题")
     rail(o, PAD + lw, px, 300, "母题 → 生长")
+    rail(o, PAD + lw, px, 424, "真实语料 → 经验锚点")
     rail(o, px + pw, rx, 190, "问题清单")
     rail(o, px + pw, rx, 330, "概念 → 解释")
 

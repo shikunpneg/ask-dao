@@ -14,8 +14,14 @@
 """
 import json
 import multiprocessing as mp
+import os
+import sys
 from itertools import product
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from retrieve_context import retrieve as retrieve_api  # noqa: E402
+from retrieve_browser import retrieve_cached as retrieve_browser  # noqa: E402
 
 HERE = Path(__file__).resolve().parent.parent
 
@@ -106,10 +112,13 @@ WORDS = {
 }
 
 
-def understand(a, b, da, db):
-    """认真理解 a×b: 想出一个独立自洽的'如果它是真的'诠释。"""
+def understand(a, b, da, db, context=None):
+    """认真理解 a×b: 想出一个独立自洽的'如果它是真的'诠释。
+
+    context: 经验文本(arXiv 检索片段列表)。非空时追加 M7 经验锚点——
+    引用检索到的真实机制作为理解的脚手架(不是裁判)。网络失败则为空, M7 退化。
+    """
     essence_a, essence_b = WORDS[a], WORDS[b]
-    # 六种真实机制(不是模板, 是六种'合'的方式; 穷尽合的方式)
     mech = []
     # M1: b 是作用于 a 的操作(改造)
     mech.append(
@@ -133,8 +142,18 @@ def understand(a, b, da, db):
         "没有" + b + ", " + a + "无从谈起; " + a + "是" + b + "的显现。")
     # M6: a 与 b 互为定义(循环) —— 不是单向, 而是双向锁定
     mech.append(
-        "最彻底的: " + a + "与" + b + "互为前提(" + essence_a + " ⇄ " + essence_b + ")——"
+        "最彻底的: " + a + "与" + b + "互为前提(" + essence_a + " 互锁 " + essence_b + ")——"
         "哪个都不先于另一个, 它们共同构成一个自洽的闭环。")
+    # M7: 经验锚点(arXiv 检索) —— 引用真实机制作为理解脚手架
+    if context:
+        src = context[0]
+        frag = src.get("fragment", "")
+        if frag:
+            mech.append(
+                f"经验锚点({src.get('title','')[:40]}): 现实中「{a}{b}」已有可检验的接口——"
+                f"检索到的文献提到: {frag[:160]}。"
+                f"这提示「{a}{b}」的真实所指不是修辞, 而是:{a}的结构在被{b}的过程选中/改造时, "
+                "产生了文献里那种可测量的新量。")
     return mech
 
 
@@ -143,10 +162,33 @@ def question(a, b):
            f"(它的成立条件/边界/反例是什么?)"
 
 
+# 检索控制: 默认只对重点组合检索(避免打爆 arXiv / 拖慢全量)
+RETRIEVE_ONLY = {"熵选择", "责任催化", "熵市场", "公理化记忆", "记忆压缩",
+                 "意识拓扑", "正义测度", "编码公理", "进化发育"}
+
+
 def understand_pair(args):
     a, b = args
+    ctx = None
+    # 环境变量 RETRIEVE_ALL=1 时全量检索; 否则只检索重点组合
+    if os.environ.get("RETRIEVE_ALL") == "1" or (a + b) in RETRIEVE_ONLY:
+        try:
+            ctx = retrieve_browser(a, b)   # 浏览器维基优先(稳定中文)
+            context = ctx["hits"]
+        except Exception:
+            context = []
+        if not context:
+            try:
+                ctx = retrieve_api(a, b)   # 回退: arXiv API + 本地语料
+                context = ctx["hits"]
+            except Exception:
+                context = []
+    else:
+        context = []
     return {"term": a + b, "a": a, "b": b,
-            "understandings": understand(a, b, WORDS[a], WORDS[b]),
+            "understandings": understand(a, b, WORDS[a], WORDS[b], context),
+            "context_hits": len(context),
+            "context_query": ctx["query"] if ctx else "",
             "question": question(a, b)}
 
 
@@ -158,8 +200,9 @@ def main():
     print(f"  词数 {len(words)}, 组合 {len(words)**2}, 并行 {mp.cpu_count()} 核")
 
     pairs = [(a, b) for a in words for b in words if a != b]
-    if mp.cpu_count() > 1 and len(pairs) > 1000:
-        with mp.Pool(mp.cpu_count()) as pool:
+    workers = int(os.environ.get("POOL_WORKERS", str(mp.cpu_count())))
+    if workers > 1 and len(pairs) > 1000:
+        with mp.Pool(workers) as pool:
             all_u = pool.map(understand_pair, pairs, chunksize=64)
     else:
         all_u = [understand_pair(p) for p in pairs]
@@ -168,7 +211,7 @@ def main():
     print(f"\n  == 样本: 之前我'不理解'的组合 ==")
     for x in all_u:
         if x["term"] in ("熵选择", "责任催化", "熵市场", "公理化记忆", "记忆压缩"):
-            print(f"\n  ▸ 「{x['term']}」")
+            print(f"\n  -> 「{x['term']}」")
             for m in x["understandings"]:
                 print(f"      · {m[:80]}")
             print(f"      问: {x['question'][:66]}")

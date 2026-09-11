@@ -7,7 +7,7 @@
 <rect width="1480" height="880" filter="url(#paper)" opacity="0.5"/>
 <rect x="54" y="47" width="4" height="19" fill="#b03a2e"/>
 <text x="68" y="62" font-size="21" fill="#16191d" letter-spacing="1.5">问道系统架构</text>
-<text x="68" y="80" font-size="10.5" fill="#7c8188" font-family='"JetBrains Mono","Cascadia Mono","Consolas",monospace' letter-spacing="2.6">ASK-DAO-MACHINE ARCHITECTURE · 两条相互独立的路 + 四模块 + 判定层</text>
+<text x="68" y="80" font-size="10.5" fill="#7c8188" font-family='"JetBrains Mono","Cascadia Mono","Consolas",monospace' letter-spacing="2.6">ASK-DAO-MACHINE ARCHITECTURE · 两条相互独立的路 + 四模块 + 判定层 + 经验检索桥</text>
 <line x1="54" y1="92" x2="1234" y2="92" stroke="#cdc6b6" stroke-width="1"/>
 <text x="1234" y="80" text-anchor="end" font-size="11" fill="#7c8188">道生一，一生二，二生三，三生万物</text>
 <rect x="54" y="108" width="300" height="360" rx="2" fill="#efe9dc" stroke="#cdc6b6" stroke-width="1"/>
@@ -67,6 +67,11 @@
 <text x="904.0" y="321.0" text-anchor="middle" font-size="11" fill="#16191d">解释</text>
 <text x="400" y="356" font-size="10.5" fill="#7c8188">成功标准：语法正确 + 逻辑通畅 + 有推理判断（概念不是拿来"解决"的）</text>
 <text x="400" y="384" font-size="10.5" fill="#9a7b3f">两条路互不评判：用问题路的"这新吗"去判想象路的概念，是范畴错误</text>
+<line x1="398" y1="400" x2="1066" y2="400" stroke="#cdc6b6"/>
+<text x="400" y="422" font-size="12" fill="#16191d">经验检索桥</text>
+<text x="478" y="422" font-size="9.5" fill="#7c8188" font-family="JetBrains Mono,Consolas,monospace">EXPERIENCE RETRIEVAL · 组合词 → 现实经验 → 经验锚点</text>
+<text x="400" y="442" font-size="10.5" fill="#454a51">组合词 → 中文维基双通道（词条通道 / 搜索通道）+ arXiv 回退 → M7 经验锚点写进概念理解</text>
+<text x="400" y="458" font-size="10.5" fill="#2f6b6b">只检索、不做价值判断：网络失败即退化为无脚手架；概念仍不被判定真伪</text>
 <rect x="1110" y="108" width="316" height="360" rx="2" fill="#f6f2e9" stroke="#cdc6b6" stroke-width="1"/>
 <rect x="1110" y="108" width="316" height="3" fill="#b03a2e"/>
 <text x="1126" y="132" font-size="14.5" fill="#16191d">判定与出口</text>
@@ -102,10 +107,16 @@
 <text x="72" y="730" font-size="12.5" fill="#16191d">可视化</text>
 <text x="210" y="730" font-size="11" fill="#454a51">问题树 + 概念树 + 概念论证 → docs/viz/paths.html</text>
 <text x="1408" y="730" text-anchor="end" font-size="10.5" fill="#2f6b6b">全量 260+ 条 / 23 领域</text>
+<line x1="70" y1="745" x2="1410" y2="745" stroke="#ded7c6" stroke-width="1"/>
+<text x="72" y="778" font-size="12.5" fill="#16191d">经验检索桥</text>
+<text x="210" y="778" font-size="11" fill="#454a51">组合词 → tools/retrieve_browser.py（维基双通道）/ retrieve_context.py（arXiv 回退）→ word_understand 的 M7 经验锚点</text>
+<text x="1408" y="778" text-anchor="end" font-size="10.5" fill="#2f6b6b">6,642 组合 · 词条命中 558 · 已成词 37 · 锚点 7 处</text>
 <line x1="354" y1="200" x2="382" y2="200" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
 <text x="368.0" y="193" text-anchor="middle" font-size="10" fill="#9a7b3f">结构化观测 → 问题</text>
 <line x1="354" y1="300" x2="382" y2="300" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
 <text x="368.0" y="293" text-anchor="middle" font-size="10" fill="#9a7b3f">母题 → 生长</text>
+<line x1="354" y1="424" x2="382" y2="424" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
+<text x="368.0" y="417" text-anchor="middle" font-size="10" fill="#9a7b3f">真实语料 → 经验锚点</text>
 <line x1="1082" y1="190" x2="1110" y2="190" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
 <text x="1096.0" y="183" text-anchor="middle" font-size="10" fill="#9a7b3f">问题清单</text>
 <line x1="1082" y1="330" x2="1110" y2="330" stroke="#454a51" stroke-width="1.2" marker-end="url(#tick)"/>
