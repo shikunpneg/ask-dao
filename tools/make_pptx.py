@@ -196,6 +196,9 @@ def build_pptx(slides, dst: Path) -> Path:
                  space_after=2)
 
         y = Inches(3.35 if cover else 2.0)
+        if cover and s.get("figure"):
+            add_picture(sl, dst.parent / s["figure"]["src"], Inches(10.85), Inches(0.95),
+                        Inches(1.75))
         if s.get("lead"):
             tf = textbox(sl, Inches(0.75), y, Inches(11.5), Inches(1.0))
             para(tf, True, _segments(s["lead"]), size=12, color=SUB, space_after=0)

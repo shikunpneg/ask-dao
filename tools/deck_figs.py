@@ -110,50 +110,50 @@ def biomed_numbers():
 # 图 1 · E-value：机器算出的新知识
 # ══════════════════════════════════════════════════════════════════
 def fig_evalue(out: Path, bm: dict):
+    """白话版：不画「HR vs E-value」两组条（读者要自己对照），而是直接回答
+    「要推翻这条结论，隐藏因素得多强」。"""
     ev = bm["ev"]
     if not ev:
         print("  ! fig_evalue: 无 E-value 数据，跳过")
         return
-    rows = []
-    for p in ev:
-        c = p["computed"]
-        rows.append((c["point"], c["evalue_point"], c["evalue_ci_bound"], tuple(c["ci"])))
-    rows.sort(key=lambda r: r[0])
+    CLAIM = {
+        1.19: "代糖吃得多的人 → 肾病风险高 19%",
+        1.49: "代糖多 + 遗传风险高 → 风险高 49%",
+        1.02: "用代糖替代糖 → 风险高 2%",
+    }
+    rows = [(p["computed"]["point"], p["computed"]["evalue_point"],
+             p["computed"]["evalue_ci_bound"]) for p in ev]
+    rows.sort(key=lambda r: r[1])                      # 门槛小的在下
+    FLOOR = 1.5
+    cols = [VERM if r[1] < FLOOR else (BRONZE if r[1] < 2.0 else MINERAL) for r in rows]
 
-    fig, ax = plt.subplots(figsize=(6.6, 4.0))
+    fig, ax = plt.subplots(figsize=(6.6, 3.6))
     y = range(len(rows))
-    h = 0.34
-    for i, (hr, e, eci, ci) in enumerate(rows):
-        ax.barh(i + h / 2 + 0.04, e, height=h, color=VERM, zorder=3)
-        ax.barh(i - h / 2 - 0.04, hr, height=h, color=MINERAL, zorder=3)
-        ax.plot([eci], [i + h / 2 + 0.04], marker="|", ms=13, mew=1.6, color=INK, zorder=4)
-        ax.text(e + 0.045, i + h / 2 + 0.04, f"E = {e:.2f}", fontproperties=FP,
-                fontsize=10.5, color=VERM, va="center")
-        ax.text(eci, i + h / 2 + 0.245, f"CI 下界 {eci:.2f}", fontproperties=FP,
-                fontsize=8, color=MUTE, ha="center", va="bottom")
-        ax.text(hr + 0.045, i - h / 2 - 0.04, f"{hr:.2f}", fontproperties=FP,
-                fontsize=10.5, color=MINERAL, va="center")
+    h = 0.42
+    for i, (hr, e, eci) in enumerate(rows):
+        ax.barh(i, e - 1.0, left=1.0, height=h, color=cols[i], zorder=3)
+        ax.plot([eci], [i], marker="|", ms=14, mew=1.6, color=INK, zorder=4)
+        ax.text(e + 0.06, i + 0.03, f"{e:.2f}", fontproperties=FP, fontsize=13,
+                color=cols[i], va="center")
+        ax.text(e + 0.06, i - 0.30, f"论文原数 HR {hr:.2f}", fontproperties=FP,
+                fontsize=8, color=MUTE, va="center")
+    ax.axvline(FLOOR, color=VERM, lw=1.0, ls=(0, (4, 3)), zorder=2, alpha=0.55)
+    ax.text(FLOOR - 0.03, len(rows) - 0.45, "低于此线\n结论脆弱", fontproperties=FP,
+            fontsize=8.5, color=VERM, ha="right", va="center", linespacing=1.5)
 
     ax.set_yticks(list(y))
-    ax.set_yticklabels([f"HR {r[0]:.2f}\n({r[3][0]:.2f}–{r[3][1]:.2f})" for r in rows],
+    ax.set_yticklabels([CLAIM.get(r[0], f"HR {r[0]:.2f}") for r in rows],
                        fontproperties=FP, fontsize=9.5)
-    ax.set_xlim(0, 2.75)
-    ax.set_ylim(-0.62, len(rows) - 0.30)
-    ax.set_xlabel("关联强度（RR 尺度）", fontproperties=FP, fontsize=10)
-    ax.tick_params(axis="x", labelsize=9)
-    for lbl in ax.get_xticklabels():
-        lbl.set_fontproperties(FP)
+    ax.set_xlim(1.0, 2.75)
+    ax.set_xticks([1.0, 1.5, 2.0, 2.5])
+    ax.set_xticklabels(["1\n（无门槛）", "1.5", "2.0", "2.5"], fontproperties=FP, fontsize=8.5)
+    ax.set_ylim(-0.62, len(rows) - 0.28)
+    ax.set_xlabel("隐藏因素至少要多强，才能把这条结论解释掉", fontproperties=FP, fontsize=9.5)
     bare(ax)
     ax.grid(axis="x", color=LINE, lw=0.6, alpha=0.7, zorder=0)
     ax.set_axisbelow(True)
-
-    from matplotlib.patches import Patch
-    ax.legend(handles=[Patch(color=MINERAL, label="论文报告的效应量"),
-                       Patch(color=VERM, label="机器算出的 E-value（残余混杂门槛）")],
-              prop=FP, fontsize=9.5, frameon=False, loc="lower right")
-    title(ax, "把「论文自报的 HR」换算成「需要多强的未测混杂才能解释掉」",
-          "公式 E = RR + √(RR(RR−1))，RR 用 HR 近似（只在结局不常见时成立）。")
-    fig.subplots_adjust(top=0.80)
+    title(ax, "", "条形越长 = 越难推翻 = 结论越稳。原点 1 表示「隐藏因素毫无作用」。")
+    fig.subplots_adjust(top=0.86)
     save(fig, out, "fig_evalue.png")
 
 

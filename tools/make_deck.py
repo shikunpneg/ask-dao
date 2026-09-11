@@ -78,6 +78,7 @@ td:first-child{{color:{INK};}}
 .pnum{{position:absolute;right:76px;bottom:22px;font-size:11.5px;color:{BRONZE};letter-spacing:.1em;}}
 .cover{{padding-top:150px;}}
 .cover h1{{font-size:56px;}}
+.cover .logo{{position:absolute;right:76px;top:104px;width:158px;opacity:.92;}}
 .cover .foot{{position:absolute;left:76px;bottom:60px;font-size:14px;color:{MINERAL};
   font-family:"Source Han Serif SC",SimSun,serif;letter-spacing:.04em;}}
 .steps{{display:grid;grid-template-columns:1fr 1fr;gap:16px 34px;}}
@@ -152,6 +153,8 @@ def slide_html(s: dict, idx: int, total: int) -> str:
             for g in s["figures"])
         body.append(f'<div class="figgrid g{cols}">{figs}</div>')
     elif kind == "cover":
+        if s.get("figure"):
+            body.append(f'<img class="logo" src="{html.escape(s["figure"]["src"])}" alt="">')
         body.append(f'<div class="foot">{html.escape(s.get("foot", ""))}</div>')
     elif kind == "end":
         links = "".join(f'<div><b>{html.escape(k)}</b><a href="{html.escape(v)}">{html.escape(v)}</a></div>'
