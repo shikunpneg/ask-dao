@@ -314,6 +314,8 @@ def pr_comment(payload: dict, limit: int = 8) -> str:
 
 
 def main(argv=None, out_dir="out/papers") -> int:
+    from . import _console
+    _console.setup()
     argv = list(sys.argv[1:] if argv is None else argv)
     if not argv:
         print(__doc__)

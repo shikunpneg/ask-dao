@@ -68,6 +68,8 @@ def _dispatch(argv):
 
 
 def main(argv=None):
+    from . import _console
+    _console.setup()                     # Windows 控制台非 UTF-8 时也能打印中文
     argv = list(sys.argv[1:] if argv is None else argv)
 
     rc = _dispatch(argv)

@@ -29,6 +29,8 @@ def data_dir() -> Path:
 
 
 def check() -> int:
+    from . import _console
+    _console.setup()
     ok = True
     print("=" * 76)
     print("ask-dao-machine · 环境自查")
@@ -100,6 +102,8 @@ def _count_sequences(path: Path, limit: int | None = None) -> int:
 
 
 def fetch(dest: str | None = None, force: bool = False) -> int:
+    from . import _console
+    _console.setup()
     dd = Path(dest) if dest else data_dir()
     dd.mkdir(parents=True, exist_ok=True)
     dst = dd / "stripped.gz"

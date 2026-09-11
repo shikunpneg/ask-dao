@@ -172,6 +172,8 @@ def render_markdown(rep: dict) -> str:
 
 
 def main(out_dir="out", quiet=False) -> int:
+    from . import _console
+    _console.setup()
     out = Path(out_dir)
     if not out.exists():
         print(f"目录不存在：{out}（先跑一次：python -m ask_dao_machine all --out {out}）")
