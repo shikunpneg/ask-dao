@@ -119,6 +119,61 @@ def add_table(slide, x, y, w, rows, head, *, fs=10.5, head_fs=10.0, row_h=Inches
     return t
 
 
+def add_picture(slide, path: Path, x, y, w, max_h=None):
+    """按原始宽高比插入图片；超出 max_h 时等比缩小。返回 (实际宽, 实际高)。"""
+    from PIL import Image
+    iw, ih = Image.open(path).size
+    h = int(w * ih / iw)
+    if max_h is not None and h > int(max_h):
+        h = int(max_h)
+        w = Emu(int(h * iw / ih))
+    slide.shapes.add_picture(str(path), x, y, width=w, height=Emu(h))
+    return w, Emu(h)
+
+
+def add_figure(slide, s, base: Path, y, bottom):
+    """图片优先版式：figure（左图右解释）/ figfull（整幅）/ figgrid（图墙）。"""
+    kind = s["kind"]
+    avail = int(bottom) - int(y)
+    if kind == "figure":
+        f = s["figure"]
+        max_h = max(avail - int(Inches(0.72)), int(Inches(1.6)))
+        w, h = add_picture(slide, base / f["src"], Inches(0.75), y, Inches(6.15), max_h)
+        if f.get("caption"):
+            tf = textbox(slide, Inches(0.75), y + h + Inches(0.09), Inches(6.15), Inches(0.6))
+            para(tf, True, _segments(f["caption"]), size=9, color="6b7078", space_after=0)
+        if s.get("bullets"):
+            tf = textbox(slide, Inches(7.25), y - Inches(0.05), Inches(5.33), Inches(3.9))
+            first = True
+            for k, v in s["bullets"]:
+                para(tf, first, [(k, False)], size=11.5, serif=True, bold=True, space_after=1)
+                para(tf, False, _segments(v), size=10.5, color=SUB, space_after=8)
+                first = False
+    elif kind == "figfull":
+        f = s["figure"]
+        max_h = max(avail - int(Inches(0.72)), int(Inches(1.6)))
+        w, h = add_picture(slide, base / f["src"], Inches(0.75), y, Inches(11.83), max_h)
+        if w < Inches(11.83):                      # 缩小后居中
+            slide.shapes[-1].left = Inches(0.75) + Emu(int((Inches(11.83) - w) / 2))
+        if f.get("caption"):
+            tf = textbox(slide, Inches(0.75), y + h + Inches(0.1), Inches(11.83), Inches(0.6))
+            para(tf, True, _segments(f["caption"]), size=9, color="6b7078", space_after=0)
+    elif kind == "figgrid":
+        figs = s["figures"]
+        cols = s.get("cols", 4)
+        gap = Inches(0.22)
+        cw = Emu(int((Inches(11.83) - gap * (cols - 1)) / cols))
+        max_h = max(avail - int(Inches(0.70)), int(Inches(1.2)))
+        for idx, g in enumerate(figs):
+            r, c = divmod(idx, cols)
+            x = Inches(0.75) + c * (cw + gap)
+            yy = y + Emu(int(r * (max_h + Inches(0.70))))
+            w2, h = add_picture(slide, base / g["src"], x, yy, cw, max_h)
+            if g.get("caption"):
+                tf = textbox(slide, x, yy + h + Inches(0.06), cw, Inches(0.5))
+                para(tf, True, _segments(g["caption"]), size=8.5, color="6b7078", space_after=0)
+
+
 def build_pptx(slides, dst: Path) -> Path:
     prs = Presentation()
     prs.slide_width, prs.slide_height = SW, SH
@@ -168,6 +223,8 @@ def build_pptx(slides, dst: Path) -> Path:
                 para(tf, True, [(k, False)], size=10, color=BRONZE, bold=True, space_after=0)
                 tf = textbox(sl, bx, by + Inches(0.4), Inches(5.65), Inches(1.1))
                 para(tf, True, _segments(v), size=11, color=SUB, space_after=0)
+        elif kind in ("figure", "figfull", "figgrid"):
+            add_figure(sl, s, dst.parent, y, Inches(6.28))
         elif kind == "end":
             tf = textbox(sl, Inches(0.75), y, Inches(11.6), Inches(2.6))
             for kk, (k, v) in enumerate(s["links"]):

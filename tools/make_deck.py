@@ -87,6 +87,21 @@ td:first-child{{color:{INK};}}
 .links{{columns:2;column-gap:44px;font-size:14px;line-height:2.1;}}
 .links a{{color:{MINERAL};text-decoration:none;border-bottom:1px solid rgba(47,107,107,.35);}}
 .links b{{font-family:SimSun,serif;color:{INK};display:inline-block;min-width:150px;}}
+/* ── 图片优先版式：汇报以「图 + 解释」为主 ── */
+.figrow{{display:flex;gap:32px;align-items:flex-start;}}
+.figrow>figure{{margin:0;flex:0 0 53%;}}
+.figrow>figure img{{width:100%;max-height:372px;object-fit:contain;display:block;border:1px solid {LINE};background:#fffdf8;}}
+.figrow>figure figcaption{{font-size:11.5px;color:#6b7078;margin-top:9px;line-height:1.65;}}
+.figrow>ul{{flex:1 1 auto;}}
+.figgrid{{display:grid;gap:20px;}}
+.figgrid.g2{{grid-template-columns:1fr 1fr;}}
+.figgrid.g4{{grid-template-columns:repeat(4,1fr);}}
+.figgrid figure{{margin:0;}}
+.figgrid img{{width:100%;max-height:250px;object-fit:contain;display:block;border:1px solid {LINE};background:#fffdf8;}}
+.figgrid figcaption{{font-size:11px;color:#6b7078;margin-top:7px;line-height:1.55;}}
+.figfull{{margin:0;}}
+.figfull img{{width:100%;max-height:376px;object-fit:contain;display:block;}}
+.figfull figcaption{{font-size:11.5px;color:#6b7078;margin-top:9px;line-height:1.65;}}
 @media print{{@page{{size:{W}px {H}px;margin:0}}html,body{{background:{PAPER}}}
   .slide{{margin:0;box-shadow:none}}
   .slide:before{{content:none}}   /* 噪点滤镜打印时会被逐页栅格化，PDF 会爆到几十 MB */}}
@@ -115,6 +130,27 @@ def slide_html(s: dict, idx: int, total: int) -> str:
         steps = "".join(f'<div class="step"><h4>{html.escape(k)}</h4><p>{inline(v)}</p></div>'
                         for k, v in s["steps"])
         body.append(f'<div class="steps">{steps}</div>')
+    elif kind == "figure":
+        f = s["figure"]
+        cap = f'<figcaption>{inline(f["caption"])}</figcaption>' if f.get("caption") else ""
+        side = ""
+        if s.get("bullets"):
+            items = "".join(f'<li><b>{html.escape(k)}</b>{inline(v)}</li>' for k, v in s["bullets"])
+            side = f"<ul>{items}</ul>"
+        body.append(f'<div class="figrow"><figure><img src="{html.escape(f["src"])}" alt="">'
+                    f'{cap}</figure>{side}</div>')
+    elif kind == "figfull":
+        f = s["figure"]
+        cap = f'<figcaption>{inline(f["caption"])}</figcaption>' if f.get("caption") else ""
+        body.append(f'<figure class="figfull"><img src="{html.escape(f["src"])}" alt="">'
+                    f'{cap}</figure>')
+    elif kind == "figgrid":
+        cols = s.get("cols", 4)
+        figs = "".join(
+            f'<figure><img src="{html.escape(g["src"])}" alt="">'
+            f'<figcaption>{inline(g.get("caption", ""))}</figcaption></figure>'
+            for g in s["figures"])
+        body.append(f'<div class="figgrid g{cols}">{figs}</div>')
     elif kind == "cover":
         body.append(f'<div class="foot">{html.escape(s.get("foot", ""))}</div>')
     elif kind == "end":
@@ -171,8 +207,8 @@ def build_slides_png() -> None:
     print(f"  PNG: {n} 页 -> {OUT.relative_to(ROOT)}/slide-XX.png")
 
 
-def build_pdf() -> None:
-    pdf = OUT / "ask-dao-biomed-deck.pdf"
+def build_pdf(name: str = "ask-dao-biomed-deck") -> None:
+    pdf = OUT / f"{name}.pdf"
     edge([f"--print-to-pdf={pdf}", "--no-pdf-header-footer", (OUT / "index.html").as_uri()])
     size = pdf.stat().st_size if pdf.exists() else 0
     print(f"  PDF: {pdf.relative_to(ROOT)}  {size:,} 字节")
@@ -183,13 +219,15 @@ if __name__ == "__main__":
     ap.add_argument("--no-pptx", action="store_true")
     ap.add_argument("--no-png", action="store_true")
     ap.add_argument("--no-pdf", action="store_true")
+    ap.add_argument("--name", default="ask-dao-biomed-deck",
+                    help="输出文件名（不含扩展名）；被 PowerPoint 占用时可换名构建")
     a = ap.parse_args()
     print("生成：")
     build_html()
     if not a.no_png:
         build_slides_png()
     if not a.no_pdf:
-        build_pdf()
+        build_pdf(name=a.name)
     if not a.no_pptx:
         from make_pptx import build_pptx
-        build_pptx(SLIDES, OUT / "ask-dao-biomed-deck.pptx")
+        build_pptx(SLIDES, OUT / f"{a.name}.pptx")
