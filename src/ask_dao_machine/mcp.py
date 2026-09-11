@@ -262,7 +262,23 @@ def _handle(msg: dict) -> dict | None:
             "error": {"code": -32601, "message": f"method not found: {method}"}}
 
 
+def _record_start() -> None:
+    """把每一次启动写进 out/mcp/sessions.jsonl —— 宿主挂载排查用（谁在什么时候拉起了它）。"""
+    import os
+    import time
+    try:
+        d = Path.cwd() / "out" / "mcp"
+        d.mkdir(parents=True, exist_ok=True)
+        rec = {"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "pid": os.getpid(),
+               "cwd": str(Path.cwd()), "tools": len(TOOLS), "protocol": PROTOCOL}
+        with (d / "sessions.jsonl").open("a", encoding="utf-8") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    except Exception:                                            # noqa: BLE001
+        pass
+
+
 def serve() -> int:
+    _record_start()
     print(f"[ask-dao-machine mcp] stdio server ready (protocol {PROTOCOL}); "
           f"tools={len(TOOLS)}", file=sys.stderr)
     for line in sys.stdin:
