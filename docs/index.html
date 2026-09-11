@@ -133,6 +133,15 @@
   .ok{color:#2f6b6b;font-weight:500;}
   .no{color:#b03a2e;font-weight:500;}
   .mono{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;}
+  /* 终端卡：真实输出原样贴，不用假示意图 */
+  .term{
+    background:#16191d;color:#e8e4dc;border-radius:2px;padding:18px 20px;
+    font-family:ui-monospace,Consolas,monospace;font-size:12.5px;line-height:1.85;
+    overflow-x:auto;margin:6px 0 26px;border:1px solid rgba(22,25,29,.5);
+  }
+  .term .c{color:#9fb0a8;}
+  .term .k{color:#e0b063;}
+  .term .m{color:#c96f5f;}
 
   /* ==================== 卡片网格 ==================== */
   .grid{display:grid;gap:2px;background:var(--line);}
@@ -517,6 +526,57 @@
     <div class="card" data-delay="5"><div class="idx">06</div><h3>想象路 · Imagination Path</h3>
       <p>产概念，需解释。两条路互相独立。</p></div>
   </div>
+
+  <div class="label">One Command · Agent Hosts</div>
+  <h3 style="font-size:19px;margin:6px 0 10px">一条命令：论文 → 问题（生物医学演示）</h3>
+  <p class="lead" style="margin-bottom:14px">输入是一篇 <strong>CC BY 4.0 开放获取的真实论文</strong>
+    （UK Biobank 前瞻队列，n=156,000，调整后 HR 1.19），输出是 11 类方法学缺口上的可判问题。
+    下面是从终端原样复制的输出，不是示意图。</p>
+
+  <pre class="term"><span class="c">$</span> ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo
+[PMC13331974.md] 32,787 字符 | 抽取方式=plain | 产出问题 54 条
+合计 54 条：作者已提出 0 条 · 机器新提出 54 条（其中生物医学方法学追问 32 条）
+
+<span class="k">[④方法学追问·残余混杂强度（机器算出） BM_EV01]</span> (机器提出)
+  机器算出：文中 HR=1.19（95% CI 1.08–1.30）要被称为残余混杂解释掉，未测混杂必须与暴露、
+  结局各自达到 <span class="m">RR≈1.67</span> 的关联（按置信区间下界则是 RR≈1.37）
+  判定路由：E-value 门槛 + 阴性对照结局 + 已测协变量关联强度排行（可精确复核）
+
+<span class="k">[④方法学追问·因果方向 BM_CAUSAL01]</span> (机器提出) <span class="c">主题作者已论及，机器只做形式化</span>
+  把随访前 k 年发生的事件剔除（lag 分析），效应量随 k 如何变化？k≥2 年就衰减到 1 说明什么？
+  判定路由：滞后/剔除分析（lag analysis）+ 反向孟德尔随机化</pre>
+
+  <table class="data-table" style="margin-bottom:34px">
+    <caption>机器算出的三个残余混杂门槛（可用论文自报的 HR/CI 复核）</caption>
+    <tr><th style="width:230px">论文报告</th><th style="width:140px">E-value（点估计）</th>
+      <th style="width:130px">按 CI 下界</th><th>含义</th></tr>
+    <tr><td class="mono">HR 1.19 (95% CI 1.08–1.30)</td><td class="num"><strong>1.67</strong></td>
+      <td class="num">1.37</td><td>未测混杂要与暴露、结局<strong>各自</strong>达到 RR≈1.67 才能把效应解释为零</td></tr>
+    <tr><td class="mono">HR 1.49 (95% CI 1.28–1.74)</td><td class="num"><strong>2.34</strong></td>
+      <td class="num">1.88</td><td>最高风险组最难被混杂解释</td></tr>
+    <tr><td class="mono">HR 1.02 (95% CI 1.01–1.04)</td><td class="num"><strong>1.16</strong></td>
+      <td class="num">1.11</td><td>替代分析那一条<strong>最脆</strong>：几乎任何微弱混杂都能解释掉</td></tr>
+  </table>
+  <p class="note" style="margin:-18px 0 30px;color:var(--dim);font-size:13px;line-height:1.9">
+    公式 <code>E = RR + √(RR(RR−1))</code>，用 HR 近似 RR，只在结局不常见时成立（本文 CKD 发病率低）。
+    E-value 是<strong>门槛</strong>，不是「存在这样的混杂」的证据；原文里从未出现 E-value。
+    完整演示（逐条证据句 / 判定路由 / 它不证明什么）见
+    <a class="inline" href="guide/demo-biomed.html">生物医学完整演示</a>。</p>
+
+  <table class="data-table" style="margin-bottom:44px">
+    <caption>挂到 Agent 宿主：一份实现、三种挂法（前三行已实测）</caption>
+    <tr><th style="width:200px">宿主</th><th style="width:320px">挂法</th><th>状态</th></tr>
+    <tr><td>任何 shell（Claude Code / Codex / CI）</td><td class="mono">ask-dao-machine paper …</td>
+      <td class="ok">✅ CLI 实测</td></tr>
+    <tr><td>Claude Code · Cursor · Continue</td><td class="mono">.mcp.json（tools/install_integrations.py）</td>
+      <td class="ok">✅ 配置已生成</td></tr>
+    <tr><td>DSH</td><td class="mono">.dsh/skills/ask-dao-machine/SKILL.md</td>
+      <td class="ok">✅ 本机热加载通过</td></tr>
+    <tr><td>DSH（MCP 插件行）</td><td class="mono">cordis.yml: dsh-mcp-client + command/args</td>
+      <td>⬜ 片段已给全，未在本机挂</td></tr>
+    <tr><td>GitHub</td><td class="mono">论文进 papers/ 推送 → Action 评论回问题</td>
+      <td class="ok">✅ 已跑通</td></tr>
+  </table>
 
   <table class="data-table" style="margin-top:44px">
     <caption>关键引擎与它们的纪律</caption>

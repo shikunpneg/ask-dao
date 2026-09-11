@@ -1,4 +1,4 @@
-﻿__pycache__/
+__pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
@@ -9,6 +9,8 @@ data/
 
 # 本地工具/编辑器配置（不属于仓库内容）
 .claude/
+# DSH 项目级技能目录（由 tools/install_integrations.py 生成；入库的那份在 .agents/skills/）
+.dsh/
 # 站点生成过程中的一次性中间产物
 tools/_preview/
 docs/_*.html

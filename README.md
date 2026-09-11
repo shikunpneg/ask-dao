@@ -235,8 +235,73 @@ python tools/build_paths_viz.py     # → docs/viz/paths.html（入库）与 out
 
 ```bash
 git clone https://github.com/shikunpneg/ask-dao-machine && cd ask-dao-machine
+pip install -e .               # 只要 Python 3.9+，核心零依赖
 export PYTHONPATH=src          # Windows PowerShell: $env:PYTHONPATH='src'
 ```
+
+装好后命令行是 `ask-dao-machine`（等价 `python -m ask_dao_machine`）。
+
+### 一条命令看清它能干什么（生物医学演示）
+
+```bash
+ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo
+```
+
+```
+[PMC13331974.md] 32,787 字符 | 抽取方式=plain | 产出问题 54 条
+合计 54 条：作者已提出 0 条 · 机器新提出 54 条（其中生物医学方法学追问 32 条）
+→ out/biomed_demo/problems_paper.json + REPORT.md
+```
+
+输入是一篇 **CC BY 4.0 开放获取的真实论文**（UK Biobank 前瞻队列，n=156,000，调整后 HR 1.19），
+输出是 **11 类方法学缺口**上的可判问题，其中 3 条是**真算数**：
+
+| 论文报告 | 机器算出 | 含义 |
+|---|---|---|
+| HR 1.19 (95% CI 1.08–1.30) | 残余混杂门槛 **E=1.67**（按 CI 下界 1.37） | 未测混杂要与暴露、结局**各自**达到 RR≈1.67 才能把效应解释为零 |
+| HR 1.02 (95% CI 1.01–1.04) | 残余混杂门槛 **E=1.16** | 替代分析那一条**最脆**：几乎任何微弱混杂都能解释掉 |
+| HR 1.49 (95% CI 1.28–1.74) | 残余混杂门槛 **E=2.34** | 最高风险组更难被混杂解释 |
+
+**完整演示（逐条证据句 + 判定路由 + 它不证明什么）**：`docs/guide/demo-biomed.md`。
+可复现：`python tools/fetch_biomed_paper.py`（Europe PMC 公开接口，记录许可字段）。
+
+### 子命令
+
+| 命令 | 输入 → 输出 |
+|---|---|
+| `ask-dao-machine paper <文件/目录> [--domain auto\|biomed\|none]` | 论文/语料 → 问题清单（「作者已提出」与「机器新提出」分开标注） |
+| `ask-dao-machine perceive <图片/目录>` | 图像（经验）→ 结构特征 → 带判定路由的问题 |
+| `ask-dao-machine all` | 86 母题 → 问题树 L0–L5 → 领域融合（+ 新颖性门） |
+| `ask-dao-machine report [--out DIR]` | 把一次跑批汇总成一页人话 `REPORT.md` |
+| `ask-dao-machine doctor` / `data fetch` | 环境自查 / 取 OEIS 参照系（约 32MB） |
+| `ask-dao-machine mcp` | 以 **MCP server** 方式运行，供宿主挂载（见下节） |
+| `python tools/run_paths.py problem --input daily --q "…"` | 日常疑问 → 类型 + 判定路由 + 科学问题 |
+| `python tools/run_paths.py imagine --word 记忆调性` | 造词 → 概念链（组词/拆词/还原造句/成段/解释） |
+
+### 挂到 Agent 宿主：Claude Code / DSH / Cursor / Codex
+
+一份实现、三种挂法，**已实测**的是前三行：
+
+| 宿主 | 挂法 | 一条命令 | 状态 |
+|---|---|---|---|
+| 任何 shell（**Claude Code**、Codex、CI） | CLI | `ask-dao-machine paper …` | ✅ 实测 |
+| **Claude Code / Cursor / Continue** | MCP server（项目 `.mcp.json`） | `python tools/install_integrations.py` | ✅ 配置已生成 |
+| **DSH** | 技能目录（`.dsh/skills/`） | 同上 | ✅ 本机热加载验证通过 |
+| **DSH** | MCP client 插件行（`cordis.yml`） | 见 `install_integrations.py` 输出片段 | ⬜ 未在本机挂（片段已给全） |
+| GitHub | Action | 论文进 `papers/` 推送即评论回问题 | ✅ 已跑通 |
+
+```bash
+python tools/install_integrations.py          # 项目级：CC + DSH 技能目录 + .mcp.json
+python tools/install_integrations.py --user   # 用户级：~/.claude/skills · ~/.dsh/skills · ~/.agents/skills
+python tools/install_integrations.py --check  # 只检查现状
+```
+
+技能源文件只有一份：`integrations/skill/SKILL.md`（写入各宿主目录后内容一致，`--check` 可验证）。
+`ask-dao-machine mcp` 暴露 5 个工具：`ask_dao_limits`（诚实边界，先读）、`ask_dao_problem`、
+`ask_dao_imagine`、`ask_dao_paper`、`ask_dao_perceive`；宿主侧工具名形如
+`mcp__askdao__ask_dao_paper`（DSH 与 Claude Code 同款约定）。
+
+### 全部命令
 
 ```bash
 # ① 全引擎 + 可视化 + 新颖性门
@@ -285,6 +350,7 @@ pip install -e ".[dev]" && pytest -q
 | [**问题路手册**](docs/guide/problem-path.md) | 三种输入 / 反例驱动 / 问题树 L0–L5 / 新颖性门 |
 | [**想象路手册**](docs/guide/imagination-path.md) | 五步流程 / 深度变量 d / 成段范例 / 常见误区 |
 | [**什么算新知识**](docs/guide/new-knowledge.md) | 三层问题发现模式 / 两种新知识产生方式 / 显著性 |
+| [**生物医学完整演示**](docs/guide/demo-biomed.md) | 真实论文 → 54 条问题 / 11 类方法学缺口 / E-value 真算数 |
 | [**AI4S 接口**](docs/guide/ai4s.md) | 问题清单格式 / 裁决回灌 / 闭环 |
 | [**结果与证据**](docs/guide/results.md) | 全部可复核数字 |
 | [**诚实边界**](docs/guide/honesty.md) | 四条硬边界 / 血泪教训 |
@@ -317,7 +383,8 @@ ask-dao-machine/
 │   ├── logo.png                # 书法「道」logo
 │   ├── architecture.svg        # 系统架构图
 │   └── problem_tree.svg        # 问题生成树图
-├── src/ask_dao_machine/        # 包：引擎 / 判定器 / 母题库 / 可视化 / CLI
+├── src/ask_dao_machine/        # 包：引擎 / 判定器 / 母题库 / 可视化 / CLI / MCP server
+├── integrations/skill/         # 一份 SKILL.md，装进 Claude Code / DSH / agents 技能目录
 ├── tools/                      # ~100 个工具（两条路的引擎与探针）
 ├── docs/
 │   ├── index.md                # GitHub Pages 首页

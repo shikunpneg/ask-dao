@@ -47,20 +47,11 @@ def _dispatch(argv):
         from . import perceive as perceive_mod
         return perceive_mod.main(a.paths, out_dir=a.out)
     if head == "paper":
-        ap = argparse.ArgumentParser(
-            prog="ask-dao-machine paper",
-            description="输入论文（.md/.txt/.pdf/.docx/.epub 或目录），输出问题清单 + 一页人话报告",
-            epilog=("例子:\n  ask-dao-machine paper papers/\n"
-                    "  ask-dao-machine paper paper.pdf --out out/papers\n"
-                    "  产出：problems_paper.json（含「作者已提出」与「机器新提出」两类标注）与 REPORT.md\n"),
-            formatter_class=argparse.RawDescriptionHelpFormatter)
-        ap.add_argument("paths", nargs="+", help="论文文件或目录")
-        ap.add_argument("--out", default=str(Path.cwd() / "out" / "papers"), help="输出目录")
-        ap.add_argument("--per-type", type=int, default=8, help="每类机制最多产出多少条（默认 8）")
-        a = ap.parse_args(argv[1:])
         from . import paper as paper_mod
-        rc = paper_mod.main(a.paths, out_dir=a.out)
-        return rc
+        return paper_mod.main(argv[1:])
+    if head == "mcp":
+        from . import mcp as mcp_mod
+        return mcp_mod.main(argv[1:])
     if head == "doctor":
         ap = argparse.ArgumentParser(prog="ask-dao-machine doctor",
                                      description="环境自查：Python / 包 / 引擎 / 参照系 / 输出目录 / 测试")
@@ -94,6 +85,7 @@ def main(argv=None):
         epilog=("子命令:\n"
                 "  paper <文件/目录...>    输入论文 → 输出问题清单 + REPORT.md\n"
                 "  perceive [图像/目录]    输入图像（经验）→ 输出带判定路由的问题\n"
+                "  mcp                     以 MCP server 方式运行（stdio，供 Claude Code / DSH / Cursor 等挂载）\n"
                 "  report [--out DIR]      把一次跑批汇总成一页人话（写 <out>/REPORT.md）\n"
                 "  doctor                  环境自查（缺什么、下一步做什么）\n"
                 "  data fetch [--force]    取 OEIS 参照系（data/stripped.gz，约 32MB）\n"

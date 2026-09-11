@@ -181,7 +181,8 @@ def _sentences(text: str):
             yield s
 
 
-def mine(text: str, source: str, max_per_type: int = 8) -> list[dict]:
+def mine(text: str, source: str, max_per_type: int = 8, domain: str = "auto") -> list[dict]:
+    """三种通用机制 + （可选）领域包。domain: auto | biomed | none"""
     out: list[dict] = []
     seen = set()
     counters = {"①作者自陈未解": 0, "②文本张力": 0, "③结构追问": 0}
@@ -249,11 +250,26 @@ def mine(text: str, source: str, max_per_type: int = 8) -> list[dict]:
                     "route": route,
                     "status": "悬置(开放)",
                 })
+    # ④ 领域包：生物医学 —— 把方法学缺口写成可判形式（不主张世界新）
+    use_biomed = domain in ("biomed", "biomedical", "生物医学")
+    if domain == "auto":
+        try:
+            from . import domains_biomed as _bm
+            use_biomed = _bm.detect_vocab(text) >= 25
+        except Exception:                                      # noqa: BLE001
+            use_biomed = False
+    if use_biomed:
+        try:
+            from . import domains_biomed as _bm
+            out += _bm.mine(text, source, _sentences(text), max_per_rule=3)
+        except Exception as e:                                 # noqa: BLE001
+            print(f"[warn] 生物医学包未生效: {e}", file=sys.stderr)
     return out
 
 
 # ── 主流程 ────────────────────────────────────────────────────────────
-def run(paths, out_dir="out/papers", max_per_type: int = 8, quiet=False) -> dict:
+def run(paths, out_dir="out/papers", max_per_type: int = 8, quiet=False,
+        domain: str = "auto") -> dict:
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     files = collect_inputs([Path(p) for p in paths])
@@ -270,27 +286,29 @@ def run(paths, out_dir="out/papers", max_per_type: int = 8, quiet=False) -> dict
             per_file.append({"file": str(f), "chars": 0, "method": "error", "problems": 0,
                              "error": str(e)})
             continue
-        got = mine(text, f.name, max_per_type=max_per_type)
+        got = mine(text, f.name, max_per_type=max_per_type, domain=domain)
         problems += got
         per_file.append({"file": str(f), "chars": len(text), "method": how, "problems": len(got)})
         if not quiet:
             print(f"[{f.name}] {len(text):,} 字符 | 抽取方式={how} | 产出问题 {len(got)} 条")
 
     n_author = sum(1 for p in problems if p["is_author_stated"])
+    n_bm = sum(1 for p in problems if p.get("domain") == "生物医学")
     payload = {
         "domain": "paper",
         "generator": "ask-dao-machine/paper.py",
         "files": [p["file"] for p in per_file],
         "per_file": per_file,
         "counts": {"total": len(problems), "author_stated": n_author,
-                   "machine_raised": len(problems) - n_author},
+                   "machine_raised": len(problems) - n_author, "biomed_pack": n_bm},
         "roots": [{"id": "PAPER_ROOT", "label": f"论文输入：{len(files)} 个文件"}],
         "problems": problems,
     }
     dst = out / "problems_paper.json"
     dst.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
     if not quiet:
-        print(f"\n合计 {len(problems)} 条：作者已提出 {n_author} 条 · 机器新提出 {len(problems)-n_author} 条")
+        print(f"\n合计 {len(problems)} 条：作者已提出 {n_author} 条 · 机器新提出 {len(problems)-n_author} 条"
+              + (f"（其中生物医学方法学追问 {n_bm} 条）" if n_bm else ""))
         print(f"→ {dst}")
     return payload
 
@@ -320,11 +338,28 @@ def main(argv=None, out_dir="out/papers") -> int:
     if not argv:
         print(__doc__)
         return 2
-    payload = run(argv, out_dir=out_dir)
+    import argparse
+    ap = argparse.ArgumentParser(
+        prog="ask-dao-machine paper",
+        description="输入论文（.md/.txt/.pdf/.docx/.epub 或目录），输出问题清单 + 一页人话报告",
+        epilog=("例子:\n  ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed\n"
+                "  ask-dao-machine paper paper.pdf --out out/papers --per-type 8\n"
+                "  产出：problems_paper.json（「作者已提出」与「机器新提出」分开标注）+ REPORT.md\n"),
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("paths", nargs="*", help="论文文件或目录")
+    ap.add_argument("--out", default=out_dir, help="输出目录")
+    ap.add_argument("--per-type", type=int, default=8, help="每类机制最多产出多少条（默认 8）")
+    ap.add_argument("--domain", choices=["auto", "biomed", "none"], default="auto",
+                    help="领域包：auto=按词表自动判断，biomed=强制生物医学方法学追问，none=只用通用三机制")
+    a = ap.parse_args(argv)
+    if not a.paths:
+        print(__doc__)
+        return 2
+    payload = run(a.paths, out_dir=a.out, max_per_type=a.per_type, domain=a.domain)
     per = payload.get("per_file") or []
     if payload.get("problems"):
         from . import report as report_mod
-        report_mod.main(out_dir)                    # 复用一页人话报告
+        report_mod.main(a.out)                    # 复用一页人话报告
         return 0
     # 一条都没产出：区分"路径不对/格式不支持"（失败）与"文件为空"（空结果）
     failed = [p for p in per if p.get("method") == "error"]

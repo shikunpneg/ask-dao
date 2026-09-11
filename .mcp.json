@@ -1,0 +1,16 @@
+{
+ "mcpServers": {
+  "ask-dao": {
+   "command": "python",
+   "args": [
+    "-m",
+    "ask_dao_machine",
+    "mcp"
+   ],
+   "env": {
+    "PYTHONPATH": "src",
+    "PYTHONIOENCODING": "utf-8"
+   }
+  }
+ }
+}
