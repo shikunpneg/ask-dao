@@ -239,7 +239,13 @@ pip install -e .               # 只要 Python 3.9+，核心零依赖
 export PYTHONPATH=src          # Windows PowerShell: $env:PYTHONPATH='src'
 ```
 
-装好后命令行是 `ask-dao-machine`（等价 `python -m ask_dao_machine`）。
+装好后命令行是 `ask-dao-machine`（等价 `python -m ask_dao_machine`）。**直接敲它**，看到的是「道」的徽标与命令速查：
+
+```bash
+$ ask-dao-machine        # 进去就知道机器开着（徽标 + 速查；TTY 才上色）
+```
+
+![进入时的徽标与命令速查](docs/assets/cli-banner.png)
 
 ### 真实使用（生物医学）：一次运行的完整回放
 
@@ -286,14 +292,15 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
 
 | 命令 | 输入 → 输出 |
 |---|---|
+| `ask-dao-machine <回车>` | **进来看徽标 + 速查**（TTY 上色；`NO_COLOR=1` 关闭） |
 | `ask-dao-machine paper <文件/目录> [--domain auto\|biomed\|none]` | 论文/语料 → 问题清单（「作者已提出」与「机器新提出」分开标注） |
+| `ask-dao-machine ask "<日常疑问>"` | 疑问 → 类型 + 判定路由 + 科学问题 |
+| `ask-dao-machine imagine <自造词> [--depth d]` | 造词 → 概念（组词/拆词/还原造句/成段/解释） |
 | `ask-dao-machine perceive <图片/目录>` | 图像（经验）→ 结构特征 → 带判定路由的问题 |
 | `ask-dao-machine all` | 86 母题 → 问题树 L0–L5 → 领域融合（+ 新颖性门） |
 | `ask-dao-machine report [--out DIR]` | 把一次跑批汇总成一页人话 `REPORT.md` |
 | `ask-dao-machine doctor` / `data fetch` | 环境自查 / 取 OEIS 参照系（约 32MB） |
 | `ask-dao-machine mcp` | 以 **MCP server** 方式运行，供宿主挂载（见下节） |
-| `python tools/run_paths.py problem --input daily --q "…"` | 日常疑问 → 类型 + 判定路由 + 科学问题 |
-| `python tools/run_paths.py imagine --word 记忆调性` | 造词 → 概念链（组词/拆词/还原造句/成段/解释） |
 
 ### 挂到 Agent 宿主：Claude Code / DSH / Cursor / Codex
 
@@ -327,12 +334,12 @@ python -m ask_dao_machine all --out out/demo
 
 ```bash
 # ② 问题路：日常问题 → 科学问题
-python tools/run_paths.py problem --input daily --q "为什么黑洞会蒸发?"
+ask-dao-machine ask "为什么黑洞会蒸发?"
 ```
 
 ```bash
 # ③ 想象路：词 → 五步（组词/拆词/还原造句/成段/解释）
-python tools/run_paths.py imagine --word 记忆调性 --depth 3
+ask-dao-machine imagine 记忆调性 --depth 3
 ```
 
 ```bash
@@ -367,6 +374,7 @@ pip install -e ".[dev]" && pytest -q
 | [**问题路手册**](docs/guide/problem-path.md) | 三种输入 / 反例驱动 / 问题树 L0–L5 / 新颖性门 |
 | [**想象路手册**](docs/guide/imagination-path.md) | 五步流程 / 深度变量 d / 成段范例 / 常见误区 |
 | [**什么算新知识**](docs/guide/new-knowledge.md) | 三层问题发现模式 / 两种新知识产生方式 / 显著性 |
+| [**命令行**](docs/guide/cli.md) | 徽标与「道」怎么来的 / 全部命令 / 可复用的三条约定 |
 | [**生物医学完整演示**](docs/guide/demo-biomed.md) | 真实论文 → 54 条问题 / 11 类方法学缺口 / E-value 真算数 |
 | [**AI4S 接口**](docs/guide/ai4s.md) | 问题清单格式 / 裁决回灌 / 闭环 |
 | [**结果与证据**](docs/guide/results.md) | 全部可复核数字 |

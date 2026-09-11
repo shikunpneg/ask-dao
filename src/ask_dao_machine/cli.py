@@ -22,6 +22,77 @@ DOMAINS_HINT = ("aesthetics / combo / counterex / digit_base / direction / fusio
                 "ling / math / records / sparse / all")
 
 
+def _repo_tools():
+    """源码运行时复用 tools/ 里的判定器（question_refiner 等）。装成 wheel 时不可用。"""
+    import sys as _s
+    for base in (Path.cwd(), Path(__file__).resolve().parents[2]):
+        for p in [base, *base.parents]:
+            if (p / "tools" / "run_paths.py").exists():
+                tp = str(p / "tools")
+                if tp not in _s.path:
+                    _s.path.insert(0, tp)
+                return p
+    return None
+
+
+def _cmd_ask(argv):
+    """日常疑问 → 类型 + 判定路由 + 科学问题（可复用的单条命令）。"""
+    ap = argparse.ArgumentParser(
+        prog="ask-dao-machine ask",
+        description="日常疑问 → 类型判定 + 判定路由 + 形式化后的科学问题",
+        epilog=("例子:\n  ask-dao-machine ask \"为什么有些数学猜想几十年都没人证明出来？\"\n"
+                "  ask-dao-machine ask \"为什么鸟群能同步转向？\" --out out/ask\n"),
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("question", nargs="+", help="疑问原文（不用加引号也行，会拼起来）")
+    ap.add_argument("--out", default=str(Path.cwd() / "out" / "ask"), help="输出目录")
+    a = ap.parse_args(argv)
+    q = " ".join(a.question).strip()
+    if not _repo_tools():
+        print("这条命令需要仓库里的 tools/（用源码运行或 pip install -e .）；"
+              "若只需要论文支线，请用 ask-dao-machine paper。", file=sys.stderr)
+        return 2
+    import question_refiner as qr
+    r = qr.refine({"daily_question": q, "domain": "通用"})
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    rec = {"id": "ASK01", "source": "<cli ask>", "domain": "日常疑问",
+           "type": f"日常疑问→{r.get('kind')}", "is_author_stated": False,
+           "evidence": q, "statement": r.get("scientific_question"),
+           "route": r.get("judge_route"), "status": "待实验/待评审",
+           "kind": r.get("kind")}
+    (out / "problems_ask.json").write_text(
+        json.dumps({"domain": "ask", "generator": "ask-dao-machine/cli.py ask",
+                    "counts": {"total": 1, "author_stated": 0, "machine_raised": 1},
+                    "problems": [rec]}, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"疑问：{q}")
+    print(f"类型：{r.get('kind')}　判定路由：{r.get('judge_route')}")
+    print(f"科学问题：{r.get('scientific_question')}")
+    print(f"→ {out / 'problems_ask.json'}（可接 ask-dao-machine report --out {out}）")
+    return 0
+
+
+def _cmd_imagine(argv):
+    """自造词 → 概念链（组词/拆词/还原造句/成段/解释）。"""
+    ap = argparse.ArgumentParser(
+        prog="ask-dao-machine imagine",
+        description="想象路：自造词 → 概念（标准是「被理解」，不是真伪）",
+        epilog=("例子:\n  ask-dao-machine imagine 记忆调性 --depth 3\n"
+                "  ask-dao-machine imagine --pairs 经济 信息\n"),
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("word", nargs="?", help="要理解的概念词（与 --pairs 二选一）")
+    ap.add_argument("--pairs", nargs=2, metavar=("A", "B"), help="用两个词组合出新概念")
+    ap.add_argument("--depth", type=int, default=3, help="拆分深度 d（默认 3）")
+    a = ap.parse_args(argv)
+    if not a.word and not a.pairs:
+        ap.error("给一个词，或用 --pairs A B")
+    if not _repo_tools():
+        print("这条命令需要仓库里的 tools/（用源码运行或 pip install -e .）。", file=sys.stderr)
+        return 2
+    import run_paths as rp
+    rp.run_imagine(argparse.Namespace(word=a.word, pairs=a.pairs, depth=a.depth))
+    return 0
+
+
 def _dispatch(argv):
     """子命令分发：report / doctor / data。返回 exit code，或 None（走引擎跑批）。"""
     if not argv:
@@ -52,6 +123,10 @@ def _dispatch(argv):
     if head == "mcp":
         from . import mcp as mcp_mod
         return mcp_mod.main(argv[1:])
+    if head == "ask":
+        return _cmd_ask(argv[1:])
+    if head == "imagine":
+        return _cmd_imagine(argv[1:])
     if head == "doctor":
         ap = argparse.ArgumentParser(prog="ask-dao-machine doctor",
                                      description="环境自查：Python / 包 / 引擎 / 参照系 / 输出目录 / 测试")
@@ -75,6 +150,26 @@ def main(argv=None):
     _console.setup()                     # Windows 控制台非 UTF-8 时也能打印中文
     argv = list(sys.argv[1:] if argv is None else argv)
 
+    from . import banner as banner_mod
+    # 裸命令 / help / --version：进来看「道」的徽标与速查（管道里自动不带颜色）
+    if not argv:
+        banner_mod.show()
+        return 0
+    if argv[0] in ("help", "?", "--help", "-h"):
+        banner_mod.show()
+        print(banner_mod.usage_line())
+        print()
+        print("子命令速查（每条都支持 --help）：")
+        for cmd, desc in banner_mod.COMMANDS:
+            print(f"  ask-dao-machine {cmd:<22} {desc}")
+        print("\n领域跑批（多进程引擎）："
+              f"ask-dao-machine <{DOMAINS_HINT}> [--out DIR] [--limits JSON]"
+              " [--no-viz] [--no-novelty]")
+        return 0
+    if argv[0] in ("--version", "-V", "version"):
+        print(f"ask-dao-machine {banner_mod.version()}")
+        return 0
+
     rc = _dispatch(argv)
     if rc is not None:
         return rc
@@ -84,15 +179,19 @@ def main(argv=None):
         description="问题制造器 CLI —— 两条路（问题路产问题 / 想象路产概念）+ 母题库 + 判定器 + 出处链",
         epilog=("子命令:\n"
                 "  paper <文件/目录...>    输入论文 → 输出问题清单 + REPORT.md\n"
+                "  ask \"<日常疑问>\"        疑问 → 类型 + 判定路由 + 科学问题\n"
+                "  imagine <自造词>        造词 → 概念（五步）\n"
                 "  perceive [图像/目录]    输入图像（经验）→ 输出带判定路由的问题\n"
                 "  mcp                     以 MCP server 方式运行（stdio，供 Claude Code / DSH / Cursor 等挂载）\n"
                 "  report [--out DIR]      把一次跑批汇总成一页人话（写 <out>/REPORT.md）\n"
                 "  doctor                  环境自查（缺什么、下一步做什么）\n"
                 "  data fetch [--force]    取 OEIS 参照系（data/stripped.gz，约 32MB）\n"
                 "\n例子:\n"
+                "  ask-dao-machine\n"
                 "  ask-dao-machine all --out out/demo\n"
                 "  ask-dao-machine math --limits '{\"N\":100000,\"M\":200000}'\n"
                 "  ask-dao-machine paper papers/ --out out/papers\n"
+                "  ask-dao-machine ask \"为什么有些数学猜想几十年都没人证明出来？\"\n"
                 "  ask-dao-machine report --out out/demo\n"),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

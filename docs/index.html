@@ -484,13 +484,13 @@
     <tr><th style="width:150px">输入</th><th style="width:330px">入口（可跑的命令）</th><th>产出</th></tr>
     <tr><td>经验（图像）</td><td class="mono">ask-dao-machine perceive 图片/</td>
       <td>结构特征（对称度/块熵/边界密度/占比）→ 带判定路由的视觉问题</td></tr>
-    <tr><td>日常问题</td><td class="mono">run_paths.py problem --input daily --q "…"</td>
+    <tr><td>日常问题</td><td class="mono">ask-dao-machine ask "…"</td>
       <td>类型判定 + 判定路由 → 科学问题</td></tr>
     <tr><td>已知未解 / 科学问题</td><td class="mono">scihist_to_problems.py · problem_lineage.py</td>
       <td>正式问题 + 谱系（祖先/自身/后代/侧枝）</td></tr>
     <tr><td>母题</td><td class="mono">ask-dao-machine &lt;域&gt;（86 个母题）</td>
       <td>问题树：母题 → 前问题 → 科学问题 → 基础领域 → 问题树 L0–L5 → 领域融合</td></tr>
-    <tr><td>造词</td><td class="mono">run_paths.py imagine --word / --pairs</td>
+    <tr><td>造词</td><td class="mono">ask-dao-machine imagine <词></td>
       <td>概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释）</td></tr>
     <tr><td>论文 / 语料</td><td class="mono">ask-dao-machine paper 文件或目录</td>
       <td>问题清单（「作者已提出」与「机器新提出」分开标注）</td></tr>
@@ -526,6 +526,19 @@
     <div class="card" data-delay="5"><div class="idx">06</div><h3>想象路 · Imagination Path</h3>
       <p>产概念，需解释。两条路互相独立。</p></div>
   </div>
+
+  <div class="label">Entry</div>
+  <h3 style="font-size:19px;margin:6px 0 10px">敲 <code>ask-dao-machine</code> 进去看到的东西</h3>
+  <p class="lead" style="margin-bottom:14px">没有参数时它先报身份：<strong>「道」的徽标</strong> + 命令速查。
+    徽标不是手绘的图案，是把系统字体里「道」的位图取出来转成字符画，并做过反向校验
+    （字符画还原回位图与原字体位图逐点一致）；着色只用朱砂，正文用终端默认前景色，
+    浅底深底都不会看不见。子命令不打印徽标、不上色，因此可以直接进管道。</p>
+
+  <figure class="figure">
+    <img src="assets/cli-banner.png" alt="ask-dao-machine 进入时的道徽标与命令速查">
+    <figcaption>真实输出（<code>ASK_DAO_COLOR=1</code> 保留颜色后的回放）·
+      全部命令与可复用约定见 <a class="inline" href="guide/cli.html">命令行</a></figcaption>
+  </figure>
 
   <div class="label">Real Use · Biomedicine</div>
   <h3 style="font-size:19px;margin:6px 0 10px">真实使用：一篇开放获取论文的全过程（含真实命令）</h3>
