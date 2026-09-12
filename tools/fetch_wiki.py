@@ -129,7 +129,8 @@ def main():
             save_failed(failed)
             print(f"[记] {term} 抓取失败, 已记入 _failed.json", flush=True)
 
-    print(f"完成。成功 {len(WIKI_DIR.glob('*.json'))-1} 个, 失败 {len(load_failed())} 个", flush=True)
+    n_ok = len([p for p in WIKI_DIR.glob("*.json") if p.stem != "_failed"])
+    print(f"完成。成功 {n_ok} 个, 失败 {len(load_failed())} 个", flush=True)
 
 
 if __name__ == "__main__":

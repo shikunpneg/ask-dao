@@ -26,6 +26,13 @@ TOOLS = HERE / "tools"
 
 
 def run(cmd, tag, env_extra=None, timeout_round=3600, extra_args=None):
+    """跑一个链路工具。
+
+    注意(踩过的坑): 这里**不能**用 subprocess.run(capture_output=True)。
+    子进程链会拉起 Edge(selenium), Edge 会继承 stdout 管道句柄; 子进程退出后
+    管道仍不 EOF, 父进程的 communicate() 就永久阻塞 —— 整个常驻总控会卡死在
+    某一轮且 CPU≈0。改为直接把子进程输出重定向到日志文件, 不建管道。
+    """
     env = os.environ.copy()
     if env_extra:
         env.update(env_extra)
@@ -34,15 +41,20 @@ def run(cmd, tag, env_extra=None, timeout_round=3600, extra_args=None):
         cmd_parts.extend(extra_args)
     print(f"[{tag}] 启动 {' '.join(cmd_parts[-3:])}", flush=True)
     t0 = time.time()
+    log_path = HERE / "out" / "resident_children.log"
+    log_path.parent.mkdir(parents=True, exist_ok=True)
     try:
-        r = subprocess.run(cmd_parts, timeout=timeout_round,
-                           capture_output=True, text=True, encoding="utf-8", errors="replace",
-                           env=env)
+        with open(log_path, "ab") as lf:
+            lf.write(f"\n===== [{tag}] {' '.join(cmd_parts[-3:])} @ {time.strftime('%F %T')} =====\n"
+                     .encode("utf-8"))
+            lf.flush()
+            r = subprocess.run(cmd_parts, timeout=timeout_round,
+                               stdout=lf, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL,
+                               env=env)
         dt = time.time() - t0
         print(f"[{tag}] 完成 {dt:.0f}s rc={r.returncode}", flush=True)
-        if r.returncode != 0:
-            err = (r.stderr or "").encode("utf-8", "replace")[-400:].decode("utf-8", "replace")
-            print(f"[{tag}] stderr: {err}", flush=True)
+        with open(log_path, "ab") as lf:
+            lf.write(f"----- [{tag}] rc={r.returncode} {dt:.0f}s -----\n".encode("utf-8"))
         return r.returncode
     except subprocess.TimeoutExpired:
         print(f"[{tag}] 工具超时({timeout_round}s)被杀, 总控继续", flush=True)

@@ -163,8 +163,11 @@ def question(a, b):
 
 
 # 检索控制: 默认只对重点组合检索(避免打爆 arXiv / 拖慢全量)
+# 注: 这里的词必须由 WORDS 里的两个词拼成, 否则永远不会被生成(踩过的坑:
+#     原先写的「编码公理」「进化发育」里的「公理」「进化」不在词表, 是两条死条目)
 RETRIEVE_ONLY = {"熵选择", "责任催化", "熵市场", "公理化记忆", "记忆压缩",
-                 "意识拓扑", "正义测度", "编码公理", "进化发育"}
+                 "意识拓扑", "正义测度", "编码公理化", "演化发育"}
+_UNREACHABLE = {t for t in RETRIEVE_ONLY if not any(a + b == t for a in WORDS for b in WORDS)}
 
 
 def understand_pair(args):
@@ -198,6 +201,9 @@ def main():
     print("词的认真理解器 —— 每个组合都有意义(不可动摇原则)")
     print("=" * 100)
     print(f"  词数 {len(words)}, 组合 {len(words)**2}, 并行 {mp.cpu_count()} 核")
+    if _UNREACHABLE:
+        print(f"  ⚠ RETRIEVE_ONLY 里有 {len(_UNREACHABLE)} 条词不在 WORDS 中, 永远不会被生成: "
+              f"{sorted(_UNREACHABLE)}", file=sys.stderr)
 
     pairs = [(a, b) for a in words for b in words if a != b]
     workers = int(os.environ.get("POOL_WORKERS", str(mp.cpu_count())))
