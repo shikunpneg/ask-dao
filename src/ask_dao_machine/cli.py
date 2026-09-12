@@ -53,7 +53,11 @@ def _cmd_ask(argv):
                 "说明：问句不会被截断；域判不出来时不会硬拼成「在通用中…」这种怪句。\n"),
         formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("question", nargs="+", help="疑问原文（不用加引号也行，会拼起来）")
-    ap.add_argument("--out", default=str(Path.cwd() / "out" / "ask"), help="输出根目录")
+    ap.add_argument("--out", default=None,
+                    help="输出根目录（默认 <当前目录>/out；与 paper/run 共用同一个根）")
+    ap.add_argument("--json", action="store_true",
+                    help="只把结果 JSON 打到 stdout（日志走 stderr，方便接管道）")
+    ap.add_argument("--quiet", "-q", action="store_true", help="少说话")
     ap.add_argument("--stop", choices=["prequestion", "scientific", "domain", "tree", "ai4s"],
                     default="scientific", help="终止点（默认 scientific）")
     ap.add_argument("--depth", choices=["shallow", "normal", "deep"], default="normal",
@@ -68,10 +72,16 @@ def _cmd_ask(argv):
               "若只需要论文支线，请用 ask-dao-machine paper。", file=sys.stderr)
         return 2
     from . import flow as flow_mod
+    from . import ux as ux_mod
     n_fol = {"shallow": 2, "normal": 4, "deep": 4}[a.depth]
-    r = flow_mod.run_question(q, Path(a.out), stop=a.stop, n_followups=n_fol,
+    root = ux_mod.out_root(a.out)
+    r = flow_mod.run_question(q, ux_mod.run_dir(root, "ask"), stop=a.stop, n_followups=n_fol,
                               max_total=a.max_total, overwrite=a.overwrite,
-                              domain=a.field)
+                              quiet=(a.quiet or a.json), domain=a.field)
+    if a.json:
+        ux_mod.emit_json(r)
+    elif r.get("problems"):
+        ux_mod.next_steps(out=root, kind="ask")
     return 0 if r.get("problems") else 2
 
 

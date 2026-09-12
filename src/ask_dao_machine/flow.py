@@ -29,6 +29,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent.parent
 
+from . import ux  # noqa: E402  （统一输出根目录 / 下一步提示 / JSON 输出）
+
 
 # ── 基础领域关键词表（粗分，够用；命中最多者胜，平手按声明顺序） ──────
 FIELDS: list[tuple[str, list[str]]] = [
@@ -688,7 +690,12 @@ def main(argv=None, out_dir="out/runs") -> int:
                     help="想象路：过经验桥（检索现实经验作脚手架）")
     ap.add_argument("--no-bridge", dest="bridge", action="store_false",
                     help="想象路：不过桥（默认）")
-    ap.add_argument("--out", default=out_dir, help="输出根目录（默认 out/runs）")
+    ap.add_argument("--out", default=None,
+                    help="输出根目录（默认 <当前目录>/out；所有命令共用同一个根，不再各写各的）")
+    ap.add_argument("--json", action="store_true",
+                    help="只把结果 JSON 打到 stdout（人看的日志走 stderr，方便接管道）")
+    ap.add_argument("--quiet", "-q", action="store_true", help="少说话（只留结果路径）")
+    ap.add_argument("--list", action="store_true", help="列出跑过的产物与位置，不跑新的")
     ap.add_argument("--depth", choices=["shallow", "normal", "deep"], default="normal",
                     help="问题深度档（shallow 3 / normal 8 / deep 20 条每类）")
     ap.add_argument("--per-type", type=int, default=None, help="覆盖 depth 的每类条数")
@@ -704,7 +711,12 @@ def main(argv=None, out_dir="out/runs") -> int:
     essences = parse_essences(a.essence)
     has_question = bool(a.question)
     path = a.path or ("imagination" if words and not a.paths and not has_question else "problem")
-    out_root = Path(a.out)
+    out_root = ux.out_root(a.out)
+    quiet = a.quiet or a.json
+
+    if getattr(a, "list", False):
+        ux.list_runs(out_root, as_json=a.json)
+        return 0
 
     DEPTHS = {"shallow": (3, 2), "normal": (8, 4), "deep": (20, 4)}
     d_per, d_fol = DEPTHS[a.depth]
@@ -716,15 +728,15 @@ def main(argv=None, out_dir="out/runs") -> int:
         if not words:
             ap.error("想象路需要 --words（例：--words 熵,记忆，或自造词 --words 折叠）")
         results["imagination"] = run_imagination(
-            words, out_root, bridge=bool(a.bridge), overwrite=a.overwrite,
-            essences=essences)
+            words, ux.run_dir(out_root, "words"), bridge=bool(a.bridge),
+            overwrite=a.overwrite, quiet=quiet, essences=essences)
 
     # ── 问题路 ──
     if path in ("problem", "both"):
         if has_question:
             results["problem"] = run_question(
-                a.question, out_root / "ask", stop=a.stop, n_followups=d_fol,
-                max_total=a.max_total, overwrite=a.overwrite, domain=a.field)
+                a.question, ux.run_dir(out_root, "ask"), stop=a.stop, n_followups=d_fol,
+                max_total=a.max_total, overwrite=a.overwrite, quiet=quiet, domain=a.field)
         elif not a.paths:
             if path == "problem":
                 ap.error("问题路需要一个输入：论文/图片/目录，或用 --question \"你的疑问\"")
@@ -733,7 +745,8 @@ def main(argv=None, out_dir="out/runs") -> int:
             if kind == "none":
                 print("没找到可读入的文件。", file=sys.stderr)
                 return 2
-            print(f"输入类型：{kind}（{len(files)} 个文件）　路：问题路　终止点：{a.stop}")
+            if not quiet:
+                print(f"输入类型：{kind}（{len(files)} 个文件）　路：问题路　终止点：{a.stop}", file=sys.stderr)
             if kind == "image":
                 try:
                     from . import perceive as perceive_mod
@@ -741,12 +754,10 @@ def main(argv=None, out_dir="out/runs") -> int:
                     print(f"图像输入需要 numpy 与 pillow（当前缺：{e.name}）。", file=sys.stderr)
                     print('  装：pip install numpy pillow', file=sys.stderr)
                     return 2
-                pp = perceive_mod.run([str(f) for f in files],
-                                      out_dir=str(out_root / "perceive"),
-                                      quiet=True)
+                outd = ux.run_dir(out_root, "image")
+                pp = perceive_mod.run([str(f) for f in files], out_dir=str(outd), quiet=True)
                 plist = pp.get("problems") or []
                 _stage_problem(plist, a.stop)
-                outd = out_root / "perceive"
                 outd.mkdir(parents=True, exist_ok=True)
                 order = ["prequestion", "scientific", "domain", "tree", "ai4s"]
                 pp["path"] = "problem"
@@ -761,19 +772,30 @@ def main(argv=None, out_dir="out/runs") -> int:
                 pp["by_layer"] = {LAYERS.get(k, str(k)): v for k, v in sorted(bl.items())}
                 (outd / "problems_perceive.json").write_text(
                     json.dumps(pp, ensure_ascii=False, indent=1), encoding="utf-8")
-                print(f"图像 → {len(plist)} 条问题 → {outd}")
+                print(f"图像 → {len(plist)} 条问题 → {outd}", file=sys.stderr)
                 _print_problem_summary(pp, a.stop)
                 results["problem"] = pp
             else:
-                payload = run_problem(files, a.stop, out_root / "paper",
+                payload = run_problem(files, a.stop, ux.run_dir(out_root, "paper"),
                                       per_type=per_type, n_followups=d_fol,
                                       max_total=a.max_total, domain=a.domain,
-                                      overwrite=a.overwrite)
+                                      overwrite=a.overwrite, quiet=quiet)
                 results["problem"] = payload
                 _print_problem_summary(payload, a.stop)
 
     if not results:
         return 2
+    # ── 收尾：JSON 输出 / 下一步提示 ──
+    if a.json:
+        ux.emit_json(results)
+    else:
+        kinds = []
+        if "problem" in results:
+            kinds.append(results["problem"].get("input_kind") or "paper")
+        if "imagination" in results:
+            kinds.append("words")
+        for k in kinds:
+            ux.next_steps(out=out_root, kind=k)
     return 0
 
 
