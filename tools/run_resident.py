@@ -25,6 +25,47 @@ HERE = Path(__file__).resolve().parent.parent
 TOOLS = HERE / "tools"
 
 
+def _safe_workers(reserve_gb: float = 3.0, per_worker_gb: float = 0.7) -> int:
+    """按**可用提交量**算并行数，而不是无脑用满核。
+
+    踩过的坑（真实故障）：在 15.6GB 内存的机器上开满核(22 个 worker)，每个
+    multiprocessing worker 的 numpy 提交量约 630MB —— 合计约 14GB 提交量。
+    Windows 的提交限制 = 物理内存 + 页面文件，被吃光后再加载任何模型都会报
+    `OSError: 页面文件太小，无法完成操作。 (os error 1455)`（ERROR_COMMITMENT_LIMIT），
+    而且页面文件想长也长不了（磁盘只剩几 GB）。
+
+    所以：先看还剩多少提交量，留足余量，再决定开几个 worker。
+    """
+    import os
+    cpu = os.cpu_count() or 2
+    try:
+        import ctypes
+
+        class MEMORYSTATUSEX(ctypes.Structure):
+            _fields_ = [("dwLength", ctypes.c_ulong),
+                        ("dwMemoryLoad", ctypes.c_ulong),
+                        ("ullTotalPhys", ctypes.c_ulonglong),
+                        ("ullAvailPhys", ctypes.c_ulonglong),
+                        ("ullTotalPageFile", ctypes.c_ulonglong),
+                        ("ullAvailPageFile", ctypes.c_ulonglong),
+                        ("ullTotalVirtual", ctypes.c_ulonglong),
+                        ("ullAvailVirtual", ctypes.c_ulonglong),
+                        ("ullAvailExtendedVirtual", ctypes.c_ulonglong)]
+
+        st = MEMORYSTATUSEX()
+        st.dwLength = ctypes.sizeof(MEMORYSTATUSEX)
+        ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(st))
+        # 提交余量 ≈ 可用物理 + 可用页面文件
+        avail_gb = (st.ullAvailPhys + st.ullAvailPageFile) / (1024 ** 3)
+    except Exception:                                    # noqa: BLE001
+        avail_gb = 8.0
+    usable = max(avail_gb - reserve_gb, 0.5)
+    return max(1, min(cpu, int(usable / per_worker_gb)))
+
+
+SAFE_WORKERS = _safe_workers()
+
+
 def run(cmd, tag, env_extra=None, timeout_round=3600, extra_args=None):
     """跑一个链路工具。
 
@@ -66,7 +107,9 @@ GUIDE_FLAG_FILE = HERE / "data" / ".browser_search_done"
 
 def main():
     print("=" * 90, flush=True)
-    print("常驻长跑总控 · 三链路轮转 · 用满核 · 无超时", flush=True)
+    print("常驻长跑总控 · 三链路轮转 · 按可用提交量限核 · 无超时", flush=True)
+    print(f"  CPU {os.cpu_count()} 核；按当前可用提交量取 SAFE_WORKERS = {SAFE_WORKERS}"
+          f"（留 3GB 余量，避免加载模型时报 os error 1455）", flush=True)
     print("=" * 90, flush=True)
 
     # 引导步骤(首次): 全量浏览器搜索(搜索通道, 约 5-6h)
@@ -90,21 +133,24 @@ def main():
         round_no += 1
         print(f"\n########## ROUND {round_no} ##########", flush=True)
 
-        # 链路A: 扫描(满核)
-        run("all_domains_engine.py", f"R{round_no}·A扫描", timeout_round=2400)
-        run("parallel_factory.py", f"R{round_no}·A工厂", timeout_round=2400)
+        # 链路A: 扫描（按可用提交量限核；原来"满核"在 15.6GB 机器上会吃光提交量）
+        run("all_domains_engine.py", f"R{round_no}·A扫描",
+            env_extra={"POOL_WORKERS": str(SAFE_WORKERS)}, timeout_round=2400)
+        run("parallel_factory.py", f"R{round_no}·A工厂",
+            env_extra={"POOL_WORKERS": str(SAFE_WORKERS)}, timeout_round=2400)
 
         # 链路B: 融合
         for f in ("field_fusion.py", "deep_fusion.py", "fusion_territories.py"):
             run(f, f"R{round_no}·B融合·{f.split('_')[0]}", timeout_round=1800)
 
-        # 链路C: 想象(限核6, 不抢扫描)
+        # 链路C: 想象(限核, 不抢扫描)
         # 每轮先刷新经验语料(--quick 词条通道: 本地缓存, 秒级)
         run("browser_mass_search.py", f"R{round_no}·C经验语料",
             env_extra=None, timeout_round=600, extra_args=["--quick"])
+        c_workers = str(max(1, min(6, SAFE_WORKERS)))
         for f in ("word_fusion.py", "word_understand.py", "imagination_sentence.py"):
             run(f, f"R{round_no}·C想象·{f.split('_')[0]}",
-                env_extra={"POOL_WORKERS": "6"}, timeout_round=1800)
+                env_extra={"POOL_WORKERS": c_workers}, timeout_round=1800)
 
         # 每轮结束过 OEIS 门
         run("oeis_batch_gate.py", f"R{round_no}·OEIS门", timeout_round=1800)

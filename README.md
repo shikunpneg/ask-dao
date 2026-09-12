@@ -329,18 +329,52 @@ python -c "import json;d=json.load(open('out/biomed_demo/problems_paper.json',en
 
 ### 子命令
 
+**统一入口是 `run`**：给它一个输入，选走哪条路，选到哪一站停。
+
 | 命令 | 输入 → 输出 |
 |---|---|
-| `ask-dao-machine <回车>` | **进来看徽标 + 速查**（TTY 上色；`NO_COLOR=1` 关闭） |
-| `ask-dao-machine paper <文件/目录> [--domain auto\|biomed\|none]` | 论文/语料 → 问题清单（「作者已提出」与「机器新提出」分开标注） |
-| `ask-dao-machine ask "<日常疑问>"` | 疑问 → 类型 + 判定路由 + 科学问题 |
-| `ask-dao-machine imagine <自造词> [--depth d] [--bridge]` | 造词 → 概念（五步；`--bridge` 过经验桥） |
+| `ask-dao-machine <回车>` | **进来看徽标 + 速查**（含 `run` 的用法块；`NO_COLOR=1` 关闭颜色） |
+| **`ask-dao-machine run <论文/图片>`** | **统一入口**：一个输入 → **选路** `--path problem\|imagination\|both` → **选终止点** `--stop prequestion\|scientific\|domain\|tree\|ai4s` |
+| **`ask-dao-machine run --words 熵,记忆 [--bridge]`** | 想象路：**任意词都行**——词表外的词会自动解析「本质」，也可 `--essence 折叠="多肽链自发形成三维构象"` 自己指定；`--bridge` 过经验桥 |
+| `ask-dao-machine run --list` | 看跑过哪些产物、在哪、接报告的命令 |
+| `ask-dao-machine paper <文件/目录> [--domain auto\|biomed\|none]` | 论文/语料 → 问题清单（「作者已提出」与「机器新提出」分开标注）；**按论文标题建目录**，同标题重跑递增 `-v2`/`-v3` 不覆盖 |
+| `ask-dao-machine ask "<疑问>" [--stop tree]` | 疑问 → **走问题路五站**（类型判定 + 判定路由 + 结构追问 + 分层），与论文同一条流水线 |
+| `ask-dao-machine imagine <任意词> [--depth d] [--bridge]` | 造词 → 概念（五步；`--bridge` 过经验桥） |
 | `ask-dao-machine bridge <词A> <词B>` | 经验桥（可选）：维基双通道 + arXiv 回退 → 经验锚点（只检索，不判真伪） |
 | `ask-dao-machine perceive <图片/目录>` | 图像（经验）→ 结构特征 → 带判定路由的问题 |
 | `ask-dao-machine all` | 86 母题 → 问题树 L0–L5 → 领域融合（+ 新颖性门） |
-| `ask-dao-machine report [--out DIR]` | 把一次跑批汇总成一页人话 `REPORT.md` |
+| `ask-dao-machine report --out DIR` | 把一次跑批汇总成一页人话 `REPORT.md` |
 | `ask-dao-machine doctor` / `data fetch` | 环境自查 / 取 OEIS 参照系（约 32MB） |
 | `ask-dao-machine mcp` | 以 **MCP server** 方式运行，供宿主挂载（见下节） |
+
+**问题路五站的终止点**（`--stop`，每站都在上一站的产出上真实推进）：
+
+| 终止点 | 到哪一步 |
+|---|---|
+| `prequestion` | 前问题：良构成问句，还没有判定方式 |
+| `scientific` | 科学问题：加基础领域候选 + 判定路由（**默认**） |
+| `domain` | 基础领域：明确归类并按领域分组 |
+| `tree` | 问题树：分 L0–L5 并成族 |
+| `ai4s` | 跑完 AI4S：算得出的给判定，**算不出的诚实标「机器无法结算」** |
+
+**通用开关**（`run` / `ask` / `paper` 都支持）：
+
+```bash
+--depth shallow|normal|deep   # 每类机制产出 3 / 8 / 20 条；③结构追问套 2 / 4 / 4 问
+--max-total N                 # 总条数硬上限（0 = 不限）
+--json                        # 结果只走 stdout，人看的日志走 stderr → 可直接接管道
+--quiet / -q                  # 少说话，只留结果路径
+--out DIR                     # 输出根目录（也可用环境变量 ASK_DAO_OUT）
+```
+
+**输出根统一**：所有命令收敛到同一个根，子目录按功能分——
+
+```
+out/paper/   ← paper / run <论文>      （按论文标题建子目录，同标题递增版本）
+out/ask/     ← ask / run --question    （按问句建子目录）
+out/image/   ← run <图片> / perceive
+out/words/   ← run --words … / imagine
+```
 
 ### 挂到 Agent 宿主：Claude Code / DSH / Cursor / Codex
 
@@ -368,13 +402,28 @@ python tools/install_integrations.py --check  # 只检查现状
 ### 全部命令
 
 ```bash
+# ⓪ 统一入口：一个输入 → 选路 → 选终止点（新用户从这条开始）
+ask-dao-machine run paper.pdf                          # 问题路，默认到「科学问题」
+ask-dao-machine run paper.pdf --stop ai4s              # 一路跑到底
+ask-dao-machine run paper.pdf --depth deep --max-total 60
+ask-dao-machine run photo.png --stop tree              # 图像输入，自动识别
+ask-dao-machine run --words 熵,记忆                    # 想象路：两两组合（任意词都行）
+ask-dao-machine run --words 折叠 --essence '折叠="多肽链自发形成三维构象"'
+ask-dao-machine run --words 熵,记忆 --bridge           # 想象路 + 过经验桥
+ask-dao-machine run --list                             # 看跑过哪些、产物在哪
+ask-dao-machine run paper.pdf --json                   # 机器可读：stdout 只出 JSON
+```
+
+```bash
 # ① 全引擎 + 可视化 + 新颖性门
 python -m ask_dao_machine all --out out/demo
 ```
 
 ```bash
-# ② 问题路：日常问题 → 科学问题
-ask-dao-machine ask "为什么黑洞会蒸发?"
+# ② 问题路：你自己的疑问 → 走同一条五站流水线
+ask-dao-machine ask "为什么有些蛋白质能自发折叠成特定形状，而另一些会聚沉?"
+ask-dao-machine ask "为什么代糖没降低肾病风险?" --stop domain --max-total 6
+#    问句不会被截断；领域判不出来时不会硬拼成「在通用中…」这种怪句
 ```
 
 ```bash
@@ -389,7 +438,9 @@ ask-dao-machine bridge 熵 选择               # 只看桥本身：经验锚点
 python tools/build_paths_viz.py     # → docs/viz/paths.html
 
 # ⑤ 输入论文 → 输出问题（支持 md/txt/pdf/docx/epub 或目录）
-python -m ask_dao_machine paper papers/ --out out/papers
+python -m ask_dao_machine paper papers/ --flat --out out/papers
+#    单文件默认按论文标题建目录，同标题重跑递增 -v2/-v3（不覆盖别篇）；
+#    目录输入用 --flat 平铺到 --out（CI 用法）
 #    产出含两类标注：「作者已提出（作者自陈的开放点）」与「机器新提出」
 #    GitHub 上：把论文放进 papers/ 推送即可，见 .github/workflows/paper-to-problems.yml
 
@@ -400,6 +451,8 @@ python -m ask_dao_machine report --out out/demo   # → out/demo/REPORT.md
 python -m ask_dao_machine data fetch              # → data/stripped.gz
 python -m ask_dao_machine doctor                  # 环境自查：缺什么、下一步做什么
 ```
+
+跑完每条命令都会给「下一步可以：」提示，里面的命令可直接复制。
 
 ```bash
 # 开发/测试（pytest 在 dev 附加依赖里）
