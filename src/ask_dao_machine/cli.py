@@ -198,6 +198,9 @@ def _dispatch(argv):
     if head == "paper":
         from . import paper as paper_mod
         return paper_mod.main(argv[1:])
+    if head == "run":
+        from . import flow as flow_mod
+        return flow_mod.main(argv[1:])
     if head == "mcp":
         from . import mcp as mcp_mod
         return mcp_mod.main(argv[1:])

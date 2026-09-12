@@ -89,17 +89,13 @@ def _epub_text(path: Path) -> str:
 
 
 def _pdf_text(path: Path) -> tuple[str, str]:
-    """返回 (文本, 用的什么方法)。优先第三方库，其次 pdftotext，最后内置尽力提取。"""
-    try:
-        from pypdf import PdfReader                          # type: ignore
-        return "\n".join((p.extract_text() or "") for p in PdfReader(str(path)).pages), "pypdf"
-    except Exception:                                        # noqa: BLE001
-        pass
-    try:
-        from PyPDF2 import PdfReader                         # type: ignore
-        return "\n".join((p.extract_text() or "") for p in PdfReader(str(path)).pages), "PyPDF2"
-    except Exception:                                        # noqa: BLE001
-        pass
+    """返回 (文本, 用的什么方法)。
+
+    优先级：**pdftotext 优先**，其次 pypdf / PyPDF2，最后内置尽力提取。
+    为什么 pdftotext 优先（实测教训）：双栏学术 PDF 上 pypdf 会弄错页序与分栏，
+    把标题挤到第 55 行、前 19 行是从第 2 页正文倒着来的；同一篇文件 pdftotext
+    把标题放在第 5 行（页眉/DOI 之后）。装上 pypdf 反而变差，所以顺序不能反。
+    """
     import shutil
     import subprocess
     if shutil.which("pdftotext"):
@@ -114,14 +110,22 @@ def _pdf_text(path: Path) -> tuple[str, str]:
                 capture_output=True, encoding="utf-8", errors="replace", timeout=180,
             )
             txt = r.stdout or ""
-            if r.returncode == 0 and txt.strip():
-                return txt, "pdftotext"
             if txt.strip():
-                return txt, f"pdftotext(rc={r.returncode})"
+                tag = "pdftotext" if r.returncode == 0 else f"pdftotext(rc={r.returncode})"
+                return txt, tag
         except subprocess.TimeoutExpired:
             print(f"[warn] pdftotext 超时(180s): {path.name}", file=sys.stderr)
         except Exception as e:                                # noqa: BLE001
             print(f"[warn] pdftotext 失败: {type(e).__name__} {e}", file=sys.stderr)
+    for mod, tag in (("pypdf", "pypdf"), ("PyPDF2", "PyPDF2")):
+        try:
+            m = __import__(mod)
+            Reader = getattr(m, "PdfReader")
+            txt = "\n".join((p.extract_text() or "") for p in Reader(str(path)).pages)
+            if txt.strip():
+                return txt, tag
+        except Exception:                                     # noqa: BLE001
+            continue
     return _pdf_text_builtin(path), "builtin(尽力提取, 装 pypdf 或在 PATH 放 pdftotext 更稳)"
 
 
@@ -216,24 +220,78 @@ def _pdf_meta_title(path: Path) -> str:
     return ""
 
 
+_ABSTRACT_LINE = re.compile(r"^\s*(abstract|摘要|1\s*[.．、]?\s*introduction|introduction)\s*$", re.I)
+_AUTHOR_LINE = re.compile(r"[·•]|\band\b.*,|,\s*\w+\s*\d\s*$")
+
+
+def _letters_ratio(s: str) -> float:
+    if not s:
+        return 0.0
+    return sum(c.isalpha() or "\u4e00" <= c <= "\u9fff" for c in s) / len(s)
+
+
+def _title_score(line: str, following: list[str]) -> int:
+    """给一行"像不像标题"打分（学术 PDF 的经验规则，不追求普适）。"""
+    s = line.strip()
+    n = len(s)
+    score = 0
+    if 25 <= n <= 170:
+        score += 1
+    elif n < 15 or n > 220:
+        return -99
+    if _TITLE_NOISE.match(s):
+        return -99
+    letters = _letters_ratio(s)
+    if letters >= 0.75:
+        score += 2
+    elif letters < 0.55:
+        score -= 3
+    if not s.endswith((".", "。", ";", "；")):
+        score += 1
+    else:
+        score -= 2                      # 标题几乎不以句号结尾
+    if ":" in s or "：" in s:
+        score += 2                      # 学术标题常带冒号副标题
+    digits = sum(c.isdigit() for c in s)
+    if digits / max(n, 1) > 0.15:
+        score -= 2
+    # 后面几行里出现 Abstract/Introduction 或作者行 → 这行极可能是标题
+    for j, nxt in enumerate(following[:5]):
+        t = nxt.strip()
+        if _ABSTRACT_LINE.match(t) or _AUTHOR_LINE.search(t):
+            score += 3 if j <= 2 else 2
+            break
+    return score
+
+
 def derive_title(path: Path, text: str = "") -> str:
-    """给这篇输入起个标题（用于输出目录名）。优先级：PDF 元数据 > 正文首行 > 文件名。"""
+    """给这篇输入起个标题（用于输出目录名）。优先级：PDF 元数据 > 正文打分 > 文件名。"""
     if path.suffix.lower() == ".pdf":
         t = _pdf_meta_title(path)
         if t and not _TITLE_NOISE.match(t):
             return re.sub(r"\s+", " ", t)[:200]
-    for line in (text or "").splitlines()[:40]:
-        s = re.sub(r"\s+", " ", line).strip()
-        if not (12 <= len(s) <= 200):
+
+    lines = [l for l in (text or "").splitlines()[:80]]
+    cand = [(i, l.strip()) for i, l in enumerate(lines) if len(l.strip()) >= 12]
+    best, best_score = "", -100
+    for k, (i, s) in enumerate(cand):
+        if k > 40:                      # 只看前 40 个非空行
+            break
+        following = [lines[j] for j in range(i + 1, min(i + 6, len(lines)))]
+        sc = _title_score(s, following)
+        if sc <= best_score:
             continue
-        if _TITLE_NOISE.match(s):
-            continue
-        letters = sum(c.isalpha() or "\u4e00" <= c <= "\u9fff" for c in s)
-        if letters < len(s) * 0.5:            # 数字/符号太多的行不是标题
-            continue
-        if s.isupper() and len(s) < 30:       # 全大写短行多是栏目标签
-            continue
-        return s[:200]
+        # 标题常折行：若下一非空行也像标题，合并
+        merged = s
+        if k + 1 < len(cand):
+            nxt = cand[k + 1][1]
+            nsc = _title_score(nxt, [])
+            if (nsc >= 2 and not merged.endswith((".", "。"))
+                    and 25 <= len(merged) + len(nxt) <= 200):
+                merged = f"{merged} {nxt}"
+        best, best_score = merged, sc
+    if best and best_score > 0:
+        return re.sub(r"\s+", " ", best)[:200]
     return path.stem
 
 
