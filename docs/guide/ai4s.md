@@ -54,11 +54,11 @@ ChemCrow（化学工具链）、AI-scientist（自动论文）、DeepChem、RDKi
 
 ## 内置 harness（最小可跑版）
 
-`tools/ai4s_harness.py`：对每条问题做**独立验证**（不同代码路径 + 更大 N），
+`tools/research/ai4s_harness.py`：对每条问题做**独立验证**（不同代码路径 + 更大 N），
 产出裁决并回灌清单。
 
 ```bash
-python tools/ai4s_harness.py
+python tools/research/ai4s_harness.py
 ```
 
 **裁决类型**：

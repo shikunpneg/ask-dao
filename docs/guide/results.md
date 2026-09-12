@@ -24,10 +24,10 @@ title: 结果与证据（完整版）
 | 输入 | 入口（命令） | 产出 |
 |---|---|---|
 | 经验（图像） | `python -m ask_dao_machine perceive 图片/` | 结构特征（对称度 / 块熵 / 边界密度 / 前景占比）→ 带 `route` 判定路由的问题 |
-| 日常问题 | `python tools/run_paths.py problem --input daily --q "…"` | 类型判定 + 判定路由 → 科学问题 |
-| 已知未解 / 科学问题 | `python tools/scihist_to_problems.py`（32 个 A 级开放点）· `problem_lineage.py` | 正式问题 + 谱系（祖先 / 自身 / 后代 / 侧枝） |
+| 日常问题 | `python tools/core/run_paths.py problem --input daily --q "…"` | 类型判定 + 判定路由 → 科学问题 |
+| 已知未解 / 科学问题 | `python tools/research/scihist_to_problems.py`（32 个 A 级开放点）· `problem_lineage.py` | 正式问题 + 谱系（祖先 / 自身 / 后代 / 侧枝） |
 | 母题（86 个） | `python -m ask_dao_machine all` | 问题树：母题 → 前问题 → 科学问题 → 基础领域 → 问题树 L0–L5 → 领域融合 |
-| 造词 | `python tools/run_paths.py imagine --word 记忆调性` | 概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释） |
+| 造词 | `python tools/core/run_paths.py imagine --word 记忆调性` | 概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释） |
 | 论文 / 语料 | `python -m ask_dao_machine paper papers/` | 问题清单（「作者已提出」与「机器新提出」分开标注） |
 
 | 输出 | 文件 | 说明 |
@@ -55,7 +55,7 @@ title: 结果与证据（完整版）
 >
 > **更强的观察（机器规模化算出）**：对 b ≥ 4，**例外集有限且很小**。
 
-### 1.2 完整 harness 裁决表（`tools/ai4s_harness.py`）
+### 1.2 完整 harness 裁决表（`tools/research/ai4s_harness.py`）
 
 N0 = 5×10⁶ 与 N1 = 10⁷ 两次扫描，看例外集是否**汇合**：
 
@@ -303,24 +303,24 @@ export PYTHONPATH=src            # Windows: $env:PYTHONPATH='src'
 python -m ask_dao_machine all --out out/demo
 
 # 2) 跨进制命题 + 独立复核（本页第一节）
-python tools/palbase_scan.py          # b=2..16 例外集
-python tools/ai4s_harness.py          # N0=5e6 / N1=1e7 汇合裁决
-python tools/scale_hunt.py            # base 10 推到 1e8
+python tools/research/palbase_scan.py          # b=2..16 例外集
+python tools/research/ai4s_harness.py          # N0=5e6 / N1=1e7 汇合裁决
+python tools/research/scale_hunt.py            # base 10 推到 1e8
 
 # 3) 反例驱动问题（机器答不出的那批）
-python tools/corpus_to_problems.py    # 语料 → 问题
-python tools/problem_gate.py          # 良构性 + 谱系门
+python tools/research/corpus_to_problems.py    # 语料 → 问题
+python tools/research/problem_gate.py          # 良构性 + 谱系门
 
 # 4) 张力探测与形式化缺口
-python tools/tension_detector.py && python tools/method3_unified.py
+python tools/research/tension_detector.py && python tools/research/method3_unified.py
 
 # 5) 三域仿真
-python tools/cross_md_v3.py           # 信念修正 × 迭代 × 噪声信道
+python tools/research/cross_md_v3.py           # 信念修正 × 迭代 × 噪声信道
 
 # 6) 可视化与首页
-python tools/build_paths_viz.py       # → docs/viz/paths.html
-python tools/build_site_problems.py   # → tools/site/problems_curated.json（分级数据）
-python tools/make_site.py             # → docs/index.html
+python tools/build/build_paths_viz.py       # → docs/viz/paths.html
+python tools/build/build_site_problems.py   # → tools/site/problems_curated.json（分级数据）
+python tools/build/make_site.py             # → docs/index.html
 ```
 
 ---
@@ -338,7 +338,7 @@ python tools/make_site.py             # → docs/index.html
 | 想象路 | `out/demo/imagination_deep.json` · `sentence_batch.json` · `word_*.json` |
 | 判官分布 | `out/demo/novelty_report.json` · `out/demo/llm_judgment.json` |
 | 全量问题清单 | `out/demo/discovery_manifest.json` |
-| 分级展示数据 | `tools/site/problems_curated.json`（由 `tools/build_site_problems.py` 生成） |
+| 分级展示数据 | `tools/site/problems_curated.json`（由 `tools/build/build_site_problems.py` 生成） |
 
 ---
 
@@ -357,8 +357,8 @@ python tools/make_site.py             # → docs/index.html
 每条都带**来源徽章**：「机器提出（参照系未见）」/「已知问题 · 机器重新表述」/「人类已知未解 · 机器找齐」，
 不把已知猜想包装成机器发现。
 
-生成链路：`out/demo/*.json` → `tools/build_site_problems.py` → `tools/site/problems_curated.json`
-→（套用 `review_overrides.json`）→ `tools/make_site.py` → `docs/index.html`。
+生成链路：`out/demo/*.json` → `tools/build/build_site_problems.py` → `tools/site/problems_curated.json`
+→（套用 `review_overrides.json`）→ `tools/build/make_site.py` → `docs/index.html`。
 
 ---
 

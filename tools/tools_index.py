@@ -18,7 +18,8 @@ from pathlib import Path
 ROOT = Path(r"E:\ask-dao\ask-dao-machine")
 TOOLS = ROOT / "tools"
 
-files = sorted(TOOLS.glob("*.py"))
+files = sorted(p for p in TOOLS.rglob("*.py")
+               if "__pycache__" not in p.parts)
 names = [p.stem for p in files]
 
 # ── 取每个文件的一句话说明（首个 docstring 的首行）────────────────
@@ -34,7 +35,8 @@ def blurb(p: Path) -> str:
         return (m2.group(1).strip()[:70] if m2 else "")
     body = m.group(2).strip()
     line = body.splitlines()[0].strip() if body else ""
-    line = re.sub(r"^[\w/\.]+\.py\s*—\s*", "", line)      # 去掉 "xxx.py — " 前缀
+    line = re.sub(r"^(?:[\w/\.\-]+[/\\])?[\w\.\-]+\.py\s*[—\-]+\s*", "", line)
+    line = re.sub(r"^(?:tools[/\\])?(?:core|engines|build|maintain|research|archive|site)[/\\]?[\w\.\-]*\.py\s*[—\-]+\s*", "", line)
     return line[:70]
 
 
@@ -105,7 +107,25 @@ def sources() -> dict[str, list[str]]:
     return live
 
 
+# 手动入口白名单：靠 `python tools/<sub>/xxx.py` 手跑，没有任何「引用」能检测到。
+# 这是上一版审计的盲点 —— 它们被误判进「没有运行者」，其实是被手跑的。
+MANUAL = {
+    "make_site", "make_site_assets", "build_paths_viz", "build_site_problems",
+    "build_tree_viz", "make_problem_tree", "tree_svg", "arch_diagram",
+    "make_deck", "make_pptx", "deck_spec", "deck_figs", "design_ink",
+    "make_logo", "art_logo", "banner_art", "make_ledger",
+    "install_integrations", "tools_index", "run_resident",
+    "reorganize_tools", "fix_tools_layout_refs", "fix_tools_layout_refs2",
+}
+
 live = sources()
+
+# 文件已按功能分到子目录，所以"按名字拼路径"是错的 ——
+# 之前 blurb(PATH_OF.get(n, TOOLS / f"{n}.py")) 因此全部读不到，说明列退化成「—」。
+PATH_OF: dict[str, Path] = {p.stem: p for p in files}
+
+for _n in MANUAL:
+    live.setdefault(_n, set()).add("手动入口")
 # 按"运行者"强弱排序
 ORDER = {"CI": 0, "src": 1, "长跑总控": 2, "文档": 3, "tools": 4}
 groups: dict[str, list[str]] = defaultdict(list)
@@ -122,7 +142,7 @@ for who in sorted(groups, key=lambda k: (ORDER.get(k.split("、")[0], 9), k)):
         continue
     print(f"\n▌ {who}　（{len(groups[who])} 个）")
     for n in sorted(groups[who]):
-        p = TOOLS / f"{n}.py"
+        p = PATH_OF.get(n, TOOLS / f"{n}.py")
         print(f"   {n:30} {blurb(p)}")
 
 dead = groups.get("(没有运行者)", [])
@@ -135,10 +155,46 @@ for n in sorted(dead):
     print(f"   {n:30} {blurb(p)}")
 
 # ── 生成 tools/README.md ─────────────────────────────────────────
-out = ["# tools/ —— 每个脚本是干什么的",
+DESC = {
+    "core": "**产品依赖** —— 被 src/ask_dao_machine 调用，不能乱动",
+    "engines": "**长跑链路** —— 被 run_resident.py 按文件名调用",
+    "build": "**生成产物** —— 站点 / PPT / 架构图 / logo（手动入口）",
+    "maintain": "**工程维护** —— 重构 / 修复 / 补抓语料 / 索引（手动入口）",
+    "research": "**研究实验** —— 提问题 / 扫描 / 验证 / 度量（历史与在用的都在这里）",
+    "archive": "**归档** —— 没有运行者的历史脚本（先别删，可能是证据链）",
+    "site": "站点模板与数据（非 .py）",
+}
+
+_overview = ["# tools/ —— 每个脚本是干什么的",
        "",
        "> 本文件自动生成（`python tools/tools_index.py`）。改脚本后请重新生成。",
        "",
+       "## 目录结构总览",
+       "",
+       "```",
+       "tools/",
+       "├── run_resident.py      常驻长跑总控（三链路轮转的入口）",
+       "├── tools_index.py       本索引的生成器",
+       "├── core/                产品依赖（被 src/ 调用）",
+       "├── engines/             长跑链路引擎（被 run_resident 调用）",
+       "├── build/               生成产物：站点 / PPT / 架构图 / logo",
+       "├── maintain/            工程维护：重构 / 修复 / 补抓 / 索引",
+       "├── research/            研究实验",
+       "├── archive/             归档的历史脚本",
+       "└── site/                站点模板与数据",
+       "```",
+       "",
+       "| 目录 | 是什么 |",
+       "|---|---|",
+       ]
+for _k in ("core", "engines", "build", "maintain", "research", "archive", "site"):
+    _n = len([x for x in TOOLS.glob(f"{_k}/*.py")])
+    out.append(f"| `{_k}/` | {DESC[_k]}{f'（{_n} 个脚本）' if _n else ''} |")
+out += ["",
+        "**怎么用**：想知道某个脚本干什么，直接在里面搜文件名；"
+        "`research/` 里多数是当时的研究脚本，跑不跑得通取决于当时的产物还在不在。",
+        ""]
+out = _overview + [
        f"共 {len(names)} 个脚本。按「**谁在运行它**」分组——"
        "只有被运行的才算活代码；只在历史日志里被提到的，不算。",
        ""]
@@ -150,7 +206,7 @@ for who in sorted(groups, key=lambda k: (ORDER.get(k.split("、")[0], 9), k)):
     out.append("| 脚本 | 作用 |")
     out.append("|---|---|")
     for n in sorted(groups[who]):
-        out.append(f"| `{n}.py` | {blurb(TOOLS / f'{n}.py') or '—'} |")
+        out.append(f"| `{n}.py` | {blurb(PATH_OF.get(n, TOOLS / f'{n}.py')) or '—'} |")
     out.append("")
 if dead:
     out.append(f"## 没有运行者　（{len(dead)} 个）")
@@ -162,8 +218,33 @@ if dead:
     out.append("| 脚本 | 作用 |")
     out.append("|---|---|")
     for n in sorted(dead):
-        out.append(f"| `{n}.py` | {blurb(TOOLS / f'{n}.py') or '—'} |")
+        out.append(f"| `{n}.py` | {blurb(PATH_OF.get(n, TOOLS / f'{n}.py')) or '—'} |")
     out.append("")
-(TOOLS / "README.md").write_text("\n".join(out), encoding="utf-8")
+
+STRUCT_OVERVIEW = """## 目录结构总览
+
+```
+tools/
+├── run_resident.py      常驻长跑总控（三链路轮转的入口）
+├── tools_index.py       本索引的生成器
+├── core/                产品依赖（被 src/ask_dao_machine 调用）
+├── engines/             长跑链路引擎（被 run_resident.py 调用）
+├── build/               生成产物：站点 / PPT / 架构图 / logo（手动入口）
+├── maintain/            工程维护：重构 / 修复 / 补抓语料 / 索引（手动入口）
+├── research/            研究实验：提问题 / 扫描 / 验证 / 度量
+├── archive/             归档：没有运行者的历史脚本（先别删，可能是证据链）
+└── site/                站点模板与数据（非 .py）
+```
+
+**怎么找**：知道脚本名就搜文件名；不知道就按上表看它属于哪一类再翻。
+`research/` 里多数是当时的研究脚本，能不能跑取决于当时的产物还在不在。
+**怎么加**：新脚本请放进对应子目录 —— `core/`（产品要用）、`engines/`（长跑要用）、
+`build/`（生成产物）、`maintain/`（工程维护）、`research/`（一次性研究）。
+放完重跑 `python tools/tools_index.py`。
+
+"""
+
+(TOOLS / "README.md").write_text(
+    STRUCT_OVERVIEW + "\n".join(out), encoding="utf-8")
 print()
 print(f"已生成 tools/README.md（{len(out)} 行）")

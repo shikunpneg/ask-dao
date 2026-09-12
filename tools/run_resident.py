@@ -66,6 +66,24 @@ def _safe_workers(reserve_gb: float = 3.0, per_worker_gb: float = 0.7) -> int:
 SAFE_WORKERS = _safe_workers()
 
 
+
+def _find_tool(cmd: str):
+    """tools/ 分了子目录，按文件名在根与各子目录里找（找不到返回 None）。
+
+    踩过的坑：原来写死 `TOOLS / cmd`，分目录后全都找不到 —— 而 subprocess 拿到
+    不存在的路径不会抛异常，只会静默 rc!=0，长跑看起来在跑其实什么都没做。
+    """
+    p = TOOLS / cmd
+    if p.exists():
+        return p
+    for d in sorted(TOOLS.iterdir()):
+        if d.is_dir() and not d.name.startswith("_"):
+            q = d / cmd
+            if q.exists():
+                return q
+    return None
+
+
 def run(cmd, tag, env_extra=None, timeout_round=3600, extra_args=None):
     """跑一个链路工具。
 
@@ -77,7 +95,11 @@ def run(cmd, tag, env_extra=None, timeout_round=3600, extra_args=None):
     env = os.environ.copy()
     if env_extra:
         env.update(env_extra)
-    cmd_parts = [sys.executable, str(TOOLS / cmd)]
+    tool = _find_tool(cmd)
+    if tool is None:
+        print(f"[{tag}] 找不到工具 {cmd}（tools/ 及其子目录都没有），跳过", flush=True)
+        return -2
+    cmd_parts = [sys.executable, str(tool)]
     if extra_args:
         cmd_parts.extend(extra_args)
     print(f"[{tag}] 启动 {' '.join(cmd_parts[-3:])}", flush=True)

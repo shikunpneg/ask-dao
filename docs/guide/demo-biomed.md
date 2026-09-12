@@ -21,7 +21,7 @@ title: 生物医学完整演示（真实论文 · 一条命令）
 抓取命令（可复现，走的是公开接口）：
 
 ```bash
-python tools/fetch_biomed_paper.py        # Europe PMC 检索 → fullTextXML → Markdown
+python tools/maintain/fetch_biomed_paper.py        # Europe PMC 检索 → fullTextXML → Markdown
 ```
 
 ## 1. 一条命令

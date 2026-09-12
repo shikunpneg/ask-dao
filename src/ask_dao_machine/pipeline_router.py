@@ -73,9 +73,19 @@ TEXT_EXTS = {".md", ".txt", ".text", ".markdown", ".pdf", ".docx", ".epub"}
 
 
 def _load_tool(name: str):
-    """从仓库 tools/ 里加载一个脚本模块（tools 不是包）。"""
-    p = REPO / "tools" / f"{name}.py"
-    if not p.exists():
+    """从仓库 tools/ 里加载一个脚本模块（tools 不是包）。
+
+    tools/ 已按功能分到子目录（core/ engines/ build/ maintain/ research/ archive/），
+    所以要在根 + 各子目录里找。踩过的坑：原来只找 `tools/{name}.py`，
+    分目录后全部找不到，而报错文案还误导（说文件不存在，其实只是换了目录）。
+    """
+    tdir = REPO / "tools"
+    cands = [tdir / f"{name}.py"]
+    if tdir.is_dir():
+        cands += [d / f"{name}.py" for d in sorted(tdir.iterdir())
+                  if d.is_dir() and not d.name.startswith("_")]
+    p = next((c for c in cands if c.exists()), None)
+    if p is None:
         return None
     spec = importlib.util.spec_from_file_location(f"_ad_{name}", p)
     mod = importlib.util.module_from_spec(spec)
@@ -83,7 +93,7 @@ def _load_tool(name: str):
         sys.modules[spec.name] = mod
         spec.loader.exec_module(mod)
     except Exception as e:                                     # noqa: BLE001
-        print(f"[warn] 加载 tools/{name}.py 失败: {type(e).__name__} {e}", file=sys.stderr)
+        print(f"[warn] 加载 {p.relative_to(REPO)} 失败: {type(e).__name__} {e}", file=sys.stderr)
         return None
     return mod
 
@@ -449,7 +459,7 @@ def run_imagination(words: list[str], out_root: Path, bridge: bool = False,
     """
     wu = _load_tool("word_understand")
     if wu is None:
-        print("想象路需要仓库里的 tools/word_understand.py（用源码运行或 pip install -e .）。",
+        print("想象路需要仓库里的 tools/core/word_understand.py（用源码运行或 pip install -e .）。",
               file=sys.stderr)
         return {"error": "tools missing", "items": []}
     table = dict(getattr(wu, "WORDS", {}) or {})
@@ -567,7 +577,7 @@ def run_question(question: str, out_root: Path, stop: str = "scientific",
     """
     qr = _load_tool("question_refiner")
     if qr is None:
-        print("这条命令需要仓库里的 tools/question_refiner.py。", file=sys.stderr)
+        print("这条命令需要仓库里的 tools/core/question_refiner.py。", file=sys.stderr)
         return {"error": "tools missing", "problems": []}
 
     from . import input_paper as paper_mod

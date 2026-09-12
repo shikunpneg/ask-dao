@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """perceive.py — 经验/感知入口：图像的结构 → 日常疑问 → 可判的科学问题
 
-这是"第一手经验"这条输入的正式 CLI 入口（此前只能单独跑 tools/perception_module.py）。
+这是"第一手经验"这条输入的正式 CLI 入口（此前只能单独跑 tools/core/perception_module.py）。
 
 做法（诚实：最小闭环，二值化 + 统计特征，**无深度学习**）：
   1. 读入图像（.png/.jpg/.jpeg/.bmp/.tif；无参数时用 numpy 造合成图，零依赖也能跑）
@@ -73,7 +73,7 @@ def load_image(src: Path) -> np.ndarray:
 
 
 def features(arr: np.ndarray) -> dict:
-    """结构特征（与 tools/perception_module.py 同口径，便于对照）。
+    """结构特征（与 tools/core/perception_module.py 同口径，便于对照）。
 
     注意：对称度是"二值化后镜像比对"，对**相位敏感**——棋盘格这类图案镜像后会错半个周期，
     测得对称度接近 0。这是方法的已知局限，不是图像的问题。

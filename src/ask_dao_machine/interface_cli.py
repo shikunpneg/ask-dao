@@ -24,15 +24,27 @@ DOMAINS_HINT = ("aesthetics / combo / counterex / digit_base / direction / fusio
 
 
 def _repo_tools():
-    """源码运行时复用 tools/ 里的判定器（question_refiner 等）。装成 wheel 时不可用。"""
+    """源码运行时复用 tools/ 里的判定器（question_refiner 等）。装成 wheel 时不可用。
+
+    注：tools/ 已按功能分到子目录（core/ engines/ build/ maintain/ research/ archive/），
+    所以这里要把 tools/ **及其所有子目录**都加进 sys.path ——
+    否则 `import question_refiner` 找不到它（现在在 tools/core/）。
+    """
     import sys as _s
     for base in (Path.cwd(), Path(__file__).resolve().parents[2]):
         for p in [base, *base.parents]:
-            if (p / "tools" / "run_paths.py").exists():
-                tp = str(p / "tools")
-                if tp not in _s.path:
-                    _s.path.insert(0, tp)
-                return p
+            tdir = p / "tools"
+            if not tdir.is_dir():
+                continue
+            cands = [tdir] + [d for d in sorted(tdir.iterdir())
+                              if d.is_dir() and not d.name.startswith("_")]
+            if not any((d / "run_paths.py").exists() for d in cands):
+                continue
+            for d in cands:
+                sd = str(d)
+                if sd not in _s.path:
+                    _s.path.insert(0, sd)
+            return p
     return None
 
 

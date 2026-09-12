@@ -15,14 +15,14 @@ title: 问题路手册
 
 | 类型 | 工具 | 说明 |
 |---|---|---|
-| 视觉 | `tools/perception_module.py` | 图像 → 结构特征（密度/对称/局部熵/边界密度）→ 触发模板 → 日常问题 |
-| 网页文本 | `tools/web_experience.py` | 抓页 → 疑问句抽取 → 日常问题 |
-| arXiv | `tools/arxiv_miner.py` | 摘要 → 开放点信号（open / unresolved / challenging） |
+| 视觉 | `tools/core/perception_module.py` | 图像 → 结构特征（密度/对称/局部熵/边界密度）→ 触发模板 → 日常问题 |
+| 网页文本 | `tools/research/web_experience.py` | 抓页 → 疑问句抽取 → 日常问题 |
+| arXiv | `tools/research/arxiv_miner.py` | 摘要 → 开放点信号（open / unresolved / challenging） |
 
 ```bash
-python tools/web_experience.py
-python tools/arxiv_miner.py
-python tools/perception_module.py
+python tools/research/web_experience.py
+python tools/research/arxiv_miner.py
+python tools/core/perception_module.py
 ```
 
 ### 2. 日常问题
@@ -30,7 +30,7 @@ python tools/perception_module.py
 "为什么X？""X有多少？""什么是X？" → 分类 + 映射判定路由。
 
 ```bash
-python tools/run_paths.py problem --input daily --q "为什么黑洞会蒸发?"
+python tools/core/run_paths.py problem --input daily --q "为什么黑洞会蒸发?"
 ```
 
 输出：
@@ -52,7 +52,7 @@ python tools/run_paths.py problem --input daily --q "为什么黑洞会蒸发?"
 ### 3. 母题
 
 ```bash
-python tools/run_paths.py problem --input motif --m "质数"
+python tools/core/run_paths.py problem --input motif --m "质数"
 ```
 
 ---
@@ -109,8 +109,8 @@ python -m ask_dao_machine.territories.digit_base
   （对象携带的结构 ∩ 方法作用的结构 ≠ ∅，否则是空洞笛卡尔积）
 
 ```bash
-python tools/deep_fusion.py
-python tools/field_fusion.py
+python tools/engines/deep_fusion.py
+python tools/engines/field_fusion.py
 ```
 
 ### 新颖性门
@@ -130,8 +130,8 @@ G1 机器真判 → G2 OEIS 实查 → G3 结构可推性 → G4 分级
 > **N3 路径已证明可达**（早期"N3 永远为 0"是结构性假象：裁判代码没有任何路径返回 N3）。
 
 ```bash
-python tools/novelty_gate.py        # 需先下载 OEIS stripped 到 data/
-python tools/oeis_index.py          # 建索引
+python tools/core/novelty_gate.py        # 需先下载 OEIS stripped 到 data/
+python tools/core/oeis_index.py          # 建索引
 ```
 
 ---
@@ -143,15 +143,15 @@ python tools/oeis_index.py          # 建索引
 python -m ask_dao_machine all --out out/demo
 
 # 2. 统一入口
-python tools/run_paths.py problem --input daily --q "..."
-python tools/run_paths.py problem --input text  --src <文件>
-python tools/run_paths.py problem --input motif --m "..."
+python tools/core/run_paths.py problem --input daily --q "..."
+python tools/core/run_paths.py problem --input text  --src <文件>
+python tools/core/run_paths.py problem --input motif --m "..."
 
 # 3. 全领域并行扫描
-python tools/all_domains_engine.py
+python tools/engines/all_domains_engine.py
 
 # 4. 交 AI4S 执行
-python tools/ai4s_harness.py
+python tools/research/ai4s_harness.py
 ```
 
 ---

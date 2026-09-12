@@ -24,7 +24,7 @@ title: 想象路手册
 穷尽**领域专业词**的组合。
 
 ```bash
-python tools/word_fusion.py        # 82 词 × 82 = 6642 个组合词
+python tools/engines/word_fusion.py        # 82 词 × 82 = 6642 个组合词
 ```
 
 | 领域 | 专业词示例 |
@@ -59,8 +59,8 @@ python tools/word_fusion.py        # 82 词 × 82 = 6642 个组合词
 ```
 
 ```bash
-python tools/depth_sentence.py --word 记忆调性 --depth 3
-python tools/depth_batch.py                # 9 个概念建树
+python tools/research/depth_sentence.py --word 记忆调性 --depth 3
+python tools/research/depth_batch.py                # 9 个概念建树
 ```
 
 **深度 d 的效果**：
@@ -89,10 +89,10 @@ d 超过即饱和（不再增长）。
 | **比较** | 用对立概念划清边界 | "失忆症是**疾病**，而记忆调性是**正常现象**。" |
 
 ```bash
-python tools/reconstruct.py            # 基础还原
-python tools/reconstruct_sent.py       # 句子化（不是括号拼凑）
-python tools/reconstruct_judge.py      # 加推理判断
-python tools/reconstruct_compare.py    # 加概念比较
+python tools/research/reconstruct.py            # 基础还原
+python tools/research/reconstruct_sent.py       # 句子化（不是括号拼凑）
+python tools/research/reconstruct_judge.py      # 加推理判断
+python tools/research/reconstruct_compare.py    # 加概念比较
 ```
 
 **反例（不要这样）**：
@@ -139,7 +139,7 @@ python tools/reconstruct_compare.py    # 加概念比较
 对成段结果**再解释**：它指什么现象、内在机制、深问。
 
 ```bash
-python tools/understand_deep.py
+python tools/research/understand_deep.py
 ```
 
 **例（资本反馈）**：

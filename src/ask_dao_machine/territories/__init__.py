@@ -4,7 +4,7 @@
 每个领地 = 一族猜想 + 该族的结构族名与文献路由。
 新增领地只需: 建模块 -> 造 Territory -> 在此登记。
 
-稀疏度(实测, `tools/territory_scan.py`):
+稀疏度(实测, `tools/core/territory_scan.py`):
   digit_base   进制依赖     — R26: 4 问 / 1 问公认未解
   digit_iter   数位迭代     — 待测
   combo_control 组合约束    — **阴性对照**(R23 实测幸存 0%)

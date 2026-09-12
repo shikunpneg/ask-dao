@@ -41,7 +41,7 @@ python -m ask_dao_machine all --out out/demo
 ## 第二次：看可视化
 
 ```bash
-python tools/build_paths_viz.py     # → docs/viz/paths.html
+python tools/build/build_paths_viz.py     # → docs/viz/paths.html
 ```
 
 双击 `docs/viz/paths.html` 打开：两条路总览 / 问题树 / 概念树 / 概念论证。
@@ -52,39 +52,39 @@ python tools/build_paths_viz.py     # → docs/viz/paths.html
 
 ```bash
 # 日常问题 → 科学问题
-python tools/run_paths.py problem --input daily --q "为什么黑洞会蒸发?"
+python tools/core/run_paths.py problem --input daily --q "为什么黑洞会蒸发?"
 
 # 外部信息 → 日常问题
-python tools/arxiv_miner.py            # arXiv 前沿 → 开放点
-python tools/web_experience.py         # 网页 → 疑问
+python tools/research/arxiv_miner.py            # arXiv 前沿 → 开放点
+python tools/research/web_experience.py         # 网页 → 疑问
 
 # 母题 → 问题树
-python tools/run_paths.py problem --input motif --m "质数"
+python tools/core/run_paths.py problem --input motif --m "质数"
 
 # 反例驱动（只提机器答不出的问题）
 python -m ask_dao_machine.engine_counterexample
 
 # 全领域并行扫描
-python tools/all_domains_engine.py
+python tools/engines/all_domains_engine.py
 ```
 
 ### 想象路
 
 ```bash
 # 词 → 五步：组词 → 拆词 → 还原造句 → 成段 → 解释
-python tools/run_paths.py imagine --word 记忆调性 --depth 3
+python tools/core/run_paths.py imagine --word 记忆调性 --depth 3
 
 # 或逐步
-python tools/word_fusion.py            # ① 组词（6642 组合）
-python tools/depth_sentence.py         # ② 拆词（深度 d）
-python tools/reconstruct_compare.py    # ③④ 还原造句 + 成段
-python tools/understand_deep.py        # ⑤ 解释
+python tools/engines/word_fusion.py            # ① 组词（6642 组合）
+python tools/research/depth_sentence.py         # ② 拆词（深度 d）
+python tools/research/reconstruct_compare.py    # ③④ 还原造句 + 成段
+python tools/research/understand_deep.py        # ⑤ 解释
 ```
 
 ## 第四次：接 AI4S
 
 ```bash
-python tools/ai4s_harness.py
+python tools/research/ai4s_harness.py
 ```
 
 对问题清单里的候选项做**独立验证**，产出裁决：
@@ -99,8 +99,8 @@ Q_b2  [rejected(出现新例外 [5000001, 5000003, ...])]
 
 ```bash
 curl -o data/stripped.gz https://oeis.org/stripped.gz
-python tools/oeis_index.py     # 建倒排索引（~5 秒）
-python tools/novelty_gate.py   # 自检
+python tools/core/oeis_index.py     # 建倒排索引（~5 秒）
+python tools/core/novelty_gate.py   # 自检
 ```
 
 ## 常见问题

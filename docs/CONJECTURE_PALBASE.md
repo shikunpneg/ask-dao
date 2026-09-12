@@ -27,7 +27,7 @@
 | **15** | ∅ | 0 | — | **confirmed（零例外）** |
 | **16** | {539} | 1 | 539 | **confirmed** |
 
-- 扫描: `tools/palbase_scan.py`（b=2..16, N=5×10⁶）+ `tools/ai4s_harness.py`（独立验证到 N=10⁷）
+- 扫描: `tools/research/palbase_scan.py`（b=2..16, N=5×10⁶）+ `tools/research/ai4s_harness.py`（独立验证到 N=10⁷）
 - **confirmed = 例外集在 N0=5×10⁶ → N1=10⁷ 间汇合（无新例外）**
 
 ## 结构观察

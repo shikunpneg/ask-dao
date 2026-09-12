@@ -571,7 +571,7 @@
   <figure class="figure" data-delay="6">
     <img src="assets/architecture.svg" alt="问道系统架构图：两条路 + 四模块 + 判定层 + 真实数据流">
     <figcaption>系统架构 · 图内每个数字与状态词都对应仓库实现或 <code>out/demo/*.json</code> 的真实记录；
-      中栏想象路下方的<strong>经验检索桥（可选）</strong>表示「两条路可各自单独跑，也可选择过桥」（生成脚本 <code>tools/arch_diagram.py</code>）</figcaption>
+      中栏想象路下方的<strong>经验检索桥（可选）</strong>表示「两条路可各自单独跑，也可选择过桥」（生成脚本 <code>tools/build/arch_diagram.py</code>）</figcaption>
   </figure>
 </section>
 
@@ -657,7 +657,7 @@
     <tr><th style="width:200px">宿主</th><th style="width:320px">挂法</th><th>状态</th></tr>
     <tr><td>任何 shell（Claude Code / Codex / CI）</td><td class="mono">ask-dao-machine paper …</td>
       <td class="ok">✅ CLI 实测</td></tr>
-    <tr><td>Claude Code · Cursor · Continue</td><td class="mono">.mcp.json（tools/install_integrations.py）</td>
+    <tr><td>Claude Code · Cursor · Continue</td><td class="mono">.mcp.json（tools/maintain/install_integrations.py）</td>
       <td class="ok">✅ 配置已生成</td></tr>
     <tr><td>DSH</td><td class="mono">.dsh/skills/ask-dao-machine/SKILL.md</td>
       <td class="ok">✅ 本机热加载通过</td></tr>
@@ -689,7 +689,7 @@
   <figure class="figure">
     <img src="assets/real-use/t1-fetch.png" alt="真实终端：Europe PMC 检索并抓取开放获取全文">
     <figcaption>① 抓论文 · 检索命中 10 篇 → 抓 PMC13331974 → 32,787 字符，许可读作 CC BY 4.0
-      （<code>tools/fetch_biomed_paper.py</code>，只走公开接口）</figcaption>
+      （<code>tools/maintain/fetch_biomed_paper.py</code>，只走公开接口）</figcaption>
   </figure>
 
   <figure class="figure">
@@ -767,7 +767,7 @@
 
   <figure class="figure" data-delay="2">
     <img src="assets/problem_tree.svg" alt="问题生成树：母题根 → 真实生成操作 → 问题 → 判定状态">
-    <figcaption>问题生成树 · 生成脚本 <code>tools/make_problem_tree.py</code>，
+    <figcaption>问题生成树 · 生成脚本 <code>tools/build/make_problem_tree.py</code>，
       数据 <code>out/demo/problems_math.json + derived_motifs.json + grown_motifs.json</code></figcaption>
   </figure>
 </section>
@@ -1493,7 +1493,7 @@
 </script>
 
 <script>
-/* 分级展示数据（由 tools/make_site.py 注入 tools/site/problems_curated.json） */
+/* 分级展示数据（由 tools/build/make_site.py 注入 tools/site/problems_curated.json） */
 window.__CURATED__ = __CURATED_JSON__;
 </script>
 <script>

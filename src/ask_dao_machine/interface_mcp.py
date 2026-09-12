@@ -97,7 +97,7 @@ def _repo_root() -> Path | None:
         return Path(env)
     for base in (Path.cwd(), Path(__file__).resolve().parents[2]):
         for p in [base, *base.parents]:
-            if (p / "tools" / "run_paths.py").exists():
+            if (p / "tools" / "core" / "run_paths.py").exists() or (p / "tools" / "run_paths.py").exists():
                 return p
     return None
 
@@ -105,7 +105,7 @@ def _repo_root() -> Path | None:
 def _tools_import(name: str):
     root = _repo_root()
     if root is None:
-        raise RuntimeError("找不到仓库根（含 tools/run_paths.py）；请设置 ASK_DAO_ROOT")
+        raise RuntimeError("找不到仓库根（含 tools/core/run_paths.py）；请设置 ASK_DAO_ROOT")
     tp = str(root / "tools")
     if tp not in sys.path:
         sys.path.insert(0, tp)

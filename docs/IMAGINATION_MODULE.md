@@ -16,7 +16,7 @@
 ### ① 组词
 - 穷尽领域专业词的组合：82 词 × 82 = **6642 个组合词**
 - 例：文学×工业化 → "文学工业化"（用户举例，几乎前所未有的观点）
-- 工具：`tools/word_fusion.py`、`tools/word_understand.py`
+- 工具：`tools/engines/word_fusion.py`、`tools/core/word_understand.py`
 
 ### ② 拆词（深度 = 变量 d）
 - 看到词（如"记忆调性"）→ 问"**它是什么？**"（疑问句）
@@ -25,7 +25,7 @@
 - **是否可再拆？** 过去可拆（时间/事件）、影响可拆（因果/塑造）……
 - **何时停 = 深度变量 d**。d 可调（d=0 一层，d=自然深度拆到原子概念）
 - 实验发现：概念树有**自然深度**（如"记忆调性"=3），d 超过即饱和
-- 工具：`tools/depth_sentence.py`、`tools/depth_batch.py`
+- 工具：`tools/research/depth_sentence.py`、`tools/research/depth_batch.py`
 
 ### ③ 还原造句（嵌套、推理、判断、比较）
 拆到底后**从底往上还原**。关键是**不成括号拼凑**，而要有：
@@ -33,7 +33,7 @@
 - **推理**：据此可以推断……
 - **判断**：失忆是哪一种记忆调性？（用概念解释现象）
 - **比较**：失忆症是**疾病**，而记忆调性是**正常现象**（用对立概念划边界）
-- 工具：`tools/reconstruct.py` → `reconstruct_sent.py` → `reconstruct_judge.py` → `reconstruct_compare.py`
+- 工具：`tools/research/reconstruct.py` → `reconstruct_sent.py` → `reconstruct_judge.py` → `reconstruct_compare.py`
 
 ### ④ 成段
 段落结构：
@@ -50,7 +50,7 @@
 
 ### ⑤ 解释
 - 对成段结果**再解释**：它指什么现象、内在机制、深问
-- 工具：`tools/understand_deep.py`
+- 工具：`tools/research/understand_deep.py`
 
 ---
 

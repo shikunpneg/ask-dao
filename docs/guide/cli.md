@@ -55,7 +55,7 @@ $ ask-dao-machine
 ## 一条最小工作流（生物医学）
 
 ```bash
-python tools/fetch_biomed_paper.py --pmcid PMC13331974          # 取开放获取全文
+python tools/maintain/fetch_biomed_paper.py --pmcid PMC13331974          # 取开放获取全文
 ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo
 ask-dao-machine report --out out/biomed_demo                    # 一页人话
 ```
@@ -65,6 +65,6 @@ ask-dao-machine report --out out/biomed_demo                    # 一页人话
 ## 与 `tools/` 的关系
 
 CLI 是**入口**，引擎仍在仓库的 `tools/` 与 `src/ask_dao_machine/`：`ask` 与 `imagine` 复用
-`tools/question_refiner.py`、`tools/run_paths.py` 的判定器（单一实现，不复制逻辑），
+`tools/core/question_refiner.py`、`tools/core/run_paths.py` 的判定器（单一实现，不复制逻辑），
 因此这两条命令需要**源码运行或 `pip install -e .`**；`paper` / `perceive` / 引擎跑批在包里自足。
 装成裸 wheel 时，`ask` 会明确提示这一点，而不是静默失败。

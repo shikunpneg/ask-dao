@@ -122,10 +122,10 @@
 | 输入 | 入口 | 产出 |
 |---|---|---|
 | 经验（图像） | `python -m ask_dao_machine perceive 图片/` | 结构特征 → 带判定路由的视觉问题 |
-| 日常问题 | `python tools/run_paths.py problem --input daily --q "…"` | 判定路由 → 科学问题 |
-| 已知未解 | `python tools/scihist_to_problems.py` · `problem_lineage.py` | 正式问题 + 谱系（前问题/后代/侧枝） |
+| 日常问题 | `python tools/core/run_paths.py problem --input daily --q "…"` | 判定路由 → 科学问题 |
+| 已知未解 | `python tools/research/scihist_to_problems.py` · `problem_lineage.py` | 正式问题 + 谱系（前问题/后代/侧枝） |
 | 母题（86 个） | `python -m ask_dao_machine all` | 问题树：母题 → 前问题 → 科学问题 → 基础领域 → 问题树 L0–L5 → 领域融合 |
-| 造词 | `python tools/run_paths.py imagine --word 记忆调性` | 概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释） |
+| 造词 | `python tools/core/run_paths.py imagine --word 记忆调性` | 概念（组词 → 拆词(d) → 还原造句 → 成段 → 解释） |
 | 论文 / 语料 | `python -m ask_dao_machine paper papers/` | 问题清单（「作者已提出」与「机器新提出」分开标注） |
 
 **输出**：① 问题清单（`problems_*.json` / `discovery_manifest.json`，主产物）
@@ -167,7 +167,7 @@
 生成自包含的交互页面（双击即可打开，无需服务器）：
 
 ```bash
-python tools/build_paths_viz.py     # → docs/viz/paths.html（入库）与 out/demo/viz/paths.html
+python tools/build/build_paths_viz.py     # → docs/viz/paths.html（入库）与 out/demo/viz/paths.html
 ```
 
 📄 **[打开可视化 →](docs/viz/paths.html)**
@@ -245,11 +245,11 @@ python tools/build_paths_viz.py     # → docs/viz/paths.html（入库）与 out
 
 | 工具 | 作用 |
 |---|---|
-| `tools/fetch_wiki.py` | 抓词库 82 词的中文维基词条正文 → `data/wiki/{term}.json`（断点续跑，失败记 `_failed.json`） |
-| `tools/retrieve_browser.py` | 双通道检索：**词条通道**（a 的词条里是否提到 b → 经验锚点）· **搜索通道**（组合词 a×b 在维基是否已成词） |
-| `tools/retrieve_context.py` | arXiv API 回退（`all:a AND all:b` 摘要片段）；网络失败 → 空 hits，不崩 |
-| `tools/browser_mass_search.py` | 全量跑 82 词两两组合的双通道检索，断点续跑 → `out/demo/browser_mass_search.json` |
-| `tools/word_understand.py` | `understand(a,b,da,db,context=None)`：非空时把检索到的真实机制写成 **M7 经验锚点** |
+| `tools/maintain/fetch_wiki.py` | 抓词库 82 词的中文维基词条正文 → `data/wiki/{term}.json`（断点续跑，失败记 `_failed.json`） |
+| `tools/core/retrieve_browser.py` | 双通道检索：**词条通道**（a 的词条里是否提到 b → 经验锚点）· **搜索通道**（组合词 a×b 在维基是否已成词） |
+| `tools/core/retrieve_context.py` | arXiv API 回退（`all:a AND all:b` 摘要片段）；网络失败 → 空 hits，不崩 |
+| `tools/engines/browser_mass_search.py` | 全量跑 82 词两两组合的双通道检索，断点续跑 → `out/demo/browser_mass_search.json` |
+| `tools/core/word_understand.py` | `understand(a,b,da,db,context=None)`：非空时把检索到的真实机制写成 **M7 经验锚点** |
 
 **跑出来的真实数字**（6,642 个组合词，本次跑批）：
 
@@ -294,8 +294,8 @@ UK Biobank 前瞻队列 n=156,000，中位随访 13.3 年，调整后 HR 1.19）
 
 ```bash
 # 1. 找一篇开放获取论文并抓全文（Europe PMC 公开接口，记录许可字段）
-python tools/fetch_biomed_paper.py --list
-python tools/fetch_biomed_paper.py --pmcid PMC13331974
+python tools/maintain/fetch_biomed_paper.py --list
+python tools/maintain/fetch_biomed_paper.py --pmcid PMC13331974
 
 # 2. 生成问题（--domain biomed：11 类方法学追问 + 从 HR/CI 直接算 E-value）
 ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed --out out/biomed_demo
@@ -383,15 +383,15 @@ out/words/   ← run --words … / imagine
 | 宿主 | 挂法 | 一条命令 | 状态 |
 |---|---|---|---|
 | 任何 shell（**Claude Code**、Codex、CI） | CLI | `ask-dao-machine paper …` | ✅ 实测 |
-| **Claude Code / Cursor / Continue** | MCP server（项目 `.mcp.json`） | `python tools/install_integrations.py` | ✅ 配置已生成 |
+| **Claude Code / Cursor / Continue** | MCP server（项目 `.mcp.json`） | `python tools/maintain/install_integrations.py` | ✅ 配置已生成 |
 | **DSH** | 技能目录（`.dsh/skills/`） | 同上 | ✅ 本机热加载验证通过 |
 | **DSH** | MCP client 插件行（`cordis.yml`） | 见 `install_integrations.py` 输出片段 | ⬜ 未在本机挂（片段已给全） |
 | GitHub | Action | 论文进 `papers/` 推送即评论回问题 | ✅ 已跑通 |
 
 ```bash
-python tools/install_integrations.py          # 项目级：CC + DSH 技能目录 + .mcp.json
-python tools/install_integrations.py --user   # 用户级：~/.claude/skills · ~/.dsh/skills · ~/.agents/skills
-python tools/install_integrations.py --check  # 只检查现状
+python tools/maintain/install_integrations.py          # 项目级：CC + DSH 技能目录 + .mcp.json
+python tools/maintain/install_integrations.py --user   # 用户级：~/.claude/skills · ~/.dsh/skills · ~/.agents/skills
+python tools/maintain/install_integrations.py --check  # 只检查现状
 ```
 
 技能源文件只有一份：`integrations/skill/SKILL.md`（写入各宿主目录后内容一致，`--check` 可验证）。
@@ -435,7 +435,7 @@ ask-dao-machine bridge 熵 选择               # 只看桥本身：经验锚点
 
 ```bash
 # ④ 可视化：问题树 + 概念树 + 概念论证
-python tools/build_paths_viz.py     # → docs/viz/paths.html
+python tools/build/build_paths_viz.py     # → docs/viz/paths.html
 
 # ⑤ 输入论文 → 输出问题（支持 md/txt/pdf/docx/epub 或目录）
 python -m ask_dao_machine paper papers/ --flat --out out/papers

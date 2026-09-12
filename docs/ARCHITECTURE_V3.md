@@ -20,15 +20,15 @@
 ## ① 感受模块（第一手经验）
 - 目的: 从视觉/听觉/网络文本获取**一手经验** -> 结构化自然语言(实体/结构/文本)
 - 现状:
-  - 视觉: `tools/perception_module.py` (图像->结构特征->日常问题) 最小闭环, 2 条产出
-  - 网络文本: `tools/web_experience.py` (抓页->疑问) 有产出但质量待提升(arXiv侧边栏噪声)
-  - arXiv: `tools/arxiv_miner.py` (论文摘要->开放点) 7 条, 前沿裂缝
+  - 视觉: `tools/core/perception_module.py` (图像->结构特征->日常问题) 最小闭环, 2 条产出
+  - 网络文本: `tools/research/web_experience.py` (抓页->疑问) 有产出但质量待提升(arXiv侧边栏噪声)
+  - arXiv: `tools/research/arxiv_miner.py` (论文摘要->开放点) 7 条, 前沿裂缝
 - 目标: 真实摄像头/麦克风 -> 结构化观测(用户最初愿景, 未完成)
 
 ## ② 问题制造模块（核心）
 - 流水: 日常问题 → 前问题 → 科学问题 → 基础领域 → 问题树 → 领域融合
 - 现状:
-  - 日常→科学: `tools/question_refiner.py` (分类+判定路由)
+  - 日常→科学: `tools/core/question_refiner.py` (分类+判定路由)
   - 反例驱动: `counterex_engine` (例外->刻画问题)
   - 基础领域: 14 领域并行 (`all_domains_engine.py`)
   - 问题树: `territory_engine` + `palbase_tree` (14 条, 自动分型 char/holds)
