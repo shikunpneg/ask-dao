@@ -60,23 +60,46 @@ def classify(q):
     return "混合/待定", dom, "待定"
 
 
+_PLACEHOLDER_DOMS = {"", "通用", "未分类", "自动", "待定", "none", "None"}
+
+
+def _clause(dom: str) -> str:
+    """域占位符（通用/未分类）不硬拼进句子——否则会产出「在通用中, 驱动…」这种怪句。"""
+    d = (dom or "").strip()
+    return f"在{d}中，" if d not in _PLACEHOLDER_DOMS else ""
+
+
+def _short(s: str, n: int = 80) -> str:
+    """按标点截断，别把用户的问题切成半句。"""
+    s = (s or "").strip()
+    if len(s) <= n:
+        return s
+    cut = s[:n]
+    for i in range(len(cut) - 1, max(0, len(cut) - 30), -1):
+        if cut[i] in "，,。！？；;、：:":
+            return cut[:i]
+    return cut + "…"
+
+
 def refine(q):
     kind, dom, route = classify(q)
     daily = q["daily_question"]
     daily_clean = clean(daily)
+    lead = _clause(dom)
+    body = _short(daily_clean)
     # 写科学问题: 把日常疑问转成可验证形式
     if kind == "数量/边界":
-        sci = f"在{dom}中, '{daily_clean[:40]}' 的精确数值/边界是多少? 随什么参数变化?"
+        sci = f"{lead}「{body}」的精确数值/边界是多少？随什么参数变化？"
     elif kind == "机制/因果":
-        sci = f"在{dom}中, 驱动'{daily_clean[:40]}' 的机制是什么? 能否用可检验模型刻画?"
+        sci = f"{lead}驱动「{body}」的机制是什么？能否用可检验模型刻画？"
     elif kind == "定义/本质":
-        sci = f"'{daily_clean[:40]}' 的{dom}学精确定义是什么? 该定义能否操作化(可判定)?"
+        sci = f"「{body}」的精确定义是什么？该定义能否操作化（可判定）？"
     elif kind == "存在性/可行性":
-        sci = f"'{daily_clean[:40]}' 在{dom}中是否可实现/存在? 构造或反例?"
+        sci = f"「{body}」是否可实现/存在？给出构造或反例。"
     elif kind == "真伪判断":
-        sci = f"'{daily_clean[:40]}' 在{dom}中是否为真? 判定依据?"
+        sci = f"「{body}」是否为真？判定依据是什么？"
     else:
-        sci = f"'{daily_clean[:40]}' 在{dom}中的结构是什么?"
+        sci = f"{lead}「{body}」的结构是什么？"
     return {**q, "kind": kind, "judge_route": route,
             "scientific_question": sci.strip()}
 

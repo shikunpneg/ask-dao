@@ -37,39 +37,42 @@ def _repo_tools():
 
 
 def _cmd_ask(argv):
-    """日常疑问 → 类型 + 判定路由 + 科学问题（可复用的单条命令）。"""
+    """你自己提的疑问 → 走问题路五站（与 paper 同一条流水线）。
+
+    以前这里只吐一条模板句就完事；现在它和 paper 一样：
+    类型判定 → 判定路由 → 科学问题 → 四类结构追问 → 五站 → 版本化目录。
+    """
     ap = argparse.ArgumentParser(
         prog="ask-dao-machine ask",
-        description="日常疑问 → 类型判定 + 判定路由 + 形式化后的科学问题",
-        epilog=("例子:\n  ask-dao-machine ask \"为什么有些数学猜想几十年都没人证明出来？\"\n"
-                "  ask-dao-machine ask \"为什么鸟群能同步转向？\" --out out/ask\n"),
+        description="你自己提的疑问 → 走问题路（类型判定 + 判定路由 + 结构追问 + 五站）",
+        epilog=("例子:\n"
+                "  ask-dao-machine ask \"为什么有些蛋白质能自发折叠成特定形状？\"\n"
+                "  ask-dao-machine ask \"为什么鸟群能同步转向？\" --stop ai4s --depth deep\n"
+                "  ask-dao-machine ask \"为什么代糖没降低肾病风险？\" --max-total 6\n"
+                "  ask-dao-machine ask \"为什么…\" --field 生物医学   # 手指定基础领域\n"
+                "说明：问句不会被截断；域判不出来时不会硬拼成「在通用中…」这种怪句。\n"),
         formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("question", nargs="+", help="疑问原文（不用加引号也行，会拼起来）")
-    ap.add_argument("--out", default=str(Path.cwd() / "out" / "ask"), help="输出目录")
+    ap.add_argument("--out", default=str(Path.cwd() / "out" / "ask"), help="输出根目录")
+    ap.add_argument("--stop", choices=["prequestion", "scientific", "domain", "tree", "ai4s"],
+                    default="scientific", help="终止点（默认 scientific）")
+    ap.add_argument("--depth", choices=["shallow", "normal", "deep"], default="normal",
+                    help="深度档（决定给几条结构追问）")
+    ap.add_argument("--max-total", type=int, default=0, help="总条数上限（0 = 不限）")
+    ap.add_argument("--field", default=None, help="手指定基础领域（默认自动判）")
+    ap.add_argument("--overwrite", action="store_true", help="同问句重跑覆盖，不递增 -v2")
     a = ap.parse_args(argv)
     q = " ".join(a.question).strip()
     if not _repo_tools():
         print("这条命令需要仓库里的 tools/（用源码运行或 pip install -e .）；"
               "若只需要论文支线，请用 ask-dao-machine paper。", file=sys.stderr)
         return 2
-    import question_refiner as qr
-    r = qr.refine({"daily_question": q, "domain": "通用"})
-    out = Path(a.out)
-    out.mkdir(parents=True, exist_ok=True)
-    rec = {"id": "ASK01", "source": "<cli ask>", "domain": "日常疑问",
-           "type": f"日常疑问→{r.get('kind')}", "is_author_stated": False,
-           "evidence": q, "statement": r.get("scientific_question"),
-           "route": r.get("judge_route"), "status": "待实验/待评审",
-           "kind": r.get("kind")}
-    (out / "problems_ask.json").write_text(
-        json.dumps({"domain": "ask", "generator": "ask-dao-machine/cli.py ask",
-                    "counts": {"total": 1, "author_stated": 0, "machine_raised": 1},
-                    "problems": [rec]}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"疑问：{q}")
-    print(f"类型：{r.get('kind')}　判定路由：{r.get('judge_route')}")
-    print(f"科学问题：{r.get('scientific_question')}")
-    print(f"→ {out / 'problems_ask.json'}（可接 ask-dao-machine report --out {out}）")
-    return 0
+    from . import flow as flow_mod
+    n_fol = {"shallow": 2, "normal": 4, "deep": 4}[a.depth]
+    r = flow_mod.run_question(q, Path(a.out), stop=a.stop, n_followups=n_fol,
+                              max_total=a.max_total, overwrite=a.overwrite,
+                              domain=a.field)
+    return 0 if r.get("problems") else 2
 
 
 def _cmd_imagine(argv):

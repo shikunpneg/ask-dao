@@ -33,9 +33,10 @@ HONESTY = "诚实边界：世界新问题 N3 = 0 —— 产出是候选问题与
 
 # (命令, 说明) —— 保持短、可组合、能直接复制着跑
 COMMANDS = [
+    ("run <输入>", "统一入口：论文/图片/你的疑问 → 选路 → 选终止点（见下）"),
     ("paper <文件/目录…>", "论文 → 问题（「作者已提出」/「机器提出」分开标注）"),
-    ("ask \"<日常疑问>\"", "疑问 → 类型 + 判定路由 + 科学问题"),
-    ("imagine <自造词>", "造词 → 概念（组词/拆词/还原造句/成段/解释）"),
+    ("ask \"<你的疑问>\"", "你自己提的疑问 → 走问题路五站（同 paper 一样）"),
+    ("imagine <任意词>", "造词 → 概念（词表外的词会自动解析「本质」，也可 --essence 指定）"),
     ("bridge <词A> <词B>", "经验桥（可选）：组合词 → 维基双通道 + arXiv 回退 → 经验锚点"),
     ("perceive <图片/目录…>", "图像（经验）→ 结构特征 → 带判定路由的问题"),
     ("all", "86 母题 → 问题树 L0–L5 → 领域融合（+ 新颖性门）"),
@@ -43,6 +44,17 @@ COMMANDS = [
     ("doctor", "环境自查：缺什么、下一步做什么"),
     ("data fetch", "取 OEIS 参照系（约 32MB）"),
     ("mcp", "以 MCP server 运行，挂到 Claude Code / DSH / Cursor"),
+]
+
+# run 的用法速查（放在 banner 底部：新用户最需要的是"从哪儿进"）
+RUN_HINT = [
+    ("run <论文/图片>", "问题路，默认到「科学问题」"),
+    ("run <论文> --stop ai4s", "一路跑到底（算不出的会标「机器无法结算」）"),
+    ("run <论文> --depth deep --max-total 60", "控制深度与条数"),
+    ("run --words 熵,记忆", "想象路：两两组合（**任意词都行**）"),
+    ("run --words 折叠 --essence '折叠=\"多肽链自发形成三维构象\"'", "词表外的词，自己给「本质」"),
+    ("run --words 熵,记忆 --bridge", "想象路 + 过经验桥"),
+    ("ask \"我的疑问\"", "自己提的疑问，走同一条问题路"),
 ]
 
 _R, _D, _B = "\033[0m", "\033[2m", "\033[1m"
@@ -104,6 +116,12 @@ def render(color: bool | None = None, stream=None, width: int | None = None) -> 
     L.append("   " + c(_D, HONESTY))
     L.append("   " + c(_D, "ask-dao-machine help   看全部用法；每条命令都支持 --help"))
     L.append("")
+    L.append("   " + c(_B, "统一入口 · 一个输入 → 选路 → 选终止点"))
+    rlabels = [f"ask-dao-machine {cmd}" for cmd, _ in RUN_HINT]
+    rpad = max(_dw(s) for s in rlabels) + 2
+    for label, (_, desc) in zip(rlabels, RUN_HINT):
+        L.append("   " + c(_D, label) + " " * (rpad - _dw(label)) + c(_D, desc))
+    L.append("")
     return "\n".join(L)
 
 
@@ -113,5 +131,5 @@ def show(stream=None) -> None:
 
 
 def usage_line() -> str:
-    return ("用法: ask-dao-machine <paper|ask|imagine|perceive|all|report|doctor|"
+    return ("用法: ask-dao-machine <run|paper|ask|imagine|perceive|all|report|doctor|"
             "data|mcp> …  （直接敲 ask-dao-machine 看速查）")

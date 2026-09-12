@@ -92,6 +92,192 @@ def word_list() -> list[str]:
     return sorted(getattr(m, "WORDS", {}) or {}) if m else []
 
 
+_SENT_END = re.compile(r"[。．.!?！？；;]")
+WIKI_EXTRA = REPO / "data" / "wiki_extra"
+
+# 「本质」质量闸门：宁可说没取到，也不要给一条自信但错的定义。
+# 实测教训：`折叠` 被搜索解析成《北京折叠》（科幻小说），
+#          `聚沉` 的首段是 {\displaystyle {\ce {C17H35COONa}}}（LaTeX 公式）。
+_MARKUP = re.compile(r"\{\\|\\ce\b|\\displaystyle|\\mathrm|\\text|\\begin\{")
+_WORKY = re.compile(r"《|》|事故|事件|电影|电视剧|小说|公司|大学|战争|条约|乐队|专辑|游戏|人物")
+_PEOPLEY = re.compile(r"（[^）]{0,20}(生|卒|年)[^）]{0,20}）|中国.*(作家|演员|导演|歌手|运动员)")
+
+
+def _definition_ok(text: str) -> bool:
+    """这条「定义」能不能用：排除 markup、公式、以及"人/作品"式条目。"""
+    if not text or len(text) < 6:
+        return False
+    if _MARKUP.search(text) or _WORKY.search(text) or _PEOPLEY.search(text):
+        return False
+    letters = sum(c.isalpha() or "\u4e00" <= c <= "\u9fff" for c in text)
+    return letters / len(text) >= 0.6
+
+
+def _definition_from(text: str) -> str:
+    """从一段维基正文里抽一条短定义（去掉括号读音，截到第一个句末）。"""
+    first = re.sub(r"\s+", " ", text or "").strip()
+    first = re.sub(r"（[^）]{0,40}）", "", first)
+    first = re.sub(r"\([^)]{0,40}\)", "", first).strip()
+    d = _SENT_END.split(first)[0].strip()
+    if 4 <= len(d) <= 70:
+        return d
+    return (first[:70].rstrip() + "…") if len(first) > 70 else first
+
+
+def _api_get(params: dict, timeout: int = 12) -> dict:
+    """MediaWiki API GET（纯 HTTP，不开浏览器）。失败返回空 dict。"""
+    import urllib.error
+    import urllib.parse
+    import urllib.request
+    p = dict(params, format="json", formatversion="2")
+    url = f"https://zh.wikipedia.org/w/api.php?{urllib.parse.urlencode(p)}"
+    try:
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "ask-dao-machine/0.5 (essence lookup)"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except Exception:                                              # noqa: BLE001
+        return {}
+
+
+def _api_extract(title: str) -> tuple[str, list[str]]:
+    d = _api_get({"action": "query", "prop": "extracts", "explaintext": "1",
+                  "redirects": "1", "exlimit": "1", "titles": title})
+    pages = (d.get("query") or {}).get("pages") or []
+    if not pages or pages[0].get("missing"):
+        return "", []
+    t = pages[0].get("title") or title
+    paras = [x.strip() for x in (pages[0].get("extract") or "").split("\n") if len(x.strip()) > 15]
+    return t, paras
+
+
+def _essence_via_api(word: str, timeout: int = 12) -> tuple[str, str]:
+    """用 MediaWiki API 取定义（同名条目不存在时搜索解析），**过质量闸门**。
+
+    返回 (定义, 实际采用的条目标题)；闸门不过就返回 ("", "")。
+    偏好：标题含该词 > 首段含该词 > 搜索排名靠前；排除作品/人物/公式/乱码。
+    """
+    cands: list[str] = []
+    t0, p0 = _api_extract(word)
+    if p0:
+        cands.append(t0)
+    s = _api_get({"action": "query", "list": "search", "srsearch": word,
+                  "srlimit": "6", "srnamespace": "0"}, timeout=timeout)
+    for h in ((s.get("query") or {}).get("search") or []):
+        if h["title"] not in cands:
+            cands.append(h["title"])
+
+    best: tuple[int, str, str] = (-99, "", "")
+    for rank, title in enumerate(cands):
+        if _WORKY.search(title):
+            continue
+        t, paras = _api_extract(title)
+        if not paras:
+            continue
+        d = _definition_from(paras[0])
+        if not _definition_ok(d):
+            continue
+        sc = 0
+        if word in t:
+            sc += 3                      # 标题里有这个词 → 更可能是对的那个义项
+        if word in paras[0]:
+            sc += 2
+        sc -= rank                       # 搜索排名越靠前越好
+        if sc > best[0]:
+            best = (sc, d, t)
+    if best[0] < 0:                      # 一条都没过闸门 → 诚实返回空
+        return "", ""
+    _sc, d, title = best
+    try:                        # 缓存，下次秒回；也让桥的词条通道受益
+        WIKI_EXTRA.mkdir(parents=True, exist_ok=True)
+        (WIKI_EXTRA / f"{word}.json").write_text(json.dumps(
+            {"term": word, "title": title, "paragraphs": [_definition_from(d)],
+             "source": "mediawiki-api(auto)", "resolved_from": word},
+            ensure_ascii=False, indent=1), encoding="utf-8")
+    except Exception:                                              # noqa: BLE001
+        pass
+    return d, title
+
+
+def _essence_for_word(word: str, bridge: bool = False, allow_net: bool = True) -> tuple[str, str]:
+    """给词表外的词找「本质」定义。返回 (定义, 来源)。"""
+    # 1) 本地语料（82 词表那次抓的 + 自动补抓的）
+    for d in (REPO / "data" / "wiki", WIKI_EXTRA):
+        p = d / f"{word}.json"
+        if not p.exists():
+            continue
+        try:
+            paras = (json.loads(p.read_text(encoding="utf-8")) or {}).get("paragraphs") or []
+            if paras:
+                return _definition_from(paras[0]), "wiki"
+        except Exception:                                          # noqa: BLE001
+            pass
+    # 2) 纯 HTTP API 现取（快，不开浏览器；同名条目不存在时自动搜索解析）
+    if allow_net:
+        d, title = _essence_via_api(word)
+        if d:
+            tgt = f"（解析到条目「{title}」）" if title and title != word else ""
+            return d + tgt, "wiki-api"
+    # 3) 过桥现抓（要开浏览器；只在 --bridge 时做）
+    if bridge:
+        rb = _load_tool("retrieve_browser")
+        if rb is not None:
+            try:
+                paras = ((rb.wiki_page(word) or {}).get("paragraphs") or [])
+                if paras:
+                    return _definition_from(paras[0]), "wiki-browser"
+            except Exception:                                      # noqa: BLE001
+                pass
+    return "", "unknown"
+
+
+def parse_essences(spec: str | None) -> dict[str, str]:
+    """解析 --essence 参数： 折叠="多肽链自发形成三维构象" , 聚沉=蛋白聚集成块 """
+    out: dict[str, str] = {}
+    for chunk in (spec or "").replace("，", ",").split(","):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        if "=" in chunk:
+            k, v = chunk.split("=", 1)
+        elif "：" in chunk:
+            k, v = chunk.split("：", 1)
+        else:
+            continue
+        k, v = k.strip().strip('"“”'), v.strip().strip('"“”')
+        if k and v:
+            out[k] = v
+    return out
+
+
+def resolve_essences(words: list[str], user: dict[str, str] | None = None,
+                     bridge: bool = False, allow_net: bool = True) -> tuple[dict[str, str], dict[str, str]]:
+    """给每个词解析一条「本质」。来源优先级：用户指定 > 82 词表 > 本地维基语料 > 过桥 > 兜底。
+
+    设计依据（不可动摇的原则）：**每个词都有意义**，所以词表外的词不该被拒绝——
+    只是它的「本质」得有个来源，并且必须标明来源，不能假装是词表里的定义。
+    """
+    wu = _load_tool("word_understand")
+    table = dict(getattr(wu, "WORDS", {}) or {}) if wu else {}
+    user = user or {}
+    ess: dict[str, str] = {}
+    src: dict[str, str] = {}
+    for w in words:
+        if w in user:
+            ess[w], src[w] = user[w], "user"
+        elif w in table:
+            ess[w], src[w] = table[w], "table"
+        else:
+            e, s = _essence_for_word(w, bridge=bridge, allow_net=allow_net)
+            if e:
+                ess[w], src[w] = e, s
+            else:
+                # 兜底要短（它会被拼进每个模板），并把决定权交回用户
+                ess[w] = "未取到可靠定义"
+                src[w] = "unknown"
+    return ess, src
+
+
 def classify_field(text: str, default: str = "未分类") -> str:
     """粗分基础领域：命中关键词最多者胜（平手时长的关键词更具体者胜）。"""
     low = (text or "").lower()
@@ -251,19 +437,40 @@ def run_problem(inputs: list[Path], stop: str, out_root: Path, **kw) -> dict:
 # 想象路
 # ══════════════════════════════════════════════════════════════════
 def run_imagination(words: list[str], out_root: Path, bridge: bool = False,
-                    overwrite: bool = False, quiet: bool = False) -> dict:
-    """想象路：只能输入词表里的词；给 1 个与全表组合，给多个两两组合。"""
+                    overwrite: bool = False, quiet: bool = False,
+                    essences: dict[str, str] | None = None) -> dict:
+    """想象路：**任意词**都能进来（每个词都有意义）。
+
+    词表 82 词有现成的「本质」定义；词表外的词走解析链拿本质
+    （用户 --essence 指定 > 本地维基语料 > 过桥现抓 > 兜底），并标明来源。
+    给 1 个词 → 与全表组合；给多个词 → 两两组合。
+    """
     wu = _load_tool("word_understand")
     if wu is None:
         print("想象路需要仓库里的 tools/word_understand.py（用源码运行或 pip install -e .）。",
               file=sys.stderr)
         return {"error": "tools missing", "items": []}
-    table = getattr(wu, "WORDS", {}) or {}
-    bad = [w for w in words if w not in table]
-    if bad:
-        print(f"这些词不在可组合词表里：{bad}", file=sys.stderr)
-        print(f"词表共 {len(table)} 个，例：{'、'.join(sorted(table)[:20])} …", file=sys.stderr)
-        return {"error": "unknown words", "unknown": bad, "items": []}
+    table = dict(getattr(wu, "WORDS", {}) or {})
+    ess, src = resolve_essences(words, essences, bridge=bridge)
+
+    if not quiet:
+        outside = {w: (src[w], ess[w]) for w in words if src[w] != "table"}
+        if outside:
+            print("词表外的词 ——「本质」来源：")
+            for w, (s, e) in outside.items():
+                tag = {"user": "你指定", "wiki": "本地语料", "wiki-api": "维基(自动解析)",
+                       "wiki-browser": "维基(过桥现抓)", "unknown": "没取到"}.get(s, s)
+                print(f"    {w}　[{tag}]　{e}")
+            unknown = [w for w, (s, _) in outside.items() if s == "unknown"]
+            if unknown:
+                names = "、".join(unknown)
+                print()
+                print(f"  ⚠ {names} 没取到可靠定义。")
+                print("     自动解析要么没找到，要么找到的是同名的其它东西"
+                      "（实测：`折叠` 会被解析成《北京折叠》那本科幻小说）——"
+                      "所以宁可说没取到，也不给一条自信但错的定义。")
+                example = "，".join(f'{w}="<一句话定义>"' for w in unknown[:2])
+                print(f"     想用它？自己给一句本质：  --essence {example}")
 
     pairs = ([(words[0], b) for b in sorted(table) if b != words[0]]
              if len(words) == 1
@@ -292,29 +499,40 @@ def run_imagination(words: list[str], out_root: Path, bridge: bool = False,
                       "组合词搜索通道跳过。装的命令：pip install urllib3）")
             print(f"（过经验桥：{len(pairs)} 个组合都会先检索现实经验；失败即退化为无锚点）")
 
-    items = []
-    for a, b in pairs:
-        ctx = None
-        if retrieve is not None:
-            try:
-                r = retrieve(a, b)
-                ctx = (r or {}).get("hits")
-            except Exception:                                   # noqa: BLE001
-                ctx = None
-        items.append({
-            "term": a + b, "a": a, "b": b,
-            "understandings": wu.understand(a, b, table[a], table[b], ctx),
-            "context_hits": len(ctx or []),
-            "question": wu.question(a, b),
-        })
+    # understand() 内部按 WORDS 取值，所以把词表外的词临时并进去（结束后还原）
+    added = [w for w in ess if w not in table]
+    for w in added:
+        wu.WORDS[w] = ess[w]
+    try:
+        items = []
+        for a, b in pairs:
+            ctx = None
+            if retrieve is not None:
+                try:
+                    r = retrieve(a, b)
+                    ctx = (r or {}).get("hits")
+                except Exception:                               # noqa: BLE001
+                    ctx = None
+            items.append({
+                "term": a + b, "a": a, "b": b,
+                "understandings": wu.understand(a, b, ess[a], ess[b], ctx),
+                "context_hits": len(ctx or []),
+                "question": wu.question(a, b),
+                "essence_source": {a: src.get(a), b: src.get(b)},
+            })
+    finally:
+        for w in added:
+            wu.WORDS.pop(w, None)
 
     title = "×".join(words) if words else "imagination"
     out, ver = _plan_dir(out_root, _slug(f"想象路-{title}"), overwrite)
     payload = {
         "path": "imagination", "words": words, "count": len(items),
         "bridge": bool(bridge), "title": title, "version": ver, "out_dir": str(out),
+        "essences": ess, "essence_source": src,
         "note": "想象路的成功标准是「被理解」（语法正确 + 逻辑通畅 + 有推理判断），"
-                "不是「有真实所指」；过桥只做脚手架，不做裁判。",
+                "不是「有真实所指」；过桥只做脚手架，不做裁判。"
+                "词表外的词的「本质」来源已在 essence_source 里标明。",
         "items": items,
     }
     if not quiet:
@@ -330,6 +548,81 @@ def run_imagination(words: list[str], out_root: Path, bridge: bool = False,
     dst.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
     if not quiet:
         print(f"\n合计 {len(items)} 个组合 → {dst}")
+    return payload
+
+
+# ══════════════════════════════════════════════════════════════════
+# 自己提的疑问 → 问题路（与论文同一条流水线）
+# ══════════════════════════════════════════════════════════════════
+def run_question(question: str, out_root: Path, stop: str = "scientific",
+                 n_followups: int = 4, max_total: int = 0,
+                 overwrite: bool = False, quiet: bool = False,
+                 domain: str | None = None) -> dict:
+    """把用户自己提的疑问当成一次"输入"，走问题路五站。
+
+    以前 `ask` 只吐一条模板句就完事；现在它和 `paper` 一样：
+    类型判定 → 判定路由 → 科学问题 → 四类结构追问 → 五站 → 版本化目录 + 报告。
+    """
+    qr = _load_tool("question_refiner")
+    if qr is None:
+        print("这条命令需要仓库里的 tools/question_refiner.py。", file=sys.stderr)
+        return {"error": "tools missing", "problems": []}
+
+    from . import paper as paper_mod
+
+    dom = domain or classify_field(question, default="通用")
+    r = qr.refine({"daily_question": question, "domain": dom})
+    sci = r.get("scientific_question") or question
+    route = r.get("judge_route") or "待定"
+
+    problems = [{
+        "id": "AQ01", "source": "<cli 自己提的疑问>", "domain": "日常疑问",
+        "type": "①日常疑问", "is_author_stated": False,
+        "signal": r.get("kind"), "evidence": question,
+        "statement": sci, "route": route, "status": "待实验/待评审",
+        "kind": r.get("kind"),
+    }]
+    # 结构追问：给一个疑问以"深度"（范围/反例/机制/定量）
+    for name, tmpl, rt in paper_mod.FOLLOWUPS[:max(1, min(n_followups, 4))]:
+        problems.append({
+            "id": f"AQ{len(problems)+1:02d}", "source": "<cli 自己提的疑问>",
+            "domain": "日常疑问", "type": f"③结构追问·{name}", "is_author_stated": False,
+            "signal": r.get("kind"), "evidence": question,
+            "statement": f"针对「{sci[:110]}」的{name}：{tmpl}",
+            "route": rt, "status": "悬置(开放)",
+        })
+    if max_total and len(problems) > max_total:
+        problems = problems[:max_total]
+
+    _stage_problem(problems, stop)
+
+    out, ver = _plan_dir(out_root, _slug(question[:48]), overwrite)
+    payload = {
+        "domain": "ask", "generator": "ask-dao-machine/flow.py run_question",
+        "path": "problem", "stop": stop, "input_kind": "question",
+        "question": question, "title": question[:80], "version": ver, "out_dir": str(out),
+        "field": dom,
+        "counts": {"total": len(problems), "author_stated": 0,
+                   "machine_raised": len(problems)},
+        "by_field": {dom: len(problems)},
+        "by_layer": {},
+        "problems": problems,
+    }
+    bl: dict = {}
+    for p in problems:
+        bl[p.get("layer")] = bl.get(p.get("layer"), 0) + 1
+    payload["by_layer"] = {LAYERS.get(k, str(k)): v for k, v in sorted(bl.items())}
+    order = ["prequestion", "scientific", "domain", "tree", "ai4s"]
+    payload["stages_done"] = order[:order.index(stop) + 1] if stop in order else order[:2]
+
+    (out / "problems_ask.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    if not quiet:
+        print(f"疑问：{question}")
+        print(f"类型：{r.get('kind')}　判定路由：{route}　基础领域：{dom}")
+        print(f"科学问题：{sci}")
+        _print_problem_summary(payload, stop)
+        print(f"\n→ {out / 'problems_ask.json'}")
     return payload
 
 
@@ -386,7 +679,11 @@ def main(argv=None, out_dir="out/runs") -> int:
     ap.add_argument("--stop", choices=["prequestion", "scientific", "domain", "tree", "ai4s"],
                     default="scientific", help="问题路终止点（默认 scientific）")
     ap.add_argument("--words", default=None,
-                    help="想象路初始词，逗号分隔（必须在可组合词表里）")
+                    help="想象路初始词，逗号分隔（**任意词都行**；词表外的词会自动解析「本质」）")
+    ap.add_argument("--essence", default=None,
+                    help='给词表外的词指定「本质」：--essence 折叠="多肽链自发形成三维构象",聚沉="蛋白聚集成块"')
+    ap.add_argument("--question", default=None,
+                    help="自己提的疑问：走问题路（同 paper 一样的五站 + 版本化 + 报告）")
     ap.add_argument("--bridge", dest="bridge", action="store_true", default=None,
                     help="想象路：过经验桥（检索现实经验作脚手架）")
     ap.add_argument("--no-bridge", dest="bridge", action="store_false",
@@ -397,33 +694,40 @@ def main(argv=None, out_dir="out/runs") -> int:
     ap.add_argument("--per-type", type=int, default=None, help="覆盖 depth 的每类条数")
     ap.add_argument("--max-total", type=int, default=0, help="总条数上限（0 = 不限）")
     ap.add_argument("--domain", choices=["auto", "biomed", "none"], default="auto",
-                    help="领域包（仅问题路）")
+                    help="领域包（仅问题路论文输入）")
+    ap.add_argument("--field", default=None,
+                    help="自己提疑问时手指定基础领域（默认自动判；判不出就不硬拼进句子）")
     ap.add_argument("--overwrite", action="store_true", help="同标题重跑覆盖，不递增 -v2/-v3")
     a = ap.parse_args(argv)
 
     words = [w.strip() for w in (a.words or "").replace("，", ",").split(",") if w.strip()]
-    path = a.path or ("imagination" if words and not a.paths else "problem")
+    essences = parse_essences(a.essence)
+    has_question = bool(a.question)
+    path = a.path or ("imagination" if words and not a.paths and not has_question else "problem")
     out_root = Path(a.out)
 
     DEPTHS = {"shallow": (3, 2), "normal": (8, 4), "deep": (20, 4)}
     d_per, d_fol = DEPTHS[a.depth]
     per_type = a.per_type if a.per_type is not None else d_per
 
-    from . import paper as paper_mod
-
     results = {}
     # ── 想象路 ──
     if path in ("imagination", "both"):
         if not words:
-            ap.error("想象路需要 --words（例：--words 熵,记忆）")
+            ap.error("想象路需要 --words（例：--words 熵,记忆，或自造词 --words 折叠）")
         results["imagination"] = run_imagination(
-            words, out_root, bridge=bool(a.bridge), overwrite=a.overwrite)
+            words, out_root, bridge=bool(a.bridge), overwrite=a.overwrite,
+            essences=essences)
 
     # ── 问题路 ──
     if path in ("problem", "both"):
-        if not a.paths:
+        if has_question:
+            results["problem"] = run_question(
+                a.question, out_root / "ask", stop=a.stop, n_followups=d_fol,
+                max_total=a.max_total, overwrite=a.overwrite, domain=a.field)
+        elif not a.paths:
             if path == "problem":
-                ap.error("问题路需要一个输入（论文/图片/目录）")
+                ap.error("问题路需要一个输入：论文/图片/目录，或用 --question \"你的疑问\"")
         else:
             kind, files = detect_input(a.paths)
             if kind == "none":
