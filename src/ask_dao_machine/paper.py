@@ -103,10 +103,26 @@ def _pdf_text(path: Path) -> tuple[str, str]:
     import shutil
     import subprocess
     if shutil.which("pdftotext"):
-        r = subprocess.run(["pdftotext", "-q", str(path), "-"], capture_output=True, text=True)
-        if r.returncode == 0 and r.stdout.strip():
-            return r.stdout, "pdftotext"
-    return _pdf_text_builtin(path), "builtin(尽力提取, 建议装 pypdf 更稳)"
+        try:
+            # 注意(踩过的坑): 必须显式指定 encoding/errors。
+            # 中文 Windows 上 locale 默认是 cp936(GBK), 而 pdftotext 输出 UTF-8;
+            # 用 text=True 不指定编码时, Python 会在**读取线程**里抛
+            # UnicodeDecodeError, 异常不冒泡, 只让 r.stdout 变成 None,
+            # 下游 r.stdout.strip() 再抛 AttributeError, 文件被整篇跳过。
+            r = subprocess.run(
+                ["pdftotext", "-q", "-enc", "UTF-8", str(path), "-"],
+                capture_output=True, encoding="utf-8", errors="replace", timeout=180,
+            )
+            txt = r.stdout or ""
+            if r.returncode == 0 and txt.strip():
+                return txt, "pdftotext"
+            if txt.strip():
+                return txt, f"pdftotext(rc={r.returncode})"
+        except subprocess.TimeoutExpired:
+            print(f"[warn] pdftotext 超时(180s): {path.name}", file=sys.stderr)
+        except Exception as e:                                # noqa: BLE001
+            print(f"[warn] pdftotext 失败: {type(e).__name__} {e}", file=sys.stderr)
+    return _pdf_text_builtin(path), "builtin(尽力提取, 装 pypdf 或在 PATH 放 pdftotext 更稳)"
 
 
 def _pdf_text_builtin(path: Path) -> str:
@@ -156,6 +172,98 @@ def extract_text(path: Path) -> tuple[str, str]:
 
 _SKIP_NAMES = {"readme.md", "readme.txt", "license", "license.md"}
 
+# ── 输出版本化：每篇论文一个目录（按标题），不再互相覆盖 ────────────
+_SLUG_BAD = re.compile(r"[^\w\u4e00-\u9fff\u3400-\u4dbf\-]+")
+# 明显不是标题的行（期刊页眉、页脚、DOI、纯数字…）
+_TITLE_NOISE = re.compile(
+    r"^(?:doi|https?://|www\.|arxiv|copyright|©|received|accepted|published|"
+    r"open\s+access|original\s+(?:article|research)|research\s+article|"
+    r"article|research|review|abstract|keywords?|citation|journal|volume|vol\.|"
+    r"page|pp\.|issn|pmid|pmcid|downloaded|licensed|all rights reserved)\b",
+    re.I)
+
+
+def _pdf_meta_title(path: Path) -> str:
+    """从 PDF /Title 元数据里取标题（尽力，失败返回空）。"""
+    try:
+        raw = path.read_bytes()[:400_000]
+    except Exception:                                          # noqa: BLE001
+        return ""
+    m = re.search(rb"/Title\s*\(((?:\\.|[^\\()])*)\)", raw)
+    if not m:
+        m = re.search(rb"/Title\s*<([0-9A-Fa-f\s]{8,})>", raw)
+        if m:
+            try:
+                hx = bytes.fromhex(re.sub(rb"\s", b"", m.group(1)).decode("ascii"))
+                for enc in ("utf-16-be", "utf-8", "latin-1"):
+                    try:
+                        t = hx.decode(enc).strip()
+                        if len(t) >= 8:
+                            return t
+                    except Exception:                              # noqa: BLE001
+                        continue
+            except Exception:                                      # noqa: BLE001
+                pass
+        return ""
+    s = re.sub(rb"\\([()\\])", rb"\1", m.group(1))
+    for enc in ("utf-8", "latin-1", "utf-16-be"):
+        try:
+            t = s.decode(enc).strip()
+            if len(t) >= 8:
+                return t
+        except Exception:                                          # noqa: BLE001
+            continue
+    return ""
+
+
+def derive_title(path: Path, text: str = "") -> str:
+    """给这篇输入起个标题（用于输出目录名）。优先级：PDF 元数据 > 正文首行 > 文件名。"""
+    if path.suffix.lower() == ".pdf":
+        t = _pdf_meta_title(path)
+        if t and not _TITLE_NOISE.match(t):
+            return re.sub(r"\s+", " ", t)[:200]
+    for line in (text or "").splitlines()[:40]:
+        s = re.sub(r"\s+", " ", line).strip()
+        if not (12 <= len(s) <= 200):
+            continue
+        if _TITLE_NOISE.match(s):
+            continue
+        letters = sum(c.isalpha() or "\u4e00" <= c <= "\u9fff" for c in s)
+        if letters < len(s) * 0.5:            # 数字/符号太多的行不是标题
+            continue
+        if s.isupper() and len(s) < 30:       # 全大写短行多是栏目标签
+            continue
+        return s[:200]
+    return path.stem
+
+
+def slugify(title: str, maxlen: int = 64) -> str:
+    """标题 -> 目录名：保留中英数字与连字符，其余压成 -。"""
+    s = _SLUG_BAD.sub("-", title.strip())
+    s = re.sub(r"-{2,}", "-", s).strip("-").strip()
+    if len(s) > maxlen:
+        s = s[:maxlen].rstrip("-")
+    return s or "untitled"
+
+
+def plan_out_dir(base: Path, slug: str, mode: str = "version") -> tuple[Path, int]:
+    """决定这次写到哪：mode=version 时同标题再跑就递增 -v2/-v3，不覆盖。"""
+    base.mkdir(parents=True, exist_ok=True)
+    if mode == "overwrite":
+        d = base / slug
+        d.mkdir(parents=True, exist_ok=True)
+        return d, 1
+    d = base / slug
+    if not (d / "problems_paper.json").exists() and not (d / "REPORT.md").exists():
+        d.mkdir(parents=True, exist_ok=True)
+        return d, 1
+    v = 2
+    while (base / f"{slug}-v{v}").exists():
+        v += 1
+    d = base / f"{slug}-v{v}"
+    d.mkdir(parents=True, exist_ok=True)
+    return d, v
+
 
 def collect_inputs(paths) -> list[Path]:
     """收集输入文件；跳过 README/LICENSE 与下划线开头的文件（目录里的说明不该被当论文）。"""
@@ -181,11 +289,17 @@ def _sentences(text: str):
             yield s
 
 
-def mine(text: str, source: str, max_per_type: int = 8, domain: str = "auto") -> list[dict]:
-    """三种通用机制 + （可选）领域包。domain: auto | biomed | none"""
+def mine(text: str, source: str, max_per_type: int = 8, domain: str = "auto",
+         n_followups: int = 4, max_total: int = 0) -> list[dict]:
+    """三种通用机制 + （可选）领域包。domain: auto | biomed | none
+
+    n_followups: ③结构追问套几问（1–4：范围/反例/机制/定量），控制"问题深度"。
+    max_total:   总条数上限（0 = 不限），控制"生成多少问题"。
+    """
     out: list[dict] = []
     seen = set()
     counters = {"①作者自陈未解": 0, "②文本张力": 0, "③结构追问": 0}
+    followups = FOLLOWUPS[:max(1, min(n_followups, len(FOLLOWUPS)))]
 
     for sent in _sentences(text):
         low = sent.lower()
@@ -234,9 +348,9 @@ def mine(text: str, source: str, max_per_type: int = 8, domain: str = "auto") ->
             if re.search(pat, low):
                 claim_tag = tag
                 break
-        if claim_tag and counters["③结构追问"] < max_per_type * len(FOLLOWUPS):
+        if claim_tag and counters["③结构追问"] < max_per_type * len(followups):
             base = sent[:110]
-            for name, tmpl, route in FOLLOWUPS:
+            for name, tmpl, route in followups:
                 key = ("③", name, base[:60])
                 if key in seen:
                     continue
@@ -269,36 +383,59 @@ def mine(text: str, source: str, max_per_type: int = 8, domain: str = "auto") ->
 
 # ── 主流程 ────────────────────────────────────────────────────────────
 def run(paths, out_dir="out/papers", max_per_type: int = 8, quiet=False,
-        domain: str = "auto") -> dict:
-    out = Path(out_dir)
-    out.mkdir(parents=True, exist_ok=True)
+        domain: str = "auto", group: str = "auto", n_followups: int = 4,
+        max_total: int = 0, overwrite: bool = False) -> dict:
+    base = Path(out_dir)
     files = collect_inputs([Path(p) for p in paths])
     if not files:
         print("没找到可读入的论文文件（支持 .md/.txt/.pdf/.docx/.epub，或传目录）")
         return {"problems": [], "files": []}
 
+    # 先抽第一篇的文本，用它来定标题（单文件时按标题建目录，避免不同论文互相覆盖）
     problems, per_file = [], []
-    for f in files:
+    title, slug, out, version = "", "", base, 1
+    for i, f in enumerate(files):
         try:
             text, how = extract_text(f)
         except Exception as e:                                # noqa: BLE001
-            print(f"[skip] {f.name}: {e}")
+            print(f"[skip] {f.name}: {type(e).__name__}: {e}")
             per_file.append({"file": str(f), "chars": 0, "method": "error", "problems": 0,
-                             "error": str(e)})
+                             "error": f"{type(e).__name__}: {e}"})
             continue
-        got = mine(text, f.name, max_per_type=max_per_type, domain=domain)
+        if i == 0:
+            title = derive_title(f, text)
+            slug = slugify(title)
+            use_group = (group == "title") or (group == "auto" and len(files) == 1)
+            if use_group:
+                out, version = plan_out_dir(base, slug, "overwrite" if overwrite else "version")
+            else:
+                out = base
+                out.mkdir(parents=True, exist_ok=True)
+        got = mine(text, f.name, max_per_type=max_per_type, domain=domain,
+                   n_followups=n_followups, max_total=max_total)
         problems += got
-        per_file.append({"file": str(f), "chars": len(text), "method": how, "problems": len(got)})
+        per_file.append({"file": str(f), "chars": len(text), "method": how,
+                         "problems": len(got), "title": title or f.stem})
         if not quiet:
             print(f"[{f.name}] {len(text):,} 字符 | 抽取方式={how} | 产出问题 {len(got)} 条")
+
+    if max_total and len(problems) > max_total:
+        problems = problems[:max_total]
 
     n_author = sum(1 for p in problems if p["is_author_stated"])
     n_bm = sum(1 for p in problems if p.get("domain") == "生物医学")
     payload = {
         "domain": "paper",
         "generator": "ask-dao-machine/paper.py",
+        "title": title,
+        "slug": slug,
+        "version": version,
+        "out_dir": str(out),
+        "inputs": [p["file"] for p in per_file],
         "files": [p["file"] for p in per_file],
         "per_file": per_file,
+        "params": {"per_type": max_per_type, "domain": domain, "depth_followups": n_followups,
+                   "max_total": max_total, "group": group},
         "counts": {"total": len(problems), "author_stated": n_author,
                    "machine_raised": len(problems) - n_author, "biomed_pack": n_bm},
         "roots": [{"id": "PAPER_ROOT", "label": f"论文输入：{len(files)} 个文件"}],
@@ -307,7 +444,9 @@ def run(paths, out_dir="out/papers", max_per_type: int = 8, quiet=False,
     dst = out / "problems_paper.json"
     dst.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
     if not quiet:
-        print(f"\n合计 {len(problems)} 条：作者已提出 {n_author} 条 · 机器新提出 {len(problems)-n_author} 条"
+        if title:
+            print(f"标题：{title}")
+        print(f"合计 {len(problems)} 条：作者已提出 {n_author} 条 · 机器新提出 {len(problems)-n_author} 条"
               + (f"（其中生物医学方法学追问 {n_bm} 条）" if n_bm else ""))
         print(f"→ {dst}")
     return payload
@@ -331,6 +470,14 @@ def pr_comment(payload: dict, limit: int = 8) -> str:
     return "\n".join(L)
 
 
+# 深度档：控制"每类机制产出多少"与"③结构追问套几问"
+DEPTHS = {
+    "shallow": (3, 2),      # 少量、浅：只问范围/反例
+    "normal": (8, 4),       # 默认
+    "deep": (20, 4),        # 大量、四问全上
+}
+
+
 def main(argv=None, out_dir="out/papers") -> int:
     from . import _console
     _console.setup()
@@ -342,32 +489,61 @@ def main(argv=None, out_dir="out/papers") -> int:
     ap = argparse.ArgumentParser(
         prog="ask-dao-machine paper",
         description="输入论文（.md/.txt/.pdf/.docx/.epub 或目录），输出问题清单 + 一页人话报告",
-        epilog=("例子:\n  ask-dao-machine paper papers/biomed/PMC13331974.md --domain biomed\n"
-                "  ask-dao-machine paper paper.pdf --out out/papers --per-type 8\n"
+        epilog=("例子:\n"
+                "  ask-dao-machine paper paper.pdf                      # 按论文标题建目录，不覆盖别篇\n"
+                "  ask-dao-machine paper paper.pdf --depth deep         # 多问、四问全上\n"
+                "  ask-dao-machine paper paper.pdf --max-total 30       # 只要 30 条\n"
+                "  ask-dao-machine paper paper.pdf --per-type 5 --depth shallow\n"
+                "  ask-dao-machine paper papers/ --flat                 # 目录输入：平铺到 --out（CI 用法）\n"
                 "  产出：problems_paper.json（「作者已提出」与「机器新提出」分开标注）+ REPORT.md\n"),
         formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("paths", nargs="*", help="论文文件或目录")
-    ap.add_argument("--out", default=out_dir, help="输出目录")
-    ap.add_argument("--per-type", type=int, default=8, help="每类机制最多产出多少条（默认 8）")
+    ap.add_argument("--out", default=out_dir, help="输出根目录（默认 out/papers）")
+    ap.add_argument("--per-type", type=int, default=None,
+                    help="每类机制最多产出多少条（默认按 --depth：shallow 3 / normal 8 / deep 20）")
+    ap.add_argument("--depth", choices=sorted(DEPTHS), default="normal",
+                    help="问题深度档：shallow（少而浅）/ normal（默认）/ deep（多而全）")
+    ap.add_argument("--max-total", type=int, default=0,
+                    help="总条数上限（0 = 不限）")
+    ap.add_argument("--group", choices=["auto", "title", "flat"], default="auto",
+                    help="输出目录组织：auto=单文件按标题建目录、目录输入平铺；"
+                         "title=总是按标题；flat=总是平铺到 --out")
+    ap.add_argument("--flat", action="store_true",
+                    help="等价于 --group flat（平铺到 --out，CI 常用）")
+    ap.add_argument("--overwrite", action="store_true",
+                    help="同标题重跑时覆盖，而不是递增 -v2/-v3")
     ap.add_argument("--domain", choices=["auto", "biomed", "none"], default="auto",
                     help="领域包：auto=按词表自动判断，biomed=强制生物医学方法学追问，none=只用通用三机制")
     a = ap.parse_args(argv)
     if not a.paths:
         print(__doc__)
         return 2
-    payload = run(a.paths, out_dir=a.out, max_per_type=a.per_type, domain=a.domain)
+
+    d_per, d_fol = DEPTHS[a.depth]
+    per_type = a.per_type if a.per_type is not None else d_per
+    group = "flat" if a.flat else a.group
+    payload = run(a.paths, out_dir=a.out, max_per_type=per_type, domain=a.domain,
+                  group=group, n_followups=d_fol, max_total=a.max_total,
+                  overwrite=a.overwrite)
+    out_used = payload.get("out_dir") or a.out
     per = payload.get("per_file") or []
     if payload.get("problems"):
         from . import report as report_mod
-        report_mod.main(a.out)                    # 复用一页人话报告
+        report_mod.main(out_used)                 # 复用一页人话报告（写到实际目录）
+        if payload.get("version", 1) > 1:
+            print(f"（同标题第 {payload['version']} 版，未覆盖前几版）")
         return 0
-    # 一条都没产出：区分"路径不对/格式不支持"（失败）与"文件为空"（空结果）
+    # 一条都没产出：区分"路径不对/格式不支持"（失败）与"文本抽取失败"（可诊断）
     failed = [p for p in per if p.get("method") == "error"]
     if failed or not per:
-        print("没有产出任何问题：请检查路径是否存在、格式是否支持（.md/.txt/.pdf/.docx/.epub）。",
-              file=sys.stderr)
+        print("没有产出任何问题。", file=sys.stderr)
+        for p in failed[:5]:
+            print(f"  ✗ {Path(p['file']).name}: {p.get('error')}", file=sys.stderr)
+        print("  提示：PDF 优先用 pdftotext 或 pip install pypdf；"
+              "扫描版 PDF 需先 OCR。", file=sys.stderr)
         return 2
-    print("输入文件里没有命中任何机制（信号词太稀薄？试试更长的论文正文）。", file=sys.stderr)
+    print("输入文件里没有命中任何机制（信号词太稀薄？试试更长的论文正文，或 --depth deep）。",
+          file=sys.stderr)
     return 0
 
 
