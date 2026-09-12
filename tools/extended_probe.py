@@ -3,7 +3,7 @@
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from ask_dao_machine.judges_math import sieve
+from ask_dao_machine.judge_math import sieve
 
 N = 300000
 ps = sieve(N)

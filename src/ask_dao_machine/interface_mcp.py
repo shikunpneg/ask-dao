@@ -156,7 +156,7 @@ def t_imagine(args: dict) -> str:
 
 
 def t_paper(args: dict) -> str:
-    from . import paper as P
+    from . import input_paper as P
     domain = args.get("domain") or "auto"
     mpt = int(args.get("max_per_type") or 6)
     text = args.get("text")
@@ -197,7 +197,7 @@ def t_perceive(args: dict) -> str:
     path = (args.get("path") or "").strip()
     if not path:
         return "需要 path 参数。"
-    from . import perceive as PC
+    from . import input_image as PC
     payload = _quiet(PC.run, [path], out_dir=os.path.join(os.getcwd(), "out", "mcp_perceive"),
                      quiet=True)
     probs = payload.get("problems", [])
@@ -296,7 +296,7 @@ def serve() -> int:
 
 
 def main(argv=None) -> int:
-    from . import _console
+    from . import ui_console as _console
     _console.setup()
     return serve()
 

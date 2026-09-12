@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """aesthetics_engine.py — 美学域 问题制造器(生成层):
   日常疑问 × 母题对 → 可测研究命题 + 实验设计; 判定权交给人类/实验层(判官=审美共同体)。"""
-from .model import ProblemRecord, TreeRoot
+from .data_problem_model import ProblemRecord, TreeRoot
 
 _TEMPLATES = [
     dict(seed="为什么同一首歌听多了会烦，巴赫却不容易烦？", motifs=["重复-新颖", "结构复杂度"],

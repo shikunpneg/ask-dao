@@ -29,7 +29,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent.parent
 
-from . import ux  # noqa: E402  （统一输出根目录 / 下一步提示 / JSON 输出）
+from . import ui_ux as ux  # noqa: E402  （统一输出根目录 / 下一步提示 / JSON 输出）
 
 
 # ── 基础领域关键词表（粗分，够用；命中最多者胜，平手按声明顺序） ──────
@@ -404,7 +404,7 @@ def _stage_problem(problems: list[dict], stop: str) -> list[dict]:
 
 def run_problem(inputs: list[Path], stop: str, out_root: Path, **kw) -> dict:
     """问题路：复用 paper.run（它已做输出版本化），再加五站字段。"""
-    from . import paper as paper_mod
+    from . import input_paper as paper_mod
 
     payload = paper_mod.run([str(p) for p in inputs], out_dir=str(out_root),
                             max_per_type=kw.get("per_type", 8), quiet=kw.get("quiet", False),
@@ -570,7 +570,7 @@ def run_question(question: str, out_root: Path, stop: str = "scientific",
         print("这条命令需要仓库里的 tools/question_refiner.py。", file=sys.stderr)
         return {"error": "tools missing", "problems": []}
 
-    from . import paper as paper_mod
+    from . import input_paper as paper_mod
 
     dom = domain or classify_field(question, default="通用")
     r = qr.refine({"daily_question": question, "domain": dom})
@@ -600,7 +600,7 @@ def run_question(question: str, out_root: Path, stop: str = "scientific",
 
     out, ver = _plan_dir(out_root, _slug(question[:48]), overwrite)
     payload = {
-        "domain": "ask", "generator": "ask-dao-machine/flow.py run_question",
+        "domain": "ask", "generator": "ask-dao-machine/pipeline_router.py run_question",
         "path": "problem", "stop": stop, "input_kind": "question",
         "question": question, "title": question[:80], "version": ver, "out_dir": str(out),
         "field": dom,
@@ -650,7 +650,7 @@ def detect_input(paths: list[str]) -> tuple[str, list[Path]]:
 
 
 def main(argv=None, out_dir="out/runs") -> int:
-    from . import _console
+    from . import ui_console as _console
     _console.setup()
     argv = list(sys.argv[1:] if argv is None else argv)
 
@@ -749,7 +749,7 @@ def main(argv=None, out_dir="out/runs") -> int:
                 print(f"输入类型：{kind}（{len(files)} 个文件）　路：问题路　终止点：{a.stop}", file=sys.stderr)
             if kind == "image":
                 try:
-                    from . import perceive as perceive_mod
+                    from . import input_image as perceive_mod
                 except ModuleNotFoundError as e:
                     print(f"图像输入需要 numpy 与 pillow（当前缺：{e.name}）。", file=sys.stderr)
                     print('  装：pip install numpy pillow', file=sys.stderr)

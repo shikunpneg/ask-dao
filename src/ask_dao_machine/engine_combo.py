@@ -6,7 +6,7 @@
   指标: R 率 = R数 / 总数(目标 ≥5/100)
 """
 import math
-from .model import ProblemRecord, TreeRoot
+from .data_problem_model import ProblemRecord, TreeRoot
 
 ROOT = TreeRoot("R_combo", "组合纪录实验室: 受限字符串/游走 的计数族", "数学",
                 ["连续整数串", "组合计数", "递推映射", "母题组合/迁移"],

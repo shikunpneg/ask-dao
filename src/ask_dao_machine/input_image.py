@@ -198,7 +198,7 @@ def collect(paths) -> tuple[dict, list[Path]]:
 
 
 def run(paths=None, out_dir="out/perceive", quiet=False) -> dict:
-    from . import _console
+    from . import ui_console as _console
     _console.setup()
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -216,7 +216,7 @@ def run(paths=None, out_dir="out/perceive", quiet=False) -> dict:
                   f"对称{f['sym_h']}/{f['sym_v']} 熵{f['local_entropy']} 边界{f['edge_density']}"
                   f" -> 问题 {len(qs)} 条")
     payload = {
-        "domain": "perceive", "generator": "ask-dao-machine/perceive.py",
+        "domain": "perceive", "generator": "ask-dao-machine/input_image.py",
         "files": list(imgs.keys()), "counts": {"total": len(problems),
                                                "machine_raised": len(problems)},
         "roots": [{"id": "PERCEIVE_ROOT", "label": f"经验输入：{len(imgs)} 张图像"}],
@@ -231,7 +231,7 @@ def run(paths=None, out_dir="out/perceive", quiet=False) -> dict:
 
 
 def main(argv=None, out_dir="out/perceive") -> int:
-    from . import _console
+    from . import ui_console as _console
     _console.setup()
     argv = list(sys.argv[1:] if argv is None else argv)
     payload = run(argv, out_dir=out_dir)
@@ -242,7 +242,7 @@ def main(argv=None, out_dir="out/perceive") -> int:
         if argv:
             return 0
         return 2
-    from . import report as report_mod
+    from . import output_report as report_mod
     report_mod.main(out_dir)
     return 0
 

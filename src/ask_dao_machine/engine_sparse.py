@@ -4,7 +4,7 @@
    S2: 广义 Collatz: n奇->p*n+q, n偶->n/2, 最大停时对 q 的序列(按 p 参数化)
    产出: 记录 + 提取整数序列 -> 交 OEIS 离线反查(宽容) -> 未见者 = 候选(N2 级, 待 web)"""
 import math
-from .model import ProblemRecord, TreeRoot
+from .data_problem_model import ProblemRecord, TreeRoot
 
 ROOT = TreeRoot("R_sparse", "稀疏生成空间: 参数化映射族", "数学",
                 ["参数化映射", "循环/停时纪录"], "参照系薄处: 每个 (c,m)/(p,q) 小参数的纪录表")

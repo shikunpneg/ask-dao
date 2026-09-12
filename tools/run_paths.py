@@ -63,7 +63,7 @@ def problem_from_daily(question):
 
 def problem_from_motif(motif):
     """输入: 母题 -> 问题树生长"""
-    from ask_dao_machine.registry import Registry
+    from ask_dao_machine.data_motif_registry import Registry
     reg = Registry.bundled()
     hits = [m for m in reg.math_core if motif in m["name"]]
     return [{"motif": motif, "matched": [h["name"] for h in hits],

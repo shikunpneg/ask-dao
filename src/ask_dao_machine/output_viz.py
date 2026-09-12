@@ -6,8 +6,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Dict, List
 
-from .model import ProblemSet
-from .registry import Registry
+from .data_problem_model import ProblemSet
+from .data_motif_registry import Registry
 
 
 def _reg_block(reg: Registry) -> dict:

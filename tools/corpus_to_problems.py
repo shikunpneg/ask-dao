@@ -25,7 +25,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE / "src"))
 
-from ask_dao_machine.grammar import FRAMES  # noqa: E402
+from ask_dao_machine.data_combo_grammar import FRAMES  # noqa: E402
 
 CORPUS = Path("E:/ask-dao/_text")
 

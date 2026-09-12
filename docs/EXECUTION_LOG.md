@@ -206,7 +206,7 @@
 `model.UNRESOLVED = "开放(机器无法结算)"`。允许记录只带陈述、不带判定 ——
 没有这个状态, 生成器就只能提它自己已经会答的问题。
 
-### 24.3 A: 反例驱动引擎 `src/ask_dao_machine/counterex_engine.py`
+### 24.3 A: 反例驱动引擎 `src/ask_dao_machine/engine_counterexample.py`
 把机器**已经算出来又丢掉**的反例当作原料:
 1. 对每个猜想(两类对象 A+B 覆盖偶数域)算出**完整反例集** F;
 2. 拟合结构(周期/有限/密度);

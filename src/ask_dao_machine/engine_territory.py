@@ -15,7 +15,7 @@ LONG_PLAN_V2 Phase 1 的核心: 反例驱动不该只服务加性数论这一块
 from dataclasses import dataclass, field
 from typing import Callable, Dict, List, Optional, Set, Any
 
-from .model import ProblemRecord, TreeRoot, UNRESOLVED
+from .data_problem_model import ProblemRecord, TreeRoot, UNRESOLVED
 
 
 @dataclass

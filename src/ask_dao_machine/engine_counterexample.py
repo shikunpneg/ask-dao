@@ -25,8 +25,8 @@ import json
 from pathlib import Path
 from typing import List
 
-from .judges_math import sieve
-from .model import ProblemRecord, TreeRoot, UNRESOLVED
+from .judge_math import sieve
+from .data_problem_model import ProblemRecord, TreeRoot, UNRESOLVED
 
 ROOT = TreeRoot("R_counterex", "反例驱动: 从例外集的结构里长出问题", "数学",
                 ["反例", "例外集结构", "有限性/密度"],

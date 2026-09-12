@@ -67,7 +67,7 @@ python tools/run_paths.py problem --input motif --m "质数"
 `status = 开放(机器无法结算)` 的问题。
 
 ```bash
-python -m ask_dao_machine.counterex_engine
+python -m ask_dao_machine.engine_counterexample
 ```
 
 关键设计：**本引擎只提它自己答不出的问题**。其他引擎先算判定再写陈述
@@ -97,7 +97,7 @@ L4→L5: 该不该 → 实际怎样
 **⇒ 造新问题 = 从已解决的层，沿深度轴下移一格。**
 
 ```bash
-python -m ask_dao_machine.counterex_engine     # 反例驱动
+python -m ask_dao_machine.engine_counterexample     # 反例驱动
 python -m ask_dao_machine.territories.digit_base
 ```
 

@@ -4,8 +4,8 @@
   输出 覆盖阈值/反例图案/间隙纪录/迭代纪录 —— 机器自己发现的数字事实即新问题原料。
   诚实: 只对扫描范围负责; 已知配对自动标注; 其余=待参照系反查 -> 交给 novelty_gate。"""
 import math
-from .judges_math import sieve
-from .model import ProblemRecord, TreeRoot
+from .judge_math import sieve
+from .data_problem_model import ProblemRecord, TreeRoot
 
 # 已收录配对的先验知识(模板=偶数两数和)
 KNOWN = {

@@ -290,7 +290,7 @@ SLIDES = [
             ("④ 领域包（生物医学）", "10 类方法学缺口 + 从 HR/CI **直接算** E-value。"
                               "来源标注：机器提出 / 作者已论及（**分标**）。"),
         ],
-        "note": "实现：`src/ask_dao_machine/paper.py` · `domains_biomed.py`；"
+        "note": "实现：`src/ask_dao_machine/input_paper.py` · `domains_biomed.py`；"
                 "产物每条带 `evidence`（触发它的原文句）与 `route`（判定方式）。",
     },
 

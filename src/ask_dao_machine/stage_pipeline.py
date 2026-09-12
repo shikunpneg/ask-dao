@@ -6,11 +6,11 @@ import time
 from pathlib import Path
 from typing import Dict, List
 
-from . import (math_engine, aesthetics_engine, records_engine, fusion_engine,
-               lang_info_engine, combo_engine, direction_engine, sparse_engine,
-               counterex_engine)
-from .model import ProblemSet
-from .registry import Registry
+from . import (engine_math as math_engine, engine_aesthetics as aesthetics_engine, engine_records as records_engine, engine_fusion as fusion_engine,
+               engine_language_info as lang_info_engine, engine_combo as combo_engine, engine_direction as direction_engine, engine_sparse as sparse_engine,
+               engine_counterexample as counterex_engine)
+from .data_problem_model import ProblemSet
+from .data_motif_registry import Registry
 
 
 class ProblemMaker:
@@ -34,7 +34,7 @@ class ProblemMaker:
     def _run_digit_base(self, limits: dict = None):
         """领地·进制依赖结构(LONG_PLAN_V2 Phase 1 首个稀疏领地)。"""
         from .territories import get as _get
-        from .territory_engine import run_territory
+        from .engine_territory import run_territory
         limits = limits or {}
         lo, hi = limits.get("lo", 4), limits.get("hi", 20000)
         roots, records, report = run_territory(_get("digit_base"), lo, hi)

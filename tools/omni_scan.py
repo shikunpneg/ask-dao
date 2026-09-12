@@ -28,7 +28,7 @@ sys.path.insert(0, str(HERE / "tools"))
 sys.path.insert(0, str(HERE / "src"))
 
 from oeis_index import OEISIndex  # noqa: E402
-from ask_dao_machine.judges_math import sieve  # noqa: E402
+from ask_dao_machine.judge_math import sieve  # noqa: E402
 
 N = 40  # 序列长度
 

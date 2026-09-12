@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from typing import List
 
-from .registry import Registry
+from .data_motif_registry import Registry
 
 # 复合母题生成规则: (类型A, 类型B) -> 复合类型 + 建议句式 + 判定路由
 RULES = {

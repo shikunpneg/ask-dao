@@ -172,7 +172,7 @@ def render_markdown(rep: dict) -> str:
 
 
 def main(out_dir="out", quiet=False) -> int:
-    from . import _console
+    from . import ui_console as _console
     _console.setup()
     out = Path(out_dir)
     if not out.exists():

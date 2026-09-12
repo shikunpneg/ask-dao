@@ -62,7 +62,7 @@ python tools/web_experience.py         # 网页 → 疑问
 python tools/run_paths.py problem --input motif --m "质数"
 
 # 反例驱动（只提机器答不出的问题）
-python -m ask_dao_machine.counterex_engine
+python -m ask_dao_machine.engine_counterexample
 
 # 全领域并行扫描
 python tools/all_domains_engine.py

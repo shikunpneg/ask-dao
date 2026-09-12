@@ -5,8 +5,8 @@
   无法当场判定的域(生物/认知/物理实验) 仍走 judge_blueprints(前问题态)。
 """
 import math
-from .judges_math import sieve
-from .model import ProblemRecord, TreeRoot
+from .judge_math import sieve
+from .data_problem_model import ProblemRecord, TreeRoot
 
 ROOT = TreeRoot("R_fusion", "跨域融合实验室: 别域母题 × 数学对象(可数值判定)", "数学",
                 ["信息-熵/均匀性", "动力学-随机游走", "质数", "因子和"], "把别域的'眼睛'放到数学对象上会看到什么?")

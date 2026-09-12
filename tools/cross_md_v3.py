@@ -37,7 +37,7 @@ def h_belief(_=None):
 
 def h_entropy_gap(_=None):
     # 数学x信息: 质数间隙的奇偶序列信息熵(短程)
-    from ask_dao_machine.judges_math import sieve
+    from ask_dao_machine.judge_math import sieve
     ps = sieve(200000)
     primes = [i for i in range(2, 200000) if ps[i]]
     bits = [1 if (primes[i + 1] - primes[i]) % 4 == 0 else 0 for i in range(len(primes) - 1)]

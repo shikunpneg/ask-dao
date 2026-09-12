@@ -426,13 +426,13 @@ def mine(text: str, source: str, max_per_type: int = 8, domain: str = "auto",
     use_biomed = domain in ("biomed", "biomedical", "生物医学")
     if domain == "auto":
         try:
-            from . import domains_biomed as _bm
+            from . import domain_pack_biomed as _bm
             use_biomed = _bm.detect_vocab(text) >= 25
         except Exception:                                      # noqa: BLE001
             use_biomed = False
     if use_biomed:
         try:
-            from . import domains_biomed as _bm
+            from . import domain_pack_biomed as _bm
             out += _bm.mine(text, source, _sentences(text), max_per_rule=3)
         except Exception as e:                                 # noqa: BLE001
             print(f"[warn] 生物医学包未生效: {e}", file=sys.stderr)
@@ -484,7 +484,7 @@ def run(paths, out_dir="out/papers", max_per_type: int = 8, quiet=False,
     n_bm = sum(1 for p in problems if p.get("domain") == "生物医学")
     payload = {
         "domain": "paper",
-        "generator": "ask-dao-machine/paper.py",
+        "generator": "ask-dao-machine/input_paper.py",
         "title": title,
         "slug": slug,
         "version": version,
@@ -537,7 +537,7 @@ DEPTHS = {
 
 
 def main(argv=None, out_dir="out/papers") -> int:
-    from . import _console
+    from . import ui_console as _console
     _console.setup()
     argv = list(sys.argv[1:] if argv is None else argv)
     if not argv:
@@ -586,7 +586,7 @@ def main(argv=None, out_dir="out/papers") -> int:
     out_used = payload.get("out_dir") or a.out
     per = payload.get("per_file") or []
     if payload.get("problems"):
-        from . import report as report_mod
+        from . import output_report as report_mod
         report_mod.main(out_used)                 # 复用一页人话报告（写到实际目录）
         if payload.get("version", 1) > 1:
             print(f"（同标题第 {payload['version']} 版，未覆盖前几版）")

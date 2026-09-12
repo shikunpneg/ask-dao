@@ -5,7 +5,7 @@
   判据来源: 信息论/形式语言理论(可在本机数值判定)。
 """
 import math
-from .model import ProblemRecord, TreeRoot
+from .data_problem_model import ProblemRecord, TreeRoot
 
 ROOT = TreeRoot("R_linginfo", "交叉实验室: 递归语法(语言) × 信道熵(信息)", "数学",
                 ["递归语法", "信息-熵/信道"], "语言的'信息产出率'能被语法结构约束到多大?")

@@ -71,8 +71,8 @@ def _cmd_ask(argv):
         print("这条命令需要仓库里的 tools/（用源码运行或 pip install -e .）；"
               "若只需要论文支线，请用 ask-dao-machine paper。", file=sys.stderr)
         return 2
-    from . import flow as flow_mod
-    from . import ux as ux_mod
+    from . import pipeline_router as flow_mod
+    from . import ui_ux as ux_mod
     n_fol = {"shallow": 2, "normal": 4, "deep": 4}[a.depth]
     root = ux_mod.out_root(a.out)
     r = flow_mod.run_question(q, ux_mod.run_dir(root, "ask"), stop=a.stop, n_followups=n_fol,
@@ -194,7 +194,7 @@ def _dispatch(argv):
                                      description="把一次跑批汇总成一页人话（写 <out>/REPORT.md）")
         ap.add_argument("--out", default=str(Path.cwd() / "out"), help="跑批输出目录（默认 ./out）")
         a = ap.parse_args(argv[1:])
-        from . import report as report_mod
+        from . import output_report as report_mod
         return report_mod.main(a.out)
     if head == "perceive":
         ap = argparse.ArgumentParser(
@@ -206,16 +206,16 @@ def _dispatch(argv):
         ap.add_argument("paths", nargs="*", help="图像文件或目录（不给则用 numpy 合成图，零依赖可跑）")
         ap.add_argument("--out", default=str(Path.cwd() / "out" / "perceive"), help="输出目录")
         a = ap.parse_args(argv[1:])
-        from . import perceive as perceive_mod
+        from . import input_image as perceive_mod
         return perceive_mod.main(a.paths, out_dir=a.out)
     if head == "paper":
-        from . import paper as paper_mod
+        from . import input_paper as paper_mod
         return paper_mod.main(argv[1:])
     if head == "run":
-        from . import flow as flow_mod
+        from . import pipeline_router as flow_mod
         return flow_mod.main(argv[1:])
     if head == "mcp":
-        from . import mcp as mcp_mod
+        from . import interface_mcp as mcp_mod
         return mcp_mod.main(argv[1:])
     if head == "ask":
         return _cmd_ask(argv[1:])
@@ -227,7 +227,7 @@ def _dispatch(argv):
         ap = argparse.ArgumentParser(prog="ask-dao-machine doctor",
                                      description="环境自查：Python / 包 / 引擎 / 参照系 / 输出目录 / 测试")
         ap.parse_args(argv[1:])
-        from . import doctor as doctor_mod
+        from . import diagnose_env as doctor_mod
         return doctor_mod.check()
     if head == "data":
         ap = argparse.ArgumentParser(prog="ask-dao-machine data", description="参照系数据（OEIS）")
@@ -236,17 +236,17 @@ def _dispatch(argv):
         f.add_argument("--dest", default=None, help="目标目录（默认 <repo>/data）")
         f.add_argument("--force", action="store_true", help="已存在也重新下载")
         a = ap.parse_args(argv[1:])
-        from . import doctor as doctor_mod
+        from . import diagnose_env as doctor_mod
         return doctor_mod.fetch(a.dest, a.force)
     return None
 
 
 def main(argv=None):
-    from . import _console
+    from . import ui_console as _console
     _console.setup()                     # Windows 控制台非 UTF-8 时也能打印中文
     argv = list(sys.argv[1:] if argv is None else argv)
 
-    from . import banner as banner_mod
+    from . import ui_banner as banner_mod
     # 裸命令 / help / --version：进来看「道」的徽标与速查（管道里自动不带颜色）
     if not argv:
         banner_mod.show()
@@ -311,8 +311,8 @@ def main(argv=None):
         print("--limits 需为 JSON 对象，例如 '{\"N\":100000}'", file=sys.stderr)
         return 2
 
-    from .pipeline import ProblemMaker
-    from . import viz as viz_mod
+    from .stage_pipeline import ProblemMaker
+    from . import output_viz as viz_mod
 
     _TPL = Path(__file__).resolve().parent.parent.parent / "assets" / "index.html"
 
@@ -354,7 +354,7 @@ def main(argv=None):
 
     # ---- 收尾：直接给出"下一步看什么"（跑完不再是一堆 JSON） ----
     try:
-        from . import report as report_mod
+        from . import output_report as report_mod
         print("")
         report_mod.main(out)
     except Exception as e:                                      # noqa: BLE001

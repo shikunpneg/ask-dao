@@ -14,10 +14,10 @@
 CLI:
     python -m ask_dao_machine all --out out/demo
 """
-from .pipeline import ProblemMaker
-from .registry import Registry
-from .model import ProblemRecord, ProblemSet
-from . import viz, math_engine, aesthetics_engine
+from .stage_pipeline import ProblemMaker
+from .data_motif_registry import Registry
+from .data_problem_model import ProblemRecord, ProblemSet
+from . import output_viz as viz, engine_math as math_engine, engine_aesthetics as aesthetics_engine
 
 __version__ = "0.1.0"
 __all__ = ["ProblemMaker", "Registry", "ProblemRecord", "ProblemSet",

@@ -6,8 +6,8 @@
    输出: 复核=与锚一致; 突破=候选值超过锚纪录。
 """
 import math
-from .judges_math import sieve
-from .model import ProblemRecord, TreeRoot
+from .judge_math import sieve
+from .data_problem_model import ProblemRecord, TreeRoot
 
 ROOT = TreeRoot("R_break", "纪录突破实验室 v0", "数学",
                 ["纪录与极值", "质数间隙", "Collatz停时"], "用'破纪录'而非'未见序列'当新颖代理")

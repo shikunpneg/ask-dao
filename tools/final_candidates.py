@@ -14,7 +14,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE / "src"))
 
-from ask_dao_machine.territory_engine import (Spec, classify, reduction_probes)  # noqa: E402
+from ask_dao_machine.engine_territory import (Spec, classify, reduction_probes)  # noqa: E402
 from conjecture_search import build_pool, exceptions_fast, LO, HI                 # noqa: E402
 
 CANON_BASES_HINT = ("_b10",)

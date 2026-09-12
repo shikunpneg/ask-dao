@@ -29,7 +29,7 @@ def data_dir() -> Path:
 
 
 def check() -> int:
-    from . import _console
+    from . import ui_console as _console
     _console.setup()
     ok = True
     print("=" * 76)
@@ -42,7 +42,7 @@ def check() -> int:
     print(f"[{'OK ' if good else 'FAIL'}] Python {v.major}.{v.minor}.{v.micro}（需要 ≥3.9）")
 
     try:
-        from .pipeline import ProblemMaker
+        from .stage_pipeline import ProblemMaker
         maker = ProblemMaker()
         doms = list(maker.list_domains())
         print(f"[OK ] 包已安装，引擎可用；域 {len(doms)} 个：{', '.join(doms)}")
@@ -102,7 +102,7 @@ def _count_sequences(path: Path, limit: int | None = None) -> int:
 
 
 def fetch(dest: str | None = None, force: bool = False) -> int:
-    from . import _console
+    from . import ui_console as _console
     _console.setup()
     dd = Path(dest) if dest else data_dir()
     dd.mkdir(parents=True, exist_ok=True)

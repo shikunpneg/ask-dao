@@ -8,7 +8,7 @@
 import json
 from pathlib import Path
 
-from .judges_math import sieve
+from .judge_math import sieve
 
 HERE = Path(__file__).resolve().parent.parent
 

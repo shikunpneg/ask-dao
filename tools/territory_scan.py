@@ -23,7 +23,7 @@ sys.path.insert(0, str(HERE / "tools"))
 
 from oeis_index import OEISIndex              # noqa: E402
 from ask_dao_machine.territories import TERRITORIES, CONTROL  # noqa: E402
-from ask_dao_machine.territory_engine import run_territory    # noqa: E402
+from ask_dao_machine.engine_territory import run_territory    # noqa: E402
 
 LO, HI = 4, 20000
 

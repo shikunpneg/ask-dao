@@ -25,7 +25,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE / "src"))
 
-from ask_dao_machine.judges_math import sieve  # noqa: E402
+from ask_dao_machine.judge_math import sieve  # noqa: E402
 
 HI = 20000
 LO = 4

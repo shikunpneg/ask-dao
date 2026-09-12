@@ -17,7 +17,7 @@ keywords = ["knowledge-discovery", "problem-generation", "imagination", "motifs"
 dev = ["pytest>=7"]
 
 [project.scripts]
-ask-dao-machine = "ask_dao_machine.cli:main"
+ask-dao-machine = "ask_dao_machine.interface_cli:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

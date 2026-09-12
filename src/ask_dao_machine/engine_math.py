@@ -4,8 +4,8 @@
   × 模板(两项和/三项和/加常数变异/构造...) → 候选命题 → 判定 → ProblemRecord(带出处链)
   输出与 machine_v1 v0.2 一致(25 题), 但全部经 judges_math 原语与 model 记录。"""
 import math
-from .judges_math import sieve, sigma_tau_phi_tables, is_pal_str, scan_two_sum
-from .model import ProblemRecord, TreeRoot
+from .judge_math import sieve, sigma_tau_phi_tables, is_pal_str, scan_two_sum
+from .data_problem_model import ProblemRecord, TreeRoot
 
 
 def run(N: int = 300000, M: int = 500000):

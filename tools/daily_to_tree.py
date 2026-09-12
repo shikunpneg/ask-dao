@@ -20,7 +20,7 @@ HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE / "src"))
 sys.path.insert(0, str(HERE / "tools"))
 
-from ask_dao_machine.territory_engine import Spec, Territory, run_territory  # noqa: E402
+from ask_dao_machine.engine_territory import Spec, Territory, run_territory  # noqa: E402
 
 
 # ---------- 可整数化的日常问题 -> Spec ----------

@@ -27,7 +27,7 @@ from oeis_index import OEISIndex          # noqa: E402
 from novelty_gate import NoveltyGate      # noqa: E402
 from ask_dao_machine import combo_engine as ce   # noqa: E402
 from ask_dao_machine import sparse_engine as se  # noqa: E402
-from ask_dao_machine.judges_math import sieve    # noqa: E402
+from ask_dao_machine.judge_math import sieve    # noqa: E402
 
 
 # ---------------- 序列生成器 ----------------

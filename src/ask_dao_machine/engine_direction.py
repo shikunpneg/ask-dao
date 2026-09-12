@@ -4,8 +4,8 @@
   v0 覆盖: 分布偏置 / 表示阈值 / 间隙纪录 / 动力收敛 —— 每类一个数值探针, 产出已判 ProblemRecord。
 """
 import math
-from .judges_math import sieve
-from .model import ProblemRecord, TreeRoot
+from .judge_math import sieve
+from .data_problem_model import ProblemRecord, TreeRoot
 
 ROOT = TreeRoot("R_dir", "方向级组合引擎 v0: 方向模板 × 载体", "数学",
                 ["L3方向模板", "对象载体", "数值判定路由"], "研究方向的'典型问法'套到具体对象上会判出什么?")
